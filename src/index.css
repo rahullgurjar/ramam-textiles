@@ -1,0 +1,374 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Color Tokens */
+  --bg-sand: #FAF7F2;
+  --bg-sand-light: #FDFBF8;
+  --bg-sand-dark: #F2ECE0;
+  --bg-sandstone: #EADFCF;
+  
+  --bg-emerald-deep: #0C1813;
+  --bg-emerald-surface: #13241C;
+  --bg-emerald-card: #182E24;
+  --border-emerald-light: #254234;
+
+  --color-gold: #C4A674;
+  --color-gold-light: #DFCA9F;
+  --color-gold-dark: #9E8150;
+  --color-gold-metallic: #B89758;
+
+  --color-terracotta: #8A4A3B;
+  --color-terracotta-soft: #A35E4E;
+  --color-indigo: #1B3245;
+  --color-indigo-soft: #28475E;
+
+  --text-dark-primary: #121815;
+  --text-dark-secondary: #4F5A54;
+  --text-dark-muted: #7E8A83;
+  --text-dark-light: #A3AFA8;
+
+  --text-light-primary: #FAF7F2;
+  --text-light-secondary: #D2DDD7;
+  --text-light-muted: #8F9E96;
+
+  --border-light: rgba(18, 24, 21, 0.1);
+  --border-gold: rgba(196, 166, 116, 0.35);
+
+  --font-heading: 'Cinzel', Georgia, serif;
+  --font-editorial: 'Cormorant Garamond', Garamond, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 14px rgba(12, 24, 19, 0.08);
+  --shadow-lg: 0 12px 30px rgba(12, 24, 19, 0.12);
+  --shadow-luxury: 0 20px 40px -15px rgba(12, 24, 19, 0.18);
+  --shadow-gold: 0 8px 25px rgba(196, 166, 116, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--bg-sand);
+  color: var(--text-dark-primary);
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Luxury Typography Classes */
+.font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: 0.04em;
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+  letter-spacing: 0.02em;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.tracking-luxury {
+  letter-spacing: 0.12em;
+}
+
+.tracking-widest-luxury {
+  letter-spacing: 0.25em;
+}
+
+/* Color Helper Utility Classes */
+.bg-emerald-deep {
+  background-color: var(--bg-emerald-deep);
+}
+
+.bg-emerald-surface {
+  background-color: var(--bg-emerald-surface);
+}
+
+.bg-emerald-card {
+  background-color: var(--bg-emerald-card);
+}
+
+.bg-sand {
+  background-color: var(--bg-sand);
+}
+
+.bg-sand-light {
+  background-color: var(--bg-sand-light);
+}
+
+.bg-sand-dark {
+  background-color: var(--bg-sand-dark);
+}
+
+.bg-sandstone {
+  background-color: var(--bg-sandstone);
+}
+
+.text-gold {
+  color: var(--color-gold);
+}
+
+.text-gold-light {
+  color: var(--color-gold-light);
+}
+
+.text-terracotta {
+  color: var(--color-terracotta);
+}
+
+.text-indigo-custom {
+  color: var(--color-indigo);
+}
+
+.border-gold {
+  border-color: var(--border-gold);
+}
+
+.border-emerald-light {
+  border-color: var(--border-emerald-light);
+}
+
+/* Luxury Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: var(--color-gold);
+  color: #0C1813;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-gold);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: transparent;
+  color: var(--text-dark-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(18, 24, 21, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-dark-primary);
+  background-color: rgba(18, 24, 21, 0.05);
+  transform: translateY(-2px);
+}
+
+.btn-secondary-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: transparent;
+  color: var(--text-light-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(250, 247, 242, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-secondary-light:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+  background-color: rgba(196, 166, 116, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: var(--bg-emerald-deep);
+  color: var(--text-light-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--bg-emerald-deep);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-dark:hover {
+  background-color: var(--bg-emerald-surface);
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Gold Underline Ornament */
+.gold-divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: 0.75rem auto;
+}
+
+.gold-divider-left {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+  margin: 0.75rem 0;
+}
+
+/* Image Hover Zoom Container */
+.img-luxury-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-luxury-wrap img {
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.img-luxury-wrap:hover img {
+  transform: scale(1.05);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F2ECE0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C4A674;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9E8150;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2.5s infinite ease-in-out;
+}
+
+/* Form Styles */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(18, 24, 21, 0.15);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-dark-primary);
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(196, 166, 116, 0.15);
+}
+
+.form-input-dark {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(196, 166, 116, 0.25);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: #FAF7F2;
+  transition: all 0.2s ease;
+}
+
+.form-input-dark:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(196, 166, 116, 0.2);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
