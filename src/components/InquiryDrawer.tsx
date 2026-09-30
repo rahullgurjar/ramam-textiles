@@ -338,17 +338,6 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                         <option value="Other / Global">Other / Global</option>
                       </select>
                     </div>
-
-                    <div>
-                      <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">
-                        Custom Labelling Needed?
-                      </label>
-                      <select className="form-input text-xs py-1.5">
-                        <option value="no">Standard Ramam Textiles Branding</option>
-                        <option value="yes">Custom Brand Neck Labels &amp; Hangtags</option>
-                        <option value="unbranded">White Label (No Brand Mark)</option>
-                      </select>
-                    </div>
                   </div>
 
                   <div>

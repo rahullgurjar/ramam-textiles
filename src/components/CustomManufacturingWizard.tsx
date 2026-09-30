@@ -16,7 +16,7 @@ export const CustomManufacturingWizard: React.FC = () => {
   const [quantity, setQuantity] = useState('100 - 300 pieces');
   const [customServices, setCustomServices] = useState<string[]>([
     'Custom Wooden Block Carving',
-    'Private Label Woven Neck Tags'
+    'Pre-production Fit Sample Approval'
   ]);
   const [techPackNotes, setTechPackNotes] = useState('');
   const [contactName, setContactName] = useState('');
@@ -281,14 +281,14 @@ export const CustomManufacturingWizard: React.FC = () => {
             <div className="space-y-6 animate-fade-in">
               <div>
                 <h4 className="font-serif text-lg font-bold text-stone-900 mb-1">
-                  5. Private Label Add-ons & Custom Branding
+                  5. Manufacturing Add-ons & Finishing Specifications
                 </h4>
-                <p className="text-xs text-stone-500 mb-4">Select all customizations you need prepared for your label.</p>
+                <p className="text-xs text-stone-500 mb-4">Select all customizations and finishing touches you need prepared.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
-                    { title: 'Custom Wooden Block Carving', desc: 'Hand-carve your brand motif into Sheesham wood blocks' },
-                    { title: 'Private Label Woven Neck Tags', desc: 'Satin or damask woven main labels & care tags stitched in' },
-                    { title: 'Custom Cardstock Hangtags', desc: 'Gold foil or kraft paper swing tags with your barcode' },
+                    { title: 'Custom Wooden Block Carving', desc: 'Hand-carve your exclusive motif into Sheesham wood blocks' },
+                    { title: 'Fabric Pre-Shrinking & Soft Wash Finishing', desc: 'Steam processing and organic bio-wash for zero residual shrinkage' },
+                    { title: 'Hand Kantha Quilting Alignment', desc: 'Even multi-layer diamond or linear running stitch quilting' },
                     { title: 'Custom YKK Hardware & Pullers', desc: 'Antique brass or matte gold metal zippers with embossed pullers' },
                     { title: 'Individual Export Polybag Packing', desc: '100% biodegradable or sealed bags with SKU stickers' },
                     { title: 'Pre-production Fit Sample Approval', desc: 'Courier prototype sample to your studio before bulk cutting' }

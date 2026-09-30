@@ -335,7 +335,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             </div>
             <div className="flex items-center gap-2">
               <Scissors className="w-4 h-4 text-stone-700 flex-shrink-0" />
-              <span>Custom Brand Labeling</span>
+              <span>Direct Atelier Pricing</span>
             </div>
           </div>
         </div>
@@ -492,16 +492,16 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           {activeTab === 'custom' && (
             <div className="max-w-4xl space-y-4 text-xs text-stone-700">
               <h3 className="font-serif text-lg font-bold text-stone-900">
-                Private Label Customization & Care Guide
+                Custom Production & Care Guide
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-white p-4 rounded-lg border border-stone-200 space-y-2">
-                  <h4 className="font-bold text-stone-900 uppercase">Private Label Services:</h4>
+                  <h4 className="font-bold text-stone-900 uppercase">Custom Production Services:</h4>
                   <ul className="list-disc pl-4 space-y-1 text-stone-600">
-                    <li>Custom Woven Satin / Damask Neck Labels</li>
-                    <li>Custom Barcoded Cardstock Hangtags</li>
-                    <li>Custom Wooden Printing Block Carvings with your brand logo</li>
-                    <li>Customized polybag packaging with SKU labels</li>
+                    <li>Custom Wooden Printing Block Carvings with bespoke motifs</li>
+                    <li>Custom Colorway Strike-offs & Lab Dips</li>
+                    <li>Bespoke Product Dimensions & Quilted Pattern Stitching</li>
+                    <li>Sealed export polybag packaging with barcode tags</li>
                   </ul>
                 </div>
                 <div className="bg-white p-4 rounded-lg border border-stone-200 space-y-2">
