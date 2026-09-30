@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Scissors, Sparkles, CheckCircle2, ShieldCheck, Layers, FileText, 
-  Send, PhoneCall, Package, Award, ArrowRight, HelpCircle
+  Send, Mail, Package, Award, ArrowRight, HelpCircle
 } from 'lucide-react';
 import { CustomManufacturingWizard } from '../components/CustomManufacturingWizard';
 
@@ -73,12 +73,13 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
 
             <button
               onClick={() => {
-                window.open('https://wa.me/919351291471?text=Hello%20Ramam%20Textiles,%20I%20would%20like%20to%20discuss%20a%20custom%20garment%20manufacturing%20project.', '_blank');
+                onNavigate('/contact');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white border border-stone-400/40 font-serif font-semibold text-xs uppercase tracking-widest rounded backdrop-blur-sm transition-colors inline-flex items-center gap-2"
             >
-              <PhoneCall className="w-4 h-4 text-[#D4AF37]" />
-              <span>Talk to Senior Merchandiser</span>
+              <Mail className="w-4 h-4 text-[#D4AF37]" />
+              <span>Contact Merchandising Desk</span>
             </button>
           </div>
         </div>

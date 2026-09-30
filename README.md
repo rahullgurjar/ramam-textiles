@@ -15,7 +15,7 @@
 
 ### 2. 💼 B2B Wholesale Engine & Instant RFQ
 - **Wholesale Inquiry Basket & RFQ Drawer:** Multi-item selection with customizable MOQ counters (25–50+ units), custom specs notes, and instant quotation dispatch.
-- **Direct WhatsApp Concierge:** Pre-filled structured B2B messages with SKU codes, target volumes, and buyer details.
+- **Export Merchandising Desk:** Direct commercial RFQ submission to Jaipur export headquarters with tiered estimates and PDF/print summary export.
 - **Tiered Volume Pricing Matrices:** Tier 1 (MOQ), Tier 2 (Volume 10% off), Tier 3 (OEM Contract Rate) with production lead times.
 - **Physical Swatch Folder Courier Request:** Built-in sample booking form for international boutique owners and designers.
 

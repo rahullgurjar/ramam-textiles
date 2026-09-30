@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, Search, Sparkles, MessageSquare, PhoneCall } from 'lucide-react';
+import { HelpCircle, ChevronDown, Search, Sparkles, MessageSquare, Mail } from 'lucide-react';
 import { FAQS } from '../data/faqs';
 
 interface FAQPageProps {
@@ -108,15 +108,15 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       <div className="bg-[#0E1612] text-white p-6 sm:p-8 rounded-2xl border border-amber-900/30 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
         <div>
           <h3 className="font-serif text-xl font-bold text-white">Have a specific question not listed here?</h3>
-          <p className="text-stone-400 text-xs mt-1">Our Jaipur export merchandisers are available on WhatsApp 6 days a week.</p>
+          <p className="text-stone-400 text-xs mt-1">Our Jaipur export merchandisers reply to all commercial inquiries within 4–6 business hours.</p>
         </div>
-        <button
-          onClick={() => window.open('https://wa.me/919351291471?text=Hello%20Ramam%20Textiles,%20I%20have%20a%20question%20regarding%20wholesale%20orders.', '_blank')}
-          className="px-6 py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-serif font-bold text-xs uppercase tracking-wider rounded shadow transition-colors whitespace-nowrap flex items-center gap-2"
+        <a
+          href="mailto:inquiry@ramamtextiles.com"
+          className="px-6 py-3 bg-[#D4AF37] hover:bg-[#bfa238] text-[#0E1612] font-serif font-bold text-xs uppercase tracking-wider rounded shadow transition-colors whitespace-nowrap flex items-center gap-2"
         >
-          <PhoneCall className="w-4 h-4" />
-          <span>Ask On WhatsApp</span>
-        </button>
+          <Mail className="w-4 h-4" />
+          <span>Email Jaipur Desk</span>
+        </a>
       </div>
     </div>
   );

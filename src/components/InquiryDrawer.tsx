@@ -6,7 +6,6 @@ import {
   Send, 
   FileText, 
   CheckCircle2, 
-  Phone, 
   Globe, 
   Printer, 
   Building, 
@@ -32,7 +31,6 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
   const [contactName, setContactName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('India');
   const [notes, setNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,29 +50,10 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
     } catch (e) {}
   };
 
-  const handleWhatsAppInquiry = () => {
-    if (inquiryItems.length === 0) {
-      showToast('Your inquiry basket is empty.', 'error');
-      return;
-    }
-
-    const itemsSummary = inquiryItems.map((item, idx) => 
-      `${idx + 1}. *${item.product.name}* (SKU: ${item.product.sku})%0A   • Color: ${item.selectedColor} | Size: ${item.selectedSize}%0A   • Quantity: ${item.quantity} pcs`
-    ).join('%0A%0A');
-
-    const buyerInfo = `*Buyer Name:* ${contactName || 'Not specified'}%0A*Company:* ${companyName || 'Not specified'}%0A*Country:* ${country}%0A*Notes:* ${notes || 'Standard wholesale tier request'}`;
-
-    const text = `*RAMAM TEXTILES — OFFICIAL WHOLESALE RFQ*%0A==============================%0A${buyerInfo}%0A%0A*SELECTED ITEMS (${totalQuantity} Total Pcs):*%0A${itemsSummary}%0A%0APlease provide your official wholesale price sheet, lead times, and shipping estimate.`;
-
-    const whatsappUrl = `https://wa.me/919351291471?text=${text}`;
-    window.open(whatsappUrl, '_blank');
-    showToast('Redirecting to Ramam Textiles WhatsApp B2B desk...', 'info');
-  };
-
   const handleSubmitOfficialRfq = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contactName || !email || !phone) {
-      showToast('Please fill in your Name, Email, and Phone / WhatsApp number.', 'error');
+    if (!contactName || !email) {
+      showToast('Please fill in your Name and Official Email address.', 'error');
       return;
     }
 
@@ -156,26 +135,18 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                   </div>
                   <div className="text-[#4F5A54] space-y-1">
                     <p>• <strong>Buyer:</strong> {contactName} ({email})</p>
+                    <p>• <strong>Company:</strong> {companyName || 'B2B Client'}</p>
                     <p>• <strong>Destination:</strong> {country}</p>
-                    <p>• <strong>WhatsApp:</strong> {phone}</p>
                   </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <button
-                    onClick={handleWhatsAppInquiry}
-                    className="flex-1 py-2.5 px-4 bg-[#25D366] text-white text-xs font-bold uppercase rounded flex items-center justify-center gap-2 shadow-sm hover:opacity-95 cursor-pointer"
-                  >
-                    <Phone className="w-4 h-4" />
-                    <span>Chat on WhatsApp</span>
-                  </button>
-
-                  <button
                     onClick={handlePrintQuotation}
-                    className="py-2.5 px-4 border border-[#121815]/30 rounded text-xs font-semibold hover:bg-black/5 flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="w-full py-2.5 px-4 bg-[#0C1813] text-[#DFCA9F] rounded text-xs font-bold uppercase hover:bg-[#13241C] flex items-center justify-center gap-1.5 cursor-pointer shadow"
                   >
-                    <Printer className="w-4 h-4" />
-                    <span>Print Summary</span>
+                    <Printer className="w-4 h-4 text-[#C4A674]" />
+                    <span>Download / Print RFQ Summary</span>
                   </button>
                 </div>
 
@@ -331,34 +302,18 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    <div>
-                      <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">
-                        Official Email *
-                      </label>
-                      <input 
-                        type="email" 
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                        placeholder="buyer@domain.com"
-                        className="form-input text-xs py-1.5"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">
-                        WhatsApp / Phone *
-                      </label>
-                      <input 
-                        type="tel" 
-                        value={phone}
-                        onChange={e => setPhone(e.target.value)}
-                        placeholder="+1 (555) 019-2834"
-                        className="form-input text-xs py-1.5"
-                        required
-                      />
-                    </div>
+                  <div>
+                    <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">
+                      Official Business Email *
+                    </label>
+                    <input 
+                      type="email" 
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
+                      placeholder="buyer@domain.com"
+                      className="form-input text-xs py-1.5"
+                      required
+                    />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -410,7 +365,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                   </div>
 
                   {/* Submission Buttons */}
-                  <div className="pt-2 flex flex-col gap-2">
+                  <div className="pt-2">
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -418,15 +373,6 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                     >
                       <FileText className="w-4 h-4 text-[#C4A674]" />
                       <span>{isSubmitting ? 'Generating Quotation Ticket...' : 'Submit Official Wholesale RFQ'}</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={handleWhatsAppInquiry}
-                      className="w-full py-2.5 bg-[#25D366] text-white hover:bg-[#20ba5a] text-xs font-bold uppercase tracking-wider rounded flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-all"
-                    >
-                      <Phone className="w-4 h-4" />
-                      <span>Instant Quotation via WhatsApp</span>
                     </button>
                   </div>
                 </form>

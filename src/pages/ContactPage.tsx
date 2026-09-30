@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  MapPin, Phone, Mail, Clock, Send, MessageSquare, CheckCircle2, 
+  MapPin, Mail, Clock, Send, MessageSquare, CheckCircle2, 
   Building2, Globe2, Sparkles, ShieldCheck
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
@@ -14,24 +14,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
   const [name, setName] = useState('');
   const [company, setCompany] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [country, setCountry] = useState('India');
   const [inquiryType, setInquiryType] = useState('Wholesale Catalog & Pricing');
   const [message, setMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !phone || !message) {
+    if (!name || !email || !message) {
       showToast('Please fill out all required fields.', 'error');
       return;
     }
     setIsSubmitted(true);
     showToast('Your inquiry has been sent to our Jaipur export desk!', 'success');
-  };
-
-  const handleWhatsApp = () => {
-    const text = `*RAMAM TEXTILES DIRECT CONTACT*%0A*Name:* ${name || 'Buyer'}%0A*Company:* ${company || 'Boutique'}%0A*Inquiry:* ${inquiryType}%0A*Message:* ${message || 'Hello, I would like to enquire about your wholesale textile collections.'}`;
-    window.open(`https://wa.me/919351291471?text=${text}`, '_blank');
   };
 
   return (
@@ -46,7 +41,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
           Connect With Ramam Textiles
         </h1>
         <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-          Reach our Jaipur design studio, wholesale export desk, and master craftsman workshops. We support buyers across all time zones.
+          Reach our Jaipur design studio, wholesale export desk, and master craftsman workshops. We support international buyers across all time zones.
         </p>
       </div>
 
@@ -62,22 +57,22 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 <MapPin className="w-5 h-5 text-[#D4AF37] flex-shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-white block font-serif">Main Studio & Showroom:</strong>
-                  <span>Sanganer & Bagru Artisan Industrial Zone, Jaipur, Rajasthan 302020, India</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 text-stone-300">
-                <Phone className="w-5 h-5 text-[#D4AF37] flex-shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-white block font-serif">Direct Telephone & WhatsApp:</strong>
-                  <a href="tel:+919351291471" className="hover:text-amber-200">+91 93512 91471</a>
+                  <span>Sanganer &amp; Bagru Artisan Industrial Zone, Jaipur, Rajasthan 302020, India</span>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 text-stone-300">
                 <Mail className="w-5 h-5 text-[#D4AF37] flex-shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white block font-serif">Official Commercial Email:</strong>
+                  <strong className="text-white block font-serif">Wholesale &amp; Export Inquiries:</strong>
+                  <a href="mailto:exports@ramamtextiles.com" className="hover:text-amber-200">exports@ramamtextiles.com</a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 text-stone-300">
+                <Mail className="w-5 h-5 text-[#D4AF37] flex-shrink-0 mt-0.5" />
+                <div>
+                  <strong className="text-white block font-serif">General Commercial Desk:</strong>
                   <a href="mailto:inquiry@ramamtextiles.com" className="hover:text-amber-200">inquiry@ramamtextiles.com</a>
                 </div>
               </div>
@@ -89,16 +84,6 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                   <span>Monday – Saturday: 9:30 AM – 7:30 PM (IST)</span>
                 </div>
               </div>
-            </div>
-
-            <div className="pt-4 border-t border-white/10">
-              <button
-                onClick={handleWhatsApp}
-                className="w-full py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-serif font-bold text-xs uppercase tracking-wider rounded transition-colors flex items-center justify-center gap-2 shadow"
-              >
-                <MessageSquare className="w-4 h-4" />
-                <span>Instant WhatsApp Concierge</span>
-              </button>
             </div>
           </div>
 
@@ -179,14 +164,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
 
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1">
-                    Phone / WhatsApp Number *
+                    Buyer Country / Port
                   </label>
                   <input
-                    type="tel"
-                    required
-                    placeholder="+91 98765 43210"
-                    value={phone}
-                    onChange={e => setPhone(e.target.value)}
+                    type="text"
+                    placeholder="e.g. USA, UK, UAE, Germany"
+                    value={country}
+                    onChange={e => setCountry(e.target.value)}
                     className="w-full px-3 py-2.5 bg-white border border-stone-300 rounded text-xs focus:outline-none focus:border-[#0E1612]"
                   />
                 </div>

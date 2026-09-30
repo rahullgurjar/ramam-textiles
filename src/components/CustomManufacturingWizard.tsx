@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Sparkles, CheckCircle2, ArrowRight, ArrowLeft, Send, ShieldCheck, 
-  Layers, Palette, Scissors, PackageCheck, FileText, Phone, Award
+  Layers, Palette, Scissors, PackageCheck, FileText, Award, Mail
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -10,7 +10,7 @@ export const CustomManufacturingWizard: React.FC = () => {
   const [step, setStep] = useState<number>(1);
 
   // Form State
-  const [category, setCategory] = useState('Women Apparel');
+  const [category, setCategory] = useState('Quilted Bags & Pouches');
   const [fabric, setFabric] = useState('100% Pure Cambric 60s Cotton');
   const [technique, setTechnique] = useState('Heritage Wooden Hand Block Print');
   const [quantity, setQuantity] = useState('100 - 300 pieces');
@@ -22,14 +22,13 @@ export const CustomManufacturingWizard: React.FC = () => {
   const [contactName, setContactName] = useState('');
   const [brandName, setBrandName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('India');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const categories = [
+    { id: 'Quilted Bags & Pouches', title: 'Quilted Bags & Pouches', desc: 'Duffles, Vanity Boxes, Totes, Cosmetic Kits, Tech Sleeves', icon: '👜' },
     { id: 'Women Apparel', title: 'Women Apparel', desc: 'Dresses, Kurtas, Kaftans, Co-ords, Tops', icon: '👗' },
     { id: 'Men Fashion', title: 'Men Fashion', desc: 'Short Kurtas, Resort Shirts, Bandhgalas', icon: '👔' },
-    { id: 'Quilted Bags & Pouches', title: 'Quilted Bags & Pouches', desc: 'Duffles, Vanity Boxes, Totes, Cosmetic Kits', icon: '👜' },
     { id: 'Fabrics by Meter', title: 'Running Fabric by Meter', desc: 'Bulk Yardage for Designers & Garment Houses', icon: '🧵' },
     { id: 'Home & Living', title: 'Home & Living', desc: 'Quilts, Cushion Covers, Table Runners, Napkins', icon: '🛏️' },
   ];
@@ -58,17 +57,12 @@ export const CustomManufacturingWizard: React.FC = () => {
 
   const handleFinish = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contactName || !email || !phone) {
-      showToast('Please fill in your contact information.', 'error');
+    if (!contactName || !email) {
+      showToast('Please fill in your name and business email address.', 'error');
       return;
     }
     setIsSubmitted(true);
     showToast('Custom Manufacturing brief created successfully! Our tech-pack team is reviewing it.', 'success');
-  };
-
-  const handleWhatsAppSend = () => {
-    const text = `*RAMAM TEXTILES - CUSTOM MANUFACTURING BRIEF*%0A%0A*Category:* ${category}%0A*Base Fabric:* ${fabric}%0A*Print/Dye Technique:* ${technique}%0A*Target Volume:* ${quantity}%0A*Custom Services:* ${customServices.join(', ')}%0A*Buyer Brand:* ${brandName || contactName} (${country})%0A*Contact:* ${contactName} | ${phone} | ${email}%0A*Project Notes:* ${techPackNotes || 'Standard customized development'}`;
-    window.open(`https://wa.me/919351291471?text=${text}`, '_blank');
   };
 
   return (
@@ -114,7 +108,7 @@ export const CustomManufacturingWizard: React.FC = () => {
           </h4>
           <p className="text-stone-600 leading-relaxed text-sm md:text-base">
             Thank you <strong className="text-stone-900">{contactName}</strong> from <strong className="text-stone-900">{brandName || 'your brand'}</strong>. 
-            Our master sampling master and technical merchandising team in Jaipur will analyze your specifications and respond with an exact cost breakdown, sampling timeline, and fabric swatches within 24 hours.
+            Our master sampling master and technical merchandising team in Jaipur will analyze your specifications and email you an exact cost breakdown, sampling timeline, and fabric swatches at <strong>{email}</strong> within 24 hours.
           </p>
 
           <div className="bg-[#F0EBE1] p-5 rounded-lg border border-amber-900/20 text-left text-xs space-y-2">
@@ -128,19 +122,12 @@ export const CustomManufacturingWizard: React.FC = () => {
             <p><strong>Add-ons:</strong> {customServices.join(', ')}</p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            <button
-              onClick={handleWhatsAppSend}
-              className="flex-1 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-serif text-xs font-bold uppercase tracking-wider rounded shadow flex items-center justify-center gap-2"
-            >
-              <Send className="w-4 h-4" />
-              <span>Forward Tech Brief on WhatsApp</span>
-            </button>
+          <div className="pt-2 flex justify-center">
             <button
               onClick={() => { setIsSubmitted(false); setStep(1); }}
-              className="py-3.5 px-6 border border-stone-400 text-stone-700 hover:bg-stone-200 font-serif text-xs font-bold uppercase tracking-wider rounded"
+              className="py-3.5 px-8 bg-[#0E1612] text-amber-100 hover:bg-[#D4AF37] hover:text-[#0E1612] font-serif text-xs font-bold uppercase tracking-wider rounded shadow transition-all"
             >
-              Start Another Project
+              Start Another Project Brief
             </button>
           </div>
         </div>
@@ -402,37 +389,23 @@ export const CustomManufacturingWizard: React.FC = () => {
                     />
                   </div>
 
-                  <div>
+                  <div className="sm:col-span-2">
                     <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1">
-                      Work Email *
+                      Official Work Email *
                     </label>
                     <input
                       type="email"
                       required
-                      placeholder="radhika@brand.com"
+                      placeholder="buyer@brand.com"
                       value={email}
                       onChange={e => setEmail(e.target.value)}
                       className="w-full px-3 py-2.5 bg-white border border-stone-300 rounded text-xs focus:outline-none focus:border-[#0E1612]"
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1">
-                      WhatsApp / Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+91 98765 43210 / +1..."
-                      value={phone}
-                      onChange={e => setPhone(e.target.value)}
-                      className="w-full px-3 py-2.5 bg-white border border-stone-300 rounded text-xs focus:outline-none focus:border-[#0E1612]"
-                    />
-                  </div>
-
                   <div className="sm:col-span-2">
                     <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1">
-                      Country & Shipping Port
+                      Destination Country &amp; Shipping Port
                     </label>
                     <input
                       type="text"

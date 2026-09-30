@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, FileText, CheckCircle2, Phone, ShieldCheck, Layers, Sparkles } from 'lucide-react';
+import { X, FileText, CheckCircle2, ShieldCheck, Layers, Sparkles, Mail } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
 
@@ -10,7 +10,6 @@ export const QuickQuoteModal: React.FC = () => {
   const [name, setName] = useState('');
   const [company, setCompanyName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('India');
   const [quantity, setQuantity] = useState(activeQuoteProduct ? activeQuoteProduct.moq : 50);
   const [notes, setNotes] = useState('');
@@ -20,17 +19,12 @@ export const QuickQuoteModal: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !phone) {
-      showToast('Please provide your name, email and contact number.', 'error');
+    if (!name || !email) {
+      showToast('Please provide your name and business email address.', 'error');
       return;
     }
     setIsSubmitted(true);
     showToast(`Inquiry for ${activeQuoteProduct.name} received! Our Jaipur desk will reply shortly.`, 'success');
-  };
-
-  const handleWhatsAppQuick = () => {
-    const text = `*RAMAM TEXTILES QUOTE INQUIRY*%0A*Product:* ${activeQuoteProduct.name}%0A*SKU:* ${activeQuoteProduct.sku}%0A*Inquiry Type:* ${inquiryType.toUpperCase()}%0A*Target Qty:* ${quantity} units%0A*Buyer:* ${name || 'B2B Client'} (${company || 'Boutique'})%0A*Country:* ${country}%0A*Notes:* ${notes || 'Please provide tiered pricing and lead time'}`;
-    window.open(`https://wa.me/919351291471?text=${text}`, '_blank');
   };
 
   return (
@@ -60,7 +54,7 @@ export const QuickQuoteModal: React.FC = () => {
         <div className="p-5">
           {isSubmitted ? (
             <div className="text-center py-6 space-y-4">
-              <div className="w-14 h-14 bg-[#13241C] border-2 border-[#25D366] text-[#25D366] rounded-full mx-auto flex items-center justify-center">
+              <div className="w-14 h-14 bg-[#13241C] border-2 border-[#D4AF37] text-[#D4AF37] rounded-full mx-auto flex items-center justify-center">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <div>
@@ -68,24 +62,17 @@ export const QuickQuoteModal: React.FC = () => {
                   Quotation Request Dispatched
                 </h4>
                 <p className="text-xs text-[#4F5A54] max-w-md mx-auto mt-1 leading-relaxed">
-                  Thank you, <strong>{name}</strong>. Your inquiry for <strong>{activeQuoteProduct.name}</strong> (Qty: {quantity} pcs) has been routed to our production desk.
+                  Thank you, <strong>{name}</strong>. Your inquiry for <strong>{activeQuoteProduct.name}</strong> (Qty: {quantity} pcs) has been routed to our production desk. We will email the official quotation to <strong>{email}</strong> within 4–6 business hours.
                 </p>
               </div>
 
-              <div className="pt-2 flex justify-center gap-3">
-                <button
-                  onClick={handleWhatsAppQuick}
-                  className="py-2.5 px-4 bg-[#25D366] text-white text-xs font-bold uppercase rounded flex items-center gap-2"
-                >
-                  <Phone className="w-4 h-4" />
-                  <span>Connect on WhatsApp</span>
-                </button>
+              <div className="pt-2 flex justify-center">
                 <button
                   onClick={() => {
                     setIsSubmitted(false);
                     closeQuickQuote();
                   }}
-                  className="py-2.5 px-4 bg-[#0C1813] text-[#DFCA9F] text-xs font-bold uppercase rounded"
+                  className="py-2.5 px-6 bg-[#0C1813] text-[#DFCA9F] text-xs font-bold uppercase rounded shadow"
                 >
                   Close
                 </button>
@@ -177,24 +164,13 @@ export const QuickQuoteModal: React.FC = () => {
                     className="form-input text-xs py-1.5" 
                   />
                 </div>
-                <div>
-                  <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">Email Address *</label>
+                <div className="sm:col-span-2">
+                  <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">Official Business Email Address *</label>
                   <input 
                     type="email" 
                     value={email} 
                     onChange={e => setEmail(e.target.value)} 
                     placeholder="name@domain.com" 
-                    className="form-input text-xs py-1.5" 
-                    required 
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">WhatsApp / Phone *</label>
-                  <input 
-                    type="tel" 
-                    value={phone} 
-                    onChange={e => setPhone(e.target.value)} 
-                    placeholder="+91 / +1..." 
                     className="form-input text-xs py-1.5" 
                     required 
                   />
@@ -232,22 +208,13 @@ export const QuickQuoteModal: React.FC = () => {
                 ></textarea>
               </div>
 
-              <div className="flex gap-2 pt-2">
+              <div className="pt-2">
                 <button
                   type="submit"
-                  className="flex-1 py-2.5 bg-[#0C1813] text-[#DFCA9F] hover:bg-[#13241C] text-xs font-bold uppercase rounded border border-[#C4A674]/50 flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                  className="w-full py-2.5 bg-[#0C1813] text-[#DFCA9F] hover:bg-[#13241C] text-xs font-bold uppercase rounded border border-[#C4A674]/50 flex items-center justify-center gap-2 cursor-pointer shadow-sm transition-all"
                 >
                   <FileText className="w-4 h-4 text-[#C4A674]" />
-                  <span>Request Tiered Quote Sheet</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={handleWhatsAppQuick}
-                  className="py-2.5 px-3 bg-[#25D366] text-white text-xs font-bold uppercase rounded flex items-center gap-1.5 shadow-sm cursor-pointer"
-                  title="Inquire immediately on WhatsApp"
-                >
-                  <Phone className="w-4 h-4" />
-                  <span className="hidden sm:inline">WhatsApp</span>
+                  <span>Request Tiered Wholesale Quotation</span>
                 </button>
               </div>
             </form>

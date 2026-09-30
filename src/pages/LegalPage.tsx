@@ -98,7 +98,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
             </h1>
             <p><strong>1. Confidentiality of Private Labels:</strong> We strictly protect the proprietary tech packs, CAD designs, custom block motifs, and label specifications of our private-label brand clients. We never disclose OEM brand client rosters.</p>
             <p><strong>2. Data Protection:</strong> Buyer contact information, shipping addresses, and commercial inquiry data are strictly utilized for order fulfillment and commercial correspondence. We do not sell or lease buyer databases to third parties.</p>
-            <p><strong>3. Secure Communications:</strong> Direct inquiries via WhatsApp and email are processed directly by our Jaipur head office executive team.</p>
+            <p><strong>3. Secure Communications:</strong> Direct inquiries via official email and digital portal forms are processed directly by our Jaipur head office merchandising and export team.</p>
           </div>
         )}
       </div>

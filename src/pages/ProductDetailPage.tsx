@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { 
   ArrowLeft, CheckCircle2, ShieldCheck, Truck, Sparkles, Heart, 
-  Share2, Layers, HelpCircle, PhoneCall, Package, Award, Scissors,
-  Plus, Minus, Info, ChevronRight, FileText, Download
+  Share2, Layers, HelpCircle, Package, Award, Scissors,
+  Plus, Minus, Info, ChevronRight, FileText, Download, Mail
 } from 'lucide-react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data/products';
@@ -40,11 +40,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
       selectedSize,
       quantity,
     });
-  };
-
-  const handleWhatsApp = () => {
-    const text = `*RAMAM TEXTILES DIRECT INQUIRY*%0A*Product:* ${product.name}%0A*SKU:* ${product.sku}%0A*Color:* ${selectedColor}%0A*Size:* ${selectedSize}%0A*Quantity:* ${quantity} units%0A*Fabric:* ${product.fabric}%0A*Please provide export quotation and delivery lead time.*`;
-    window.open(`https://wa.me/919351291471?text=${text}`, '_blank');
   };
 
   const handleShare = () => {
@@ -305,21 +300,21 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
               <span>Add to Wholesale Inquiry Basket</span>
             </button>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <button
                 onClick={() => openQuickQuote(product)}
-                className="py-3 bg-white border border-stone-400 text-stone-900 font-serif font-bold text-xs uppercase tracking-wider rounded hover:bg-stone-100 transition-colors flex items-center justify-center gap-1.5"
+                className="py-3 bg-white border border-stone-400 text-stone-900 font-serif font-bold text-xs uppercase tracking-wider rounded hover:bg-stone-100 transition-colors flex items-center justify-center gap-1.5 shadow-sm"
               >
                 <FileText className="w-4 h-4 text-[#942C29]" />
-                <span>Instant RFQ Quote</span>
+                <span>Request Custom Quote</span>
               </button>
 
               <button
-                onClick={handleWhatsApp}
-                className="py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-serif font-bold text-xs uppercase tracking-wider rounded transition-colors flex items-center justify-center gap-1.5 shadow"
+                onClick={() => { onNavigate('/custom-manufacturing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                className="py-3 bg-[#0E1612] hover:bg-[#1f2e26] text-amber-100 font-serif font-bold text-xs uppercase tracking-wider rounded transition-colors flex items-center justify-center gap-1.5 shadow"
               >
-                <PhoneCall className="w-4 h-4" />
-                <span>WhatsApp Desk</span>
+                <Scissors className="w-4 h-4 text-[#D4AF37]" />
+                <span>Custom OEM Brief</span>
               </button>
             </div>
           </div>

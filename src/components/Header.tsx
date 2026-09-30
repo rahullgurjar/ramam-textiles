@@ -8,7 +8,7 @@ import {
   ChevronDown, 
   Sparkles, 
   FileText, 
-  Phone, 
+  Mail, 
   ShieldCheck,
   Factory,
   Layers,
@@ -28,6 +28,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
     inquiryItems, 
     openInquiryDrawer, 
     openSearch, 
+    openQuickQuote,
     currency, 
     setCurrencyCode,
     isB2BPriceUnlocked,
@@ -109,15 +110,13 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               )}
             </div>
 
-            {/* Direct WhatsApp Action */}
+            {/* Direct Email Desk Action */}
             <a 
-              href="https://wa.me/919351291471?text=Hello%20Ramam%20Textiles,%20I%20am%20interested%20in%20wholesale%20catalogs%20and%20custom%20manufacturing."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 text-[#DFCA9F] hover:text-white transition-colors"
+              href="mailto:exports@ramamtextiles.com"
+              className="flex items-center gap-1.5 text-[#DFCA9F] hover:text-white transition-colors"
             >
-              <Phone className="w-3 h-3 text-[#25D366]" />
-              <span className="hidden sm:inline font-medium">B2B Desk: +91 93512 91471</span>
+              <Mail className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <span className="hidden sm:inline font-medium">B2B Export Desk: exports@ramamtextiles.com</span>
             </a>
           </div>
         </div>
@@ -555,15 +554,13 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             {/* Mobile Footer CTAs */}
             <div className="pt-4 border-t border-[#121815]/10 space-y-2">
-              <a 
-                href="https://wa.me/919351291471?text=Hello%20Ramam%20Textiles,%20I%20would%20like%20to%20inquire%20about%20wholesale%20catalog."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-2.5 px-4 bg-[#0C1813] text-[#DFCA9F] text-xs font-bold uppercase rounded flex items-center justify-center gap-2"
+              <button 
+                onClick={() => { setIsMobileMenuOpen(false); openQuickQuote(); }}
+                className="w-full py-2.5 px-4 bg-[#0C1813] text-[#DFCA9F] text-xs font-bold uppercase rounded flex items-center justify-center gap-2 shadow"
               >
-                <Phone className="w-4 h-4 text-[#25D366]" />
-                <span>Instant WhatsApp B2B Desk</span>
-              </a>
+                <FileText className="w-4 h-4 text-[#D4AF37]" />
+                <span>Request B2B Wholesale Quote</span>
+              </button>
             </div>
           </div>
         </div>

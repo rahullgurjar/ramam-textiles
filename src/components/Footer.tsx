@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { 
   Mail, 
-  Phone, 
   MapPin, 
   ShieldCheck, 
   Globe, 
@@ -245,15 +244,15 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                 </span>
               </li>
               <li className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#25D366] shrink-0" />
-                <a href="https://wa.me/919351291471" target="_blank" rel="noopener noreferrer" className="hover:text-[#DFCA9F]">
-                  +91 93512 91471 (B2B WhatsApp)
+                <Mail className="w-4 h-4 text-[#C4A674] shrink-0" />
+                <a href="mailto:inquiry@ramamtextiles.com" className="hover:text-[#DFCA9F]">
+                  inquiry@ramamtextiles.com
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#C4A674] shrink-0" />
-                <a href="mailto:inquiry@ramamtextiles.com" className="hover:text-[#DFCA9F]">
-                  inquiry@ramamtextiles.com
+                <a href="mailto:exports@ramamtextiles.com" className="hover:text-[#DFCA9F]">
+                  exports@ramamtextiles.com
                 </a>
               </li>
               <li className="pt-2">
@@ -261,7 +260,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                   onClick={() => handleNav('/contact')}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#13241C] border border-[#C4A674]/40 text-xs text-[#DFCA9F] hover:bg-[#C4A674] hover:text-[#0C1813] transition-all"
                 >
-                  <span>Book Workshop Visit</span>
+                  <span>Inquire Online &amp; Book Visit</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </li>
