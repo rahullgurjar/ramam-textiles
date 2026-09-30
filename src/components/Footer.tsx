@@ -165,38 +165,28 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             </h5>
             <ul className="space-y-2 text-xs text-[#A3AFA8]">
               <li>
-                <button onClick={() => handleNav('/category/women')} className="hover:text-[#DFCA9F] transition-colors">
-                  Women's Apparel &amp; Sets
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNav('/category/men')} className="hover:text-[#DFCA9F] transition-colors">
-                  Men's Handloom &amp; Shirts
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNav('/category/kids')} className="hover:text-[#DFCA9F] transition-colors">
-                  Kids &amp; Festive Wear
-                </button>
-              </li>
-              <li>
                 <button onClick={() => handleNav('/category/bags')} className="hover:text-[#DFCA9F] transition-colors font-medium text-[#DFCA9F]">
-                  Quilted Duffles &amp; Pouches
+                  Quilted Travel Duffles &amp; Pouches
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/category/fabrics')} className="hover:text-[#DFCA9F] transition-colors">
-                  Fabrics by the Meter
+                <button onClick={() => handleNav('/category/women')} className="hover:text-[#DFCA9F] transition-colors">
+                  Botanical Weekender Bags
                 </button>
               </li>
               <li>
                 <button onClick={() => handleNav('/category/home')} className="hover:text-[#DFCA9F] transition-colors">
-                  Home Textiles &amp; Razai
+                  Yoga Mat Carriers &amp; Wellness
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('/shop')} className="hover:text-[#DFCA9F] transition-colors">
+                  Cosmetic Vanity Pouches
                 </button>
               </li>
               <li>
                 <button onClick={() => handleNav('/collections')} className="hover:text-[#DFCA9F] transition-colors">
-                  Seasonal Lookbook Editions
+                  2026 Quilted Lookbook Editions
                 </button>
               </li>
             </ul>

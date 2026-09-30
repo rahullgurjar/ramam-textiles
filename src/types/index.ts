@@ -11,6 +11,7 @@ export interface ProductSpecifications {
   gsm?: string;
   width?: string;
   weave?: string;
+  dimensions?: string;
   dyeType?: string;
   washCare: string;
   origin: string;

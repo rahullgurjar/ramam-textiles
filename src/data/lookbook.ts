@@ -3,43 +3,53 @@ import { LookbookSlide } from '../types';
 export const LOOKBOOK_SLIDES: LookbookSlide[] = [
   {
     id: 'editorial-01',
-    title: 'The Courtyards of Amber',
-    collection: 'Sanganer Summer Florals',
-    season: 'Spring / Summer 2026',
-    story: 'Airy mulmul silhouettes interacting with sun-baked sandstone courtyards. Hand-stamped marigold floral motifs evoking Rajasthan’s royal summer traditions.',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85',
-    location: 'Amber Heritage Enclave, Jaipur',
-    featuredProductIds: ['rt-w-001', 'rt-f-001']
+    title: 'Heritage Indigo Mughal Duffle',
+    collection: 'Bagru Dabu Heritage Series',
+    season: 'Autumn / Resort 2026',
+    story: 'Channel-quilted pure cotton luggage hand block-printed in indigo Mughal floral motifs, set against crisp candy-stripe trims.',
+    image: './products/prod-3.jpg',
+    location: 'Bagru Artisan Workshop, Jaipur',
+    featuredProductIds: ['prod-3']
   },
   {
     id: 'editorial-02',
-    title: 'Mud, Water & Indigo',
-    collection: 'Bagru Monsoon Indigo',
-    season: 'Autumn / Resort 2026',
-    story: 'The tactile poetry of wet clay resist drying beneath open desert skies before biological indigo fermentation vats impart their deep oceanic blue.',
-    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85',
-    location: 'Bagru Riverbed Atelier, Rajasthan',
-    featuredProductIds: ['rt-w-003', 'rt-f-002']
+    title: 'Sanganeri Rose Ruffle Shoulder Tote',
+    collection: 'Sanganer Botanical Elegance',
+    season: 'Spring / Summer 2026',
+    story: 'Romantic candy-pink pinstripes meeting delicate rose floral bootis, embellished with feminine side ruffle frills.',
+    image: './products/prod-2.jpg',
+    location: 'Amber Heritage Courtyard, Jaipur',
+    featuredProductIds: ['prod-2']
   },
   {
     id: 'editorial-03',
-    title: 'Golden Zari & Twilight Silk',
-    collection: 'Rajputana Heritage Weaves',
-    season: 'Festive / Couture 2026',
-    story: 'Pure handloom Chanderi silk glistening with subtle metallic zari threads, tailored for evening elegance and royal celebration.',
-    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85',
-    location: 'City Palace Quarter, Jaipur',
-    featuredProductIds: ['rt-w-002', 'rt-f-003']
+    title: 'Botanical Autumn Blossom Weekender',
+    collection: 'Jaipur Autumn Garden',
+    season: 'Autumn / Festive 2026',
+    story: 'Joyful botanical blossoms on bubblegum quilted canvas, equipped with antique brass hardware and striped cross-body straps.',
+    image: './products/prod-4.jpg',
+    location: 'Jaipur Haveli Terrace',
+    featuredProductIds: ['prod-4']
   },
   {
     id: 'editorial-04',
-    title: 'The Nomad Quilted Voyage',
-    collection: 'Hand-Quilted Travel Collection',
-    season: 'Core Evergreen Series',
-    story: 'Channel-quilted pure cotton luggage built for discerning travellers. Padded strength meets artisanal Jaipur block print charm.',
-    image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1200&q=85',
-    location: 'Jaipur Haveli Workshop',
-    featuredProductIds: ['rt-b-001', 'rt-b-002', 'rt-b-003']
+    title: 'Cerise Jungle Safari Yoga Carrier',
+    collection: 'Ranthambore Jungle Safari',
+    season: 'Wellness & Studio Series',
+    story: 'Dynamic Rajasthani wildlife art featuring zebras, leopards, and palms on padded cotton canvas for yoga and wellness travel.',
+    image: './products/prod-5.jpg',
+    location: 'City Palace Quarter, Jaipur',
+    featuredProductIds: ['prod-5']
+  },
+  {
+    id: 'editorial-05',
+    title: 'Royal Playing Card Vanity Organizer',
+    collection: 'Royal Jaipur Novelty Edition',
+    season: 'Gift & Boutique Series',
+    story: 'Vibrant pink quilted cosmetic vanity pouch featuring hand-stamped playing card motifs and candy-stripe pull handle.',
+    image: './products/prod-1.jpg',
+    location: 'Jaipur Design Studio',
+    featuredProductIds: ['prod-1']
   }
 ];
 

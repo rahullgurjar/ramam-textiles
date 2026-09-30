@@ -2,58 +2,69 @@ import { CollectionInfo } from '../types';
 
 export const COLLECTIONS: CollectionInfo[] = [
   {
-    id: 'sanganer-summer-florals',
-    slug: 'sanganer-summer-florals',
-    name: 'Sanganer Summer Florals',
-    season: 'Spring / Summer 2026',
-    tagline: 'Delicate botanical bootis hand-stamped on cloud-soft mulmul cotton.',
-    description: 'Inspired by the historic Mughal gardens of Rajasthan, this collection combines superfine 60s cotton with intricate hand-carved teak woodblocks and soothing sun-warmed colorways.',
-    heroImage: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1400&q=85',
-    palette: ['#C4A674', '#8A4A3B', '#F4EFE6', '#2A4A3B'],
-    tags: ['Mulmul', 'Sanganeri', 'Floral Buti', 'Summer Resort']
-  },
-  {
-    id: 'bagru-monsoon-indigo',
-    slug: 'bagru-monsoon-indigo',
-    name: 'Bagru Monsoon Indigo',
-    season: 'Autumn / Resort 2026',
-    tagline: 'Ancient mud-resist Dabu printing steeped in organic fermented indigo vats.',
-    description: 'From the master craftspeople of Bagru, where river sand, Fuller earth, and fermented plant indigo create iconic deep blues, crackle textures, and earthy alizarin reds.',
-    heroImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=85',
-    palette: ['#1B3245', '#4A504B', '#DFCA9F', '#EDE4D5'],
-    tags: ['Natural Indigo', 'Dabu Mud Resist', 'Sustainable', 'Artisanal']
-  },
-  {
-    id: 'rajputana-heritage-weaves',
-    slug: 'rajputana-heritage-weaves',
-    name: 'Rajputana Heritage Weaves',
-    season: 'Festive / Couture 2026',
-    tagline: 'Lustrous Chanderi silk-cotton interlaced with genuine metallic zari.',
-    description: 'Regal elegance translated for modern luxury boutiques. Features sheer handloom textures, gossamer organza overlays, and subtle antique gold selvedge details.',
-    heroImage: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1400&q=85',
-    palette: ['#C4A674', '#13241C', '#8A4A3B', '#FAF7F2'],
-    tags: ['Chanderi Silk', 'Zari', 'Festive Luxury', 'Bridal Wholesale']
-  },
-  {
     id: 'hand-quilted-travel-collection',
     slug: 'hand-quilted-travel-collection',
     name: 'Hand-Quilted Travel Collection',
-    season: 'Core Evergreen Series',
+    season: '2026 Signature Line',
     tagline: 'Channel-quilted pure cotton bags, duffles, and vanity organizers.',
-    description: 'A benchmark in Indian artisan utility. Every duffle, vanity box and tote is channel-stitched with pure cotton batting and fitted with heavy brass hardware.',
-    heroImage: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1400&q=85',
+    description: 'A benchmark in Indian artisan utility. Every duffle, vanity box, and ruffle tote is channel-stitched with pure cotton batting and fitted with candy-stripe piping.',
+    heroImage: './products/prod-3.jpg',
     palette: ['#C4A674', '#1B3245', '#A35E4E', '#F2ECE0'],
     tags: ['Quilted Bags', 'Travel Duffles', 'Cosmetic Pouches', 'Wholesale Gifting']
   },
   {
-    id: 'desert-khadi-minimalist',
-    slug: 'desert-khadi-minimalist',
-    name: 'Desert Khadi & Linen',
-    season: 'Capsule Collection',
-    tagline: 'Raw slub textures and relaxed tailoring for contemporary global living.',
-    description: 'Unbleached handloom organic cottons and washed European-grade linens tailored with understated precision, natural horn buttons, and breathable simplicity.',
-    heroImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1400&q=85',
-    palette: ['#EADFCF', '#4F5A54', '#8A4A3B', '#FAF7F2'],
-    tags: ['Organic Linen', 'Handloom Slub', 'Minimalist', 'Co-ords']
+    id: 'sanganer-botanical-elegance',
+    slug: 'sanganer-botanical-elegance',
+    name: 'Sanganer Botanical Elegance',
+    season: 'Spring / Summer 2026',
+    tagline: 'Delicate botanical floral bootis hand-stamped on candy-striped quilted cotton.',
+    description: 'Inspired by the historic floral gardens of Jaipur, combining romantic ruffle trims, pastel pink striping, and hand-stamped flower motifs.',
+    heroImage: './products/prod-2.jpg',
+    palette: ['#E8899E', '#FFFFFF', '#4A7C59', '#FAF7F2'],
+    tags: ['Ruffle Tote', 'Sanganeri Florals', 'Pink Stripes', 'Boho Chic']
+  },
+  {
+    id: 'bagru-dabu-heritage-series',
+    slug: 'bagru-dabu-heritage-series',
+    name: 'Bagru Dabu Heritage Series',
+    season: 'Autumn / Resort 2026',
+    tagline: 'Ancient mud-resist Dabu printing steeped in organic fermented indigo vats.',
+    description: 'From the master craftspeople of Bagru, where river sand, Fuller earth, and fermented plant indigo create iconic deep blues and Mughal floral bootas.',
+    heroImage: './products/prod-3.jpg',
+    palette: ['#1B3245', '#4A504B', '#DFCA9F', '#EDE4D5'],
+    tags: ['Natural Indigo', 'Dabu Mud Resist', 'Mughal Boota', 'Artisanal Luggage']
+  },
+  {
+    id: 'jaipur-autumn-garden',
+    slug: 'jaipur-autumn-garden',
+    name: 'Jaipur Autumn Garden',
+    season: 'Autumn / Festive 2026',
+    tagline: 'Joyful botanical blossoms and leaves on bubblegum quilted canvas.',
+    description: 'Multi-hued garden botanical prints paired with candy-stripe straps, antique brass clips, and durable weekender packing capacity.',
+    heroImage: './products/prod-4.jpg',
+    palette: ['#FF6B8B', '#D4AF37', '#8A4A3B', '#FAF7F2'],
+    tags: ['Autumn Florals', 'Weekender Bag', 'Pink Canvas', 'Brass Hardware']
+  },
+  {
+    id: 'ranthambore-jungle-safari',
+    slug: 'ranthambore-jungle-safari',
+    name: 'Ranthambore Jungle Safari',
+    season: 'Wellness & Studio Series',
+    tagline: 'Rajasthani wildlife hand block illustrations on cerise quilted canvas.',
+    description: 'Zebras, leopards, playful monkeys, and tropical palms stamped on durable quilted cotton canvas. Built for yoga mats and active lifestyles.',
+    heroImage: './products/prod-5.jpg',
+    palette: ['#C81D4E', '#2D5A27', '#E5A93C', '#0C1813'],
+    tags: ['Yoga Mat Carrier', 'Safari Wildlife', 'Leopard Print', 'Activewear']
+  },
+  {
+    id: 'royal-jaipur-novelty-edition',
+    slug: 'royal-jaipur-novelty-edition',
+    name: 'Royal Jaipur Novelty Edition',
+    season: 'Gift & Boutique Series',
+    tagline: 'Playing card graphic blocks on vibrant ruby pink quilted cotton.',
+    description: 'Quilted cosmetic and vanity pouches featuring whimsical spade, club, and heart motifs designed for luxury boutique gifting.',
+    heroImage: './products/prod-1.jpg',
+    palette: ['#E61C5D', '#8A0F35', '#FFFFFF', '#FAF7F2'],
+    tags: ['Playing Cards', 'Vanity Pouch', 'Novelty Gift', 'Wedding Favors']
   }
 ];
