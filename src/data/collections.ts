@@ -8,7 +8,7 @@ export const COLLECTIONS: CollectionInfo[] = [
     season: '2026 Signature Line',
     tagline: 'Channel-quilted pure cotton bags, duffles, and vanity organizers.',
     description: 'A benchmark in Indian artisan utility. Every duffle, vanity box, and ruffle tote is channel-stitched with pure cotton batting and fitted with candy-stripe piping.',
-    heroImage: './products/duffle-indigo.jpg',
+    heroImage: './products/duffle-kantha-patchwork.jpg',
     palette: ['#C4A674', '#1B3245', '#A35E4E', '#F2ECE0'],
     tags: ['Quilted Bags', 'Travel Duffles', 'Cosmetic Pouches', 'Wholesale Gifting']
   },
@@ -19,7 +19,7 @@ export const COLLECTIONS: CollectionInfo[] = [
     season: 'Spring / Summer 2026',
     tagline: 'Delicate botanical floral bootis hand-stamped on candy-striped quilted cotton.',
     description: 'Inspired by the historic floral gardens of Jaipur, combining romantic ruffle trims, pastel pink striping, and hand-stamped flower motifs.',
-    heroImage: './products/tote-pink-ruffle.jpg',
+    heroImage: './products/tote-sanganeri-ruffle-lifestyle.jpg',
     palette: ['#E8899E', '#FFFFFF', '#4A7C59', '#FAF7F2'],
     tags: ['Ruffle Tote', 'Sanganeri Florals', 'Pink Stripes', 'Boho Chic']
   },
@@ -72,11 +72,12 @@ export const COLLECTIONS: CollectionInfo[] = [
     slug: 'artisanal-beauty-and-tech-organizers',
     name: 'Artisanal Beauty & Tech Organizers',
     season: '2026 Innovation Line',
-    tagline: 'Specialized quilted travel cases with tailored elastic compartments for hair stylers.',
-    description: 'Dedicated travel trunks and cosmetic pouches for Dyson Airwrap, Shark FlexStyle, and beauty tools in candy stripes and floral hand block patterns.',
+    tagline: 'Specialized quilted travel cases with tailored elastic compartments for hair stylers and padded laptop sleeves.',
+    description: 'Dedicated travel trunks and cosmetic pouches for Dyson Airwrap, Shark FlexStyle, and padded Kalamkari laptop sleeves in floral hand block patterns.',
     heroImage: './products/organizer-dyson-airwrap.jpg',
     palette: ['#C81D4E', '#FFFFFF', '#D4AF37', '#0E1612'],
-    tags: ['Dyson Airwrap Case', 'Hair Tool Bag', 'Candy Stripes', 'Tech Organizer']
+    tags: ['Dyson Airwrap Case', 'Laptop Sleeve', 'Hair Tool Bag', 'Tech Organizer']
   }
 ];
+
 

@@ -3,13 +3,13 @@ import { LookbookSlide } from '../types';
 export const LOOKBOOK_SLIDES: LookbookSlide[] = [
   {
     id: 'editorial-01',
-    title: 'Heritage Indigo Mughal Duffle',
+    title: 'Heritage Kantha Patchwork Cylindrical Duffle',
     collection: 'Bagru Dabu Heritage Series',
     season: 'Autumn / Resort 2026',
-    story: 'Channel-quilted pure cotton luggage hand block-printed in indigo Mughal floral motifs, set against crisp candy-stripe trims.',
-    image: './products/duffle-indigo.jpg',
-    location: 'Bagru Artisan Workshop, Jaipur',
-    featuredProductIds: ['prod-7']
+    story: 'Handcrafted Kantha patchwork combining indigo resist, saffron prints, and monochrome candy-striped piping with reinforced straps.',
+    image: './products/duffle-kantha-patchwork.jpg',
+    location: 'Bagru Master Workshop, Jaipur',
+    featuredProductIds: ['prod-8']
   },
   {
     id: 'editorial-02',
@@ -17,39 +17,39 @@ export const LOOKBOOK_SLIDES: LookbookSlide[] = [
     collection: 'Sanganer Botanical Elegance',
     season: 'Spring / Summer 2026',
     story: 'Romantic candy-pink pinstripes meeting delicate rose floral bootis, embellished with feminine side ruffle frills.',
-    image: './products/tote-pink-ruffle.jpg',
+    image: './products/tote-sanganeri-ruffle-lifestyle.jpg',
     location: 'Amber Heritage Courtyard, Jaipur',
-    featuredProductIds: ['prod-6']
+    featuredProductIds: ['prod-11']
   },
   {
     id: 'editorial-03',
-    title: 'Botanical Autumn Blossom Weekender',
-    collection: 'Jaipur Autumn Garden',
-    season: 'Autumn / Festive 2026',
-    story: 'Joyful botanical blossoms on bubblegum quilted canvas, equipped with antique brass hardware and striped cross-body straps.',
-    image: './products/duffle-pink-botanical.jpg',
-    location: 'Jaipur Haveli Terrace',
-    featuredProductIds: ['prod-8']
+    title: 'Meadow Green & Blue Blossom Vanity Trio',
+    collection: 'Sanganer Botanical Elegance',
+    season: 'Spring / Resort 2026',
+    story: 'Refreshing 3-piece nesting cosmetic pouches with light green gingham piping and botanical floral vine block prints.',
+    image: './products/vanity-trio-meadow-green.jpg',
+    location: 'Jaipur Garden Atelier',
+    featuredProductIds: ['prod-6']
   },
   {
     id: 'editorial-04',
-    title: 'Cerise Jungle Safari Yoga Carrier',
-    collection: 'Ranthambore Jungle Safari',
-    season: 'Wellness & Studio Series',
-    story: 'Dynamic Rajasthani wildlife art featuring zebras, leopards, and palms on padded cotton canvas for yoga and wellness travel.',
-    image: './products/yoga-safari.jpg',
-    location: 'City Palace Quarter, Jaipur',
-    featuredProductIds: ['prod-9']
+    title: 'Mint Aqua Mughal Lotus Vanity Caddy Set',
+    collection: 'Sanganer Botanical Elegance',
+    season: 'Resort & Spa 2026',
+    story: '3-Piece nesting cosmetic organizers in serene mint aqua stamped with recurring Mughal magenta lotus blossoms.',
+    image: './products/vanity-trio-mint-lotus.jpg',
+    location: 'Heritage Haveli Suite, Jaipur',
+    featuredProductIds: ['prod-7']
   },
   {
     id: 'editorial-05',
-    title: 'Royal Playing Card Vanity Organizer',
-    collection: 'Royal Jaipur Novelty Edition',
-    season: 'Gift & Boutique Series',
-    story: 'Vibrant pink quilted cosmetic vanity pouch featuring hand-stamped playing card motifs and candy-stripe pull handle.',
-    image: './products/vanity-playing-cards.jpg',
+    title: 'Royal Mughal Kalamkari Quilted Laptop Sleeve',
+    collection: 'Artisanal Beauty & Tech Organizers',
+    season: 'Innovation & Travel 2026',
+    story: 'Shock-absorbing padded tech sleeve with intricate Kalamkari floral vine block prints and teal zipper track.',
+    image: './products/laptop-sleeve-kalamkari.jpg',
     location: 'Jaipur Design Studio',
-    featuredProductIds: ['prod-1']
+    featuredProductIds: ['prod-12']
   },
   {
     id: 'editorial-06',
@@ -90,6 +90,46 @@ export const LOOKBOOK_SLIDES: LookbookSlide[] = [
     image: './products/vanity-trio-marigold-cream.jpg',
     location: 'Marigold Botanical Garden, Jaipur',
     featuredProductIds: ['prod-5']
+  },
+  {
+    id: 'editorial-10',
+    title: 'Heritage Indigo Mughal Floral Duffle',
+    collection: 'Bagru Dabu Heritage Series',
+    season: 'Autumn / Resort 2026',
+    story: 'Channel-quilted pure cotton luggage hand block-printed in indigo Mughal floral motifs, set against crisp candy-stripe trims.',
+    image: './products/duffle-indigo.jpg',
+    location: 'Bagru Artisan Workshop, Jaipur',
+    featuredProductIds: ['prod-9']
+  },
+  {
+    id: 'editorial-11',
+    title: 'Botanical Autumn Blossom Weekender',
+    collection: 'Jaipur Autumn Garden',
+    season: 'Autumn / Festive 2026',
+    story: 'Joyful botanical blossoms on bubblegum quilted canvas, equipped with antique brass hardware and striped cross-body straps.',
+    image: './products/duffle-pink-botanical.jpg',
+    location: 'Jaipur Haveli Terrace',
+    featuredProductIds: ['prod-10']
+  },
+  {
+    id: 'editorial-12',
+    title: 'Royal Playing Card Vanity Organizer',
+    collection: 'Royal Jaipur Novelty Edition',
+    season: 'Gift & Boutique Series',
+    story: 'Vibrant pink quilted cosmetic vanity pouch featuring hand-stamped playing card motifs and candy-stripe pull handle.',
+    image: './products/vanity-playing-cards.jpg',
+    location: 'Jaipur Design Studio',
+    featuredProductIds: ['prod-1']
+  },
+  {
+    id: 'editorial-13',
+    title: 'Cerise Jungle Safari Yoga Carrier',
+    collection: 'Ranthambore Jungle Safari',
+    season: 'Wellness & Studio Series',
+    story: 'Dynamic Rajasthani wildlife art featuring zebras, leopards, and palms on padded cotton canvas for yoga and wellness travel.',
+    image: './products/yoga-safari.jpg',
+    location: 'City Palace Quarter, Jaipur',
+    featuredProductIds: ['prod-13']
   }
 ];
 
@@ -103,4 +143,5 @@ export const LOOKBOOK_ITEMS = LOOKBOOK_SLIDES.map(s => ({
   location: s.location,
   featuredProductIds: s.featuredProductIds
 }));
+
 

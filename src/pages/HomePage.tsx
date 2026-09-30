@@ -440,7 +440,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             Download 2026 Wholesale Quilted Bags Catalog
           </h2>
           <p className="text-stone-300 text-sm max-w-2xl mx-auto mb-8 font-light">
-            Receive our high-resolution line sheet featuring all 9 ready-to-order Jaipur hand block quilted bag designs, fabric swatches, and FOB wholesale price tiers.
+            Receive our high-resolution line sheet featuring all {PRODUCTS.length} ready-to-order Jaipur hand block quilted bag designs, fabric swatches, and FOB wholesale price tiers.
           </p>
 
           {catalogDownloaded ? (
