@@ -11,6 +11,7 @@ import {
   Download
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { InstagramIcon } from './InstagramIcon';
 
 interface FooterProps {
   navigate: (path: string) => void;
@@ -155,6 +156,19 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                 </form>
               )}
             </div>
+
+            <div className="pt-2">
+              <a
+                href="https://www.instagram.com/ramamtextiles"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#833ab4]/20 via-[#fd1d1d]/20 to-[#fcb045]/20 border border-[#E1306C]/40 text-[#FAF7F2] text-xs hover:border-[#E1306C] transition-all group"
+              >
+                <InstagramIcon className="w-3.5 h-3.5 text-[#E1306C] group-hover:scale-110 transition-transform" />
+                <span className="font-medium text-xs">Follow <strong>@ramamtextiles</strong> on Instagram</span>
+                <ExternalLink className="w-3 h-3 text-[#A3AFA8] opacity-60 group-hover:opacity-100" />
+              </a>
+            </div>
           </div>
 
           {/* Product Categories */}
@@ -253,6 +267,18 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                 <Mail className="w-4 h-4 text-[#C4A674] shrink-0" />
                 <a href="mailto:exports@ramamtextiles.com" className="hover:text-[#DFCA9F]">
                   exports@ramamtextiles.com
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <InstagramIcon className="w-4 h-4 text-[#E1306C] shrink-0" />
+                <a 
+                  href="https://www.instagram.com/ramamtextiles" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-[#DFCA9F] inline-flex items-center gap-1 group font-medium"
+                >
+                  <span>@ramamtextiles</span>
+                  <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity" />
                 </a>
               </li>
               <li className="pt-2">

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Sparkles, Award, ShieldCheck, Heart, ArrowRight, Building2, MapPin } from 'lucide-react';
+import { Sparkles, Award, ShieldCheck, Heart, ArrowRight, Building2, MapPin, ExternalLink } from 'lucide-react';
+import { InstagramIcon } from '../components/InstagramIcon';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
@@ -63,6 +64,33 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             Our artisan partners in Bagru and Sanganer are co-owners of our craft vision. We provide stable year-round employment, safe printing sheds, and dignity in artisan labor.
           </p>
         </div>
+      </div>
+
+      {/* Instagram Studio Showcase Card */}
+      <div className="bg-[#0E1612] text-white p-8 sm:p-12 rounded-2xl border border-amber-900/30 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="space-y-3 max-w-xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#833ab4]/30 via-[#fd1d1d]/30 to-[#fcb045]/30 border border-[#E1306C]/50 text-white text-xs font-semibold uppercase tracking-wider">
+            <InstagramIcon className="w-3.5 h-3.5 text-[#E1306C]" />
+            <span>Artisan Studio Stories</span>
+          </div>
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+            Follow Our Craft Journey on Instagram
+          </h2>
+          <p className="text-xs text-stone-300 leading-relaxed">
+            Discover live workshop demonstrations, woodblock carving timelapses, natural botanical dye baths, and client order preparation on <strong>@ramamtextiles</strong>.
+          </p>
+        </div>
+
+        <a
+          href="https://www.instagram.com/ramamtextiles"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-6 py-3.5 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white font-serif font-bold text-xs uppercase tracking-widest rounded hover:opacity-90 transition-opacity whitespace-nowrap shadow flex items-center gap-2"
+        >
+          <InstagramIcon className="w-4 h-4" />
+          <span>Follow @ramamtextiles</span>
+          <ExternalLink className="w-3.5 h-3.5" />
+        </a>
       </div>
 
       {/* Jaipur Presence */}

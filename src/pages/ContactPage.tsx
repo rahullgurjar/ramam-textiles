@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { 
   MapPin, Mail, Clock, Send, MessageSquare, CheckCircle2, 
-  Building2, Globe2, Sparkles, ShieldCheck
+  Building2, Globe2, Sparkles, ShieldCheck, ExternalLink
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { InstagramIcon } from '../components/InstagramIcon';
 
 interface ContactPageProps {
   onNavigate: (path: string) => void;
@@ -82,6 +83,23 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 <div>
                   <strong className="text-white block font-serif">Studio Hours (IST):</strong>
                   <span>Monday – Saturday: 9:30 AM – 7:30 PM (IST)</span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 text-stone-300 pt-2 border-t border-white/10">
+                <InstagramIcon className="w-5 h-5 text-[#E1306C] flex-shrink-0 mt-0.5" />
+                <div>
+                  <strong className="text-white block font-serif">Official Instagram:</strong>
+                  <a 
+                    href="https://www.instagram.com/ramamtextiles" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-amber-200 hover:text-white inline-flex items-center gap-1 font-semibold"
+                  >
+                    <span>@ramamtextiles</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                  <p className="text-[11px] text-stone-400 mt-0.5">Behind-the-scenes printing table footage & new lookbook drops.</p>
                 </div>
               </div>
             </div>

@@ -17,6 +17,7 @@ import {
 import { useApp, CURRENCIES } from '../context/AppContext';
 import { CATEGORIES } from '../data/products';
 import { COLLECTIONS } from '../data/collections';
+import { InstagramIcon } from './InstagramIcon';
 
 interface HeaderProps {
   currentPath: string;
@@ -117,6 +118,18 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             >
               <Mail className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span className="hidden sm:inline font-medium">B2B Export Desk: exports@ramamtextiles.com</span>
+            </a>
+
+            {/* Instagram Profile */}
+            <a 
+              href="https://www.instagram.com/ramamtextiles"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-[#DFCA9F] hover:text-white transition-colors"
+              title="Follow @ramamtextiles on Instagram"
+            >
+              <InstagramIcon className="w-3.5 h-3.5 text-[#E1306C]" />
+              <span className="hidden xl:inline text-xs font-medium">@ramamtextiles</span>
             </a>
           </div>
         </div>
@@ -561,6 +574,16 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 <FileText className="w-4 h-4 text-[#D4AF37]" />
                 <span>Request B2B Wholesale Quote</span>
               </button>
+
+              <a 
+                href="https://www.instagram.com/ramamtextiles"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-4 bg-gradient-to-r from-[#833ab4]/15 via-[#fd1d1d]/15 to-[#fcb045]/15 border border-[#E1306C]/30 text-[#0C1813] text-xs font-semibold rounded flex items-center justify-center gap-2"
+              >
+                <InstagramIcon className="w-4 h-4 text-[#E1306C]" />
+                <span>Follow @ramamtextiles on Instagram</span>
+              </a>
             </div>
           </div>
         </div>
