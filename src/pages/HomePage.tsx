@@ -40,7 +40,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 transition-transform duration-1000 ease-out"
           style={{
-            backgroundImage: `url('./products/prod-3.jpg')`
+            backgroundImage: `url('./products/duffle-indigo.jpg')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0E1612] via-[#0E1612]/75 to-black/60" />
@@ -250,7 +250,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-[#FAF7F2]">
                 <img
-                  src="./products/prod-4.jpg"
+                  src="./products/duffle-pink-botanical.jpg"
                   alt="Jaipur Hand Block Printed Quilted Weekender Bag"
                   className="w-full h-full object-cover"
                 />
@@ -440,7 +440,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             Download 2026 Wholesale Quilted Bags Catalog
           </h2>
           <p className="text-stone-300 text-sm max-w-2xl mx-auto mb-8 font-light">
-            Receive our high-resolution line sheet featuring all 5 ready-to-order Jaipur hand block quilted bag designs, fabric swatches, and FOB wholesale price tiers.
+            Receive our high-resolution line sheet featuring all 9 ready-to-order Jaipur hand block quilted bag designs, fabric swatches, and FOB wholesale price tiers.
           </p>
 
           {catalogDownloaded ? (
