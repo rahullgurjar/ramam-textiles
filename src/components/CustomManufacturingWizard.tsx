@@ -66,29 +66,30 @@ export const CustomManufacturingWizard: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#FAF7F2] border border-amber-900/30 rounded-xl shadow-xl overflow-hidden text-[#1C1917]">
+    <div className="bg-gradient-to-br from-[#FAF6EE] to-[#F3EADB] border-2 border-[#D4AF37]/35 rounded-3xl shadow-2xl overflow-hidden text-[#4D0E0D]">
       {/* Progress Bar */}
-      <div className="bg-[#0E1612] px-6 py-5 border-b border-amber-900/40">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-[#4D0E0D] via-[#751B19] to-[#4D0E0D] px-6 py-6 border-b-2 border-[#D4AF37]/40 relative overflow-hidden">
+        <div className="absolute inset-0 bg-jaipur-jaali opacity-10 pointer-events-none" />
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
-            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 bg-[#D4AF37]/20 border border-[#D4AF37]/40 rounded-full text-[#D4AF37] text-[11px] font-semibold uppercase tracking-wider mb-1">
-              <Sparkles className="w-3 h-3" />
-              <span>Private Label & OEM Studio</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4AF37]/20 border border-[#D4AF37]/40 rounded-full text-[#F5E6B5] text-[10px] font-royal-title uppercase tracking-widest mb-1.5 font-bold">
+              <Sparkles className="w-3 h-3 text-[#D4AF37]" />
+              <span>Jaipur Private Label & OEM Atelier</span>
             </div>
-            <h3 className="font-serif text-xl md:text-2xl text-white font-bold">
-              Custom Manufacturing & Private Label Wizard
+            <h3 className="font-royal-heading text-xl md:text-2xl text-white font-bold tracking-wide">
+              Custom Manufacturing & Private Label Studio
             </h3>
           </div>
           <div className="flex items-center gap-2">
             {[1, 2, 3, 4].map(s => (
               <div 
                 key={s} 
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-royal-title font-bold transition-all ${
                   step === s 
-                    ? 'bg-[#D4AF37] text-[#0E1612] ring-4 ring-[#D4AF37]/30 scale-105' 
+                    ? 'bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-[#4D0E0D] ring-4 ring-[#D4AF37]/40 scale-105 shadow-md' 
                     : step > s 
-                      ? 'bg-emerald-700 text-white' 
-                      : 'bg-white/10 text-stone-400'
+                      ? 'bg-emerald-700 text-white border border-[#D4AF37]/50' 
+                      : 'bg-white/10 text-[#FAF6EE]/50 border border-white/20'
                 }`}
               >
                 {step > s ? <CheckCircle2 className="w-4 h-4" /> : s}
@@ -100,87 +101,93 @@ export const CustomManufacturingWizard: React.FC = () => {
 
       {isSubmitted ? (
         <div className="p-8 md:p-12 text-center max-w-2xl mx-auto space-y-6">
-          <div className="w-20 h-20 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto shadow-inner">
+          <div className="w-20 h-20 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto shadow-inner border-2 border-emerald-300">
             <CheckCircle2 className="w-12 h-12" />
           </div>
-          <h4 className="font-serif text-3xl font-bold text-stone-900">
+          <h4 className="font-royal-heading text-3xl font-bold text-[#4D0E0D]">
             Manufacturing Brief Received!
           </h4>
-          <p className="text-stone-600 leading-relaxed text-sm md:text-base">
-            Thank you <strong className="text-stone-900">{contactName}</strong> from <strong className="text-stone-900">{brandName || 'your brand'}</strong>. 
+          <p className="text-stone-700 font-royal-body leading-relaxed text-sm md:text-base">
+            Thank you <strong className="text-[#4D0E0D]">{contactName}</strong> from <strong className="text-[#4D0E0D]">{brandName || 'your brand'}</strong>. 
             Our master sampling master and technical merchandising team in Jaipur will analyze your specifications and email you an exact cost breakdown, sampling timeline, and fabric swatches at <strong>{email}</strong> within 24 hours.
           </p>
 
-          <div className="bg-[#F0EBE1] p-5 rounded-lg border border-amber-900/20 text-left text-xs space-y-2">
-            <div className="font-serif text-sm font-bold text-stone-900 border-b border-stone-300 pb-2">
-              Brief Summary Preview:
+          <div className="bg-white/90 p-6 rounded-2xl border-2 border-[#D4AF37]/30 text-left text-xs font-royal-body space-y-2 shadow-sm">
+            <div className="font-royal-title text-sm font-bold text-[#751B19] border-b border-[#D4AF37]/30 pb-2">
+              Royal Brief Summary Preview:
             </div>
             <p><strong>Category:</strong> {category}</p>
-            <p><strong>Fabric:</strong> {fabric}</p>
-            <p><strong>Technique:</strong> {technique}</p>
+            <p><strong>Base Fabric:</strong> {fabric}</p>
+            <p><strong>Artisan Technique:</strong> {technique}</p>
             <p><strong>Estimated Batch:</strong> {quantity}</p>
-            <p><strong>Add-ons:</strong> {customServices.join(', ')}</p>
+            <p><strong>Bespoke Add-ons:</strong> {customServices.join(', ')}</p>
           </div>
 
           <div className="pt-2 flex justify-center">
             <button
               onClick={() => { setIsSubmitted(false); setStep(1); }}
-              className="py-3.5 px-8 bg-[#0E1612] text-amber-100 hover:bg-[#D4AF37] hover:text-[#0E1612] font-serif text-xs font-bold uppercase tracking-wider rounded shadow transition-all"
+              className="btn-royal-gold py-3.5 px-8 font-royal-title text-xs font-bold uppercase tracking-widest rounded-xl shadow-xl transition-all"
             >
               Start Another Project Brief
             </button>
           </div>
         </div>
       ) : (
-        <div className="p-6 md:p-8">
+        <div className="p-6 md:p-10 font-royal-body">
           {/* STEP 1: CATEGORY & BASE FABRIC */}
           {step === 1 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h4 className="font-serif text-lg font-bold text-stone-900 mb-1">
-                  1. Select Product Line / Category
-                </h4>
-                <p className="text-xs text-stone-500 mb-4">Choose what you want our Jaipur workshops to manufacture for your brand.</p>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="w-6 h-6 rounded-full bg-[#751B19] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">1</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#4D0E0D]">
+                    Select Product Line / Category
+                  </h4>
+                </div>
+                <p className="text-xs text-[#751B19]/80 mb-4">Choose what you want our Jaipur workshops to manufacture for your brand.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                   {categories.map(c => (
                     <button
                       key={c.id}
                       type="button"
                       onClick={() => setCategory(c.id)}
-                      className={`p-4 rounded-lg border text-left transition-all ${
+                      className={`p-4 rounded-2xl border text-left transition-all ${
                         category === c.id 
-                          ? 'border-[#0E1612] bg-[#0E1612] text-white shadow-md' 
-                          : 'border-stone-300 bg-white hover:border-stone-400 text-stone-800'
+                          ? 'border-2 border-[#D4AF37] bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-lg scale-[1.02]' 
+                          : 'border-[#D4AF37]/30 bg-white hover:border-[#751B19] text-[#4D0E0D]'
                       }`}
                     >
                       <div className="text-2xl mb-2">{c.icon}</div>
-                      <div className="font-bold text-sm">{c.title}</div>
-                      <div className={`text-[11px] mt-1 leading-snug ${category === c.id ? 'text-stone-300' : 'text-stone-500'}`}>{c.desc}</div>
+                      <div className="font-royal-title font-bold text-sm">{c.title}</div>
+                      <div className={`text-[11px] mt-1 leading-snug ${category === c.id ? 'text-[#FAF6EE]/90' : 'text-stone-600'}`}>{c.desc}</div>
                     </button>
                   ))}
                 </div>
               </div>
 
               <div>
-                <h4 className="font-serif text-lg font-bold text-stone-900 mb-1">
-                  2. Base Fabric Choice
-                </h4>
-                <p className="text-xs text-stone-500 mb-4">All fabrics are sustainably sourced and pre-shrunk in Jaipur.</p>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="w-6 h-6 rounded-full bg-[#751B19] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">2</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#4D0E0D]">
+                    Base Fabric Choice
+                  </h4>
+                </div>
+                <p className="text-xs text-[#751B19]/80 mb-4">All fabrics are sustainably woven and pre-shrunk in Jaipur.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {fabrics.map(f => (
                     <button
                       key={f.id}
                       type="button"
                       onClick={() => setFabric(f.id)}
-                      className={`p-3.5 rounded-lg border text-left transition-all ${
+                      className={`p-4 rounded-2xl border text-left transition-all ${
                         fabric === f.id 
-                          ? 'border-[#0E1612] bg-[#EFE9DF] text-stone-900 ring-2 ring-[#0E1612]' 
-                          : 'border-stone-300 bg-white hover:border-stone-400 text-stone-800'
+                          ? 'border-2 border-[#D4AF37] bg-[#FAF6EE] text-[#4D0E0D] ring-2 ring-[#751B19] shadow-md' 
+                          : 'border-[#D4AF37]/30 bg-white hover:border-[#751B19] text-[#4D0E0D]'
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-sm text-stone-900">{f.name}</span>
-                        <span className="text-[10px] bg-stone-200 text-stone-700 px-2 py-0.5 rounded font-mono">{f.gsm}</span>
+                        <span className="font-royal-title font-bold text-sm text-[#4D0E0D]">{f.name}</span>
+                        <span className="text-[10px] bg-[#751B19]/15 text-[#751B19] px-2.5 py-0.5 rounded-full font-mono font-bold">{f.gsm}</span>
                       </div>
                       <p className="text-xs text-stone-600 mt-1">{f.desc}</p>
                     </button>
@@ -192,7 +199,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="px-6 py-3 bg-[#0E1612] text-amber-100 font-serif tracking-widest text-xs uppercase font-bold hover:bg-[#D4AF37] hover:text-[#0E1612] transition-colors rounded flex items-center gap-2"
+                  className="btn-royal-gold px-7 py-3 text-xs font-bold uppercase tracking-widest rounded-xl shadow-lg flex items-center gap-2"
                 >
                   <span>Next: Technique & Printing</span>
                   <ArrowRight className="w-4 h-4" />
@@ -205,23 +212,26 @@ export const CustomManufacturingWizard: React.FC = () => {
           {step === 2 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h4 className="font-serif text-lg font-bold text-stone-900 mb-1">
-                  3. Select Artisan Technique or Print Style
-                </h4>
-                <p className="text-xs text-stone-500 mb-4">Choose heritage artisan hand crafts or modern precision printing.</p>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="w-6 h-6 rounded-full bg-[#751B19] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">3</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#4D0E0D]">
+                    Select Artisan Technique or Print Style
+                  </h4>
+                </div>
+                <p className="text-xs text-[#751B19]/80 mb-4">Choose heritage artisan hand crafts or modern precision printing.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {techniques.map(t => (
                     <button
                       key={t.id}
                       type="button"
                       onClick={() => setTechnique(t.id)}
-                      className={`p-4 rounded-lg border text-left transition-all ${
+                      className={`p-4 rounded-2xl border text-left transition-all ${
                         technique === t.id 
-                          ? 'border-[#0E1612] bg-[#EFE9DF] text-stone-900 ring-2 ring-[#0E1612]' 
-                          : 'border-stone-300 bg-white hover:border-stone-400 text-stone-800'
+                          ? 'border-2 border-[#D4AF37] bg-[#FAF6EE] text-[#4D0E0D] ring-2 ring-[#751B19] shadow-md' 
+                          : 'border-[#D4AF37]/30 bg-white hover:border-[#751B19] text-[#4D0E0D]'
                       }`}
                     >
-                      <div className="font-bold text-sm text-stone-900">{t.name}</div>
+                      <div className="font-royal-title font-bold text-sm text-[#4D0E0D]">{t.name}</div>
                       <p className="text-xs text-stone-600 mt-1">{t.desc}</p>
                     </button>
                   ))}
@@ -229,9 +239,12 @@ export const CustomManufacturingWizard: React.FC = () => {
               </div>
 
               <div>
-                <h4 className="font-serif text-lg font-bold text-stone-900 mb-1">
-                  4. Target Batch Quantity
-                </h4>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="w-6 h-6 rounded-full bg-[#751B19] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">4</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#4D0E0D]">
+                    Target Batch Quantity
+                  </h4>
+                </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {[
                     'Sample Prototyping (1-5 pcs)',
@@ -243,10 +256,10 @@ export const CustomManufacturingWizard: React.FC = () => {
                       key={q}
                       type="button"
                       onClick={() => setQuantity(q)}
-                      className={`p-3 rounded-lg border text-center font-medium text-xs transition-all ${
+                      className={`p-3.5 rounded-xl border text-center font-royal-title font-bold text-xs transition-all ${
                         quantity === q 
-                          ? 'border-[#0E1612] bg-[#0E1612] text-white shadow' 
-                          : 'border-stone-300 bg-white text-stone-700 hover:border-stone-400'
+                          ? 'border-2 border-[#D4AF37] bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-md' 
+                          : 'border-[#D4AF37]/30 bg-white text-[#4D0E0D] hover:border-[#751B19]'
                       }`}
                     >
                       {q}
@@ -259,7 +272,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="px-5 py-3 border border-stone-400 text-stone-700 hover:bg-stone-200 font-serif text-xs uppercase font-bold rounded flex items-center gap-2"
+                  className="btn-royal-outline px-5 py-3 text-xs uppercase font-bold rounded-xl flex items-center gap-2"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   <span>Back</span>
@@ -267,7 +280,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(3)}
-                  className="px-6 py-3 bg-[#0E1612] text-amber-100 font-serif tracking-widest text-xs uppercase font-bold hover:bg-[#D4AF37] hover:text-[#0E1612] transition-colors rounded flex items-center gap-2"
+                  className="btn-royal-gold px-7 py-3 text-xs font-bold uppercase tracking-widest rounded-xl shadow-lg flex items-center gap-2"
                 >
                   <span>Next: Branding & Custom Add-ons</span>
                   <ArrowRight className="w-4 h-4" />
@@ -280,10 +293,13 @@ export const CustomManufacturingWizard: React.FC = () => {
           {step === 3 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h4 className="font-serif text-lg font-bold text-stone-900 mb-1">
-                  5. Manufacturing Add-ons & Finishing Specifications
-                </h4>
-                <p className="text-xs text-stone-500 mb-4">Select all customizations and finishing touches you need prepared.</p>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="w-6 h-6 rounded-full bg-[#751B19] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">5</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#4D0E0D]">
+                    Manufacturing Add-ons & Finishing Specifications
+                  </h4>
+                </div>
+                <p className="text-xs text-[#751B19]/80 mb-4">Select all customizations and finishing touches you need prepared.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
                     { title: 'Custom Wooden Block Carving', desc: 'Hand-carve your exclusive motif into Sheesham wood blocks' },
@@ -299,18 +315,18 @@ export const CustomManufacturingWizard: React.FC = () => {
                         key={srv.title}
                         type="button"
                         onClick={() => toggleService(srv.title)}
-                        className={`p-3.5 rounded-lg border text-left transition-all flex items-start gap-3 ${
+                        className={`p-4 rounded-2xl border text-left transition-all flex items-start gap-3 ${
                           isChecked 
-                            ? 'border-emerald-700 bg-emerald-50/50 text-stone-900 ring-1 ring-emerald-600' 
-                            : 'border-stone-300 bg-white text-stone-700 hover:border-stone-400'
+                            ? 'border-2 border-emerald-700 bg-emerald-50/70 text-[#4D0E0D] ring-1 ring-emerald-600' 
+                            : 'border-[#D4AF37]/30 bg-white text-[#4D0E0D] hover:border-[#751B19]'
                         }`}
                       >
-                        <div className={`w-5 h-5 rounded mt-0.5 flex items-center justify-center flex-shrink-0 ${isChecked ? 'bg-emerald-700 text-white' : 'border border-stone-400 bg-white'}`}>
+                        <div className={`w-5 h-5 rounded-md mt-0.5 flex items-center justify-center flex-shrink-0 ${isChecked ? 'bg-emerald-700 text-white' : 'border border-[#D4AF37]/60 bg-white'}`}>
                           {isChecked && <CheckCircle2 className="w-4 h-4" />}
                         </div>
                         <div>
-                          <div className="font-bold text-xs text-stone-900">{srv.title}</div>
-                          <div className="text-[11px] text-stone-500 mt-0.5">{srv.desc}</div>
+                          <div className="font-royal-title font-bold text-xs text-[#4D0E0D]">{srv.title}</div>
+                          <div className="text-[11px] text-stone-600 mt-0.5">{srv.desc}</div>
                         </div>
                       </button>
                     );
@@ -319,7 +335,7 @@ export const CustomManufacturingWizard: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1">
+                <label className="block text-xs font-royal-title uppercase tracking-wider text-[#4D0E0D] font-bold mb-1.5">
                   6. Technical Brief & Sizing Details (Optional)
                 </label>
                 <textarea
@@ -327,7 +343,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                   value={techPackNotes}
                   onChange={e => setTechPackNotes(e.target.value)}
                   placeholder="Describe your design inspirations, Pantone shade codes, sizing breakdown (XS to 3XL), or specific garment dimensions..."
-                  className="w-full p-3 bg-white border border-stone-300 rounded text-xs focus:outline-none focus:border-[#0E1612]"
+                  className="w-full p-3.5 bg-white border-2 border-[#D4AF37]/30 rounded-2xl text-xs text-[#4D0E0D] focus:outline-none focus:border-[#751B19]"
                 />
               </div>
 
@@ -335,7 +351,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="px-5 py-3 border border-stone-400 text-stone-700 hover:bg-stone-200 font-serif text-xs uppercase font-bold rounded flex items-center gap-2"
+                  className="btn-royal-outline px-5 py-3 text-xs uppercase font-bold rounded-xl flex items-center gap-2"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   <span>Back</span>
@@ -343,7 +359,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(4)}
-                  className="px-6 py-3 bg-[#0E1612] text-amber-100 font-serif tracking-widest text-xs uppercase font-bold hover:bg-[#D4AF37] hover:text-[#0E1612] transition-colors rounded flex items-center gap-2"
+                  className="btn-royal-gold px-7 py-3 text-xs font-bold uppercase tracking-widest rounded-xl shadow-lg flex items-center gap-2"
                 >
                   <span>Next: Contact Details & Submit</span>
                   <ArrowRight className="w-4 h-4" />
@@ -356,14 +372,17 @@ export const CustomManufacturingWizard: React.FC = () => {
           {step === 4 && (
             <form onSubmit={handleFinish} className="space-y-6 animate-fade-in">
               <div>
-                <h4 className="font-serif text-lg font-bold text-stone-900 mb-1">
-                  7. Your Contact & Brand Information
-                </h4>
-                <p className="text-xs text-stone-500 mb-4">Where should our export department send the formal quotation and tech proposal?</p>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="w-6 h-6 rounded-full bg-[#751B19] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">7</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#4D0E0D]">
+                    Your Contact & Brand Information
+                  </h4>
+                </div>
+                <p className="text-xs text-[#751B19]/80 mb-4">Where should our export department send the formal quotation and tech proposal?</p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1">
+                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#4D0E0D] font-bold mb-1">
                       Full Name *
                     </label>
                     <input
@@ -372,12 +391,12 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="e.g. Radhika Mehta"
                       value={contactName}
                       onChange={e => setContactName(e.target.value)}
-                      className="w-full px-3 py-2.5 bg-white border border-stone-300 rounded text-xs focus:outline-none focus:border-[#0E1612]"
+                      className="w-full px-3.5 py-2.5 bg-white border-2 border-[#D4AF37]/30 rounded-xl text-xs text-[#4D0E0D] focus:outline-none focus:border-[#751B19]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1">
+                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#4D0E0D] font-bold mb-1">
                       Brand / Studio Name
                     </label>
                     <input
@@ -385,12 +404,12 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="e.g. Jaipur Indigo Co."
                       value={brandName}
                       onChange={e => setBrandName(e.target.value)}
-                      className="w-full px-3 py-2.5 bg-white border border-stone-300 rounded text-xs focus:outline-none focus:border-[#0E1612]"
+                      className="w-full px-3.5 py-2.5 bg-white border-2 border-[#D4AF37]/30 rounded-xl text-xs text-[#4D0E0D] focus:outline-none focus:border-[#751B19]"
                     />
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1">
+                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#4D0E0D] font-bold mb-1">
                       Official Work Email *
                     </label>
                     <input
@@ -399,12 +418,12 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="buyer@brand.com"
                       value={email}
                       onChange={e => setEmail(e.target.value)}
-                      className="w-full px-3 py-2.5 bg-white border border-stone-300 rounded text-xs focus:outline-none focus:border-[#0E1612]"
+                      className="w-full px-3.5 py-2.5 bg-white border-2 border-[#D4AF37]/30 rounded-xl text-xs text-[#4D0E0D] focus:outline-none focus:border-[#751B19]"
                     />
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1">
+                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#4D0E0D] font-bold mb-1">
                       Destination Country &amp; Shipping Port
                     </label>
                     <input
@@ -412,15 +431,15 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="e.g. India (Delhi / Mumbai) or USA (New York, Air Cargo)"
                       value={country}
                       onChange={e => setCountry(e.target.value)}
-                      className="w-full px-3 py-2.5 bg-white border border-stone-300 rounded text-xs focus:outline-none focus:border-[#0E1612]"
+                      className="w-full px-3.5 py-2.5 bg-white border-2 border-[#D4AF37]/30 rounded-xl text-xs text-[#4D0E0D] focus:outline-none focus:border-[#751B19]"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Summary Card */}
-              <div className="bg-[#F2ECE1] p-4 rounded-lg border border-amber-900/20 text-xs space-y-1.5">
-                <div className="font-bold text-stone-900 flex items-center gap-2">
+              <div className="bg-white/90 p-5 rounded-2xl border-2 border-[#D4AF37]/30 text-xs space-y-1.5 shadow-sm">
+                <div className="font-royal-title font-bold text-[#751B19] flex items-center gap-2">
                   <Award className="w-4 h-4 text-[#D4AF37]" />
                   <span>Brief Specification Snapshot:</span>
                 </div>
@@ -436,14 +455,14 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(3)}
-                  className="px-5 py-3 border border-stone-400 text-stone-700 hover:bg-stone-200 font-serif text-xs uppercase font-bold rounded flex items-center gap-2"
+                  className="btn-royal-outline px-5 py-3 text-xs uppercase font-bold rounded-xl flex items-center gap-2"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   <span>Back</span>
                 </button>
                 <button
                   type="submit"
-                  className="px-8 py-3.5 bg-[#0E1612] text-amber-200 font-serif tracking-widest text-xs uppercase font-bold hover:bg-[#D4AF37] hover:text-[#0E1612] transition-colors rounded shadow-lg flex items-center gap-2"
+                  className="btn-royal-gold px-8 py-3.5 text-xs font-bold uppercase tracking-widest rounded-xl shadow-xl flex items-center gap-2"
                 >
                   <Send className="w-4 h-4" />
                   <span>Submit Custom Manufacturing Brief</span>

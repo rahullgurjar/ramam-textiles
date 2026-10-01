@@ -41,31 +41,32 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
       {/* Hero */}
-      <div className="bg-[#0E1612] text-white rounded-2xl p-8 sm:p-14 relative overflow-hidden">
+      <div className="bg-[#4D0E0D] text-white rounded-2xl p-8 sm:p-14 relative overflow-hidden border-2 border-[#D4AF37]/50 shadow-2xl">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{ backgroundImage: `url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1600&q=80')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0E1612] via-[#0E1612]/85 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#380708] via-[#4D0E0D]/85 to-transparent" />
+        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-35 pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#D4AF37]/20 border border-[#D4AF37]/40 rounded-full text-[#D4AF37] text-xs font-semibold uppercase tracking-wider">
-            <Scissors className="w-3.5 h-3.5" />
-            <span>OEM & Private Label Manufacturing</span>
+          <div className="royal-seal mb-2">
+            <Scissors className="w-3.5 h-3.5 text-[#D4AF37]" />
+            <span>👑 Jaipur OEM &amp; Private Label Studio</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-            Bring Your Apparel & Textile Visions to Life in Jaipur
+          <h1 className="font-heading text-3xl sm:text-5xl font-extrabold tracking-tight text-[#FAF3DC] leading-tight">
+            Bring Your Apparel &amp; Textile Visions to Life in Jaipur
           </h1>
 
-          <p className="text-stone-300 text-sm sm:text-base font-light leading-relaxed">
+          <p className="text-stone-200 text-sm sm:text-base font-light leading-relaxed">
             From custom wooden block carving to full-scale garment manufacturing, we partner with emerging fashion labels, luxury boutiques, and global retailers. Low minimums, certified eco dyes, and reliable turnaround.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
             <a
               href="#wizard"
-              className="px-6 py-3.5 bg-[#D4AF37] hover:bg-[#bfa238] text-[#0E1612] font-serif font-bold text-xs uppercase tracking-widest rounded shadow transition-colors inline-flex items-center gap-2"
+              className="btn-royal-gold inline-flex items-center gap-2 shadow-xl"
             >
               <span>Build Your Custom Brief</span>
               <ArrowRight className="w-4 h-4" />
@@ -76,7 +77,7 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
                 onNavigate('/contact');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white border border-stone-400/40 font-serif font-semibold text-xs uppercase tracking-widest rounded backdrop-blur-sm transition-colors inline-flex items-center gap-2"
+              className="btn-royal-outline inline-flex items-center gap-2"
             >
               <Mail className="w-4 h-4 text-[#D4AF37]" />
               <span>Contact Merchandising Desk</span>
@@ -88,60 +89,37 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
       {/* 5-Step Process */}
       <div className="space-y-8">
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <div className="text-xs uppercase tracking-widest text-[#942C29] font-bold">End-To-End Factory Workflow</div>
-          <h2 className="font-serif text-3xl font-bold text-stone-900">How We Manufacture For Your Brand</h2>
+          <div className="royal-seal-rose">End-To-End Factory Workflow</div>
+          <h2 className="font-heading text-3xl font-extrabold text-[#4D0E0D]">How We Manufacture For Your Brand</h2>
+          <div className="ornate-divider" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           {steps.map(s => (
-            <div key={s.num} className="bg-[#FAF7F2] p-6 rounded-xl border border-amber-900/15 space-y-3 relative">
-              <span className="font-serif text-3xl font-bold text-[#D4AF37] block">{s.num}</span>
-              <h3 className="font-serif text-base font-bold text-stone-900">{s.title}</h3>
-              <p className="text-xs text-stone-600 leading-relaxed">{s.desc}</p>
+            <div key={s.num} className="bg-white p-6 rounded-2xl border-2 border-[#D4AF37]/35 space-y-3 relative shadow-md hover:border-[#D4AF37] hover:shadow-xl transition-all">
+              <span className="font-heading text-3xl font-extrabold text-[#D4AF37] block">{s.num}</span>
+              <h3 className="font-heading text-base font-bold text-[#4D0E0D]">{s.title}</h3>
+              <p className="text-xs text-[#5C4540] leading-relaxed font-light">{s.desc}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Private Label Capabilities Grid */}
-      <div className="bg-[#F6F2EA] p-8 sm:p-12 rounded-2xl border border-amber-900/15 space-y-8">
-        <div className="text-center max-w-2xl mx-auto space-y-2">
-          <h2 className="font-serif text-3xl font-bold text-stone-900">Full Private Label Branding Suite</h2>
-          <p className="text-xs text-stone-600">Every piece leaves our Jaipur workshop ready for luxury retail shelves.</p>
+      {/* Interactive Wizard Section */}
+      <div id="wizard" className="bg-[#4D0E0D] text-white p-8 sm:p-12 rounded-2xl border-2 border-[#D4AF37]/50 shadow-2xl relative overflow-hidden">
+        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-35 pointer-events-none" />
+        <div className="max-w-4xl mx-auto relative z-10 space-y-6">
+          <div className="text-center space-y-2">
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#FAF3DC]">Interactive Brief Builder</h2>
+            <p className="text-xs sm:text-sm text-stone-200 font-light">
+              Customize fabric, silhouette, printing technique, and packaging add-ons. Receive an instant estimate and quotation packet.
+            </p>
+          </div>
+          <CustomManufacturingWizard />
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-stone-200 space-y-2">
-            <h4 className="font-serif font-bold text-stone-900 text-sm">Woven Neck & Care Labels</h4>
-            <p className="text-xs text-stone-600">High-density damask or satin woven tags with custom wash instructions and country of origin.</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-stone-200 space-y-2">
-            <h4 className="font-serif font-bold text-stone-900 text-sm">Custom Cardstock Hangtags</h4>
-            <p className="text-xs text-stone-600">Heavyweight 350 GSM craft or art card with gold foil embossing, cotton cord, and retail barcoding.</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-stone-200 space-y-2">
-            <h4 className="font-serif font-bold text-stone-900 text-sm">Bespoke Hardware</h4>
-            <p className="text-xs text-stone-600">Engraved coconut shell buttons, antique brass metal pullers, and custom printed cotton drawstring bags.</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-stone-200 space-y-2">
-            <h4 className="font-serif font-bold text-stone-900 text-sm">Eco Packaging & Barcoding</h4>
-            <p className="text-xs text-stone-600">Biodegradable polybags with Amazon FBA / Shopify barcode stickers ready for direct warehouse intake.</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Interactive Manufacturing Brief Builder */}
-      <div id="wizard" className="scroll-mt-24 space-y-6">
-        <div className="text-center max-w-2xl mx-auto space-y-2">
-          <div className="text-xs uppercase tracking-widest text-[#942C29] font-bold">Online Quotation Tool</div>
-          <h2 className="font-serif text-3xl font-bold text-stone-900">Interactive Custom Production Brief</h2>
-        </div>
-
-        <CustomManufacturingWizard />
       </div>
     </div>
   );
 };
+
+export default CustomManufacturingPage;

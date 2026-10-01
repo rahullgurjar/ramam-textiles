@@ -37,41 +37,44 @@ export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
       {/* Hero */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4AF37]/20 border border-[#D4AF37]/40 rounded-full text-[#0E1612] text-xs font-semibold uppercase tracking-wider">
+        <div className="inline-flex items-center gap-2 px-4 py-1 bg-gradient-to-r from-[#D4AF37]/25 to-[#751B19]/15 border border-[#D4AF37]/45 rounded-full text-[#751B19] text-xs font-royal-title font-bold uppercase tracking-widest">
           <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
           <span>Heritage of the Pink City</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-stone-900">
+        <h1 className="font-royal-heading text-3xl sm:text-5xl font-bold tracking-tight text-[#4D0E0D]">
           The Art of Jaipur Hand Block Printing
         </h1>
-        <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+        <p className="text-[#751B19]/80 font-royal-body text-base sm:text-lg leading-relaxed">
           An unhurried tradition passed down through generations of Chhipa master artisans in Bagru and Sanganer. Discover the living craft behind every Ramam Textiles creation.
         </p>
       </div>
 
       {/* Craft Stages */}
-      <div className="space-y-16">
+      <div className="space-y-12">
         {craftStages.map((stage, idx) => {
           const isReversed = idx % 2 === 1;
           return (
             <div 
               key={stage.title}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#FAF7F2] p-6 sm:p-10 rounded-2xl border border-amber-900/15"
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gradient-to-br from-[#FAF6EE] to-[#F3EADB] p-6 sm:p-10 rounded-3xl border-2 border-[#D4AF37]/30 shadow-lg relative overflow-hidden group"
             >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-10 pointer-events-none" />
+
               <div className={`lg:col-span-6 ${isReversed ? 'lg:order-2' : ''}`}>
-                <div className="aspect-[16/10] rounded-xl overflow-hidden shadow-lg">
+                <div className="aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border-2 border-[#D4AF37]/35 group-hover:scale-[1.02] transition-transform duration-500">
                   <img src={stage.image} alt={stage.title} className="w-full h-full object-cover" />
                 </div>
               </div>
 
-              <div className={`lg:col-span-6 space-y-3 ${isReversed ? 'lg:order-1' : ''}`}>
-                <span className="text-xs uppercase tracking-widest text-[#942C29] font-bold">
-                  {stage.location}
-                </span>
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
+              <div className={`lg:col-span-6 space-y-3.5 ${isReversed ? 'lg:order-1' : ''}`}>
+                <div className="inline-flex items-center gap-1.5 text-xs font-royal-title uppercase tracking-widest text-[#751B19] font-bold">
+                  <span className="text-[#D4AF37]">✦</span>
+                  <span>{stage.location}</span>
+                </div>
+                <h2 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#4D0E0D]">
                   {stage.title}
                 </h2>
-                <p className="text-stone-600 text-sm leading-relaxed">
+                <p className="text-stone-700 font-royal-body text-sm sm:text-base leading-relaxed">
                   {stage.desc}
                 </p>
               </div>
@@ -81,18 +84,19 @@ export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate
       </div>
 
       {/* Artisan Commitment Banner */}
-      <div className="bg-[#0E1612] text-white p-8 sm:p-12 rounded-2xl border border-amber-900/30 text-center max-w-4xl mx-auto space-y-4">
-        <div className="w-12 h-12 bg-[#D4AF37]/20 border border-[#D4AF37]/40 rounded-full flex items-center justify-center mx-auto text-[#D4AF37]">
-          <Heart className="w-6 h-6" />
+      <div className="bg-gradient-to-r from-[#4D0E0D] via-[#751B19] to-[#4D0E0D] text-[#FAF6EE] p-8 sm:p-12 rounded-3xl border-2 border-[#D4AF37]/40 text-center max-w-4xl mx-auto space-y-5 shadow-2xl relative overflow-hidden">
+        <div className="absolute inset-0 bg-jaipur-jaali opacity-10 pointer-events-none" />
+        <div className="w-14 h-14 bg-[#D4AF37]/25 border-2 border-[#D4AF37]/50 rounded-full flex items-center justify-center mx-auto text-[#D4AF37] shadow-lg">
+          <Heart className="w-7 h-7 fill-[#D4AF37]/20" />
         </div>
-        <h3 className="font-serif text-2xl sm:text-3xl font-bold">Artisan Welfare & Ethical Fair Wages</h3>
-        <p className="text-stone-300 text-xs sm:text-sm max-w-2xl mx-auto font-light leading-relaxed">
+        <h3 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#F5E6B5]">Artisan Welfare & Ethical Fair Wages</h3>
+        <p className="text-[#FAF6EE]/90 text-sm sm:text-base max-w-2xl mx-auto font-royal-body leading-relaxed">
           Every yard of fabric purchased from Ramam Textiles directly supports traditional craft families in Rajasthan. We guarantee safe working conditions, fair wages, zero child labor, and continuous investment in clean water filtration systems.
         </p>
         <div className="pt-2">
           <button
             onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="px-6 py-3 bg-[#D4AF37] hover:bg-[#bfa238] text-[#0E1612] font-serif font-bold text-xs uppercase tracking-widest rounded shadow transition-colors"
+            className="btn-royal-gold px-8 py-3.5 text-xs font-bold uppercase tracking-widest rounded-xl shadow-xl"
           >
             Explore Authentic Handcrafted Pieces
           </button>

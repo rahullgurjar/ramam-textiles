@@ -11,14 +11,14 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4AF37]/20 border border-[#D4AF37]/40 rounded-full text-[#0E1612] text-xs font-semibold uppercase tracking-wider">
+        <div className="inline-flex items-center gap-2 px-4 py-1 bg-[#D4AF37]/25 border border-[#D4AF37]/45 rounded-full text-[#751B19] text-xs font-royal-title font-bold uppercase tracking-widest">
           <BookOpen className="w-3.5 h-3.5 text-[#D4AF37]" />
           <span>Jaipur Craft Archive</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-stone-900">
-          The Textile Journal & Sourcing Guide
+        <h1 className="font-royal-heading text-3xl sm:text-5xl font-bold tracking-tight text-[#4D0E0D]">
+          The Textile Journal &amp; Sourcing Guide
         </h1>
-        <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+        <p className="text-[#751B19]/80 font-royal-body text-base sm:text-lg leading-relaxed">
           In-depth technical guides, craft chronicles, natural dye chemistry, and export masterclasses for fashion designers and boutique founders.
         </p>
       </div>
@@ -27,9 +27,11 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
       {JOURNAL_POSTS[0] && (
         <div 
           onClick={() => { onNavigate(`/journal/${JOURNAL_POSTS[0].slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#FAF7F2] p-6 sm:p-10 rounded-2xl border border-amber-900/15 cursor-pointer group hover:shadow-xl transition-all"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gradient-to-br from-[#FAF6EE] to-[#F3EADB] p-6 sm:p-10 rounded-3xl border-2 border-[#D4AF37]/35 cursor-pointer group hover:shadow-2xl transition-all relative overflow-hidden"
         >
-          <div className="lg:col-span-7 aspect-[16/10] rounded-xl overflow-hidden shadow-md">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-10 pointer-events-none" />
+
+          <div className="lg:col-span-7 aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border-2 border-[#D4AF37]/30">
             <img 
               src={JOURNAL_POSTS[0].image} 
               alt={JOURNAL_POSTS[0].title} 
@@ -37,20 +39,20 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
             />
           </div>
           <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono text-stone-500">
-              <span className="text-[#942C29] font-bold uppercase">{JOURNAL_POSTS[0].category}</span>
+            <div className="flex items-center gap-2 text-xs font-mono text-[#751B19]">
+              <span className="bg-[#751B19]/10 text-[#751B19] px-2.5 py-0.5 rounded-full font-royal-title font-bold uppercase">{JOURNAL_POSTS[0].category}</span>
               <span>•</span>
-              <span>{JOURNAL_POSTS[0].readTime}</span>
+              <span className="font-royal-body">{JOURNAL_POSTS[0].readTime}</span>
             </div>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 group-hover:text-[#942C29] transition-colors leading-snug">
+            <h2 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#4D0E0D] group-hover:text-[#751B19] transition-colors leading-snug">
               {JOURNAL_POSTS[0].title}
             </h2>
-            <p className="text-stone-600 text-sm leading-relaxed">
+            <p className="text-stone-700 font-royal-body text-sm sm:text-base leading-relaxed">
               {JOURNAL_POSTS[0].excerpt}
             </p>
-            <div className="pt-2 text-xs font-serif font-bold text-[#942C29] uppercase tracking-wider flex items-center gap-2">
-              <span>Read Full Article</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <div className="pt-2 text-xs font-royal-title font-bold text-[#751B19] uppercase tracking-widest flex items-center gap-2">
+              <span>Read Full Story</span>
+              <ArrowRight className="w-4 h-4 text-[#D4AF37] group-hover:translate-x-1.5 transition-transform" />
             </div>
           </div>
         </div>
@@ -62,7 +64,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
           <article 
             key={post.id}
             onClick={() => { onNavigate(`/journal/${post.slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="group bg-white rounded-xl overflow-hidden shadow-sm border border-stone-200 hover:shadow-xl transition-all cursor-pointer flex flex-col"
+            className="group bg-white rounded-3xl overflow-hidden shadow-md border-2 border-[#D4AF37]/30 hover:shadow-2xl hover:border-[#751B19] transition-all cursor-pointer flex flex-col"
           >
             <div className="aspect-[16/10] overflow-hidden relative">
               <img
@@ -70,29 +72,29 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
                 alt={post.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <span className="absolute top-3 left-3 bg-[#0E1612]/90 text-[#D4AF37] px-2.5 py-1 rounded text-[10px] font-semibold uppercase tracking-wider">
+              <span className="absolute top-3 left-3 bg-gradient-to-r from-[#4D0E0D] to-[#751B19] text-[#F5E6B5] border border-[#D4AF37]/50 px-3 py-1 rounded-full text-[10px] font-royal-title font-bold uppercase tracking-wider">
                 {post.category}
               </span>
             </div>
 
-            <div className="p-6 flex-1 flex flex-col justify-between">
+            <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
               <div>
-                <div className="text-[11px] text-stone-500 mb-2 flex items-center gap-2 font-mono">
+                <div className="text-[11px] text-[#751B19]/70 mb-2 flex items-center gap-2 font-mono">
                   <span>{post.date}</span>
                   <span>•</span>
                   <span>{post.readTime}</span>
                 </div>
-                <h3 className="font-serif text-lg font-bold text-stone-900 group-hover:text-[#942C29] transition-colors leading-snug">
+                <h3 className="font-royal-heading text-lg font-bold text-[#4D0E0D] group-hover:text-[#751B19] transition-colors leading-snug">
                   {post.title}
                 </h3>
-                <p className="text-xs text-stone-600 mt-2 line-clamp-3 leading-relaxed">
+                <p className="text-xs font-royal-body text-stone-600 mt-2 line-clamp-3 leading-relaxed">
                   {post.excerpt}
                 </p>
               </div>
 
-              <div className="mt-4 pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-serif font-bold text-stone-900">
-                <span className="text-[#942C29]">Read Story</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <div className="pt-3 border-t border-[#D4AF37]/25 flex items-center justify-between text-xs font-royal-title font-bold text-[#751B19]">
+                <span>Read Story</span>
+                <ArrowRight className="w-4 h-4 text-[#D4AF37] group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
           </article>

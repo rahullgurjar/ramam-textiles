@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   ArrowLeft, CheckCircle2, ShieldCheck, Truck, Sparkles, Heart, 
   Share2, Layers, HelpCircle, Package, Award, Scissors,
-  Plus, Minus, Info, ChevronRight, FileText, Download, Mail
+  Plus, Minus, Info, ChevronRight, FileText, Download, Mail, Star
 } from 'lucide-react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data/products';
@@ -61,90 +61,99 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
       {/* Breadcrumb Navigation */}
-      <nav className="flex items-center gap-2 text-xs text-stone-500 font-medium">
+      <nav className="flex items-center gap-2 text-xs text-[#751B19]/75 font-royal-body tracking-wider">
         <button 
           onClick={() => { onNavigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className="hover:text-stone-900 transition-colors"
+          className="hover:text-[#4D0E0D] hover:underline transition-colors"
         >
-          Home
+          Royal Home
         </button>
-        <ChevronRight className="w-3.5 h-3.5" />
+        <ChevronRight className="w-3.5 h-3.5 text-[#D4AF37]" />
         <button 
           onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className="hover:text-stone-900 transition-colors"
+          className="hover:text-[#4D0E0D] hover:underline transition-colors"
         >
-          Catalog
+          Jaipur Atelier
         </button>
-        <ChevronRight className="w-3.5 h-3.5" />
+        <ChevronRight className="w-3.5 h-3.5 text-[#D4AF37]" />
         <button 
           onClick={() => { onNavigate(`/category/${product.category}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className="hover:text-stone-900 capitalize transition-colors"
+          className="hover:text-[#4D0E0D] hover:underline capitalize transition-colors"
         >
           {product.category}
         </button>
-        <ChevronRight className="w-3.5 h-3.5" />
-        <span className="text-stone-900 font-bold truncate max-w-xs">{product.name}</span>
+        <ChevronRight className="w-3.5 h-3.5 text-[#D4AF37]" />
+        <span className="text-[#4D0E0D] font-bold truncate max-w-xs">{product.name}</span>
       </nav>
 
       {/* Main Product Showcase Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         {/* Left Column: Image Gallery */}
         <div className="lg:col-span-7 space-y-4">
           {/* Active Main Image */}
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone-100 shadow-xl border border-stone-200">
+          <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-[#FAF6EE] shadow-2xl border-2 border-[#D4AF37]/30 group">
             <img
               src={product.images[activeImageIndex] || product.images[0]}
               alt={product.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
 
+            {/* Jharokha Corner Accents */}
+            <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-[#D4AF37] rounded-tl-2xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-[#D4AF37] rounded-tr-2xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-[#D4AF37] rounded-bl-2xl pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-[#D4AF37] rounded-br-2xl pointer-events-none" />
+
             {/* Top Badges */}
-            <div className="absolute top-4 left-4 flex flex-col gap-1.5">
+            <div className="absolute top-5 left-5 flex flex-col gap-2 z-10">
               {product.isBestseller && (
-                <span className="bg-[#942C29] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded shadow-md">
-                  Best Seller
+                <span className="bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] text-[10px] font-royal-title uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-lg border border-[#D4AF37]/50 flex items-center gap-1.5">
+                  <Star className="w-3 h-3 text-[#D4AF37] fill-[#D4AF37]" />
+                  <span>Royal Bestseller</span>
                 </span>
               )}
               {product.isFeatured && (
-                <span className="bg-[#D4AF37] text-[#0E1612] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded shadow-md">
-                  Signature Jaipur Craft
+                <span className="bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-[#4D0E0D] text-[10px] font-royal-title font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-lg border border-[#FAF6EE]/50 flex items-center gap-1.5">
+                  <Sparkles className="w-3 h-3" />
+                  <span>Heritage Masterpiece</span>
                 </span>
               )}
             </div>
 
-            {/* Share & Origin Floating Badges */}
-            <div className="absolute top-4 right-4 flex items-center gap-2">
+            {/* Share Floating Badge */}
+            <div className="absolute top-5 right-5 flex items-center gap-2 z-10">
               <button
                 onClick={handleShare}
-                className="p-2.5 rounded-full bg-white/90 hover:bg-white text-stone-700 shadow-md backdrop-blur-sm transition-all"
+                className="p-3 rounded-full bg-[#FAF6EE]/90 hover:bg-[#FAF6EE] text-[#4D0E0D] shadow-lg border border-[#D4AF37]/40 backdrop-blur-md transition-all hover:scale-105"
                 title="Share Creation"
               >
-                <Share2 className="w-4 h-4" />
+                <Share2 className="w-4 h-4 text-[#751B19]" />
               </button>
             </div>
 
-            <div className="absolute bottom-4 left-4 right-4 bg-[#0E1612]/85 backdrop-blur-md text-white p-3 rounded-lg flex items-center justify-between text-xs">
+            {/* Bottom SKU and Provenance Bar */}
+            <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-[#4D0E0D]/95 via-[#751B19]/90 to-[#4D0E0D]/95 backdrop-blur-md text-[#F5E6B5] p-3.5 rounded-2xl flex items-center justify-between text-xs border border-[#D4AF37]/40 shadow-xl">
               <div className="flex items-center gap-2 font-mono">
-                <span className="text-[#D4AF37]">SKU:</span>
-                <span>{product.sku}</span>
+                <span className="text-[#D4AF37] font-royal-title">SKU:</span>
+                <span className="font-semibold">{product.sku}</span>
               </div>
-              <div className="text-[11px] text-stone-300">
-                Crafted in <strong>Bagru & Sanganer</strong>
+              <div className="text-[11px] text-[#FAF6EE]/90 font-royal-body">
+                Crafted in <strong className="text-[#F5E6B5]">Bagru & Sanganer Guilds</strong>
               </div>
             </div>
           </div>
 
           {/* Thumbnail Strip */}
           {product.images.length > 1 && (
-            <div className="flex items-center gap-3 overflow-x-auto pb-2">
+            <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
               {product.images.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`relative w-20 h-24 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 ${
+                  className={`relative w-20 h-24 rounded-xl overflow-hidden border-2 transition-all flex-shrink-0 ${
                     activeImageIndex === idx 
-                      ? 'border-[#0E1612] ring-2 ring-[#D4AF37]' 
-                      : 'border-transparent opacity-70 hover:opacity-100'
+                      ? 'border-[#D4AF37] ring-2 ring-[#751B19] shadow-lg scale-105' 
+                      : 'border-stone-300/80 opacity-70 hover:opacity-100'
                   }`}
                 >
                   <img src={img} alt={`${product.name} ${idx}`} className="w-full h-full object-cover" />
@@ -157,63 +166,66 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
         {/* Right Column: Product Actions & B2B Purchase Controls */}
         <div className="lg:col-span-5 space-y-6">
           <div>
-            <span className="text-xs uppercase tracking-widest text-[#942C29] font-bold">
-              {product.collection}
-            </span>
-            <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 mt-1 leading-tight">
+            <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#751B19]/10 border border-[#751B19]/25 text-[#751B19] text-[11px] font-royal-title uppercase tracking-widest font-bold mb-2">
+              <span>{product.collection}</span>
+            </div>
+            <h1 className="font-royal-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#4D0E0D] leading-tight">
               {product.name}
             </h1>
-            <p className="text-xs text-stone-500 font-mono mt-1">
-              Technique: <span className="text-stone-800 font-semibold">{product.printTechnique}</span>
+            <p className="text-xs text-[#751B19]/80 font-royal-body mt-1.5 flex items-center gap-2">
+              <span className="text-[#D4AF37]">✦</span>
+              Technique: <span className="text-[#4D0E0D] font-semibold">{product.printTechnique}</span>
             </p>
           </div>
 
           {/* Pricing Block */}
-          <div className="p-4 bg-[#FAF7F2] rounded-xl border border-amber-900/15 space-y-2">
-            <div className="flex items-baseline justify-between">
+          <div className="p-5 bg-gradient-to-br from-[#FAF6EE] to-[#F3EADB] rounded-2xl border-2 border-[#D4AF37]/30 shadow-md space-y-3 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-jaipur-jaali opacity-10 pointer-events-none" />
+            
+            <div className="flex items-baseline justify-between relative z-10">
               <div>
-                <span className="text-[10px] text-stone-500 uppercase tracking-wider block">Retail Benchmark Price</span>
-                <span className="text-2xl sm:text-3xl font-serif font-bold text-stone-900">
+                <span className="text-[10px] text-[#751B19] font-royal-title uppercase tracking-wider block font-bold">Indicative Retail Benchmark</span>
+                <span className="text-2xl sm:text-3xl font-royal-heading font-bold text-[#4D0E0D]">
                   {formatPrice(retailPrice)}
                 </span>
-                <span className="text-xs text-stone-500 ml-1">/ piece</span>
+                <span className="text-xs text-stone-500 font-royal-body ml-1">/ piece</span>
               </div>
 
               <div className="text-right">
-                <span className="text-[10px] text-[#942C29] font-bold uppercase tracking-wider block">
+                <span className="text-[10px] text-[#751B19] font-royal-title font-bold uppercase tracking-wider block">
                   B2B Wholesale FOB Rate
                 </span>
-                <span className="text-xl sm:text-2xl font-serif font-bold text-emerald-800">
+                <span className="text-xl sm:text-2xl font-royal-heading font-bold text-emerald-800">
                   {formatPrice(wholesalePrice)}
                 </span>
-                <span className="text-[11px] text-stone-500 ml-1 font-medium">({product.moq}+ MOQ)</span>
+                <span className="text-[11px] text-stone-600 ml-1 font-medium font-royal-body">({product.moq}+ MOQ)</span>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-stone-200/80 flex items-center justify-between text-xs text-stone-600">
-              <span className="flex items-center gap-1.5 font-semibold text-stone-800">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                Production MOQ: {product.moq} pcs
+            <div className="pt-3 border-t border-[#D4AF37]/25 flex items-center justify-between text-xs text-[#4D0E0D] font-royal-body">
+              <span className="flex items-center gap-1.5 font-semibold">
+                <CheckCircle2 className="w-4 h-4 text-emerald-700" />
+                Atelier MOQ: {product.moq} pcs
               </span>
-              <span className="text-stone-500">Lead Time: {product.leadTime || '12-18 Days'}</span>
+              <span className="text-[#751B19] font-medium">Production Lead Time: {product.leadTime || '12-18 Days'}</span>
             </div>
           </div>
 
           {/* Color Selection */}
           {product.colors && product.colors.length > 0 && (
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
-                Colorway / Block Palette: <span className="text-stone-900 font-normal">{selectedColor}</span>
+              <label className="block text-xs font-royal-title uppercase tracking-wider text-[#4D0E0D] font-bold mb-2">
+                Jaipur Colorway / Block Palette: <span className="text-[#751B19] font-normal">{selectedColor}</span>
               </label>
               <div className="flex flex-wrap gap-2">
                 {product.colors.map(col => (
                   <button
                     key={col}
                     onClick={() => setSelectedColor(col)}
-                    className={`px-3 py-1.5 rounded text-xs font-medium border transition-all ${
+                    className={`px-3.5 py-1.5 rounded-lg text-xs font-royal-body transition-all ${
                       selectedColor === col
-                        ? 'border-[#0E1612] bg-[#0E1612] text-white shadow-sm'
-                        : 'border-stone-300 bg-white text-stone-700 hover:border-stone-400'
+                        ? 'border-2 border-[#D4AF37] bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-md font-semibold'
+                        : 'border border-[#D4AF37]/30 bg-[#FAF6EE] text-[#4D0E0D] hover:border-[#751B19]'
                     }`}
                   >
                     {col}
@@ -227,20 +239,20 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           {product.sizes && product.sizes.length > 0 && (
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700">
+                <label className="block text-xs font-royal-title uppercase tracking-wider text-[#4D0E0D] font-bold">
                   Size / Dimensions
                 </label>
-                <span className="text-[11px] text-[#942C29] font-medium">Custom Sizing for Bulk Orders Available</span>
+                <span className="text-[11px] text-[#751B19] font-royal-body italic">Custom Sizing for Bulk Orders Available</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {product.sizes.map(sz => (
                   <button
                     key={sz}
                     onClick={() => setSelectedSize(sz)}
-                    className={`px-3.5 py-1.5 rounded text-xs font-medium border transition-all ${
+                    className={`px-3.5 py-1.5 rounded-lg text-xs font-royal-body transition-all ${
                       selectedSize === sz
-                        ? 'border-[#0E1612] bg-[#0E1612] text-white shadow-sm'
-                        : 'border-stone-300 bg-white text-stone-700 hover:border-stone-400'
+                        ? 'border-2 border-[#D4AF37] bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-md font-semibold'
+                        : 'border border-[#D4AF37]/30 bg-[#FAF6EE] text-[#4D0E0D] hover:border-[#751B19]'
                     }`}
                   >
                     {sz}
@@ -252,15 +264,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
 
           {/* Quantity Selector */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+            <label className="block text-xs font-royal-title uppercase tracking-wider text-[#4D0E0D] font-bold mb-2">
               Target Order Quantity (MOQ: {product.moq} pcs)
             </label>
             <div className="flex items-center gap-3">
-              <div className="flex items-center border border-stone-300 rounded bg-white overflow-hidden">
+              <div className="flex items-center border-2 border-[#D4AF37]/40 rounded-xl bg-white overflow-hidden shadow-sm">
                 <button
                   type="button"
                   onClick={() => setQuantity(prev => Math.max(1, prev - 10))}
-                  className="p-2.5 text-stone-600 hover:bg-stone-100 transition-colors"
+                  className="p-2.5 text-[#4D0E0D] hover:bg-[#FAF6EE] transition-colors"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
@@ -269,22 +281,22 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                   min="1"
                   value={quantity}
                   onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-20 text-center text-sm font-bold text-stone-900 focus:outline-none border-x border-stone-200 py-2"
+                  className="w-20 text-center text-sm font-bold text-[#4D0E0D] focus:outline-none border-x border-[#D4AF37]/30 py-2 bg-transparent"
                 />
                 <button
                   type="button"
                   onClick={() => setQuantity(prev => prev + 10)}
-                  className="p-2.5 text-stone-600 hover:bg-stone-100 transition-colors"
+                  className="p-2.5 text-[#4D0E0D] hover:bg-[#FAF6EE] transition-colors"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
 
-              <span className="text-xs text-stone-500">
+              <span className="text-xs font-royal-body text-[#751B19]">
                 {quantity < product.moq ? (
-                  <span className="text-amber-700 font-semibold">Sample order tier</span>
+                  <span className="text-amber-800 font-semibold">Sample order tier</span>
                 ) : (
-                  <span className="text-emerald-700 font-semibold">Wholesale pricing tier</span>
+                  <span className="text-emerald-800 font-semibold">Wholesale production rate tier</span>
                 )}
               </span>
             </div>
@@ -294,7 +306,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           <div className="space-y-3 pt-2">
             <button
               onClick={handleAddToBasket}
-              className="w-full py-4 bg-[#0E1612] text-amber-100 font-serif font-bold text-xs uppercase tracking-widest rounded shadow-xl hover:bg-[#D4AF37] hover:text-[#0E1612] transition-colors flex items-center justify-center gap-2"
+              className="btn-royal-gold w-full py-4 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 rounded-xl shadow-xl"
             >
               <Package className="w-4 h-4" />
               <span>Add to Wholesale Inquiry Basket</span>
@@ -303,15 +315,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <button
                 onClick={() => openQuickQuote(product)}
-                className="py-3 bg-white border border-stone-400 text-stone-900 font-serif font-bold text-xs uppercase tracking-wider rounded hover:bg-stone-100 transition-colors flex items-center justify-center gap-1.5 shadow-sm"
+                className="btn-royal-outline py-3 text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm flex items-center justify-center gap-1.5"
               >
-                <FileText className="w-4 h-4 text-[#942C29]" />
+                <FileText className="w-4 h-4 text-[#751B19]" />
                 <span>Request Custom Quote</span>
               </button>
 
               <button
                 onClick={() => { onNavigate('/custom-manufacturing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="py-3 bg-[#0E1612] hover:bg-[#1f2e26] text-amber-100 font-serif font-bold text-xs uppercase tracking-wider rounded transition-colors flex items-center justify-center gap-1.5 shadow"
+                className="btn-royal-rose py-3 text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm flex items-center justify-center gap-1.5"
               >
                 <Scissors className="w-4 h-4 text-[#D4AF37]" />
                 <span>Custom OEM Brief</span>
@@ -320,67 +332,69 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           </div>
 
           {/* Buyer Trust Guarantees */}
-          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-stone-200 text-xs text-stone-600">
+          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-[#D4AF37]/25 text-xs text-[#4D0E0D] font-royal-body">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-700 flex-shrink-0" />
               <span>100% Quality Inspected</span>
             </div>
             <div className="flex items-center gap-2">
-              <Truck className="w-4 h-4 text-amber-800 flex-shrink-0" />
+              <Truck className="w-4 h-4 text-[#751B19] flex-shrink-0" />
               <span>Worldwide Air/Sea Freight</span>
             </div>
             <div className="flex items-center gap-2">
-              <Award className="w-4 h-4 text-stone-700 flex-shrink-0" />
+              <Award className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
               <span>Pure Cotton & Azo-Free</span>
             </div>
             <div className="flex items-center gap-2">
-              <Scissors className="w-4 h-4 text-stone-700 flex-shrink-0" />
-              <span>Direct Atelier Pricing</span>
+              <Scissors className="w-4 h-4 text-[#751B19] flex-shrink-0" />
+              <span>Direct Jaipur Atelier Pricing</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Tabs: Detailed Technical Specifications & Wholesale Tiers */}
-      <div className="bg-[#FAF7F2] rounded-2xl p-6 sm:p-10 border border-amber-900/15">
+      <div className="bg-gradient-to-br from-[#FAF6EE] to-[#F3EADB] rounded-3xl p-6 sm:p-10 border-2 border-[#D4AF37]/30 shadow-lg relative overflow-hidden">
+        <div className="absolute inset-0 bg-jaipur-jaali opacity-5 pointer-events-none" />
+        
         {/* Tab Headers */}
-        <div className="flex items-center gap-2 border-b border-stone-300 pb-4 overflow-x-auto scrollbar-none">
+        <div className="flex items-center gap-2 border-b border-[#D4AF37]/30 pb-4 overflow-x-auto scrollbar-none relative z-10">
           <button
             onClick={() => setActiveTab('details')}
-            className={`px-4 py-2 rounded-full text-xs font-serif uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
+            className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-widest font-bold transition-all whitespace-nowrap ${
               activeTab === 'details'
-                ? 'bg-[#0E1612] text-amber-100 shadow'
-                : 'text-stone-600 hover:text-stone-900'
+                ? 'bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
+                : 'text-[#751B19] hover:text-[#4D0E0D] hover:bg-[#FAF6EE]'
             }`}
           >
             Craft Story & Overview
           </button>
           <button
             onClick={() => setActiveTab('specs')}
-            className={`px-4 py-2 rounded-full text-xs font-serif uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
+            className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-widest font-bold transition-all whitespace-nowrap ${
               activeTab === 'specs'
-                ? 'bg-[#0E1612] text-amber-100 shadow'
-                : 'text-stone-600 hover:text-stone-900'
+                ? 'bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
+                : 'text-[#751B19] hover:text-[#4D0E0D] hover:bg-[#FAF6EE]'
             }`}
           >
             Technical Specifications
           </button>
           <button
             onClick={() => setActiveTab('wholesale')}
-            className={`px-4 py-2 rounded-full text-xs font-serif uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
+            className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-widest font-bold transition-all whitespace-nowrap ${
               activeTab === 'wholesale'
-                ? 'bg-[#0E1612] text-amber-100 shadow'
-                : 'text-stone-600 hover:text-stone-900'
+                ? 'bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
+                : 'text-[#751B19] hover:text-[#4D0E0D] hover:bg-[#FAF6EE]'
             }`}
           >
             Wholesale Price Tiers & MOQ
           </button>
           <button
             onClick={() => setActiveTab('custom')}
-            className={`px-4 py-2 rounded-full text-xs font-serif uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
+            className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-widest font-bold transition-all whitespace-nowrap ${
               activeTab === 'custom'
-                ? 'bg-[#0E1612] text-amber-100 shadow'
-                : 'text-stone-600 hover:text-stone-900'
+                ? 'bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
+                : 'text-[#751B19] hover:text-[#4D0E0D] hover:bg-[#FAF6EE]'
             }`}
           >
             Custom Branding & Care
@@ -388,23 +402,23 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
         </div>
 
         {/* Tab Content */}
-        <div className="pt-6">
+        <div className="pt-6 relative z-10">
           {activeTab === 'details' && (
-            <div className="space-y-4 max-w-4xl text-stone-700 leading-relaxed text-sm">
-              <h3 className="font-serif text-xl font-bold text-stone-900">
-                The Heritage of {product.name}
+            <div className="space-y-4 max-w-4xl text-[#4D0E0D] font-royal-body leading-relaxed text-sm">
+              <h3 className="font-royal-heading text-xl sm:text-2xl font-bold text-[#4D0E0D]">
+                The Royal Heritage of {product.name}
               </h3>
-              <p>{product.description}</p>
+              <p className="text-base text-stone-700">{product.description}</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                <div className="p-4 bg-white rounded-lg border border-stone-200">
-                  <h4 className="font-bold text-stone-900 text-xs uppercase mb-1">Authentic Jaipur Craft</h4>
-                  <p className="text-xs text-stone-600">
-                    Hand-stamped in Rajasthan using hand-carved teak and Sheesham wood blocks. Slight natural irregularities in alignment or shade are the hallmark of authentic heritage craftsmanship.
+                <div className="p-5 bg-white/80 rounded-2xl border border-[#D4AF37]/30 shadow-sm">
+                  <h4 className="font-royal-title font-bold text-[#751B19] text-xs uppercase tracking-wider mb-1.5">Authentic Jaipur Handcraft</h4>
+                  <p className="text-xs text-stone-600 leading-relaxed">
+                    Hand-stamped in Rajasthan using hand-carved Sheesham wood blocks. Subtle variations in shade or alignment are the authentic hallmarks of royal heritage craftsmanship.
                   </p>
                 </div>
-                <div className="p-4 bg-white rounded-lg border border-stone-200">
-                  <h4 className="font-bold text-stone-900 text-xs uppercase mb-1">Pre-Washed & Colorfast</h4>
-                  <p className="text-xs text-stone-600">
+                <div className="p-5 bg-white/80 rounded-2xl border border-[#D4AF37]/30 shadow-sm">
+                  <h4 className="font-royal-title font-bold text-[#751B19] text-xs uppercase tracking-wider mb-1.5">Pre-Washed & Colorfast</h4>
+                  <p className="text-xs text-stone-600 leading-relaxed">
                     Each fabric batch undergoes traditional river and steam washing to lock in natural mineral dyes and prevent post-purchase shrinkage.
                   </p>
                 </div>
@@ -414,30 +428,30 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
 
           {activeTab === 'specs' && (
             <div className="max-w-4xl">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                <div className="bg-white p-4 rounded-lg border border-stone-200 flex justify-between">
-                  <span className="text-stone-500 font-medium">SKU Reference:</span>
-                  <span className="font-mono font-bold text-stone-900">{product.sku}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-royal-body">
+                <div className="bg-white/80 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                  <span className="text-[#751B19] font-medium font-royal-title uppercase">SKU Reference:</span>
+                  <span className="font-mono font-bold text-[#4D0E0D]">{product.sku}</span>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-stone-200 flex justify-between">
-                  <span className="text-stone-500 font-medium">Base Fabric:</span>
-                  <span className="font-bold text-stone-900">{product.fabric}</span>
+                <div className="bg-white/80 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                  <span className="text-[#751B19] font-medium font-royal-title uppercase">Base Fabric:</span>
+                  <span className="font-bold text-[#4D0E0D]">{product.fabric}</span>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-stone-200 flex justify-between">
-                  <span className="text-stone-500 font-medium">Printing Technique:</span>
-                  <span className="font-bold text-stone-900">{product.printTechnique}</span>
+                <div className="bg-white/80 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                  <span className="text-[#751B19] font-medium font-royal-title uppercase">Printing Technique:</span>
+                  <span className="font-bold text-[#4D0E0D]">{product.printTechnique}</span>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-stone-200 flex justify-between">
-                  <span className="text-stone-500 font-medium">Craft Origin:</span>
-                  <span className="font-bold text-stone-900">Jaipur, Rajasthan (India)</span>
+                <div className="bg-white/80 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                  <span className="text-[#751B19] font-medium font-royal-title uppercase">Craft Origin:</span>
+                  <span className="font-bold text-[#4D0E0D]">Jaipur, Rajasthan (India)</span>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-stone-200 flex justify-between">
-                  <span className="text-stone-500 font-medium">Dye Formulation:</span>
-                  <span className="font-bold text-stone-900">Azo-Free / Natural Fermented Indigo</span>
+                <div className="bg-white/80 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                  <span className="text-[#751B19] font-medium font-royal-title uppercase">Dye Formulation:</span>
+                  <span className="font-bold text-[#4D0E0D]">Azo-Free / Natural Fermented Indigo</span>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-stone-200 flex justify-between">
-                  <span className="text-stone-500 font-medium">Export Carton Specs:</span>
-                  <span className="font-bold text-stone-900">50 units/carton (Double Wall Corrugated)</span>
+                <div className="bg-white/80 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                  <span className="text-[#751B19] font-medium font-royal-title uppercase">Export Carton Specs:</span>
+                  <span className="font-bold text-[#4D0E0D]">50 units/carton (Double Wall Corrugated)</span>
                 </div>
               </div>
             </div>
@@ -445,43 +459,43 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
 
           {activeTab === 'wholesale' && (
             <div className="max-w-4xl space-y-4">
-              <h3 className="font-serif text-lg font-bold text-stone-900">
-                Tiered Wholesale FOB Pricing Matrix
+              <h3 className="font-royal-heading text-lg font-bold text-[#4D0E0D]">
+                Tiered Wholesale FOB Pricing Matrix (Jaipur Port / Airport)
               </h3>
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs bg-white rounded-lg overflow-hidden border border-stone-200">
-                  <thead className="bg-[#0E1612] text-amber-100 font-serif uppercase tracking-wider">
+              <div className="overflow-x-auto rounded-2xl border-2 border-[#D4AF37]/30 shadow-md">
+                <table className="w-full text-left text-xs font-royal-body bg-white">
+                  <thead className="bg-gradient-to-r from-[#4D0E0D] to-[#751B19] text-[#F5E6B5] font-royal-title uppercase tracking-wider">
                     <tr>
-                      <th className="p-3">Order Quantity</th>
-                      <th className="p-3">Discount Tier</th>
-                      <th className="p-3">Estimated Price / Piece</th>
-                      <th className="p-3">Production Lead Time</th>
+                      <th className="p-3.5">Order Quantity</th>
+                      <th className="p-3.5">Discount Tier</th>
+                      <th className="p-3.5">Estimated Price / Piece</th>
+                      <th className="p-3.5">Production Lead Time</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-stone-200 text-stone-700">
-                    <tr>
-                      <td className="p-3 font-semibold">Sample (1 - 10 pcs)</td>
-                      <td className="p-3">Sample Rate</td>
-                      <td className="p-3 font-bold">{formatPrice(retailPrice)}</td>
-                      <td className="p-3">3 - 5 Days</td>
+                  <tbody className="divide-y divide-[#D4AF37]/20 text-[#4D0E0D]">
+                    <tr className="hover:bg-[#FAF6EE]/60">
+                      <td className="p-3.5 font-semibold">Sample (1 - 10 pcs)</td>
+                      <td className="p-3.5">Sample Rate</td>
+                      <td className="p-3.5 font-bold">{formatPrice(retailPrice)}</td>
+                      <td className="p-3.5">3 - 5 Days</td>
                     </tr>
-                    <tr className="bg-amber-50/50">
-                      <td className="p-3 font-semibold">Tier 1 ({product.moq} - 199 pcs)</td>
-                      <td className="p-3 text-emerald-700 font-bold">Standard Wholesale</td>
-                      <td className="p-3 font-bold text-emerald-800">{formatPrice(wholesalePrice)}</td>
-                      <td className="p-3">12 - 15 Days</td>
+                    <tr className="bg-[#FAF6EE] hover:bg-[#F3EADB]">
+                      <td className="p-3.5 font-semibold">Tier 1 ({product.moq} - 199 pcs)</td>
+                      <td className="p-3.5 text-emerald-800 font-bold">Standard Wholesale</td>
+                      <td className="p-3.5 font-bold text-emerald-800">{formatPrice(wholesalePrice)}</td>
+                      <td className="p-3.5">12 - 15 Days</td>
                     </tr>
-                    <tr>
-                      <td className="p-3 font-semibold">Tier 2 (200 - 499 pcs)</td>
-                      <td className="p-3 text-emerald-700 font-bold">10% Volume Discount</td>
-                      <td className="p-3 font-bold text-emerald-800">{formatPrice(Math.round(wholesalePrice * 0.90))}</td>
-                      <td className="p-3">18 - 22 Days</td>
+                    <tr className="hover:bg-[#FAF6EE]/60">
+                      <td className="p-3.5 font-semibold">Tier 2 (200 - 499 pcs)</td>
+                      <td className="p-3.5 text-emerald-800 font-bold">10% Volume Discount</td>
+                      <td className="p-3.5 font-bold text-emerald-800">{formatPrice(Math.round(wholesalePrice * 0.90))}</td>
+                      <td className="p-3.5">18 - 22 Days</td>
                     </tr>
-                    <tr className="bg-amber-50/50">
-                      <td className="p-3 font-semibold">Tier 3 (500+ pcs)</td>
-                      <td className="p-3 text-emerald-700 font-bold">Custom OEM Contract Rate</td>
-                      <td className="p-3 font-bold text-emerald-800">{formatPrice(Math.round(wholesalePrice * 0.80))}</td>
-                      <td className="p-3">25 - 30 Days</td>
+                    <tr className="bg-[#FAF6EE] hover:bg-[#F3EADB]">
+                      <td className="p-3.5 font-semibold">Tier 3 (500+ pcs)</td>
+                      <td className="p-3.5 text-emerald-800 font-bold">Custom OEM Contract Rate</td>
+                      <td className="p-3.5 font-bold text-emerald-800">{formatPrice(Math.round(wholesalePrice * 0.80))}</td>
+                      <td className="p-3.5">25 - 30 Days</td>
                     </tr>
                   </tbody>
                 </table>
@@ -490,13 +504,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           )}
 
           {activeTab === 'custom' && (
-            <div className="max-w-4xl space-y-4 text-xs text-stone-700">
-              <h3 className="font-serif text-lg font-bold text-stone-900">
-                Custom Production & Care Guide
+            <div className="max-w-4xl space-y-4 text-xs font-royal-body text-stone-700">
+              <h3 className="font-royal-heading text-lg font-bold text-[#4D0E0D]">
+                Custom Production & Royal Care Guide
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-white p-4 rounded-lg border border-stone-200 space-y-2">
-                  <h4 className="font-bold text-stone-900 uppercase">Custom Production Services:</h4>
+                <div className="bg-white/80 p-5 rounded-2xl border border-[#D4AF37]/30 space-y-2 shadow-sm">
+                  <h4 className="font-royal-title font-bold text-[#751B19] uppercase tracking-wider">Custom OEM Atelier Services:</h4>
                   <ul className="list-disc pl-4 space-y-1 text-stone-600">
                     <li>Custom Wooden Printing Block Carvings with bespoke motifs</li>
                     <li>Custom Colorway Strike-offs & Lab Dips</li>
@@ -504,8 +518,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                     <li>Sealed export polybag packaging with barcode tags</li>
                   </ul>
                 </div>
-                <div className="bg-white p-4 rounded-lg border border-stone-200 space-y-2">
-                  <h4 className="font-bold text-stone-900 uppercase">Fabric Care Instructions:</h4>
+                <div className="bg-white/80 p-5 rounded-2xl border border-[#D4AF37]/30 space-y-2 shadow-sm">
+                  <h4 className="font-royal-title font-bold text-[#751B19] uppercase tracking-wider">Fabric Care Instructions:</h4>
                   <ul className="list-disc pl-4 space-y-1 text-stone-600">
                     <li>Gentle cold hand wash or machine wash on delicate cycle</li>
                     <li>Use mild eco-friendly liquid detergent</li>
@@ -521,16 +535,19 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <div className="space-y-6">
+        <div className="space-y-6 pt-4">
           <div className="flex items-center justify-between">
-            <h2 className="font-serif text-2xl font-bold text-stone-900">
-              Complementary Creations in this Line
-            </h2>
+            <div>
+              <span className="text-xs font-royal-title text-[#751B19] font-bold uppercase tracking-widest">Atelier Suggestions</span>
+              <h2 className="font-royal-heading text-2xl font-bold text-[#4D0E0D]">
+                Complementary Creations in this Royal Line
+              </h2>
+            </div>
             <button
               onClick={() => { onNavigate(`/category/${product.category}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="text-xs font-serif font-bold text-[#942C29] uppercase tracking-wider hover:underline"
+              className="text-xs font-royal-title font-bold text-[#751B19] uppercase tracking-widest hover:underline hover:text-[#4D0E0D]"
             >
-              View Full Category
+              View Full Category →
             </button>
           </div>
 

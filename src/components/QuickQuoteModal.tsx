@@ -28,23 +28,23 @@ export const QuickQuoteModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/65 backdrop-blur-sm p-4 flex items-center justify-center animate-fade-in">
-      <div className="w-full max-w-xl bg-[#FAF7F2] rounded-lg shadow-2xl border border-[#C4A674]/40 overflow-hidden">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm p-4 flex items-center justify-center animate-fade-in">
+      <div className="w-full max-w-xl bg-[#FAF6EE] rounded-2xl shadow-2xl border-2 border-[#D4AF37]/50 overflow-hidden">
         
         {/* Header */}
-        <div className="p-4 bg-[#0C1813] text-[#FAF7F2] border-b border-[#254234] flex items-center justify-between">
+        <div className="p-4 bg-[#4D0E0D] text-[#FAF3DC] border-b border-[#D4AF37]/40 flex items-center justify-between shadow-md">
           <div className="flex items-center gap-2.5">
-            <FileText className="w-5 h-5 text-[#DFCA9F]" />
+            <FileText className="w-5 h-5 text-[#D4AF37]" />
             <div>
-              <h3 className="font-heading text-sm font-bold text-[#DFCA9F] uppercase tracking-wider">
-                Wholesale Quote &amp; Sample Request
+              <h3 className="font-heading text-sm font-bold text-[#FAF3DC] uppercase tracking-wider">
+                👑 Wholesale Quote &amp; Sample Request
               </h3>
-              <span className="text-[10px] text-[#A3AFA8]">Direct Jaipur Atelier Manufacturer Desk</span>
+              <span className="text-[10px] text-stone-300 font-light">Direct Jaipur Atelier Manufacturer Desk</span>
             </div>
           </div>
           <button 
             onClick={closeQuickQuote}
-            className="p-1 rounded text-gray-400 hover:text-white"
+            className="p-1 rounded-lg text-stone-300 hover:text-white hover:bg-white/10 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -54,15 +54,15 @@ export const QuickQuoteModal: React.FC = () => {
         <div className="p-5">
           {isSubmitted ? (
             <div className="text-center py-6 space-y-4">
-              <div className="w-14 h-14 bg-[#13241C] border-2 border-[#D4AF37] text-[#D4AF37] rounded-full mx-auto flex items-center justify-center">
-                <CheckCircle2 className="w-8 h-8" />
+              <div className="w-14 h-14 bg-[#380708] border-2 border-[#D4AF37] text-[#D4AF37] rounded-full mx-auto flex items-center justify-center shadow-lg">
+                <CheckCircle2 className="w-8 h-8 text-[#25D366]" />
               </div>
               <div>
-                <h4 className="font-heading text-lg font-bold text-[#0C1813]">
+                <h4 className="font-heading text-lg font-bold text-[#4D0E0D]">
                   Quotation Request Dispatched
                 </h4>
-                <p className="text-xs text-[#4F5A54] max-w-md mx-auto mt-1 leading-relaxed">
-                  Thank you, <strong>{name}</strong>. Your inquiry for <strong>{activeQuoteProduct.name}</strong> (Qty: {quantity} pcs) has been routed to our production desk. We will email the official quotation to <strong>{email}</strong> within 4–6 business hours.
+                <p className="text-xs text-[#5C4540] max-w-md mx-auto mt-1 leading-relaxed font-light">
+                  Thank you, <strong>{name}</strong>. Your inquiry for <strong>{activeQuoteProduct.name}</strong> (Qty: {quantity} pcs) has been routed to our Jaipur desk. We will email the official quotation to <strong>{email}</strong> within 4–6 business hours.
                 </p>
               </div>
 
@@ -72,26 +72,26 @@ export const QuickQuoteModal: React.FC = () => {
                     setIsSubmitted(false);
                     closeQuickQuote();
                   }}
-                  className="py-2.5 px-6 bg-[#0C1813] text-[#DFCA9F] text-xs font-bold uppercase rounded shadow"
+                  className="btn-royal-rose text-xs"
                 >
-                  Close
+                  Close Window
                 </button>
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Product Spotlight Header */}
-              <div className="p-3 bg-white rounded border border-[#121815]/10 flex gap-3">
+              <div className="p-3 bg-white rounded-xl border border-[#D4AF37]/35 flex gap-3 shadow-sm">
                 <img 
                   src={activeQuoteProduct.images[0]} 
                   alt={activeQuoteProduct.name} 
-                  className="w-14 h-16 object-cover rounded border border-black/5"
+                  className="w-14 h-16 object-cover rounded-lg border border-[#D4AF37]/30 shadow-sm"
                 />
                 <div className="flex-1 text-xs">
-                  <span className="text-[10px] text-[#8A4A3B] font-bold uppercase">SKU: {activeQuoteProduct.sku}</span>
-                  <h4 className="font-heading font-semibold text-[#0C1813] line-clamp-1">{activeQuoteProduct.name}</h4>
-                  <p className="text-[11px] text-[#7E8A83]">{activeQuoteProduct.fabric}</p>
-                  <div className="mt-1 flex items-center gap-2 text-[10px] text-[#254234] font-semibold">
+                  <span className="text-[10px] text-[#942220] font-bold uppercase font-heading">SKU: {activeQuoteProduct.sku}</span>
+                  <h4 className="font-heading font-bold text-[#4D0E0D] line-clamp-1">{activeQuoteProduct.name}</h4>
+                  <p className="text-[11px] text-[#7A5450] font-light">{activeQuoteProduct.fabric}</p>
+                  <div className="mt-1 flex items-center gap-2 text-[10px] text-[#4D0E0D] font-bold">
                     <span>MOQ: {activeQuoteProduct.moq} Pcs</span>
                     <span>•</span>
                     <span>Lead Time: {activeQuoteProduct.leadTime}</span>
@@ -101,28 +101,28 @@ export const QuickQuoteModal: React.FC = () => {
 
               {/* Inquiry Type Tabs */}
               <div>
-                <label className="block text-[10px] font-bold text-[#4F5A54] uppercase tracking-wider mb-1.5">
+                <label className="block text-[10px] font-bold text-[#7A5450] uppercase tracking-wider mb-1.5 font-heading">
                   Inquiry Purpose
                 </label>
                 <div className="grid grid-cols-3 gap-2 text-xs">
                   <button
                     type="button"
                     onClick={() => setInquiryType('bulk')}
-                    className={`py-2 px-3 rounded text-center font-semibold transition-all border ${
+                    className={`py-2 px-3 rounded-lg text-center font-bold font-heading transition-all border ${
                       inquiryType === 'bulk' 
-                        ? 'bg-[#0C1813] text-[#DFCA9F] border-[#0C1813]' 
-                        : 'bg-white text-[#4F5A54] border-[#121815]/15'
+                        ? 'bg-[#751B19] text-[#FAF3DC] border-[#D4AF37]/50 shadow-sm' 
+                        : 'bg-white text-[#4D0E0D] border-[#D4AF37]/30'
                     }`}
                   >
-                    Bulk Production
+                    Bulk Order
                   </button>
                   <button
                     type="button"
                     onClick={() => setInquiryType('sample')}
-                    className={`py-2 px-3 rounded text-center font-semibold transition-all border ${
+                    className={`py-2 px-3 rounded-lg text-center font-bold font-heading transition-all border ${
                       inquiryType === 'sample' 
-                        ? 'bg-[#0C1813] text-[#DFCA9F] border-[#0C1813]' 
-                        : 'bg-white text-[#4F5A54] border-[#121815]/15'
+                        ? 'bg-[#751B19] text-[#FAF3DC] border-[#D4AF37]/50 shadow-sm' 
+                        : 'bg-white text-[#4D0E0D] border-[#D4AF37]/30'
                     }`}
                   >
                     Proto-Sample
@@ -130,13 +130,13 @@ export const QuickQuoteModal: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setInquiryType('swatch')}
-                    className={`py-2 px-3 rounded text-center font-semibold transition-all border ${
+                    className={`py-2 px-3 rounded-lg text-center font-bold font-heading transition-all border ${
                       inquiryType === 'swatch' 
-                        ? 'bg-[#0C1813] text-[#DFCA9F] border-[#0C1813]' 
-                        : 'bg-white text-[#4F5A54] border-[#121815]/15'
+                        ? 'bg-[#751B19] text-[#FAF3DC] border-[#D4AF37]/50 shadow-sm' 
+                        : 'bg-white text-[#4D0E0D] border-[#D4AF37]/30'
                     }`}
                   >
-                    Swatch Deck
+                    Swatch Folder
                   </button>
                 </div>
               </div>
@@ -144,7 +144,7 @@ export const QuickQuoteModal: React.FC = () => {
               {/* Form Inputs */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div>
-                  <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">Your Full Name *</label>
+                  <label className="block text-[10px] font-bold text-[#7A5450] uppercase mb-0.5 font-heading">Your Full Name *</label>
                   <input 
                     type="text" 
                     value={name} 
@@ -155,7 +155,7 @@ export const QuickQuoteModal: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">Company / Label Name</label>
+                  <label className="block text-[10px] font-bold text-[#7A5450] uppercase mb-0.5 font-heading">Company / Label Name</label>
                   <input 
                     type="text" 
                     value={company} 
@@ -165,7 +165,7 @@ export const QuickQuoteModal: React.FC = () => {
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">Official Business Email Address *</label>
+                  <label className="block text-[10px] font-bold text-[#7A5450] uppercase mb-0.5 font-heading">Official Business Email Address *</label>
                   <input 
                     type="email" 
                     value={email} 
@@ -176,7 +176,7 @@ export const QuickQuoteModal: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">Estimated Quantity (Units)</label>
+                  <label className="block text-[10px] font-bold text-[#7A5450] uppercase mb-0.5 font-heading">Estimated Quantity (Units)</label>
                   <input 
                     type="number" 
                     min={inquiryType === 'sample' ? 1 : activeQuoteProduct.moq} 
@@ -186,7 +186,7 @@ export const QuickQuoteModal: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">Destination Country</label>
+                  <label className="block text-[10px] font-bold text-[#7A5450] uppercase mb-0.5 font-heading">Destination Country</label>
                   <input 
                     type="text" 
                     value={country} 
@@ -198,7 +198,7 @@ export const QuickQuoteModal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">Specific Requirements</label>
+                <label className="block text-[10px] font-bold text-[#7A5450] uppercase mb-0.5 font-heading">Specific Requirements</label>
                 <textarea 
                   rows={2} 
                   value={notes} 
@@ -211,9 +211,9 @@ export const QuickQuoteModal: React.FC = () => {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-2.5 bg-[#0C1813] text-[#DFCA9F] hover:bg-[#13241C] text-xs font-bold uppercase rounded border border-[#C4A674]/50 flex items-center justify-center gap-2 cursor-pointer shadow-sm transition-all"
+                  className="w-full btn-royal-gold flex items-center justify-center gap-2 shadow-lg"
                 >
-                  <FileText className="w-4 h-4 text-[#C4A674]" />
+                  <FileText className="w-4 h-4 text-[#381A03]" />
                   <span>Request Tiered Wholesale Quotation</span>
                 </button>
               </div>
@@ -225,3 +225,5 @@ export const QuickQuoteModal: React.FC = () => {
     </div>
   );
 };
+
+export default QuickQuoteModal;

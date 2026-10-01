@@ -78,21 +78,21 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-black/70 backdrop-blur-sm animate-fade-in">
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-xl bg-[#FAF7F2] shadow-2xl flex flex-col justify-between overflow-hidden">
+        <div className="w-screen max-w-xl bg-[#FAF6EE] shadow-2xl flex flex-col justify-between overflow-hidden border-l-2 border-[#D4AF37]/50">
           
           {/* Header */}
-          <div className="p-5 bg-[#0C1813] text-[#FAF7F2] border-b border-[#254234] flex items-center justify-between">
+          <div className="p-5 bg-[#4D0E0D] text-[#FAF3DC] border-b border-[#D4AF37]/40 flex items-center justify-between shadow-md">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded bg-[#13241C] border border-[#C4A674]/40 flex items-center justify-center">
-                <ShoppingBag className="w-5 h-5 text-[#DFCA9F]" />
+              <div className="w-10 h-10 rounded-xl bg-[#380708] border border-[#D4AF37]/50 flex items-center justify-center shadow-inner">
+                <ShoppingBag className="w-5 h-5 text-[#F5E6B5]" />
               </div>
               <div>
-                <h3 className="font-heading text-base font-bold text-[#DFCA9F] uppercase tracking-wider">
-                  Wholesale Inquiry Basket
+                <h3 className="font-heading text-base font-bold text-[#FAF3DC] uppercase tracking-wider flex items-center gap-1.5">
+                  <span>👑 Wholesale RFQ Basket</span>
                 </h3>
-                <span className="text-[11px] text-[#A3AFA8]">
+                <span className="text-[11px] text-stone-300 font-light">
                   {inquiryItems.length} Products | {totalQuantity} Total Units Selected
                 </span>
               </div>
@@ -100,7 +100,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
 
             <button 
               onClick={closeInquiryDrawer}
-              className="p-1.5 rounded text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+              className="p-1.5 rounded-lg text-stone-300 hover:text-white hover:bg-white/10 transition-colors"
               aria-label="Close inquiry drawer"
             >
               <X className="w-6 h-6" />
@@ -112,28 +112,28 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
             {rfqSubmittedId ? (
               /* Success State */
               <div className="text-center py-8 space-y-4">
-                <div className="w-16 h-16 bg-[#13241C] border-2 border-[#25D366] text-[#25D366] rounded-full mx-auto flex items-center justify-center shadow-lg">
-                  <CheckCircle2 className="w-10 h-10" />
+                <div className="w-16 h-16 bg-[#380708] border-2 border-[#D4AF37] text-[#D4AF37] rounded-full mx-auto flex items-center justify-center shadow-xl">
+                  <CheckCircle2 className="w-10 h-10 text-[#25D366]" />
                 </div>
 
                 <div className="space-y-1">
-                  <span className="text-[11px] font-bold text-[#8A4A3B] uppercase tracking-widest">
+                  <span className="text-[11px] font-bold text-[#942220] uppercase tracking-widest font-heading">
                     Request Received
                   </span>
-                  <h4 className="font-heading text-xl font-bold text-[#0C1813]">
+                  <h4 className="font-heading text-xl font-bold text-[#4D0E0D]">
                     Wholesale RFQ #{rfqSubmittedId}
                   </h4>
-                  <p className="text-xs text-[#4F5A54] max-w-sm mx-auto leading-relaxed">
-                    Thank you, <strong>{contactName}</strong> ({companyName || 'B2B Client'}). Our export and production manager in Jaipur will review your specifications and email you the official tiered quotation within 4–6 business hours.
+                  <p className="text-xs text-[#5C4540] max-w-sm mx-auto leading-relaxed font-light">
+                    Thank you, <strong>{contactName}</strong> ({companyName || 'B2B Client'}). Our export and production desk in Jaipur will review your specifications and email you the official tiered quotation within 4–6 business hours.
                   </p>
                 </div>
 
-                <div className="bg-white p-4 rounded border border-[#121815]/10 text-left space-y-2 text-xs">
-                  <div className="flex justify-between pb-2 border-b border-black/5 font-semibold text-[#0C1813]">
+                <div className="bg-white p-4 rounded-xl border border-[#D4AF37]/35 text-left space-y-2 text-xs shadow-sm">
+                  <div className="flex justify-between pb-2 border-b border-[#D4AF37]/20 font-bold text-[#4D0E0D] font-heading">
                     <span>Summary Overview</span>
                     <span>{totalQuantity} Units</span>
                   </div>
-                  <div className="text-[#4F5A54] space-y-1">
+                  <div className="text-[#5C4540] space-y-1 font-light">
                     <p>• <strong>Buyer:</strong> {contactName} ({email})</p>
                     <p>• <strong>Company:</strong> {companyName || 'B2B Client'}</p>
                     <p>• <strong>Destination:</strong> {country}</p>
@@ -143,16 +143,16 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                 <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <button
                     onClick={handlePrintQuotation}
-                    className="w-full py-2.5 px-4 bg-[#0C1813] text-[#DFCA9F] rounded text-xs font-bold uppercase hover:bg-[#13241C] flex items-center justify-center gap-1.5 cursor-pointer shadow"
+                    className="w-full btn-royal-rose flex items-center justify-center gap-1.5 shadow"
                   >
-                    <Printer className="w-4 h-4 text-[#C4A674]" />
+                    <Printer className="w-4 h-4 text-[#D4AF37]" />
                     <span>Download / Print RFQ Summary</span>
                   </button>
                 </div>
 
                 <button
                   onClick={handleReset}
-                  className="w-full py-2 text-xs font-semibold text-[#8A4A3B] hover:underline"
+                  className="w-full py-2 text-xs font-bold text-[#942220] hover:underline font-heading"
                 >
                   Start New Inquiry or Continue Browsing
                 </button>
@@ -160,13 +160,13 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
             ) : inquiryItems.length === 0 ? (
               /* Empty Basket State */
               <div className="text-center py-16 space-y-4">
-                <div className="w-16 h-16 bg-[#F2ECE0] rounded-full mx-auto flex items-center justify-center text-[#7E8A83]">
-                  <ShoppingBag className="w-8 h-8 opacity-40" />
+                <div className="w-16 h-16 bg-[#F3EADB] rounded-full mx-auto flex items-center justify-center text-[#751B19] border border-[#D4AF37]/40 shadow-inner">
+                  <ShoppingBag className="w-8 h-8 opacity-60 text-[#D4AF37]" />
                 </div>
-                <h4 className="font-heading text-lg text-[#0C1813] font-semibold">
+                <h4 className="font-heading text-lg text-[#4D0E0D] font-bold">
                   Your Wholesale Basket is Empty
                 </h4>
-                <p className="text-xs text-[#7E8A83] max-w-xs mx-auto">
+                <p className="text-xs text-[#5C4540] max-w-xs mx-auto font-light">
                   Browse our apparel collections, quilted bags, and fabrics by meter to add items to your official quotation inquiry.
                 </p>
                 <div className="pt-2 flex justify-center gap-3">
@@ -175,7 +175,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       closeInquiryDrawer();
                       onNavigate('/shop');
                     }}
-                    className="btn-primary text-xs"
+                    className="btn-royal-gold text-xs"
                   >
                     Browse Catalog
                   </button>
@@ -184,7 +184,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       closeInquiryDrawer();
                       onNavigate('/custom-manufacturing');
                     }}
-                    className="btn-secondary text-xs"
+                    className="btn-royal-sand-outline text-xs"
                   >
                     Custom Project
                   </button>
@@ -194,68 +194,68 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
               /* Itemized Product List */
               <>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center pb-2 border-b border-[#121815]/10">
-                    <span className="text-xs font-bold text-[#8A4A3B] uppercase tracking-wider">
+                  <div className="flex justify-between items-center pb-2 border-b border-[#D4AF37]/30">
+                    <span className="text-xs font-bold text-[#942220] uppercase tracking-wider font-heading">
                       Selected Items ({inquiryItems.length})
                     </span>
                     <button
                       onClick={clearInquiry}
-                      className="text-[11px] text-red-600 hover:underline flex items-center gap-1"
+                      className="text-[11px] text-[#942220] hover:underline flex items-center gap-1 font-semibold"
                     >
                       <Trash2 className="w-3 h-3" />
                       <span>Clear All</span>
                     </button>
                   </div>
 
-                  {inquiryItems.map((item, index) => (
+                  {inquiryItems.map((item) => (
                     <div 
                       key={`${item.product.id}-${item.selectedColor}-${item.selectedSize}`}
-                      className="bg-white p-3 rounded border border-[#121815]/10 flex gap-3 shadow-sm relative group"
+                      className="bg-white p-3.5 rounded-xl border border-[#D4AF37]/35 flex gap-3 shadow-sm relative group hover:border-[#D4AF37] transition-all"
                     >
                       <img 
                         src={item.product.images[0]} 
                         alt={item.product.name}
-                        className="w-16 h-20 rounded object-cover border border-black/5 shrink-0"
+                        className="w-16 h-20 rounded-lg object-cover border border-[#D4AF37]/30 shrink-0 shadow-sm"
                       />
                       <div className="flex-1 flex flex-col justify-between">
                         <div>
                           <div className="flex justify-between items-start gap-2">
-                            <h5 className="font-heading text-xs font-bold text-[#0C1813] line-clamp-1">
+                            <h5 className="font-heading text-xs font-bold text-[#4D0E0D] line-clamp-1">
                               {item.product.name}
                             </h5>
                             <button
                               onClick={() => removeFromInquiry(item.product.id, item.selectedColor, item.selectedSize)}
-                              className="text-gray-400 hover:text-red-600 p-1"
+                              className="text-gray-400 hover:text-[#942220] p-1"
                               title="Remove item"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
                             </button>
                           </div>
-                          <span className="text-[10px] text-[#7E8A83] block">
+                          <span className="text-[10px] text-[#7A5450] block mt-0.5">
                             SKU: {item.product.sku} | Color: <strong>{item.selectedColor}</strong> | Size: <strong>{item.selectedSize}</strong>
                           </span>
                         </div>
 
-                        <div className="flex items-center justify-between mt-2 pt-2 border-t border-black/5">
+                        <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#D4AF37]/20">
                           <div className="flex items-center gap-1">
                             <button
                               onClick={() => updateInquiryQuantity(item.product.id, item.selectedColor, item.selectedSize, item.quantity - 5)}
-                              className="w-6 h-6 rounded bg-[#F2ECE0] text-[#0C1813] font-bold text-xs flex items-center justify-center hover:bg-[#EADFCF]"
+                              className="w-6 h-6 rounded bg-[#F3EADB] text-[#4D0E0D] font-bold text-xs flex items-center justify-center hover:bg-[#D4AF37] hover:text-[#381A03] transition-colors"
                             >
                               -
                             </button>
-                            <span className="w-12 text-center text-xs font-bold text-[#0C1813]">
+                            <span className="w-12 text-center text-xs font-bold text-[#4D0E0D]">
                               {item.quantity} pcs
                             </span>
                             <button
                               onClick={() => updateInquiryQuantity(item.product.id, item.selectedColor, item.selectedSize, item.quantity + 5)}
-                              className="w-6 h-6 rounded bg-[#F2ECE0] text-[#0C1813] font-bold text-xs flex items-center justify-center hover:bg-[#EADFCF]"
+                              className="w-6 h-6 rounded bg-[#F3EADB] text-[#4D0E0D] font-bold text-xs flex items-center justify-center hover:bg-[#D4AF37] hover:text-[#381A03] transition-colors"
                             >
                               +
                             </button>
                           </div>
 
-                          <span className="text-[10px] text-[#254234] font-semibold bg-[#F2ECE0] px-2 py-0.5 rounded">
+                          <span className="text-[10px] text-[#4D0E0D] font-bold bg-[#FFF5F5] border border-[#D4AF37]/35 px-2 py-0.5 rounded-full font-heading">
                             MOQ {item.product.moq}
                           </span>
                         </div>
@@ -265,17 +265,17 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                 </div>
 
                 {/* Buyer Information Form */}
-                <form onSubmit={handleSubmitOfficialRfq} className="bg-[#F2ECE0]/70 p-4 rounded border border-[#C4A674]/30 space-y-3">
-                  <div className="flex items-center gap-2 pb-1 border-b border-black/10">
-                    <Building className="w-4 h-4 text-[#8A4A3B]" />
-                    <span className="text-xs font-bold text-[#0C1813] uppercase tracking-wider">
+                <form onSubmit={handleSubmitOfficialRfq} className="bg-[#FFF5F5] p-4 rounded-xl border border-[#D4AF37]/40 space-y-3 shadow-sm">
+                  <div className="flex items-center gap-2 pb-1.5 border-b border-[#D4AF37]/30">
+                    <Building className="w-4 h-4 text-[#942220]" />
+                    <span className="text-xs font-bold text-[#4D0E0D] uppercase tracking-wider font-heading">
                       Buyer &amp; Delivery Information
                     </span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
-                      <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">
+                      <label className="block text-[10px] font-bold text-[#7A5450] uppercase mb-0.5 font-heading">
                         Your Full Name *
                       </label>
                       <input 
@@ -289,7 +289,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                     </div>
 
                     <div>
-                      <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">
+                      <label className="block text-[10px] font-bold text-[#7A5450] uppercase mb-0.5 font-heading">
                         Company / Boutique Name
                       </label>
                       <input 
@@ -303,7 +303,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">
+                    <label className="block text-[10px] font-bold text-[#7A5450] uppercase mb-0.5 font-heading">
                       Official Business Email *
                     </label>
                     <input 
@@ -318,7 +318,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
-                      <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">
+                      <label className="block text-[10px] font-bold text-[#7A5450] uppercase mb-0.5 font-heading">
                         Destination Country
                       </label>
                       <select 
@@ -341,8 +341,8 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-semibold text-[#4F5A54] uppercase mb-0.5">
-                      Specific Notes / Timeline Requirements
+                    <label className="block text-[10px] font-bold text-[#7A5450] uppercase mb-0.5 font-heading">
+                      Specific Notes / Target Timeline
                     </label>
                     <textarea 
                       rows={2}
@@ -358,9 +358,9 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3 bg-[#0C1813] text-[#DFCA9F] hover:bg-[#13241C] text-xs font-bold uppercase tracking-wider rounded border border-[#C4A674]/50 flex items-center justify-center gap-2 shadow-md cursor-pointer transition-all"
+                      className="w-full btn-royal-gold flex items-center justify-center gap-2 shadow-lg"
                     >
-                      <FileText className="w-4 h-4 text-[#C4A674]" />
+                      <FileText className="w-4 h-4 text-[#381A03]" />
                       <span>{isSubmitting ? 'Generating Quotation Ticket...' : 'Submit Official Wholesale RFQ'}</span>
                     </button>
                   </div>
@@ -370,8 +370,8 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
           </div>
 
           {/* Footer Security Badge */}
-          <div className="p-3 bg-[#F2ECE0] border-t border-[#121815]/10 text-center text-[11px] text-[#4F5A54] flex items-center justify-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-[#C4A674]" />
+          <div className="p-3 bg-[#F3EADB] border-t border-[#D4AF37]/30 text-center text-[11px] text-[#4D0E0D] flex items-center justify-center gap-2 font-medium">
+            <ShieldCheck className="w-4 h-4 text-[#942220]" />
             <span>Confidential B2B Pricing • Direct Manufacturer Rates • FOB Jaipur</span>
           </div>
 
@@ -380,3 +380,5 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
     </div>
   );
 };
+
+export default InquiryDrawer;
