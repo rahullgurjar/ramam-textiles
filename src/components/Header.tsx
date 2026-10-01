@@ -66,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           <div className="flex items-center gap-4">
             <span className="inline-flex items-center gap-1.5 font-medium tracking-wide text-[#FAF3DC]">
               <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
-              <span className="font-heading tracking-wider text-[#F5E6B5]">👑 Jaipur Emerald Court &amp; Regal Sandstone</span>
+              <span className="font-royal-title tracking-wider text-[#F5E6B5]">✨ Royal Jaipur Heritage Atelier</span>
               <span className="hidden sm:inline text-[#D4AF37]/60">•</span>
               <span className="hidden sm:inline text-white/90">Bagru &amp; Sanganer Hand Block Printing</span>
             </span>
@@ -184,8 +184,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 <span className="block font-royal-heading text-lg sm:text-2xl font-bold tracking-widest text-[#0B241C] uppercase leading-tight group-hover:text-[#164335] transition-colors">
                   RAMAM TEXTILES
                 </span>
-                <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-[#164335] font-royal-title font-bold">
-                  👑 Jaipur • Emerald Court • Luxury B2B
+                <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[#164335] font-royal-title font-bold">
+                  Jaipur • Heritage Atelier • Luxury B2B
                 </span>
               </div>
             </div>

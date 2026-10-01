@@ -54,7 +54,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           {/* Royal Heritage Badge */}
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/50 text-[#F5E6B5] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md shadow-lg animate-fade-in font-royal-title">
             <span className="text-[#D4AF37] text-sm">👑</span>
-            <span>Jaipur Emerald Court • 100% Pure Quilted Cotton • B2B Export</span>
+            <span>Heritage Artisan Guild of Jaipur • 100% Pure Quilted Cotton • B2B Export</span>
           </div>
 
           {/* Heading */}
