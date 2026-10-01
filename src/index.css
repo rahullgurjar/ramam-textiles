@@ -4,26 +4,23 @@
 
 :root {
   /* ==========================================================================
-     👑 ROYAL JAIPUR LUXURY DESIGN SYSTEM
-     Inspired by Jaipur City Palace, Hawa Mahal Terracotta, Jodhpur Indigo,
-     and 24K Zari Gold of Rajasthan Royal Courts
+     👑 JAIPUR EMERALD COURT & REGAL SANDSTONE DESIGN SYSTEM
+     Inspired by Royal Emerald Gemstones of Johari Bazaar, Palace Courtyards,
+     and 24K Zari Gold of Rajasthan
      ========================================================================== */
   
-  /* Primary Jaipur Heritage Rose & Terracotta */
-  --jaipur-rose-deep: #4D0E0D;
-  --jaipur-rose-900: #621415;
-  --jaipur-rose-800: #751B19;
-  --jaipur-rose-700: #942220;
-  --jaipur-rose-600: #B8322E;
-  --jaipur-rose-500: #D14945;
-  --jaipur-rose-100: #FDE8E8;
-  --jaipur-rose-50: #FFF5F5;
+  /* Primary Jaipur Royal Emerald Tones */
+  --jaipur-emerald-deep: #0B241C;
+  --jaipur-emerald-900: #0E2F23;
+  --jaipur-emerald-800: #11352A;
+  --jaipur-emerald-700: #164335;
+  --jaipur-emerald-600: #1C5241;
+  --jaipur-emerald-500: #266D57;
+  --jaipur-emerald-400: #38886E;
+  --jaipur-emerald-100: #DDEFE8;
+  --jaipur-emerald-50: #F0F7F4;
 
-  --color-terracotta: #C35138;
-  --color-terracotta-soft: #E27D60;
-  --color-terracotta-dark: #8C311E;
-
-  /* Royal Zari 24K Gold & Marigold */
+  /* Royal Zari 24K Gold & Antique Brass */
   --jaipur-gold-50: #FDFCF7;
   --jaipur-gold-100: #FAF3DC;
   --jaipur-gold-200: #F5E6B5;
@@ -35,26 +32,13 @@
   --jaipur-gold-800: #6E540F;
   --jaipur-gold-900: #473507;
 
-  /* Jodhpur Royal Indigo & Bagru Dabu */
-  --jaipur-indigo-deep: #0A1828;
-  --jaipur-indigo-dark: #0F2438;
-  --jaipur-indigo-primary: #1B3B6F;
-  --jaipur-indigo-light: #2E5B88;
-
-  /* City Palace Gemstone Emerald */
-  --jaipur-emerald-deep: #081C15;
-  --jaipur-emerald-dark: #0E2F23;
-  --jaipur-emerald-surface: #133C2E;
-  --jaipur-emerald-card: #1A4A38;
-  --jaipur-emerald-light: #2E6B52;
-
-  /* Amer Sandstone & Handmade Ivory Parchment */
-  --jaipur-sand-50: #FDFBF7;
-  --jaipur-sand-100: #FAF6EE;
-  --jaipur-sand-200: #F3EADB;
-  --jaipur-sand-300: #E9DAC2;
-  --jaipur-sand-400: #DAC5A4;
-  --jaipur-sand-500: #C8AE85;
+  /* Regal Sandstone & Warm Pearl Ivory */
+  --jaipur-sand-50: #FDFCF9;
+  --jaipur-sand-100: #FAF7EE;
+  --jaipur-sand-200: #F3EEDB;
+  --jaipur-sand-300: #E8E0C8;
+  --jaipur-sand-400: #D8CBAE;
+  --jaipur-sand-500: #C2B18E;
 
   /* Typography */
   --font-royal: 'Cinzel Decorative', 'Cinzel', serif;
@@ -65,13 +49,13 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Border & Shadows */
-  --border-gold-subtle: rgba(212, 175, 55, 0.25);
-  --border-gold-rich: rgba(212, 175, 55, 0.55);
-  --border-rose-subtle: rgba(148, 34, 32, 0.18);
+  --border-gold-subtle: rgba(212, 175, 55, 0.28);
+  --border-gold-rich: rgba(212, 175, 55, 0.6);
+  --border-emerald-subtle: rgba(17, 53, 42, 0.2);
   
-  --shadow-royal: 0 10px 30px -10px rgba(117, 27, 25, 0.22);
-  --shadow-gold: 0 8px 25px rgba(212, 175, 55, 0.28);
-  --shadow-palace: 0 20px 45px -12px rgba(15, 36, 56, 0.16);
+  --shadow-royal: 0 10px 30px -10px rgba(11, 36, 28, 0.25);
+  --shadow-gold: 0 8px 25px rgba(212, 175, 55, 0.3);
+  --shadow-palace: 0 20px 45px -12px rgba(11, 36, 28, 0.2);
 
   --radius-jharokha: 24px 24px 8px 8px;
   --radius-royal-arch: 9999px 9999px 12px 12px;
@@ -86,7 +70,7 @@
 html {
   font-family: var(--font-sans);
   background-color: var(--jaipur-sand-100);
-  color: #221516;
+  color: #11221B;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -113,14 +97,14 @@ body {
 
 /* Rajasthani Jaali (Lattice) Subtle Background Pattern */
 .bg-jaipur-jaali {
-  background-image: radial-gradient(rgba(212, 175, 55, 0.12) 1.5px, transparent 1.5px),
-                    radial-gradient(rgba(148, 34, 32, 0.08) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1.5px, transparent 1.5px),
+                    radial-gradient(rgba(17, 53, 42, 0.08) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
   background-position: 0 0, 12px 12px;
 }
 
 .bg-jaipur-jaali-dark {
-  background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1.5px, transparent 1.5px),
+  background-image: radial-gradient(rgba(212, 175, 55, 0.2) 1.5px, transparent 1.5px),
                     radial-gradient(rgba(245, 230, 181, 0.08) 1.5px, transparent 1.5px);
   background-size: 28px 28px;
   background-position: 0 0, 14px 14px;
@@ -128,13 +112,13 @@ body {
 
 /* Traditional Hand Block Print Buta / Floral Background */
 .bg-blockprint-pattern {
-  background-color: #FAF6EE;
-  background-image: radial-gradient(#E8DCB8 0.75px, transparent 0.75px), radial-gradient(#E8DCB8 0.75px, #FAF6EE 0.75px);
+  background-color: #FAF7EE;
+  background-image: radial-gradient(#E8DCB8 0.75px, transparent 0.75px), radial-gradient(#E8DCB8 0.75px, #FAF7EE 0.75px);
   background-size: 30px 30px;
   background-position: 0 0, 15px 15px;
 }
 
-/* Jharokha Arch Shape (Mughal / Rajasthani Palace Window) */
+/* Jharokha Arch Shape */
 .jharokha-frame {
   border-radius: 40px 40px 12px 12px;
   position: relative;
@@ -148,7 +132,7 @@ body {
 
 .jharokha-arch-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px -8px rgba(117, 27, 25, 0.2);
+  box-shadow: 0 16px 36px -8px rgba(11, 36, 28, 0.25);
 }
 
 /* Royal Gold Gilded Gradient Text */
@@ -164,20 +148,20 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.jaipur-rose-gradient-text {
-  background: linear-gradient(135deg, #B8322E 0%, #751B19 60%, #4D0E0D 100%);
+.emerald-gradient-text {
+  background: linear-gradient(135deg, #266D57 0%, #11352A 60%, #0B241C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 /* Royal Gilded Border with Corner Flourishes */
 .royal-gold-border {
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
 }
 
-.royal-rose-border {
-  border: 1px solid rgba(148, 34, 32, 0.25);
+.royal-emerald-border {
+  border: 1px solid rgba(17, 53, 42, 0.25);
 }
 
 /* Ornate Traditional Dividers */
@@ -197,22 +181,14 @@ body {
   background: linear-gradient(90deg, transparent, #D4AF37, transparent);
 }
 
-.ornate-divider-rose::before,
-.ornate-divider-rose::after {
-  content: '';
-  height: 1px;
-  width: 60px;
-  background: linear-gradient(90deg, transparent, #B8322E, transparent);
-}
-
 /* Royal Heritage Stamp Badges */
 .royal-seal {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.85rem;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(245, 230, 181, 0.08));
-  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(245, 230, 181, 0.08));
+  border: 1px solid rgba(212, 175, 55, 0.5);
   border-radius: 9999px;
   color: #D4AF37;
   font-family: var(--font-heading);
@@ -223,15 +199,15 @@ body {
   backdrop-filter: blur(8px);
 }
 
-.royal-seal-rose {
+.royal-seal-emerald {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.85rem;
-  background: linear-gradient(135deg, rgba(148, 34, 32, 0.12), rgba(184, 50, 46, 0.06));
-  border: 1px solid rgba(148, 34, 32, 0.35);
+  background: linear-gradient(135deg, rgba(17, 53, 42, 0.15), rgba(38, 109, 87, 0.08));
+  border: 1px solid rgba(17, 53, 42, 0.35);
   border-radius: 9999px;
-  color: #942220;
+  color: #11352A;
   font-family: var(--font-heading);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
@@ -240,7 +216,7 @@ body {
 }
 
 /* ==========================================================================
-   👑 ROYAL BUTTON SYSTEM
+   👑 ROYAL BUTTON SYSTEM (EMERALD COURT & GOLD)
    ========================================================================== */
 
 /* Primary: Royal Zari 24K Gold */
@@ -250,14 +226,14 @@ body {
   justify-content: center;
   gap: 0.6rem;
   background: linear-gradient(135deg, #E5C058 0%, #D4AF37 50%, #B89426 100%);
-  color: #381A03;
+  color: #0B241C;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 0.82rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0.9rem 2rem;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid #FAF3DC;
   box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -288,13 +264,15 @@ body {
   transform: rotate(30deg) translateY(100%);
 }
 
-/* Secondary: Royal Jaipur Palace Rose */
-.btn-royal-rose {
+/* Secondary: Jaipur Royal Emerald Court */
+.btn-royal-rose,
+.btn-royal-emerald,
+.btn-emerald-court {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  background: linear-gradient(135deg, #942220 0%, #751B19 50%, #4D0E0D 100%);
+  background: linear-gradient(135deg, #1C5241 0%, #11352A 50%, #0B241C 100%);
   color: #FAF3DC;
   font-family: var(--font-heading);
   font-weight: 700;
@@ -302,18 +280,20 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0.9rem 2rem;
-  border-radius: 4px;
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  box-shadow: 0 6px 20px rgba(117, 27, 25, 0.35);
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 6px 20px rgba(11, 36, 28, 0.35);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 }
 
-.btn-royal-rose:hover {
-  background: linear-gradient(135deg, #B8322E 0%, #942220 50%, #751B19 100%);
+.btn-royal-rose:hover,
+.btn-royal-emerald:hover,
+.btn-emerald-court:hover {
+  background: linear-gradient(135deg, #266D57 0%, #164335 50%, #11352A 100%);
   border-color: #D4AF37;
   color: #FFFFFF;
-  box-shadow: 0 10px 30px rgba(117, 27, 25, 0.5);
+  box-shadow: 0 10px 30px rgba(11, 36, 28, 0.5);
   transform: translateY(-2px);
 }
 
@@ -332,7 +312,7 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0.9rem 2rem;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid rgba(212, 175, 55, 0.5);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
@@ -353,24 +333,24 @@ body {
   justify-content: center;
   gap: 0.6rem;
   background: transparent;
-  color: #751B19;
+  color: #11352A;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 0.82rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0.85rem 1.85rem;
-  border-radius: 4px;
-  border: 1.5px solid #751B19;
+  border-radius: 6px;
+  border: 1.5px solid #11352A;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 }
 
 .btn-royal-sand-outline:hover {
-  background: #751B19;
+  background: #11352A;
   color: #FAF3DC;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(117, 27, 25, 0.25);
+  box-shadow: 0 6px 20px rgba(11, 36, 28, 0.25);
 }
 
 /* Backward compatibility helpers */
@@ -387,7 +367,7 @@ body {
 }
 
 .btn-dark {
-  @apply btn-royal-rose;
+  @apply btn-royal-emerald;
 }
 
 /* Typography Classes */
@@ -417,23 +397,23 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Custom Scrollbar in Royal Zari Gold */
+/* Custom Scrollbar in Royal Emerald & Zari Gold */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F3EADB;
+  background: #F3EEDB;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #D4AF37 0%, #942220 100%);
+  background: linear-gradient(180deg, #D4AF37 0%, #11352A 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #E5C058 0%, #751B19 100%);
+  background: linear-gradient(180deg, #E5C058 0%, #164335 100%);
 }
 
 /* Form Styles */
@@ -441,11 +421,11 @@ body {
   width: 100%;
   padding: 0.85rem 1.1rem;
   background-color: #FFFFFF;
-  border: 1px solid rgba(117, 27, 25, 0.18);
-  border-radius: 4px;
+  border: 1px solid rgba(17, 53, 42, 0.2);
+  border-radius: 6px;
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  color: #221516;
+  color: #11221B;
   transition: all 0.25s ease;
 }
 
@@ -460,7 +440,7 @@ body {
   padding: 0.85rem 1.1rem;
   background-color: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(212, 175, 55, 0.35);
-  border-radius: 4px;
+  border-radius: 6px;
   font-family: var(--font-sans);
   font-size: 0.95rem;
   color: #FAF3DC;

@@ -44,11 +44,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
   return (
     <div 
       onClick={handleCardClick}
-      className="group bg-white rounded-xl border border-[#D4AF37]/35 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-400 flex flex-col justify-between cursor-pointer relative hover:-translate-y-1 hover:border-[#D4AF37]"
+      className="group bg-white rounded-2xl border-2 border-[#D4AF37]/35 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-400 flex flex-col justify-between cursor-pointer relative hover:-translate-y-1 hover:border-[#D4AF37]"
     >
       {/* Image Gallery Container */}
       <div 
-        className="relative aspect-[3/4] w-full overflow-hidden bg-[#F3EADB]"
+        className="relative aspect-[3/4] w-full overflow-hidden bg-[#F3EEDB]"
         onMouseEnter={() => {
           if (product.images.length > 1) setCurrentImgIndex(1);
         }}
@@ -63,11 +63,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
 
         {/* Badges Overlay */}
         <div className="absolute top-2.5 left-2.5 flex flex-col gap-1.5 z-10">
-          <span className="px-2.5 py-0.5 bg-[#4D0E0D]/95 text-[#F5E6B5] text-[10px] font-bold tracking-wider uppercase rounded-full backdrop-blur-sm border border-[#D4AF37]/50 shadow-sm font-heading">
+          <span className="px-3 py-1 bg-[#0B241C]/95 text-[#F5E6B5] text-[10px] font-bold tracking-wider uppercase rounded-full backdrop-blur-sm border border-[#D4AF37]/50 shadow-sm font-royal-title">
             MOQ {product.moq} Pcs
           </span>
           {product.isFeatured && (
-            <span className="px-2.5 py-0.5 bg-gradient-to-r from-[#D4AF37] to-[#B89426] text-[#381A03] text-[9px] font-extrabold tracking-wider uppercase rounded-full shadow-sm font-heading">
+            <span className="px-2.5 py-0.5 bg-gradient-to-r from-[#D4AF37] to-[#B89426] text-[#0B241C] text-[9px] font-extrabold tracking-wider uppercase rounded-full shadow-sm font-royal-title">
               👑 Jaipur Signature
             </span>
           )}
@@ -80,7 +80,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
               e.stopPropagation();
               openQuickQuote(product);
             }}
-            className="flex-1 py-2 px-3 bg-[#4D0E0D]/95 text-[#FAF3DC] hover:bg-[#751B19] text-xs font-bold uppercase tracking-wider rounded-lg backdrop-blur-sm flex items-center justify-center gap-1.5 border border-[#D4AF37]/60 shadow-lg transition-all font-heading"
+            className="flex-1 py-2.5 px-3 bg-[#0B241C]/95 text-[#FAF3DC] hover:bg-[#11352A] text-xs font-bold uppercase tracking-wider rounded-xl backdrop-blur-sm flex items-center justify-center gap-1.5 border border-[#D4AF37]/60 shadow-lg transition-all font-royal-title"
           >
             <FileText className="w-3.5 h-3.5 text-[#D4AF37]" />
             <span>Instant Quote</span>
@@ -89,23 +89,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
       </div>
 
       {/* Product Information */}
-      <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between bg-white">
+      <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between bg-white font-royal-body">
         <div>
-          <div className="flex items-center justify-between text-[10px] text-[#7A5450] font-bold uppercase tracking-wider mb-1 font-heading">
-            <span className="text-[#942220]">🪷 {product.collection}</span>
+          <div className="flex items-center justify-between text-[10px] text-stone-500 font-bold uppercase tracking-wider mb-1 font-royal-title">
+            <span className="text-[#164335]">🪷 {product.collection}</span>
             <span className="text-stone-400 font-mono">SKU: {product.sku}</span>
           </div>
 
-          <h3 className="font-heading text-sm sm:text-base font-bold text-[#4D0E0D] group-hover:text-[#942220] transition-colors line-clamp-2 leading-snug mb-2">
+          <h3 className="font-royal-heading text-sm sm:text-base font-bold text-[#0B241C] group-hover:text-[#164335] transition-colors line-clamp-2 leading-snug mb-1.5">
             {product.name}
           </h3>
 
-          <p className="text-xs text-[#5C4540] line-clamp-2 mb-3 leading-relaxed font-light">
+          <p className="text-xs text-stone-600 line-clamp-2 mb-3 leading-relaxed font-royal-body">
             {product.description}
           </p>
 
-          <div className="text-[11px] text-[#4D0E0D] bg-[#FFF5F5] border border-[#D4AF37]/30 p-2 rounded-lg mb-3 flex items-center gap-1.5">
-            <Layers className="w-3.5 h-3.5 text-[#942220] shrink-0" />
+          <div className="text-[11px] text-[#0B241C] bg-[#F0F7F4] border border-[#D4AF37]/30 p-2 rounded-xl mb-3 flex items-center gap-1.5">
+            <Layers className="w-3.5 h-3.5 text-[#164335] shrink-0" />
             <span className="line-clamp-1 font-medium">{product.fabric}</span>
           </div>
         </div>
@@ -116,15 +116,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
             <div>
               {isB2BPriceUnlocked ? (
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-[#7A5450] uppercase tracking-wider font-semibold font-heading">Wholesale Tier 1</span>
-                  <span className="text-sm font-extrabold text-[#4D0E0D]">
+                  <span className="text-[10px] text-[#164335] uppercase tracking-wider font-semibold font-royal-title">Wholesale Tier 1</span>
+                  <span className="text-sm font-extrabold text-[#0B241C] font-royal-heading">
                     {formatPrice(product.wholesaleTiers[0]?.pricePerUnitInr)} / unit
                   </span>
                 </div>
               ) : (
-                <div className="flex items-center gap-1.5 text-[11px] text-[#942220] font-bold">
+                <div className="flex items-center gap-1.5 text-[11px] text-[#164335] font-bold font-royal-title">
                   <Lock className="w-3 h-3 text-[#D4AF37]" />
-                  <span>Wholesale Pricing on Request</span>
+                  <span>Wholesale Rate On Request</span>
                 </div>
               )}
             </div>
@@ -137,10 +137,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
           <div className="flex gap-2">
             <button
               onClick={handleQuickAdd}
-              className={`flex-1 py-2 px-3 text-xs font-bold uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-1.5 shadow-sm font-heading ${
+              className={`flex-1 py-2 px-3 text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-sm font-royal-title ${
                 isAdded 
-                  ? 'bg-[#25D366] text-white' 
-                  : 'bg-[#751B19] text-[#FAF3DC] hover:bg-[#942220] border border-[#D4AF37]/50 hover:shadow-md'
+                  ? 'bg-emerald-600 text-white' 
+                  : 'bg-gradient-to-r from-[#11352A] to-[#0B241C] text-[#FAF3DC] hover:from-[#164335] hover:to-[#11352A] border border-[#D4AF37]/50 hover:shadow-md'
               }`}
             >
               {isAdded ? (
@@ -161,10 +161,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
                 e.stopPropagation();
                 handleCardClick();
               }}
-              className="p-2 border border-[#D4AF37]/50 rounded-lg hover:bg-[#F3EADB] text-[#4D0E0D] transition-colors"
+              className="p-2 border border-[#D4AF37]/50 rounded-xl hover:bg-[#F3EEDB] text-[#0B241C] transition-colors"
               title="View full technical specs"
             >
-              <ArrowUpRight className="w-4 h-4 text-[#751B19]" />
+              <ArrowUpRight className="w-4 h-4 text-[#11352A]" />
             </button>
           </div>
         </div>

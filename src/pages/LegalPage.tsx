@@ -16,8 +16,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           onClick={() => setActiveTab('terms')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'terms'
-              ? 'bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-              : 'text-[#751B19] hover:text-[#4D0E0D] hover:bg-[#FAF6EE]'
+              ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
+              : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
           }`}
         >
           Terms of Trade
@@ -26,8 +26,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           onClick={() => setActiveTab('shipping')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'shipping'
-              ? 'bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-              : 'text-[#751B19] hover:text-[#4D0E0D] hover:bg-[#FAF6EE]'
+              ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
+              : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
           }`}
         >
           Shipping &amp; Export Policy
@@ -36,8 +36,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           onClick={() => setActiveTab('returns')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'returns'
-              ? 'bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-              : 'text-[#751B19] hover:text-[#4D0E0D] hover:bg-[#FAF6EE]'
+              ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
+              : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
           }`}
         >
           Returns &amp; Quality Claims
@@ -46,8 +46,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           onClick={() => setActiveTab('privacy')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'privacy'
-              ? 'bg-gradient-to-r from-[#751B19] to-[#4D0E0D] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-              : 'text-[#751B19] hover:text-[#4D0E0D] hover:bg-[#FAF6EE]'
+              ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
+              : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
           }`}
         >
           Privacy Policy
@@ -55,10 +55,10 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
       </div>
 
       {/* Content */}
-      <div className="bg-gradient-to-br from-[#FAF6EE] to-[#F3EADB] p-6 sm:p-10 rounded-3xl border-2 border-[#D4AF37]/35 shadow-lg text-stone-800 font-royal-body text-sm sm:text-base leading-relaxed space-y-6">
+      <div className="bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] p-6 sm:p-10 rounded-3xl border-2 border-[#D4AF37]/35 shadow-lg text-stone-800 font-royal-body text-sm sm:text-base leading-relaxed space-y-6">
         {activeTab === 'terms' && (
           <div className="space-y-4">
-            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#4D0E0D]">
+            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#0B241C]">
               Commercial Terms of Wholesale Trade
             </h1>
             <p><strong>1. Commercial Quotations &amp; Price Validity:</strong> All wholesale FOB quotations are valid for 30 days from issuance. Currency rates are pegged at the time of proforma invoice generation.</p>
@@ -70,7 +70,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
 
         {activeTab === 'shipping' && (
           <div className="space-y-4">
-            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#4D0E0D]">
+            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#0B241C]">
               International Shipping &amp; Customs Clearance
             </h1>
             <p><strong>1. Express Air Courier:</strong> Sample kits and urgent wholesale consignments (up to 300 kg) are dispatched via DHL Express or FedEx International Priority with typical transit times of 4–7 business days worldwide.</p>
@@ -82,7 +82,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
 
         {activeTab === 'returns' && (
           <div className="space-y-4">
-            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#4D0E0D]">
+            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#0B241C]">
               Quality Assurance &amp; Commercial Claims
             </h1>
             <p><strong>1. 4-Point Quality Inspection:</strong> Every batch undergoes rigorous inspection for dimensional stability, seam tensile strength, and colorfastness prior to export packing.</p>
@@ -93,7 +93,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
 
         {activeTab === 'privacy' && (
           <div className="space-y-4">
-            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#4D0E0D]">
+            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#0B241C]">
               Privacy &amp; Non-Disclosure Policy
             </h1>
             <p><strong>1. Confidentiality of Private Labels:</strong> We strictly protect the proprietary tech packs, CAD designs, custom block motifs, and label specifications of our private-label brand clients. We never disclose OEM brand client rosters.</p>
