@@ -9,10 +9,11 @@ import {
   Globe, 
   Printer, 
   Building, 
-  Mail,
-  User,
-  ArrowRight,
-  ShieldCheck
+  Mail, 
+  User, 
+  ArrowRight, 
+  ShieldCheck,
+  Sparkles
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useApp } from '../context/AppContext';
@@ -24,7 +25,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
     closeInquiryDrawer, 
     removeFromInquiry, 
     updateInquiryQuantity, 
-    clearInquiry,
+    clearInquiry, 
     showToast 
   } = useApp();
 
@@ -64,7 +65,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
       setIsSubmitting(false);
       triggerConfetti();
       showToast(`Quotation inquiry #${generatedId} submitted successfully!`, 'success');
-    }, 900);
+    }, 800);
   };
 
   const handlePrintQuotation = () => {
@@ -78,21 +79,21 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 animate-fade-in">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 animate-fade-in font-royal-body">
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-xl bg-white shadow-2xl flex flex-col justify-between overflow-hidden border-l-2 border-[#D4AF37]">
+        <div className="w-screen max-w-xl bg-white shadow-2xl flex flex-col justify-between overflow-hidden border-l border-stone-200">
           
           {/* Header */}
-          <div className="p-5 bg-[#0B241C] text-[#FAF7EE] border-b border-[#D4AF37]/40 flex items-center justify-between shadow-md">
+          <div className="p-5 bg-[#1F1612] text-[#FAF3DC] border-b border-[#D4AF37]/30 flex items-center justify-between shadow-md">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#061711] border border-[#D4AF37]/50 flex items-center justify-center shadow-inner">
-                <ShoppingBag className="w-5 h-5 text-[#F5E6B5]" />
+              <div className="w-10 h-10 rounded-2xl bg-white/10 border border-[#D4AF37]/40 flex items-center justify-center shadow-inner">
+                <ShoppingBag className="w-5 h-5 text-[#E5A93C]" />
               </div>
               <div>
-                <h3 className="font-royal-title text-base font-bold text-[#FAF7EE] uppercase tracking-wider flex items-center gap-1.5">
+                <h3 className="font-royal-title text-base font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
                   <span>👑 Wholesale RFQ Basket</span>
                 </h3>
-                <span className="text-[11px] text-emerald-200/80 font-light">
+                <span className="text-[11px] text-stone-300 font-light">
                   {inquiryItems.length} Products | {totalQuantity} Total Units Selected
                 </span>
               </div>
@@ -100,10 +101,10 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
 
             <button 
               onClick={closeInquiryDrawer}
-              className="p-1.5 rounded-lg text-stone-300 hover:text-white hover:bg-white/10 transition-colors"
+              className="p-2 rounded-full text-stone-300 hover:text-white hover:bg-white/10 transition-colors"
               aria-label="Close inquiry drawer"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
           </div>
 
@@ -112,28 +113,28 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
             {rfqSubmittedId ? (
               /* Success State */
               <div className="text-center py-8 space-y-4">
-                <div className="w-16 h-16 bg-[#061711] border-2 border-[#D4AF37] text-[#D4AF37] rounded-full mx-auto flex items-center justify-center shadow-xl">
-                  <CheckCircle2 className="w-10 h-10 text-[#25D366]" />
+                <div className="w-16 h-16 bg-[#FDF0F3] border-2 border-[#C8376B] text-[#C8376B] rounded-full mx-auto flex items-center justify-center shadow-xl">
+                  <CheckCircle2 className="w-10 h-10 text-[#C8376B]" />
                 </div>
 
                 <div className="space-y-1">
-                  <span className="text-[11px] font-bold text-[#164335] uppercase tracking-widest font-royal-title">
+                  <span className="text-[11px] font-bold text-[#C8376B] uppercase tracking-widest font-royal-title">
                     Request Received
                   </span>
-                  <h4 className="font-royal-heading text-xl font-bold text-[#0B241C]">
+                  <h4 className="font-playfair text-xl font-bold text-[#1F1612]">
                     Wholesale RFQ #{rfqSubmittedId}
                   </h4>
-                  <p className="text-xs text-[#164335]/80 max-w-sm mx-auto leading-relaxed font-light">
-                    Thank you, <strong>{contactName}</strong> ({companyName || 'B2B Client'}). Our export and production desk in Jaipur will review your specifications and email you the official tiered quotation within 4–6 business hours.
+                  <p className="text-xs text-stone-600 max-w-sm mx-auto leading-relaxed font-light">
+                    Thank you, <strong>{contactName}</strong> ({companyName || 'B2B Client'}). Our export desk in Jaipur will review your items and email your official quotation within 4–6 business hours.
                   </p>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl border border-[#D4AF37]/35 text-left space-y-2 text-xs shadow-sm">
-                  <div className="flex justify-between pb-2 border-b border-[#D4AF37]/20 font-bold text-[#0B241C] font-royal-title">
+                <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-stone-200 text-left space-y-2 text-xs shadow-sm">
+                  <div className="flex justify-between pb-2 border-b border-stone-200 font-bold text-[#1F1612] font-royal-title">
                     <span>Summary Overview</span>
                     <span>{totalQuantity} Units</span>
                   </div>
-                  <div className="text-[#164335] space-y-1 font-light">
+                  <div className="text-stone-600 space-y-1 font-light">
                     <p>• <strong>Buyer:</strong> {contactName} ({email})</p>
                     <p>• <strong>Company:</strong> {companyName || 'B2B Client'}</p>
                     <p>• <strong>Destination:</strong> {country}</p>
@@ -143,16 +144,16 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                 <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <button
                     onClick={handlePrintQuotation}
-                    className="w-full btn-royal-emerald flex items-center justify-center gap-1.5 shadow"
+                    className="w-full pill-btn-dark flex items-center justify-center gap-1.5 shadow"
                   >
-                    <Printer className="w-4 h-4 text-[#D4AF37]" />
+                    <Printer className="w-4 h-4 text-[#E5A93C]" />
                     <span>Download / Print RFQ Summary</span>
                   </button>
                 </div>
 
                 <button
                   onClick={handleReset}
-                  className="w-full py-2 text-xs font-bold text-[#11352A] hover:underline font-royal-title"
+                  className="w-full py-2 text-xs font-bold text-[#C8376B] hover:underline font-royal-title"
                 >
                   Start New Inquiry or Continue Browsing
                 </button>
@@ -160,13 +161,13 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
             ) : inquiryItems.length === 0 ? (
               /* Empty Basket State */
               <div className="text-center py-16 space-y-4">
-                <div className="w-16 h-16 bg-[#F3EEDB] rounded-full mx-auto flex items-center justify-center text-[#11352A] border border-[#D4AF37]/40 shadow-inner">
-                  <ShoppingBag className="w-8 h-8 opacity-60 text-[#D4AF37]" />
+                <div className="w-16 h-16 bg-[#FDF0F3] rounded-full mx-auto flex items-center justify-center text-[#C8376B] border border-[#F3CAD6] shadow-inner">
+                  <ShoppingBag className="w-8 h-8 opacity-60 text-[#C8376B]" />
                 </div>
-                <h4 className="font-royal-heading text-lg text-[#0B241C] font-bold">
+                <h4 className="font-playfair text-lg text-[#1F1612] font-bold">
                   Your Wholesale Basket is Empty
                 </h4>
-                <p className="text-xs text-[#164335]/80 max-w-xs mx-auto font-light">
+                <p className="text-xs text-stone-600 max-w-xs mx-auto font-light">
                   Browse our apparel collections, quilted bags, and fabrics by meter to add items to your official quotation inquiry.
                 </p>
                 <div className="pt-2 flex justify-center gap-3">
@@ -175,7 +176,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       closeInquiryDrawer();
                       onNavigate('/shop');
                     }}
-                    className="btn-royal-gold text-xs"
+                    className="pill-btn-rose text-xs px-6 py-2.5"
                   >
                     Browse Catalog
                   </button>
@@ -184,7 +185,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       closeInquiryDrawer();
                       onNavigate('/custom-manufacturing');
                     }}
-                    className="btn-royal-sand-outline text-xs"
+                    className="pill-btn-outline text-xs px-6 py-2.5"
                   >
                     Custom Project
                   </button>
@@ -194,13 +195,13 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
               /* Itemized Product List */
               <>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center pb-2 border-b border-[#D4AF37]/30">
-                    <span className="text-xs font-bold text-[#11352A] uppercase tracking-wider font-royal-title">
+                  <div className="flex justify-between items-center pb-2 border-b border-stone-200">
+                    <span className="text-xs font-bold text-[#1F1612] uppercase tracking-wider font-royal-title">
                       Selected Items ({inquiryItems.length})
                     </span>
                     <button
                       onClick={clearInquiry}
-                      className="text-[11px] text-[#164335] hover:underline flex items-center gap-1 font-semibold"
+                      className="text-[11px] text-[#C8376B] hover:underline flex items-center gap-1 font-semibold"
                     >
                       <Trash2 className="w-3 h-3" />
                       <span>Clear All</span>
@@ -210,52 +211,52 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                   {inquiryItems.map((item) => (
                     <div 
                       key={`${item.product.id}-${item.selectedColor}-${item.selectedSize}`}
-                      className="bg-white p-3.5 rounded-xl border border-[#D4AF37]/35 flex gap-3 shadow-sm relative group hover:border-[#D4AF37] transition-all"
+                      className="bg-white p-3.5 rounded-2xl border border-stone-200 flex gap-3 shadow-sm relative group hover:border-[#C8376B] transition-all"
                     >
                       <img 
                         src={item.product.images[0]} 
                         alt={item.product.name}
-                        className="w-16 h-20 rounded-lg object-cover border border-[#D4AF37]/30 shrink-0 shadow-sm"
+                        className="w-16 h-20 rounded-xl object-cover border border-stone-200 shrink-0 shadow-sm"
                       />
                       <div className="flex-1 flex flex-col justify-between">
                         <div>
                           <div className="flex justify-between items-start gap-2">
-                            <h5 className="font-royal-heading text-xs font-bold text-[#0B241C] line-clamp-1">
+                            <h5 className="font-playfair text-xs font-bold text-[#1F1612] line-clamp-1">
                               {item.product.name}
                             </h5>
                             <button
                               onClick={() => removeFromInquiry(item.product.id, item.selectedColor, item.selectedSize)}
-                              className="text-stone-400 hover:text-[#11352A] p-1"
+                              className="text-stone-400 hover:text-[#C8376B] p-1"
                               title="Remove item"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
                             </button>
                           </div>
-                          <span className="text-[10px] text-[#164335]/80 block mt-0.5">
+                          <span className="text-[10px] text-stone-500 block mt-0.5">
                             SKU: {item.product.sku} | Color: <strong>{item.selectedColor}</strong> | Size: <strong>{item.selectedSize}</strong>
                           </span>
                         </div>
 
-                        <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#D4AF37]/20">
+                        <div className="flex items-center justify-between mt-2 pt-2 border-t border-stone-100">
                           <div className="flex items-center gap-1">
                             <button
                               onClick={() => updateInquiryQuantity(item.product.id, item.selectedColor, item.selectedSize, item.quantity - 5)}
-                              className="w-6 h-6 rounded bg-[#F3EEDB] text-[#0B241C] font-bold text-xs flex items-center justify-center hover:bg-[#D4AF37] hover:text-[#0B241C] transition-colors"
+                              className="w-6 h-6 rounded-full bg-slate-100 text-[#1F1612] font-bold text-xs flex items-center justify-center hover:bg-[#C8376B] hover:text-white transition-colors"
                             >
                               -
                             </button>
-                            <span className="w-12 text-center text-xs font-bold text-[#0B241C]">
+                            <span className="w-12 text-center text-xs font-bold text-[#1F1612]">
                               {item.quantity} pcs
                             </span>
                             <button
                               onClick={() => updateInquiryQuantity(item.product.id, item.selectedColor, item.selectedSize, item.quantity + 5)}
-                              className="w-6 h-6 rounded bg-[#F3EEDB] text-[#0B241C] font-bold text-xs flex items-center justify-center hover:bg-[#D4AF37] hover:text-[#0B241C] transition-colors"
+                              className="w-6 h-6 rounded-full bg-slate-100 text-[#1F1612] font-bold text-xs flex items-center justify-center hover:bg-[#C8376B] hover:text-white transition-colors"
                             >
                               +
                             </button>
                           </div>
 
-                          <span className="text-[10px] text-[#0B241C] font-bold bg-[#F0F7F4] border border-[#D4AF37]/35 px-2 py-0.5 rounded-full font-royal-title">
+                          <span className="text-[10px] text-[#C8376B] font-bold bg-[#FDF0F3] border border-[#F3CAD6] px-2.5 py-0.5 rounded-full font-royal-title">
                             MOQ {item.product.moq}
                           </span>
                         </div>
@@ -265,17 +266,17 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                 </div>
 
                 {/* Buyer Information Form */}
-                <form onSubmit={handleSubmitOfficialRfq} className="bg-[#FAF7EE] p-4 rounded-xl border border-[#D4AF37]/40 space-y-3 shadow-sm">
-                  <div className="flex items-center gap-2 pb-1.5 border-b border-[#D4AF37]/30">
-                    <Building className="w-4 h-4 text-[#11352A]" />
-                    <span className="text-xs font-bold text-[#0B241C] uppercase tracking-wider font-royal-title">
+                <form onSubmit={handleSubmitOfficialRfq} className="bg-[#FAF7F2] p-5 rounded-[24px] border border-stone-200 space-y-3 shadow-sm">
+                  <div className="flex items-center gap-2 pb-2 border-b border-stone-200">
+                    <Building className="w-4 h-4 text-[#C8376B]" />
+                    <span className="text-xs font-bold text-[#1F1612] uppercase tracking-wider font-royal-title">
                       Buyer &amp; Delivery Information
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     <div>
-                      <label className="block text-[10px] font-bold text-[#164335] uppercase mb-0.5 font-royal-title">
+                      <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">
                         Your Full Name *
                       </label>
                       <input 
@@ -283,27 +284,27 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                         value={contactName}
                         onChange={e => setContactName(e.target.value)}
                         placeholder="e.g. Elena Rossi"
-                        className="form-input text-xs py-1.5"
+                        className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[10px] font-bold text-[#164335] uppercase mb-0.5 font-royal-title">
+                      <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">
                         Company / Boutique Name
                       </label>
                       <input 
                         type="text" 
                         value={companyName}
                         onChange={e => setCompanyName(e.target.value)}
-                        placeholder="e.g. Silk & Sand Studios"
-                        className="form-input text-xs py-1.5"
+                        placeholder="e.g. Silk &amp; Sand Studios"
+                        className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-bold text-[#164335] uppercase mb-0.5 font-royal-title">
+                    <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">
                       Official Business Email *
                     </label>
                     <input 
@@ -311,45 +312,43 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       value={email}
                       onChange={e => setEmail(e.target.value)}
                       placeholder="buyer@domain.com"
-                      className="form-input text-xs py-1.5"
+                      className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]"
                       required
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    <div>
-                      <label className="block text-[10px] font-bold text-[#164335] uppercase mb-0.5 font-royal-title">
-                        Destination Country
-                      </label>
-                      <select 
-                        value={country} 
-                        onChange={e => setCountry(e.target.value)}
-                        className="form-input text-xs py-1.5"
-                      >
-                        <option value="India">India</option>
-                        <option value="United States">United States</option>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="United Arab Emirates">United Arab Emirates</option>
-                        <option value="Australia">Australia</option>
-                        <option value="Germany">Germany</option>
-                        <option value="France">France</option>
-                        <option value="Italy">Italy</option>
-                        <option value="Canada">Canada</option>
-                        <option value="Other / Global">Other / Global</option>
-                      </select>
-                    </div>
+                  <div>
+                    <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">
+                      Destination Country
+                    </label>
+                    <select 
+                      value={country} 
+                      onChange={e => setCountry(e.target.value)}
+                      className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]"
+                    >
+                      <option value="India">India</option>
+                      <option value="United States">United States</option>
+                      <option value="United Kingdom">United Kingdom</option>
+                      <option value="United Arab Emirates">United Arab Emirates</option>
+                      <option value="Australia">Australia</option>
+                      <option value="Germany">Germany</option>
+                      <option value="France">France</option>
+                      <option value="Italy">Italy</option>
+                      <option value="Canada">Canada</option>
+                      <option value="Other / Global">Other / Global</option>
+                    </select>
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-bold text-[#164335] uppercase mb-0.5 font-royal-title">
+                    <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">
                       Specific Notes / Target Timeline
                     </label>
                     <textarea 
                       rows={2}
                       value={notes}
                       onChange={e => setNotes(e.target.value)}
-                      placeholder="Add any specific color combinations, packaging instructions or target delivery dates..."
-                      className="form-input text-xs"
+                      placeholder="Add specific color combinations, packaging instructions or target delivery dates..."
+                      className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]"
                     ></textarea>
                   </div>
 
@@ -358,9 +357,9 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full btn-royal-gold flex items-center justify-center gap-2 shadow-lg"
+                      className="w-full pill-btn-rose py-3 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 rounded-full shadow-lg"
                     >
-                      <FileText className="w-4 h-4 text-[#0B241C]" />
+                      <FileText className="w-4 h-4 text-white" />
                       <span>{isSubmitting ? 'Generating Quotation Ticket...' : 'Submit Official Wholesale RFQ'}</span>
                     </button>
                   </div>
@@ -370,8 +369,8 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
           </div>
 
           {/* Footer Security Badge */}
-          <div className="p-3 bg-[#F3EEDB] border-t border-[#D4AF37]/30 text-center text-[11px] text-[#0B241C] flex items-center justify-center gap-2 font-medium">
-            <ShieldCheck className="w-4 h-4 text-[#11352A]" />
+          <div className="p-3 bg-[#FAF7F2] border-t border-stone-200 text-center text-[11px] text-stone-600 flex items-center justify-center gap-2 font-medium">
+            <ShieldCheck className="w-4 h-4 text-[#C8376B]" />
             <span>Confidential B2B Pricing • Direct Manufacturer Rates • FOB Jaipur</span>
           </div>
 

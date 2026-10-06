@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { 
   ArrowLeft, CheckCircle2, ShieldCheck, Truck, Sparkles, Heart, 
   Share2, Layers, HelpCircle, Package, Award, Scissors,
-  Plus, Minus, Info, ChevronRight, FileText, Download, Mail, Star
+  Plus, Minus, Info, ChevronRight, FileText, Download, Mail, Star,
+  ZoomIn, MessageCircle, Ruler, Maximize2, X
 } from 'lucide-react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data/products';
@@ -26,12 +27,27 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
   const product = PRODUCTS.find(p => p.slug === slug) || PRODUCTS[0];
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isZoomOpen, setIsZoomOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState(product.colors[0] || 'Original Artisanal');
   const [selectedSize, setSelectedSize] = useState(product.sizes[0] || 'Standard');
-  const [quantity, setQuantity] = useState(product.moq || 50);
+  const [quantity, setQuantity] = useState(product.moq || 25);
   const [activeTab, setActiveTab] = useState<'details' | 'specs' | 'wholesale' | 'custom'>('details');
 
   const relatedProducts = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+
+  const retailPrice = product.indicativeRetailInr || 2499;
+  const baseWholesalePrice = product.wholesaleTiers[0]?.pricePerUnitInr || Math.round(retailPrice * 0.55);
+
+  // Dynamic Volume Discount Calculation
+  const calculateTierPrice = (qty: number) => {
+    if (qty >= 500) return Math.round(baseWholesalePrice * 0.75); // 25% off tier
+    if (qty >= 200) return Math.round(baseWholesalePrice * 0.85); // 15% off tier
+    if (qty >= 100) return Math.round(baseWholesalePrice * 0.92); // 8% off tier
+    return baseWholesalePrice;
+  };
+
+  const currentUnitPrice = calculateTierPrice(quantity);
+  const totalEstimatedCost = currentUnitPrice * quantity;
 
   const handleAddToBasket = () => {
     addToInquiry({
@@ -40,6 +56,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
       selectedSize,
       quantity,
     });
+    showToast(`Added ${quantity} pcs of ${product.name} to RFQ basket`, 'success');
   };
 
   const handleShare = () => {
@@ -55,11 +72,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
     }
   };
 
-  const retailPrice = product.indicativeRetailInr || 2499;
-  const wholesalePrice = product.wholesaleTiers[0]?.pricePerUnitInr || Math.round(retailPrice * 0.55);
+  const whatsappMessage = encodeURIComponent(
+    `Hello Ramam Textiles Jaipur, I am interested in wholesale order for:\n\n• Product: ${product.name}\n• SKU: ${product.sku}\n• Colorway: ${selectedColor}\n• Size: ${selectedSize}\n• Quantity: ${quantity} Pcs\n\nPlease share official FOB quotation & estimated dispatch timeline.`
+  );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 font-royal-body">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 font-royal-body pb-24 lg:pb-12">
+      
       {/* Breadcrumb Navigation */}
       <nav className="flex items-center gap-2 text-xs text-stone-500 tracking-wider">
         <button 
@@ -88,15 +107,36 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
 
       {/* Main Product Showcase Section */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-        {/* Left Column: Image Gallery */}
+        
+        {/* Left Column: Image Gallery with Lightbox Zoom */}
         <div className="lg:col-span-7 space-y-4">
-          {/* Active Main Image */}
-          <div className="relative aspect-[4/5] rounded-[32px] overflow-hidden bg-slate-50 shadow-xl border border-stone-200 group">
+          <div 
+            onClick={() => setIsZoomOpen(true)}
+            className="relative aspect-[4/5] rounded-[32px] overflow-hidden bg-slate-50 shadow-xl border border-stone-200 group cursor-zoom-in"
+          >
             <img
               src={product.images[activeImageIndex] || product.images[0]}
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
             />
+
+            {/* Zoom Icon Hint */}
+            <div className="absolute top-5 right-5 z-20 flex items-center gap-2">
+              <button
+                onClick={(e) => { e.stopPropagation(); setIsZoomOpen(true); }}
+                className="p-3 rounded-full bg-white/90 backdrop-blur-md hover:bg-white text-[#1F1612] shadow-lg border border-stone-200 transition-all hover:scale-105"
+                title="Click to Zoom Fabric"
+              >
+                <Maximize2 className="w-4 h-4 text-[#1F1612]" />
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); handleShare(); }}
+                className="p-3 rounded-full bg-white/90 backdrop-blur-md hover:bg-white text-[#1F1612] shadow-lg border border-stone-200 transition-all hover:scale-105"
+                title="Share Creation"
+              >
+                <Share2 className="w-4 h-4 text-[#1F1612]" />
+              </button>
+            </div>
 
             {/* Top Badges */}
             <div className="absolute top-5 left-5 flex flex-col gap-2 z-10">
@@ -112,17 +152,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                   <span>Jaipur Signature</span>
                 </span>
               )}
-            </div>
-
-            {/* Share Floating Badge */}
-            <div className="absolute top-5 right-5 flex items-center gap-2 z-10">
-              <button
-                onClick={handleShare}
-                className="p-3 rounded-full bg-white/90 backdrop-blur-md hover:bg-white text-[#1F1612] shadow-lg border border-stone-200 transition-all hover:scale-105"
-                title="Share Creation"
-              >
-                <Share2 className="w-4 h-4 text-[#1F1612]" />
-              </button>
             </div>
 
             {/* Bottom SKU and Provenance Bar */}
@@ -155,9 +184,29 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
               ))}
             </div>
           )}
+
+          {/* Physical Spec & Dimension Highlights Bar */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div className="p-3 bg-[#FAF7F2] rounded-2xl border border-stone-200 text-center">
+              <span className="text-[10px] font-royal-title uppercase tracking-wider text-stone-500 block">Structure</span>
+              <span className="text-xs font-bold text-[#1F1612] mt-0.5 block">Double Cotton Padding</span>
+            </div>
+            <div className="p-3 bg-[#FAF7F2] rounded-2xl border border-stone-200 text-center">
+              <span className="text-[10px] font-royal-title uppercase tracking-wider text-stone-500 block">Zippers</span>
+              <span className="text-xs font-bold text-[#1F1612] mt-0.5 block">Heavy-Duty YKK Brass</span>
+            </div>
+            <div className="p-3 bg-[#FAF7F2] rounded-2xl border border-stone-200 text-center">
+              <span className="text-[10px] font-royal-title uppercase tracking-wider text-stone-500 block">Handles</span>
+              <span className="text-xs font-bold text-[#1F1612] mt-0.5 block">Reinforced Candy Stripe</span>
+            </div>
+            <div className="p-3 bg-[#FAF7F2] rounded-2xl border border-stone-200 text-center">
+              <span className="text-[10px] font-royal-title uppercase tracking-wider text-stone-500 block">Dyes</span>
+              <span className="text-xs font-bold text-[#1F1612] mt-0.5 block">Azo-Free &amp; Colorfast</span>
+            </div>
+          </div>
         </div>
 
-        {/* Right Column: Product Actions & B2B Purchase Controls */}
+        {/* Right Column: Product Actions, B2B Volume Pricing & Controls */}
         <div className="lg:col-span-5 space-y-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDF0F3] border border-[#F3CAD6] text-[#C8376B] text-[11px] font-royal-title uppercase tracking-widest font-bold mb-2">
@@ -172,34 +221,57 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             </p>
           </div>
 
-          {/* Pricing Block */}
-          <div className="p-5 bg-[#FAF7F2] rounded-[24px] border border-stone-200 shadow-sm space-y-3 relative overflow-hidden">
-            <div className="flex items-baseline justify-between relative z-10">
+          {/* Interactive Volume Pricing Tier Card */}
+          <div className="p-5 bg-[#FAF7F2] rounded-[28px] border border-stone-200 shadow-sm space-y-4">
+            <div className="flex items-baseline justify-between">
               <div>
                 <span className="text-[10px] text-stone-500 font-royal-title uppercase tracking-wider block font-bold">Indicative Retail Benchmark</span>
-                <span className="text-2xl sm:text-3xl font-playfair font-bold text-[#1F1612]">
+                <span className="text-xl sm:text-2xl font-playfair font-bold text-stone-400 line-through">
                   {formatPrice(retailPrice)}
                 </span>
-                <span className="text-xs text-stone-500 ml-1">/ piece</span>
+                <span className="text-xs text-stone-500 ml-1">/ unit</span>
               </div>
 
               <div className="text-right">
                 <span className="text-[10px] text-[#C8376B] font-royal-title font-bold uppercase tracking-wider block">
-                  B2B Wholesale FOB Rate
+                  Current Tier Rate ({quantity} Pcs)
                 </span>
-                <span className="text-xl sm:text-2xl font-playfair font-bold text-[#C8376B]">
-                  {formatPrice(wholesalePrice)}
+                <span className="text-2xl sm:text-3xl font-playfair font-bold text-[#C8376B]">
+                  {formatPrice(currentUnitPrice)}
                 </span>
-                <span className="text-[11px] text-stone-600 ml-1 font-medium">({product.moq}+ MOQ)</span>
+                <span className="text-xs text-stone-600 ml-1 font-medium">/ piece</span>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-stone-200 flex items-center justify-between text-xs text-[#1F1612]">
-              <span className="flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                Atelier MOQ: {product.moq} pcs
+            {/* Interactive Quantity Slider */}
+            <div className="space-y-2 pt-2 border-t border-stone-200">
+              <div className="flex justify-between text-xs font-royal-title font-bold text-[#1F1612]">
+                <span>Select Order Volume</span>
+                <span className="text-[#C8376B]">{quantity} Units (Est: {formatPrice(totalEstimatedCost)})</span>
+              </div>
+              <input
+                type="range"
+                min={product.moq}
+                max={500}
+                step={5}
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
+                className="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#C8376B]"
+              />
+              <div className="flex justify-between text-[10px] text-stone-500 font-mono">
+                <span>MOQ {product.moq} pcs</span>
+                <span>100 pcs (8% Off)</span>
+                <span>200 pcs (15% Off)</span>
+                <span>500+ pcs (25% Off)</span>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-stone-200 flex items-center justify-between text-xs text-[#1F1612]">
+              <span className="flex items-center gap-1.5 font-semibold text-emerald-700">
+                <CheckCircle2 className="w-4 h-4" />
+                Direct Jaipur FOB Factory Rate
               </span>
-              <span className="text-stone-600 font-medium">Production Lead: {product.leadTime || '12-18 Days'}</span>
+              <span className="text-stone-600 font-medium">Lead Time: {product.leadTime || '12-18 Days'}</span>
             </div>
           </div>
 
@@ -234,7 +306,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                 <label className="block text-xs font-royal-title uppercase tracking-wider text-[#1F1612] font-bold">
                   Size / Dimensions
                 </label>
-                <span className="text-[11px] text-stone-500 italic">Custom Sizing Available</span>
+                <span className="text-[11px] text-stone-500 italic">Custom Dimensions for OEM Available</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {product.sizes.map(sz => (
@@ -254,46 +326,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             </div>
           )}
 
-          {/* Quantity Selector */}
-          <div>
-            <label className="block text-xs font-royal-title uppercase tracking-wider text-[#1F1612] font-bold mb-2">
-              Target Order Quantity (MOQ: {product.moq} pcs)
-            </label>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center border border-stone-300 rounded-full bg-white overflow-hidden shadow-sm">
-                <button
-                  type="button"
-                  onClick={() => setQuantity(prev => Math.max(1, prev - 10))}
-                  className="p-2.5 text-[#1F1612] hover:bg-slate-100 transition-colors"
-                >
-                  <Minus className="w-4 h-4" />
-                </button>
-                <input
-                  type="number"
-                  min="1"
-                  value={quantity}
-                  onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-20 text-center text-sm font-bold text-[#1F1612] focus:outline-none border-x border-stone-200 py-2 bg-transparent"
-                />
-                <button
-                  type="button"
-                  onClick={() => setQuantity(prev => prev + 10)}
-                  className="p-2.5 text-[#1F1612] hover:bg-slate-100 transition-colors"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-              </div>
-
-              <span className="text-xs text-stone-600">
-                {quantity < product.moq ? (
-                  <span className="text-amber-700 font-semibold">Sample order tier</span>
-                ) : (
-                  <span className="text-[#C8376B] font-semibold">Wholesale volume tier</span>
-                )}
-              </span>
-            </div>
-          </div>
-
           {/* Primary Action Buttons */}
           <div className="space-y-3 pt-2">
             <button
@@ -301,24 +333,26 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
               className="pill-btn-rose w-full py-4 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 rounded-full shadow-xl"
             >
               <Package className="w-4 h-4" />
-              <span>Add to Wholesale Inquiry Basket</span>
+              <span>Add {quantity} Pcs to Wholesale RFQ Basket</span>
             </button>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <a
+                href={`https://wa.me/911412890000?text=${whatsappMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pill-btn-dark py-3 text-xs font-bold uppercase tracking-wider rounded-full shadow-md flex items-center justify-center gap-2 bg-[#1F1612]"
+              >
+                <span className="text-emerald-400">💬</span>
+                <span>WhatsApp Inquiry</span>
+              </a>
+
               <button
                 onClick={() => openQuickQuote(product)}
                 className="pill-btn-outline py-3 text-xs font-bold uppercase tracking-wider rounded-full shadow-sm flex items-center justify-center gap-1.5"
               >
                 <FileText className="w-4 h-4 text-[#C8376B]" />
-                <span>Request Custom Quote</span>
-              </button>
-
-              <button
-                onClick={() => { onNavigate('/custom-manufacturing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="pill-btn-dark py-3 text-xs font-bold uppercase tracking-wider rounded-full shadow-sm flex items-center justify-center gap-1.5"
-              >
-                <Scissors className="w-4 h-4 text-[#E5A93C]" />
-                <span>Custom OEM Brief</span>
+                <span>Request Custom Tech Pack</span>
               </button>
             </div>
           </div>
@@ -347,7 +381,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
 
       {/* Tabs: Detailed Technical Specifications & Wholesale Tiers */}
       <div className="bg-white rounded-[32px] p-6 sm:p-10 border border-stone-200 shadow-lg relative overflow-hidden">
-        {/* Tab Headers */}
         <div className="flex items-center gap-2 border-b border-stone-200 pb-4 overflow-x-auto scrollbar-none relative z-10">
           <button
             onClick={() => setActiveTab('details')}
@@ -470,21 +503,27 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                       <td className="p-3.5">3 - 5 Days</td>
                     </tr>
                     <tr className="bg-[#FDF0F3]/60 hover:bg-[#FDF0F3]">
-                      <td className="p-3.5 font-semibold">Tier 1 ({product.moq} - 199 pcs)</td>
+                      <td className="p-3.5 font-semibold">Tier 1 ({product.moq} - 99 pcs)</td>
                       <td className="p-3.5 text-[#C8376B] font-bold">Standard Wholesale</td>
-                      <td className="p-3.5 font-bold text-[#C8376B]">{formatPrice(wholesalePrice)}</td>
+                      <td className="p-3.5 font-bold text-[#C8376B]">{formatPrice(baseWholesalePrice)}</td>
                       <td className="p-3.5">12 - 15 Days</td>
                     </tr>
                     <tr className="hover:bg-slate-50">
-                      <td className="p-3.5 font-semibold">Tier 2 (200 - 499 pcs)</td>
-                      <td className="p-3.5 text-[#C8376B] font-bold">10% Volume Discount</td>
-                      <td className="p-3.5 font-bold text-[#C8376B]">{formatPrice(Math.round(wholesalePrice * 0.90))}</td>
-                      <td className="p-3.5">18 - 22 Days</td>
+                      <td className="p-3.5 font-semibold">Tier 2 (100 - 199 pcs)</td>
+                      <td className="p-3.5 text-[#C8376B] font-bold">8% Volume Discount</td>
+                      <td className="p-3.5 font-bold text-[#C8376B]">{formatPrice(Math.round(baseWholesalePrice * 0.92))}</td>
+                      <td className="p-3.5">15 - 18 Days</td>
                     </tr>
                     <tr className="bg-[#FDF0F3]/60 hover:bg-[#FDF0F3]">
-                      <td className="p-3.5 font-semibold">Tier 3 (500+ pcs)</td>
-                      <td className="p-3.5 text-[#C8376B] font-bold">Custom OEM Contract Rate</td>
-                      <td className="p-3.5 font-bold text-[#C8376B]">{formatPrice(Math.round(wholesalePrice * 0.80))}</td>
+                      <td className="p-3.5 font-semibold">Tier 3 (200 - 499 pcs)</td>
+                      <td className="p-3.5 text-[#C8376B] font-bold">15% Volume Discount</td>
+                      <td className="p-3.5 font-bold text-[#C8376B]">{formatPrice(Math.round(baseWholesalePrice * 0.85))}</td>
+                      <td className="p-3.5">20 - 25 Days</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50">
+                      <td className="p-3.5 font-semibold">Tier 4 (500+ pcs)</td>
+                      <td className="p-3.5 text-[#C8376B] font-bold">25% Enterprise Contract Rate</td>
+                      <td className="p-3.5 font-bold text-[#C8376B]">{formatPrice(Math.round(baseWholesalePrice * 0.75))}</td>
                       <td className="p-3.5">25 - 30 Days</td>
                     </tr>
                   </tbody>
@@ -552,6 +591,47 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           </div>
         </div>
       )}
+
+      {/* Lightbox Image Zoom Modal */}
+      {isZoomOpen && (
+        <div 
+          onClick={() => setIsZoomOpen(false)}
+          className="fixed inset-0 z-50 bg-black/90 p-4 sm:p-8 flex items-center justify-center animate-fade-in cursor-zoom-out"
+        >
+          <button 
+            onClick={() => setIsZoomOpen(false)}
+            className="absolute top-6 right-6 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <img 
+            src={product.images[activeImageIndex] || product.images[0]} 
+            alt={product.name}
+            className="max-h-[90vh] max-w-[90vw] object-contain rounded-2xl shadow-2xl"
+          />
+        </div>
+      )}
+
+      {/* Sticky Mobile Bottom Action Bar */}
+      <div className="lg:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-stone-200 p-3 z-40 shadow-2xl flex items-center gap-2">
+        <a
+          href={`https://wa.me/911412890000?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-3 rounded-full bg-[#1F1612] text-emerald-400 shrink-0 shadow"
+          title="WhatsApp Quote"
+        >
+          <span className="text-base">💬</span>
+        </a>
+        <button
+          onClick={handleAddToBasket}
+          className="flex-1 pill-btn-rose py-3 text-xs font-bold uppercase rounded-full shadow-lg flex items-center justify-center gap-1.5"
+        >
+          <Package className="w-4 h-4" />
+          <span>Add to RFQ ({formatPrice(currentUnitPrice)})</span>
+        </button>
+      </div>
+
     </div>
   );
 };

@@ -618,6 +618,73 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* =========================================================================
+          8B. GLOBAL BOUTIQUE REVIEWS & CLIENT PROOF
+          ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FDF0F3] border border-[#F3CAD6] text-[#C8376B] text-xs font-bold font-royal-title uppercase tracking-wider mb-2">
+            <span>⭐️ Verified Retailer &amp; Boutique Reviews</span>
+          </div>
+          <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
+            Trusted by Luxury Boutiques Worldwide
+          </h2>
+          <p className="text-stone-600 font-royal-body text-base mt-2">
+            Over 140+ independent lifestyle stores, resorts, and private labels rely on Ramam Textiles for authentic Jaipur craftsmanship.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white p-7 rounded-[28px] border border-stone-200 shadow-sm hover:border-[#C8376B] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
+            <div className="space-y-3">
+              <div className="flex text-amber-500 text-sm">★★★★★</div>
+              <p className="text-xs text-stone-700 leading-relaxed italic font-royal-body">
+                "The channel quilting and hand block print alignment on the weekender duffle bags exceeded our expectations. Our customers in Soho loved the authentic cotton feel. We reordered 150 more pieces within three weeks."
+              </p>
+            </div>
+            <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
+              <div>
+                <h5 className="font-royal-title font-bold text-xs text-[#1F1612]">Charlotte Vance</h5>
+                <span className="text-[10px] text-stone-500">Maison &amp; Fleur Boutique • London, UK</span>
+              </div>
+              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Verified B2B</span>
+            </div>
+          </div>
+
+          <div className="bg-white p-7 rounded-[28px] border border-stone-200 shadow-sm hover:border-[#C8376B] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
+            <div className="space-y-3">
+              <div className="flex text-amber-500 text-sm">★★★★★</div>
+              <p className="text-xs text-stone-700 leading-relaxed italic font-royal-body">
+                "Ramam Textiles custom embroidered our brand tags onto 200 units of the playing card vanity cases. The packaging was immaculate, and FedEx delivery to Milan was flawless with full Certificate of Origin."
+              </p>
+            </div>
+            <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
+              <div>
+                <h5 className="font-royal-title font-bold text-xs text-[#1F1612]">Matteo Moretti</h5>
+                <span className="text-[10px] text-stone-500">Moretti Lifestyle Concept • Milan, Italy</span>
+              </div>
+              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Verified B2B</span>
+            </div>
+          </div>
+
+          <div className="bg-white p-7 rounded-[28px] border border-stone-200 shadow-sm hover:border-[#C8376B] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
+            <div className="space-y-3">
+              <div className="flex text-amber-500 text-sm">★★★★★</div>
+              <p className="text-xs text-stone-700 leading-relaxed italic font-royal-body">
+                "Finding an authentic Jaipur manufacturer with low MOQs and genuine vegetable-dyed cotton was tough until we connected with Ramam Textiles. Their WhatsApp communication and sample turnaround are world-class."
+              </p>
+            </div>
+            <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
+              <div>
+                <h5 className="font-royal-title font-bold text-xs text-[#1F1612]">Hannah Brooks</h5>
+                <span className="text-[10px] text-stone-500">Sanctuary Resort Studio • Byron Bay, Australia</span>
+              </div>
+              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Verified B2B</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
           9. CATALOG DOWNLOAD
           ========================================================================= */}
       <section className="bg-[#1F1612] py-16 text-white border-t border-[#D4AF37]/30 shadow-2xl relative">
