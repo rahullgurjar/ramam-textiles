@@ -110,17 +110,24 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <img 
-                src="./logo.jpeg" 
-                alt="Ramam Textiles Jaipur" 
-                className="w-12 h-12 rounded-full border border-[#D4AF37]/50 shadow-lg object-cover"
-              />
-              <div>
-                <span className="block font-heading text-xl font-bold tracking-tight text-white leading-tight">
-                  Ramam <span className="italic font-editorial text-[#C8376B]">Textiles</span>
-                </span>
-                <span className="block text-[10px] tracking-[0.25em] text-[#E5A93C] uppercase font-royal-title font-bold">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-full bg-white/10 border border-[#D4AF37]/60 shadow-lg flex items-center justify-center p-1.5 shrink-0 backdrop-blur-sm">
+                <img 
+                  src="./logo.png" 
+                  alt="Ramam Textiles Jaipur" 
+                  className="w-full h-full object-contain filter drop-shadow"
+                />
+              </div>
+              <div className="whitespace-nowrap">
+                <div className="flex items-baseline gap-1.5 leading-none">
+                  <span className="font-heading text-xl sm:text-2xl font-bold tracking-tight text-white">
+                    Ramam
+                  </span>
+                  <span className="italic font-editorial text-xl sm:text-2xl font-semibold text-[#E5A93C]">
+                    Textiles
+                  </span>
+                </div>
+                <span className="block text-[9px] sm:text-[10px] tracking-[0.26em] text-[#E5A93C] uppercase font-royal-title font-bold mt-1.5">
                   JAIPUR ARTISAN ATELIER
                 </span>
               </div>
