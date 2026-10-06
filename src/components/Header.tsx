@@ -160,7 +160,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               </div>
               <div className="text-left">
                 <span className="block font-heading text-lg sm:text-xl font-bold tracking-tight text-[#1F1612] leading-tight">
-                  Craft of <span className="italic font-editorial text-[#C8376B] font-normal">Pink City</span>
+                  Ramam <span className="italic font-editorial text-[#C8376B] font-normal">Textiles</span>
                 </span>
                 <span className="block text-[9px] uppercase tracking-[0.2em] text-stone-500 font-royal-title font-semibold">
                   JAIPUR ARTISAN ATELIER
@@ -361,7 +361,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   </div>
                   <div>
                     <span className="font-heading font-bold text-sm text-[#1F1612] block">
-                      Craft of <span className="italic font-editorial text-[#C8376B]">Pink City</span>
+                      Ramam <span className="italic font-editorial text-[#C8376B]">Textiles</span>
                     </span>
                     <span className="text-[9px] font-royal-title text-stone-500 tracking-widest block uppercase font-bold">
                       JAIPUR ARTISAN ATELIER

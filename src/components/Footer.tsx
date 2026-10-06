@@ -113,12 +113,12 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             <div className="flex items-center gap-3">
               <img 
                 src="./logo.jpeg" 
-                alt="Craft of Pink City - Ramam Textiles" 
+                alt="Ramam Textiles Jaipur" 
                 className="w-12 h-12 rounded-full border border-[#D4AF37]/50 shadow-lg object-cover"
               />
               <div>
                 <span className="block font-heading text-xl font-bold tracking-tight text-white leading-tight">
-                  Craft of <span className="italic font-editorial text-[#C8376B]">Pink City</span>
+                  Ramam <span className="italic font-editorial text-[#C8376B]">Textiles</span>
                 </span>
                 <span className="block text-[10px] tracking-[0.25em] text-[#E5A93C] uppercase font-royal-title font-bold">
                   JAIPUR ARTISAN ATELIER
@@ -302,7 +302,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
       {/* Bottom Legal & Copyright Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-400 relative z-10 font-royal-body">
         <div>
-          © {new Date().getFullYear()} Ramam Textiles / Craft of Pink City. All rights reserved. Handcrafted in Jaipur, Rajasthan.
+          © {new Date().getFullYear()} Ramam Textiles. All rights reserved. Handcrafted in Jaipur, Rajasthan.
         </div>
         <div className="flex flex-wrap items-center gap-6 font-medium">
           <button onClick={() => handleNav('/faq')} className="hover:text-[#C8376B] transition-colors">
