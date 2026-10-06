@@ -137,11 +137,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
         </div>
       </div>
 
-      {/* Main Brand & Navigation Header with Jaipur Sandstone / Ivory Base */}
-      <div className={`w-full transition-all duration-300 ${
+      {/* Main Brand & Navigation Header with Solid Pure White & Gold Accents */}
+      <div className={`w-full transition-all duration-300 bg-white ${
         isScrolled 
-          ? 'bg-[#FAF7EE] shadow-lg border-b border-[#D4AF37]/50 py-2.5' 
-          : 'bg-[#FAF7EE] border-b border-[#D4AF37]/30 py-3.5'
+          ? 'shadow-md border-b-2 border-[#D4AF37] py-2.5' 
+          : 'border-b border-[#D4AF37]/35 py-3.5'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
@@ -149,20 +149,20 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           <div className="flex items-center gap-3">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-[#11352A] hover:text-[#D4AF37] transition-colors"
+              className="lg:hidden p-2 text-[#0B241C] hover:text-[#D4AF37] transition-colors"
               aria-label="Toggle navigation menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#11352A]" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#0B241C]" />}
             </button>
 
             <button 
               onClick={openSearch}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl border border-[#11352A]/20 text-[#11352A] hover:text-[#0B241C] hover:border-[#D4AF37] bg-white shadow-sm transition-all text-xs font-medium"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl border border-stone-300 text-[#0B241C] hover:text-[#D4AF37] hover:border-[#D4AF37] bg-white shadow-sm transition-all text-xs font-medium"
               title="Search Catalog & Specifications"
             >
               <Search className="w-4 h-4 text-[#D4AF37]" />
               <span className="hidden md:inline font-royal-body">Search prints, duffles, fabrics...</span>
-              <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[10px] bg-[#F3EEDB] rounded text-[#11352A] border border-[#D4AF37]/30 font-mono font-semibold">⌘K</kbd>
+              <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[10px] bg-slate-100 rounded text-stone-700 border border-stone-200 font-mono font-semibold">⌘K</kbd>
             </button>
           </div>
 
@@ -181,10 +181,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 <span className="absolute -bottom-1 -right-1 bg-[#D4AF37] text-[#0B241C] text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">🪷</span>
               </div>
               <div className="text-left">
-                <span className="block font-royal-heading text-lg sm:text-2xl font-bold tracking-widest text-[#0B241C] uppercase leading-tight group-hover:text-[#164335] transition-colors">
+                <span className="block font-royal-heading text-lg sm:text-2xl font-bold tracking-widest text-[#0B241C] uppercase leading-tight group-hover:text-[#D4AF37] transition-colors">
                   RAMAM TEXTILES
                 </span>
-                <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[#164335] font-royal-title font-bold">
+                <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[#D4AF37] font-royal-title font-bold">
                   Jaipur • Heritage Atelier • Luxury B2B
                 </span>
               </div>
@@ -197,7 +197,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             {/* Custom Manufacturing Quick Link */}
             <button
               onClick={() => handleNav('/custom-manufacturing')}
-              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-[#D4AF37]/60 bg-[#F0F7F4] text-[#11352A] text-xs font-royal-title font-bold hover:bg-[#11352A] hover:text-[#FAF3DC] transition-all shadow-sm"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-[#D4AF37] bg-white text-[#0B241C] text-xs font-royal-title font-bold hover:bg-[#0B241C] hover:text-[#FAF3DC] transition-all shadow-sm"
             >
               <Factory className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>Private Label Studio</span>
@@ -206,7 +206,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             {/* Wholesale Inquiry Basket Button */}
             <button 
               onClick={openInquiryDrawer}
-              className="relative flex items-center gap-2 bg-gradient-to-r from-[#11352A] to-[#0B241C] text-[#FAF3DC] hover:from-[#164335] hover:to-[#11352A] border border-[#D4AF37]/60 px-3.5 sm:px-4 py-2 rounded-xl transition-all cursor-pointer group shadow-md hover:shadow-lg"
+              className="relative flex items-center gap-2 bg-gradient-to-r from-[#11352A] to-[#0B241C] text-[#FAF3DC] hover:from-[#164335] hover:to-[#11352A] border border-[#D4AF37] px-3.5 sm:px-4 py-2 rounded-xl transition-all cursor-pointer group shadow-md hover:shadow-lg"
               title="Open Wholesale Inquiry Basket / Request Quote"
             >
               <div className="relative">
@@ -230,14 +230,14 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
         </div>
 
         {/* Desktop Primary Navigation Bar */}
-        <nav className="hidden lg:block border-t border-[#D4AF37]/20 mt-2.5 pt-2">
+        <nav className="hidden lg:block border-t border-stone-200 mt-2.5 pt-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ul className="flex items-center justify-center gap-7 xl:gap-9 text-xs font-bold tracking-wider uppercase text-[#11221B]">
+            <ul className="flex items-center justify-center gap-7 xl:gap-9 text-xs font-bold tracking-wider uppercase text-[#0F172A]">
               <li>
                 <button 
                   onClick={() => handleNav('/')}
                   className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/' ? 'border-[#11352A] text-[#11352A]' : 'border-transparent hover:text-[#164335] hover:border-[#D4AF37]'
+                    currentPath === '/' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
                   }`}
                 >
                   Home
@@ -254,8 +254,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   onClick={() => handleNav('/shop')}
                   className={`py-1.5 flex items-center gap-1 border-b-2 transition-all font-royal-title font-bold ${
                     currentPath.startsWith('/shop') || currentPath.startsWith('/category')
-                      ? 'border-[#11352A] text-[#11352A]' 
-                      : 'border-transparent hover:text-[#164335] hover:border-[#D4AF37]'
+                      ? 'border-[#D4AF37] text-[#D4AF37]' 
+                      : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
                   }`}
                 >
                   <span>Shop Catalog</span>
@@ -263,16 +263,16 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 </button>
 
                 {activeMegaMenu === 'shop' && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-[820px] bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] border-2 border-[#D4AF37]/45 shadow-2xl rounded-2xl p-6 z-50 animate-fade-in text-[#11221B]">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-[820px] bg-white border-2 border-[#D4AF37] shadow-2xl rounded-2xl p-6 z-50 animate-fade-in text-[#0F172A]">
                     <div className="grid grid-cols-3 gap-6">
                       <div className="col-span-2">
-                        <div className="flex items-center justify-between pb-2 border-b border-[#D4AF37]/30 mb-3">
-                          <span className="text-[11px] font-bold text-[#11352A] tracking-widest uppercase font-royal-title">
+                        <div className="flex items-center justify-between pb-2 border-b border-stone-200 mb-3">
+                          <span className="text-[11px] font-bold text-[#0B241C] tracking-widest uppercase font-royal-title">
                             👑 Handcrafted Product Lines (Wholesale Ready)
                           </span>
                           <button 
                             onClick={() => handleNav('/shop')} 
-                            className="text-[11px] text-[#164335] hover:text-[#0B241C] flex items-center gap-1 font-semibold"
+                            className="text-[11px] text-[#D4AF37] hover:text-[#0B241C] flex items-center gap-1 font-semibold"
                           >
                             <span>view full catalog</span>
                             <ArrowRight className="w-3 h-3 text-[#D4AF37]" />
@@ -283,7 +283,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                             <div 
                               key={cat.id}
                               onClick={() => handleNav(`/category/${cat.id}`)}
-                              className="group/item flex items-center gap-3 p-2.5 rounded-xl hover:bg-white/80 cursor-pointer transition-all border border-transparent hover:border-[#D4AF37]/50 shadow-sm"
+                              className="group/item flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 cursor-pointer transition-all border border-stone-200 hover:border-[#D4AF37] shadow-sm"
                             >
                               <img 
                                 src={cat.image} 
@@ -291,10 +291,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                                 className="w-12 h-12 rounded-lg object-cover border border-[#D4AF37]/40 shadow-sm"
                               />
                               <div>
-                                <h4 className="text-xs font-bold text-[#0B241C] group-hover/item:text-[#164335] transition-colors font-royal-title">
+                                <h4 className="text-xs font-bold text-[#0B241C] group-hover/item:text-[#D4AF37] transition-colors font-royal-title">
                                   {cat.name}
                                 </h4>
-                                <p className="text-[10px] text-stone-600 line-clamp-1 font-royal-body">
+                                <p className="text-[10px] text-stone-500 line-clamp-1 font-royal-body">
                                   {cat.subtitle}
                                 </p>
                               </div>
@@ -304,7 +304,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                       </div>
 
                       {/* Mega Menu Spotlight Card */}
-                      <div className="bg-gradient-to-br from-[#0B241C] to-[#11352A] text-white p-5 rounded-2xl border border-[#D4AF37]/40 flex flex-col justify-between shadow-lg">
+                      <div className="bg-gradient-to-br from-[#0B241C] to-[#11352A] text-white p-5 rounded-2xl border border-[#D4AF37] flex flex-col justify-between shadow-lg">
                         <div>
                           <span className="text-[10px] font-mono uppercase tracking-widest text-[#D4AF37] font-bold">
                             Featured Line
@@ -333,7 +333,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 <button 
                   onClick={() => handleNav('/collections')}
                   className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/collections' ? 'border-[#11352A] text-[#11352A]' : 'border-transparent hover:text-[#164335] hover:border-[#D4AF37]'
+                    currentPath === '/collections' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
                   }`}
                 >
                   Collections
@@ -346,8 +346,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   onClick={() => handleNav('/custom-manufacturing')}
                   className={`py-1.5 border-b-2 transition-all font-royal-title font-bold flex items-center gap-1 ${
                     currentPath === '/custom-manufacturing' 
-                      ? 'border-[#11352A] text-[#11352A]' 
-                      : 'border-transparent hover:text-[#164335] hover:border-[#D4AF37]'
+                      ? 'border-[#D4AF37] text-[#D4AF37]' 
+                      : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
                   }`}
                 >
                   <Sparkles className="w-3 h-3 text-[#D4AF37]" />
@@ -360,7 +360,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 <button 
                   onClick={() => handleNav('/wholesale')}
                   className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/wholesale' ? 'border-[#11352A] text-[#11352A]' : 'border-transparent hover:text-[#164335] hover:border-[#D4AF37]'
+                    currentPath === '/wholesale' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
                   }`}
                 >
                   Wholesale &amp; Export
@@ -372,7 +372,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 <button 
                   onClick={() => handleNav('/craftsmanship')}
                   className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/craftsmanship' ? 'border-[#11352A] text-[#11352A]' : 'border-transparent hover:text-[#164335] hover:border-[#D4AF37]'
+                    currentPath === '/craftsmanship' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
                   }`}
                 >
                   Artisan Craft
@@ -384,7 +384,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 <button 
                   onClick={() => handleNav('/lookbook')}
                   className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/lookbook' ? 'border-[#11352A] text-[#11352A]' : 'border-transparent hover:text-[#164335] hover:border-[#D4AF37]'
+                    currentPath === '/lookbook' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
                   }`}
                 >
                   Lookbook
@@ -396,7 +396,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 <button 
                   onClick={() => handleNav('/journal')}
                   className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath.startsWith('/journal') ? 'border-[#11352A] text-[#11352A]' : 'border-transparent hover:text-[#164335] hover:border-[#D4AF37]'
+                    currentPath.startsWith('/journal') ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
                   }`}
                 >
                   Journal
@@ -408,7 +408,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 <button 
                   onClick={() => handleNav('/about')}
                   className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/about' ? 'border-[#11352A] text-[#11352A]' : 'border-transparent hover:text-[#164335] hover:border-[#D4AF37]'
+                    currentPath === '/about' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
                   }`}
                 >
                   About Atelier
@@ -420,7 +420,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 <button 
                   onClick={() => handleNav('/contact')}
                   className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/contact' ? 'border-[#11352A] text-[#11352A]' : 'border-transparent hover:text-[#164335] hover:border-[#D4AF37]'
+                    currentPath === '/contact' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
                   }`}
                 >
                   Contact
@@ -434,7 +434,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
       {/* Mobile Drawer Navigation Menu */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden bg-black/60">
-          <div className="fixed inset-y-0 left-0 w-5/6 max-w-sm bg-[#FAF7EE] shadow-2xl flex flex-col justify-between overflow-y-auto p-5 border-r-2 border-[#D4AF37]/60 animate-fade-in text-[#0B241C]">
+          <div className="fixed inset-y-0 left-0 w-5/6 max-w-sm bg-white shadow-2xl flex flex-col justify-between overflow-y-auto p-5 border-r-2 border-[#D4AF37] animate-fade-in text-[#0F172A]">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/30">
                 <div className="flex items-center gap-2.5">

@@ -56,7 +56,7 @@ export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate
           return (
             <div 
               key={stage.title}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] p-6 sm:p-10 rounded-3xl border-2 border-[#D4AF37]/35 shadow-lg relative overflow-hidden group"
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-6 sm:p-10 rounded-3xl border-2 border-stone-200 shadow-sm relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-10 pointer-events-none" />
 

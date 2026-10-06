@@ -48,10 +48,10 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 sm:p-6 md:p-12 animate-fade-in flex items-start justify-center">
-      <div className="w-full max-w-3xl bg-[#FAF7EE] rounded-2xl shadow-2xl border-2 border-[#D4AF37]/50 overflow-hidden flex flex-col max-h-[85vh]">
+      <div className="w-full max-w-3xl bg-white rounded-2xl shadow-2xl border-2 border-[#D4AF37] overflow-hidden flex flex-col max-h-[85vh]">
         
         {/* Search Input Bar */}
-        <div className="p-4 bg-white border-b border-[#D4AF37]/30 flex items-center gap-3">
+        <div className="p-4 bg-white border-b border-stone-200 flex items-center gap-3">
           <Search className="w-5 h-5 text-[#D4AF37] shrink-0" />
           <input 
             ref={inputRef}
@@ -59,7 +59,7 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search Jaipur hand block prints, quilted duffles, vanity cases, SKUs..."
-            className="w-full bg-transparent border-none outline-none text-sm sm:text-base font-medium text-[#0B241C] placeholder:text-[#164335]/70"
+            className="w-full bg-transparent border-none outline-none text-sm sm:text-base font-medium text-[#0B241C] placeholder:text-stone-400"
           />
           {searchQuery && (
             <button 
@@ -78,16 +78,16 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
         </div>
 
         {/* Filter Pills */}
-        <div className="px-4 py-2.5 bg-[#F3EEDB] border-b border-[#D4AF37]/20 flex items-center gap-2 overflow-x-auto text-xs">
-          <span className="text-[10px] uppercase font-bold text-[#164335] tracking-wider shrink-0 font-royal-title">
+        <div className="px-4 py-2.5 bg-slate-50 border-b border-stone-200 flex items-center gap-2 overflow-x-auto text-xs">
+          <span className="text-[10px] uppercase font-bold text-[#0B241C] tracking-wider shrink-0 font-royal-title">
             👑 Category:
           </span>
           <button
             onClick={() => setSelectedFilter('all')}
             className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all font-royal-title ${
               selectedFilter === 'all' 
-                ? 'bg-[#11352A] text-[#FAF7EE] border border-[#D4AF37]/50 shadow-sm' 
-                : 'bg-white text-[#0B241C] hover:bg-[#FAF7EE] border border-[#D4AF37]/30'
+                ? 'bg-[#0B241C] text-[#FAF7EE] border border-[#D4AF37] shadow-sm' 
+                : 'bg-white text-[#0B241C] hover:bg-slate-100 border border-stone-300'
             }`}
           >
             All Categories ({PRODUCTS.length})

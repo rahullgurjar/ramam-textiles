@@ -4,9 +4,8 @@
 
 :root {
   /* ==========================================================================
-     👑 JAIPUR EMERALD COURT & REGAL SANDSTONE DESIGN SYSTEM
-     Inspired by Royal Emerald Gemstones of Johari Bazaar, Palace Courtyards,
-     and 24K Zari Gold of Rajasthan
+     👑 SOLID PURE WHITE & ROYAL GOLD DESIGN SYSTEM
+     Inspired by Crisp Luxury White Canvas, 24K Zari Gold & Deep Emerald Accents
      ========================================================================== */
   
   /* Primary Jaipur Royal Emerald Tones */
@@ -17,14 +16,14 @@
   --jaipur-emerald-600: #1C5241;
   --jaipur-emerald-500: #266D57;
   --jaipur-emerald-400: #38886E;
-  --jaipur-emerald-100: #DDEFE8;
-  --jaipur-emerald-50: #F0F7F4;
+  --jaipur-emerald-100: #F0FDF4;
+  --jaipur-emerald-50: #F8FAFC;
 
   /* Royal Zari 24K Gold & Antique Brass */
-  --jaipur-gold-50: #FDFCF7;
-  --jaipur-gold-100: #FAF3DC;
-  --jaipur-gold-200: #F5E6B5;
-  --jaipur-gold-300: #EED485;
+  --jaipur-gold-50: #FFFFFF;
+  --jaipur-gold-100: #FEFCE8;
+  --jaipur-gold-200: #FEF08A;
+  --jaipur-gold-300: #FDE047;
   --jaipur-gold-400: #E5C058;
   --jaipur-gold-500: #D4AF37;
   --jaipur-gold-600: #B89426;
@@ -32,13 +31,13 @@
   --jaipur-gold-800: #6E540F;
   --jaipur-gold-900: #473507;
 
-  /* Regal Sandstone & Warm Pearl Ivory */
-  --jaipur-sand-50: #FDFCF9;
-  --jaipur-sand-100: #FAF7EE;
-  --jaipur-sand-200: #F3EEDB;
-  --jaipur-sand-300: #E8E0C8;
-  --jaipur-sand-400: #D8CBAE;
-  --jaipur-sand-500: #C2B18E;
+  /* Crisp Pure White Canvas */
+  --jaipur-sand-50: #FFFFFF;
+  --jaipur-sand-100: #FFFFFF;
+  --jaipur-sand-200: #F8FAFC;
+  --jaipur-sand-300: #F1F5F9;
+  --jaipur-sand-400: #E2E8F0;
+  --jaipur-sand-500: #CBD5E1;
 
   /* Typography */
   --font-royal: 'Cinzel Decorative', 'Cinzel', serif;
@@ -49,13 +48,13 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Border & Shadows */
-  --border-gold-subtle: rgba(212, 175, 55, 0.28);
-  --border-gold-rich: rgba(212, 175, 55, 0.6);
+  --border-gold-subtle: rgba(212, 175, 55, 0.35);
+  --border-gold-rich: #D4AF37;
   --border-emerald-subtle: rgba(17, 53, 42, 0.2);
   
-  --shadow-royal: 0 10px 30px -10px rgba(11, 36, 28, 0.25);
-  --shadow-gold: 0 8px 25px rgba(212, 175, 55, 0.3);
-  --shadow-palace: 0 20px 45px -12px rgba(11, 36, 28, 0.2);
+  --shadow-royal: 0 10px 30px -10px rgba(11, 36, 28, 0.15);
+  --shadow-gold: 0 8px 25px rgba(212, 175, 55, 0.25);
+  --shadow-palace: 0 20px 45px -12px rgba(11, 36, 28, 0.15);
 
   --radius-jharokha: 24px 24px 8px 8px;
   --radius-royal-arch: 9999px 9999px 12px 12px;
@@ -69,8 +68,8 @@
 
 html {
   font-family: var(--font-sans);
-  background-color: var(--jaipur-sand-100);
-  color: #11221B;
+  background-color: #FFFFFF;
+  color: #0F172A;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -82,7 +81,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--jaipur-sand-100);
+  background-color: #FFFFFF;
 }
 
 #root {
@@ -112,8 +111,8 @@ body {
 
 /* Traditional Hand Block Print Buta / Floral Background */
 .bg-blockprint-pattern {
-  background-color: #FAF7EE;
-  background-image: radial-gradient(#E8DCB8 0.75px, transparent 0.75px), radial-gradient(#E8DCB8 0.75px, #FAF7EE 0.75px);
+  background-color: #FFFFFF;
+  background-image: radial-gradient(#E2E8F0 0.75px, transparent 0.75px), radial-gradient(#E2E8F0 0.75px, #FFFFFF 0.75px);
   background-size: 30px 30px;
   background-position: 0 0, 15px 15px;
 }
@@ -204,8 +203,8 @@ body {
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.85rem;
-  background: #F3EEDB;
-  border: 1.5px solid #11352A;
+  background: #F8FAFC;
+  border: 1.5px solid #D4AF37;
   border-radius: 9999px;
   color: #0B241C;
   font-family: var(--font-heading);
@@ -213,6 +212,7 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 /* ==========================================================================

@@ -30,7 +30,7 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-center justify-center animate-fade-in">
-      <div className="w-full max-w-lg bg-[#FAF7EE] rounded-2xl shadow-2xl border-2 border-[#D4AF37]/50 overflow-hidden text-[#11221B]">
+      <div className="w-full max-w-lg bg-white rounded-2xl shadow-2xl border-2 border-[#D4AF37] overflow-hidden text-[#0F172A]">
         {/* Header */}
         <div className="bg-[#0B241C] text-[#FAF7EE] p-6 relative border-b border-[#D4AF37]/40 shadow-md">
           <button

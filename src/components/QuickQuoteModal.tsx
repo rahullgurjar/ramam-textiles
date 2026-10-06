@@ -29,7 +29,7 @@ export const QuickQuoteModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-center justify-center animate-fade-in">
-      <div className="w-full max-w-xl bg-[#FAF7EE] rounded-2xl shadow-2xl border-2 border-[#D4AF37]/50 overflow-hidden">
+      <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl border-2 border-[#D4AF37] overflow-hidden">
         
         {/* Header */}
         <div className="p-4 bg-[#0B241C] text-[#FAF7EE] border-b border-[#D4AF37]/40 flex items-center justify-between shadow-md">

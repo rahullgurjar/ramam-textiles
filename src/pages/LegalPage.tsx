@@ -11,13 +11,13 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-10">
       {/* Header Tabs */}
-      <div className="flex items-center justify-center gap-2 border-b border-[#D4AF37]/30 pb-4 overflow-x-auto scrollbar-none">
+      <div className="flex items-center justify-center gap-2 border-b border-stone-200 pb-4 overflow-x-auto scrollbar-none">
         <button
           onClick={() => setActiveTab('terms')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'terms'
-              ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-              : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
+              ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
+              : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
           }`}
         >
           Terms of Trade
@@ -26,8 +26,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           onClick={() => setActiveTab('shipping')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'shipping'
-              ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-              : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
+              ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
+              : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
           }`}
         >
           Shipping &amp; Export Policy
@@ -36,8 +36,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           onClick={() => setActiveTab('returns')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'returns'
-              ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-              : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
+              ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
+              : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
           }`}
         >
           Returns &amp; Quality Claims
@@ -46,8 +46,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           onClick={() => setActiveTab('privacy')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'privacy'
-              ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-              : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
+              ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
+              : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
           }`}
         >
           Privacy Policy
@@ -55,7 +55,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
       </div>
 
       {/* Content */}
-      <div className="bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] p-6 sm:p-10 rounded-3xl border-2 border-[#D4AF37]/35 shadow-lg text-stone-800 font-royal-body text-sm sm:text-base leading-relaxed space-y-6">
+      <div className="bg-white p-6 sm:p-10 rounded-3xl border-2 border-stone-200 shadow-lg text-stone-800 font-royal-body text-sm sm:text-base leading-relaxed space-y-6">
         {activeTab === 'terms' && (
           <div className="space-y-4">
             <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#0B241C]">

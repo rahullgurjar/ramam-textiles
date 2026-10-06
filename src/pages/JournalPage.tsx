@@ -27,7 +27,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
       {JOURNAL_POSTS[0] && (
         <div 
           onClick={() => { onNavigate(`/journal/${JOURNAL_POSTS[0].slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] p-6 sm:p-10 rounded-3xl border-2 border-[#D4AF37]/35 cursor-pointer group hover:shadow-2xl transition-all relative overflow-hidden"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-6 sm:p-10 rounded-3xl border-2 border-stone-200 cursor-pointer group hover:shadow-2xl transition-all relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-10 pointer-events-none" />
 

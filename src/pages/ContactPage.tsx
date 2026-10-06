@@ -116,16 +116,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] p-6 rounded-3xl border-2 border-[#D4AF37]/35 space-y-2.5 shadow-md">
+          <div className="bg-white p-6 rounded-3xl border-2 border-stone-200 space-y-2.5 shadow-sm">
             <h4 className="font-royal-title font-bold text-[#0B241C] text-sm">International Client Showroom Visits</h4>
-            <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
+            <p className="text-xs font-royal-body text-stone-600 leading-relaxed">
               We arrange direct factory pick-up from Jaipur International Airport (JAI) or Jaipur Junction Railway Station for commercial buyers visiting for sampling and production sign-off.
             </p>
           </div>
         </div>
 
         {/* Inquiry Form */}
-        <div className="lg:col-span-7 bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] p-8 sm:p-10 rounded-3xl border-2 border-[#D4AF37]/35 shadow-xl relative overflow-hidden">
+        <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border-2 border-stone-200 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-10 pointer-events-none" />
 
           {isSubmitted ? (

@@ -35,32 +35,32 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
       {/* Brand Values */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] p-8 rounded-3xl border-2 border-[#D4AF37]/35 shadow-md space-y-3 relative overflow-hidden">
-          <div className="w-14 h-14 bg-gradient-to-br from-[#D4AF37]/30 to-[#11352A]/20 text-[#11352A] rounded-2xl flex items-center justify-center mb-4 border border-[#D4AF37]/40 shadow-sm">
+        <div className="bg-white p-8 rounded-3xl border-2 border-stone-200 hover:border-[#D4AF37] shadow-sm space-y-3 relative overflow-hidden transition-all">
+          <div className="w-14 h-14 bg-slate-50 text-[#0B241C] rounded-2xl flex items-center justify-center mb-4 border border-[#D4AF37]/40 shadow-sm">
             <Award className="w-7 h-7 text-[#D4AF37]" />
           </div>
           <h3 className="font-royal-heading text-xl font-bold text-[#0B241C]">Uncompromising Craft Integrity</h3>
-          <p className="text-xs sm:text-sm font-royal-body text-stone-700 leading-relaxed">
+          <p className="text-xs sm:text-sm font-royal-body text-stone-600 leading-relaxed">
             We preserve pure handmade block printing techniques, resisting synthetic shortcuts. Every rhythm of the wooden block represents centuries of honed human skill.
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-[#FAF6EE] to-[#F3EEDB] p-8 rounded-3xl border-2 border-[#D4AF37]/35 shadow-md space-y-3 relative overflow-hidden">
-          <div className="w-14 h-14 bg-[#F0F7F4] text-[#11352A] rounded-2xl flex items-center justify-center mb-4 border border-[#164335]/30 shadow-sm">
-            <ShieldCheck className="w-7 h-7 text-[#11352A]" />
+        <div className="bg-white p-8 rounded-3xl border-2 border-stone-200 hover:border-[#D4AF37] shadow-sm space-y-3 relative overflow-hidden transition-all">
+          <div className="w-14 h-14 bg-slate-50 text-[#0B241C] rounded-2xl flex items-center justify-center mb-4 border border-[#D4AF37]/40 shadow-sm">
+            <ShieldCheck className="w-7 h-7 text-[#0B241C]" />
           </div>
           <h3 className="font-royal-heading text-xl font-bold text-[#0B241C]">Sustainable & Pure Materials</h3>
-          <p className="text-xs sm:text-sm font-royal-body text-stone-700 leading-relaxed">
+          <p className="text-xs sm:text-sm font-royal-body text-stone-600 leading-relaxed">
             We use only 100% natural, breathable long-staple Indian cotton, pure Mulberry and Chanderi silks, and certified azo-free herbal and mineral dyes.
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-[#FAF6EE] to-[#F3EEDB] p-8 rounded-3xl border-2 border-[#D4AF37]/35 shadow-md space-y-3 relative overflow-hidden">
-          <div className="w-14 h-14 bg-[#FAF3DC] text-[#11352A] rounded-2xl flex items-center justify-center mb-4 border border-[#D4AF37]/40 shadow-sm">
+        <div className="bg-white p-8 rounded-3xl border-2 border-stone-200 hover:border-[#D4AF37] shadow-sm space-y-3 relative overflow-hidden transition-all">
+          <div className="w-14 h-14 bg-slate-50 text-[#0B241C] rounded-2xl flex items-center justify-center mb-4 border border-[#D4AF37]/40 shadow-sm">
             <Heart className="w-7 h-7 text-[#D4AF37]" />
           </div>
           <h3 className="font-royal-heading text-xl font-bold text-[#0B241C]">Artisan Guild Stewardship</h3>
-          <p className="text-xs sm:text-sm font-royal-body text-stone-700 leading-relaxed">
+          <p className="text-xs sm:text-sm font-royal-body text-stone-600 leading-relaxed">
             Our artisan partners in Bagru and Sanganer are co-owners of our craft vision. We provide stable year-round employment, safe printing sheds, and dignity in artisan labor.
           </p>
         </div>
@@ -95,16 +95,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Jaipur Presence */}
-      <div className="bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] p-8 sm:p-12 rounded-3xl border-2 border-[#D4AF37]/35 flex flex-col md:flex-row items-center justify-between gap-8 shadow-lg">
+      <div className="bg-white p-8 sm:p-12 rounded-3xl border-2 border-stone-200 flex flex-col md:flex-row items-center justify-between gap-8 shadow-lg">
         <div className="space-y-3 max-w-xl">
-          <div className="flex items-center gap-2 text-xs font-royal-title font-bold uppercase tracking-widest text-[#11352A]">
+          <div className="flex items-center gap-2 text-xs font-royal-title font-bold uppercase tracking-widest text-[#0B241C]">
             <MapPin className="w-4 h-4 text-[#D4AF37]" />
             <span>Jaipur Studio & Manufacturing Units</span>
           </div>
           <h2 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#0B241C]">
             Visit Our Design Studio & Workshop
           </h2>
-          <p className="text-sm font-royal-body text-stone-700 leading-relaxed">
+          <p className="text-sm font-royal-body text-stone-600 leading-relaxed">
             International buyers, designers, and boutique owners are warmly invited to visit our Jaipur design studio and witness block printing and dyeing on our workshop tables.
           </p>
         </div>

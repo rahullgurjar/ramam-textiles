@@ -91,7 +91,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
         {/* Left Column: Image Gallery */}
         <div className="lg:col-span-7 space-y-4">
           {/* Active Main Image */}
-          <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-[#FAF7EE] shadow-2xl border-2 border-[#D4AF37]/35 group">
+          <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-slate-50 shadow-2xl border-2 border-stone-200 group">
             <img
               src={product.images[activeImageIndex] || product.images[0]}
               alt={product.name}
@@ -113,7 +113,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                 </span>
               )}
               {product.isFeatured && (
-                <span className="bg-gradient-to-r from-[#D4AF37] to-[#B89426] text-[#0B241C] text-[10px] font-royal-title font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-lg border border-[#FAF7EE]/50 flex items-center gap-1.5">
+                <span className="bg-gradient-to-r from-[#D4AF37] to-[#B89426] text-[#0B241C] text-[10px] font-royal-title font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-lg border border-white flex items-center gap-1.5">
                   <Sparkles className="w-3 h-3" />
                   <span>Heritage Masterpiece</span>
                 </span>
@@ -124,7 +124,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             <div className="absolute top-5 right-5 flex items-center gap-2 z-10">
               <button
                 onClick={handleShare}
-                className="p-3 rounded-full bg-[#FAF7EE] hover:bg-white text-[#0B241C] shadow-lg border border-[#D4AF37] transition-all hover:scale-105"
+                className="p-3 rounded-full bg-white hover:bg-slate-50 text-[#0B241C] shadow-lg border border-stone-200 transition-all hover:scale-105"
                 title="Share Creation"
               >
                 <Share2 className="w-4 h-4 text-[#11352A]" />
@@ -166,25 +166,23 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
         {/* Right Column: Product Actions & B2B Purchase Controls */}
         <div className="lg:col-span-5 space-y-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#11352A]/10 border border-[#11352A]/25 text-[#11352A] text-[11px] font-royal-title uppercase tracking-widest font-bold mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#0B241C]/10 border border-[#0B241C]/20 text-[#0B241C] text-[11px] font-royal-title uppercase tracking-widest font-bold mb-2">
               <span>{product.collection}</span>
             </div>
             <h1 className="font-royal-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0B241C] leading-tight">
               {product.name}
             </h1>
-            <p className="text-xs text-[#164335]/80 font-royal-body mt-1.5 flex items-center gap-2">
+            <p className="text-xs text-stone-600 font-royal-body mt-1.5 flex items-center gap-2">
               <span className="text-[#D4AF37]">✦</span>
               Technique: <span className="text-[#0B241C] font-semibold">{product.printTechnique}</span>
             </p>
           </div>
 
           {/* Pricing Block */}
-          <div className="p-5 bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] rounded-2xl border-2 border-[#D4AF37]/35 shadow-md space-y-3 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-jaipur-jaali opacity-10 pointer-events-none" />
-            
+          <div className="p-5 bg-slate-50 rounded-2xl border-2 border-stone-200 shadow-sm space-y-3 relative overflow-hidden">
             <div className="flex items-baseline justify-between relative z-10">
               <div>
-                <span className="text-[10px] text-[#164335] font-royal-title uppercase tracking-wider block font-bold">Indicative Retail Benchmark</span>
+                <span className="text-[10px] text-[#0B241C] font-royal-title uppercase tracking-wider block font-bold">Indicative Retail Benchmark</span>
                 <span className="text-2xl sm:text-3xl font-royal-heading font-bold text-[#0B241C]">
                   {formatPrice(retailPrice)}
                 </span>
@@ -192,7 +190,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
               </div>
 
               <div className="text-right">
-                <span className="text-[10px] text-[#164335] font-royal-title font-bold uppercase tracking-wider block">
+                <span className="text-[10px] text-[#0B241C] font-royal-title font-bold uppercase tracking-wider block">
                   B2B Wholesale FOB Rate
                 </span>
                 <span className="text-xl sm:text-2xl font-royal-heading font-bold text-[#11352A]">
@@ -202,7 +200,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
               </div>
             </div>
 
-            <div className="pt-3 border-t border-[#D4AF37]/25 flex items-center justify-between text-xs text-[#0B241C] font-royal-body">
+            <div className="pt-3 border-t border-stone-200 flex items-center justify-between text-xs text-[#0B241C] font-royal-body">
               <span className="flex items-center gap-1.5 font-semibold">
                 <CheckCircle2 className="w-4 h-4 text-[#164335]" />
                 Atelier MOQ: {product.moq} pcs
@@ -224,8 +222,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                     onClick={() => setSelectedColor(col)}
                     className={`px-3.5 py-1.5 rounded-lg text-xs font-royal-body transition-all ${
                       selectedColor === col
-                        ? 'border-2 border-[#D4AF37] bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-md font-semibold'
-                        : 'border border-[#D4AF37]/30 bg-[#FAF7EE] text-[#0B241C] hover:border-[#11352A]'
+                        ? 'border-2 border-[#D4AF37] bg-[#0B241C] text-[#F5E6B5] shadow-md font-semibold'
+                        : 'border border-stone-200 bg-white text-[#0B241C] hover:border-[#D4AF37]'
                     }`}
                   >
                     {col}
@@ -251,8 +249,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                     onClick={() => setSelectedSize(sz)}
                     className={`px-3.5 py-1.5 rounded-lg text-xs font-royal-body transition-all ${
                       selectedSize === sz
-                        ? 'border-2 border-[#D4AF37] bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-md font-semibold'
-                        : 'border border-[#D4AF37]/30 bg-[#FAF7EE] text-[#0B241C] hover:border-[#11352A]'
+                        ? 'border-2 border-[#D4AF37] bg-[#0B241C] text-[#F5E6B5] shadow-md font-semibold'
+                        : 'border border-stone-200 bg-white text-[#0B241C] hover:border-[#D4AF37]'
                     }`}
                   >
                     {sz}
@@ -354,17 +352,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
       </div>
 
       {/* Tabs: Detailed Technical Specifications & Wholesale Tiers */}
-      <div className="bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] rounded-3xl p-6 sm:p-10 border-2 border-[#D4AF37]/35 shadow-lg relative overflow-hidden">
-        <div className="absolute inset-0 bg-jaipur-jaali opacity-5 pointer-events-none" />
-        
+      <div className="bg-white rounded-3xl p-6 sm:p-10 border-2 border-stone-200 shadow-lg relative overflow-hidden">
         {/* Tab Headers */}
-        <div className="flex items-center gap-2 border-b border-[#D4AF37]/30 pb-4 overflow-x-auto scrollbar-none relative z-10">
+        <div className="flex items-center gap-2 border-b border-stone-200 pb-4 overflow-x-auto scrollbar-none relative z-10">
           <button
             onClick={() => setActiveTab('details')}
             className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-widest font-bold transition-all whitespace-nowrap ${
               activeTab === 'details'
-                ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-                : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
+                ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
+                : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
             }`}
           >
             Craft Story & Overview
@@ -373,8 +369,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             onClick={() => setActiveTab('specs')}
             className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-widest font-bold transition-all whitespace-nowrap ${
               activeTab === 'specs'
-                ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-                : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
+                ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
+                : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
             }`}
           >
             Technical Specifications
@@ -383,8 +379,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             onClick={() => setActiveTab('wholesale')}
             className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-widest font-bold transition-all whitespace-nowrap ${
               activeTab === 'wholesale'
-                ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-                : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
+                ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
+                : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
             }`}
           >
             Wholesale Price Tiers & MOQ
@@ -393,8 +389,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             onClick={() => setActiveTab('custom')}
             className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-widest font-bold transition-all whitespace-nowrap ${
               activeTab === 'custom'
-                ? 'bg-gradient-to-r from-[#0B241C] to-[#164335] text-[#F5E6B5] shadow-lg border border-[#D4AF37]'
-                : 'text-[#164335] hover:text-[#0B241C] hover:bg-[#FAF7EE]'
+                ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
+                : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
             }`}
           >
             Custom Branding & Care
