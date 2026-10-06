@@ -148,25 +148,25 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             <div 
               onClick={() => handleNav('/')}
-              className="flex items-center gap-3 cursor-pointer group flex-shrink-0"
+              className="flex items-center gap-3.5 cursor-pointer group flex-shrink-0"
             >
-              <div className="relative flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#FAF6F0] to-[#F3E8DC] border border-[#D4AF37]/50 shadow-sm flex items-center justify-center p-1.5 group-hover:border-[#C8376B] transition-all group-hover:scale-105">
+              <div className="relative flex-shrink-0 w-13 h-13 sm:w-15 sm:h-15 w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-full bg-gradient-to-br from-[#FAF6F0] via-white to-[#F5ECE1] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 group-hover:border-[#C8376B] group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
                 <img 
                   src="./logo.png" 
                   alt="Ramam Textiles Jaipur" 
-                  className="w-full h-full object-contain filter drop-shadow-sm"
+                  className="w-full h-full object-contain filter drop-shadow-sm transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
               <div className="text-left whitespace-nowrap flex flex-col justify-center">
-                <div className="flex items-baseline gap-1.5 leading-none">
-                  <span className="font-playfair text-xl sm:text-2xl font-bold tracking-tight text-[#1F1612]">
+                <div className="flex items-baseline gap-2 leading-none">
+                  <span className="font-playfair text-2xl sm:text-3xl font-bold tracking-tight text-[#1F1612]">
                     Ramam
                   </span>
-                  <span className="font-editorial italic text-xl sm:text-2xl font-semibold text-[#C8376B]">
+                  <span className="font-editorial italic text-2xl sm:text-3xl font-semibold text-[#C8376B]">
                     Textiles
                   </span>
                 </div>
-                <span className="text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.25em] text-stone-500 font-royal-title font-bold mt-1 leading-none">
+                <span className="text-[9.5px] sm:text-[11px] uppercase tracking-[0.28em] text-stone-500 font-royal-title font-bold mt-1.5 leading-none">
                   JAIPUR ARTISAN ATELIER
                 </span>
               </div>
@@ -360,19 +360,19 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-stone-200">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FAF6F0] to-[#F3E8DC] border border-[#D4AF37]/50 shadow-sm flex items-center justify-center p-1.5 shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FAF6F0] via-white to-[#F5ECE1] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 shrink-0">
                     <img src="./logo.png" alt="Ramam Textiles" className="w-full h-full object-contain filter drop-shadow-sm" />
                   </div>
                   <div className="whitespace-nowrap">
-                    <div className="flex items-baseline gap-1 leading-none">
-                      <span className="font-playfair font-bold text-base text-[#1F1612]">
+                    <div className="flex items-baseline gap-1.5 leading-none">
+                      <span className="font-playfair font-bold text-lg text-[#1F1612]">
                         Ramam
                       </span>
-                      <span className="italic font-editorial font-semibold text-base text-[#C8376B]">
+                      <span className="italic font-editorial font-semibold text-lg text-[#C8376B]">
                         Textiles
                       </span>
                     </div>
-                    <span className="text-[8.5px] font-royal-title text-stone-500 tracking-[0.22em] block uppercase font-bold mt-1">
+                    <span className="text-[9px] font-royal-title text-stone-500 tracking-[0.24em] block uppercase font-bold mt-1.5">
                       JAIPUR ARTISAN ATELIER
                     </span>
                   </div>

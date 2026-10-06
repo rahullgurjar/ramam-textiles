@@ -110,24 +110,24 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-full bg-white/10 border border-[#D4AF37]/60 shadow-lg flex items-center justify-center p-1.5 shrink-0 backdrop-blur-sm">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/10 border-2 border-[#D4AF37]/60 shadow-xl flex items-center justify-center p-2 shrink-0 backdrop-blur-sm">
                 <img 
                   src="./logo.png" 
                   alt="Ramam Textiles Jaipur" 
-                  className="w-full h-full object-contain filter drop-shadow"
+                  className="w-full h-full object-contain filter drop-shadow-md"
                 />
               </div>
               <div className="whitespace-nowrap">
-                <div className="flex items-baseline gap-1.5 leading-none">
-                  <span className="font-heading text-xl sm:text-2xl font-bold tracking-tight text-white">
+                <div className="flex items-baseline gap-2 leading-none">
+                  <span className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-white">
                     Ramam
                   </span>
-                  <span className="italic font-editorial text-xl sm:text-2xl font-semibold text-[#E5A93C]">
+                  <span className="italic font-editorial text-2xl sm:text-3xl font-semibold text-[#E5A93C]">
                     Textiles
                   </span>
                 </div>
-                <span className="block text-[9px] sm:text-[10px] tracking-[0.26em] text-[#E5A93C] uppercase font-royal-title font-bold mt-1.5">
+                <span className="block text-[10px] sm:text-[11px] tracking-[0.28em] text-[#E5A93C] uppercase font-royal-title font-bold mt-1.5">
                   JAIPUR ARTISAN ATELIER
                 </span>
               </div>
