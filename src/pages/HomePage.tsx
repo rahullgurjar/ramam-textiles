@@ -53,7 +53,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="space-y-16 md:space-y-24 bg-[#FFFDF9] text-[#1F1612]">
+    <div className="space-y-16 md:space-y-24 bg-[#FAF8F5] text-[#241A16]">
       
       {/* =========================================================================
           1. HERO SECTION - SIGNATURE CRAFT OF PINK CITY SPLIT HERO
@@ -66,14 +66,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="lg:col-span-6 xl:col-span-7 space-y-6 text-left">
               
               {/* Crafted in Jaipur Pill Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDF0F3] border border-[#F3CAD6] text-[#C8376B] text-xs font-bold tracking-wider uppercase font-royal-title shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#C8376B]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold tracking-wider uppercase font-royal-title shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#9B332C]" />
                 <span>CRAFTED IN JAIPUR</span>
               </div>
 
               {/* Editorial Headline */}
-              <h1 className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-[58px] xl:text-[66px] font-medium text-[#1F1612] leading-[1.08] tracking-tight">
-                The Art of Block Printing, <span className="italic font-editorial font-normal text-[#C8376B]">Crafted</span> in Jaipur.
+              <h1 className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-[58px] xl:text-[66px] font-medium text-[#241A16] leading-[1.08] tracking-tight">
+                The Art of Block Printing, <span className="italic font-editorial font-normal text-[#9B332C]">Crafted</span> in Jaipur.
               </h1>
 
               {/* Subtext */}
@@ -95,7 +95,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   onClick={() => { onNavigate('/custom-manufacturing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                   className="pill-btn-outline flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full"
                 >
-                  <Scissors className="w-4 h-4 text-[#C8376B]" />
+                  <Scissors className="w-4 h-4 text-[#9B332C]" />
                   <span>Custom Batch &amp; Bulk</span>
                 </button>
               </div>
@@ -118,8 +118,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
               {/* Live Order Social Proof Pill */}
               <div className="pt-4">
-                <div className="inline-flex items-center gap-3 p-3 sm:p-3.5 rounded-2xl bg-white border border-[#F3CAD6]/80 shadow-md transition-all animate-fade-in max-w-md">
-                  <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#FBEAE5] shrink-0 border border-[#F3CAD6]">
+                <div className="inline-flex items-center gap-3 p-3 sm:p-3.5 rounded-2xl bg-white/95 border border-[#EAE2D7] shadow-sm transition-all animate-fade-in max-w-md">
+                  <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#FAF0EB] shrink-0 border border-[#EACAC0]">
                     <img 
                       src="./products/duffle-kantha-patchwork.jpg" 
                       alt="Order thumbnail"
@@ -128,13 +128,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   </div>
                   <div className="text-left font-royal-body">
                     <div className="flex items-center gap-1.5">
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-[#C8376B] font-royal-title">
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-[#9B332C] font-royal-title">
                         ✨ CUSTOM BATCH PLACED
                       </span>
                       <span className="text-[10px] text-stone-400">•</span>
                       <span className="text-[10px] text-stone-500">{activeOrder.time}</span>
                     </div>
-                    <p className="text-xs font-bold text-[#1F1612] line-clamp-1">
+                    <p className="text-xs font-bold text-[#241A16] line-clamp-1">
                       {activeOrder.name} ({activeOrder.city}) — <span className="font-normal text-stone-600">{activeOrder.item}</span>
                     </p>
                   </div>
@@ -145,24 +145,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
             {/* Right Column: Blush Card with Artisan Patchwork Bag & Rotating Seal */}
             <div className="lg:col-span-6 xl:col-span-5">
-              <div className="relative bg-[#FBEAE5] rounded-[36px] p-5 sm:p-7 border border-[#F3CAD6]/70 shadow-2xl overflow-hidden">
+              <div className="relative bg-gradient-to-br from-[#FAF0EB] via-[#F7ECE5] to-[#F2DFD7] rounded-[36px] p-5 sm:p-7 border border-[#E8CECA] shadow-2xl overflow-hidden">
                 
                 {/* Floating Top-Left Artisan Patchwork Badge */}
-                <div className="absolute top-6 left-6 z-20 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full shadow-md border border-stone-200/80 flex items-center gap-2 text-xs font-bold text-[#1F1612]">
-                  <span className="text-[#C8376B] text-sm">🪄</span>
+                <div className="absolute top-6 left-6 z-20 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full shadow-md border border-[#EAE2D7] flex items-center gap-2 text-xs font-bold text-[#241A16]">
+                  <span className="text-[#9B332C] text-sm">🪄</span>
                   <span className="font-royal-title tracking-wider text-[11px]">ARTISAN PATCHWORK</span>
                 </div>
 
                 {/* Floating Top-Right Rotating Circular Seal */}
                 <div className="absolute top-5 right-5 z-20">
-                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#1F1612] text-[#FAF3DC] flex items-center justify-center shadow-xl border border-[#D4AF37]/50">
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#241A16] text-[#FAF5EE] flex items-center justify-center shadow-xl border border-[#D4AF37]/50">
                     <svg className="w-full h-full animate-spin-seal" viewBox="0 0 100 100">
                       <path
                         id="heroSealPath"
                         d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
                         fill="none"
                       />
-                      <text className="text-[8.5px] font-bold uppercase tracking-[0.22em] fill-[#FAF3DC]">
+                      <text className="text-[8.5px] font-bold uppercase tracking-[0.22em] fill-[#FAF5EE]">
                         <textPath href="#heroSealPath" startOffset="0%">
                           • 100% ARTISAN • JAIPUR HANDBLOCK •
                         </textPath>
@@ -183,7 +183,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   {/* Subtle Gradient Shade at bottom */}
-                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#1F1612]/70 via-transparent to-transparent flex items-end p-5">
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#241A16]/80 via-transparent to-transparent flex items-end p-5">
                     <div className="text-white">
                       <span className="text-[10px] uppercase font-bold tracking-widest text-[#F5E6B5] font-royal-title">
                         Signature Collection
@@ -200,7 +200,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <span className="font-medium">Hand-stitched channel padding</span>
                   <button 
                     onClick={() => { onNavigate('/category/bags'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                    className="text-[#C8376B] hover:text-[#1F1612] font-bold font-royal-title flex items-center gap-1"
+                    className="text-[#9B332C] hover:text-[#241A16] font-bold font-royal-title flex items-center gap-1 transition-colors"
                   >
                     <span>View Duffle Bags</span>
                     <ArrowRight className="w-3.5 h-3.5" />

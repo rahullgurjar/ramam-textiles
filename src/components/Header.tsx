@@ -62,8 +62,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       
-      {/* 1. TOP ANNOUNCEMENT BAR (Dark Charcoal matching reference with gold dot & currency) */}
-      <div className="bg-[#1F1612] text-[#FAF3DC] text-xs py-2 px-4 border-b border-[#D4AF37]/30 shadow-sm">
+      {/* 1. TOP ANNOUNCEMENT BAR (Soft Roasted Espresso with amber gold accents) */}
+      <div className="bg-gradient-to-r from-[#241A16] via-[#2F211C] to-[#241A16] text-[#FAF5EE] text-xs py-2 px-4 border-b border-[#D4AF37]/25 shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
           
           {/* Left: Gold Dot + Atelier label */}
@@ -75,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           </div>
 
           {/* Center: Free Delivery Banner */}
-          <div className="hidden md:flex items-center gap-2 text-stone-200 text-xs font-medium">
+          <div className="hidden md:flex items-center gap-2 text-stone-300 text-xs font-medium">
             <span className="text-[#E5A93C]">🚚</span>
             <span>Free Express Delivery Across India on Orders Above ₹1,999 • Low Wholesale MOQs (25 Pcs)</span>
           </div>
@@ -85,7 +85,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             <div className="relative">
               <button 
                 onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}
-                className="flex items-center gap-1.5 text-[#FAF3DC] hover:text-[#E5A93C] transition-colors cursor-pointer py-0.5 px-2.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold"
+                className="flex items-center gap-1.5 text-[#FAF5EE] hover:text-[#E5A93C] transition-colors cursor-pointer py-0.5 px-2.5 rounded-full bg-white/10 border border-[#D4AF37]/30 text-xs font-semibold"
                 title="Change Currency"
               >
                 <span>{currency.code === 'INR' ? '🇮🇳 INR' : `${currency.code} (${currency.symbol})`}</span>
@@ -94,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
               {isCurrencyDropdownOpen && (
                 <div 
-                  className="absolute right-0 mt-1 w-40 bg-[#1F1612] border border-[#D4AF37]/40 rounded-xl shadow-2xl py-1 z-50 animate-fade-in"
+                  className="absolute right-0 mt-1 w-40 bg-[#241A16] border border-[#D4AF37]/40 rounded-xl shadow-2xl py-1 z-50 animate-fade-in"
                   onMouseLeave={() => setIsCurrencyDropdownOpen(false)}
                 >
                   {Object.entries(CURRENCIES).map(([code, item]) => (
@@ -105,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                         setIsCurrencyDropdownOpen(false);
                       }}
                       className={`w-full text-left px-3.5 py-1.5 text-xs flex justify-between items-center transition-colors ${
-                        currency.code === code ? 'bg-[#C8376B] text-white font-bold' : 'text-stone-200 hover:bg-white/10'
+                        currency.code === code ? 'bg-[#9B332C] text-white font-bold' : 'text-stone-200 hover:bg-white/10'
                       }`}
                     >
                       <span>{item.label}</span>
@@ -128,11 +128,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
         </div>
       </div>
 
-      {/* 2. MAIN HEADER BAR (Pure White with Brand Logo, Center Pill Navigation, and Action Pills) */}
-      <div className={`w-full transition-all duration-300 bg-white ${
+      {/* 2. MAIN HEADER BAR (Soft Alabaster Linen with Brand Logo, Center Pill Navigation, and Action Pills) */}
+      <div className={`w-full transition-all duration-300 bg-[#FAF8F5]/95 backdrop-blur-md ${
         isScrolled 
-          ? 'shadow-md border-b border-stone-200 py-2.5' 
-          : 'border-b border-stone-200 py-3.5'
+          ? 'shadow-md border-b border-[#EAE2D7] py-2.5' 
+          : 'border-b border-[#EAE2D7] py-3.5'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           
@@ -140,17 +140,17 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           <div className="flex items-center gap-3">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-[#1F1612] hover:text-[#C8376B] transition-colors"
+              className="lg:hidden p-2 text-[#241A16] hover:text-[#9B332C] transition-colors"
               aria-label="Toggle navigation menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#1F1612]" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#241A16]" />}
             </button>
 
             <div 
               onClick={() => handleNav('/')}
               className="flex items-center gap-3.5 cursor-pointer group flex-shrink-0"
             >
-              <div className="relative flex-shrink-0 w-13 h-13 sm:w-15 sm:h-15 w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-full bg-gradient-to-br from-[#FAF6F0] via-white to-[#F5ECE1] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 group-hover:border-[#C8376B] group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+              <div className="relative flex-shrink-0 w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-full bg-gradient-to-br from-[#FAF6F0] via-white to-[#F5ECE1] border-2 border-[#D4AF37]/50 shadow-md flex items-center justify-center p-1.5 group-hover:border-[#9B332C] group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
                 <img 
                   src="./logo.png" 
                   alt="Ramam Textiles Jaipur" 
@@ -159,10 +159,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               </div>
               <div className="text-left whitespace-nowrap flex flex-col justify-center">
                 <div className="flex items-baseline gap-2 leading-none">
-                  <span className="font-playfair text-2xl sm:text-3xl font-bold tracking-tight text-[#1F1612]">
+                  <span className="font-playfair text-2xl sm:text-3xl font-bold tracking-tight text-[#241A16]">
                     Ramam
                   </span>
-                  <span className="font-editorial italic text-2xl sm:text-3xl font-semibold text-[#C8376B]">
+                  <span className="font-editorial italic text-2xl sm:text-3xl font-semibold text-[#9B332C]">
                     Textiles
                   </span>
                 </div>
@@ -281,14 +281,14 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               <span>OUR CRAFT</span>
             </button>
 
-            {/* Bulk Orders (Highlighted Pink Pill) */}
+            {/* Bulk Orders (Highlighted Soft Velvet Rose Pill) */}
             <button 
               onClick={() => handleNav('/custom-manufacturing')}
               className={`pill-nav-btn pill-nav-bulk ${
-                currentPath === '/custom-manufacturing' ? 'ring-2 ring-[#C8376B]' : ''
+                currentPath === '/custom-manufacturing' ? 'ring-2 ring-[#9B332C]' : ''
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#C8376B]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#9B332C]" />
               <span>BULK ORDERS</span>
             </button>
 
@@ -319,7 +319,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             {/* Search Quick Icon */}
             <button
               onClick={openSearch}
-              className="p-2.5 rounded-full border border-stone-200 text-stone-600 hover:text-[#C8376B] hover:border-[#C8376B] transition-colors"
+              className="p-2.5 rounded-full border border-[#EAE2D7] bg-white text-stone-700 hover:text-[#9B332C] hover:border-[#D48B7A] transition-colors shadow-sm"
               title="Search Catalog"
             >
               <Search className="w-4 h-4" />
@@ -331,9 +331,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               className="pill-btn-outline group relative"
               title="Open Bag / Inquiry Basket"
             >
-              <ShoppingBag className="w-4 h-4 text-[#1F1612] group-hover:text-[#C8376B] transition-colors" />
+              <ShoppingBag className="w-4 h-4 text-[#241A16] group-hover:text-[#9B332C] transition-colors" />
               <span>BAG</span>
-              <span className="w-5 h-5 rounded-full bg-[#C8376B] text-white text-[10px] font-bold flex items-center justify-center -mr-1">
+              <span className="w-5 h-5 rounded-full bg-[#9B332C] text-white text-[10px] font-bold flex items-center justify-center -mr-1 shadow-sm">
                 {inquiryItems.length}
               </span>
             </button>
@@ -356,19 +356,19 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
       {/* Mobile Drawer Navigation Menu */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden bg-black/60">
-          <div className="fixed inset-y-0 left-0 w-5/6 max-w-sm bg-white shadow-2xl flex flex-col justify-between overflow-y-auto p-5 border-r border-stone-200 animate-fade-in text-[#1F1612]">
+          <div className="fixed inset-y-0 left-0 w-5/6 max-w-sm bg-[#FAF8F5] shadow-2xl flex flex-col justify-between overflow-y-auto p-5 border-r border-[#EAE2D7] animate-fade-in text-[#241A16]">
             <div>
-              <div className="flex items-center justify-between pb-4 border-b border-stone-200">
+              <div className="flex items-center justify-between pb-4 border-b border-[#EAE2D7]">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FAF6F0] via-white to-[#F5ECE1] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FAF6F0] via-white to-[#F5ECE1] border-2 border-[#D4AF37]/50 shadow-md flex items-center justify-center p-1.5 shrink-0">
                     <img src="./logo.png" alt="Ramam Textiles" className="w-full h-full object-contain filter drop-shadow-sm" />
                   </div>
                   <div className="whitespace-nowrap">
                     <div className="flex items-baseline gap-1.5 leading-none">
-                      <span className="font-playfair font-bold text-lg text-[#1F1612]">
+                      <span className="font-playfair font-bold text-lg text-[#241A16]">
                         Ramam
                       </span>
-                      <span className="italic font-editorial font-semibold text-lg text-[#C8376B]">
+                      <span className="italic font-editorial font-semibold text-lg text-[#9B332C]">
                         Textiles
                       </span>
                     </div>
@@ -379,7 +379,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 </div>
                 <button 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-1.5 rounded-full text-stone-700 hover:bg-slate-100 border border-stone-200"
+                  className="p-1.5 rounded-full text-stone-700 hover:bg-stone-100 border border-[#EAE2D7]"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
