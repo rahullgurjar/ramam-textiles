@@ -158,11 +158,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 />
                 <span className="absolute -bottom-0.5 -right-0.5 bg-[#C8376B] text-white text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold">🪷</span>
               </div>
-              <div className="text-left">
-                <span className="block font-heading text-lg sm:text-xl font-bold tracking-tight text-[#1F1612] leading-tight">
+              <div className="text-left whitespace-nowrap">
+                <span className="block font-playfair text-lg sm:text-xl font-bold tracking-tight text-[#1F1612] leading-none">
                   Ramam <span className="italic font-editorial text-[#C8376B] font-normal">Textiles</span>
                 </span>
-                <span className="block text-[9px] uppercase tracking-[0.2em] text-stone-500 font-royal-title font-semibold">
+                <span className="block text-[8.5px] uppercase tracking-[0.22em] text-stone-500 font-royal-title font-bold mt-1">
                   JAIPUR ARTISAN ATELIER
                 </span>
               </div>
@@ -360,7 +360,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                     <img src="./logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <span className="font-heading font-bold text-sm text-[#1F1612] block">
+                    <span className="font-playfair font-bold text-sm text-[#1F1612] block">
                       Ramam <span className="italic font-editorial text-[#C8376B]">Textiles</span>
                     </span>
                     <span className="text-[9px] font-royal-title text-stone-500 tracking-widest block uppercase font-bold">

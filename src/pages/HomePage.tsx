@@ -218,17 +218,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           2. JAIPUR CRAFT CLUSTERS INTERACTIVE ATLAS
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#FAF7F2] rounded-[32px] p-6 sm:p-10 border border-stone-200 shadow-lg relative overflow-hidden">
+        <div className="bg-[#FAF7F2] rounded-[32px] p-6 sm:p-10 border border-stone-200 shadow-md relative overflow-hidden">
           
           <div className="max-w-3xl mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDF0F3] border border-[#F3CAD6] text-[#C8376B] text-xs font-bold tracking-wider uppercase font-royal-title mb-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FDF0F3] border border-[#F3CAD6] text-[#C8376B] text-xs font-bold tracking-wider uppercase font-royal-title mb-3 shadow-sm">
               <MapPin className="w-3.5 h-3.5 text-[#C8376B]" />
               <span>Rajasthan Textile Heritage Clusters</span>
             </div>
             <h2 className="font-playfair text-2xl sm:text-4xl text-[#1F1612] font-bold">
               The Artisan Craft Quarters of Jaipur
             </h2>
-            <p className="text-stone-600 font-royal-body text-sm sm:text-base mt-2">
+            <p className="text-stone-700 font-royal-body text-sm sm:text-base mt-2 leading-relaxed">
               Every Ramam Textiles piece originates in centuries-old Rajasthani craft clusters, where generational master artisans preserve UNESCO-recognized block carving and hand-dye traditions.
             </p>
           </div>
@@ -240,7 +240,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               className={`p-5 rounded-2xl text-left transition-all border-2 ${
                 activeCraftCluster === 'sanganer'
                   ? 'bg-white border-[#C8376B] shadow-xl ring-2 ring-[#C8376B]/20'
-                  : 'bg-white/80 border-stone-200 hover:bg-white hover:border-[#C8376B]/40'
+                  : 'bg-white border-stone-200 hover:border-[#C8376B]/50'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
@@ -248,39 +248,39 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#FDF0F3] text-[#C8376B] font-royal-title">Fine Florals</span>
               </div>
               <h3 className="font-playfair font-bold text-base text-[#1F1612]">Sanganer Atelier</h3>
-              <p className="text-xs text-stone-600 font-royal-body mt-1">Delicate botanical bootas and Mughal trellis patterns printed on pure white combed cotton.</p>
+              <p className="text-xs text-stone-600 font-royal-body mt-1 leading-relaxed">Delicate botanical bootas and Mughal trellis patterns printed on pure white combed cotton.</p>
             </button>
 
             <button
               onClick={() => setActiveCraftCluster('bagru')}
               className={`p-5 rounded-2xl text-left transition-all border-2 ${
                 activeCraftCluster === 'bagru'
-                  ? 'bg-white border-[#1D456B] shadow-xl ring-2 ring-[#1D456B]/20'
-                  : 'bg-white/80 border-stone-200 hover:bg-white hover:border-[#1D456B]/40'
+                  ? 'bg-white border-[#C8376B] shadow-xl ring-2 ring-[#C8376B]/20'
+                  : 'bg-white border-stone-200 hover:border-[#C8376B]/50'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-lg">🌿</span>
                 <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#E8F0F8] text-[#1D456B] font-royal-title">Dabu Mud-Resist</span>
               </div>
-              <h3 className="font-playfair font-bold text-base text-[#1D456B]">Bagru Indigo Works</h3>
-              <p className="text-xs text-stone-600 font-royal-body mt-1">Natural fermented indigo, clay mud-resist stamps, and sun-curing on riverbank drying fields.</p>
+              <h3 className="font-playfair font-bold text-base text-[#1F1612]">Bagru Indigo Works</h3>
+              <p className="text-xs text-stone-600 font-royal-body mt-1 leading-relaxed">Natural fermented indigo, clay mud-resist stamps, and sun-curing on riverbank drying fields.</p>
             </button>
 
             <button
               onClick={() => setActiveCraftCluster('kantha')}
               className={`p-5 rounded-2xl text-left transition-all border-2 ${
                 activeCraftCluster === 'kantha'
-                  ? 'bg-white border-[#937319] shadow-xl ring-2 ring-[#937319]/20'
-                  : 'bg-white/80 border-stone-200 hover:bg-white hover:border-[#937319]/40'
+                  ? 'bg-white border-[#C8376B] shadow-xl ring-2 ring-[#C8376B]/20'
+                  : 'bg-white border-stone-200 hover:border-[#C8376B]/50'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-lg">🧵</span>
                 <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#FEFCE8] text-[#937319] font-royal-title">Hand Quilting</span>
               </div>
-              <h3 className="font-playfair font-bold text-base text-[#937319]">Barmer Kantha Stitching</h3>
-              <p className="text-xs text-stone-600 font-royal-body mt-1">Double-channel padded cotton batting, running kantha embroidery, and candy-stripe piping.</p>
+              <h3 className="font-playfair font-bold text-base text-[#1F1612]">Barmer Kantha Stitching</h3>
+              <p className="text-xs text-stone-600 font-royal-body mt-1 leading-relaxed">Double-channel padded cotton batting, running kantha embroidery, and candy-stripe piping.</p>
             </button>
           </div>
 
