@@ -12,7 +12,8 @@ import {
   ShieldCheck,
   Factory,
   Layers,
-  ArrowRight
+  ArrowRight,
+  MessageCircle
 } from 'lucide-react';
 import { useApp, CURRENCIES } from '../context/AppContext';
 import { CATEGORIES } from '../data/products';
@@ -45,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -60,38 +61,40 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
-      {/* Top Royal Jaipur Announcement & B2B Bar with Pink City Terracotta & Marwar Gold */}
-      <div className="bg-gradient-to-r from-[#7E2822] via-[#9B332C] to-[#541712] text-[#FAF3DC] text-xs py-2 px-4 border-b border-[#D4AF37]/50 shadow-sm">
+      
+      {/* 1. TOP ANNOUNCEMENT BAR (Dark Charcoal matching reference with gold dot & currency) */}
+      <div className="bg-[#1F1612] text-[#FAF3DC] text-xs py-2 px-4 border-b border-[#D4AF37]/30 shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          <div className="flex items-center gap-4">
-            <span className="inline-flex items-center gap-1.5 font-medium tracking-wide text-[#FAF3DC]">
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
-              <span className="font-royal-title tracking-wider text-[#F5E6B5]">✨ Royal Jaipur Heritage Atelier</span>
-              <span className="hidden sm:inline text-[#D4AF37]/70">•</span>
-              <span className="hidden sm:inline text-white/95">Bagru &amp; Sanganer Hand Block Printing Clusters</span>
-            </span>
-            <span className="hidden md:inline text-[#D4AF37]/40">•</span>
-            <span className="hidden md:inline text-[#FAF3DC]/90 font-light">
-              Low Wholesale MOQs from 25 Pcs • Custom Private Label &amp; Sampling
+          
+          {/* Left: Gold Dot + Atelier label */}
+          <div className="flex items-center gap-2 font-medium tracking-wide">
+            <span className="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse"></span>
+            <span className="text-[#E5A93C] text-[11px] font-bold tracking-widest uppercase font-royal-title">
+              JAIPUR ARTISAN ATELIER
             </span>
           </div>
 
-          <div className="flex items-center gap-4">
-            {/* Currency Selector */}
+          {/* Center: Free Delivery Banner */}
+          <div className="hidden md:flex items-center gap-2 text-stone-200 text-xs font-medium">
+            <span className="text-[#E5A93C]">🚚</span>
+            <span>Free Express Delivery Across India on Orders Above ₹1,999 • Low Wholesale MOQs (25 Pcs)</span>
+          </div>
+
+          {/* Right: Currency Selector Pill */}
+          <div className="flex items-center gap-3">
             <div className="relative">
               <button 
                 onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}
-                className="flex items-center gap-1 text-[#FAF3DC] hover:text-[#D4AF37] transition-colors cursor-pointer py-0.5 px-2.5 rounded bg-black/25 border border-[#D4AF37]/60 text-xs font-semibold"
+                className="flex items-center gap-1.5 text-[#FAF3DC] hover:text-[#E5A93C] transition-colors cursor-pointer py-0.5 px-2.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold"
                 title="Change Currency"
               >
-                <Globe className="w-3.5 h-3.5 text-[#D4AF37]" />
-                <span>{currency.code} ({currency.symbol})</span>
+                <span>{currency.code === 'INR' ? '🇮🇳 INR' : `${currency.code} (${currency.symbol})`}</span>
                 <ChevronDown className="w-3 h-3 opacity-70" />
               </button>
 
               {isCurrencyDropdownOpen && (
                 <div 
-                  className="absolute right-0 mt-1 w-40 bg-[#541712] border-2 border-[#D4AF37] rounded-lg shadow-2xl py-1 z-50 animate-fade-in"
+                  className="absolute right-0 mt-1 w-40 bg-[#1F1612] border border-[#D4AF37]/40 rounded-xl shadow-2xl py-1 z-50 animate-fade-in"
                   onMouseLeave={() => setIsCurrencyDropdownOpen(false)}
                 >
                   {Object.entries(CURRENCIES).map(([code, item]) => (
@@ -102,11 +105,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                         setIsCurrencyDropdownOpen(false);
                       }}
                       className={`w-full text-left px-3.5 py-1.5 text-xs flex justify-between items-center transition-colors ${
-                        currency.code === code ? 'bg-[#D4AF37] text-[#541712] font-bold' : 'text-stone-200 hover:bg-white/15'
+                        currency.code === code ? 'bg-[#C8376B] text-white font-bold' : 'text-stone-200 hover:bg-white/10'
                       }`}
                     >
                       <span>{item.label}</span>
-                      <span className="text-[#D4AF37] font-semibold">{item.symbol}</span>
+                      <span className="text-[#E5A93C] font-semibold">{item.symbol}</span>
                     </button>
                   ))}
                 </div>
@@ -116,343 +119,258 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             {/* Direct Email Desk Action */}
             <a 
               href="mailto:exports@ramamtextiles.com"
-              className="flex items-center gap-1.5 text-[#F5E6B5] hover:text-white transition-colors text-xs"
+              className="hidden lg:flex items-center gap-1.5 text-stone-300 hover:text-white transition-colors text-xs"
             >
-              <Mail className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <span className="hidden sm:inline font-medium">Jaipur Export Desk: exports@ramamtextiles.com</span>
-            </a>
-
-            {/* Instagram Profile */}
-            <a 
-              href="https://www.instagram.com/ramamtextiles"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[#F5E6B5] hover:text-white transition-colors"
-              title="Follow @ramamtextiles on Instagram"
-            >
-              <InstagramIcon className="w-3.5 h-3.5 text-[#E1306C]" />
-              <span className="hidden xl:inline text-xs font-medium">@ramamtextiles</span>
+              <Mail className="w-3.5 h-3.5 text-[#E5A93C]" />
+              <span>exports@ramamtextiles.com</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* Main Brand & Navigation Header with Solid Pure White & Jaipur Accents */}
+      {/* 2. MAIN HEADER BAR (Pure White with Brand Logo, Center Pill Navigation, and Action Pills) */}
       <div className={`w-full transition-all duration-300 bg-white ${
         isScrolled 
-          ? 'shadow-md border-b-2 border-[#D4AF37] py-2.5' 
-          : 'border-b border-[#D4AF37]/40 py-3.5'
+          ? 'shadow-md border-b border-stone-200 py-2.5' 
+          : 'border-b border-stone-200 py-3.5'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           
-          {/* Left: Mobile Toggle & Quick Search */}
+          {/* Left: Mobile Toggle & Brand Logo */}
           <div className="flex items-center gap-3">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-[#7E2822] hover:text-[#D4AF37] transition-colors"
+              className="lg:hidden p-2 text-[#1F1612] hover:text-[#C8376B] transition-colors"
               aria-label="Toggle navigation menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#7E2822]" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#1F1612]" />}
             </button>
 
-            <button 
-              onClick={openSearch}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl border border-stone-300 text-[#1A1817] hover:text-[#C85A53] hover:border-[#D4AF37] bg-white shadow-sm transition-all text-xs font-medium"
-              title="Search Catalog & Specifications"
+            <div 
+              onClick={() => handleNav('/')}
+              className="flex items-center gap-2.5 cursor-pointer group"
             >
-              <Search className="w-4 h-4 text-[#D4AF37]" />
-              <span className="hidden md:inline font-royal-body">Search Jaipur prints, duffles, fabrics...</span>
-              <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[10px] bg-slate-100 rounded text-stone-700 border border-stone-200 font-mono font-semibold">⌘K</kbd>
-            </button>
-          </div>
-
-          {/* Center: Brand Crest Logo & Royal Jaipur Typography */}
-          <div 
-            onClick={() => handleNav('/')}
-            className="flex flex-col items-center cursor-pointer group px-2 text-center"
-          >
-            <div className="flex items-center gap-2 sm:gap-3.5">
               <div className="relative">
                 <img 
                   src="./logo.jpeg" 
-                  alt="Ramam Textiles Royal Jaipur Crest" 
-                  className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-full border-2 border-[#D4AF37] shadow-md group-hover:scale-105 transition-transform"
+                  alt="Ramam Textiles Jaipur" 
+                  className="w-10 h-10 sm:w-11 sm:h-11 object-cover rounded-full border border-stone-200 shadow-sm group-hover:scale-105 transition-transform"
                 />
-                <span className="absolute -bottom-1 -right-1 bg-[#D4AF37] text-[#541712] text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">🪷</span>
+                <span className="absolute -bottom-0.5 -right-0.5 bg-[#C8376B] text-white text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold">🪷</span>
               </div>
               <div className="text-left">
-                <span className="block font-royal-heading text-lg sm:text-2xl font-bold tracking-widest text-[#7E2822] uppercase leading-tight group-hover:text-[#C85A53] transition-colors">
-                  RAMAM TEXTILES
+                <span className="block font-heading text-lg sm:text-xl font-bold tracking-tight text-[#1F1612] leading-tight">
+                  Craft of <span className="italic font-editorial text-[#C8376B] font-normal">Pink City</span>
                 </span>
-                <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[#D4AF37] font-royal-title font-bold">
-                  Jaipur • Heritage Atelier • Luxury B2B
+                <span className="block text-[9px] uppercase tracking-[0.2em] text-stone-500 font-royal-title font-semibold">
+                  JAIPUR ARTISAN ATELIER
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Right: B2B Status & Wholesale Inquiry Basket */}
-          <div className="flex items-center gap-2 sm:gap-4">
+          {/* Center: Signature Pill Capsule Navigation (Desktop) */}
+          <nav className="hidden lg:flex items-center gap-2 font-royal-body">
             
-            {/* Custom Manufacturing Quick Link */}
-            <button
-              onClick={() => handleNav('/custom-manufacturing')}
-              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-[#D4AF37] bg-white text-[#7E2822] text-xs font-royal-title font-bold hover:bg-[#7E2822] hover:text-[#FAF3DC] transition-all shadow-sm"
+            {/* Collection Dropdown Pill */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setActiveMegaMenu('shop')}
+              onMouseLeave={() => setActiveMegaMenu(null)}
             >
-              <Factory className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <span>Private Label Studio</span>
-            </button>
-
-            {/* Wholesale Inquiry Basket Button in Jaipur Pink & Gold */}
-            <button 
-              onClick={openInquiryDrawer}
-              className="relative flex items-center gap-2 bg-gradient-to-r from-[#9B332C] to-[#7E2822] text-[#FAF3DC] hover:from-[#B8453D] hover:to-[#9B332C] border border-[#D4AF37] px-3.5 sm:px-4 py-2 rounded-xl transition-all cursor-pointer group shadow-md hover:shadow-lg"
-              title="Open Wholesale Inquiry Basket / Request Quote"
-            >
-              <div className="relative">
-                <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-[#F5E6B5] group-hover:scale-110 transition-transform" />
-                {inquiryItems.length > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-[#D4AF37] text-[#541712] text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center animate-bounce shadow">
-                    {inquiryItems.length}
-                  </span>
-                )}
-              </div>
-              <div className="hidden sm:flex flex-col text-left font-royal-title">
-                <span className="text-[10px] tracking-wider uppercase text-[#F5E6B5] leading-none font-bold">
-                  Wholesale RFQ
-                </span>
-                <span className="text-xs font-bold leading-tight text-white">
-                  {totalInquiryCount > 0 ? `${totalInquiryCount} Pcs Selected` : 'Basket Empty'}
-                </span>
-              </div>
-            </button>
-          </div>
-        </div>
-
-        {/* Desktop Primary Navigation Bar */}
-        <nav className="hidden lg:block border-t border-stone-200 mt-2.5 pt-2">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ul className="flex items-center justify-center gap-7 xl:gap-9 text-xs font-bold tracking-wider uppercase text-[#0F172A]">
-              <li>
-                <button 
-                  onClick={() => handleNav('/')}
-                  className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
-                  }`}
-                >
-                  Home
-                </button>
-              </li>
-
-              {/* Shop & Categories Mega Menu */}
-              <li 
-                className="relative"
-                onMouseEnter={() => setActiveMegaMenu('shop')}
-                onMouseLeave={() => setActiveMegaMenu(null)}
+              <button 
+                onClick={() => handleNav('/shop')}
+                className={`pill-nav-btn ${
+                  currentPath.startsWith('/shop') || currentPath.startsWith('/category')
+                    ? 'pill-nav-btn-active' 
+                    : ''
+                }`}
               >
-                <button 
-                  onClick={() => handleNav('/shop')}
-                  className={`py-1.5 flex items-center gap-1 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath.startsWith('/shop') || currentPath.startsWith('/category')
-                      ? 'border-[#D4AF37] text-[#D4AF37]' 
-                      : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
-                  }`}
-                >
-                  <span>Shop Catalog</span>
-                  <ChevronDown className="w-3 h-3 opacity-60 text-[#D4AF37]" />
-                </button>
+                <span>COLLECTION</span>
+                <ChevronDown className="w-3 h-3 opacity-60" />
+              </button>
 
-                {activeMegaMenu === 'shop' && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-[820px] bg-white border-2 border-[#D4AF37] shadow-2xl rounded-2xl p-6 z-50 animate-fade-in text-[#0F172A]">
-                    <div className="grid grid-cols-3 gap-6">
-                      <div className="col-span-2">
-                        <div className="flex items-center justify-between pb-2 border-b border-stone-200 mb-3">
-                          <span className="text-[11px] font-bold text-[#0B241C] tracking-widest uppercase font-royal-title">
-                            👑 Handcrafted Product Lines (Wholesale Ready)
-                          </span>
-                          <button 
-                            onClick={() => handleNav('/shop')} 
-                            className="text-[11px] text-[#D4AF37] hover:text-[#0B241C] flex items-center gap-1 font-semibold"
-                          >
-                            <span>view full catalog</span>
-                            <ArrowRight className="w-3 h-3 text-[#D4AF37]" />
-                          </button>
-                        </div>
-                        <div className="grid grid-cols-2 gap-3">
-                          {CATEGORIES.map(cat => (
-                            <div 
-                              key={cat.id}
-                              onClick={() => handleNav(`/category/${cat.id}`)}
-                              className="group/item flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 cursor-pointer transition-all border border-stone-200 hover:border-[#D4AF37] shadow-sm"
-                            >
-                              <img 
-                                src={cat.image} 
-                                alt={cat.name} 
-                                className="w-12 h-12 rounded-lg object-cover border border-[#D4AF37]/40 shadow-sm"
-                              />
-                              <div>
-                                <h4 className="text-xs font-bold text-[#0B241C] group-hover/item:text-[#D4AF37] transition-colors font-royal-title">
-                                  {cat.name}
-                                </h4>
-                                <p className="text-[10px] text-stone-500 line-clamp-1 font-royal-body">
-                                  {cat.subtitle}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Mega Menu Spotlight Card */}
-                      <div className="bg-gradient-to-br from-[#0B241C] to-[#11352A] text-white p-5 rounded-2xl border border-[#D4AF37] flex flex-col justify-between shadow-lg">
-                        <div>
-                          <span className="text-[10px] font-mono uppercase tracking-widest text-[#D4AF37] font-bold">
-                            Featured Line
-                          </span>
-                          <h4 className="font-royal-heading font-bold text-base mt-1 text-[#F5E6B5]">
-                            Jaipur Quilted Duffles &amp; Bags
-                          </h4>
-                          <p className="text-[11px] text-stone-300 mt-2 font-royal-body leading-relaxed">
-                            Hand-quilted in Bagru with 100% pure cotton batting and vintage brass zippers.
-                          </p>
-                        </div>
-                        <button
-                          onClick={() => handleNav('/category/bags')}
-                          className="mt-4 w-full py-2 bg-gradient-to-r from-[#D4AF37] to-[#B89426] text-[#0B241C] font-royal-title font-bold text-[10px] uppercase tracking-widest rounded-lg hover:opacity-90 transition-opacity shadow"
+              {activeMegaMenu === 'shop' && (
+                <div className="absolute top-full left-0 mt-2 w-[720px] bg-white border border-stone-200 shadow-2xl rounded-2xl p-6 z-50 animate-fade-in text-[#1F1612]">
+                  <div className="grid grid-cols-3 gap-6">
+                    <div className="col-span-2">
+                      <div className="flex items-center justify-between pb-2 border-b border-stone-200 mb-3">
+                        <span className="text-[11px] font-bold text-[#1F1612] tracking-widest uppercase font-royal-title">
+                          🌸 Curated Jaipur Product Lines
+                        </span>
+                        <button 
+                          onClick={() => handleNav('/shop')} 
+                          className="text-[11px] text-[#C8376B] hover:text-[#1F1612] flex items-center gap-1 font-semibold"
                         >
-                          Explore Bags →
+                          <span>view full catalog</span>
+                          <ArrowRight className="w-3 h-3 text-[#C8376B]" />
                         </button>
                       </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        {CATEGORIES.map(cat => (
+                          <div 
+                            key={cat.id}
+                            onClick={() => handleNav(`/category/${cat.id}`)}
+                            className="group/item flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FDF0F3] cursor-pointer transition-all border border-stone-200 hover:border-[#C8376B] shadow-sm"
+                          >
+                            <img 
+                              src={cat.image} 
+                              alt={cat.name} 
+                              className="w-12 h-12 rounded-lg object-cover border border-stone-200 shadow-sm"
+                            />
+                            <div>
+                              <h4 className="text-xs font-bold text-[#1F1612] group-hover/item:text-[#C8376B] transition-colors font-royal-title">
+                                {cat.name}
+                              </h4>
+                              <p className="text-[10px] text-stone-500 line-clamp-1">
+                                {cat.subtitle}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Spotlight Card */}
+                    <div className="bg-[#FAF7F2] p-5 rounded-2xl border border-stone-200 flex flex-col justify-between">
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-[#C8376B] font-bold">
+                          Featured Line
+                        </span>
+                        <h4 className="font-heading font-bold text-base mt-1 text-[#1F1612]">
+                          Quilted Duffles &amp; Bags
+                        </h4>
+                        <p className="text-[11px] text-stone-600 mt-2 leading-relaxed">
+                          Hand-quilted in Bagru with 100% pure combed cotton batting.
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => handleNav('/category/bags')}
+                        className="mt-4 w-full py-2 bg-[#1F1612] text-white font-royal-title font-bold text-[10px] uppercase tracking-widest rounded-full hover:bg-[#C8376B] transition-colors shadow"
+                      >
+                        Explore Bags →
+                      </button>
                     </div>
                   </div>
-                )}
-              </li>
+                </div>
+              )}
+            </div>
 
-              {/* Collections */}
-              <li>
-                <button 
-                  onClick={() => handleNav('/collections')}
-                  className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/collections' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
-                  }`}
-                >
-                  Collections
-                </button>
-              </li>
+            {/* Curated Sets Pill */}
+            <button 
+              onClick={() => handleNav('/collections')}
+              className={`pill-nav-btn ${
+                currentPath === '/collections' ? 'pill-nav-btn-active' : ''
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#E5A93C]" />
+              <span>CURATED SETS</span>
+            </button>
 
-              {/* Custom Manufacturing */}
-              <li>
-                <button 
-                  onClick={() => handleNav('/custom-manufacturing')}
-                  className={`py-1.5 border-b-2 transition-all font-royal-title font-bold flex items-center gap-1 ${
-                    currentPath === '/custom-manufacturing' 
-                      ? 'border-[#D4AF37] text-[#D4AF37]' 
-                      : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
-                  }`}
-                >
-                  <Sparkles className="w-3 h-3 text-[#D4AF37]" />
-                  <span>Custom OEM Studio</span>
-                </button>
-              </li>
+            {/* Our Craft Pill */}
+            <button 
+              onClick={() => handleNav('/craftsmanship')}
+              className={`pill-nav-btn ${
+                currentPath === '/craftsmanship' ? 'pill-nav-btn-active' : ''
+              }`}
+            >
+              <span>OUR CRAFT</span>
+            </button>
 
-              {/* Wholesale Portal */}
-              <li>
-                <button 
-                  onClick={() => handleNav('/wholesale')}
-                  className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/wholesale' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
-                  }`}
-                >
-                  Wholesale &amp; Export
-                </button>
-              </li>
+            {/* Bulk Orders (Highlighted Pink Pill) */}
+            <button 
+              onClick={() => handleNav('/custom-manufacturing')}
+              className={`pill-nav-btn pill-nav-bulk ${
+                currentPath === '/custom-manufacturing' ? 'ring-2 ring-[#C8376B]' : ''
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#C8376B]" />
+              <span>BULK ORDERS</span>
+            </button>
 
-              {/* Craftsmanship */}
-              <li>
-                <button 
-                  onClick={() => handleNav('/craftsmanship')}
-                  className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/craftsmanship' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
-                  }`}
-                >
-                  Artisan Craft
-                </button>
-              </li>
+            {/* Lookbook / Reviews Pill */}
+            <button 
+              onClick={() => handleNav('/lookbook')}
+              className={`pill-nav-btn ${
+                currentPath === '/lookbook' ? 'pill-nav-btn-active' : ''
+              }`}
+            >
+              <span>REVIEWS</span>
+            </button>
 
-              {/* Lookbook */}
-              <li>
-                <button 
-                  onClick={() => handleNav('/lookbook')}
-                  className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/lookbook' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
-                  }`}
-                >
-                  Lookbook
-                </button>
-              </li>
+            {/* About Pill */}
+            <button 
+              onClick={() => handleNav('/about')}
+              className={`pill-nav-btn ${
+                currentPath === '/about' ? 'pill-nav-btn-active' : ''
+              }`}
+            >
+              <span>ABOUT</span>
+            </button>
+          </nav>
 
-              {/* Journal */}
-              <li>
-                <button 
-                  onClick={() => handleNav('/journal')}
-                  className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath.startsWith('/journal') ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
-                  }`}
-                >
-                  Journal
-                </button>
-              </li>
+          {/* Right: Action Pills matching reference (BAG + CHAT) */}
+          <div className="flex items-center gap-2.5">
+            
+            {/* Search Quick Icon */}
+            <button
+              onClick={openSearch}
+              className="p-2.5 rounded-full border border-stone-200 text-stone-600 hover:text-[#C8376B] hover:border-[#C8376B] transition-colors"
+              title="Search Catalog"
+            >
+              <Search className="w-4 h-4" />
+            </button>
 
-              {/* About */}
-              <li>
-                <button 
-                  onClick={() => handleNav('/about')}
-                  className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/about' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
-                  }`}
-                >
-                  About Atelier
-                </button>
-              </li>
+            {/* BAG Pill Button */}
+            <button 
+              onClick={openInquiryDrawer}
+              className="pill-btn-outline group relative"
+              title="Open Bag / Inquiry Basket"
+            >
+              <ShoppingBag className="w-4 h-4 text-[#1F1612] group-hover:text-[#C8376B] transition-colors" />
+              <span>BAG</span>
+              <span className="w-5 h-5 rounded-full bg-[#C8376B] text-white text-[10px] font-bold flex items-center justify-center -mr-1">
+                {inquiryItems.length}
+              </span>
+            </button>
 
-              {/* Contact */}
-              <li>
-                <button 
-                  onClick={() => handleNav('/contact')}
-                  className={`py-1.5 border-b-2 transition-all font-royal-title font-bold ${
-                    currentPath === '/contact' ? 'border-[#D4AF37] text-[#D4AF37]' : 'border-transparent text-[#0F172A] hover:text-[#D4AF37] hover:border-[#D4AF37]'
-                  }`}
-                >
-                  Contact
-                </button>
-              </li>
-            </ul>
+            {/* Solid Dark CHAT Pill Button */}
+            <a 
+              href="https://wa.me/911412890000?text=Hi%20Ramam%20Textiles,%20I%20am%20interested%20in%20Jaipur%20hand%20block%20quilted%20bags%20and%20wholesale%20catalog."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill-btn-dark shadow-md"
+              title="Chat with Jaipur Export Desk"
+            >
+              <span className="text-emerald-400 text-sm">💬</span>
+              <span>CHAT</span>
+            </a>
           </div>
-        </nav>
+        </div>
       </div>
 
       {/* Mobile Drawer Navigation Menu */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden bg-black/60">
-          <div className="fixed inset-y-0 left-0 w-5/6 max-w-sm bg-white shadow-2xl flex flex-col justify-between overflow-y-auto p-5 border-r-2 border-[#D4AF37] animate-fade-in text-[#0F172A]">
+          <div className="fixed inset-y-0 left-0 w-5/6 max-w-sm bg-white shadow-2xl flex flex-col justify-between overflow-y-auto p-5 border-r border-stone-200 animate-fade-in text-[#1F1612]">
             <div>
-              <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/30">
+              <div className="flex items-center justify-between pb-4 border-b border-stone-200">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-md">
+                  <div className="w-9 h-9 rounded-full overflow-hidden border border-stone-200 shadow-sm">
                     <img src="./logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <span className="font-royal-heading font-bold text-sm text-[#0B241C] uppercase tracking-wider block">
-                      RAMAM TEXTILES
+                    <span className="font-heading font-bold text-sm text-[#1F1612] block">
+                      Craft of <span className="italic font-editorial text-[#C8376B]">Pink City</span>
                     </span>
-                    <span className="text-[9px] font-royal-title text-[#164335] tracking-widest block uppercase font-bold">
-                      Jaipur Emerald Court
+                    <span className="text-[9px] font-royal-title text-stone-500 tracking-widest block uppercase font-bold">
+                      JAIPUR ARTISAN ATELIER
                     </span>
                   </div>
                 </div>
                 <button 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-1.5 rounded-full text-[#11352A] hover:bg-[#FAF7EE] border border-[#D4AF37]/30"
+                  className="p-1.5 rounded-full text-stone-700 hover:bg-slate-100 border border-stone-200"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
@@ -463,16 +381,16 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               <div className="py-4 space-y-1 font-royal-body">
                 <button 
                   onClick={() => handleNav('/')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF7EE] text-[#0B241C]"
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FDF0F3] text-[#1F1612]"
                 >
                   Home
                 </button>
                 <button 
                   onClick={() => handleNav('/shop')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF7EE] text-[#0B241C] flex justify-between items-center"
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FDF0F3] text-[#1F1612] flex justify-between items-center"
                 >
-                  <span>Shop All Creations</span>
-                  <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
+                  <span>Collection</span>
+                  <ArrowRight className="w-4 h-4 text-[#C8376B]" />
                 </button>
 
                 {/* Subcategories list */}
@@ -481,7 +399,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                     <button
                       key={c.id}
                       onClick={() => handleNav(`/category/${c.id}`)}
-                      className="w-full text-left px-3 py-1.5 text-xs text-[#164335] hover:text-[#0B241C] font-medium"
+                      className="w-full text-left px-3 py-1.5 text-xs text-stone-600 hover:text-[#C8376B] font-medium"
                     >
                       ✦ {c.name}
                     </button>
@@ -490,50 +408,44 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
                 <button 
                   onClick={() => handleNav('/collections')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF7EE] text-[#0B241C]"
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FDF0F3] text-[#1F1612]"
                 >
-                  Royal Collections
+                  Curated Sets
                 </button>
                 <button 
                   onClick={() => handleNav('/custom-manufacturing')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-[#164335] to-[#0B241C] text-[#F5E6B5] flex items-center gap-2 shadow-sm"
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider bg-[#FDF0F3] text-[#C8376B] flex items-center gap-2 border border-[#F3CAD6]"
                 >
-                  <Factory className="w-4 h-4 text-[#D4AF37]" />
-                  <span>Custom &amp; Private Label</span>
+                  <Sparkles className="w-4 h-4 text-[#C8376B]" />
+                  <span>Bulk Orders &amp; Private Label</span>
                 </button>
                 <button 
                   onClick={() => handleNav('/wholesale')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF7EE] text-[#0B241C]"
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FDF0F3] text-[#1F1612]"
                 >
-                  Wholesale Trade Information
+                  Wholesale Trade Portal
                 </button>
                 <button 
                   onClick={() => handleNav('/craftsmanship')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF7EE] text-[#0B241C]"
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FDF0F3] text-[#1F1612]"
                 >
-                  Our Craftsmanship
+                  Our Craft
                 </button>
                 <button 
                   onClick={() => handleNav('/lookbook')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF7EE] text-[#0B241C]"
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FDF0F3] text-[#1F1612]"
                 >
-                  Royal Lookbook
-                </button>
-                <button 
-                  onClick={() => handleNav('/journal')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF7EE] text-[#0B241C]"
-                >
-                  Journal &amp; Guides
+                  Reviews &amp; Lookbook
                 </button>
                 <button 
                   onClick={() => handleNav('/about')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF7EE] text-[#0B241C]"
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FDF0F3] text-[#1F1612]"
                 >
-                  About Our Atelier
+                  About Atelier
                 </button>
                 <button 
                   onClick={() => handleNav('/contact')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF7EE] text-[#0B241C]"
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FDF0F3] text-[#1F1612]"
                 >
                   Contact Jaipur Workshop
                 </button>
@@ -541,23 +453,22 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             </div>
 
             {/* Mobile Footer CTAs */}
-            <div className="pt-4 border-t border-[#D4AF37]/30 space-y-2">
+            <div className="pt-4 border-t border-stone-200 space-y-2">
               <button 
                 onClick={() => { setIsMobileMenuOpen(false); openQuickQuote(); }}
-                className="btn-royal-gold w-full py-3 px-4 text-xs font-bold uppercase rounded-xl flex items-center justify-center gap-2 shadow-lg"
+                className="pill-btn-rose w-full py-3 text-xs font-bold uppercase rounded-xl flex items-center justify-center gap-2 shadow-lg"
               >
-                <FileText className="w-4 h-4 text-[#0B241C]" />
-                <span>Request B2B Wholesale Quote</span>
+                <FileText className="w-4 h-4 text-white" />
+                <span>Request Bulk Wholesale Quote</span>
               </button>
 
               <a 
-                href="https://www.instagram.com/ramamtextiles"
+                href="https://wa.me/911412890000?text=Hi%20Ramam%20Textiles,%20I%20am%20interested%20in%20Jaipur%20hand%20block%20quilted%20bags."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2.5 px-4 bg-gradient-to-r from-[#833ab4]/15 via-[#fd1d1d]/15 to-[#fcb045]/15 border border-[#E1306C]/30 text-[#0B241C] text-xs font-royal-title font-semibold rounded-xl flex items-center justify-center gap-2"
+                className="w-full py-2.5 px-4 bg-[#1F1612] text-white text-xs font-royal-title font-bold rounded-xl flex items-center justify-center gap-2"
               >
-                <InstagramIcon className="w-4 h-4 text-[#E1306C]" />
-                <span>Follow @ramamtextiles on Instagram</span>
+                <span>💬 Direct WhatsApp Desk</span>
               </a>
             </div>
           </div>
@@ -566,3 +477,5 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
     </header>
   );
 };
+
+export default Header;

@@ -171,81 +171,144 @@ body {
   border-bottom-right-radius: 12px;
 }
 
-/* Royal Gold Gilded Gradient Text */
-.gold-shimmer-text {
-  background: linear-gradient(135deg, #FAF3DC 0%, #D4AF37 40%, #E5C058 70%, #937319 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* ==========================================================================
+   🌸 CRAFT OF PINK CITY SIGNATURE PILL NAVIGATION & BUTTONS
+   ========================================================================== */
 
-.gold-gradient-text {
-  background: linear-gradient(135deg, #B89426 0%, #D4AF37 50%, #937319 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.jaipur-pink-gradient-text {
-  background: linear-gradient(135deg, #C85A53 0%, #B8453D 50%, #7E2822 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.emerald-gradient-text {
-  background: linear-gradient(135deg, #266D57 0%, #11352A 60%, #0B241C 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Royal Gilded Border with Corner Flourishes */
-.royal-gold-border {
-  border: 1px solid rgba(212, 175, 55, 0.55);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
-}
-
-.royal-pink-border {
-  border: 1px solid rgba(200, 90, 83, 0.45);
-}
-
-.royal-emerald-border {
-  border: 1px solid rgba(17, 53, 42, 0.35);
-}
-
-/* Ornate Traditional Dividers */
-.ornate-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1.25rem auto;
-}
-
-.ornate-divider::before,
-.ornate-divider::after {
-  content: '';
-  height: 1.5px;
-  width: 65px;
-  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
-}
-
-/* Royal Jaipur Stamp Badges */
-.royal-seal {
+.pill-nav-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.35rem 0.9rem;
-  background: #11352A;
-  border: 1.5px solid #D4AF37;
+  gap: 0.35rem;
+  padding: 0.45rem 1.15rem;
   border-radius: 9999px;
-  color: #FAF3DC;
-  font-family: var(--font-heading);
+  border: 1px solid #E5E7EB;
+  background-color: #FFFFFF;
+  color: #1F1612;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(11, 36, 28, 0.2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
-.royal-seal-pink {
+.pill-nav-btn:hover {
+  border-color: #C8376B;
+  color: #C8376B;
+  background-color: #FDF0F3;
+}
+
+.pill-nav-btn-active {
+  border-color: #C8376B;
+  color: #C8376B;
+  background-color: #FDF0F3;
+}
+
+.pill-nav-bulk {
+  background-color: #FDF0F3;
+  border: 1.5px solid #F3CAD6;
+  color: #C8376B;
+  font-weight: 800;
+}
+
+.pill-nav-bulk:hover {
+  background-color: #FBEAE5;
+  border-color: #C8376B;
+  color: #B82458;
+}
+
+.pill-btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  background-color: #1F1612;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.pill-btn-dark:hover {
+  background-color: #382B24;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.pill-btn-rose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  background-color: #C8376B;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(200, 55, 107, 0.3);
+}
+
+.pill-btn-rose:hover {
+  background-color: #B82458;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(200, 55, 107, 0.45);
+}
+
+.pill-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid #D1D5DB;
+  background-color: #FFFFFF;
+  color: #1F1612;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.pill-btn-outline:hover {
+  border-color: #C8376B;
+  color: #C8376B;
+  background-color: #FDF0F3;
+}
+
+/* Rotating Artisan Circular Seal */
+@keyframes spinSeal {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-seal {
+  animation: spinSeal 18s linear infinite;
+}
+
+.royal-seal {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
