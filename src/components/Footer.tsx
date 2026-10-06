@@ -39,64 +39,64 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-[#0B241C] via-[#0E2F23] to-[#061711] text-[#FAF7EE] border-t-2 border-[#D4AF37]/50 pt-16 pb-12 shadow-2xl relative overflow-hidden">
-      {/* Subtle Rajasthani Jaali Background Pattern */}
-      <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-30 pointer-events-none" />
+    <footer className="bg-[#1F1612] text-[#FAF3DC] border-t border-[#D4AF37]/30 pt-16 pb-12 shadow-2xl relative overflow-hidden font-royal-body">
+      {/* Subtle Jaipur Jaali Lattice Overlay */}
+      <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-20 pointer-events-none" />
 
       {/* Top Value Propositions */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 border-b border-[#D4AF37]/30 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 border-b border-white/10 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="flex items-start gap-4">
-            <div className="w-11 h-11 rounded-2xl bg-[#11352A] border-2 border-[#D4AF37]/45 flex items-center justify-center shrink-0 shadow-md">
-              <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />
+            <div className="w-11 h-11 rounded-2xl bg-white/5 border border-[#D4AF37]/40 flex items-center justify-center shrink-0 shadow-md">
+              <ShieldCheck className="w-5 h-5 text-[#E5A93C]" />
             </div>
             <div>
-              <h4 className="font-royal-title text-sm text-[#F5E6B5] font-bold mb-1">
-                Authentic Jaipur Heritage
+              <h4 className="font-royal-title text-sm text-[#FAF3DC] font-bold mb-1">
+                Authentic Jaipur Atelier
               </h4>
-              <p className="text-xs text-stone-300 leading-relaxed font-royal-body">
-                Hand block-printed in Bagru &amp; Sanganer artisan clusters using AZO-free botanical and colorfast reactive dyes.
+              <p className="text-xs text-stone-300 leading-relaxed">
+                Hand block-printed in Bagru &amp; Sanganer artisan quarters using AZO-free botanical and colorfast reactive dyes.
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="w-11 h-11 rounded-2xl bg-[#11352A] border-2 border-[#D4AF37]/45 flex items-center justify-center shrink-0 shadow-md">
-              <Globe className="w-5 h-5 text-[#D4AF37]" />
+            <div className="w-11 h-11 rounded-2xl bg-white/5 border border-[#D4AF37]/40 flex items-center justify-center shrink-0 shadow-md">
+              <Globe className="w-5 h-5 text-[#E5A93C]" />
             </div>
             <div>
-              <h4 className="font-royal-title text-sm text-[#F5E6B5] font-bold mb-1">
-                Worldwide Export Ready
+              <h4 className="font-royal-title text-sm text-[#FAF3DC] font-bold mb-1">
+                Worldwide Export Logistics
               </h4>
-              <p className="text-xs text-stone-300 leading-relaxed font-royal-body">
+              <p className="text-xs text-stone-300 leading-relaxed">
                 Door-to-door insured air cargo (DHL/FedEx) &amp; ocean freight with complete Certificate of Origin documentation.
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="w-11 h-11 rounded-2xl bg-[#11352A] border-2 border-[#D4AF37]/45 flex items-center justify-center shrink-0 shadow-md">
-              <Sparkles className="w-5 h-5 text-[#D4AF37]" />
+            <div className="w-11 h-11 rounded-2xl bg-white/5 border border-[#D4AF37]/40 flex items-center justify-center shrink-0 shadow-md">
+              <Sparkles className="w-5 h-5 text-[#E5A93C]" />
             </div>
             <div>
-              <h4 className="font-royal-title text-sm text-[#F5E6B5] font-bold mb-1">
+              <h4 className="font-royal-title text-sm text-[#FAF3DC] font-bold mb-1">
                 Low MOQ &amp; Private Label
               </h4>
-              <p className="text-xs text-stone-300 leading-relaxed font-royal-body">
-                Starting from 25 pieces with bespoke Sheesham block carvings, lab-dip strike-offs, and export barcoding.
+              <p className="text-xs text-stone-300 leading-relaxed">
+                Starting from 25 pieces with bespoke Sheesham block carvings, strike-offs, and custom woven brand tags.
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="w-11 h-11 rounded-2xl bg-[#11352A] border-2 border-[#D4AF37]/45 flex items-center justify-center shrink-0 shadow-md">
-              <Download className="w-5 h-5 text-[#D4AF37]" />
+            <div className="w-11 h-11 rounded-2xl bg-white/5 border border-[#D4AF37]/40 flex items-center justify-center shrink-0 shadow-md">
+              <Download className="w-5 h-5 text-[#E5A93C]" />
             </div>
             <div>
-              <h4 className="font-royal-title text-sm text-[#F5E6B5] font-bold mb-1">
+              <h4 className="font-royal-title text-sm text-[#FAF3DC] font-bold mb-1">
                 Instant B2B Line Sheets
               </h4>
-              <p className="text-xs text-stone-300 leading-relaxed font-royal-body">
+              <p className="text-xs text-stone-300 leading-relaxed">
                 Request tiered wholesale quotations, fabric swatch decks, and tech-pack consultations directly.
               </p>
             </div>
@@ -113,30 +113,30 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             <div className="flex items-center gap-3">
               <img 
                 src="./logo.jpeg" 
-                alt="Ramam Textiles Crest" 
-                className="w-12 h-12 rounded-full border-2 border-[#D4AF37] shadow-lg"
+                alt="Craft of Pink City - Ramam Textiles" 
+                className="w-12 h-12 rounded-full border border-[#D4AF37]/50 shadow-lg object-cover"
               />
               <div>
-                <span className="block font-royal-heading text-xl font-bold tracking-widest text-[#FAF7EE] uppercase">
-                  RAMAM TEXTILES
+                <span className="block font-heading text-xl font-bold tracking-tight text-white leading-tight">
+                  Craft of <span className="italic font-editorial text-[#C8376B]">Pink City</span>
                 </span>
-                <span className="block text-[10px] tracking-[0.25em] text-[#D4AF37] uppercase font-royal-title font-bold">
-                  👑 Jaipur • Emerald Court • Luxury B2B
+                <span className="block text-[10px] tracking-[0.25em] text-[#E5A93C] uppercase font-royal-title font-bold">
+                  JAIPUR ARTISAN ATELIER
                 </span>
               </div>
             </div>
 
-            <p className="text-xs font-royal-body text-stone-200 leading-relaxed pr-6">
-              Ramam Textiles is an authentic Jaipur heritage textile house based in Rajasthan, India. We supply independent luxury boutiques, international fashion houses, and resort brands worldwide with hand block-printed apparel, quilted cotton bags, and pure fabrics by the meter.
+            <p className="text-xs text-stone-300 leading-relaxed pr-6">
+              Ramam Textiles is an authentic Jaipur heritage artisan house based in Rajasthan, India. We supply luxury boutiques, independent retailers, and travel lifestyle brands worldwide with handcrafted quilted duffle bags, vanity cosmetic pouches, and pure block-printed cotton fabrics.
             </p>
 
             {/* Newsletter / B2B Catalog Form */}
             <div className="pt-2">
-              <span className="block text-xs font-bold text-[#F5E6B5] uppercase tracking-wider mb-2 font-royal-title">
+              <span className="block text-xs font-bold text-[#E5A93C] uppercase tracking-wider mb-2 font-royal-title">
                 Download 2026 Wholesale Line Sheet
               </span>
               {isSubscribed ? (
-                <div className="p-3 bg-[#11352A] border border-[#D4AF37]/60 rounded-xl text-xs text-[#FAF7EE] flex items-center gap-2">
+                <div className="p-3 bg-white/10 border border-emerald-500/50 rounded-xl text-xs text-emerald-300 flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   <span>Wholesale catalog sent! Check your inbox.</span>
                 </div>
@@ -147,12 +147,12 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                     value={catalogEmail}
                     onChange={e => setCatalogEmail(e.target.value)}
                     placeholder="Enter your business email..."
-                    className="form-input-dark text-xs py-2.5 px-3.5 flex-1 rounded-xl"
+                    className="flex-1 px-4 py-2.5 bg-white/10 border border-[#D4AF37]/40 rounded-full text-xs text-white placeholder-stone-400 focus:outline-none focus:border-[#C8376B]"
                     required
                   />
                   <button 
                     type="submit"
-                    className="px-5 py-2.5 bg-gradient-to-r from-[#D4AF37] to-[#B89426] text-[#0B241C] text-xs font-bold uppercase rounded-xl hover:brightness-110 transition-all shrink-0 cursor-pointer font-royal-title shadow-md"
+                    className="pill-btn-rose px-5 py-2.5 text-xs font-bold uppercase rounded-full shrink-0 shadow-md"
                   >
                     Send PDF
                   </button>
@@ -165,9 +165,9 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                 href="https://www.instagram.com/ramamtextiles"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-[#D4AF37]/50 text-[#FAF7EE] text-xs hover:border-[#E1306C] hover:bg-white/15 transition-all group shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/15 text-stone-200 text-xs hover:border-[#C8376B] hover:text-white transition-all group shadow-sm"
               >
-                <InstagramIcon className="w-4 h-4 text-[#E1306C] group-hover:scale-110 transition-transform" />
+                <InstagramIcon className="w-4 h-4 text-[#C8376B] group-hover:scale-110 transition-transform" />
                 <span className="font-semibold text-xs">Follow <strong>@ramamtextiles</strong> on Instagram</span>
                 <ExternalLink className="w-3 h-3 text-stone-400 opacity-60 group-hover:opacity-100" />
               </a>
@@ -176,32 +176,32 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
 
           {/* Product Categories */}
           <div>
-            <h5 className="font-royal-title text-xs uppercase tracking-widest text-[#F5E6B5] font-bold mb-4 pb-1 border-b border-[#D4AF37]/30">
+            <h5 className="font-royal-title text-xs uppercase tracking-widest text-[#E5A93C] font-bold mb-4 pb-1 border-b border-white/10">
               Collections &amp; Categories
             </h5>
-            <ul className="space-y-2.5 text-xs text-stone-300 font-royal-body">
+            <ul className="space-y-2.5 text-xs text-stone-300">
               <li>
-                <button onClick={() => handleNav('/category/bags')} className="hover:text-[#D4AF37] transition-colors font-semibold text-[#FAF7EE]">
+                <button onClick={() => handleNav('/category/bags')} className="hover:text-[#C8376B] transition-colors font-semibold text-white">
                   Quilted Travel Duffles &amp; Totes
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/category/women')} className="hover:text-[#D4AF37] transition-colors">
+                <button onClick={() => handleNav('/category/women')} className="hover:text-[#C8376B] transition-colors">
                   Cosmetic &amp; Vanity Pouch Sets
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/category/home')} className="hover:text-[#D4AF37] transition-colors">
+                <button onClick={() => handleNav('/category/home')} className="hover:text-[#C8376B] transition-colors">
                   Specialty Organizers &amp; Sleeves
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/collections')} className="hover:text-[#D4AF37] transition-colors">
-                  Artisan Craft Collections
+                <button onClick={() => handleNav('/collections')} className="hover:text-[#C8376B] transition-colors">
+                  Curated Craft Sets
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/shop')} className="hover:text-[#D4AF37] transition-colors">
+                <button onClick={() => handleNav('/shop')} className="hover:text-[#C8376B] transition-colors">
                   All Ready-To-Order SKUs
                 </button>
               </li>
@@ -210,37 +210,37 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
 
           {/* B2B & Manufacturing */}
           <div>
-            <h5 className="font-royal-title text-xs uppercase tracking-widest text-[#F5E6B5] font-bold mb-4 pb-1 border-b border-[#D4AF37]/30">
+            <h5 className="font-royal-title text-xs uppercase tracking-widest text-[#E5A93C] font-bold mb-4 pb-1 border-b border-white/10">
               B2B &amp; Manufacturing
             </h5>
-            <ul className="space-y-2.5 text-xs text-stone-300 font-royal-body">
+            <ul className="space-y-2.5 text-xs text-stone-300">
               <li>
-                <button onClick={() => handleNav('/wholesale')} className="hover:text-[#D4AF37] transition-colors font-semibold text-[#FAF7EE]">
+                <button onClick={() => handleNav('/wholesale')} className="hover:text-[#C8376B] transition-colors font-semibold text-white">
                   Wholesale Buyer Portal
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/custom-manufacturing')} className="hover:text-[#D4AF37] transition-colors">
-                  Private Label Manufacturing
+                <button onClick={() => handleNav('/custom-manufacturing')} className="hover:text-[#C8376B] transition-colors">
+                  Bulk Orders &amp; Private Label
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/custom-manufacturing#process')} className="hover:text-[#D4AF37] transition-colors">
+                <button onClick={() => handleNav('/custom-manufacturing#process')} className="hover:text-[#C8376B] transition-colors">
                   Sampling &amp; Block Carving
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/lookbook')} className="hover:text-[#D4AF37] transition-colors">
-                  Editorial Lookbook
+                <button onClick={() => handleNav('/lookbook')} className="hover:text-[#C8376B] transition-colors">
+                  Editorial Lookbook &amp; Reviews
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/craftsmanship')} className="hover:text-[#D4AF37] transition-colors">
+                <button onClick={() => handleNav('/craftsmanship')} className="hover:text-[#C8376B] transition-colors">
                   The Bagru &amp; Sanganer Craft
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/journal')} className="hover:text-[#D4AF37] transition-colors">
+                <button onClick={() => handleNav('/journal')} className="hover:text-[#C8376B] transition-colors">
                   Textile Sourcing Journal
                 </button>
               </li>
@@ -249,36 +249,36 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
 
           {/* Direct Atelier Contact */}
           <div>
-            <h5 className="font-royal-title text-xs uppercase tracking-widest text-[#F5E6B5] font-bold mb-4 pb-1 border-b border-[#D4AF37]/30">
+            <h5 className="font-royal-title text-xs uppercase tracking-widest text-[#E5A93C] font-bold mb-4 pb-1 border-b border-white/10">
               Jaipur Atelier &amp; Contact
             </h5>
-            <ul className="space-y-3 text-xs text-stone-300 font-royal-body">
+            <ul className="space-y-3 text-xs text-stone-300">
               <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
                 <span>
                   Ramam Textiles Artisan Workshops,<br />
                   Jaipur, Rajasthan 302020, India
                 </span>
               </li>
               <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                <a href="mailto:inquiry@ramamtextiles.com" className="hover:text-[#D4AF37]">
+                <Mail className="w-4 h-4 text-[#E5A93C] shrink-0" />
+                <a href="mailto:inquiry@ramamtextiles.com" className="hover:text-[#C8376B]">
                   inquiry@ramamtextiles.com
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                <a href="mailto:exports@ramamtextiles.com" className="hover:text-[#D4AF37]">
+                <Mail className="w-4 h-4 text-[#E5A93C] shrink-0" />
+                <a href="mailto:exports@ramamtextiles.com" className="hover:text-[#C8376B]">
                   exports@ramamtextiles.com
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <InstagramIcon className="w-4 h-4 text-[#E1306C] shrink-0" />
+                <InstagramIcon className="w-4 h-4 text-[#C8376B] shrink-0" />
                 <a 
                   href="https://www.instagram.com/ramamtextiles" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="hover:text-[#D4AF37] inline-flex items-center gap-1 group font-medium"
+                  className="hover:text-[#C8376B] inline-flex items-center gap-1 group font-medium text-white"
                 >
                   <span>@ramamtextiles</span>
                   <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity" />
@@ -287,7 +287,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
               <li className="pt-2">
                 <button 
                   onClick={() => handleNav('/contact')}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#11352A] border border-[#D4AF37]/50 text-xs text-[#FAF7EE] hover:bg-[#D4AF37] hover:text-[#0B241C] transition-all font-royal-title font-bold shadow-md"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-white/10 border border-[#D4AF37]/50 text-xs text-white hover:bg-[#C8376B] hover:border-[#C8376B] transition-all font-royal-title font-bold shadow-md"
                 >
                   <span>Inquire Online &amp; Book Visit</span>
                   <ArrowRight className="w-3 h-3" />
@@ -300,21 +300,21 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
       </div>
 
       {/* Bottom Legal & Copyright Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-[#D4AF37]/30 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-300 relative z-10 font-royal-body">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-400 relative z-10 font-royal-body">
         <div>
-          © {new Date().getFullYear()} Ramam Textiles. All rights reserved. Handcrafted with pride in Jaipur, Rajasthan, India.
+          © {new Date().getFullYear()} Ramam Textiles / Craft of Pink City. All rights reserved. Handcrafted in Jaipur, Rajasthan.
         </div>
         <div className="flex flex-wrap items-center gap-6 font-medium">
-          <button onClick={() => handleNav('/faq')} className="hover:text-[#D4AF37] transition-colors">
+          <button onClick={() => handleNav('/faq')} className="hover:text-[#C8376B] transition-colors">
             FAQ
           </button>
-          <button onClick={() => handleNav('/shipping-returns')} className="hover:text-[#D4AF37] transition-colors">
+          <button onClick={() => handleNav('/shipping-returns')} className="hover:text-[#C8376B] transition-colors">
             Shipping &amp; Export Terms
           </button>
-          <button onClick={() => handleNav('/privacy-policy')} className="hover:text-[#D4AF37] transition-colors">
+          <button onClick={() => handleNav('/privacy-policy')} className="hover:text-[#C8376B] transition-colors">
             Privacy Policy
           </button>
-          <button onClick={() => handleNav('/terms-conditions')} className="hover:text-[#D4AF37] transition-colors">
+          <button onClick={() => handleNav('/terms-conditions')} className="hover:text-[#C8376B] transition-colors">
             Terms &amp; Conditions
           </button>
         </div>
