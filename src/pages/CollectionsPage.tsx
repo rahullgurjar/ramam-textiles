@@ -43,8 +43,8 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
                     alt={collection.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#061711]/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 text-[#FAF3DC] font-royal-title text-xs uppercase tracking-widest bg-[#0B241C]/90 border border-[#D4AF37]/40 px-3.5 py-1.5 rounded-xl backdrop-blur-sm">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#061711] via-transparent to-transparent opacity-70" />
+                  <div className="absolute bottom-4 left-4 text-[#FAF3DC] font-royal-title text-xs uppercase tracking-widest bg-[#0B241C] border border-[#D4AF37] px-3.5 py-1.5 rounded-xl shadow-lg">
                     {collection.tagline}
                   </div>
                 </div>

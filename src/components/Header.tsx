@@ -140,8 +140,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
       {/* Main Brand & Navigation Header with Jaipur Sandstone / Ivory Base */}
       <div className={`w-full transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[#FAF7EE]/98 backdrop-blur-md shadow-lg border-b border-[#D4AF37]/35 py-2.5' 
-          : 'bg-[#FAF7EE] border-b border-[#D4AF37]/25 py-3.5'
+          ? 'bg-[#FAF7EE] shadow-lg border-b border-[#D4AF37]/50 py-2.5' 
+          : 'bg-[#FAF7EE] border-b border-[#D4AF37]/30 py-3.5'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
@@ -157,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             <button 
               onClick={openSearch}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl border border-[#11352A]/20 text-[#11352A] hover:text-[#0B241C] hover:border-[#D4AF37] bg-white/80 shadow-sm transition-all text-xs font-medium"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl border border-[#11352A]/20 text-[#11352A] hover:text-[#0B241C] hover:border-[#D4AF37] bg-white shadow-sm transition-all text-xs font-medium"
               title="Search Catalog & Specifications"
             >
               <Search className="w-4 h-4 text-[#D4AF37]" />
@@ -317,7 +317,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                           </p>
                         </div>
                         <button
-                          onClick={() => handleNav('/category/quilted-bags')}
+                          onClick={() => handleNav('/category/bags')}
                           className="mt-4 w-full py-2 bg-gradient-to-r from-[#D4AF37] to-[#B89426] text-[#0B241C] font-royal-title font-bold text-[10px] uppercase tracking-widest rounded-lg hover:opacity-90 transition-opacity shadow"
                         >
                           Explore Bags →
@@ -433,8 +433,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
       {/* Mobile Drawer Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden bg-[#0B241C]/75 backdrop-blur-sm">
-          <div className="fixed inset-y-0 left-0 w-5/6 max-w-sm bg-gradient-to-b from-[#FAF7EE] to-[#F3EEDB] shadow-2xl flex flex-col justify-between overflow-y-auto p-5 border-r-2 border-[#D4AF37]/45 animate-fade-in text-[#0B241C]">
+        <div className="fixed inset-0 z-50 lg:hidden bg-black/60">
+          <div className="fixed inset-y-0 left-0 w-5/6 max-w-sm bg-[#FAF7EE] shadow-2xl flex flex-col justify-between overflow-y-auto p-5 border-r-2 border-[#D4AF37]/60 animate-fade-in text-[#0B241C]">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/30">
                 <div className="flex items-center gap-2.5">

@@ -63,7 +63,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
 
         {/* Badges Overlay */}
         <div className="absolute top-2.5 left-2.5 flex flex-col gap-1.5 z-10">
-          <span className="px-3 py-1 bg-[#0B241C]/95 text-[#F5E6B5] text-[10px] font-bold tracking-wider uppercase rounded-full backdrop-blur-sm border border-[#D4AF37]/50 shadow-sm font-royal-title">
+          <span className="px-3 py-1 bg-[#0B241C] text-[#FAF3DC] text-[10px] font-bold tracking-wider uppercase rounded-full border border-[#D4AF37] shadow-md font-royal-title">
             MOQ {product.moq} Pcs
           </span>
           {product.isFeatured && (
@@ -80,7 +80,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
               e.stopPropagation();
               openQuickQuote(product);
             }}
-            className="flex-1 py-2.5 px-3 bg-[#0B241C]/95 text-[#FAF3DC] hover:bg-[#11352A] text-xs font-bold uppercase tracking-wider rounded-xl backdrop-blur-sm flex items-center justify-center gap-1.5 border border-[#D4AF37]/60 shadow-lg transition-all font-royal-title"
+            className="flex-1 py-2.5 px-3 bg-[#0B241C] text-[#FAF3DC] hover:bg-[#11352A] text-xs font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-1.5 border border-[#D4AF37] shadow-xl transition-all font-royal-title"
           >
             <FileText className="w-3.5 h-3.5 text-[#D4AF37]" />
             <span>Instant Quote</span>

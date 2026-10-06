@@ -124,7 +124,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             <div className="absolute top-5 right-5 flex items-center gap-2 z-10">
               <button
                 onClick={handleShare}
-                className="p-3 rounded-full bg-[#FAF7EE]/90 hover:bg-[#FAF7EE] text-[#0B241C] shadow-lg border border-[#D4AF37]/40 backdrop-blur-md transition-all hover:scale-105"
+                className="p-3 rounded-full bg-[#FAF7EE] hover:bg-white text-[#0B241C] shadow-lg border border-[#D4AF37] transition-all hover:scale-105"
                 title="Share Creation"
               >
                 <Share2 className="w-4 h-4 text-[#11352A]" />
@@ -132,12 +132,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             </div>
 
             {/* Bottom SKU and Provenance Bar */}
-            <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-[#0B241C]/95 via-[#11352A]/90 to-[#0B241C]/95 backdrop-blur-md text-[#F5E6B5] p-3.5 rounded-2xl flex items-center justify-between text-xs border border-[#D4AF37]/40 shadow-xl">
+            <div className="absolute bottom-4 left-4 right-4 bg-[#0B241C] text-[#F5E6B5] p-3.5 rounded-2xl flex items-center justify-between text-xs border border-[#D4AF37] shadow-xl">
               <div className="flex items-center gap-2 font-mono">
                 <span className="text-[#D4AF37] font-royal-title">SKU:</span>
-                <span className="font-semibold">{product.sku}</span>
+                <span className="font-semibold text-white">{product.sku}</span>
               </div>
-              <div className="text-[11px] text-[#FAF7EE]/90 font-royal-body">
+              <div className="text-[11px] text-[#FAF7EE] font-royal-body">
                 Crafted in <strong className="text-[#F5E6B5]">Bagru & Sanganer Guilds</strong>
               </div>
             </div>
@@ -410,13 +410,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
               </h3>
               <p className="text-base text-stone-700">{product.description}</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                <div className="p-5 bg-white/85 rounded-2xl border border-[#D4AF37]/30 shadow-sm">
+                <div className="p-5 bg-white rounded-2xl border border-[#D4AF37]/30 shadow-sm">
                   <h4 className="font-royal-title font-bold text-[#11352A] text-xs uppercase tracking-wider mb-1.5">Authentic Jaipur Handcraft</h4>
                   <p className="text-xs text-stone-600 leading-relaxed">
                     Hand-stamped in Rajasthan using hand-carved Sheesham wood blocks. Subtle variations in shade or alignment are the authentic hallmarks of royal heritage craftsmanship.
                   </p>
                 </div>
-                <div className="p-5 bg-white/85 rounded-2xl border border-[#D4AF37]/30 shadow-sm">
+                <div className="p-5 bg-white rounded-2xl border border-[#D4AF37]/30 shadow-sm">
                   <h4 className="font-royal-title font-bold text-[#11352A] text-xs uppercase tracking-wider mb-1.5">Pre-Washed & Colorfast</h4>
                   <p className="text-xs text-stone-600 leading-relaxed">
                     Each fabric batch undergoes traditional river and steam washing to lock in natural mineral dyes and prevent post-purchase shrinkage.
@@ -429,27 +429,27 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           {activeTab === 'specs' && (
             <div className="max-w-4xl">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-royal-body">
-                <div className="bg-white/85 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                <div className="bg-white p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-[#164335] font-medium font-royal-title uppercase">SKU Reference:</span>
                   <span className="font-mono font-bold text-[#0B241C]">{product.sku}</span>
                 </div>
-                <div className="bg-white/85 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                <div className="bg-white p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-[#164335] font-medium font-royal-title uppercase">Base Fabric:</span>
                   <span className="font-bold text-[#0B241C]">{product.fabric}</span>
                 </div>
-                <div className="bg-white/85 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                <div className="bg-white p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-[#164335] font-medium font-royal-title uppercase">Printing Technique:</span>
                   <span className="font-bold text-[#0B241C]">{product.printTechnique}</span>
                 </div>
-                <div className="bg-white/85 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                <div className="bg-white p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-[#164335] font-medium font-royal-title uppercase">Craft Origin:</span>
                   <span className="font-bold text-[#0B241C]">Jaipur, Rajasthan (India)</span>
                 </div>
-                <div className="bg-white/85 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                <div className="bg-white p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-[#164335] font-medium font-royal-title uppercase">Dye Formulation:</span>
                   <span className="font-bold text-[#0B241C]">Azo-Free / Natural Fermented Indigo</span>
                 </div>
-                <div className="bg-white/85 p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
+                <div className="bg-white p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-[#164335] font-medium font-royal-title uppercase">Export Carton Specs:</span>
                   <span className="font-bold text-[#0B241C]">50 units/carton (Double Wall Corrugated)</span>
                 </div>
@@ -509,7 +509,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                 Custom Production & Royal Care Guide
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-white/85 p-5 rounded-2xl border border-[#D4AF37]/30 space-y-2 shadow-sm">
+                <div className="bg-white p-5 rounded-2xl border border-[#D4AF37]/30 space-y-2 shadow-sm">
                   <h4 className="font-royal-title font-bold text-[#11352A] uppercase tracking-wider">Custom OEM Atelier Services:</h4>
                   <ul className="list-disc pl-4 space-y-1 text-stone-600">
                     <li>Custom Wooden Printing Block Carvings with bespoke motifs</li>
@@ -518,7 +518,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                     <li>Sealed export polybag packaging with barcode tags</li>
                   </ul>
                 </div>
-                <div className="bg-white/85 p-5 rounded-2xl border border-[#D4AF37]/30 space-y-2 shadow-sm">
+                <div className="bg-white p-5 rounded-2xl border border-[#D4AF37]/30 space-y-2 shadow-sm">
                   <h4 className="font-royal-title font-bold text-[#11352A] uppercase tracking-wider">Fabric Care Instructions:</h4>
                   <ul className="list-disc pl-4 space-y-1 text-stone-600">
                     <li>Gentle cold hand wash or machine wash on delicate cycle</li>

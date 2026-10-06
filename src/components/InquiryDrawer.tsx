@@ -78,7 +78,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-black/70 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 animate-fade-in">
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
         <div className="w-screen max-w-xl bg-[#FAF7EE] shadow-2xl flex flex-col justify-between overflow-hidden border-l-2 border-[#D4AF37]/50">
           

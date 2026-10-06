@@ -87,8 +87,8 @@ export const LookbookPage: React.FC<LookbookPageProps> = ({ onNavigate }) => {
 
       {/* Lightbox / Modal */}
       {selectedImageModal && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md p-4 sm:p-8 flex items-center justify-center animate-fade-in">
-          <div className="bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] rounded-3xl overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-12 shadow-2xl border-2 border-[#D4AF37]/50 text-[#0B241C]">
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 p-4 sm:p-8 flex items-center justify-center animate-fade-in">
+          <div className="bg-[#FAF7EE] rounded-3xl overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-12 shadow-2xl border-2 border-[#D4AF37] text-[#0B241C]">
             <div className="md:col-span-7 bg-black max-h-[70vh] md:max-h-[80vh] flex items-center justify-center">
               <img
                 src={selectedImageModal.image}

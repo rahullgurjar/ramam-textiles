@@ -12,7 +12,7 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ currentPath, o
   const totalBasketCount = inquiryItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-r from-[#0B241C]/98 via-[#11352A]/98 to-[#0B241C]/98 backdrop-blur-md border-t-2 border-[#D4AF37]/45 px-2 py-1.5 flex items-center justify-around shadow-2xl">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B241C] border-t-2 border-[#D4AF37] px-2 py-1.5 flex items-center justify-around shadow-2xl">
       <button
         onClick={() => { onNavigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         className={`flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold transition-colors font-royal-title ${

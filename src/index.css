@@ -187,16 +187,16 @@ body {
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.85rem;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(245, 230, 181, 0.08));
-  border: 1px solid rgba(212, 175, 55, 0.5);
+  background: #11352A;
+  border: 1.5px solid #D4AF37;
   border-radius: 9999px;
-  color: #D4AF37;
+  color: #FAF3DC;
   font-family: var(--font-heading);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 700;
-  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(11, 36, 28, 0.2);
 }
 
 .royal-seal-emerald {
@@ -204,10 +204,10 @@ body {
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.85rem;
-  background: linear-gradient(135deg, rgba(17, 53, 42, 0.15), rgba(38, 109, 87, 0.08));
-  border: 1px solid rgba(17, 53, 42, 0.35);
+  background: #F3EEDB;
+  border: 1.5px solid #11352A;
   border-radius: 9999px;
-  color: #11352A;
+  color: #0B241C;
   font-family: var(--font-heading);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
@@ -297,33 +297,33 @@ body {
   transform: translateY(-2px);
 }
 
-/* Glass Outline Royal Button */
+/* Solid Outline Royal Button */
 .btn-royal-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
+  background: #11352A;
   color: #FAF3DC;
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.82rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0.9rem 2rem;
   border-radius: 6px;
-  border: 1px solid rgba(212, 175, 55, 0.5);
+  border: 1.5px solid #D4AF37;
+  box-shadow: 0 4px 14px rgba(11, 36, 28, 0.25);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 }
 
 .btn-royal-outline:hover {
-  background: rgba(212, 175, 55, 0.2);
-  border-color: #D4AF37;
+  background: #1C5241;
+  border-color: #F5E6B5;
   color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 6px 20px rgba(11, 36, 28, 0.35);
 }
 
 /* Light Outline Button (for Sand/White pages) */
@@ -438,8 +438,8 @@ body {
 .form-input-dark {
   width: 100%;
   padding: 0.85rem 1.1rem;
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  background-color: #11352A;
+  border: 1.5px solid #D4AF37;
   border-radius: 6px;
   font-family: var(--font-sans);
   font-size: 0.95rem;
@@ -449,8 +449,8 @@ body {
 
 .form-input-dark:focus {
   outline: none;
-  border-color: #D4AF37;
-  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #F5E6B5;
+  background-color: #164335;
   box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
 }
 

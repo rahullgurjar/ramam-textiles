@@ -21,7 +21,7 @@ export const Toast: React.FC = () => {
 
   return (
     <aside aria-label="Notification" className="fixed bottom-20 md:bottom-8 right-4 md:right-8 z-50 max-w-md animate-fade-in shadow-2xl rounded-lg overflow-hidden">
-      <div className={`flex items-center gap-3 p-4 border rounded-lg backdrop-blur-md ${borderColors[toast.type]}`}>
+      <div className={`flex items-center gap-3 p-4 border-2 rounded-lg ${borderColors[toast.type]} shadow-xl`}>
         {icons[toast.type]}
         <p className="text-xs md:text-sm font-medium pr-2 leading-snug">{toast.message}</p>
       </div>

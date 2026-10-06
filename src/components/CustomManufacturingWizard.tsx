@@ -112,7 +112,7 @@ export const CustomManufacturingWizard: React.FC = () => {
             Our master sampling master and technical merchandising team in Jaipur will analyze your specifications and email you an exact cost breakdown, sampling timeline, and fabric swatches at <strong>{email}</strong> within 24 hours.
           </p>
 
-          <div className="bg-white/90 p-6 rounded-2xl border-2 border-[#D4AF37]/30 text-left text-xs font-royal-body space-y-2 shadow-sm">
+          <div className="bg-white p-6 rounded-2xl border-2 border-[#D4AF37]/30 text-left text-xs font-royal-body space-y-2 shadow-sm">
             <div className="font-royal-title text-sm font-bold text-[#164335] border-b border-[#D4AF37]/30 pb-2">
               Royal Brief Summary Preview:
             </div>
@@ -438,7 +438,7 @@ export const CustomManufacturingWizard: React.FC = () => {
               </div>
 
               {/* Summary Card */}
-              <div className="bg-white/90 p-5 rounded-2xl border-2 border-[#D4AF37]/30 text-xs space-y-1.5 shadow-sm">
+              <div className="bg-white p-5 rounded-2xl border-2 border-[#D4AF37]/30 text-xs space-y-1.5 shadow-sm">
                 <div className="font-royal-title font-bold text-[#164335] flex items-center gap-2">
                   <Award className="w-4 h-4 text-[#D4AF37]" />
                   <span>Brief Specification Snapshot:</span>

@@ -181,28 +181,23 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             </h5>
             <ul className="space-y-2.5 text-xs text-stone-300 font-royal-body">
               <li>
-                <button onClick={() => handleNav('/category/quilted-bags')} className="hover:text-[#D4AF37] transition-colors font-semibold text-[#FAF7EE]">
+                <button onClick={() => handleNav('/category/bags')} className="hover:text-[#D4AF37] transition-colors font-semibold text-[#FAF7EE]">
                   Quilted Travel Duffles &amp; Totes
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/category/women-apparel')} className="hover:text-[#D4AF37] transition-colors">
-                  Women Kurtas &amp; Resort Wear
+                <button onClick={() => handleNav('/category/women')} className="hover:text-[#D4AF37] transition-colors">
+                  Cosmetic &amp; Vanity Pouch Sets
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/category/men-fashion')} className="hover:text-[#D4AF37] transition-colors">
-                  Men Short Kurtas &amp; Shirts
+                <button onClick={() => handleNav('/category/home')} className="hover:text-[#D4AF37] transition-colors">
+                  Specialty Organizers &amp; Sleeves
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('/category/fabrics-meter')} className="hover:text-[#D4AF37] transition-colors">
-                  Running Fabrics by the Meter
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNav('/category/home-living')} className="hover:text-[#D4AF37] transition-colors">
-                  Heritage Quilts &amp; Table Linens
+                <button onClick={() => handleNav('/collections')} className="hover:text-[#D4AF37] transition-colors">
+                  Artisan Craft Collections
                 </button>
               </li>
               <li>

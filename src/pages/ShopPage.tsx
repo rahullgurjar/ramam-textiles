@@ -379,7 +379,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onNavigate, initialCategory,
 
       {/* Mobile Filters Slide-over Modal */}
       {isMobileFilterOpen && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-sm p-4 flex items-end sm:items-center justify-center animate-fade-in lg:hidden">
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-end sm:items-center justify-center animate-fade-in lg:hidden">
           <div className="w-full max-w-md bg-[#FAF7EE] rounded-t-3xl sm:rounded-3xl shadow-2xl border-2 border-[#D4AF37]/50 max-h-[85vh] overflow-y-auto p-6 space-y-6 text-[#11221B]">
             <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/30">
               <h3 className="font-royal-heading text-lg font-bold text-[#0B241C]">👑 Filter Products</h3>

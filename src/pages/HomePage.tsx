@@ -52,7 +52,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         {/* Content Container */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-20 text-center flex flex-col items-center">
           {/* Royal Heritage Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/50 text-[#F5E6B5] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md shadow-lg animate-fade-in font-royal-title">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#11352A] border-2 border-[#D4AF37] text-[#FAF3DC] text-xs font-bold tracking-widest uppercase mb-6 shadow-xl animate-fade-in font-royal-title">
             <span className="text-[#D4AF37] text-sm">👑</span>
             <span>Heritage Artisan Guild of Jaipur • 100% Pure Quilted Cotton • B2B Export</span>
           </div>
@@ -89,8 +89,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
           {/* Key Value Micro-metrics with Gold Accents */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-14 border-t border-[#D4AF37]/30 mt-14 w-full max-w-4xl text-left">
-            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/5 border border-[#D4AF37]/25 backdrop-blur-sm">
-              <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F5E6B5]">
+            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#11352A] border border-[#D4AF37]/50 shadow-md">
+              <div className="p-2.5 rounded-xl bg-[#0B241C] text-[#F5E6B5] border border-[#D4AF37]/40">
                 <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />
               </div>
               <div>
@@ -99,8 +99,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/5 border border-[#D4AF37]/25 backdrop-blur-sm">
-              <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F5E6B5]">
+            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#11352A] border border-[#D4AF37]/50 shadow-md">
+              <div className="p-2.5 rounded-xl bg-[#0B241C] text-[#F5E6B5] border border-[#D4AF37]/40">
                 <Layers className="w-5 h-5 text-[#D4AF37]" />
               </div>
               <div>
@@ -109,8 +109,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/5 border border-[#D4AF37]/25 backdrop-blur-sm">
-              <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F5E6B5]">
+            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#11352A] border border-[#D4AF37]/50 shadow-md">
+              <div className="p-2.5 rounded-xl bg-[#0B241C] text-[#F5E6B5] border border-[#D4AF37]/40">
                 <Globe2 className="w-5 h-5 text-[#D4AF37]" />
               </div>
               <div>
@@ -119,8 +119,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/5 border border-[#D4AF37]/25 backdrop-blur-sm">
-              <div className="p-2.5 rounded-xl bg-[#D4AF37]/15 text-[#F5E6B5]">
+            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#11352A] border border-[#D4AF37]/50 shadow-md">
+              <div className="p-2.5 rounded-xl bg-[#0B241C] text-[#F5E6B5] border border-[#D4AF37]/40">
                 <Sparkles className="w-5 h-5 text-[#D4AF37]" />
               </div>
               <div>
@@ -265,7 +265,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
 
               {/* Overlapping Royal Medallion */}
-              <div className="absolute -bottom-6 -right-4 sm:bottom-8 sm:-right-8 bg-[#0B241C] text-[#FAF3DC] p-6 sm:p-7 rounded-3xl shadow-2xl border-2 border-[#D4AF37]/60 max-w-xs backdrop-blur-md">
+              <div className="absolute -bottom-6 -right-4 sm:bottom-8 sm:-right-8 bg-[#0B241C] text-[#FAF3DC] p-6 sm:p-7 rounded-3xl shadow-2xl border-2 border-[#D4AF37] max-w-xs">
                 <div className="flex items-center gap-2 text-[#D4AF37] text-xs font-bold uppercase tracking-wider mb-1 font-royal-title">
                   <Award className="w-4 h-4 text-[#D4AF37]" />
                   <span>3rd Generation Jaipur Artistry</span>

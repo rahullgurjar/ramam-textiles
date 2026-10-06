@@ -1,103 +1,284 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://ramamtextiles.com/</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://ramamtextiles.shop/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/shop</loc>
+    <loc>https://ramamtextiles.shop/shop</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/collections</loc>
+    <loc>https://ramamtextiles.shop/collections</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/custom-manufacturing</loc>
+    <loc>https://ramamtextiles.shop/custom-manufacturing</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/wholesale</loc>
+    <loc>https://ramamtextiles.shop/wholesale</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/category/women</loc>
+    <loc>https://ramamtextiles.shop/craftsmanship</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/lookbook</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/category/men</loc>
+    <loc>https://ramamtextiles.shop/journal</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/category/kids</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ramamtextiles.com/category/bags</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ramamtextiles.com/category/fabrics</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ramamtextiles.com/category/home</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ramamtextiles.com/about</loc>
+    <loc>https://ramamtextiles.shop/about</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/craftsmanship</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ramamtextiles.com/lookbook</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ramamtextiles.com/journal</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ramamtextiles.com/contact</loc>
+    <loc>https://ramamtextiles.shop/contact</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/faq</loc>
+    <loc>https://ramamtextiles.shop/faq</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/shipping-returns</loc>
+    <loc>https://ramamtextiles.shop/track</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/privacy-policy</loc>
+    <loc>https://ramamtextiles.shop/shipping-returns</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/privacy-policy</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://ramamtextiles.com/terms-conditions</loc>
+    <loc>https://ramamtextiles.shop/terms-conditions</loc>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/category/bags</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/duffle-kantha-patchwork.jpg</image:loc>
+      <image:title>Quilted Travel Duffles &amp; Totes</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/category/women</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/vanity-trio-turquoise.jpg</image:loc>
+      <image:title>Cosmetic &amp; Vanity Pouch Sets</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/category/home</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/organizer-dyson-airwrap.jpg</image:loc>
+      <image:title>Specialty Organizers, Tech Sleeves &amp; Yoga Carriers</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/jaipur-quilted-playing-card-vanity-pouch</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/vanity-playing-cards.jpg</image:loc>
+      <image:title>Heritage Pink Quilted Playing Card Vanity Pouch</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/candy-stripe-hair-styler-dyson-airwrap-quilted-case</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/organizer-dyson-airwrap.jpg</image:loc>
+      <image:title>Candy Stripe Hair Styler &amp; Dyson Airwrap Quilted Travel Case</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/turquoise-sanganeri-blossom-quilted-cosmetic-pouch-trio</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/vanity-trio-turquoise.jpg</image:loc>
+      <image:title>Turquoise Sanganeri Blossom Quilted Cosmetic Pouches (Set of 3)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/rose-pink-mughal-paisley-quilted-toiletries-kit-trio</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/vanity-trio-pink-paisley.jpg</image:loc>
+      <image:title>Rose Pink Mughal Paisley Quilted Toiletries Kit (Set of 3)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/cream-rust-marigold-genda-quilted-vanity-pouch-trio</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/vanity-trio-marigold-cream.jpg</image:loc>
+      <image:title>Cream &amp; Rust Marigold Genda Quilted Vanity Pouch Trio (Set of 3)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/meadow-green-blue-blossom-quilted-vanity-trio</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/vanity-trio-meadow-green.jpg</image:loc>
+      <image:title>Meadow Green &amp; Royal Blue Blossom Quilted Vanity Trio (Set of 3)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/mint-aqua-mughal-lotus-quilted-vanity-trio</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/vanity-trio-mint-lotus.jpg</image:loc>
+      <image:title>Mint Aqua Mughal Lotus Quilted Cosmetic Vanity Trio (Set of 3)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/heritage-kantha-patchwork-quilted-travel-duffle</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/duffle-kantha-patchwork.jpg</image:loc>
+      <image:title>Heritage Kantha Patchwork Quilted Cylindrical Travel Duffle</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/indigo-mughal-floral-quilted-travel-duffle-bag</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/duffle-indigo.jpg</image:loc>
+      <image:title>Jaipur Indigo Mughal Floral Quilted Travel Duffle Bag</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/bubblegum-botanical-autumn-blossom-quilted-weekender-bag</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/duffle-pink-botanical.jpg</image:loc>
+      <image:title>Bubblegum Botanical Autumn Blossom Quilted Weekender Bag</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/pink-striped-sanganeri-floral-quilted-ruffle-tote</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/tote-sanganeri-ruffle-lifestyle.jpg</image:loc>
+      <image:title>Pink Striped Sanganeri Floral Quilted Ruffle Shoulder Tote Bag</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/royal-mughal-kalamkari-quilted-laptop-tablet-sleeve</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/laptop-sleeve-kalamkari.jpg</image:loc>
+      <image:title>Royal Mughal Kalamkari Quilted Padded Laptop &amp; Tablet Sleeve</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/product/royal-safari-jungle-animal-quilted-yoga-mat-carrier</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://ramamtextiles.shop/products/yoga-safari.jpg</image:loc>
+      <image:title>Royal Safari Jungle Animal Quilted Yoga Mat Carrier</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/journal/alchemy-of-bagru-dabu-indigo</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&amp;fit=crop&amp;w=1200&amp;q=85</image:loc>
+      <image:title>The Alchemy of Bagru: Traditional Dabu Mud-Resist Printing and Natural Indigo Vats</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/journal/sourcing-guide-pure-cotton-mulmul</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&amp;fit=crop&amp;w=1200&amp;q=85</image:loc>
+      <image:title>A Designer&apos;s Technical Guide to Sourcing Pure Jaipur Cotton Mulmul &amp; Cambric</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ramamtextiles.shop/journal/how-to-launch-private-label-apparel</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&amp;fit=crop&amp;w=1200&amp;q=85</image:loc>
+      <image:title>How to Launch a Private-Label Apparel Line with Indian Artisan Workshops</image:title>
+    </image:image>
   </url>
 </urlset>
