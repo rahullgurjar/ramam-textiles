@@ -4,10 +4,22 @@
 
 :root {
   /* ==========================================================================
-     👑 SOLID PURE WHITE & ROYAL GOLD DESIGN SYSTEM
-     Inspired by Crisp Luxury White Canvas, 24K Zari Gold & Deep Emerald Accents
+     👑 AUTHENTIC JAIPUR HERITAGE PALACE DESIGN SYSTEM
+     Inspired by Pink City Terracotta, Royal Bagru Indigo, Marwar Gold & Emerald Court
      ========================================================================== */
   
+  /* Jaipur Pink City & Hawa Mahal Terracotta */
+  --jaipur-pink-50: #FDF6F4;
+  --jaipur-pink-100: #FAEAE6;
+  --jaipur-pink-200: #F4D2C9;
+  --jaipur-pink-300: #EBB4A4;
+  --jaipur-pink-400: #DD8E7A;
+  --jaipur-pink-500: #C85A53;
+  --jaipur-pink-600: #B8453D;
+  --jaipur-pink-700: #9B332C;
+  --jaipur-terracotta: #B84A39;
+  --jaipur-rose-tint: #FAF0EC;
+
   /* Primary Jaipur Royal Emerald Tones */
   --jaipur-emerald-deep: #0B241C;
   --jaipur-emerald-900: #0E2F23;
@@ -18,6 +30,13 @@
   --jaipur-emerald-400: #38886E;
   --jaipur-emerald-100: #F0FDF4;
   --jaipur-emerald-50: #F8FAFC;
+
+  /* Bagru Natural Indigo Dye */
+  --jaipur-indigo-deep: #0E2138;
+  --jaipur-indigo-800: #14314E;
+  --jaipur-indigo-600: #1D456B;
+  --jaipur-indigo-500: #2A5C8A;
+  --jaipur-indigo-100: #E8F0F8;
 
   /* Royal Zari 24K Gold & Antique Brass */
   --jaipur-gold-50: #FFFFFF;
@@ -31,13 +50,13 @@
   --jaipur-gold-800: #6E540F;
   --jaipur-gold-900: #473507;
 
-  /* Crisp Pure White Canvas */
+  /* Crisp Jaipur Silk Off-White Canvas */
   --jaipur-sand-50: #FFFFFF;
-  --jaipur-sand-100: #FFFFFF;
-  --jaipur-sand-200: #F8FAFC;
-  --jaipur-sand-300: #F1F5F9;
-  --jaipur-sand-400: #E2E8F0;
-  --jaipur-sand-500: #CBD5E1;
+  --jaipur-sand-100: #FDFBF7;
+  --jaipur-sand-200: #F9F6EE;
+  --jaipur-sand-300: #F1ECE0;
+  --jaipur-sand-400: #E2D9C5;
+  --jaipur-sand-500: #C8BCA4;
 
   /* Typography */
   --font-royal: 'Cinzel Decorative', 'Cinzel', serif;
@@ -48,15 +67,17 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Border & Shadows */
-  --border-gold-subtle: rgba(212, 175, 55, 0.35);
+  --border-gold-subtle: rgba(212, 175, 55, 0.4);
   --border-gold-rich: #D4AF37;
-  --border-emerald-subtle: rgba(17, 53, 42, 0.2);
+  --border-pink-subtle: rgba(200, 90, 83, 0.35);
+  --border-emerald-subtle: rgba(17, 53, 42, 0.25);
   
-  --shadow-royal: 0 10px 30px -10px rgba(11, 36, 28, 0.15);
-  --shadow-gold: 0 8px 25px rgba(212, 175, 55, 0.25);
-  --shadow-palace: 0 20px 45px -12px rgba(11, 36, 28, 0.15);
+  --shadow-royal: 0 10px 30px -10px rgba(11, 36, 28, 0.2);
+  --shadow-gold: 0 8px 25px rgba(212, 175, 55, 0.28);
+  --shadow-pink: 0 8px 25px rgba(200, 90, 83, 0.2);
+  --shadow-palace: 0 20px 45px -12px rgba(11, 36, 28, 0.2);
 
-  --radius-jharokha: 24px 24px 8px 8px;
+  --radius-jharokha: 28px 28px 10px 10px;
   --radius-royal-arch: 9999px 9999px 12px 12px;
 }
 
@@ -69,7 +90,7 @@
 html {
   font-family: var(--font-sans);
   background-color: #FFFFFF;
-  color: #0F172A;
+  color: #1A1817;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -91,33 +112,41 @@ body {
 }
 
 /* ==========================================================================
-   🏛️ RAJASTHANI & JAIPUR MOTIF UTILITIES
+   🏛️ JAIPUR ARCHITECTURAL MOTIFS & JHAROKHA UTILITIES
    ========================================================================== */
 
 /* Rajasthani Jaali (Lattice) Subtle Background Pattern */
 .bg-jaipur-jaali {
-  background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1.5px, transparent 1.5px),
-                    radial-gradient(rgba(17, 53, 42, 0.08) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(rgba(212, 175, 55, 0.2) 1.5px, transparent 1.5px),
+                    radial-gradient(rgba(184, 74, 57, 0.1) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
   background-position: 0 0, 12px 12px;
 }
 
 .bg-jaipur-jaali-dark {
-  background-image: radial-gradient(rgba(212, 175, 55, 0.2) 1.5px, transparent 1.5px),
-                    radial-gradient(rgba(245, 230, 181, 0.08) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(rgba(212, 175, 55, 0.25) 1.5px, transparent 1.5px),
+                    radial-gradient(rgba(245, 230, 181, 0.1) 1.5px, transparent 1.5px);
   background-size: 28px 28px;
   background-position: 0 0, 14px 14px;
 }
 
-/* Traditional Hand Block Print Buta / Floral Background */
+/* Pink City Jaali Pattern */
+.bg-jaipur-pink-jaali {
+  background-color: #FAF0EC;
+  background-image: radial-gradient(#C85A53 1px, transparent 1px), radial-gradient(#D4AF37 1px, #FAF0EC 1px);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+}
+
+/* Traditional Hand Block Print Buta Pattern */
 .bg-blockprint-pattern {
   background-color: #FFFFFF;
-  background-image: radial-gradient(#E2E8F0 0.75px, transparent 0.75px), radial-gradient(#E2E8F0 0.75px, #FFFFFF 0.75px);
+  background-image: radial-gradient(#E2E8F0 0.8px, transparent 0.8px), radial-gradient(#E2E8F0 0.8px, #FFFFFF 0.8px);
   background-size: 30px 30px;
   background-position: 0 0, 15px 15px;
 }
 
-/* Jharokha Arch Shape */
+/* Jharokha (Rajasthani Arched Window) Shape */
 .jharokha-frame {
   border-radius: 40px 40px 12px 12px;
   position: relative;
@@ -131,7 +160,15 @@ body {
 
 .jharokha-arch-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px -8px rgba(11, 36, 28, 0.25);
+  box-shadow: 0 16px 36px -8px rgba(184, 74, 57, 0.25);
+}
+
+/* Jharokha Arch Top Silhouette */
+.jharokha-top-arch {
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 /* Royal Gold Gilded Gradient Text */
@@ -147,6 +184,12 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.jaipur-pink-gradient-text {
+  background: linear-gradient(135deg, #C85A53 0%, #B8453D 50%, #7E2822 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .emerald-gradient-text {
   background: linear-gradient(135deg, #266D57 0%, #11352A 60%, #0B241C 100%);
   -webkit-background-clip: text;
@@ -155,12 +198,16 @@ body {
 
 /* Royal Gilded Border with Corner Flourishes */
 .royal-gold-border {
-  border: 1px solid rgba(212, 175, 55, 0.45);
+  border: 1px solid rgba(212, 175, 55, 0.55);
   box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
 }
 
+.royal-pink-border {
+  border: 1px solid rgba(200, 90, 83, 0.45);
+}
+
 .royal-emerald-border {
-  border: 1px solid rgba(17, 53, 42, 0.25);
+  border: 1px solid rgba(17, 53, 42, 0.35);
 }
 
 /* Ornate Traditional Dividers */
@@ -175,17 +222,17 @@ body {
 .ornate-divider::before,
 .ornate-divider::after {
   content: '';
-  height: 1px;
-  width: 60px;
+  height: 1.5px;
+  width: 65px;
   background: linear-gradient(90deg, transparent, #D4AF37, transparent);
 }
 
-/* Royal Heritage Stamp Badges */
+/* Royal Jaipur Stamp Badges */
 .royal-seal {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.85rem;
+  gap: 0.45rem;
+  padding: 0.35rem 0.9rem;
   background: #11352A;
   border: 1.5px solid #D4AF37;
   border-radius: 9999px;
@@ -198,21 +245,70 @@ body {
   box-shadow: 0 4px 12px rgba(11, 36, 28, 0.2);
 }
 
+.royal-seal-pink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.9rem;
+  background: #C85A53;
+  border: 1.5px solid #F5E6B5;
+  border-radius: 9999px;
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(200, 90, 83, 0.3);
+}
+
 .royal-seal-emerald {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.85rem;
-  background: #F8FAFC;
+  gap: 0.45rem;
+  padding: 0.35rem 0.9rem;
+  background: #FAF0EC;
   border: 1.5px solid #D4AF37;
   border-radius: 9999px;
-  color: #0B241C;
+  color: #7E2822;
   font-family: var(--font-heading);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 700;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   👑 JAIPUR BUTTON SYSTEM (TERRACOTTA, GOLD & EMERALD)
+   ========================================================================== */
+
+/* Primary: Jaipur Pink City / Terracotta Button */
+.btn-jaipur-pink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #D45B4D 0%, #C85A53 50%, #A83832 100%);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  border: 1px solid #FAF0EC;
+  box-shadow: 0 6px 20px rgba(200, 90, 83, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-jaipur-pink:hover {
+  background: linear-gradient(135deg, #E06C5F 0%, #D45B4D 50%, #B8453D 100%);
+  box-shadow: 0 10px 28px rgba(200, 90, 83, 0.5);
+  transform: translateY(-2px);
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
@@ -262,6 +358,35 @@ body {
 
 .btn-royal-gold:hover::after {
   transform: rotate(30deg) translateY(100%);
+}
+
+/* Bagru Natural Indigo Button */
+.btn-jaipur-indigo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #2A5C8A 0%, #1D456B 50%, #0E2138 100%);
+  color: #FAF3DC;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 6px 20px rgba(14, 33, 56, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-jaipur-indigo:hover {
+  background: linear-gradient(135deg, #3A72A8 0%, #2A5C8A 50%, #1D456B 100%);
+  border-color: #D4AF37;
+  color: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(14, 33, 56, 0.5);
+  transform: translateY(-2px);
 }
 
 /* Secondary: Jaipur Royal Emerald Court */

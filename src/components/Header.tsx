@@ -60,18 +60,18 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
-      {/* Top Royal Announcement & B2B Bar */}
-      <div className="bg-gradient-to-r from-[#0B241C] via-[#11352A] to-[#0B241C] text-[#FAF3DC] text-xs py-2 px-4 border-b border-[#D4AF37]/40 shadow-sm">
+      {/* Top Royal Jaipur Announcement & B2B Bar with Pink City Terracotta & Marwar Gold */}
+      <div className="bg-gradient-to-r from-[#7E2822] via-[#9B332C] to-[#541712] text-[#FAF3DC] text-xs py-2 px-4 border-b border-[#D4AF37]/50 shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
           <div className="flex items-center gap-4">
             <span className="inline-flex items-center gap-1.5 font-medium tracking-wide text-[#FAF3DC]">
               <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
               <span className="font-royal-title tracking-wider text-[#F5E6B5]">✨ Royal Jaipur Heritage Atelier</span>
-              <span className="hidden sm:inline text-[#D4AF37]/60">•</span>
-              <span className="hidden sm:inline text-white/90">Bagru &amp; Sanganer Hand Block Printing</span>
+              <span className="hidden sm:inline text-[#D4AF37]/70">•</span>
+              <span className="hidden sm:inline text-white/95">Bagru &amp; Sanganer Hand Block Printing Clusters</span>
             </span>
-            <span className="hidden md:inline text-white/30">•</span>
-            <span className="hidden md:inline text-[#FAF3DC]/80 font-light">
+            <span className="hidden md:inline text-[#D4AF37]/40">•</span>
+            <span className="hidden md:inline text-[#FAF3DC]/90 font-light">
               Low Wholesale MOQs from 25 Pcs • Custom Private Label &amp; Sampling
             </span>
           </div>
@@ -81,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             <div className="relative">
               <button 
                 onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}
-                className="flex items-center gap-1 text-[#FAF3DC] hover:text-[#D4AF37] transition-colors cursor-pointer py-0.5 px-2.5 rounded bg-white/10 border border-[#D4AF37]/40 text-xs font-semibold"
+                className="flex items-center gap-1 text-[#FAF3DC] hover:text-[#D4AF37] transition-colors cursor-pointer py-0.5 px-2.5 rounded bg-black/25 border border-[#D4AF37]/60 text-xs font-semibold"
                 title="Change Currency"
               >
                 <Globe className="w-3.5 h-3.5 text-[#D4AF37]" />
@@ -91,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
               {isCurrencyDropdownOpen && (
                 <div 
-                  className="absolute right-0 mt-1 w-40 bg-[#0B241C] border border-[#D4AF37]/50 rounded-lg shadow-2xl py-1 z-50 animate-fade-in"
+                  className="absolute right-0 mt-1 w-40 bg-[#541712] border-2 border-[#D4AF37] rounded-lg shadow-2xl py-1 z-50 animate-fade-in"
                   onMouseLeave={() => setIsCurrencyDropdownOpen(false)}
                 >
                   {Object.entries(CURRENCIES).map(([code, item]) => (
@@ -102,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                         setIsCurrencyDropdownOpen(false);
                       }}
                       className={`w-full text-left px-3.5 py-1.5 text-xs flex justify-between items-center transition-colors ${
-                        currency.code === code ? 'bg-[#D4AF37]/25 text-[#FAF3DC] font-bold' : 'text-stone-200 hover:bg-white/10'
+                        currency.code === code ? 'bg-[#D4AF37] text-[#541712] font-bold' : 'text-stone-200 hover:bg-white/15'
                       }`}
                     >
                       <span>{item.label}</span>
@@ -137,11 +137,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
         </div>
       </div>
 
-      {/* Main Brand & Navigation Header with Solid Pure White & Gold Accents */}
+      {/* Main Brand & Navigation Header with Solid Pure White & Jaipur Accents */}
       <div className={`w-full transition-all duration-300 bg-white ${
         isScrolled 
           ? 'shadow-md border-b-2 border-[#D4AF37] py-2.5' 
-          : 'border-b border-[#D4AF37]/35 py-3.5'
+          : 'border-b border-[#D4AF37]/40 py-3.5'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
@@ -149,19 +149,19 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           <div className="flex items-center gap-3">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-[#0B241C] hover:text-[#D4AF37] transition-colors"
+              className="lg:hidden p-2 text-[#7E2822] hover:text-[#D4AF37] transition-colors"
               aria-label="Toggle navigation menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#0B241C]" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#7E2822]" />}
             </button>
 
             <button 
               onClick={openSearch}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl border border-stone-300 text-[#0B241C] hover:text-[#D4AF37] hover:border-[#D4AF37] bg-white shadow-sm transition-all text-xs font-medium"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl border border-stone-300 text-[#1A1817] hover:text-[#C85A53] hover:border-[#D4AF37] bg-white shadow-sm transition-all text-xs font-medium"
               title="Search Catalog & Specifications"
             >
               <Search className="w-4 h-4 text-[#D4AF37]" />
-              <span className="hidden md:inline font-royal-body">Search prints, duffles, fabrics...</span>
+              <span className="hidden md:inline font-royal-body">Search Jaipur prints, duffles, fabrics...</span>
               <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[10px] bg-slate-100 rounded text-stone-700 border border-stone-200 font-mono font-semibold">⌘K</kbd>
             </button>
           </div>
@@ -175,13 +175,13 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               <div className="relative">
                 <img 
                   src="./logo.jpeg" 
-                  alt="Ramam Textiles Royal Crest" 
+                  alt="Ramam Textiles Royal Jaipur Crest" 
                   className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-full border-2 border-[#D4AF37] shadow-md group-hover:scale-105 transition-transform"
                 />
-                <span className="absolute -bottom-1 -right-1 bg-[#D4AF37] text-[#0B241C] text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">🪷</span>
+                <span className="absolute -bottom-1 -right-1 bg-[#D4AF37] text-[#541712] text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">🪷</span>
               </div>
               <div className="text-left">
-                <span className="block font-royal-heading text-lg sm:text-2xl font-bold tracking-widest text-[#0B241C] uppercase leading-tight group-hover:text-[#D4AF37] transition-colors">
+                <span className="block font-royal-heading text-lg sm:text-2xl font-bold tracking-widest text-[#7E2822] uppercase leading-tight group-hover:text-[#C85A53] transition-colors">
                   RAMAM TEXTILES
                 </span>
                 <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[#D4AF37] font-royal-title font-bold">
@@ -197,22 +197,22 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             {/* Custom Manufacturing Quick Link */}
             <button
               onClick={() => handleNav('/custom-manufacturing')}
-              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-[#D4AF37] bg-white text-[#0B241C] text-xs font-royal-title font-bold hover:bg-[#0B241C] hover:text-[#FAF3DC] transition-all shadow-sm"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-[#D4AF37] bg-white text-[#7E2822] text-xs font-royal-title font-bold hover:bg-[#7E2822] hover:text-[#FAF3DC] transition-all shadow-sm"
             >
               <Factory className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>Private Label Studio</span>
             </button>
 
-            {/* Wholesale Inquiry Basket Button */}
+            {/* Wholesale Inquiry Basket Button in Jaipur Pink & Gold */}
             <button 
               onClick={openInquiryDrawer}
-              className="relative flex items-center gap-2 bg-gradient-to-r from-[#11352A] to-[#0B241C] text-[#FAF3DC] hover:from-[#164335] hover:to-[#11352A] border border-[#D4AF37] px-3.5 sm:px-4 py-2 rounded-xl transition-all cursor-pointer group shadow-md hover:shadow-lg"
+              className="relative flex items-center gap-2 bg-gradient-to-r from-[#9B332C] to-[#7E2822] text-[#FAF3DC] hover:from-[#B8453D] hover:to-[#9B332C] border border-[#D4AF37] px-3.5 sm:px-4 py-2 rounded-xl transition-all cursor-pointer group shadow-md hover:shadow-lg"
               title="Open Wholesale Inquiry Basket / Request Quote"
             >
               <div className="relative">
                 <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-[#F5E6B5] group-hover:scale-110 transition-transform" />
                 {inquiryItems.length > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-[#D4AF37] text-[#0B241C] text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center animate-bounce shadow">
+                  <span className="absolute -top-2 -right-2 bg-[#D4AF37] text-[#541712] text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center animate-bounce shadow">
                     {inquiryItems.length}
                   </span>
                 )}
