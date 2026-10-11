@@ -62,76 +62,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       
-      {/* 1. TOP ANNOUNCEMENT BAR (Soft Roasted Espresso with amber gold accents) */}
-      <div className="bg-gradient-to-r from-[#241A16] via-[#2F211C] to-[#241A16] text-[#FAF5EE] text-xs py-2 px-4 border-b border-[#D4AF37]/25 shadow-sm">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          
-          {/* Left: Gold Dot + Atelier label */}
-          <div className="flex items-center gap-2 font-medium tracking-wide">
-            <span className="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse"></span>
-            <span className="text-[#E5A93C] text-[11px] font-bold tracking-widest uppercase font-royal-title">
-              JAIPUR ARTISAN ATELIER
-            </span>
-          </div>
-
-          {/* Center: Artisan Atelier & Wholesale Notice */}
-          <div className="hidden md:flex items-center gap-2 text-stone-300 text-xs font-medium font-royal-body">
-            <span className="text-[#E5A93C]">🪷</span>
-            <span>Direct Jaipur Hand Block Manufacturer • Low Wholesale MOQs (25 Pcs) • Worldwide Export</span>
-          </div>
-
-          {/* Right: Currency Selector Pill & Instagram */}
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <button 
-                onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}
-                className="flex items-center gap-1.5 text-[#FAF5EE] hover:text-[#E5A93C] transition-colors cursor-pointer py-0.5 px-2.5 rounded-full bg-white/10 border border-[#D4AF37]/30 text-xs font-semibold"
-                title="Change Currency"
-              >
-                <span>{currency.code === 'INR' ? '🇮🇳 INR' : `${currency.code} (${currency.symbol})`}</span>
-                <ChevronDown className="w-3 h-3 opacity-70" />
-              </button>
-
-              {isCurrencyDropdownOpen && (
-                <div 
-                  className="absolute right-0 mt-1 w-40 bg-[#241A16] border border-[#D4AF37]/40 rounded-xl shadow-2xl py-1 z-50 animate-fade-in"
-                  onMouseLeave={() => setIsCurrencyDropdownOpen(false)}
-                >
-                  {Object.entries(CURRENCIES).map(([code, item]) => (
-                    <button
-                      key={code}
-                      onClick={() => {
-                        setCurrencyCode(code as any);
-                        setIsCurrencyDropdownOpen(false);
-                      }}
-                      className={`w-full text-left px-3.5 py-1.5 text-xs flex justify-between items-center transition-colors ${
-                        currency.code === code ? 'bg-[#9B332C] text-white font-bold' : 'text-stone-200 hover:bg-white/10'
-                      }`}
-                    >
-                      <span>{item.label}</span>
-                      <span className="text-[#E5A93C] font-semibold">{item.symbol}</span>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Direct Instagram Connect */}
-            <a 
-              href="https://www.instagram.com/ramamtextiles"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-stone-300 hover:text-[#E5A93C] transition-colors text-xs font-royal-body py-0.5 px-2.5 rounded-full bg-white/5 border border-white/10 hover:border-[#E5A93C]/40"
-              title="Follow @ramamtextiles on Instagram"
-            >
-              <InstagramIcon className="w-3.5 h-3.5 text-[#E5A93C]" />
-              <span className="hidden sm:inline">@ramamtextiles</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. MAIN HEADER BAR (Soft Alabaster Linen with Brand Logo, Center Pill Navigation, and Action Pills) */}
+      {/* MAIN HEADER BAR (Soft Alabaster Linen with Brand Logo, Center Pill Navigation, and Action Pills) */}
       <div className={`w-full transition-all duration-300 bg-[#FAF8F5]/95 backdrop-blur-md ${
         isScrolled 
           ? 'shadow-md border-b border-[#EAE2D7] py-2.5' 
@@ -316,9 +247,56 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             </button>
           </nav>
 
-          {/* Right: Action Pills matching reference (BAG + CHAT) */}
-          <div className="flex items-center gap-2.5">
+          {/* Right: Action Pills */}
+          <div className="flex items-center gap-2">
             
+            {/* Currency Selector Pill */}
+            <div className="relative hidden sm:block">
+              <button 
+                onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}
+                className="flex items-center gap-1.5 text-[#241A16] hover:text-[#9B332C] transition-colors cursor-pointer py-2 px-3 rounded-full bg-white border border-[#EAE2D7] text-xs font-semibold shadow-sm"
+                title="Change Currency"
+              >
+                <span>{currency.code === 'INR' ? '🇮🇳 INR' : `${currency.code} (${currency.symbol})`}</span>
+                <ChevronDown className="w-3 h-3 opacity-60" />
+              </button>
+
+              {isCurrencyDropdownOpen && (
+                <div 
+                  className="absolute right-0 mt-1 w-40 bg-white border border-[#EAE2D7] rounded-xl shadow-2xl py-1 z-50 animate-fade-in text-[#241A16]"
+                  onMouseLeave={() => setIsCurrencyDropdownOpen(false)}
+                >
+                  {Object.entries(CURRENCIES).map(([code, item]) => (
+                    <button
+                      key={code}
+                      onClick={() => {
+                        setCurrencyCode(code as any);
+                        setIsCurrencyDropdownOpen(false);
+                      }}
+                      className={`w-full text-left px-3.5 py-1.5 text-xs flex justify-between items-center transition-colors ${
+                        currency.code === code ? 'bg-[#FAF0EB] text-[#9B332C] font-bold' : 'hover:bg-slate-50'
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <span className="text-[#9B332C] font-semibold">{item.symbol}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Direct Instagram Connect */}
+            <a 
+              href="https://www.instagram.com/ramamtextiles"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-1.5 text-[#241A16] hover:text-[#9B332C] transition-colors text-xs font-royal-body py-2 px-3.5 rounded-full bg-white border border-[#EAE2D7] hover:border-[#D48B7A] shadow-sm"
+              title="Follow @ramamtextiles on Instagram"
+            >
+              <InstagramIcon className="w-3.5 h-3.5 text-[#9B332C]" />
+              <span className="font-semibold text-xs">@ramamtextiles</span>
+            </a>
+
             {/* Search Quick Icon */}
             <button
               onClick={openSearch}
@@ -466,6 +444,21 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             {/* Mobile Footer CTAs */}
             <div className="pt-4 border-t border-stone-200 space-y-2">
+              <div className="flex items-center justify-between px-1 pb-1">
+                <span className="text-xs text-stone-500 font-royal-title uppercase font-bold">Currency:</span>
+                <select
+                  value={currency.code}
+                  onChange={(e) => setCurrencyCode(e.target.value as any)}
+                  className="px-2.5 py-1 bg-white border border-[#EAE2D7] rounded-lg text-xs font-semibold text-[#241A16]"
+                >
+                  {Object.entries(CURRENCIES).map(([code, item]) => (
+                    <option key={code} value={code}>
+                      {item.label} ({item.symbol})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               <a 
                 href="https://www.instagram.com/ramamtextiles"
                 target="_blank"
