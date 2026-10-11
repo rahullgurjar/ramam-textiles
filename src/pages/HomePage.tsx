@@ -334,9 +334,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <img
                   src={
                     activeCraftCluster === 'sanganer'
-                      ? './products/vanity-turquoise-sanganeri.jpg'
+                      ? './products/vanity-trio-turquoise.jpg'
                       : activeCraftCluster === 'bagru'
-                      ? './products/duffle-indigo-mughal.jpg'
+                      ? './products/duffle-indigo.jpg'
                       : './products/duffle-kantha-patchwork.jpg'
                   }
                   alt={activeCraftCluster}
