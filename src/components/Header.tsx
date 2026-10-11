@@ -62,6 +62,49 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       
+      {/* JEWEL COLOR HERITAGE STRIP (Rich Indian textile celebratory palette: Indigo, Rani Pink, Emerald, Saffron) */}
+      <div className="bg-gradient-to-r from-[#1E295B] via-[#831843] via-[#064E3B] to-[#78350F] text-[#FAF3DC] text-[11px] py-1.5 px-4 font-royal-title border-b border-[#D4AF37]/40 shadow-inner">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3 overflow-hidden text-ellipsis whitespace-nowrap">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#EC4899] animate-pulse"></span>
+              <strong className="text-[#FBCFE8]">Jaipur Rani Pink</strong>
+            </span>
+            <span className="text-[#D4AF37]/60">•</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#60A5FA]"></span>
+              <strong className="text-[#BFDBFE]">Bagru Indigo</strong>
+            </span>
+            <span className="text-[#D4AF37]/60">•</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#34D399]"></span>
+              <strong className="text-[#A7F3D0]">Panna Emerald</strong>
+            </span>
+            <span className="text-[#D4AF37]/60 hidden sm:inline">•</span>
+            <span className="flex items-center gap-1.5 hidden sm:inline-flex">
+              <span className="w-2 h-2 rounded-full bg-[#FBBF24]"></span>
+              <strong className="text-[#FDE68A]">Zari Gold</strong>
+            </span>
+            <span className="text-stone-300 hidden md:inline ml-2 text-[10.5px]">
+              — 100% Hand-Printed Quilted Cotton
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0 text-[10px] tracking-wider uppercase">
+            <span className="text-[#F5E6B5] hidden sm:inline">Direct Factory Export</span>
+            <a 
+              href="https://www.instagram.com/ramamtextiles" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-[#FBCFE8] hover:text-white transition-colors flex items-center gap-1 font-bold"
+            >
+              <InstagramIcon className="w-3 h-3 text-[#F472B6]" />
+              <span>@ramamtextiles</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* MAIN HEADER BAR (Warm Haveli Sandstone with Brand Logo, Center Pill Navigation, and Action Pills) */}
       <div className={`w-full transition-all duration-300 bg-[#F5EEE6]/96 backdrop-blur-md ${
         isScrolled 
@@ -124,6 +167,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                     : ''
                 }`}
               >
+                <span className="w-2 h-2 rounded-full bg-[#0891B2]"></span>
                 <span>COLLECTION</span>
                 <ChevronDown className="w-3 h-3 opacity-60" />
               </button>
@@ -170,7 +214,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                     </div>
 
                     {/* Spotlight Card */}
-                    <div className="bg-[#F4ECE1] p-5 rounded-2xl border border-[#D4AF37]/40 flex flex-col justify-between shadow-sm">
+                    <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F4ECE1] to-[#EFE4D6] p-5 rounded-2xl border border-[#D4AF37]/40 flex flex-col justify-between shadow-sm">
                       <div>
                         <span className="text-[10px] font-mono uppercase tracking-widest text-[#9B332C] font-bold">
                           Featured Line
@@ -201,7 +245,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 currentPath === '/collections' ? 'pill-nav-btn-active' : ''
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#E5A93C]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#DB2777]" />
               <span>CURATED SETS</span>
             </button>
 
@@ -212,6 +256,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 currentPath === '/craftsmanship' ? 'pill-nav-btn-active' : ''
               }`}
             >
+              <span className="w-2 h-2 rounded-full bg-[#2563EB]"></span>
               <span>OUR CRAFT</span>
             </button>
 
@@ -222,6 +267,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 currentPath === '/custom-manufacturing' ? 'ring-2 ring-[#9B332C]' : ''
               }`}
             >
+              <span className="w-2 h-2 rounded-full bg-[#F59E0B]"></span>
               <Sparkles className="w-3.5 h-3.5 text-[#9B332C]" />
               <span>BULK ORDERS</span>
             </button>
@@ -233,6 +279,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 currentPath === '/lookbook' ? 'pill-nav-btn-active' : ''
               }`}
             >
+              <span className="w-2 h-2 rounded-full bg-[#10B981]"></span>
               <span>LOOKBOOK</span>
             </button>
 

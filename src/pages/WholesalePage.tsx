@@ -79,41 +79,41 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
 
       {/* 4 Pillars of B2B Wholesale */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border border-[#D4AF37]/35 space-y-2 shadow-sm hover:border-[#9B332C] hover:shadow-xl transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-[#FAF0EB] text-[#9B332C] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#EACAC0]">
+        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border-2 border-[#FBCFE8]/60 space-y-2 shadow-sm hover:border-[#DB2777] hover:shadow-xl transition-all">
+          <div className="w-12 h-12 rounded-2xl bg-[#FDF2F8] text-[#BE185D] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#FBCFE8] shadow-sm">
             25
           </div>
-          <h3 className="font-royal-title font-bold text-[#241A16] text-base">Low Minimum Order Qty</h3>
+          <h3 className="font-royal-title font-bold text-[#831843] text-base">Low Minimum Order Qty</h3>
           <p className="text-xs text-stone-600 leading-relaxed">
             Start with only 25 pieces per style with mixed pattern &amp; color breakdown to test market traction before scaling.
           </p>
         </div>
 
-        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border border-[#D4AF37]/35 space-y-2 shadow-sm hover:border-[#9B332C] hover:shadow-xl transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-[#FAF0EB] text-[#9B332C] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#EACAC0]">
+        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border-2 border-[#FDE68A]/60 space-y-2 shadow-sm hover:border-[#D97706] hover:shadow-xl transition-all">
+          <div className="w-12 h-12 rounded-2xl bg-[#FFFBEB] text-[#B45309] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#FDE68A] shadow-sm">
             %
           </div>
-          <h3 className="font-royal-title font-bold text-[#241A16] text-base">Tiered Volume Discounts</h3>
+          <h3 className="font-royal-title font-bold text-[#92400E] text-base">Tiered Volume Discounts</h3>
           <p className="text-xs text-stone-600 leading-relaxed">
             Enjoy 40% to 65% off retail reference prices with additional volume rebates for recurring commercial contracts.
           </p>
         </div>
 
-        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border border-[#D4AF37]/35 space-y-2 shadow-sm hover:border-[#9B332C] hover:shadow-xl transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-[#FAF0EB] text-[#9B332C] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#EACAC0]">
-            <Truck className="w-5 h-5 text-[#9B332C]" />
+        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border-2 border-[#BFDBFE]/60 space-y-2 shadow-sm hover:border-[#2563EB] hover:shadow-xl transition-all">
+          <div className="w-12 h-12 rounded-2xl bg-[#EFF6FF] text-[#1D4ED8] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#BFDBFE] shadow-sm">
+            <Truck className="w-5 h-5 text-[#1D4ED8]" />
           </div>
-          <h3 className="font-royal-title font-bold text-[#241A16] text-base">Global Air &amp; Sea Cargo</h3>
+          <h3 className="font-royal-title font-bold text-[#1E295B] text-base">Global Air Cargo</h3>
           <p className="text-xs text-stone-600 leading-relaxed">
-            Doorstep delivery via DHL / FedEx Express (4-7 business days) or sea freight container (FOB Mundra / Nhava Sheva).
+            Doorstep delivery via DHL / FedEx Express (4-7 business days) with direct real-time air airway bill tracking.
           </p>
         </div>
 
-        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border border-[#D4AF37]/35 space-y-2 shadow-sm hover:border-[#9B332C] hover:shadow-xl transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-[#FAF0EB] text-[#9B332C] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#EACAC0]">
-            <FileCheck className="w-5 h-5 text-[#9B332C]" />
+        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border-2 border-[#A7F3D0]/60 space-y-2 shadow-sm hover:border-[#059669] hover:shadow-xl transition-all">
+          <div className="w-12 h-12 rounded-2xl bg-[#ECFDF5] text-[#047857] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#A7F3D0] shadow-sm">
+            <FileCheck className="w-5 h-5 text-[#047857]" />
           </div>
-          <h3 className="font-royal-title font-bold text-[#241A16] text-base">Full Export Documentation</h3>
+          <h3 className="font-royal-title font-bold text-[#065F46] text-base">Full Export Documentation</h3>
           <p className="text-xs text-stone-600 leading-relaxed">
             Certificate of Origin, Commercial Invoices, Packing Lists, GSP / Form A, and Phytosanitary certification provided.
           </p>

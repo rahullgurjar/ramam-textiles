@@ -67,14 +67,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="lg:col-span-6 xl:col-span-7 space-y-6 text-left">
               
               {/* Crafted in Jaipur Pill Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold tracking-wider uppercase font-royal-title shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#9B332C]" />
-                <span>CRAFTED IN JAIPUR</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDF2F8] border border-[#F472B6] text-[#BE185D] text-xs font-bold tracking-wider uppercase font-royal-title shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#DB2777]" />
+                <span>CRAFTED IN JAIPUR • PINK CITY ATELIER</span>
               </div>
 
               {/* Editorial Headline */}
               <h1 className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-[58px] xl:text-[66px] font-medium text-[#241A16] leading-[1.08] tracking-tight">
-                The Art of Block Printing, <span className="italic font-editorial font-normal text-[#9B332C]">Crafted</span> in Jaipur.
+                The Art of Block Printing, <span className="italic font-editorial font-normal text-[#BE185D]">Crafted</span> in Jaipur.
               </h1>
 
               {/* Subtext */}
@@ -86,7 +86,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
                   onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="pill-btn-rose flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg"
+                  className="pill-btn-rani flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg"
                 >
                   <span>Explore Collection ({PRODUCTS.length} Styles)</span>
                   <ArrowRight className="w-4 h-4" />
@@ -94,9 +94,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
                 <button
                   onClick={() => { onNavigate('/custom-manufacturing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="pill-btn-outline flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full"
+                  className="pill-btn-outline flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full border-[#1D4ED8]/40 hover:border-[#1D4ED8] hover:text-[#1D4ED8]"
                 >
-                  <Scissors className="w-4 h-4 text-[#9B332C]" />
+                  <Scissors className="w-4 h-4 text-[#1D4ED8]" />
                   <span>Custom Batch &amp; Bulk</span>
                 </button>
               </div>
@@ -104,23 +104,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               {/* Micro-Badges: Pure Cotton & Global Export */}
               <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-stone-700 font-medium font-royal-body">
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700" />
-                  <span>Low MOQ: 25 Pcs</span>
+                  <CheckCircle2 className="w-4 h-4 text-[#047857]" />
+                  <span className="text-[#065F46] font-semibold">Low MOQ: 25 Pcs</span>
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700" />
-                  <span>100% Padded Combed Cotton</span>
+                  <CheckCircle2 className="w-4 h-4 text-[#1D4ED8]" />
+                  <span className="text-[#1E40AF] font-semibold">100% Padded Combed Cotton</span>
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700" />
-                  <span>Worldwide DHL Express</span>
+                  <CheckCircle2 className="w-4 h-4 text-[#BE185D]" />
+                  <span className="text-[#9D174D] font-semibold">Worldwide DHL Express</span>
                 </span>
               </div>
 
               {/* Live Order Social Proof Pill */}
               <div className="pt-4">
-                <div className="inline-flex items-center gap-3 p-3 sm:p-3.5 rounded-2xl bg-[#FAF5EE] border border-[#D4AF37]/45 shadow-md transition-all animate-fade-in max-w-md">
-                  <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#FAF0EB] shrink-0 border border-[#EACAC0]">
+                <div className="inline-flex items-center gap-3 p-3 sm:p-3.5 rounded-2xl bg-[#EFF6FF] border border-[#93C5FD] shadow-md transition-all animate-fade-in max-w-md">
+                  <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#DBEAFE] shrink-0 border border-[#60A5FA]">
                     <img 
                       src="./products/duffle-kantha-patchwork.jpg" 
                       alt="Order thumbnail"
@@ -129,13 +129,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   </div>
                   <div className="text-left font-royal-body">
                     <div className="flex items-center gap-1.5">
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-[#9B332C] font-royal-title">
-                        ✨ CUSTOM BATCH PLACED
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-[#1D4ED8] font-royal-title flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-ping"></span>
+                        CUSTOM BATCH PLACED
                       </span>
                       <span className="text-[10px] text-stone-400">•</span>
                       <span className="text-[10px] text-stone-600">{activeOrder.time}</span>
                     </div>
-                    <p className="text-xs font-bold text-[#241A16] line-clamp-1">
+                    <p className="text-xs font-bold text-[#1E295B] line-clamp-1">
                       {activeOrder.name} ({activeOrder.city}) — <span className="font-normal text-stone-700">{activeOrder.item}</span>
                     </p>
                   </div>
@@ -243,15 +244,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               onClick={() => setActiveCraftCluster('sanganer')}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'sanganer'
-                  ? 'bg-gradient-to-br from-[#FAF0EB] via-[#FAF5EE] to-[#F5ECE1] border-[#9B332C] shadow-lg ring-2 ring-[#9B332C]/20'
-                  : 'bg-[#FAF5EE] border-[#DFCFC0] hover:border-[#9B332C] hover:bg-[#FAF0EB] shadow-sm'
+                  ? 'bg-gradient-to-br from-[#FDF2F8] via-[#FAF5EE] to-[#FCE7F3] border-[#DB2777] shadow-xl ring-2 ring-[#DB2777]/30'
+                  : 'bg-[#FAF5EE] border-[#FBCFE8] hover:border-[#DB2777] hover:bg-[#FDF2F8] shadow-sm'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xl">🪷</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FAF0EB] text-[#9B332C] border border-[#EACAC0] font-royal-title">Fine Florals</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FCE7F3] text-[#BE185D] border border-[#F472B6] font-royal-title">
+                  Jaipur Rani Pink
+                </span>
               </div>
-              <h3 className={`font-playfair font-bold text-lg leading-snug transition-colors ${activeCraftCluster === 'sanganer' ? 'text-[#9B332C]' : 'text-[#1A120E]'}`}>
+              <h3 className={`font-playfair font-bold text-lg leading-snug transition-colors ${activeCraftCluster === 'sanganer' ? 'text-[#BE185D]' : 'text-[#1A120E]'}`}>
                 Sanganer Atelier
               </h3>
               <p className="text-xs text-stone-700 font-royal-body mt-1 leading-relaxed font-medium">
@@ -263,15 +266,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               onClick={() => setActiveCraftCluster('bagru')}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'bagru'
-                  ? 'bg-gradient-to-br from-[#FAF0EB] via-[#FAF5EE] to-[#F5ECE1] border-[#9B332C] shadow-lg ring-2 ring-[#9B332C]/20'
-                  : 'bg-[#FAF5EE] border-[#DFCFC0] hover:border-[#9B332C] hover:bg-[#FAF0EB] shadow-sm'
+                  ? 'bg-gradient-to-br from-[#EFF6FF] via-[#FAF5EE] to-[#DBEAFE] border-[#1D4ED8] shadow-xl ring-2 ring-[#1D4ED8]/30'
+                  : 'bg-[#FAF5EE] border-[#BFDBFE] hover:border-[#1D4ED8] hover:bg-[#EFF6FF] shadow-sm'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xl">🌿</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#E8F0F8] text-[#1D456B] border border-[#ADC4DA] font-royal-title">Dabu Mud-Resist</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#DBEAFE] text-[#1E40AF] border border-[#93C5FD] font-royal-title">
+                  Bagru Indigo Vats
+                </span>
               </div>
-              <h3 className={`font-playfair font-bold text-lg leading-snug transition-colors ${activeCraftCluster === 'bagru' ? 'text-[#9B332C]' : 'text-[#1A120E]'}`}>
+              <h3 className={`font-playfair font-bold text-lg leading-snug transition-colors ${activeCraftCluster === 'bagru' ? 'text-[#1D4ED8]' : 'text-[#1A120E]'}`}>
                 Bagru Indigo Works
               </h3>
               <p className="text-xs text-stone-700 font-royal-body mt-1 leading-relaxed font-medium">
@@ -283,15 +288,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               onClick={() => setActiveCraftCluster('kantha')}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'kantha'
-                  ? 'bg-gradient-to-br from-[#FAF0EB] via-[#FAF5EE] to-[#F5ECE1] border-[#9B332C] shadow-lg ring-2 ring-[#9B332C]/20'
-                  : 'bg-[#FAF5EE] border-[#DFCFC0] hover:border-[#9B332C] hover:bg-[#FAF0EB] shadow-sm'
+                  ? 'bg-gradient-to-br from-[#FFFBEB] via-[#FAF5EE] to-[#FEF3C7] border-[#D97706] shadow-xl ring-2 ring-[#D97706]/30'
+                  : 'bg-[#FAF5EE] border-[#FDE68A] hover:border-[#D97706] hover:bg-[#FFFBEB] shadow-sm'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xl">🧵</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FEFCE8] text-[#8B6F16] border border-[#F5E6B5] font-royal-title">Hand Quilting</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FEF3C7] text-[#B45309] border border-[#FCD34D] font-royal-title">
+                  Marigold &amp; Kantha
+                </span>
               </div>
-              <h3 className={`font-playfair font-bold text-lg leading-snug transition-colors ${activeCraftCluster === 'kantha' ? 'text-[#9B332C]' : 'text-[#1A120E]'}`}>
+              <h3 className={`font-playfair font-bold text-lg leading-snug transition-colors ${activeCraftCluster === 'kantha' ? 'text-[#B45309]' : 'text-[#1A120E]'}`}>
                 Barmer Kantha Stitching
               </h3>
               <p className="text-xs text-stone-700 font-royal-body mt-1 leading-relaxed font-medium">
@@ -301,12 +308,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Interactive Cluster Spotlight Panel */}
-          <div className="bg-[#FAF5EE] rounded-2xl p-6 border border-[#D4AF37]/35 shadow-md mb-6 transition-all animate-fade-in">
+          <div className={`rounded-2xl p-6 border shadow-lg mb-6 transition-all animate-fade-in ${
+            activeCraftCluster === 'sanganer'
+              ? 'bg-gradient-to-br from-[#FAF5EE] via-[#FDF2F8] to-[#FAF0EB] border-[#F472B6]/60'
+              : activeCraftCluster === 'bagru'
+              ? 'bg-gradient-to-br from-[#FAF5EE] via-[#EFF6FF] to-[#FAF5EE] border-[#93C5FD]/60'
+              : 'bg-gradient-to-br from-[#FAF5EE] via-[#FFFBEB] to-[#FAF5EE] border-[#FDE68A]/60'
+          }`}>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
               
               {/* Left Details */}
               <div className="lg:col-span-7 space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-wider">
+                <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold font-royal-title uppercase tracking-wider border ${
+                  activeCraftCluster === 'sanganer'
+                    ? 'bg-[#FCE7F3] border-[#F472B6] text-[#BE185D]'
+                    : activeCraftCluster === 'bagru'
+                    ? 'bg-[#DBEAFE] border-[#93C5FD] text-[#1E40AF]'
+                    : 'bg-[#FEF3C7] border-[#FCD34D] text-[#B45309]'
+                }`}>
                   <span>✨ Cluster Deep Dive</span>
                   <span>•</span>
                   <span>
@@ -336,7 +355,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     ? ['100% Fermented Indigo', 'Dabu Mud-Resist Clay', 'Riverbed Sun-Cured', 'Chemical-Free'] 
                     : ['Padded Cotton Batting', 'Dense Kantha Channels', 'Candy-Stripe Handles', 'Travel Durability']
                   ).map(tag => (
-                    <span key={tag} className="px-2.5 py-1 rounded-full bg-[#F5EDE1] text-[#241A16] border border-[#D4AF37]/30 text-[11px] font-semibold font-royal-body">
+                    <span 
+                      key={tag} 
+                      className={`px-2.5 py-1 rounded-full text-[11px] font-semibold font-royal-body border ${
+                        activeCraftCluster === 'sanganer'
+                          ? 'bg-[#FDF2F8] text-[#9D174D] border-[#FBCFE8]'
+                          : activeCraftCluster === 'bagru'
+                          ? 'bg-[#EFF6FF] text-[#1E40AF] border-[#BFDBFE]'
+                          : 'bg-[#FFFBEB] text-[#92400E] border-[#FDE68A]'
+                      }`}
+                    >
                       ✓ {tag}
                     </span>
                   ))}
@@ -346,7 +374,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <div className="pt-2 flex items-center gap-3">
                   <button
                     onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                    className="pill-btn-rose px-5 py-2.5 text-xs font-bold uppercase rounded-full shadow-md flex items-center gap-2"
+                    className={`${
+                      activeCraftCluster === 'sanganer'
+                        ? 'pill-btn-rani'
+                        : activeCraftCluster === 'bagru'
+                        ? 'pill-btn-indigo'
+                        : 'pill-btn-rose'
+                    } px-5 py-2.5 text-xs font-bold uppercase rounded-full shadow-md flex items-center gap-2`}
                   >
                     <span>View {activeCraftCluster === 'sanganer' ? 'Sanganeri' : activeCraftCluster === 'bagru' ? 'Bagru Indigo' : 'Kantha Quilted'} Creations</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -414,7 +448,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div
               key={cat.id}
               onClick={() => { onNavigate(`/category/${cat.id}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="group relative h-96 rounded-[28px] overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 bg-[#FAF5EE] border border-[#D4AF37]/40 hover:border-[#9B332C]"
+              className={`group relative h-96 rounded-[28px] overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 bg-[#FAF5EE] border-2 ${
+                cat.id === 'bags'
+                  ? 'border-[#3B82F6]/50 hover:border-[#1D4ED8]'
+                  : cat.id === 'women'
+                  ? 'border-[#F472B6]/50 hover:border-[#BE185D]'
+                  : 'border-[#10B981]/50 hover:border-[#047857]'
+              }`}
             >
               <img
                 src={cat.image}
@@ -425,8 +465,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#1F1612] via-[#1F1612]/40 to-transparent group-hover:via-[#1F1612]/60 transition-colors" />
 
               <div className="absolute bottom-0 inset-x-0 p-6 text-white flex flex-col justify-end">
-                <span className="text-[11px] font-royal-title uppercase tracking-widest text-[#E5A93C] mb-1 font-bold">
-                  🪷 {cat.badge || 'Jaipur Workshop'}
+                <span className={`text-[11px] font-royal-title uppercase tracking-widest mb-1.5 font-bold px-3 py-1 rounded-full w-fit backdrop-blur-md border ${
+                  cat.id === 'bags'
+                    ? 'bg-[#1E295B]/90 text-[#93C5FD] border-[#3B82F6]'
+                    : cat.id === 'women'
+                    ? 'bg-[#831843]/90 text-[#FBCFE8] border-[#EC4899]'
+                    : 'bg-[#064E3B]/90 text-[#A7F3D0] border-[#10B981]'
+                }`}>
+                  {cat.id === 'bags' ? '🌿 Bagru Indigo & Duffles' : cat.id === 'women' ? '🪷 Sanganer Rani Pink Sets' : '✨ Panna Emerald Organizers'}
                 </span>
                 <h3 className="font-playfair text-xl sm:text-2xl font-bold text-white group-hover:text-[#FAF3DC] transition-colors">
                   {cat.name}
@@ -469,25 +515,34 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 onClick={() => setActiveCategoryTab('all')}
                 className={`pill-nav-btn ${
                   activeCategoryTab === 'all'
-                    ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]'
-                    : ''
+                    ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C] shadow-md'
+                    : 'hover:border-[#9B332C]'
                 }`}
               >
                 All Pieces ({PRODUCTS.length})
               </button>
-              {CATEGORIES.map(cat => (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCategoryTab(cat.id)}
-                  className={`pill-nav-btn ${
-                    activeCategoryTab === cat.id
-                      ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]'
-                      : ''
-                  }`}
-                >
-                  {cat.name}
-                </button>
-              ))}
+              {CATEGORIES.map(cat => {
+                const isActive = activeCategoryTab === cat.id;
+                const activeColorClass = 
+                  cat.id === 'bags'
+                    ? 'bg-[#1D4ED8] text-white border-[#1D4ED8] shadow-md'
+                    : cat.id === 'women'
+                    ? 'bg-[#DB2777] text-white border-[#DB2777] shadow-md'
+                    : 'bg-[#0E7490] text-white border-[#0E7490] shadow-md';
+
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategoryTab(cat.id)}
+                    className={`pill-nav-btn ${isActive ? activeColorClass : ''}`}
+                  >
+                    <span className={`w-1.5 h-1.5 rounded-full ${
+                      cat.id === 'bags' ? 'bg-[#2563EB]' : cat.id === 'women' ? 'bg-[#EC4899]' : 'bg-[#06B6D4]'
+                    }`}></span>
+                    <span>{cat.name}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -680,31 +735,31 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border border-[#D4AF37]/40 hover:border-[#9B332C] hover:shadow-xl transition-all">
-              <div className="w-12 h-12 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-6 border border-[#EACAC0]">
-                <ShieldCheck className="w-6 h-6 text-[#9B332C]" />
+            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border-2 border-[#A7F3D0]/60 hover:border-[#059669] hover:shadow-xl transition-all">
+              <div className="w-12 h-12 bg-[#ECFDF5] text-[#047857] rounded-2xl flex items-center justify-center mb-6 border border-[#A7F3D0] shadow-sm">
+                <ShieldCheck className="w-6 h-6 text-[#047857]" />
               </div>
-              <h3 className="font-royal-title text-xl font-bold text-[#1F1612] mb-2">Strict 4-Point Quality Inspection</h3>
+              <h3 className="font-royal-title text-xl font-bold text-[#065F46] mb-2">Strict 4-Point Quality Inspection</h3>
               <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
                 Every stitched bag undergoes zero-defect inspection for zipper durability, strap tensile strength, quilting alignment, and clean edge binding.
               </p>
             </div>
 
-            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border border-[#D4AF37]/40 hover:border-[#9B332C] hover:shadow-xl transition-all">
-              <div className="w-12 h-12 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-6 border border-[#EACAC0]">
-                <Truck className="w-6 h-6 text-[#9B332C]" />
+            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border-2 border-[#BFDBFE]/60 hover:border-[#2563EB] hover:shadow-xl transition-all">
+              <div className="w-12 h-12 bg-[#EFF6FF] text-[#1D4ED8] rounded-2xl flex items-center justify-center mb-6 border border-[#BFDBFE] shadow-sm">
+                <Truck className="w-6 h-6 text-[#1D4ED8]" />
               </div>
-              <h3 className="font-royal-title text-xl font-bold text-[#1F1612] mb-2">Doorstep Air Express Freight</h3>
+              <h3 className="font-royal-title text-xl font-bold text-[#1E295B] mb-2">Doorstep Air Express Freight</h3>
               <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
                 Direct DHL / FedEx Express air shipments (4-7 business days) with full Certificate of Origin and export clearance handled seamlessly.
               </p>
             </div>
 
-            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border border-[#D4AF37]/40 hover:border-[#9B332C] hover:shadow-xl transition-all">
-              <div className="w-12 h-12 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-6 border border-[#EACAC0]">
-                <Scissors className="w-6 h-6 text-[#9B332C]" />
+            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border-2 border-[#FBCFE8]/60 hover:border-[#DB2777] hover:shadow-xl transition-all">
+              <div className="w-12 h-12 bg-[#FDF2F8] text-[#BE185D] rounded-2xl flex items-center justify-center mb-6 border border-[#FBCFE8] shadow-sm">
+                <Scissors className="w-6 h-6 text-[#BE185D]" />
               </div>
-              <h3 className="font-royal-title text-xl font-bold text-[#1F1612] mb-2">Low MOQ (25 Pcs) &amp; Private Label</h3>
+              <h3 className="font-royal-title text-xl font-bold text-[#831843] mb-2">Low MOQ (25 Pcs) &amp; Private Label</h3>
               <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
                 Start with only 25 pieces per style. Custom brand woven neck tags, hangtags, and packaging are supported seamlessly.
               </p>

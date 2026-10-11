@@ -187,22 +187,35 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onNavigate, initialCategory,
                 }`}
               >
                 <span>All Categories</span>
-                <span className="text-[10px] font-mono opacity-70">{PRODUCTS.length}</span>
+                <span className="text-[10px] font-mono opacity-80">{PRODUCTS.length}</span>
               </button>
               {CATEGORIES.map(cat => {
                 const count = PRODUCTS.filter(p => p.category === cat.id).length;
+                const isSelected = selectedCategory === cat.id;
+                const activeColor = 
+                  cat.id === 'bags' 
+                    ? 'bg-[#1D4ED8] text-white font-bold shadow-md'
+                    : cat.id === 'women'
+                    ? 'bg-[#DB2777] text-white font-bold shadow-md'
+                    : 'bg-[#0E7490] text-white font-bold shadow-md';
+
                 return (
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`w-full text-left px-3.5 py-2 rounded-xl text-xs transition-colors flex items-center justify-between font-royal-title ${
-                      selectedCategory === cat.id
-                        ? 'bg-[#9B332C] text-white font-bold shadow-md'
+                      isSelected
+                        ? activeColor
                         : 'text-[#1F1612] hover:bg-[#FAF0EB]'
                     }`}
                   >
-                    <span>{cat.name}</span>
-                    <span className="text-[10px] font-mono opacity-70">{count}</span>
+                    <span className="flex items-center gap-2">
+                      <span className={`w-2 h-2 rounded-full ${
+                        cat.id === 'bags' ? 'bg-[#2563EB]' : cat.id === 'women' ? 'bg-[#EC4899]' : 'bg-[#06B6D4]'
+                      }`}></span>
+                      <span>{cat.name}</span>
+                    </span>
+                    <span className="text-[10px] font-mono opacity-80">{count}</span>
                   </button>
                 );
               })}
@@ -318,40 +331,45 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onNavigate, initialCategory,
           {/* Active Filter Chips */}
           {activeFiltersCount > 0 && (
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs text-stone-600 font-bold font-royal-title">Active:</span>
+              <span className="text-xs text-stone-600 font-bold font-royal-title">Active Filters:</span>
               {selectedCategory !== 'all' && (
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#FDF0F3] text-[#C8376B] border border-[#F3CAD6] rounded-full text-xs font-medium">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#EFF6FF] text-[#1D4ED8] border border-[#93C5FD] rounded-full text-xs font-semibold shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]"></span>
                   Category: {CATEGORIES.find(c => c.id === selectedCategory)?.name || selectedCategory}
-                  <X className="w-3.5 h-3.5 cursor-pointer hover:text-red-700" onClick={() => setSelectedCategory('all')} />
+                  <X className="w-3.5 h-3.5 cursor-pointer hover:text-red-700 ml-0.5" onClick={() => setSelectedCategory('all')} />
                 </span>
               )}
               {selectedCollection !== 'all' && (
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#FDF0F3] text-[#C8376B] border border-[#F3CAD6] rounded-full text-xs font-medium">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#FDF2F8] text-[#BE185D] border border-[#F472B6] rounded-full text-xs font-semibold shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#EC4899]"></span>
                   Collection: {selectedCollection}
-                  <X className="w-3.5 h-3.5 cursor-pointer hover:text-red-700" onClick={() => setSelectedCollection('all')} />
+                  <X className="w-3.5 h-3.5 cursor-pointer hover:text-red-700 ml-0.5" onClick={() => setSelectedCollection('all')} />
                 </span>
               )}
               {selectedFabric !== 'all' && (
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#FDF0F3] text-[#C8376B] border border-[#F3CAD6] rounded-full text-xs font-medium">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0] rounded-full text-xs font-semibold shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
                   Fabric: {selectedFabric}
-                  <X className="w-3.5 h-3.5 cursor-pointer hover:text-red-700" onClick={() => setSelectedFabric('all')} />
+                  <X className="w-3.5 h-3.5 cursor-pointer hover:text-red-700 ml-0.5" onClick={() => setSelectedFabric('all')} />
                 </span>
               )}
               {selectedTechnique !== 'all' && (
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#FDF0F3] text-[#C8376B] border border-[#F3CAD6] rounded-full text-xs font-medium">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#FFFBEB] text-[#B45309] border border-[#FDE68A] rounded-full text-xs font-semibold shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]"></span>
                   Technique: {selectedTechnique}
-                  <X className="w-3.5 h-3.5 cursor-pointer hover:text-red-700" onClick={() => setSelectedTechnique('all')} />
+                  <X className="w-3.5 h-3.5 cursor-pointer hover:text-red-700 ml-0.5" onClick={() => setSelectedTechnique('all')} />
                 </span>
               )}
               {searchQuery.trim() && (
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#FDF0F3] text-[#C8376B] border border-[#F3CAD6] rounded-full text-xs font-medium">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#ECFEFF] text-[#0E7490] border border-[#67E8F9] rounded-full text-xs font-semibold shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#06B6D4]"></span>
                   Query: "{searchQuery}"
-                  <X className="w-3.5 h-3.5 cursor-pointer hover:text-red-700" onClick={() => setSearchQuery('')} />
+                  <X className="w-3.5 h-3.5 cursor-pointer hover:text-red-700 ml-0.5" onClick={() => setSearchQuery('')} />
                 </span>
               )}
               <button
                 onClick={resetFilters}
-                className="text-xs text-[#C8376B] hover:underline font-bold ml-1 font-royal-title"
+                className="text-xs text-[#BE185D] hover:underline font-bold ml-1 font-royal-title"
               >
                 Clear All
               </button>

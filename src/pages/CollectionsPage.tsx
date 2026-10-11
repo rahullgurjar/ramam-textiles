@@ -52,15 +52,67 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
 
               {/* Text & Action */}
               <div className={`lg:col-span-6 space-y-4 ${isReversed ? 'lg:order-1' : ''}`}>
-                <span className="text-xs uppercase tracking-widest text-[#9B332C] font-bold font-royal-title">
-                  ✦ Heritage Chapter 0{idx + 1} • {collection.season}
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className={`text-xs uppercase tracking-widest font-bold font-royal-title px-3 py-1 rounded-full border ${
+                    idx % 4 === 0 
+                      ? 'bg-[#EFF6FF] text-[#1D4ED8] border-[#93C5FD]'
+                      : idx % 4 === 1
+                      ? 'bg-[#FDF2F8] text-[#BE185D] border-[#F472B6]'
+                      : idx % 4 === 2
+                      ? 'bg-[#ECFDF5] text-[#047857] border-[#A7F3D0]'
+                      : 'bg-[#FFFBEB] text-[#B45309] border-[#FDE68A]'
+                  }`}>
+                    ✦ Heritage Chapter 0{idx + 1} • {collection.season}
+                  </span>
+                </div>
+
                 <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16]">
                   {collection.name}
                 </h2>
                 <p className="text-stone-600 font-royal-body text-base leading-relaxed">
                   {collection.description}
                 </p>
+
+                {/* Artisan Color Palette Swatches */}
+                {collection.palette && collection.palette.length > 0 && (
+                  <div className="flex items-center gap-3 pt-1">
+                    <span className="text-[11px] font-bold text-[#241A16] uppercase tracking-wider font-royal-title">
+                      Atelier Shades:
+                    </span>
+                    <div className="flex items-center gap-2">
+                      {collection.palette.map((color, cIdx) => (
+                        <div
+                          key={cIdx}
+                          className="group/color relative w-6 h-6 rounded-full border-2 border-[#FAF5EE] shadow-md transition-transform hover:scale-125 cursor-pointer ring-1 ring-black/10"
+                          style={{ backgroundColor: color }}
+                          title={`Jaipur Shade: ${color}`}
+                        >
+                          <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-[#241A16] text-[#FAF5EE] text-[9px] px-1.5 py-0.5 rounded opacity-0 group-hover/color:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-20 font-mono shadow">
+                            {color}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Collection Tags with colorful pills */}
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {collection.tags.map(tag => (
+                    <span 
+                      key={tag} 
+                      className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold font-royal-title border ${
+                        idx % 3 === 0
+                          ? 'bg-[#EFF6FF] text-[#1E40AF] border-[#BFDBFE]'
+                          : idx % 3 === 1
+                          ? 'bg-[#FDF2F8] text-[#9D174D] border-[#FBCFE8]'
+                          : 'bg-[#ECFDF5] text-[#065F46] border-[#A7F3D0]'
+                      }`}
+                    >
+                      ✦ {tag}
+                    </span>
+                  ))}
+                </div>
 
                 {/* Sample items snippet */}
                 {sampleProducts.length > 0 && (
@@ -91,7 +143,9 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
                       onNavigate(`/shop?collection=${encodeURIComponent(collection.name)}`);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="pill-btn-rose text-xs px-6 py-3 rounded-full shadow-md inline-flex items-center gap-2"
+                    className={`${
+                      idx % 3 === 0 ? 'pill-btn-indigo' : idx % 3 === 1 ? 'pill-btn-rani' : 'pill-btn-rose'
+                    } text-xs px-6 py-3 rounded-full shadow-md inline-flex items-center gap-2`}
                   >
                     <span>Explore Collection Pieces</span>
                     <ArrowRight className="w-4 h-4" />

@@ -35,31 +35,31 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
       {/* Brand Values */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="bg-[#FAF5EE] p-8 rounded-[28px] border border-[#D4AF37]/35 hover:border-[#9B332C] shadow-sm space-y-3 relative overflow-hidden transition-all">
-          <div className="w-14 h-14 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-4 border border-[#EACAC0] shadow-sm">
-            <Award className="w-7 h-7 text-[#9B332C]" />
+        <div className="bg-[#FAF5EE] p-8 rounded-[28px] border-2 border-[#A7F3D0]/60 hover:border-[#059669] shadow-sm space-y-3 relative overflow-hidden transition-all">
+          <div className="w-14 h-14 bg-[#ECFDF5] text-[#047857] rounded-2xl flex items-center justify-center mb-4 border border-[#A7F3D0] shadow-sm">
+            <Award className="w-7 h-7 text-[#047857]" />
           </div>
-          <h3 className="font-playfair text-xl font-bold text-[#241A16]">Uncompromising Craft Integrity</h3>
+          <h3 className="font-playfair text-xl font-bold text-[#065F46]">Uncompromising Craft Integrity</h3>
           <p className="text-xs sm:text-sm font-royal-body text-stone-600 leading-relaxed">
             We preserve pure handmade block printing techniques, resisting synthetic shortcuts. Every rhythm of the wooden block represents centuries of honed human skill.
           </p>
         </div>
 
-        <div className="bg-[#FAF5EE] p-8 rounded-[28px] border border-[#D4AF37]/35 hover:border-[#9B332C] shadow-sm space-y-3 relative overflow-hidden transition-all">
-          <div className="w-14 h-14 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-4 border border-[#EACAC0] shadow-sm">
-            <ShieldCheck className="w-7 h-7 text-[#9B332C]" />
+        <div className="bg-[#FAF5EE] p-8 rounded-[28px] border-2 border-[#BFDBFE]/60 hover:border-[#2563EB] shadow-sm space-y-3 relative overflow-hidden transition-all">
+          <div className="w-14 h-14 bg-[#EFF6FF] text-[#1D4ED8] rounded-2xl flex items-center justify-center mb-4 border border-[#BFDBFE] shadow-sm">
+            <ShieldCheck className="w-7 h-7 text-[#1D4ED8]" />
           </div>
-          <h3 className="font-playfair text-xl font-bold text-[#241A16]">Sustainable &amp; Pure Materials</h3>
+          <h3 className="font-playfair text-xl font-bold text-[#1E295B]">Sustainable &amp; Pure Materials</h3>
           <p className="text-xs sm:text-sm font-royal-body text-stone-600 leading-relaxed">
             We use only 100% natural, breathable long-staple Indian cotton, pure Mulberry and Chanderi silks, and certified azo-free herbal and mineral dyes.
           </p>
         </div>
 
-        <div className="bg-[#FAF5EE] p-8 rounded-[28px] border border-[#D4AF37]/35 hover:border-[#9B332C] shadow-sm space-y-3 relative overflow-hidden transition-all">
-          <div className="w-14 h-14 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-4 border border-[#EACAC0] shadow-sm">
-            <Heart className="w-7 h-7 text-[#9B332C]" />
+        <div className="bg-[#FAF5EE] p-8 rounded-[28px] border-2 border-[#FBCFE8]/60 hover:border-[#DB2777] shadow-sm space-y-3 relative overflow-hidden transition-all">
+          <div className="w-14 h-14 bg-[#FDF2F8] text-[#BE185D] rounded-2xl flex items-center justify-center mb-4 border border-[#FBCFE8] shadow-sm">
+            <Heart className="w-7 h-7 text-[#BE185D]" />
           </div>
-          <h3 className="font-playfair text-xl font-bold text-[#241A16]">Artisan Guild Stewardship</h3>
+          <h3 className="font-playfair text-xl font-bold text-[#831843]">Artisan Guild Stewardship</h3>
           <p className="text-xs sm:text-sm font-royal-body text-stone-600 leading-relaxed">
             Our artisan partners in Bagru and Sanganer are co-owners of our craft vision. We provide stable year-round employment, safe printing sheds, and dignity in artisan labor.
           </p>

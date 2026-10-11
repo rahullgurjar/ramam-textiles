@@ -56,7 +56,15 @@ export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate
           return (
             <div 
               key={stage.title}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#FAF5EE] p-6 sm:p-10 rounded-[32px] border border-[#D4AF37]/35 shadow-sm relative overflow-hidden group hover:border-[#9B332C] transition-all"
+              className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#FAF5EE] p-6 sm:p-10 rounded-[32px] border-2 shadow-sm relative overflow-hidden group transition-all ${
+                idx === 0 
+                  ? 'border-[#FDE68A]/60 hover:border-[#D97706]' 
+                  : idx === 1 
+                  ? 'border-[#FBCFE8]/60 hover:border-[#DB2777]' 
+                  : idx === 2 
+                  ? 'border-[#BFDBFE]/60 hover:border-[#2563EB]' 
+                  : 'border-[#A7F3D0]/60 hover:border-[#059669]'
+              }`}
             >
               <div className={`lg:col-span-6 ${isReversed ? 'lg:order-2' : ''}`}>
                 <div className="aspect-[16/10] rounded-[24px] overflow-hidden shadow-lg border border-[#D4AF37]/30 group-hover:scale-[1.02] transition-transform duration-500 bg-[#F0E6D8]">
@@ -65,7 +73,15 @@ export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate
               </div>
 
               <div className={`lg:col-span-6 space-y-3.5 ${isReversed ? 'lg:order-1' : ''}`}>
-                <div className="inline-flex items-center gap-1.5 text-xs font-royal-title uppercase tracking-widest text-[#9B332C] font-bold">
+                <div className={`inline-flex items-center gap-1.5 text-xs font-royal-title uppercase tracking-widest font-bold px-3 py-1 rounded-full border ${
+                  idx === 0 
+                    ? 'bg-[#FFFBEB] text-[#B45309] border-[#FDE68A]' 
+                    : idx === 1 
+                    ? 'bg-[#FDF2F8] text-[#BE185D] border-[#FBCFE8]' 
+                    : idx === 2 
+                    ? 'bg-[#EFF6FF] text-[#1D4ED8] border-[#BFDBFE]' 
+                    : 'bg-[#ECFDF5] text-[#047857] border-[#A7F3D0]'
+                }`}>
                   <span>✦</span>
                   <span>{stage.location}</span>
                 </div>

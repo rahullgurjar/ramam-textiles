@@ -39,20 +39,22 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
             />
           </div>
           <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#9B332C]">
-              <span className="bg-[#FAF0EB] text-[#9B332C] px-2.5 py-0.5 rounded-full font-royal-title font-bold uppercase">{JOURNAL_POSTS[0].category}</span>
+            <div className="flex items-center gap-2 text-xs font-mono">
+              <span className="bg-[#FDF2F8] text-[#BE185D] border border-[#F472B6] px-2.5 py-0.5 rounded-full font-royal-title font-bold uppercase shadow-sm">
+                🪷 {JOURNAL_POSTS[0].category}
+              </span>
               <span>•</span>
               <span className="font-royal-body text-stone-500">{JOURNAL_POSTS[0].readTime}</span>
             </div>
-            <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16] group-hover:text-[#9B332C] transition-colors leading-snug">
+            <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16] group-hover:text-[#BE185D] transition-colors leading-snug">
               {JOURNAL_POSTS[0].title}
             </h2>
             <p className="text-stone-700 font-royal-body text-sm sm:text-base leading-relaxed">
               {JOURNAL_POSTS[0].excerpt}
             </p>
-            <div className="pt-2 text-xs font-royal-title font-bold text-[#9B332C] uppercase tracking-widest flex items-center gap-2">
+            <div className="pt-2 text-xs font-royal-title font-bold text-[#BE185D] uppercase tracking-widest flex items-center gap-2">
               <span>Read Full Story</span>
-              <ArrowRight className="w-4 h-4 text-[#9B332C] group-hover:translate-x-1.5 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-[#BE185D] group-hover:translate-x-1.5 transition-transform" />
             </div>
           </div>
         </div>
@@ -60,11 +62,13 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
 
       {/* All Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {JOURNAL_POSTS.slice(1).map(post => (
+        {JOURNAL_POSTS.slice(1).map((post, pIdx) => (
           <article 
             key={post.id}
             onClick={() => { onNavigate(`/journal/${post.slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="group bg-[#FAF5EE] rounded-3xl overflow-hidden shadow-md border border-[#D4AF37]/35 hover:shadow-2xl hover:border-[#9B332C] transition-all cursor-pointer flex flex-col"
+            className={`group bg-[#FAF5EE] rounded-3xl overflow-hidden shadow-md border-2 hover:shadow-2xl transition-all cursor-pointer flex flex-col ${
+              pIdx % 3 === 0 ? 'border-[#BFDBFE]/60 hover:border-[#1D4ED8]' : pIdx % 3 === 1 ? 'border-[#FBCFE8]/60 hover:border-[#BE185D]' : 'border-[#A7F3D0]/60 hover:border-[#047857]'
+            }`}
           >
             <div className="aspect-[16/10] overflow-hidden relative">
               <img
@@ -72,7 +76,13 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
                 alt={post.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <span className="absolute top-3 left-3 bg-[#241A16] text-[#F5E6B5] border border-[#D4AF37]/50 px-3 py-1 rounded-full text-[10px] font-royal-title font-bold uppercase tracking-wider">
+              <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-royal-title font-bold uppercase tracking-wider shadow-md border ${
+                pIdx % 3 === 0 
+                  ? 'bg-[#1E295B] text-[#BFDBFE] border-[#60A5FA]' 
+                  : pIdx % 3 === 1 
+                  ? 'bg-[#831843] text-[#FBCFE8] border-[#F472B6]' 
+                  : 'bg-[#064E3B] text-[#A7F3D0] border-[#34D399]'
+              }`}>
                 {post.category}
               </span>
             </div>

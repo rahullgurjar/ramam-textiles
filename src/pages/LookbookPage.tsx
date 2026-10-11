@@ -36,19 +36,29 @@ export const LookbookPage: React.FC<LookbookPageProps> = ({ onNavigate }) => {
 
       {/* Season Filters */}
       <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-        {seasons.map(s => (
-          <button
-            key={s}
-            onClick={() => setSelectedSeason(s)}
-            className={`px-4 py-2 rounded-full text-xs font-royal-title font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
-              selectedSeason === s
-                ? 'bg-[#241A16] text-[#FAF5EE] shadow-md border border-[#D4AF37]/50'
-                : 'bg-[#FAF5EE] text-[#241A16] hover:bg-[#F5EDE1] border border-[#D4AF37]/35'
-            }`}
-          >
-            {s === 'all' ? 'All Seasons' : s}
-          </button>
-        ))}
+        {seasons.map((s, sIdx) => {
+          const isSelected = selectedSeason === s;
+          const activeBg = 
+            sIdx === 0 ? 'bg-[#241A16] text-[#FAF5EE]' :
+            sIdx === 1 ? 'bg-[#BE185D] text-white border-[#BE185D]' :
+            sIdx === 2 ? 'bg-[#1D4ED8] text-white border-[#1D4ED8]' :
+            sIdx === 3 ? 'bg-[#D97706] text-white border-[#D97706]' :
+            'bg-[#047857] text-white border-[#047857]';
+
+          return (
+            <button
+              key={s}
+              onClick={() => setSelectedSeason(s)}
+              className={`px-4 py-2 rounded-full text-xs font-royal-title font-bold uppercase tracking-wider transition-all whitespace-nowrap shadow-sm ${
+                isSelected
+                  ? `${activeBg} shadow-md`
+                  : 'bg-[#FAF5EE] text-[#241A16] hover:bg-[#F5EDE1] border border-[#D4AF37]/35'
+              }`}
+            >
+              {s === 'all' ? 'All Seasons' : s}
+            </button>
+          );
+        })}
       </div>
 
       {/* Lookbook Gallery Masonry */}

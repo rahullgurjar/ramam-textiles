@@ -63,11 +63,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
 
         {/* Badges Overlay */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
-          <span className="px-3 py-1 bg-[#541712] text-[#FAF3DC] text-[10px] font-bold tracking-wider uppercase rounded-full border border-[#D4AF37] shadow-md font-royal-title">
-            MOQ {product.moq} Pcs
-          </span>
+          {product.category === 'bags' ? (
+            <span className="px-3 py-1 bg-[#1E295B] text-[#BFDBFE] text-[10px] font-bold tracking-wider uppercase rounded-full border border-[#60A5FA] shadow-md font-royal-title">
+              MOQ {product.moq} Pcs • Indigo &amp; Kantha
+            </span>
+          ) : product.category === 'women' ? (
+            <span className="px-3 py-1 bg-[#831843] text-[#FBCFE8] text-[10px] font-bold tracking-wider uppercase rounded-full border border-[#F472B6] shadow-md font-royal-title">
+              MOQ {product.moq} Pcs • Rani Pink
+            </span>
+          ) : (
+            <span className="px-3 py-1 bg-[#064E3B] text-[#A7F3D0] text-[10px] font-bold tracking-wider uppercase rounded-full border border-[#34D399] shadow-md font-royal-title">
+              MOQ {product.moq} Pcs • Artisan Craft
+            </span>
+          )}
+
           {product.isFeatured && (
-            <span className="px-2.5 py-0.5 bg-gradient-to-r from-[#D4AF37] to-[#B89426] text-[#541712] text-[9px] font-extrabold tracking-wider uppercase rounded-full shadow-sm font-royal-title">
+            <span className="px-2.5 py-0.5 bg-gradient-to-r from-[#D4AF37] via-[#FDE68A] to-[#B89426] text-[#241A16] text-[9.5px] font-extrabold tracking-wider uppercase rounded-full shadow-md font-royal-title border border-[#F5E6B5]">
               👑 Jaipur Signature
             </span>
           )}
@@ -80,9 +91,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
               e.stopPropagation();
               openQuickQuote(product);
             }}
-            className="flex-1 py-2.5 px-3 bg-[#7E2822] hover:bg-[#541712] text-[#FAF3DC] text-xs font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-1.5 border border-[#D4AF37] shadow-xl transition-all font-royal-title"
+            className="flex-1 py-2.5 px-3 bg-gradient-to-r from-[#831843] to-[#1E295B] hover:from-[#9D174D] hover:to-[#2563EB] text-[#FAF3DC] text-xs font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-1.5 border border-[#D4AF37] shadow-xl transition-all font-royal-title"
           >
-            <FileText className="w-3.5 h-3.5 text-[#D4AF37]" />
+            <FileText className="w-3.5 h-3.5 text-[#FDE68A]" />
             <span>Instant Quote</span>
           </button>
         </div>
@@ -91,12 +102,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
       {/* Product Information */}
       <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between bg-[#FAF5EE] font-royal-body">
         <div>
-          <div className="flex items-center justify-between text-[10px] text-stone-500 font-bold uppercase tracking-wider mb-1 font-royal-title">
-            <span className="text-[#C85A53]">🪷 {product.collection}</span>
+          <div className="flex items-center justify-between text-[10px] text-stone-500 font-bold uppercase tracking-wider mb-1.5 font-royal-title">
+            <span className="flex items-center gap-1 text-[#BE185D]">
+              <span className={`w-2 h-2 rounded-full ${
+                product.category === 'bags' ? 'bg-[#2563EB]' : product.category === 'women' ? 'bg-[#EC4899]' : 'bg-[#059669]'
+              }`}></span>
+              <span>{product.collection}</span>
+            </span>
             <span className="text-stone-400 font-mono">SKU: {product.sku}</span>
           </div>
 
-          <h3 className="font-royal-heading text-sm sm:text-base font-bold text-[#1A1817] group-hover:text-[#C85A53] transition-colors line-clamp-2 leading-snug mb-1.5">
+          <h3 className="font-royal-heading text-sm sm:text-base font-bold text-[#1A1817] group-hover:text-[#9B332C] transition-colors line-clamp-2 leading-snug mb-1.5">
             {product.name}
           </h3>
 
@@ -104,8 +120,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
             {product.description}
           </p>
 
-          <div className="text-[11px] text-[#7E2822] bg-[#FAF0EC] border border-[#D4AF37]/35 p-2 rounded-xl mb-3 flex items-center gap-1.5 font-medium">
-            <Layers className="w-3.5 h-3.5 text-[#C85A53] shrink-0" />
+          <div className="text-[11px] text-[#241A16] bg-[#FAF0EB] border border-[#EACAC0] p-2 rounded-xl mb-3 flex items-center gap-1.5 font-medium">
+            <Layers className="w-3.5 h-3.5 text-[#9B332C] shrink-0" />
             <span className="line-clamp-1">{product.fabric}</span>
           </div>
         </div>
@@ -116,8 +132,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
             <div>
               {isB2BPriceUnlocked ? (
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-[#C85A53] uppercase tracking-wider font-semibold font-royal-title">Wholesale Tier 1</span>
-                  <span className="text-sm font-extrabold text-[#7E2822] font-royal-heading">
+                  <span className="text-[10px] text-[#BE185D] uppercase tracking-wider font-semibold font-royal-title">Wholesale Tier 1</span>
+                  <span className="text-sm font-extrabold text-[#1E295B] font-royal-heading">
                     {formatPrice(product.wholesaleTiers[0]?.pricePerUnitInr)} / unit
                   </span>
                 </div>
@@ -140,7 +156,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
               className={`flex-1 py-2 px-3 text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-sm font-royal-title ${
                 isAdded 
                   ? 'bg-emerald-700 text-white' 
-                  : 'bg-gradient-to-r from-[#9B332C] to-[#7E2822] text-[#FAF3DC] hover:from-[#B8453D] hover:to-[#9B332C] border border-[#D4AF37]/60 hover:shadow-md'
+                  : 'bg-gradient-to-r from-[#9B332C] via-[#831843] to-[#1E295B] text-[#FAF3DC] hover:opacity-95 border border-[#D4AF37]/60 hover:shadow-md'
               }`}
             >
               {isAdded ? (

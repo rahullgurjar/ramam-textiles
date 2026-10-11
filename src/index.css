@@ -324,6 +324,87 @@ body {
   box-shadow: 0 4px 14px rgba(155, 51, 44, 0.15);
 }
 
+.pill-btn-rani {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.35rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #DB2777 0%, #BE185D 50%, #9D174D 100%);
+  border: 1px solid rgba(251, 207, 232, 0.45);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(190, 24, 93, 0.32);
+}
+
+.pill-btn-rani:hover {
+  background: linear-gradient(135deg, #EC4899 0%, #DB2777 50%, #BE185D 100%);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(190, 24, 93, 0.45);
+}
+
+.pill-btn-indigo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.35rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #1E295B 100%);
+  border: 1px solid rgba(191, 219, 254, 0.45);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(29, 78, 216, 0.32);
+}
+
+.pill-btn-indigo:hover {
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #1D4ED8 100%);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(29, 78, 216, 0.45);
+}
+
+.pill-btn-emerald {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.35rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #059669 0%, #047857 50%, #064E3B 100%);
+  border: 1px solid rgba(167, 243, 208, 0.45);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(4, 120, 87, 0.32);
+}
+
+.pill-btn-emerald:hover {
+  background: linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(4, 120, 87, 0.45);
+}
+
 /* Rotating Artisan Circular Seal */
 @keyframes spinSeal {
   from {
