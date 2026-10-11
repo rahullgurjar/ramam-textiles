@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
-  ArrowRight, Sparkles, ShieldCheck, Truck, Layers, Award, CheckCircle2, 
+  ArrowRight, Sparkles, ShieldCheck, Truck, Layers, Award, CheckCircle2,
   Download, Eye, PhoneCall, ChevronRight, Compass, Heart, Scissors, Clock, Globe2, MapPin, Feather
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
@@ -16,31 +16,12 @@ interface HomePageProps {
   onNavigate: (path: string) => void;
 }
 
-// Simulated real-time recent custom orders from global boutiques
-const RECENT_ORDERS = [
-  { name: 'Louis Carter', city: 'London, UK', item: 'Royal Bengal Tiger Quilted Duffle', time: '18 mins ago', qty: '50 Pcs' },
-  { name: 'Elena Rostova', city: 'Milan, Italy', item: 'Sanganer Rose 3-Piece Vanity Trio', time: '42 mins ago', qty: '120 Sets' },
-  { name: 'Sophie Laurent', city: 'Paris, France', item: 'Bagru Indigo Mud-Resist Weekender', time: '1 hour ago', qty: '80 Pcs' },
-  { name: 'Aarav Patel', city: 'Mumbai, India', item: 'Marigold Botanical Quilted Tote', time: '2 hours ago', qty: '35 Pcs' },
-];
-
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const { openQuickQuote, showToast } = useApp();
   const [activeCategoryTab, setActiveCategoryTab] = useState<string>('all');
   const [activeCraftCluster, setActiveCraftCluster] = useState<'sanganer' | 'bagru' | 'kantha'>('sanganer');
   const [catalogEmail, setCatalogEmail] = useState('');
   const [catalogDownloaded, setCatalogDownloaded] = useState(false);
-  const [currentOrderIndex, setCurrentOrderIndex] = useState(0);
-
-  // Rotate social proof live pill every 6 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentOrderIndex(prev => (prev + 1) % RECENT_ORDERS.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const activeOrder = RECENT_ORDERS[currentOrderIndex];
 
   const filteredProducts = activeCategoryTab === 'all' 
     ? PRODUCTS 
@@ -101,47 +82,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </button>
               </div>
 
-              {/* Micro-Badges: Pure Cotton & Global Export */}
-              <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-stone-700 font-medium font-royal-body">
-                <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#047857]" />
-                  <span className="text-[#065F46] font-semibold">Low MOQ: 25 Pcs</span>
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#1D4ED8]" />
-                  <span className="text-[#1E40AF] font-semibold">100% Padded Combed Cotton</span>
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#BE185D]" />
-                  <span className="text-[#9D174D] font-semibold">Worldwide DHL Express</span>
-                </span>
-              </div>
 
-              {/* Live Order Social Proof Pill */}
-              <div className="pt-4">
-                <div className="inline-flex items-center gap-3 p-3 sm:p-3.5 rounded-2xl bg-[#EFF6FF] border border-[#93C5FD] shadow-md transition-all animate-fade-in max-w-md">
-                  <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#DBEAFE] shrink-0 border border-[#60A5FA]">
-                    <img 
-                      src="./products/duffle-kantha-patchwork.jpg" 
-                      alt="Order thumbnail"
-                      className="w-full h-full object-cover" 
-                    />
-                  </div>
-                  <div className="text-left font-royal-body">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-[#1D4ED8] font-royal-title flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-ping"></span>
-                        CUSTOM BATCH PLACED
-                      </span>
-                      <span className="text-[10px] text-stone-400">•</span>
-                      <span className="text-[10px] text-stone-600">{activeOrder.time}</span>
-                    </div>
-                    <p className="text-xs font-bold text-[#1E295B] line-clamp-1">
-                      {activeOrder.name} ({activeOrder.city}) — <span className="font-normal text-stone-700">{activeOrder.item}</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
 
             </div>
 
