@@ -52,26 +52,26 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
         
         {/* Search Input Bar */}
         <div className="p-4 sm:p-5 bg-white border-b border-stone-200 flex items-center gap-3">
-          <Search className="w-5 h-5 text-[#C8376B] shrink-0" />
+          <Search className="w-5 h-5 text-[#9B332C] shrink-0" />
           <input 
             ref={inputRef}
             type="text" 
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search Jaipur hand block prints, quilted duffles, vanity cases, SKUs..."
-            className="w-full bg-transparent border-none outline-none text-sm sm:text-base font-medium text-[#1F1612] placeholder:text-stone-400"
+            className="w-full bg-transparent border-none outline-none text-sm sm:text-base font-medium text-[#241A16] placeholder:text-stone-400"
           />
           {searchQuery && (
             <button 
               onClick={() => setSearchQuery('')}
-              className="text-stone-400 hover:text-[#1F1612] p-1"
+              className="text-stone-400 hover:text-[#241A16] p-1"
             >
               <X className="w-4 h-4" />
             </button>
           )}
           <button 
             onClick={closeSearch}
-            className="p-1.5 rounded-full hover:bg-slate-100 text-stone-500 hover:text-[#1F1612] transition-colors"
+            className="p-1.5 rounded-full hover:bg-slate-100 text-stone-500 hover:text-[#241A16] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -79,14 +79,14 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
 
         {/* Filter Pills */}
         <div className="px-4 py-2.5 bg-[#FAF7F2] border-b border-stone-200 flex items-center gap-2 overflow-x-auto text-xs">
-          <span className="text-[10px] uppercase font-bold text-[#1F1612] tracking-wider shrink-0 font-royal-title">
+          <span className="text-[10px] uppercase font-bold text-[#241A16] tracking-wider shrink-0 font-royal-title">
             Category:
           </span>
           <button
             onClick={() => setSelectedFilter('all')}
             className={`pill-nav-btn ${
               selectedFilter === 'all' 
-                ? 'pill-nav-btn-active bg-[#C8376B] text-white border-[#C8376B]' 
+                ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]' 
                 : ''
             }`}
           >
@@ -98,7 +98,7 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
               onClick={() => setSelectedFilter(c.id)}
               className={`pill-nav-btn ${
                 selectedFilter === c.id 
-                  ? 'pill-nav-btn-active bg-[#C8376B] text-white border-[#C8376B]' 
+                  ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]' 
                   : ''
               }`}
             >
@@ -112,17 +112,17 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
           {/* Quick Category Tags if search is blank */}
           {!searchQuery && selectedFilter === 'all' && (
             <div>
-              <span className="text-[11px] font-bold text-[#C8376B] uppercase tracking-wider block mb-2 font-royal-title">
-                🪷 Popular Jaipur Inquiries &amp; Craft Searches
+              <span className="text-[11px] font-bold text-[#9B332C] uppercase tracking-wider block mb-2 font-royal-title">
+                Popular Jaipur Inquiries &amp; Craft Searches
               </span>
               <div className="flex flex-wrap gap-2 mb-4">
                 {['Quilted Duffle', 'Playing Card Vanity', 'Dyson Airwrap Case', 'Bagru Indigo', 'Kantha Patchwork', 'Sanganeri Florals'].map(term => (
                   <button
                     key={term}
                     onClick={() => setSearchQuery(term)}
-                    className="px-3.5 py-1.5 rounded-full bg-white border border-stone-200 hover:border-[#C8376B] hover:bg-[#FDF0F3] text-xs text-[#1F1612] font-medium flex items-center gap-1.5 transition-all shadow-sm"
+                    className="px-3.5 py-1.5 rounded-full bg-white border border-stone-200 hover:border-[#9B332C] hover:bg-[#FAF0EB] text-xs text-[#241A16] font-medium flex items-center gap-1.5 transition-all shadow-sm"
                   >
-                    <Tag className="w-3 h-3 text-[#C8376B]" />
+                    <Tag className="w-3 h-3 text-[#9B332C]" />
                     <span>{term}</span>
                   </button>
                 ))}
@@ -132,7 +132,7 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
 
           {/* Results List */}
           <div className="space-y-2">
-            <span className="text-[11px] font-bold text-[#1F1612] uppercase tracking-wider block font-royal-title">
+            <span className="text-[11px] font-bold text-[#241A16] uppercase tracking-wider block font-royal-title">
               Matching Products ({filteredProducts.length})
             </span>
 
@@ -146,7 +146,7 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
                   <div
                     key={product.id}
                     onClick={() => handleProductSelect(product)}
-                    className="p-3 bg-white rounded-2xl border border-stone-200 hover:border-[#C8376B] flex gap-3 cursor-pointer group shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+                    className="p-3 bg-white rounded-2xl border border-stone-200 hover:border-[#9B332C] flex gap-3 cursor-pointer group shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
                   >
                     <img 
                       src={product.images[0]} 
@@ -155,11 +155,11 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
                     />
                     <div className="flex-1 flex flex-col justify-between">
                       <div>
-                        <div className="flex items-center justify-between text-[10px] text-[#C8376B] font-bold uppercase font-royal-title">
+                        <div className="flex items-center justify-between text-[10px] text-[#9B332C] font-bold uppercase font-royal-title">
                           <span>{product.category}</span>
-                          <span className="bg-[#FDF0F3] border border-[#F3CAD6] px-1.5 py-0.5 rounded-full text-[#C8376B]">MOQ {product.moq}</span>
+                          <span className="bg-[#FAF0EB] border border-[#EACAC0] px-1.5 py-0.5 rounded-full text-[#9B332C]">MOQ {product.moq}</span>
                         </div>
-                        <h5 className="font-playfair text-xs font-bold text-[#1F1612] group-hover:text-[#C8376B] transition-colors line-clamp-1 mt-0.5">
+                        <h5 className="font-playfair text-xs font-bold text-[#241A16] group-hover:text-[#9B332C] transition-colors line-clamp-1 mt-0.5">
                           {product.name}
                         </h5>
                         <p className="text-[10px] text-stone-500 line-clamp-1 mt-0.5 font-light">
@@ -167,9 +167,9 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
                         </p>
                       </div>
 
-                      <div className="flex items-center justify-between text-[10px] font-bold text-[#1F1612] pt-1 border-t border-stone-200 font-royal-title">
+                      <div className="flex items-center justify-between text-[10px] font-bold text-[#241A16] pt-1 border-t border-stone-200 font-royal-title">
                         <span className="text-stone-400 font-mono">SKU: {product.sku}</span>
-                        <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform text-[#C8376B]">
+                        <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform text-[#9B332C]">
                           <span>View Specs</span>
                           <ArrowRight className="w-3 h-3" />
                         </span>

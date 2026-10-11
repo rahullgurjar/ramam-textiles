@@ -267,36 +267,32 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                   Jaipur, Rajasthan 302020, India
                 </span>
               </li>
-              <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#E5A93C] shrink-0" />
-                <a href="mailto:inquiry@ramamtextiles.com" className="hover:text-[#C8376B]">
-                  inquiry@ramamtextiles.com
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#E5A93C] shrink-0" />
-                <a href="mailto:exports@ramamtextiles.com" className="hover:text-[#C8376B]">
-                  exports@ramamtextiles.com
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <InstagramIcon className="w-4 h-4 text-[#C8376B] shrink-0" />
-                <a 
-                  href="https://www.instagram.com/ramamtextiles" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-[#C8376B] inline-flex items-center gap-1 group font-medium text-white"
-                >
-                  <span>@ramamtextiles</span>
-                  <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity" />
-                </a>
-              </li>
               <li className="pt-2">
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-[#D4AF37]/35 space-y-2">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#E5A93C] font-royal-title block">
+                    Official Social Desk
+                  </span>
+                  <a 
+                    href="https://www.instagram.com/ramamtextiles" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center gap-2 text-white font-bold hover:text-[#E5A93C] transition-colors group"
+                  >
+                    <InstagramIcon className="w-5 h-5 text-[#E5A93C] group-hover:scale-110 transition-transform" />
+                    <span className="text-sm">@ramamtextiles</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#E5A93C] opacity-70 group-hover:opacity-100" />
+                  </a>
+                  <p className="text-[11px] text-stone-400 leading-snug">
+                    DM for wholesale inquiries, custom batch consultations, and live atelier videos.
+                  </p>
+                </div>
+              </li>
+              <li className="pt-1">
                 <button 
                   onClick={() => handleNav('/contact')}
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-white/10 border border-[#D4AF37]/50 text-xs text-white hover:bg-[#C8376B] hover:border-[#C8376B] transition-all font-royal-title font-bold shadow-md"
+                  className="w-full inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full bg-white/10 border border-[#D4AF37]/50 text-xs text-white hover:bg-[#9B332C] hover:border-[#9B332C] transition-all font-royal-title font-bold shadow-md"
                 >
-                  <span>Inquire Online &amp; Book Visit</span>
+                  <span>Inquire Online &amp; Book Studio Visit</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </li>

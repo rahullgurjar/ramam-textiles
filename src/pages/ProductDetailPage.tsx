@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { 
   ArrowLeft, CheckCircle2, ShieldCheck, Truck, Sparkles, Heart, 
   Share2, Layers, HelpCircle, Package, Award, Scissors,
-  Plus, Minus, Info, ChevronRight, FileText, Download, Mail, Star,
+  Plus, Minus, Info, ChevronRight, FileText, Download, Star,
   ZoomIn, MessageCircle, Ruler, Maximize2, X
 } from 'lucide-react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data/products';
 import { useApp } from '../context/AppContext';
 import { ProductCard } from '../components/ProductCard';
+import { InstagramIcon } from '../components/InstagramIcon';
 
 interface ProductDetailPageProps {
   slug: string;
@@ -247,7 +248,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             <div className="space-y-2 pt-2 border-t border-stone-200">
               <div className="flex justify-between text-xs font-royal-title font-bold text-[#1F1612]">
                 <span>Select Order Volume</span>
-                <span className="text-[#C8376B]">{quantity} Units (Est: {formatPrice(totalEstimatedCost)})</span>
+                <span className="text-[#9B332C]">{quantity} Units (Est: {formatPrice(totalEstimatedCost)})</span>
               </div>
               <input
                 type="range"
@@ -256,13 +257,53 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                 step={5}
                 value={quantity}
                 onChange={(e) => setQuantity(Number(e.target.value))}
-                className="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#C8376B]"
+                className="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#9B332C]"
               />
-              <div className="flex justify-between text-[10px] text-stone-500 font-mono">
-                <span>MOQ {product.moq} pcs</span>
-                <span>100 pcs (8% Off)</span>
-                <span>200 pcs (15% Off)</span>
-                <span>500+ pcs (25% Off)</span>
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                <button
+                  type="button"
+                  onClick={() => setQuantity(product.moq)}
+                  className={`text-[10px] font-mono px-2.5 py-1 rounded-full border transition-all ${
+                    quantity === product.moq 
+                      ? 'bg-[#9B332C] text-white border-[#9B332C] font-bold shadow-sm' 
+                      : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400'
+                  }`}
+                >
+                  MOQ {product.moq} pcs
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setQuantity(100)}
+                  className={`text-[10px] font-mono px-2.5 py-1 rounded-full border transition-all ${
+                    quantity === 100 
+                      ? 'bg-[#9B332C] text-white border-[#9B332C] font-bold shadow-sm' 
+                      : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400'
+                  }`}
+                >
+                  100 pcs (-8%)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setQuantity(200)}
+                  className={`text-[10px] font-mono px-2.5 py-1 rounded-full border transition-all ${
+                    quantity === 200 
+                      ? 'bg-[#9B332C] text-white border-[#9B332C] font-bold shadow-sm' 
+                      : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400'
+                  }`}
+                >
+                  200 pcs (-15%)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setQuantity(500)}
+                  className={`text-[10px] font-mono px-2.5 py-1 rounded-full border transition-all ${
+                    quantity === 500 
+                      ? 'bg-[#9B332C] text-white border-[#9B332C] font-bold shadow-sm' 
+                      : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400'
+                  }`}
+                >
+                  500+ pcs (-25%)
+                </button>
               </div>
             </div>
 
@@ -279,7 +320,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           {product.colors && product.colors.length > 0 && (
             <div>
               <label className="block text-xs font-royal-title uppercase tracking-wider text-[#1F1612] font-bold mb-2">
-                Colorway / Block Palette: <span className="text-[#C8376B] font-normal">{selectedColor}</span>
+                Colorway / Block Palette: <span className="text-[#9B332C] font-normal">{selectedColor}</span>
               </label>
               <div className="flex flex-wrap gap-2">
                 {product.colors.map(col => (
@@ -288,7 +329,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                     onClick={() => setSelectedColor(col)}
                     className={`pill-nav-btn text-xs ${
                       selectedColor === col
-                        ? 'pill-nav-btn-active bg-[#C8376B] text-white border-[#C8376B]'
+                        ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]'
                         : ''
                     }`}
                   >
@@ -315,7 +356,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                     onClick={() => setSelectedSize(sz)}
                     className={`pill-nav-btn text-xs ${
                       selectedSize === sz
-                        ? 'pill-nav-btn-active bg-[#C8376B] text-white border-[#C8376B]'
+                        ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]'
                         : ''
                     }`}
                   >
@@ -338,20 +379,20 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <a
-                href={`https://wa.me/911412890000?text=${whatsappMessage}`}
+                href="https://www.instagram.com/ramamtextiles"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pill-btn-dark py-3 text-xs font-bold uppercase tracking-wider rounded-full shadow-md flex items-center justify-center gap-2 bg-[#1F1612]"
+                className="pill-btn-dark py-3 text-xs font-bold uppercase tracking-wider rounded-full shadow-md flex items-center justify-center gap-2 bg-[#241A16]"
               >
-                <span className="text-emerald-400">💬</span>
-                <span>WhatsApp Inquiry</span>
+                <InstagramIcon className="w-4 h-4 text-[#E5A93C]" />
+                <span>DM on Instagram</span>
               </a>
 
               <button
                 onClick={() => openQuickQuote(product)}
                 className="pill-btn-outline py-3 text-xs font-bold uppercase tracking-wider rounded-full shadow-sm flex items-center justify-center gap-1.5"
               >
-                <FileText className="w-4 h-4 text-[#C8376B]" />
+                <FileText className="w-4 h-4 text-[#9B332C]" />
                 <span>Request Custom Tech Pack</span>
               </button>
             </div>

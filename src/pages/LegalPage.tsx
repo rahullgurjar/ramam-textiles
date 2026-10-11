@@ -16,8 +16,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           onClick={() => setActiveTab('terms')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'terms'
-              ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
-              : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
+              ? 'bg-[#241A16] text-[#FAF5EE] shadow-md border border-[#D4AF37]/50'
+              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#FAF7F2]'
           }`}
         >
           Terms of Trade
@@ -26,8 +26,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           onClick={() => setActiveTab('shipping')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'shipping'
-              ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
-              : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
+              ? 'bg-[#241A16] text-[#FAF5EE] shadow-md border border-[#D4AF37]/50'
+              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#FAF7F2]'
           }`}
         >
           Shipping &amp; Export Policy
@@ -36,8 +36,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           onClick={() => setActiveTab('returns')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'returns'
-              ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
-              : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
+              ? 'bg-[#241A16] text-[#FAF5EE] shadow-md border border-[#D4AF37]/50'
+              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#FAF7F2]'
           }`}
         >
           Returns &amp; Quality Claims
@@ -46,8 +46,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           onClick={() => setActiveTab('privacy')}
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'privacy'
-              ? 'bg-[#0B241C] text-[#FAF3DC] shadow-md border border-[#D4AF37]'
-              : 'text-stone-700 hover:text-[#0B241C] hover:bg-slate-100'
+              ? 'bg-[#241A16] text-[#FAF5EE] shadow-md border border-[#D4AF37]/50'
+              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#FAF7F2]'
           }`}
         >
           Privacy Policy
@@ -55,10 +55,10 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
       </div>
 
       {/* Content */}
-      <div className="bg-white p-6 sm:p-10 rounded-3xl border-2 border-stone-200 shadow-lg text-stone-800 font-royal-body text-sm sm:text-base leading-relaxed space-y-6">
+      <div className="bg-white p-6 sm:p-10 rounded-3xl border border-[#E0D6CB] shadow-lg text-stone-800 font-royal-body text-sm sm:text-base leading-relaxed space-y-6">
         {activeTab === 'terms' && (
           <div className="space-y-4">
-            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#0B241C]">
+            <h1 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16]">
               Commercial Terms of Wholesale Trade
             </h1>
             <p><strong>1. Commercial Quotations &amp; Price Validity:</strong> All wholesale FOB quotations are valid for 30 days from issuance. Currency rates are pegged at the time of proforma invoice generation.</p>
@@ -70,7 +70,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
 
         {activeTab === 'shipping' && (
           <div className="space-y-4">
-            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#0B241C]">
+            <h1 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16]">
               International Shipping &amp; Customs Clearance
             </h1>
             <p><strong>1. Express Air Courier:</strong> Sample kits and urgent wholesale consignments (up to 300 kg) are dispatched via DHL Express or FedEx International Priority with typical transit times of 4–7 business days worldwide.</p>
@@ -82,7 +82,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
 
         {activeTab === 'returns' && (
           <div className="space-y-4">
-            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#0B241C]">
+            <h1 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16]">
               Quality Assurance &amp; Commercial Claims
             </h1>
             <p><strong>1. 4-Point Quality Inspection:</strong> Every batch undergoes rigorous inspection for dimensional stability, seam tensile strength, and colorfastness prior to export packing.</p>
@@ -93,12 +93,12 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
 
         {activeTab === 'privacy' && (
           <div className="space-y-4">
-            <h1 className="font-royal-heading text-2xl sm:text-3xl font-bold text-[#0B241C]">
+            <h1 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16]">
               Privacy &amp; Non-Disclosure Policy
             </h1>
             <p><strong>1. Confidentiality of Private Labels:</strong> We strictly protect the proprietary tech packs, CAD designs, custom block motifs, and label specifications of our private-label brand clients. We never disclose OEM brand client rosters.</p>
             <p><strong>2. Data Protection:</strong> Buyer contact information, shipping addresses, and commercial inquiry data are strictly utilized for order fulfillment and commercial correspondence. We do not sell or lease buyer databases to third parties.</p>
-            <p><strong>3. Secure Communications:</strong> Direct inquiries via official email and digital portal forms are processed directly by our Jaipur head office merchandising and export team.</p>
+            <p><strong>3. Secure Communications:</strong> Direct inquiries via our official Instagram (@ramamtextiles) and digital portal forms are processed directly by our Jaipur head office merchandising and export team.</p>
           </div>
         )}
       </div>

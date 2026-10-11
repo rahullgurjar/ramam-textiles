@@ -9,7 +9,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     readTime: '6 min read',
     publishedDate: 'September 2026',
     excerpt: 'Deep in the desert artisan settlements of Bagru, master printers combine riverbed mud, gum, and biological fermentation to achieve immortal shades of indigo blue.',
-    coverImage: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=1200&q=85',
+    coverImage: './products/duffle-indigo.jpg',
     author: {
       name: 'Ramam Textiles Craft Archive',
       role: 'Textile Research Desk'
@@ -42,7 +42,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     readTime: '8 min read',
     publishedDate: 'September 2026',
     excerpt: 'Understand thread counts, GSM weights, shrinkage tolerances, and dye fastness when sourcing Jaipur handloom cottons for commercial collections.',
-    coverImage: 'https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=1200&q=85',
+    coverImage: './products/duffle-kantha-patchwork.jpg',
     author: {
       name: 'Ramam Textiles Technical Guild',
       role: 'Quality & Sourcing Specialist'
@@ -71,7 +71,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     readTime: '7 min read',
     publishedDate: 'September 2026',
     excerpt: 'Step-by-step roadmap from initial sketches and tech packs to custom wooden block carving, sampling, bulk quality control, and worldwide customs clearance.',
-    coverImage: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1200&q=85',
+    coverImage: './products/tote-sanganeri-ruffle-lifestyle.jpg',
     author: {
       name: 'Ramam Textiles Production Desk',
       role: 'Export Director'

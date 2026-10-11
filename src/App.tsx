@@ -154,7 +154,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF7EE] text-[#11221B] font-sans antialiased selection:bg-[#D4AF37]/35 selection:text-[#0B241C]">
+    <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#241A16] font-sans antialiased selection:bg-[#9B332C]/20 selection:text-[#9B332C]">
       {/* Primary Global Navigation */}
       <Header currentPath={currentPath} navigate={navigate} />
 

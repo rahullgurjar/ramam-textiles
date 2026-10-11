@@ -13,34 +13,34 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ categoryId, onNaviga
   const categoryProducts = PRODUCTS.filter(p => p.category === category.id);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10 font-royal-body">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-xs text-stone-500 font-royal-body">
-        <button onClick={() => { onNavigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-[#0B241C] hover:underline font-royal-title">Royal Home</button>
-        <ChevronRight className="w-3.5 h-3.5 text-[#D4AF37]" />
-        <button onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-[#0B241C] hover:underline font-royal-title">Catalog</button>
-        <ChevronRight className="w-3.5 h-3.5 text-[#D4AF37]" />
-        <span className="text-[#0B241C] font-bold font-royal-title">{category.name}</span>
+        <button onClick={() => { onNavigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-[#9B332C] hover:underline font-royal-title font-bold">Atelier</button>
+        <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
+        <button onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-[#9B332C] hover:underline font-royal-title font-bold">Catalog</button>
+        <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
+        <span className="text-[#241A16] font-bold font-royal-title">{category.name}</span>
       </nav>
 
       {/* Category Hero Banner */}
-      <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#0B241C] via-[#11352A] to-[#0B241C] text-white min-h-[260px] flex items-center p-8 sm:p-12 shadow-2xl border-2 border-[#D4AF37]/50">
+      <div className="relative rounded-[32px] overflow-hidden bg-gradient-to-br from-[#241A16] via-[#2F211C] to-[#241A16] text-[#FAF5EE] min-h-[260px] flex items-center p-8 sm:p-12 shadow-2xl border border-[#D4AF37]/40">
         <img
           src={category.image}
           alt={category.name}
-          className="absolute inset-0 w-full h-full object-cover opacity-30 scale-105"
+          className="absolute inset-0 w-full h-full object-cover opacity-25 scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#061711] via-[#0E2F23]/85 to-transparent" />
-        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-35 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/85 to-transparent" />
+        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-15 pointer-events-none" />
 
         <div className="relative z-10 max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#D4AF37]/20 border border-[#D4AF37]/50 rounded-full text-[#F5E6B5] text-xs font-bold uppercase tracking-wider font-royal-title shadow-sm">
-            <span>👑 Jaipur Manufacturing Division</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-bold uppercase tracking-wider font-royal-title shadow-sm">
+            <span>🪷 Jaipur Hand Block Line</span>
           </div>
-          <h1 className="font-royal-heading text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3DC]">
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3DC]">
             {category.name}
           </h1>
-          <p className="text-stone-200 font-royal-body text-base md:text-lg leading-relaxed">
+          <p className="text-stone-300 font-royal-body text-base md:text-lg leading-relaxed">
             {category.description}
           </p>
         </div>
@@ -48,19 +48,19 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ categoryId, onNaviga
 
       {/* Products Grid */}
       <div className="space-y-6">
-        <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/25">
+        <div className="flex items-center justify-between pb-4 border-b border-[#E0D6CB]">
           <span className="text-xs text-stone-600 font-medium font-royal-body">
-            Showing <strong className="text-[#0B241C] font-bold">{categoryProducts.length}</strong> designs in this line
+            Showing <strong className="text-[#241A16] font-bold">{categoryProducts.length}</strong> handcrafted designs in this line
           </span>
           <button
             onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="text-xs font-royal-title font-bold text-[#164335] uppercase tracking-wider hover:underline hover:text-[#0B241C]"
+            className="pill-btn-outline text-xs"
           >
             View All Categories →
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
           {categoryProducts.map(product => (
             <ProductCard
               key={product.id}

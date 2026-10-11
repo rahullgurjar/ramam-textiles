@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { PRODUCTS } from '../data/products';
+import { InstagramIcon } from '../components/InstagramIcon';
 
 interface WholesalePageProps {
   onNavigate: (path: string) => void;
@@ -33,20 +34,20 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-royal-body">
       {/* Hero */}
-      <div className="bg-[#1F1612] text-white rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/30 shadow-xl">
+      <div className="bg-[#241A16] text-white rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/30 shadow-xl">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{ backgroundImage: `url('./products/duffle-kantha-patchwork.jpg')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1F1612] via-[#1F1612]/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/90 to-transparent" />
 
         <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FDF0F3] border border-[#F3CAD6] text-[#C8376B] text-xs font-bold font-royal-title uppercase tracking-widest shadow-sm">
-            <Building2 className="w-3.5 h-3.5 text-[#C8376B]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-widest shadow-sm">
+            <Building2 className="w-3.5 h-3.5 text-[#9B332C]" />
             <span>Direct Jaipur Manufacturer &amp; Exporter</span>
           </div>
 
-          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3DC] leading-tight">
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF5EE] leading-tight">
             Wholesale B2B Supply &amp; Global Export
           </h1>
 
@@ -54,7 +55,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
             Direct-from-source artisan wholesale pricing for boutiques, department stores, and international fashion brands. Low MOQs from 25 pieces, certified colorfast pure cotton, and reliable worldwide logistics.
           </p>
 
-          <div className="flex flex-wrap gap-4 pt-2">
+          <div className="flex flex-wrap gap-3.5 pt-2">
             <button
               onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="pill-btn-rose inline-flex items-center gap-2 shadow-xl px-7 py-3.5 text-xs font-bold uppercase rounded-full"
@@ -64,11 +65,13 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
             </button>
 
             <a
-              href="#swatch-kit"
-              className="pill-btn-outline inline-flex items-center gap-2 px-7 py-3.5 text-xs font-bold uppercase rounded-full bg-white text-[#1F1612]"
+              href="https://www.instagram.com/ramamtextiles"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill-btn-outline inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase rounded-full bg-white text-[#241A16]"
             >
-              <Package className="w-4 h-4 text-[#C8376B]" />
-              <span>Order Physical Swatch Kit</span>
+              <InstagramIcon className="w-4 h-4 text-[#9B332C]" />
+              <span>DM on Instagram @ramamtextiles</span>
             </a>
           </div>
         </div>
@@ -148,18 +151,29 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
           <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-[28px] shadow-xl border border-stone-200">
             {swatchKitRequested ? (
               <div className="text-center py-8 space-y-4">
-                <div className="w-16 h-16 bg-[#FDF0F3] border-2 border-[#C8376B] text-[#C8376B] rounded-full flex items-center justify-center mx-auto shadow-lg">
-                  <CheckCircle2 className="w-9 h-9 text-[#C8376B]" />
+                <div className="w-16 h-16 bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] rounded-full flex items-center justify-center mx-auto shadow-lg">
+                  <CheckCircle2 className="w-9 h-9 text-[#9B332C]" />
                 </div>
-                <h3 className="font-playfair text-2xl font-bold text-[#1F1612]">Swatch Kit Dispatched for Processing!</h3>
-                <p className="text-xs text-stone-600 max-w-md mx-auto">
-                  Thank you {name} ({company}). Our dispatch team in Jaipur is assembling your bespoke swatch booklet. You will receive an AWB tracking code and export catalog directly on {email}.
+                <h3 className="font-playfair text-2xl font-bold text-[#241A16]">Swatch Kit Dispatched for Processing!</h3>
+                <p className="text-xs text-stone-600 max-w-md mx-auto leading-relaxed">
+                  Thank you <strong>{name}</strong> ({company}). Our dispatch team in Jaipur is assembling your bespoke swatch booklet. Connect directly with our studio on Instagram <strong>@ramamtextiles</strong> for live dispatch updates.
                 </p>
+                <div className="pt-2 flex justify-center">
+                  <a
+                    href="https://www.instagram.com/ramamtextiles"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pill-btn-rose text-xs px-6 py-2.5 rounded-full inline-flex items-center gap-2 shadow"
+                  >
+                    <InstagramIcon className="w-4 h-4 text-white" />
+                    <span>Follow &amp; Message @ramamtextiles</span>
+                  </a>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSwatchSubmit} className="space-y-4 font-royal-body">
-                <h3 className="font-playfair text-lg font-bold text-[#1F1612] pb-2 border-b border-stone-200">
-                  👑 Buyer Swatch Kit Courier Request
+                <h3 className="font-playfair text-lg font-bold text-[#241A16] pb-2 border-b border-stone-200">
+                  Buyer Swatch Kit Courier Request
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

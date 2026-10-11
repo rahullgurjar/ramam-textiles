@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Filter, SlidersHorizontal, Grid3X3, Grid2X2, X, ChevronDown, 
   RotateCcw, Sparkles, Lock, Unlock, Search
@@ -27,6 +27,19 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onNavigate, initialCategory,
   const [sortBy, setSortBy] = useState<string>('featured');
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState<boolean>(false);
   const [gridCols, setGridCols] = useState<3 | 4>(3);
+
+  // Sync state when props change
+  useEffect(() => {
+    if (initialCategory) {
+      setSelectedCategory(initialCategory);
+    }
+  }, [initialCategory]);
+
+  useEffect(() => {
+    if (initialCollection) {
+      setSelectedCollection(initialCollection);
+    }
+  }, [initialCollection]);
 
   // Available Filter Options
   const fabrics = useMemo(() => {

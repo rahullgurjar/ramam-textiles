@@ -30,9 +30,9 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-center justify-center animate-fade-in">
-      <div className="w-full max-w-lg bg-white rounded-2xl shadow-2xl border-2 border-[#D4AF37] overflow-hidden text-[#0F172A]">
+      <div className="w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-[#D4AF37]/50 overflow-hidden text-[#1F1612]">
         {/* Header */}
-        <div className="bg-[#0B241C] text-[#FAF7EE] p-6 relative border-b border-[#D4AF37]/40 shadow-md">
+        <div className="bg-[#241A16] text-[#FAF5EE] p-6 relative border-b border-[#D4AF37]/30 shadow-md">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 p-2 text-stone-300 hover:text-white rounded-full hover:bg-white/10 transition-colors"
@@ -41,14 +41,14 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
           </button>
           
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4AF37]/20 border border-[#D4AF37]/45 rounded-full text-[#F5E6B5] text-xs font-bold uppercase tracking-wider mb-3 font-royal-title">
-            <Lock className="w-3.5 h-3.5 text-[#D4AF37]" />
-            <span>👑 Jaipur B2B Wholesale Portal</span>
+            <Lock className="w-3.5 h-3.5 text-[#E5A93C]" />
+            <span>Jaipur B2B Wholesale Portal</span>
           </div>
 
-          <h3 className="font-royal-heading text-2xl text-[#FAF7EE] font-extrabold tracking-wide">
+          <h3 className="font-playfair text-2xl text-[#FAF5EE] font-extrabold tracking-wide">
             {isB2BPriceUnlocked ? 'B2B Wholesale Access Active' : 'Unlock Wholesale Tier Pricing'}
           </h3>
-          <p className="text-xs text-emerald-200/80 mt-1 font-light">
+          <p className="text-xs text-stone-300 mt-1 font-royal-body">
             Access exporter FOB rates, tiered MOQ discounts (25 - 1,000+ units), and production lead-time estimates.
           </p>
         </div>
@@ -56,68 +56,68 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
         {/* Body */}
         {isB2BPriceUnlocked ? (
           <div className="p-6 text-center space-y-4">
-            <div className="w-16 h-16 bg-[#061711] border-2 border-[#D4AF37] text-[#D4AF37] rounded-full flex items-center justify-center mx-auto shadow-xl">
-              <CheckCircle2 className="w-9 h-9 text-[#25D366]" />
+            <div className="w-16 h-16 bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] rounded-full flex items-center justify-center mx-auto shadow-md">
+              <CheckCircle2 className="w-9 h-9 text-[#9B332C]" />
             </div>
-            <h4 className="font-royal-heading text-xl font-bold text-[#0B241C]">Wholesale Pricing is Unlocked</h4>
-            <p className="text-sm text-[#164335]/80 font-light">
-              Logged in as <strong className="text-[#0B241C]">{buyerProfile?.companyName}</strong> ({buyerProfile?.email}).
+            <h4 className="font-playfair text-xl font-bold text-[#241A16]">Wholesale Pricing is Unlocked</h4>
+            <p className="text-sm text-stone-600 font-royal-body">
+              Logged in as <strong className="text-[#241A16]">{buyerProfile?.companyName}</strong> ({buyerProfile?.email}).
               Wholesale pricing tables, volume discounts, and custom RFQ specifications are visible across the catalog.
             </p>
             <div className="pt-3">
               <button
                 onClick={onClose}
-                className="w-full btn-royal-emerald tracking-widest text-xs uppercase font-bold"
+                className="w-full pill-btn-rose py-3 tracking-widest text-xs uppercase font-bold"
               >
                 Browse Wholesale Catalog
               </button>
             </div>
           </div>
         ) : (
-          <form onSubmit={handleUnlock} className="p-6 space-y-4">
+          <form onSubmit={handleUnlock} className="p-6 space-y-4 font-royal-body">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#164335] mb-1 font-royal-title">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
                 Company / Boutique Name *
               </label>
               <div className="relative">
-                <Building2 className="w-4 h-4 text-[#11352A] absolute left-3 top-3" />
+                <Building2 className="w-4 h-4 text-[#9B332C] absolute left-3 top-3" />
                 <input
                   type="text"
                   required
                   placeholder="e.g. Amber & Indigo Boutique"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-white rounded-lg border border-[#D4AF37]/35 text-sm focus:outline-none focus:border-[#D4AF37] text-[#0B241C]"
+                  className="w-full pl-10 pr-4 py-2.5 bg-white rounded-xl border border-[#E0D6CB] text-xs focus:outline-none focus:border-[#9B332C] text-[#241A16]"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#164335] mb-1 font-royal-title">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
                 Official Business Email *
               </label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-[#11352A] absolute left-3 top-3" />
+                <Mail className="w-4 h-4 text-[#9B332C] absolute left-3 top-3" />
                 <input
                   type="email"
                   required
                   placeholder="buyer@domain.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-white rounded-lg border border-[#D4AF37]/35 text-sm focus:outline-none focus:border-[#D4AF37] text-[#0B241C]"
+                  className="w-full pl-10 pr-4 py-2.5 bg-white rounded-xl border border-[#E0D6CB] text-xs focus:outline-none focus:border-[#9B332C] text-[#241A16]"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#164335] mb-1 font-royal-title">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
                   Business Type
                 </label>
                 <select
                   value={buyerType}
                   onChange={(e) => setBuyerType(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-white rounded-lg border border-[#D4AF37]/35 text-xs text-[#0B241C]"
+                  className="w-full px-3 py-2.5 bg-white rounded-xl border border-[#E0D6CB] text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
                 >
                   <option value="Boutique Owner">Boutique Owner</option>
                   <option value="Fashion Brand">Fashion Brand</option>
@@ -129,17 +129,17 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#164335] mb-1 font-royal-title">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
                   Country
                 </label>
                 <div className="relative">
-                  <Globe2 className="w-4 h-4 text-[#11352A] absolute left-3 top-3" />
+                  <Globe2 className="w-4 h-4 text-[#9B332C] absolute left-3 top-3" />
                   <input
                     type="text"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                     placeholder="e.g. USA, UK"
-                    className="w-full pl-9 pr-3 py-2.5 bg-white rounded-lg border border-[#D4AF37]/35 text-xs text-[#0B241C]"
+                    className="w-full pl-9 pr-3 py-2.5 bg-white rounded-xl border border-[#E0D6CB] text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
                   />
                 </div>
               </div>
@@ -148,15 +148,15 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full btn-royal-gold flex items-center justify-center gap-2 shadow-lg"
+                className="w-full pill-btn-rose py-3 flex items-center justify-center gap-2 shadow-lg text-xs uppercase font-bold"
               >
-                <Unlock className="w-4 h-4 text-[#0B241C]" />
+                <Unlock className="w-4 h-4 text-white" />
                 <span>Unlock Commercial Price Tiers</span>
               </button>
             </div>
 
-            <div className="flex items-center justify-center gap-2 text-[11px] text-[#164335]/80 pt-1">
-              <ShieldCheck className="w-4 h-4 text-[#11352A]" />
+            <div className="flex items-center justify-center gap-2 text-[11px] text-stone-500 pt-1">
+              <ShieldCheck className="w-4 h-4 text-[#9B332C]" />
               <span>Instant access. No credit card required.</span>
             </div>
           </form>

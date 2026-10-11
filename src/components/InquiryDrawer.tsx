@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useApp } from '../context/AppContext';
+import { InstagramIcon } from './InstagramIcon';
 
 export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) => {
   const { 
@@ -84,14 +85,14 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
         <div className="w-screen max-w-xl bg-white shadow-2xl flex flex-col justify-between overflow-hidden border-l border-stone-200">
           
           {/* Header */}
-          <div className="p-5 bg-[#1F1612] text-[#FAF3DC] border-b border-[#D4AF37]/30 flex items-center justify-between shadow-md">
+          <div className="p-5 bg-[#241A16] text-[#FAF5EE] border-b border-[#D4AF37]/30 flex items-center justify-between shadow-md">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-white/10 border border-[#D4AF37]/40 flex items-center justify-center shadow-inner">
                 <ShoppingBag className="w-5 h-5 text-[#E5A93C]" />
               </div>
               <div>
                 <h3 className="font-royal-title text-base font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-                  <span>👑 Wholesale RFQ Basket</span>
+                  <span>Wholesale RFQ Basket</span>
                 </h3>
                 <span className="text-[11px] text-stone-300 font-light">
                   {inquiryItems.length} Products | {totalQuantity} Total Units Selected
@@ -113,24 +114,24 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
             {rfqSubmittedId ? (
               /* Success State */
               <div className="text-center py-8 space-y-4">
-                <div className="w-16 h-16 bg-[#FDF0F3] border-2 border-[#C8376B] text-[#C8376B] rounded-full mx-auto flex items-center justify-center shadow-xl">
-                  <CheckCircle2 className="w-10 h-10 text-[#C8376B]" />
+                <div className="w-16 h-16 bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] rounded-full mx-auto flex items-center justify-center shadow-xl">
+                  <CheckCircle2 className="w-10 h-10 text-[#9B332C]" />
                 </div>
 
                 <div className="space-y-1">
-                  <span className="text-[11px] font-bold text-[#C8376B] uppercase tracking-widest font-royal-title">
+                  <span className="text-[11px] font-bold text-[#9B332C] uppercase tracking-widest font-royal-title">
                     Request Received
                   </span>
-                  <h4 className="font-playfair text-xl font-bold text-[#1F1612]">
+                  <h4 className="font-playfair text-xl font-bold text-[#241A16]">
                     Wholesale RFQ #{rfqSubmittedId}
                   </h4>
                   <p className="text-xs text-stone-600 max-w-sm mx-auto leading-relaxed font-light">
-                    Thank you, <strong>{contactName}</strong> ({companyName || 'B2B Client'}). Our export desk in Jaipur will review your items and email your official quotation within 4–6 business hours.
+                    Thank you, <strong>{contactName}</strong> ({companyName || 'B2B Client'}). Our export desk in Jaipur will review your items and follow up within 4–6 business hours.
                   </p>
                 </div>
 
                 <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-stone-200 text-left space-y-2 text-xs shadow-sm">
-                  <div className="flex justify-between pb-2 border-b border-stone-200 font-bold text-[#1F1612] font-royal-title">
+                  <div className="flex justify-between pb-2 border-b border-stone-200 font-bold text-[#241A16] font-royal-title">
                     <span>Summary Overview</span>
                     <span>{totalQuantity} Units</span>
                   </div>
@@ -141,10 +142,20 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                <div className="flex flex-col gap-2.5 pt-4">
+                  <a
+                    href="https://www.instagram.com/ramamtextiles"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full pill-btn-rose py-3 flex items-center justify-center gap-2 shadow rounded-full text-xs font-bold uppercase tracking-wider"
+                  >
+                    <InstagramIcon className="w-4 h-4 text-white" />
+                    <span>Send RFQ to @ramamtextiles on Instagram</span>
+                  </a>
+
                   <button
                     onClick={handlePrintQuotation}
-                    className="w-full pill-btn-dark flex items-center justify-center gap-1.5 shadow"
+                    className="w-full pill-btn-dark py-2.5 flex items-center justify-center gap-1.5 shadow rounded-full text-xs font-bold uppercase tracking-wider bg-[#241A16]"
                   >
                     <Printer className="w-4 h-4 text-[#E5A93C]" />
                     <span>Download / Print RFQ Summary</span>
@@ -153,7 +164,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
 
                 <button
                   onClick={handleReset}
-                  className="w-full py-2 text-xs font-bold text-[#C8376B] hover:underline font-royal-title"
+                  className="w-full py-2 text-xs font-bold text-[#9B332C] hover:underline font-royal-title"
                 >
                   Start New Inquiry or Continue Browsing
                 </button>
@@ -353,7 +364,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                   </div>
 
                   {/* Submission Buttons */}
-                  <div className="pt-2">
+                  <div className="pt-2 space-y-2">
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -362,6 +373,16 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       <FileText className="w-4 h-4 text-white" />
                       <span>{isSubmitting ? 'Generating Quotation Ticket...' : 'Submit Official Wholesale RFQ'}</span>
                     </button>
+
+                    <a
+                      href="https://www.instagram.com/ramamtextiles"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full pill-btn-dark py-2.5 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 rounded-full shadow bg-[#241A16]"
+                    >
+                      <InstagramIcon className="w-4 h-4 text-[#E5A93C]" />
+                      <span>Quick Inquiry via Instagram DM</span>
+                    </a>
                   </div>
                 </form>
               </>

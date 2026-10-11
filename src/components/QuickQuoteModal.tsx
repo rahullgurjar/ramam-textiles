@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, FileText, CheckCircle2, ShieldCheck, Layers, Sparkles, Mail } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
+import { InstagramIcon } from './InstagramIcon';
 
 export const QuickQuoteModal: React.FC = () => {
   const { isQuickQuoteOpen, closeQuickQuote, activeQuoteProduct, showToast } = useApp();
@@ -32,12 +33,12 @@ export const QuickQuoteModal: React.FC = () => {
       <div className="w-full max-w-xl bg-white rounded-[28px] shadow-2xl border border-stone-200 overflow-hidden">
         
         {/* Header */}
-        <div className="p-5 bg-[#1F1612] text-[#FAF3DC] border-b border-[#D4AF37]/30 flex items-center justify-between shadow-md">
+        <div className="p-5 bg-[#241A16] text-[#FAF5EE] border-b border-[#D4AF37]/30 flex items-center justify-between shadow-md">
           <div className="flex items-center gap-2.5">
             <FileText className="w-5 h-5 text-[#E5A93C]" />
             <div>
               <h3 className="font-royal-title text-sm font-bold text-white uppercase tracking-wider">
-                👑 Wholesale Quote &amp; Sample Request
+                Wholesale Quote &amp; Sample Request
               </h3>
               <span className="text-[10px] text-stone-300 font-light">Direct Jaipur Atelier Manufacturer Desk</span>
             </div>
@@ -54,25 +55,34 @@ export const QuickQuoteModal: React.FC = () => {
         <div className="p-6">
           {isSubmitted ? (
             <div className="text-center py-6 space-y-4">
-              <div className="w-14 h-14 bg-[#FDF0F3] border-2 border-[#C8376B] text-[#C8376B] rounded-full mx-auto flex items-center justify-center shadow-lg">
-                <CheckCircle2 className="w-8 h-8 text-[#C8376B]" />
+              <div className="w-14 h-14 bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] rounded-full mx-auto flex items-center justify-center shadow-lg">
+                <CheckCircle2 className="w-8 h-8 text-[#9B332C]" />
               </div>
               <div>
-                <h4 className="font-playfair text-lg font-bold text-[#1F1612]">
+                <h4 className="font-playfair text-lg font-bold text-[#241A16]">
                   Quotation Request Dispatched
                 </h4>
                 <p className="text-xs text-stone-600 max-w-md mx-auto mt-1 leading-relaxed font-light">
-                  Thank you, <strong>{name}</strong>. Your inquiry for <strong>{activeQuoteProduct.name}</strong> (Qty: {quantity} pcs) has been routed to our Jaipur desk. We will email the official quotation to <strong>{email}</strong> within 4–6 business hours.
+                  Thank you, <strong>{name}</strong>. Your inquiry for <strong>{activeQuoteProduct.name}</strong> (Qty: {quantity} pcs) has been routed to our Jaipur desk. We will follow up within 4–6 business hours.
                 </p>
               </div>
 
-              <div className="pt-2 flex justify-center">
+              <div className="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
+                <a
+                  href="https://www.instagram.com/ramamtextiles"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pill-btn-rose text-xs px-5 py-2.5 rounded-full inline-flex items-center justify-center gap-2 shadow"
+                >
+                  <InstagramIcon className="w-3.5 h-3.5 text-white" />
+                  <span>DM on Instagram @ramamtextiles</span>
+                </a>
                 <button
                   onClick={() => {
                     setIsSubmitted(false);
                     closeQuickQuote();
                   }}
-                  className="pill-btn-dark text-xs px-6 py-2.5"
+                  className="pill-btn-dark text-xs px-6 py-2.5 bg-[#241A16] rounded-full"
                 >
                   Close Window
                 </button>

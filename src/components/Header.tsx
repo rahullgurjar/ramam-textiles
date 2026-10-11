@@ -74,13 +74,13 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             </span>
           </div>
 
-          {/* Center: Free Delivery Banner */}
-          <div className="hidden md:flex items-center gap-2 text-stone-300 text-xs font-medium">
-            <span className="text-[#E5A93C]">🚚</span>
-            <span>Free Express Delivery Across India on Orders Above ₹1,999 • Low Wholesale MOQs (25 Pcs)</span>
+          {/* Center: Artisan Atelier & Wholesale Notice */}
+          <div className="hidden md:flex items-center gap-2 text-stone-300 text-xs font-medium font-royal-body">
+            <span className="text-[#E5A93C]">🪷</span>
+            <span>Direct Jaipur Hand Block Manufacturer • Low Wholesale MOQs (25 Pcs) • Worldwide Export</span>
           </div>
 
-          {/* Right: Currency Selector Pill */}
+          {/* Right: Currency Selector Pill & Instagram */}
           <div className="flex items-center gap-3">
             <div className="relative">
               <button 
@@ -116,13 +116,16 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               )}
             </div>
 
-            {/* Direct Email Desk Action */}
+            {/* Direct Instagram Connect */}
             <a 
-              href="mailto:exports@ramamtextiles.com"
-              className="hidden lg:flex items-center gap-1.5 text-stone-300 hover:text-white transition-colors text-xs"
+              href="https://www.instagram.com/ramamtextiles"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-stone-300 hover:text-[#E5A93C] transition-colors text-xs font-royal-body py-0.5 px-2.5 rounded-full bg-white/5 border border-white/10 hover:border-[#E5A93C]/40"
+              title="Follow @ramamtextiles on Instagram"
             >
-              <Mail className="w-3.5 h-3.5 text-[#E5A93C]" />
-              <span>exports@ramamtextiles.com</span>
+              <InstagramIcon className="w-3.5 h-3.5 text-[#E5A93C]" />
+              <span className="hidden sm:inline">@ramamtextiles</span>
             </a>
           </div>
         </div>
@@ -292,14 +295,14 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               <span>BULK ORDERS</span>
             </button>
 
-            {/* Lookbook / Reviews Pill */}
+            {/* Lookbook Pill */}
             <button 
               onClick={() => handleNav('/lookbook')}
               className={`pill-nav-btn ${
                 currentPath === '/lookbook' ? 'pill-nav-btn-active' : ''
               }`}
             >
-              <span>REVIEWS</span>
+              <span>LOOKBOOK</span>
             </button>
 
             {/* About Pill */}
@@ -444,7 +447,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   onClick={() => handleNav('/lookbook')}
                   className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FDF0F3] text-[#1F1612]"
                 >
-                  Reviews &amp; Lookbook
+                  Editorial Lookbook
                 </button>
                 <button 
                   onClick={() => handleNav('/about')}
@@ -463,6 +466,16 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             {/* Mobile Footer CTAs */}
             <div className="pt-4 border-t border-stone-200 space-y-2">
+              <a 
+                href="https://www.instagram.com/ramamtextiles"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-4 bg-gradient-to-r from-[#833ab4]/15 via-[#fd1d1d]/15 to-[#fcb045]/15 border border-[#E1306C]/40 text-[#9B332C] text-xs font-royal-title font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-[#FAF2EE] transition-all shadow-sm"
+              >
+                <InstagramIcon className="w-4 h-4 text-[#9B332C]" />
+                <span>Follow @ramamtextiles on Instagram</span>
+              </a>
+
               <button 
                 onClick={() => { setIsMobileMenuOpen(false); openQuickQuote(); }}
                 className="pill-btn-rose w-full py-3 text-xs font-bold uppercase rounded-xl flex items-center justify-center gap-2 shadow-lg"
@@ -470,15 +483,6 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 <FileText className="w-4 h-4 text-white" />
                 <span>Request Bulk Wholesale Quote</span>
               </button>
-
-              <a 
-                href="https://wa.me/911412890000?text=Hi%20Ramam%20Textiles,%20I%20am%20interested%20in%20Jaipur%20hand%20block%20quilted%20bags."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-2.5 px-4 bg-[#1F1612] text-white text-xs font-royal-title font-bold rounded-xl flex items-center justify-center gap-2"
-              >
-                <span>💬 Direct WhatsApp Desk</span>
-              </a>
             </div>
           </div>
         </div>

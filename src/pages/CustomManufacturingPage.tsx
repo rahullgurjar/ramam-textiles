@@ -39,34 +39,34 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-royal-body">
       {/* Hero */}
-      <div className="bg-gradient-to-r from-[#0B241C] via-[#11352A] to-[#0B241C] text-white rounded-3xl p-8 sm:p-14 relative overflow-hidden border-2 border-[#D4AF37]/50 shadow-2xl">
+      <div className="bg-gradient-to-br from-[#241A16] via-[#2F211C] to-[#241A16] text-[#FAF5EE] rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/40 shadow-2xl">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1600&q=80')` }}
+          className="absolute inset-0 bg-cover bg-center opacity-25"
+          style={{ backgroundImage: `url('./products/duffle-kantha-patchwork.jpg')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#061711] via-[#0E2F23]/85 to-transparent" />
-        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-35 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/90 to-transparent" />
+        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-15 pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="royal-seal mb-2">
-            <Scissors className="w-3.5 h-3.5 text-[#D4AF37]" />
-            <span>👑 Jaipur OEM &amp; Private Label Studio</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold uppercase tracking-wider font-royal-title shadow-sm">
+            <Scissors className="w-3.5 h-3.5 text-[#9B332C]" />
+            <span>Jaipur OEM &amp; Private Label Studio</span>
           </div>
 
-          <h1 className="font-royal-heading text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3DC] leading-tight">
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3DC] leading-tight">
             Bring Your Apparel &amp; Textile Visions to Life in Jaipur
           </h1>
 
-          <p className="text-stone-200 font-royal-body text-base sm:text-lg leading-relaxed">
+          <p className="text-stone-300 font-royal-body text-base sm:text-lg leading-relaxed">
             From custom wooden block carving to full-scale garment manufacturing, we partner with emerging fashion labels, luxury boutiques, and global retailers. Low minimums, certified eco dyes, and reliable turnaround.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
             <a
               href="#wizard"
-              className="btn-royal-gold inline-flex items-center gap-2 shadow-xl rounded-xl"
+              className="pill-btn-rose inline-flex items-center gap-2 shadow-xl px-7 py-3.5 text-xs font-bold uppercase rounded-full"
             >
               <span>Build Your Custom Brief</span>
               <ArrowRight className="w-4 h-4" />
@@ -77,9 +77,8 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
                 onNavigate('/contact');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="btn-royal-outline inline-flex items-center gap-2 rounded-xl"
+              className="pill-btn-outline inline-flex items-center gap-2 px-7 py-3.5 text-xs font-bold uppercase rounded-full bg-white text-[#241A16]"
             >
-              <Mail className="w-4 h-4 text-[#D4AF37]" />
               <span>Contact Merchandising Desk</span>
             </button>
           </div>
@@ -89,16 +88,17 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
       {/* 5-Step Process */}
       <div className="space-y-8">
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <div className="royal-seal-emerald">End-To-End Factory Workflow</div>
-          <h2 className="font-royal-heading text-3xl font-bold text-[#0B241C]">How We Manufacture For Your Brand</h2>
-          <div className="ornate-divider" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold uppercase tracking-wider font-royal-title">
+            <span>End-To-End Factory Workflow</span>
+          </div>
+          <h2 className="font-playfair text-3xl font-bold text-[#241A16]">How We Manufacture For Your Brand</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           {steps.map(s => (
-            <div key={s.num} className="bg-white p-6 rounded-3xl border-2 border-[#D4AF37]/35 space-y-3 relative shadow-md hover:border-[#D4AF37] hover:shadow-xl transition-all">
-              <span className="font-royal-heading text-3xl font-bold text-[#D4AF37] block">{s.num}</span>
-              <h3 className="font-royal-title text-base font-bold text-[#0B241C]">{s.title}</h3>
+            <div key={s.num} className="bg-white p-6 rounded-[28px] border border-[#E0D6CB] hover:border-[#9B332C] space-y-3 relative shadow-sm hover:shadow-xl transition-all">
+              <span className="font-playfair text-3xl font-bold text-[#9B332C] block">{s.num}</span>
+              <h3 className="font-royal-title text-base font-bold text-[#241A16]">{s.title}</h3>
               <p className="text-xs font-royal-body text-stone-600 leading-relaxed">{s.desc}</p>
             </div>
           ))}
@@ -106,12 +106,12 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
       </div>
 
       {/* Interactive Wizard Section */}
-      <div id="wizard" className="bg-gradient-to-b from-[#0B241C] via-[#0E2F23] to-[#0B241C] text-white p-8 sm:p-12 rounded-3xl border-2 border-[#D4AF37]/50 shadow-2xl relative overflow-hidden">
-        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-35 pointer-events-none" />
+      <div id="wizard" className="bg-[#241A16] text-white p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/35 shadow-2xl relative overflow-hidden">
+        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-20 pointer-events-none" />
         <div className="max-w-4xl mx-auto relative z-10 space-y-6">
           <div className="text-center space-y-2">
-            <h2 className="font-royal-heading text-3xl sm:text-4xl font-bold text-[#FAF3DC]">Interactive Brief Builder</h2>
-            <p className="text-sm font-royal-body text-stone-200">
+            <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-[#FAF3DC]">Interactive Brief Builder</h2>
+            <p className="text-sm font-royal-body text-stone-300">
               Customize fabric, silhouette, printing technique, and packaging add-ons. Receive an instant estimate and quotation packet.
             </p>
           </div>

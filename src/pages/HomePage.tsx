@@ -10,6 +10,7 @@ import { JOURNAL_POSTS } from '../data/journal';
 import { LOOKBOOK_ITEMS } from '../data/lookbook';
 import { ProductCard } from '../components/ProductCard';
 import { CustomManufacturingWizard } from '../components/CustomManufacturingWizard';
+import { InstagramIcon } from '../components/InstagramIcon';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
@@ -782,13 +783,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* =========================================================================
           9. CATALOG DOWNLOAD
           ========================================================================= */}
-      <section className="bg-[#1F1612] py-16 text-white border-t border-[#D4AF37]/30 shadow-2xl relative">
+      <section className="bg-[#241A16] py-16 text-white border-t border-[#D4AF37]/30 shadow-2xl relative">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
-          <div className="w-16 h-16 bg-[#D4AF37]/20 border border-[#D4AF37]/60 rounded-full flex items-center justify-center mx-auto mb-6 text-[#D4AF37] shadow-lg">
+          <div className="w-16 h-16 bg-[#D4AF37]/20 border border-[#D4AF37]/60 rounded-full flex items-center justify-center mx-auto mb-6 text-[#E5A93C] shadow-lg">
             <Download className="w-8 h-8" />
           </div>
 
-          <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-[#FAF3DC] mb-3">
+          <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-[#FAF5EE] mb-3">
             Download 2026 Wholesale Jaipur Bags Catalog
           </h2>
           <p className="text-stone-300 font-royal-body text-base max-w-2xl mx-auto mb-8">
@@ -796,28 +797,43 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </p>
 
           {catalogDownloaded ? (
-            <div className="p-6 bg-emerald-950/70 border border-emerald-500/50 rounded-2xl max-w-md mx-auto text-emerald-200 text-sm flex items-center justify-center gap-3 shadow-lg font-royal-body">
-              <CheckCircle2 className="w-6 h-6 text-emerald-400 flex-shrink-0" />
-              <span>Catalog download link dispatched to your inbox! Check promotions/spam if delayed.</span>
+            <div className="p-6 bg-white/10 border border-[#D4AF37]/50 rounded-2xl max-w-md mx-auto text-[#FAF5EE] text-sm flex items-center justify-center gap-3 shadow-lg font-royal-body">
+              <CheckCircle2 className="w-6 h-6 text-[#E5A93C] flex-shrink-0" />
+              <span>Catalog download link dispatched! You can also message @ramamtextiles on Instagram for immediate line sheets.</span>
             </div>
           ) : (
-            <form onSubmit={handleDownloadCatalog} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-              <input
-                type="email"
-                required
-                placeholder="Enter your business email..."
-                value={catalogEmail}
-                onChange={e => setCatalogEmail(e.target.value)}
-                className="flex-1 px-5 py-3.5 bg-white/10 border border-[#D4AF37]/50 rounded-full text-sm text-white placeholder-stone-400 focus:outline-none focus:border-[#D4AF37] shadow-inner font-royal-body"
-              />
-              <button
-                type="submit"
-                className="pill-btn-rose px-6 py-3.5 rounded-full flex items-center justify-center gap-2 shadow-xl"
-              >
-                <span>Instant Download</span>
-                <Download className="w-4 h-4" />
-              </button>
-            </form>
+            <div className="space-y-4 max-w-lg mx-auto">
+              <form onSubmit={handleDownloadCatalog} className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  required
+                  placeholder="Enter your business email..."
+                  value={catalogEmail}
+                  onChange={e => setCatalogEmail(e.target.value)}
+                  className="flex-1 px-5 py-3.5 bg-white/10 border border-[#D4AF37]/50 rounded-full text-sm text-white placeholder-stone-400 focus:outline-none focus:border-[#D4AF37] shadow-inner font-royal-body"
+                />
+                <button
+                  type="submit"
+                  className="pill-btn-rose px-6 py-3.5 rounded-full flex items-center justify-center gap-2 shadow-xl"
+                >
+                  <span>Instant Download</span>
+                  <Download className="w-4 h-4" />
+                </button>
+              </form>
+
+              <div className="pt-2 flex items-center justify-center gap-2 text-xs text-stone-300">
+                <span>Or message directly:</span>
+                <a
+                  href="https://www.instagram.com/ramamtextiles"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#E5A93C] hover:underline font-bold inline-flex items-center gap-1 font-royal-title"
+                >
+                  <InstagramIcon className="w-3.5 h-3.5" />
+                  <span>@ramamtextiles on Instagram</span>
+                </a>
+              </div>
+            </div>
           )}
         </div>
       </section>

@@ -59,26 +59,44 @@
   --jaipur-sand-500: #C8BCA4;
 
   /* Typography */
-  --font-royal: 'Cinzel Decorative', 'Cinzel', serif;
-  --font-heading: 'Cinzel', 'Marcellus', Georgia, serif;
-  --font-editorial: 'Cormorant Garamond', 'Marcellus', serif;
-  --font-marcellus: 'Marcellus', serif;
-  --font-rozha: 'Rozha One', serif;
+  --font-royal: 'Playfair Display', Georgia, serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-editorial: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Border & Shadows */
   --border-gold-subtle: rgba(212, 175, 55, 0.4);
   --border-gold-rich: #D4AF37;
-  --border-pink-subtle: rgba(200, 90, 83, 0.35);
+  --border-pink-subtle: rgba(155, 51, 44, 0.25);
   --border-emerald-subtle: rgba(17, 53, 42, 0.25);
   
-  --shadow-royal: 0 10px 30px -10px rgba(11, 36, 28, 0.2);
+  --shadow-royal: 0 10px 30px -10px rgba(36, 26, 22, 0.15);
   --shadow-gold: 0 8px 25px rgba(212, 175, 55, 0.28);
-  --shadow-pink: 0 8px 25px rgba(200, 90, 83, 0.2);
-  --shadow-palace: 0 20px 45px -12px rgba(11, 36, 28, 0.2);
+  --shadow-pink: 0 8px 25px rgba(155, 51, 44, 0.15);
+  --shadow-palace: 0 20px 45px -12px rgba(36, 26, 22, 0.18);
 
   --radius-jharokha: 28px 28px 10px 10px;
   --radius-royal-arch: 9999px 9999px 12px 12px;
+}
+
+/* ==========================================================================
+   🪷 Bespoke Typography System
+   ========================================================================== */
+.font-royal-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: 0.06em;
+}
+
+.font-royal-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-royal-body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
 * {
