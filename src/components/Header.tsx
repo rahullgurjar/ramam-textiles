@@ -62,62 +62,52 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       
-      {/* JEWEL COLOR HERITAGE STRIP (Rich Indian textile celebratory palette: Indigo, Rani Pink, Emerald, Saffron) */}
+      {/* TOP ANNOUNCEMENT & HERITAGE STRIP */}
       <div className="bg-gradient-to-r from-[#1E295B] via-[#831843] via-[#064E3B] to-[#78350F] text-[#FAF3DC] text-[11px] py-1.5 px-4 font-royal-title border-b border-[#D4AF37]/40 shadow-inner">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2 sm:gap-3 overflow-hidden text-ellipsis whitespace-nowrap">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#EC4899] animate-pulse"></span>
-              <strong className="text-[#FBCFE8]">Jaipur Rani Pink</strong>
+              <strong className="text-[#FBCFE8]">Jaipur Artisan Atelier</strong>
             </span>
             <span className="text-[#D4AF37]/60">•</span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#60A5FA]"></span>
-              <strong className="text-[#BFDBFE]">Bagru Indigo</strong>
+            <span className="text-stone-300 hidden sm:inline text-[10.5px]">
+              100% Hand-Block Quilted Cotton
             </span>
-            <span className="text-[#D4AF37]/60">•</span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#34D399]"></span>
-              <strong className="text-[#A7F3D0]">Panna Emerald</strong>
-            </span>
-            <span className="text-[#D4AF37]/60 hidden sm:inline">•</span>
-            <span className="flex items-center gap-1.5 hidden sm:inline-flex">
-              <span className="w-2 h-2 rounded-full bg-[#FBBF24]"></span>
-              <strong className="text-[#FDE68A]">Zari Gold</strong>
-            </span>
-            <span className="text-stone-300 hidden md:inline ml-2 text-[10.5px]">
-              — 100% Hand-Printed Quilted Cotton
+            <span className="text-[#D4AF37]/60 hidden md:inline">•</span>
+            <span className="text-emerald-300 font-semibold hidden md:inline text-[10.5px]">
+              Worldwide Express Air Cargo
             </span>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0 text-[10px] tracking-wider uppercase">
-            <span className="text-[#F5E6B5] hidden sm:inline">Direct Factory Export</span>
+          <div className="flex items-center gap-3 shrink-0 text-[10.5px] uppercase tracking-wider">
+            <span className="text-[#FDE68A] hidden sm:inline font-medium">Low MOQ: 25 Pcs</span>
             <a 
               href="https://www.instagram.com/ramamtextiles" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-[#FBCFE8] hover:text-white transition-colors flex items-center gap-1 font-bold"
             >
-              <InstagramIcon className="w-3 h-3 text-[#F472B6]" />
+              <InstagramIcon className="w-3.5 h-3.5 text-[#F472B6]" />
               <span>@ramamtextiles</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* MAIN HEADER BAR (Warm Haveli Sandstone with Brand Logo, Center Pill Navigation, and Action Pills) */}
-      <div className={`w-full transition-all duration-300 bg-[#F5EEE6]/96 backdrop-blur-md ${
+      {/* MAIN LUXURY HEADER BAR */}
+      <div className={`w-full transition-all duration-300 bg-[#F5EEE6]/98 backdrop-blur-md ${
         isScrolled 
-          ? 'shadow-md border-b border-[#D4AF37]/35 py-2.5' 
-          : 'border-b border-[#D4AF37]/35 py-3.5'
+          ? 'shadow-md border-b border-[#D4AF37]/40 py-2.5' 
+          : 'border-b border-[#D4AF37]/35 py-3'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 lg:gap-6">
           
           {/* Left: Mobile Toggle & Brand Logo */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-[#241A16] hover:text-[#9B332C] transition-colors"
+              className="lg:hidden p-2 text-[#241A16] hover:text-[#9B332C] transition-colors rounded-lg hover:bg-[#FAF0EB]"
               aria-label="Toggle navigation menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#241A16]" />}
@@ -125,9 +115,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             <div 
               onClick={() => handleNav('/')}
-              className="flex items-center gap-3.5 cursor-pointer group flex-shrink-0"
+              className="flex items-center gap-3 cursor-pointer group shrink-0"
             >
-              <div className="relative flex-shrink-0 w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-full bg-gradient-to-br from-[#FAF5EE] via-[#F6EDE2] to-[#ECE1D2] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 group-hover:border-[#9B332C] group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+              <div className="relative shrink-0 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-gradient-to-br from-[#FAF5EE] via-[#F6EDE2] to-[#ECE1D2] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1 group-hover:border-[#9B332C] group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
                 <img 
                   src="./logo.png" 
                   alt="Ramam Textiles Jaipur" 
@@ -135,25 +125,25 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 />
               </div>
               <div className="text-left whitespace-nowrap flex flex-col justify-center">
-                <div className="flex items-baseline gap-2 leading-none">
-                  <span className="font-playfair text-2xl sm:text-3xl font-bold tracking-tight text-[#241A16]">
+                <div className="flex items-baseline gap-1.5 leading-none">
+                  <span className="font-playfair text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight text-[#241A16]">
                     Ramam
                   </span>
-                  <span className="font-editorial italic text-2xl sm:text-3xl font-semibold text-[#9B332C]">
+                  <span className="font-editorial italic text-xl sm:text-2xl lg:text-[26px] font-semibold text-[#9B332C]">
                     Textiles
                   </span>
                 </div>
-                <span className="text-[9.5px] sm:text-[11px] uppercase tracking-[0.28em] text-[#7E2822] font-royal-title font-bold mt-1.5 leading-none">
+                <span className="text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.24em] text-[#7E2822] font-royal-title font-bold mt-1.5 leading-none">
                   JAIPUR ARTISAN ATELIER
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Center: Signature Pill Capsule Navigation (Desktop) */}
-          <nav className="hidden lg:flex items-center gap-2 font-royal-body">
+          {/* Center: Refined Luxury Atelier Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 font-royal-body">
             
-            {/* Collection Dropdown Pill */}
+            {/* Collection Dropdown */}
             <div 
               className="relative"
               onMouseEnter={() => setActiveMegaMenu('shop')}
@@ -161,15 +151,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             >
               <button 
                 onClick={() => handleNav('/shop')} 
-                className={`pill-nav-btn ${
-                  currentPath.startsWith('/shop') || currentPath.startsWith('/category')
-                    ? 'pill-nav-btn-active' 
-                    : ''
+                className={`nav-luxury-link ${
+                  currentPath.startsWith('/shop') || currentPath.startsWith('/category') ? 'active' : ''
                 }`}
               >
-                <span className="w-2 h-2 rounded-full bg-[#0891B2]"></span>
                 <span>COLLECTION</span>
-                <ChevronDown className="w-3 h-3 opacity-60" />
+                <ChevronDown className="w-3.5 h-3.5 opacity-60" />
               </button>
 
               {activeMegaMenu === 'shop' && (
@@ -238,74 +225,62 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               )}
             </div>
 
-            {/* Curated Sets Pill */}
+            {/* Curated Sets */}
             <button 
               onClick={() => handleNav('/collections')}
-              className={`pill-nav-btn ${
-                currentPath === '/collections' ? 'pill-nav-btn-active' : ''
-              }`}
+              className={`nav-luxury-link ${currentPath === '/collections' ? 'active' : ''}`}
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#DB2777]" />
+              <Sparkles className="w-3 h-3 text-[#DB2777]" />
               <span>CURATED SETS</span>
             </button>
 
-            {/* Our Craft Pill */}
+            {/* Our Craft */}
             <button 
               onClick={() => handleNav('/craftsmanship')}
-              className={`pill-nav-btn ${
-                currentPath === '/craftsmanship' ? 'pill-nav-btn-active' : ''
-              }`}
+              className={`nav-luxury-link ${currentPath === '/craftsmanship' ? 'active' : ''}`}
             >
-              <span className="w-2 h-2 rounded-full bg-[#2563EB]"></span>
               <span>OUR CRAFT</span>
             </button>
 
-            {/* Bulk Orders (Highlighted Soft Velvet Rose Pill) */}
-            <button 
-              onClick={() => handleNav('/custom-manufacturing')}
-              className={`pill-nav-btn pill-nav-bulk ${
-                currentPath === '/custom-manufacturing' ? 'ring-2 ring-[#9B332C]' : ''
-              }`}
-            >
-              <span className="w-2 h-2 rounded-full bg-[#F59E0B]"></span>
-              <Sparkles className="w-3.5 h-3.5 text-[#9B332C]" />
-              <span>BULK ORDERS</span>
-            </button>
-
-            {/* Lookbook Pill */}
+            {/* Lookbook */}
             <button 
               onClick={() => handleNav('/lookbook')}
-              className={`pill-nav-btn ${
-                currentPath === '/lookbook' ? 'pill-nav-btn-active' : ''
-              }`}
+              className={`nav-luxury-link ${currentPath === '/lookbook' ? 'active' : ''}`}
             >
-              <span className="w-2 h-2 rounded-full bg-[#10B981]"></span>
               <span>LOOKBOOK</span>
             </button>
 
-            {/* About Pill */}
+            {/* About */}
             <button 
               onClick={() => handleNav('/about')}
-              className={`pill-nav-btn ${
-                currentPath === '/about' ? 'pill-nav-btn-active' : ''
-              }`}
+              className={`nav-luxury-link ${currentPath === '/about' ? 'active' : ''}`}
             >
               <span>ABOUT</span>
             </button>
+
+            {/* Bulk Orders Featured Action Pill */}
+            <button 
+              onClick={() => handleNav('/custom-manufacturing')}
+              className="ml-1.5 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#831843] via-[#9B332C] to-[#7E2822] text-[#FAF3DC] text-[11px] font-bold uppercase tracking-wider font-royal-title border border-[#D4AF37]/50 shadow-md hover:shadow-lg hover:scale-105 transition-all cursor-pointer whitespace-nowrap"
+            >
+              <Sparkles className="w-3 h-3 text-[#FDE68A]" />
+              <span>BULK ORDERS</span>
+            </button>
           </nav>
 
-          {/* Right: Action Pills */}
-          <div className="flex items-center gap-2">
+          {/* Right Action Suite (Zero Wrapping, Elegant Spacing) */}
+          <div className="flex items-center gap-2 shrink-0 whitespace-nowrap">
             
-            {/* Currency Selector Pill */}
-            <div className="relative hidden sm:block">
+            {/* Currency Selector */}
+            <div className="relative hidden sm:block shrink-0">
               <button 
                 onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}
-                className="flex items-center gap-1.5 text-[#241A16] hover:text-[#9B332C] transition-colors cursor-pointer py-2 px-3 rounded-full bg-[#FAF5EE] border border-[#D4AF37]/45 text-xs font-semibold shadow-sm"
-                title="Change Currency"
+                className="flex items-center gap-1.5 text-[#241A16] hover:text-[#9B332C] transition-colors cursor-pointer py-1.5 px-2.5 rounded-full bg-[#FAF5EE] border border-[#D4AF37]/45 text-xs font-semibold shadow-sm whitespace-nowrap"
+                title="Select Currency"
               >
-                <span>{currency.code === 'INR' ? '🇮🇳 INR' : `${currency.code} (${currency.symbol})`}</span>
-                <ChevronDown className="w-3 h-3 opacity-60" />
+                <span>{currency.code}</span>
+                <span className="text-[#9B332C] font-bold">{currency.symbol}</span>
+                <ChevronDown className="w-3 h-3 opacity-60 ml-0.5" />
               </button>
 
               {isCurrencyDropdownOpen && (
@@ -337,17 +312,17 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               href="https://www.instagram.com/ramamtextiles"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-1.5 text-[#241A16] hover:text-[#9B332C] transition-colors text-xs font-royal-body py-2 px-3.5 rounded-full bg-[#FAF5EE] border border-[#D4AF37]/45 hover:border-[#9B332C] shadow-sm"
+              className="hidden xl:flex items-center gap-1.5 text-[#241A16] hover:text-[#9B332C] transition-colors text-xs font-royal-body py-1.5 px-3 rounded-full bg-[#FAF5EE] border border-[#D4AF37]/45 hover:border-[#9B332C] shadow-sm whitespace-nowrap"
               title="Follow @ramamtextiles on Instagram"
             >
-              <InstagramIcon className="w-3.5 h-3.5 text-[#9B332C]" />
+              <InstagramIcon className="w-3.5 h-3.5 text-[#E1306C]" />
               <span className="font-semibold text-xs">@ramamtextiles</span>
             </a>
 
-            {/* Search Quick Icon */}
+            {/* Search Quick Icon Button */}
             <button
               onClick={openSearch}
-              className="p-2.5 rounded-full border border-[#D4AF37]/45 bg-[#FAF5EE] text-[#241A16] hover:text-[#9B332C] hover:border-[#9B332C] transition-colors shadow-sm"
+              className="w-9 h-9 rounded-full border border-[#D4AF37]/45 bg-[#FAF5EE] text-[#241A16] hover:text-[#9B332C] hover:border-[#9B332C] transition-colors shadow-sm flex items-center justify-center shrink-0"
               title="Search Catalog"
             >
               <Search className="w-4 h-4" />
@@ -356,12 +331,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             {/* BAG Pill Button */}
             <button 
               onClick={openInquiryDrawer}
-              className="pill-btn-outline group relative"
+              className="flex items-center gap-1.5 py-1.5 px-3 rounded-full border border-[#D4AF37]/55 bg-[#FAF5EE] hover:bg-[#FAF0EB] text-[#241A16] hover:text-[#9B332C] hover:border-[#9B332C] transition-all shadow-sm text-xs font-bold font-royal-title whitespace-nowrap shrink-0"
               title="Open Bag / Inquiry Basket"
             >
-              <ShoppingBag className="w-4 h-4 text-[#241A16] group-hover:text-[#9B332C] transition-colors" />
-              <span>BAG</span>
-              <span className="w-5 h-5 rounded-full bg-[#9B332C] text-white text-[10px] font-bold flex items-center justify-center -mr-1 shadow-sm">
+              <ShoppingBag className="w-4 h-4 text-[#9B332C]" />
+              <span className="hidden sm:inline">BAG</span>
+              <span className="w-5 h-5 rounded-full bg-[#9B332C] text-white text-[10px] font-bold flex items-center justify-center shadow-sm">
                 {inquiryItems.length}
               </span>
             </button>
@@ -371,10 +346,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               href="https://wa.me/911412890000?text=Hi%20Ramam%20Textiles,%20I%20am%20interested%20in%20Jaipur%20hand%20block%20quilted%20bags%20and%20wholesale%20catalog."
               target="_blank"
               rel="noopener noreferrer"
-              className="pill-btn-dark shadow-md"
+              className="flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-gradient-to-r from-[#241A16] to-[#382A22] text-[#FAF5EE] hover:text-white border border-[#D4AF37]/40 shadow-sm text-xs font-bold font-royal-title whitespace-nowrap shrink-0 hover:shadow-md transition-all"
               title="Chat with Jaipur Export Desk"
             >
-              <span className="text-emerald-400 text-sm">💬</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span>CHAT</span>
             </a>
           </div>

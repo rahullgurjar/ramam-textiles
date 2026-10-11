@@ -241,6 +241,50 @@ body {
   color: #832721;
 }
 
+/* Luxury Atelier Header Navigation Link */
+.nav-luxury-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.65rem;
+  color: #241A16;
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-luxury-link:hover {
+  color: #9B332C;
+}
+
+.nav-luxury-link.active {
+  color: #9B332C;
+}
+
+.nav-luxury-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #D4AF37, #9B332C);
+  border-radius: 9999px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-50%);
+}
+
+.nav-luxury-link:hover::after,
+.nav-luxury-link.active::after {
+  width: 70%;
+}
+
 .pill-btn-dark {
   display: inline-flex;
   align-items: center;
