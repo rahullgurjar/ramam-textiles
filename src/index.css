@@ -246,14 +246,14 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.5rem 0.65rem;
+  padding: 0.45rem 0.65rem;
   color: #241A16;
   font-family: var(--font-heading);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
   position: relative;
   cursor: pointer;
   white-space: nowrap;
@@ -270,19 +270,46 @@ body {
 .nav-luxury-link::after {
   content: '';
   position: absolute;
-  bottom: 0px;
+  bottom: 2px;
   left: 50%;
   width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #D4AF37, #9B332C);
+  height: 1.5px;
+  background: #9B332C;
   border-radius: 9999px;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width 0.22s ease;
   transform: translateX(-50%);
 }
 
 .nav-luxury-link:hover::after,
 .nav-luxury-link.active::after {
-  width: 70%;
+  width: 60%;
+}
+
+/* Subtle Outline Luxury CTA (Bulk Orders / Inquiries) */
+.nav-subtle-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.85rem;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #832721;
+  border: 1px solid rgba(131, 39, 33, 0.35);
+  background-color: rgba(250, 240, 235, 0.5);
+  border-radius: 9999px;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nav-subtle-cta:hover {
+  background-color: #832721;
+  color: #FAF5EE;
+  border-color: #832721;
+  box-shadow: 0 2px 6px rgba(131, 39, 33, 0.15);
 }
 
 .pill-btn-dark {

@@ -62,33 +62,27 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       
-      {/* TOP ANNOUNCEMENT & HERITAGE STRIP */}
-      <div className="bg-gradient-to-r from-[#1E295B] via-[#831843] via-[#064E3B] to-[#78350F] text-[#FAF3DC] text-[11px] py-1.5 px-4 font-royal-title border-b border-[#D4AF37]/40 shadow-inner">
+      {/* TOP ATELIER HALLMARK STRIP */}
+      <div className="bg-[#1C1613] text-[#E8D8C3] text-[10.5px] py-1.5 px-4 font-royal-title border-b border-[#D4AF37]/20 shadow-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2 sm:gap-3 overflow-hidden text-ellipsis whitespace-nowrap">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#EC4899] animate-pulse"></span>
-              <strong className="text-[#FBCFE8]">Jaipur Artisan Atelier</strong>
-            </span>
-            <span className="text-[#D4AF37]/60">•</span>
-            <span className="text-stone-300 hidden sm:inline text-[10.5px]">
-              100% Hand-Block Quilted Cotton
-            </span>
-            <span className="text-[#D4AF37]/60 hidden md:inline">•</span>
-            <span className="text-emerald-300 font-semibold hidden md:inline text-[10.5px]">
-              Worldwide Express Air Cargo
-            </span>
+          <div className="flex items-center gap-2 sm:gap-3 overflow-hidden text-ellipsis whitespace-nowrap text-[10.5px] tracking-[0.14em] uppercase">
+            <span className="text-[#F5E6B5] font-semibold">Jaipur Artisan Atelier</span>
+            <span className="text-[#D4AF37]/40">•</span>
+            <span className="text-stone-300 hidden sm:inline">100% Combed Cotton</span>
+            <span className="text-[#D4AF37]/40 hidden md:inline">•</span>
+            <span className="text-stone-300 hidden md:inline">Worldwide Express Cargo</span>
+            <span className="text-[#D4AF37]/40 hidden lg:inline">•</span>
+            <span className="text-[#E5A93C] hidden lg:inline">Low MOQ: 25 Pcs</span>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0 text-[10.5px] uppercase tracking-wider">
-            <span className="text-[#FDE68A] hidden sm:inline font-medium">Low MOQ: 25 Pcs</span>
+          <div className="flex items-center gap-3 shrink-0 text-[10.5px] tracking-wider">
             <a 
               href="https://www.instagram.com/ramamtextiles" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#FBCFE8] hover:text-white transition-colors flex items-center gap-1 font-bold"
+              className="text-[#E8D8C3] hover:text-[#F5E6B5] transition-colors flex items-center gap-1.5 font-medium"
             >
-              <InstagramIcon className="w-3.5 h-3.5 text-[#F472B6]" />
+              <InstagramIcon className="w-3.5 h-3.5 opacity-80" />
               <span>@ramamtextiles</span>
             </a>
           </div>
@@ -96,10 +90,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
       </div>
 
       {/* MAIN LUXURY HEADER BAR */}
-      <div className={`w-full transition-all duration-300 bg-[#F5EEE6]/98 backdrop-blur-md ${
+      <div className={`w-full transition-all duration-300 bg-[#FAF5EE]/95 backdrop-blur-md ${
         isScrolled 
-          ? 'shadow-md border-b border-[#D4AF37]/40 py-2.5' 
-          : 'border-b border-[#D4AF37]/35 py-3'
+          ? 'shadow-sm border-b border-[#D4AF37]/35 py-2' 
+          : 'border-b border-[#D4AF37]/25 py-2.5 sm:py-3'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 lg:gap-6">
           
@@ -117,7 +111,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               onClick={() => handleNav('/')}
               className="flex items-center gap-3 cursor-pointer group shrink-0"
             >
-              <div className="relative shrink-0 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-gradient-to-br from-[#FAF5EE] via-[#F6EDE2] to-[#ECE1D2] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1 group-hover:border-[#9B332C] group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+              <div className="relative shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#FAF5EE] via-[#F6EDE2] to-[#ECE1D2] border border-[#D4AF37]/50 shadow-sm flex items-center justify-center p-1 group-hover:border-[#9B332C] transition-all duration-300 group-hover:scale-105">
                 <img 
                   src="./logo.png" 
                   alt="Ramam Textiles Jaipur" 
@@ -126,14 +120,14 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               </div>
               <div className="text-left whitespace-nowrap flex flex-col justify-center">
                 <div className="flex items-baseline gap-1.5 leading-none">
-                  <span className="font-playfair text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight text-[#241A16]">
+                  <span className="font-playfair text-xl sm:text-2xl lg:text-[25px] font-bold tracking-tight text-[#241A16]">
                     Ramam
                   </span>
-                  <span className="font-editorial italic text-xl sm:text-2xl lg:text-[26px] font-semibold text-[#9B332C]">
+                  <span className="font-editorial italic text-xl sm:text-2xl lg:text-[25px] font-semibold text-[#9B332C]">
                     Textiles
                   </span>
                 </div>
-                <span className="text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.24em] text-[#7E2822] font-royal-title font-bold mt-1.5 leading-none">
+                <span className="text-[8.5px] sm:text-[9px] uppercase tracking-[0.24em] text-[#7E2822] font-royal-title font-semibold mt-1 leading-none">
                   JAIPUR ARTISAN ATELIER
                 </span>
               </div>
@@ -141,7 +135,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           </div>
 
           {/* Center: Refined Luxury Atelier Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 font-royal-body">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 font-royal-body">
             
             {/* Collection Dropdown */}
             <div 
@@ -156,7 +150,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 }`}
               >
                 <span>COLLECTION</span>
-                <ChevronDown className="w-3.5 h-3.5 opacity-60" />
+                <ChevronDown className="w-3 h-3 opacity-50" />
               </button>
 
               {activeMegaMenu === 'shop' && (
@@ -230,7 +224,6 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               onClick={() => handleNav('/collections')}
               className={`nav-luxury-link ${currentPath === '/collections' ? 'active' : ''}`}
             >
-              <Sparkles className="w-3 h-3 text-[#DB2777]" />
               <span>CURATED SETS</span>
             </button>
 
@@ -258,29 +251,28 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               <span>ABOUT</span>
             </button>
 
-            {/* Bulk Orders Featured Action Pill */}
+            {/* Bulk Orders Subtle CTA */}
             <button 
               onClick={() => handleNav('/custom-manufacturing')}
-              className="ml-1.5 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#831843] via-[#9B332C] to-[#7E2822] text-[#FAF3DC] text-[11px] font-bold uppercase tracking-wider font-royal-title border border-[#D4AF37]/50 shadow-md hover:shadow-lg hover:scale-105 transition-all cursor-pointer whitespace-nowrap"
+              className="nav-subtle-cta ml-1"
             >
-              <Sparkles className="w-3 h-3 text-[#FDE68A]" />
               <span>BULK ORDERS</span>
             </button>
           </nav>
 
-          {/* Right Action Suite (Zero Wrapping, Elegant Spacing) */}
-          <div className="flex items-center gap-2 shrink-0 whitespace-nowrap">
+          {/* Right Action Suite (Minimalist, Subtle, Zero Clutter) */}
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0 whitespace-nowrap">
             
             {/* Currency Selector */}
             <div className="relative hidden sm:block shrink-0">
               <button 
                 onClick={() => setIsCurrencyDropdownOpen(!isCurrencyDropdownOpen)}
-                className="flex items-center gap-1.5 text-[#241A16] hover:text-[#9B332C] transition-colors cursor-pointer py-1.5 px-2.5 rounded-full bg-[#FAF5EE] border border-[#D4AF37]/45 text-xs font-semibold shadow-sm whitespace-nowrap"
+                className="flex items-center gap-1 text-[#241A16] hover:text-[#9B332C] transition-colors cursor-pointer py-1.5 px-2 text-xs font-semibold rounded-lg hover:bg-[#FAF0EB] whitespace-nowrap"
                 title="Select Currency"
               >
                 <span>{currency.code}</span>
                 <span className="text-[#9B332C] font-bold">{currency.symbol}</span>
-                <ChevronDown className="w-3 h-3 opacity-60 ml-0.5" />
+                <ChevronDown className="w-3 h-3 opacity-40 ml-0.5" />
               </button>
 
               {isCurrencyDropdownOpen && (
@@ -307,50 +299,39 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               )}
             </div>
 
-            {/* Direct Instagram Connect */}
-            <a 
-              href="https://www.instagram.com/ramamtextiles"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden xl:flex items-center gap-1.5 text-[#241A16] hover:text-[#9B332C] transition-colors text-xs font-royal-body py-1.5 px-3 rounded-full bg-[#FAF5EE] border border-[#D4AF37]/45 hover:border-[#9B332C] shadow-sm whitespace-nowrap"
-              title="Follow @ramamtextiles on Instagram"
-            >
-              <InstagramIcon className="w-3.5 h-3.5 text-[#E1306C]" />
-              <span className="font-semibold text-xs">@ramamtextiles</span>
-            </a>
-
             {/* Search Quick Icon Button */}
             <button
               onClick={openSearch}
-              className="w-9 h-9 rounded-full border border-[#D4AF37]/45 bg-[#FAF5EE] text-[#241A16] hover:text-[#9B332C] hover:border-[#9B332C] transition-colors shadow-sm flex items-center justify-center shrink-0"
+              className="w-8 h-8 rounded-full text-[#241A16] hover:text-[#9B332C] hover:bg-[#FAF0EB] transition-colors flex items-center justify-center shrink-0 cursor-pointer"
               title="Search Catalog"
             >
               <Search className="w-4 h-4" />
             </button>
 
-            {/* BAG Pill Button */}
+            {/* BAG Icon with delicate ruby count badge */}
             <button 
               onClick={openInquiryDrawer}
-              className="flex items-center gap-1.5 py-1.5 px-3 rounded-full border border-[#D4AF37]/55 bg-[#FAF5EE] hover:bg-[#FAF0EB] text-[#241A16] hover:text-[#9B332C] hover:border-[#9B332C] transition-all shadow-sm text-xs font-bold font-royal-title whitespace-nowrap shrink-0"
+              className="relative w-8 h-8 rounded-full text-[#241A16] hover:text-[#9B332C] hover:bg-[#FAF0EB] transition-colors flex items-center justify-center shrink-0 cursor-pointer"
               title="Open Bag / Inquiry Basket"
             >
-              <ShoppingBag className="w-4 h-4 text-[#9B332C]" />
-              <span className="hidden sm:inline">BAG</span>
-              <span className="w-5 h-5 rounded-full bg-[#9B332C] text-white text-[10px] font-bold flex items-center justify-center shadow-sm">
-                {inquiryItems.length}
-              </span>
+              <ShoppingBag className="w-4 h-4" />
+              {inquiryItems.length > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#9B332C] text-white text-[9px] font-bold flex items-center justify-center shadow-sm">
+                  {inquiryItems.length}
+                </span>
+              )}
             </button>
 
-            {/* Solid Dark CHAT Pill Button */}
+            {/* Subtle Inquire Button */}
             <a 
               href="https://wa.me/911412890000?text=Hi%20Ramam%20Textiles,%20I%20am%20interested%20in%20Jaipur%20hand%20block%20quilted%20bags%20and%20wholesale%20catalog."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-gradient-to-r from-[#241A16] to-[#382A22] text-[#FAF5EE] hover:text-white border border-[#D4AF37]/40 shadow-sm text-xs font-bold font-royal-title whitespace-nowrap shrink-0 hover:shadow-md transition-all"
+              className="hidden sm:inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full border border-[#241A16]/20 hover:border-[#9B332C] text-[#241A16] hover:text-[#9B332C] hover:bg-[#FAF0EB] text-[11px] font-royal-title font-semibold tracking-wider transition-all whitespace-nowrap shrink-0"
               title="Chat with Jaipur Export Desk"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>CHAT</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+              <span>INQUIRE</span>
             </a>
           </div>
         </div>
