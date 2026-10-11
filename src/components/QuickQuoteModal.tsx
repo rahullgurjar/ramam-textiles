@@ -30,12 +30,12 @@ export const QuickQuoteModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-center justify-center animate-fade-in font-royal-body">
-      <div className="w-full max-w-xl bg-white rounded-[28px] shadow-2xl border border-stone-200 overflow-hidden">
+      <div className="w-full max-w-xl bg-[#FAF5EE] rounded-[28px] shadow-2xl border border-[#D4AF37]/45 overflow-hidden">
         
         {/* Header */}
         <div className="p-5 bg-[#241A16] text-[#FAF5EE] border-b border-[#D4AF37]/30 flex items-center justify-between shadow-md">
           <div className="flex items-center gap-2.5">
-            <FileText className="w-5 h-5 text-[#E5A93C]" />
+            <FileText className="w-5 h-5 text-[#D4AF37]" />
             <div>
               <h3 className="font-royal-title text-sm font-bold text-white uppercase tracking-wider">
                 Wholesale Quote &amp; Sample Request
@@ -91,17 +91,17 @@ export const QuickQuoteModal: React.FC = () => {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Product Spotlight Header */}
-              <div className="p-3.5 bg-[#FAF7F2] rounded-2xl border border-stone-200 flex gap-3 shadow-sm">
+              <div className="p-3.5 bg-[#F5EDE1] rounded-2xl border border-[#D4AF37]/35 flex gap-3 shadow-sm">
                 <img 
                   src={activeQuoteProduct.images[0]} 
                   alt={activeQuoteProduct.name} 
-                  className="w-14 h-16 object-cover rounded-xl border border-stone-200 shadow-sm"
+                  className="w-14 h-16 object-cover rounded-xl border border-[#D4AF37]/30 shadow-sm"
                 />
                 <div className="flex-1 text-xs">
-                  <span className="text-[10px] text-[#C8376B] font-bold uppercase font-royal-title">SKU: {activeQuoteProduct.sku}</span>
-                  <h4 className="font-playfair font-bold text-[#1F1612] line-clamp-1">{activeQuoteProduct.name}</h4>
+                  <span className="text-[10px] text-[#9B332C] font-bold uppercase font-royal-title">SKU: {activeQuoteProduct.sku}</span>
+                  <h4 className="font-playfair font-bold text-[#241A16] line-clamp-1">{activeQuoteProduct.name}</h4>
                   <p className="text-[11px] text-stone-600 font-light">{activeQuoteProduct.fabric}</p>
-                  <div className="mt-1 flex items-center gap-2 text-[10px] text-stone-500 font-bold">
+                  <div className="mt-1 flex items-center gap-2 text-[10px] text-stone-600 font-bold">
                     <span>MOQ: {activeQuoteProduct.moq} Pcs</span>
                     <span>•</span>
                     <span>Lead Time: {activeQuoteProduct.leadTime}</span>
@@ -111,7 +111,7 @@ export const QuickQuoteModal: React.FC = () => {
 
               {/* Inquiry Type Tabs */}
               <div>
-                <label className="block text-[10px] font-bold text-[#1F1612] uppercase tracking-wider mb-1.5 font-royal-title">
+                <label className="block text-[10px] font-bold text-[#241A16] uppercase tracking-wider mb-1.5 font-royal-title">
                   Inquiry Purpose
                 </label>
                 <div className="grid grid-cols-3 gap-2 text-xs">
@@ -120,8 +120,8 @@ export const QuickQuoteModal: React.FC = () => {
                     onClick={() => setInquiryType('bulk')}
                     className={`py-2 px-3 rounded-full text-center font-bold font-royal-title transition-all border ${
                       inquiryType === 'bulk' 
-                        ? 'bg-[#C8376B] text-white border-[#C8376B] shadow-sm' 
-                        : 'bg-white text-[#1F1612] border-stone-200 hover:border-[#C8376B]'
+                        ? 'bg-[#9B332C] text-white border-[#9B332C] shadow-sm' 
+                        : 'bg-[#F5EDE1] text-[#241A16] border-[#D4AF37]/35 hover:border-[#9B332C]'
                     }`}
                   >
                     Bulk Order
@@ -131,8 +131,8 @@ export const QuickQuoteModal: React.FC = () => {
                     onClick={() => setInquiryType('sample')}
                     className={`py-2 px-3 rounded-full text-center font-bold font-royal-title transition-all border ${
                       inquiryType === 'sample' 
-                        ? 'bg-[#C8376B] text-white border-[#C8376B] shadow-sm' 
-                        : 'bg-white text-[#1F1612] border-stone-200 hover:border-[#C8376B]'
+                        ? 'bg-[#9B332C] text-white border-[#9B332C] shadow-sm' 
+                        : 'bg-[#F5EDE1] text-[#241A16] border-[#D4AF37]/35 hover:border-[#9B332C]'
                     }`}
                   >
                     Proto-Sample
@@ -142,8 +142,8 @@ export const QuickQuoteModal: React.FC = () => {
                     onClick={() => setInquiryType('swatch')}
                     className={`py-2 px-3 rounded-full text-center font-bold font-royal-title transition-all border ${
                       inquiryType === 'swatch' 
-                        ? 'bg-[#C8376B] text-white border-[#C8376B] shadow-sm' 
-                        : 'bg-white text-[#1F1612] border-stone-200 hover:border-[#C8376B]'
+                        ? 'bg-[#9B332C] text-white border-[#9B332C] shadow-sm' 
+                        : 'bg-[#F5EDE1] text-[#241A16] border-[#D4AF37]/35 hover:border-[#9B332C]'
                     }`}
                   >
                     Swatch Folder
@@ -154,67 +154,67 @@ export const QuickQuoteModal: React.FC = () => {
               {/* Form Inputs */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div>
-                  <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">Your Full Name *</label>
+                  <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">Your Full Name *</label>
                   <input 
                     type="text" 
                     value={name} 
                     onChange={e => setName(e.target.value)} 
                     placeholder="Full name" 
-                    className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]" 
+                    className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]" 
                     required 
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">Company / Label Name</label>
+                  <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">Company / Label Name</label>
                   <input 
                     type="text" 
                     value={company} 
                     onChange={e => setCompanyName(e.target.value)} 
                     placeholder="Boutique / Company" 
-                    className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]" 
+                    className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]" 
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">Official Business Email Address *</label>
+                  <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">Official Business Email Address *</label>
                   <input 
                     type="email" 
                     value={email} 
                     onChange={e => setEmail(e.target.value)} 
                     placeholder="name@domain.com" 
-                    className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]" 
+                    className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]" 
                     required 
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">Estimated Quantity (Units)</label>
+                  <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">Estimated Quantity (Units)</label>
                   <input 
                     type="number" 
                     min={inquiryType === 'sample' ? 1 : activeQuoteProduct.moq} 
                     value={quantity} 
                     onChange={e => setQuantity(Number(e.target.value))} 
-                    className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]" 
+                    className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]" 
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">Destination Country</label>
+                  <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">Destination Country</label>
                   <input 
                     type="text" 
                     value={country} 
                     onChange={e => setCountry(e.target.value)} 
                     placeholder="e.g. India, USA, UK" 
-                    className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]" 
+                    className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]" 
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">Specific Requirements</label>
+                <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">Specific Requirements</label>
                 <textarea 
                   rows={2} 
                   value={notes} 
                   onChange={e => setNotes(e.target.value)} 
                   placeholder="Mention custom colors, private label requirements, target FOB pricing..."
-                  className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]"
+                  className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                 ></textarea>
               </div>
 
@@ -230,7 +230,6 @@ export const QuickQuoteModal: React.FC = () => {
             </form>
           )}
         </div>
-
       </div>
     </div>
   );

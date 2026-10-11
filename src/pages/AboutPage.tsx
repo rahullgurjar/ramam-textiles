@@ -35,7 +35,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
       {/* Brand Values */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="bg-white p-8 rounded-[28px] border border-stone-200 hover:border-[#9B332C] shadow-sm space-y-3 relative overflow-hidden transition-all">
+        <div className="bg-[#FAF5EE] p-8 rounded-[28px] border border-[#D4AF37]/35 hover:border-[#9B332C] shadow-sm space-y-3 relative overflow-hidden transition-all">
           <div className="w-14 h-14 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-4 border border-[#EACAC0] shadow-sm">
             <Award className="w-7 h-7 text-[#9B332C]" />
           </div>
@@ -45,7 +45,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </p>
         </div>
 
-        <div className="bg-white p-8 rounded-[28px] border border-stone-200 hover:border-[#9B332C] shadow-sm space-y-3 relative overflow-hidden transition-all">
+        <div className="bg-[#FAF5EE] p-8 rounded-[28px] border border-[#D4AF37]/35 hover:border-[#9B332C] shadow-sm space-y-3 relative overflow-hidden transition-all">
           <div className="w-14 h-14 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-4 border border-[#EACAC0] shadow-sm">
             <ShieldCheck className="w-7 h-7 text-[#9B332C]" />
           </div>
@@ -55,7 +55,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           </p>
         </div>
 
-        <div className="bg-white p-8 rounded-[28px] border border-stone-200 hover:border-[#9B332C] shadow-sm space-y-3 relative overflow-hidden transition-all">
+        <div className="bg-[#FAF5EE] p-8 rounded-[28px] border border-[#D4AF37]/35 hover:border-[#9B332C] shadow-sm space-y-3 relative overflow-hidden transition-all">
           <div className="w-14 h-14 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-4 border border-[#EACAC0] shadow-sm">
             <Heart className="w-7 h-7 text-[#9B332C]" />
           </div>
@@ -94,7 +94,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Jaipur Presence */}
-      <div className="bg-white p-8 sm:p-12 rounded-[32px] border border-stone-200 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm">
+      <div className="bg-[#FAF5EE] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/35 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm">
         <div className="space-y-3 max-w-xl">
           <div className="flex items-center gap-2 text-xs font-royal-title font-bold uppercase tracking-widest text-[#9B332C]">
             <MapPin className="w-4 h-4 text-[#9B332C]" />

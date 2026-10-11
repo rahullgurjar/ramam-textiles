@@ -68,7 +68,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
               href="https://www.instagram.com/ramamtextiles"
               target="_blank"
               rel="noopener noreferrer"
-              className="pill-btn-outline inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase rounded-full bg-white text-[#241A16]"
+              className="pill-btn-outline inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase rounded-full bg-[#FAF5EE] text-[#241A16] border border-[#D4AF37]/45"
             >
               <InstagramIcon className="w-4 h-4 text-[#9B332C]" />
               <span>DM on Instagram @ramamtextiles</span>
@@ -79,41 +79,41 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
 
       {/* 4 Pillars of B2B Wholesale */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-[28px] border border-stone-200 space-y-2 shadow-sm hover:border-[#C8376B] hover:shadow-xl transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-[#FDF0F3] text-[#C8376B] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#F3CAD6]">
+        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border border-[#D4AF37]/35 space-y-2 shadow-sm hover:border-[#9B332C] hover:shadow-xl transition-all">
+          <div className="w-12 h-12 rounded-2xl bg-[#FAF0EB] text-[#9B332C] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#EACAC0]">
             25
           </div>
-          <h3 className="font-royal-title font-bold text-[#1F1612] text-base">Low Minimum Order Qty</h3>
+          <h3 className="font-royal-title font-bold text-[#241A16] text-base">Low Minimum Order Qty</h3>
           <p className="text-xs text-stone-600 leading-relaxed">
             Start with only 25 pieces per style with mixed pattern &amp; color breakdown to test market traction before scaling.
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-[28px] border border-stone-200 space-y-2 shadow-sm hover:border-[#C8376B] hover:shadow-xl transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-[#FDF0F3] text-[#C8376B] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#F3CAD6]">
+        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border border-[#D4AF37]/35 space-y-2 shadow-sm hover:border-[#9B332C] hover:shadow-xl transition-all">
+          <div className="w-12 h-12 rounded-2xl bg-[#FAF0EB] text-[#9B332C] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#EACAC0]">
             %
           </div>
-          <h3 className="font-royal-title font-bold text-[#1F1612] text-base">Tiered Volume Discounts</h3>
+          <h3 className="font-royal-title font-bold text-[#241A16] text-base">Tiered Volume Discounts</h3>
           <p className="text-xs text-stone-600 leading-relaxed">
             Enjoy 40% to 65% off retail reference prices with additional volume rebates for recurring commercial contracts.
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-[28px] border border-stone-200 space-y-2 shadow-sm hover:border-[#C8376B] hover:shadow-xl transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-[#FDF0F3] text-[#C8376B] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#F3CAD6]">
-            <Truck className="w-5 h-5 text-[#C8376B]" />
+        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border border-[#D4AF37]/35 space-y-2 shadow-sm hover:border-[#9B332C] hover:shadow-xl transition-all">
+          <div className="w-12 h-12 rounded-2xl bg-[#FAF0EB] text-[#9B332C] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#EACAC0]">
+            <Truck className="w-5 h-5 text-[#9B332C]" />
           </div>
-          <h3 className="font-royal-title font-bold text-[#1F1612] text-base">Global Air &amp; Sea Cargo</h3>
+          <h3 className="font-royal-title font-bold text-[#241A16] text-base">Global Air &amp; Sea Cargo</h3>
           <p className="text-xs text-stone-600 leading-relaxed">
             Doorstep delivery via DHL / FedEx Express (4-7 business days) or sea freight container (FOB Mundra / Nhava Sheva).
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-[28px] border border-stone-200 space-y-2 shadow-sm hover:border-[#C8376B] hover:shadow-xl transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-[#FDF0F3] text-[#C8376B] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#F3CAD6]">
-            <FileCheck className="w-5 h-5 text-[#C8376B]" />
+        <div className="bg-[#FAF5EE] p-6 rounded-[28px] border border-[#D4AF37]/35 space-y-2 shadow-sm hover:border-[#9B332C] hover:shadow-xl transition-all">
+          <div className="w-12 h-12 rounded-2xl bg-[#FAF0EB] text-[#9B332C] flex items-center justify-center font-playfair font-bold text-lg mb-4 border border-[#EACAC0]">
+            <FileCheck className="w-5 h-5 text-[#9B332C]" />
           </div>
-          <h3 className="font-royal-title font-bold text-[#1F1612] text-base">Full Export Documentation</h3>
+          <h3 className="font-royal-title font-bold text-[#241A16] text-base">Full Export Documentation</h3>
           <p className="text-xs text-stone-600 leading-relaxed">
             Certificate of Origin, Commercial Invoices, Packing Lists, GSP / Form A, and Phytosanitary certification provided.
           </p>
@@ -121,34 +121,34 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Order Swatch Booklets Form Section */}
-      <div id="swatch-kit" className="scroll-mt-24 bg-[#FAF7F2] p-8 sm:p-12 rounded-[32px] border border-stone-200 shadow-lg">
+      <div id="swatch-kit" className="scroll-mt-24 bg-[#FAF5EE] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/35 shadow-lg">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-5 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDF0F3] border border-[#F3CAD6] text-[#C8376B] text-xs font-bold font-royal-title uppercase tracking-wider">Physical Touch &amp; Feel</div>
-            <h2 className="font-playfair text-3xl font-bold text-[#1F1612]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-wider">Physical Touch &amp; Feel</div>
+            <h2 className="font-playfair text-3xl font-bold text-[#241A16]">
               Request A Ramam Textile Swatch Booklet
             </h2>
             <p className="text-stone-600 font-royal-body text-base leading-relaxed">
               We courier a curated swatch folder containing 25+ real hand block-printed pure cotton swatches (Cambric 60s, Mulmul Muslin, Indigo Dabu, Chanderi Silk) directly to your studio or office.
             </p>
 
-            <div className="space-y-2.5 text-xs text-[#1F1612] font-semibold pt-2">
+            <div className="space-y-2.5 text-xs text-[#241A16] font-semibold pt-2">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-700" />
                 <span>Includes colorfastness wash test swatches</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-700" />
                 <span>Includes 2026 FOB price index booklet</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-700" />
                 <span>Couriered worldwide via DHL Express</span>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-[28px] shadow-xl border border-stone-200">
+          <div className="lg:col-span-7 bg-[#F5EDE1] p-6 sm:p-8 rounded-[28px] shadow-xl border border-[#D4AF37]/35">
             {swatchKitRequested ? (
               <div className="text-center py-8 space-y-4">
                 <div className="w-16 h-16 bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] rounded-full flex items-center justify-center mx-auto shadow-lg">
@@ -172,13 +172,13 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
               </div>
             ) : (
               <form onSubmit={handleSwatchSubmit} className="space-y-4 font-royal-body">
-                <h3 className="font-playfair text-lg font-bold text-[#241A16] pb-2 border-b border-stone-200">
+                <h3 className="font-playfair text-lg font-bold text-[#241A16] pb-2 border-b border-[#D4AF37]/25">
                   Buyer Swatch Kit Courier Request
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1612] mb-1 font-royal-title">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
                       Full Name *
                     </label>
                     <input
@@ -187,12 +187,12 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
                       placeholder="e.g. Maya Lin"
                       value={name}
                       onChange={e => setName(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-white border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-[#C8376B] text-[#1F1612]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs focus:outline-none focus:border-[#9B332C] text-[#241A16]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1612] mb-1 font-royal-title">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
                       Boutique / Brand Name *
                     </label>
                     <input
@@ -201,12 +201,12 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
                       placeholder="e.g. Bloom &amp; Loom Sydney"
                       value={company}
                       onChange={e => setCompany(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-white border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-[#C8376B] text-[#1F1612]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs focus:outline-none focus:border-[#9B332C] text-[#241A16]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1612] mb-1 font-royal-title">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
                       Business Email *
                     </label>
                     <input
@@ -215,18 +215,18 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
                       placeholder="maya@bloomandloom.com"
                       value={email}
                       onChange={e => setEmail(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-white border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-[#C8376B] text-[#1F1612]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs focus:outline-none focus:border-[#9B332C] text-[#241A16]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1612] mb-1 font-royal-title">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
                       Target Order Volume
                     </label>
                     <select
                       value={targetVolume}
                       onChange={e => setTargetVolume(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-white border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-[#C8376B] text-[#1F1612]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs focus:outline-none focus:border-[#9B332C] text-[#241A16]"
                     >
                       <option value="25 - 200 pcs">25 - 200 pcs (Boutique Starter)</option>
                       <option value="200 - 1000 pcs">200 - 1,000 pcs (Multi-store)</option>
@@ -236,7 +236,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1612] mb-1 font-royal-title">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
                       Studio Shipping Address &amp; Destination Country *
                     </label>
                     <input
@@ -245,7 +245,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
                       placeholder="Complete physical courier delivery address with City and Postal Code"
                       value={country}
                       onChange={e => setCountry(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-white border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-[#C8376B] text-[#1F1612]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs focus:outline-none focus:border-[#9B332C] text-[#241A16]"
                     />
                   </div>
                 </div>

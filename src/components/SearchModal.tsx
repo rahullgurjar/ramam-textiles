@@ -48,10 +48,10 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 sm:p-6 md:p-12 animate-fade-in flex items-start justify-center font-royal-body">
-      <div className="w-full max-w-3xl bg-white rounded-3xl shadow-2xl border border-stone-200 overflow-hidden flex flex-col max-h-[85vh]">
+      <div className="w-full max-w-3xl bg-[#FAF5EE] rounded-3xl shadow-2xl border border-[#D4AF37]/45 overflow-hidden flex flex-col max-h-[85vh]">
         
         {/* Search Input Bar */}
-        <div className="p-4 sm:p-5 bg-white border-b border-stone-200 flex items-center gap-3">
+        <div className="p-4 sm:p-5 bg-[#FAF5EE] border-b border-[#D4AF37]/30 flex items-center gap-3">
           <Search className="w-5 h-5 text-[#9B332C] shrink-0" />
           <input 
             ref={inputRef}
@@ -59,26 +59,26 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search Jaipur hand block prints, quilted duffles, vanity cases, SKUs..."
-            className="w-full bg-transparent border-none outline-none text-sm sm:text-base font-medium text-[#241A16] placeholder:text-stone-400"
+            className="w-full bg-transparent border-none outline-none text-sm sm:text-base font-medium text-[#241A16] placeholder:text-stone-500"
           />
           {searchQuery && (
             <button 
               onClick={() => setSearchQuery('')}
-              className="text-stone-400 hover:text-[#241A16] p-1"
+              className="text-stone-500 hover:text-[#241A16] p-1"
             >
               <X className="w-4 h-4" />
             </button>
           )}
           <button 
             onClick={closeSearch}
-            className="p-1.5 rounded-full hover:bg-slate-100 text-stone-500 hover:text-[#241A16] transition-colors"
+            className="p-1.5 rounded-full hover:bg-[#FAF0EB] text-stone-600 hover:text-[#241A16] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Filter Pills */}
-        <div className="px-4 py-2.5 bg-[#FAF7F2] border-b border-stone-200 flex items-center gap-2 overflow-x-auto text-xs">
+        <div className="px-4 py-2.5 bg-[#F5EDE1] border-b border-[#D4AF37]/30 flex items-center gap-2 overflow-x-auto text-xs">
           <span className="text-[10px] uppercase font-bold text-[#241A16] tracking-wider shrink-0 font-royal-title">
             Category:
           </span>
@@ -120,7 +120,7 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
                   <button
                     key={term}
                     onClick={() => setSearchQuery(term)}
-                    className="px-3.5 py-1.5 rounded-full bg-white border border-stone-200 hover:border-[#9B332C] hover:bg-[#FAF0EB] text-xs text-[#241A16] font-medium flex items-center gap-1.5 transition-all shadow-sm"
+                    className="px-3.5 py-1.5 rounded-full bg-[#FAF5EE] border border-[#D4AF37]/40 hover:border-[#9B332C] hover:bg-[#FAF0EB] text-xs text-[#241A16] font-medium flex items-center gap-1.5 transition-all shadow-sm"
                   >
                     <Tag className="w-3 h-3 text-[#9B332C]" />
                     <span>{term}</span>
@@ -146,12 +146,12 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
                   <div
                     key={product.id}
                     onClick={() => handleProductSelect(product)}
-                    className="p-3 bg-white rounded-2xl border border-stone-200 hover:border-[#9B332C] flex gap-3 cursor-pointer group shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+                    className="p-3 bg-[#FAF5EE] rounded-2xl border border-[#D4AF37]/40 hover:border-[#9B332C] flex gap-3 cursor-pointer group shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
                   >
                     <img 
                       src={product.images[0]} 
                       alt={product.name} 
-                      className="w-16 h-20 rounded-xl object-cover border border-stone-200 shrink-0 shadow-sm"
+                      className="w-16 h-20 rounded-xl object-cover border border-[#D4AF37]/30 shrink-0 shadow-sm"
                     />
                     <div className="flex-1 flex flex-col justify-between">
                       <div>
@@ -162,13 +162,13 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
                         <h5 className="font-playfair text-xs font-bold text-[#241A16] group-hover:text-[#9B332C] transition-colors line-clamp-1 mt-0.5">
                           {product.name}
                         </h5>
-                        <p className="text-[10px] text-stone-500 line-clamp-1 mt-0.5 font-light">
+                        <p className="text-[10px] text-stone-600 line-clamp-1 mt-0.5 font-light">
                           {product.fabric}
                         </p>
                       </div>
 
-                      <div className="flex items-center justify-between text-[10px] font-bold text-[#241A16] pt-1 border-t border-stone-200 font-royal-title">
-                        <span className="text-stone-400 font-mono">SKU: {product.sku}</span>
+                      <div className="flex items-center justify-between text-[10px] font-bold text-[#241A16] pt-1 border-t border-[#D4AF37]/30 font-royal-title">
+                        <span className="text-stone-500 font-mono">SKU: {product.sku}</span>
                         <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform text-[#9B332C]">
                           <span>View Specs</span>
                           <ArrowRight className="w-3 h-3" />

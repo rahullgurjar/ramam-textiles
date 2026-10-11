@@ -54,7 +54,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="space-y-16 md:space-y-24 bg-[#FAF8F5] text-[#241A16]">
+    <div className="space-y-16 md:space-y-24 bg-[#F5EEE6] text-[#241A16]">
       
       {/* =========================================================================
           1. HERO SECTION - SIGNATURE CRAFT OF PINK CITY SPLIT HERO
@@ -78,7 +78,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </h1>
 
               {/* Subtext */}
-              <p className="text-stone-600 font-royal-body text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
+              <p className="text-stone-700 font-royal-body text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
                 Discover thoughtfully crafted fabrics, quilted travel duffles, and handmade vanity pouches inspired by traditional block-printing techniques and the rich textile heritage of Jaipur.
               </p>
 
@@ -102,24 +102,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
 
               {/* Micro-Badges: Pure Cotton & Global Export */}
-              <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-stone-600 font-medium font-royal-body">
+              <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-stone-700 font-medium font-royal-body">
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700" />
                   <span>Low MOQ: 25 Pcs</span>
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700" />
                   <span>100% Padded Combed Cotton</span>
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700" />
                   <span>Worldwide DHL Express</span>
                 </span>
               </div>
 
               {/* Live Order Social Proof Pill */}
               <div className="pt-4">
-                <div className="inline-flex items-center gap-3 p-3 sm:p-3.5 rounded-2xl bg-white/95 border border-[#EAE2D7] shadow-sm transition-all animate-fade-in max-w-md">
+                <div className="inline-flex items-center gap-3 p-3 sm:p-3.5 rounded-2xl bg-[#FAF5EE] border border-[#D4AF37]/45 shadow-md transition-all animate-fade-in max-w-md">
                   <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#FAF0EB] shrink-0 border border-[#EACAC0]">
                     <img 
                       src="./products/duffle-kantha-patchwork.jpg" 
@@ -133,10 +133,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                         ✨ CUSTOM BATCH PLACED
                       </span>
                       <span className="text-[10px] text-stone-400">•</span>
-                      <span className="text-[10px] text-stone-500">{activeOrder.time}</span>
+                      <span className="text-[10px] text-stone-600">{activeOrder.time}</span>
                     </div>
                     <p className="text-xs font-bold text-[#241A16] line-clamp-1">
-                      {activeOrder.name} ({activeOrder.city}) — <span className="font-normal text-stone-600">{activeOrder.item}</span>
+                      {activeOrder.name} ({activeOrder.city}) — <span className="font-normal text-stone-700">{activeOrder.item}</span>
                     </p>
                   </div>
                 </div>
@@ -149,7 +149,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <div className="relative bg-gradient-to-br from-[#FAF0EB] via-[#F7ECE5] to-[#F2DFD7] rounded-[36px] p-5 sm:p-7 border border-[#E8CECA] shadow-2xl overflow-hidden">
                 
                 {/* Floating Top-Left Artisan Patchwork Badge */}
-                <div className="absolute top-6 left-6 z-20 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full shadow-md border border-[#EAE2D7] flex items-center gap-2 text-xs font-bold text-[#241A16]">
+                <div className="absolute top-6 left-6 z-20 bg-[#FAF5EE]/95 backdrop-blur-md px-4 py-1.5 rounded-full shadow-md border border-[#D4AF37]/40 flex items-center gap-2 text-xs font-bold text-[#241A16]">
                   <span className="text-[#9B332C] text-sm">🪄</span>
                   <span className="font-royal-title tracking-wider text-[11px]">ARTISAN PATCHWORK</span>
                 </div>
@@ -177,7 +177,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </div>
 
                 {/* Hero Showcase Image */}
-                <div className="aspect-[4/4.5] rounded-[28px] overflow-hidden bg-white shadow-inner relative group">
+                <div className="aspect-[4/4.5] rounded-[28px] overflow-hidden bg-[#F0E6D8] shadow-inner relative group">
                   <img
                     src="./products/duffle-kantha-patchwork.jpg"
                     alt="Artisan Jaipur Hand Block Quilted Patchwork Duffle Bag"
@@ -222,7 +222,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           2. JAIPUR CRAFT CLUSTERS INTERACTIVE ATLAS (HIGH CONTRAST & RICH DETAILS)
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#FAF7F2] rounded-[32px] p-6 sm:p-10 border border-[#E0D6CB] shadow-md relative overflow-hidden">
+        <div className="bg-[#EFE4D6] rounded-[32px] p-6 sm:p-10 border border-[#D4AF37]/35 shadow-md relative overflow-hidden">
           
           <div className="max-w-3xl mb-8">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold tracking-wider uppercase font-royal-title mb-3 shadow-sm">
@@ -243,8 +243,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               onClick={() => setActiveCraftCluster('sanganer')}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'sanganer'
-                  ? 'bg-gradient-to-br from-[#FAF0EB] via-white to-[#F5ECE1] border-[#9B332C] shadow-lg ring-2 ring-[#9B332C]/20'
-                  : 'bg-white border-[#E0D6CB] hover:border-[#D48B7A] hover:bg-[#FAF6F0] shadow-sm'
+                  ? 'bg-gradient-to-br from-[#FAF0EB] via-[#FAF5EE] to-[#F5ECE1] border-[#9B332C] shadow-lg ring-2 ring-[#9B332C]/20'
+                  : 'bg-[#FAF5EE] border-[#DFCFC0] hover:border-[#9B332C] hover:bg-[#FAF0EB] shadow-sm'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
@@ -255,7 +255,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 Sanganer Atelier
               </h3>
               <p className="text-xs text-stone-700 font-royal-body mt-1 leading-relaxed font-medium">
-                Delicate botanical bootas and Mughal trellis patterns printed on pure white combed cotton.
+                Delicate botanical bootas and Mughal trellis patterns printed on pure combed cotton.
               </p>
             </button>
 
@@ -263,8 +263,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               onClick={() => setActiveCraftCluster('bagru')}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'bagru'
-                  ? 'bg-gradient-to-br from-[#FAF0EB] via-white to-[#F5ECE1] border-[#9B332C] shadow-lg ring-2 ring-[#9B332C]/20'
-                  : 'bg-white border-[#E0D6CB] hover:border-[#D48B7A] hover:bg-[#FAF6F0] shadow-sm'
+                  ? 'bg-gradient-to-br from-[#FAF0EB] via-[#FAF5EE] to-[#F5ECE1] border-[#9B332C] shadow-lg ring-2 ring-[#9B332C]/20'
+                  : 'bg-[#FAF5EE] border-[#DFCFC0] hover:border-[#9B332C] hover:bg-[#FAF0EB] shadow-sm'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
@@ -283,8 +283,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               onClick={() => setActiveCraftCluster('kantha')}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'kantha'
-                  ? 'bg-gradient-to-br from-[#FAF0EB] via-white to-[#F5ECE1] border-[#9B332C] shadow-lg ring-2 ring-[#9B332C]/20'
-                  : 'bg-white border-[#E0D6CB] hover:border-[#D48B7A] hover:bg-[#FAF6F0] shadow-sm'
+                  ? 'bg-gradient-to-br from-[#FAF0EB] via-[#FAF5EE] to-[#F5ECE1] border-[#9B332C] shadow-lg ring-2 ring-[#9B332C]/20'
+                  : 'bg-[#FAF5EE] border-[#DFCFC0] hover:border-[#9B332C] hover:bg-[#FAF0EB] shadow-sm'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
@@ -301,7 +301,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Interactive Cluster Spotlight Panel */}
-          <div className="bg-white rounded-2xl p-6 border border-[#E0D6CB] shadow-md mb-6 transition-all animate-fade-in">
+          <div className="bg-[#FAF5EE] rounded-2xl p-6 border border-[#D4AF37]/35 shadow-md mb-6 transition-all animate-fade-in">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
               
               {/* Left Details */}
@@ -323,7 +323,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </h3>
 
                 <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-royal-body font-medium">
-                  {activeCraftCluster === 'sanganer' && 'Originating over 500 years ago along the Saraswati river basin, Sanganeri printing is revered for delicate floral bootis, intricate Mughal trellises, and crisp, razor-sharp outlines hand-pressed onto bleached white combed cotton.'}
+                  {activeCraftCluster === 'sanganer' && 'Originating over 500 years ago along the Saraswati river basin, Sanganeri printing is revered for delicate floral bootis, intricate Mughal trellises, and crisp, razor-sharp outlines hand-pressed onto combed cotton.'}
                   {activeCraftCluster === 'bagru' && 'Bagru is world-renowned for its 300-year-old Dabu mud-resist method. Natural clay, tree gum, and saw dust are stamped before sun-drying on riverbeds and repeated dipping in deep natural indigo ferment wells.'}
                   {activeCraftCluster === 'kantha' && 'Rooted in Thar desert artisanal traditions, Kantha quilting sandwiches thick, shock-absorbing combed cotton wadding between hand-printed layers, finished with running kantha needlework and signature candy-striped handles.'}
                 </p>
@@ -331,12 +331,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 {/* Craft Badges */}
                 <div className="flex flex-wrap items-center gap-2 pt-1">
                   {(activeCraftCluster === 'sanganer' 
-                    ? ['Pure White Combed Cotton', 'Hand-Carved Teak Blocks', 'Natural Eco Pigments', 'UNESCO Recognized'] 
+                    ? ['Pure Combed Cotton', 'Hand-Carved Teak Blocks', 'Natural Eco Pigments', 'UNESCO Recognized'] 
                     : activeCraftCluster === 'bagru' 
                     ? ['100% Fermented Indigo', 'Dabu Mud-Resist Clay', 'Riverbed Sun-Cured', 'Chemical-Free'] 
                     : ['Padded Cotton Batting', 'Dense Kantha Channels', 'Candy-Stripe Handles', 'Travel Durability']
                   ).map(tag => (
-                    <span key={tag} className="px-2.5 py-1 rounded-full bg-[#FAF7F2] text-[#241A16] border border-[#E0D6CB] text-[11px] font-semibold font-royal-body">
+                    <span key={tag} className="px-2.5 py-1 rounded-full bg-[#F5EDE1] text-[#241A16] border border-[#D4AF37]/30 text-[11px] font-semibold font-royal-body">
                       ✓ {tag}
                     </span>
                   ))}
@@ -355,7 +355,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
 
               {/* Right Image Card */}
-              <div className="lg:col-span-5 aspect-[4/3] rounded-xl overflow-hidden bg-stone-100 border border-[#E0D6CB] shadow-inner relative group">
+              <div className="lg:col-span-5 aspect-[4/3] rounded-xl overflow-hidden bg-[#F0E6D8] border border-[#D4AF37]/35 shadow-inner relative group">
                 <img
                   src={
                     activeCraftCluster === 'sanganer'
@@ -380,7 +380,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-3 border-t border-[#E0D6CB] text-xs font-royal-title">
+          <div className="flex items-center justify-between pt-3 border-t border-[#D4AF37]/30 text-xs font-royal-title">
             <span className="text-[#1A120E] font-bold">👑 GI-Certified Jaipur Hand Block Craftsmanship</span>
             <button 
               onClick={() => { onNavigate('/craftsmanship'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
@@ -414,7 +414,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div
               key={cat.id}
               onClick={() => { onNavigate(`/category/${cat.id}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="group relative h-96 rounded-[28px] overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 bg-white border border-stone-200 hover:border-[#C8376B]"
+              className="group relative h-96 rounded-[28px] overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 bg-[#FAF5EE] border border-[#D4AF37]/40 hover:border-[#9B332C]"
             >
               <img
                 src={cat.image}
@@ -448,17 +448,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* =========================================================================
           4. SIGNATURE PRODUCTS WITH PILL FILTER TABS
           ========================================================================= */}
-      <section className="bg-[#FAF7F2] py-16 md:py-24 border-y border-stone-200 relative">
+      <section className="bg-[#EFE4D6] py-16 md:py-24 border-y border-[#D4AF37]/35 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
-              <div className="text-xs uppercase tracking-widest text-[#C8376B] font-bold mb-2 font-royal-title">
+              <div className="text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-2 font-royal-title">
                 👑 Ready-To-Order &amp; Custom Runs
               </div>
               <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
                 Signature Hand Block Quilted Creations
               </h2>
-              <p className="text-stone-600 font-royal-body text-base mt-1">
+              <p className="text-stone-700 font-royal-body text-base mt-1">
                 Authentic Jaipur handcrafted pieces with candy-stripe straps, pure cotton padding, and export-grade stitching.
               </p>
             </div>
@@ -469,7 +469,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 onClick={() => setActiveCategoryTab('all')}
                 className={`pill-nav-btn ${
                   activeCategoryTab === 'all'
-                    ? 'pill-nav-btn-active bg-[#C8376B] text-white border-[#C8376B]'
+                    ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]'
                     : ''
                 }`}
               >
@@ -481,7 +481,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   onClick={() => setActiveCategoryTab(cat.id)}
                   className={`pill-nav-btn ${
                     activeCategoryTab === cat.id
-                      ? 'pill-nav-btn-active bg-[#C8376B] text-white border-[#C8376B]'
+                      ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]'
                       : ''
                   }`}
                 >
@@ -522,7 +522,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           {/* Visual Showcase with Real Product */}
           <div className="lg:col-span-6 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
-              <div className="aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
+              <div className="aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border-4 border-[#FAF5EE] bg-[#F0E6D8]">
                 <img
                   src="./products/duffle-pink-botanical.jpg"
                   alt="Jaipur Hand Block Printed Quilted Weekender Bag"
@@ -546,8 +546,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
           {/* Narrative Content */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDF0F3] border border-[#F3CAD6] text-[#C8376B] text-xs font-bold tracking-wider uppercase font-royal-title">
-              <Sparkles className="w-3.5 h-3.5 text-[#C8376B]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold tracking-wider uppercase font-royal-title">
+              <Sparkles className="w-3.5 h-3.5 text-[#9B332C]" />
               <span>Living Heritage of Rajasthan</span>
             </div>
 
@@ -555,17 +555,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               Where Ancient Mud-Resist Meets Modern Luxury Travel.
             </h2>
 
-            <p className="text-stone-600 font-royal-body text-base sm:text-lg leading-relaxed">
+            <p className="text-stone-700 font-royal-body text-base sm:text-lg leading-relaxed">
               At <strong>Ramam Textiles</strong>, every bag is a tribute to the artisan quarters of Jaipur. In our Bagru and Sanganer workshops, master block-printers stamp intricate Mughal botanicals, delicate rose bootas, and vibrant wildlife art onto 100% pure combed cotton.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="p-4 bg-[#FAF7F2] rounded-2xl border border-stone-200 shadow-sm">
+              <div className="p-4 bg-[#FAF5EE] rounded-2xl border border-[#D4AF37]/35 shadow-sm">
                 <h4 className="font-royal-title font-bold text-[#1F1612] text-sm mb-1">Padded Channel Quilting</h4>
                 <p className="text-xs font-royal-body text-stone-600">Shock-absorbing soft cotton batting that provides structured shape and travel durability.</p>
               </div>
 
-              <div className="p-4 bg-[#FAF7F2] rounded-2xl border border-stone-200 shadow-sm">
+              <div className="p-4 bg-[#FAF5EE] rounded-2xl border border-[#D4AF37]/35 shadow-sm">
                 <h4 className="font-royal-title font-bold text-[#1F1612] text-sm mb-1">Candy-Stripe Trims</h4>
                 <p className="text-xs font-royal-body text-stone-600">Dual-tone candy striped carry handles, piping, and detachable shoulder slings with brass clips.</p>
               </div>
@@ -597,8 +597,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <section className="bg-[#1F1612] py-16 md:py-24 text-white relative overflow-hidden border-y border-[#D4AF37]/30 shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C8376B]/20 border border-[#C8376B]/40 text-[#FDF0F3] text-xs font-bold tracking-wider uppercase font-royal-title mb-3">
-              <Scissors className="w-3.5 h-3.5 text-[#C8376B]" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#9B332C]/20 border border-[#9B332C]/40 text-[#FDF0F3] text-xs font-bold tracking-wider uppercase font-royal-title mb-3">
+              <Scissors className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>Private Label &amp; OEM Studio</span>
             </div>
             <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FAF3DC]">
@@ -622,13 +622,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="text-xs uppercase tracking-widest text-[#C8376B] font-bold mb-2 font-royal-title">
+            <div className="text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-2 font-royal-title">
               🪷 Editorial Visuals
             </div>
             <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
               2026 Quilted Collection Lookbook
             </h2>
-            <p className="text-stone-600 font-royal-body text-base mt-1">
+            <p className="text-stone-700 font-royal-body text-base mt-1">
               Authentic Jaipur hand block-printed duffles, totes, vanity boxes, and yoga mat bags.
             </p>
           </div>
@@ -647,7 +647,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div 
               key={item.id}
               onClick={() => { onNavigate('/lookbook'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="group relative rounded-[28px] overflow-hidden shadow-lg cursor-pointer aspect-[3/4] bg-white border border-stone-200 hover:border-[#C8376B] transition-all"
+              className="group relative rounded-[28px] overflow-hidden shadow-lg cursor-pointer aspect-[3/4] bg-[#FAF5EE] border border-[#D4AF37]/40 hover:border-[#9B332C] transition-all"
             >
               <img
                 src={item.image}
@@ -668,10 +668,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* =========================================================================
           8. WHOLESALE BUYER ADVANTAGES & LOGISTICS
           ========================================================================= */}
-      <section className="bg-[#FAF7F2] py-16 md:py-20 border-t border-stone-200">
+      <section className="bg-[#F7ECE5] py-16 md:py-20 border-t border-[#D4AF37]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="text-xs uppercase tracking-widest text-[#C8376B] font-bold mb-2 font-royal-title">
+            <div className="text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-2 font-royal-title">
               👑 Jaipur B2B Manufacturing Partner
             </div>
             <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
@@ -680,32 +680,32 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 bg-white rounded-[28px] shadow-sm border border-stone-200 hover:border-[#C8376B] hover:shadow-xl transition-all">
-              <div className="w-12 h-12 bg-[#FDF0F3] text-[#C8376B] rounded-2xl flex items-center justify-center mb-6 border border-[#F3CAD6]">
-                <ShieldCheck className="w-6 h-6 text-[#C8376B]" />
+            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border border-[#D4AF37]/40 hover:border-[#9B332C] hover:shadow-xl transition-all">
+              <div className="w-12 h-12 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-6 border border-[#EACAC0]">
+                <ShieldCheck className="w-6 h-6 text-[#9B332C]" />
               </div>
               <h3 className="font-royal-title text-xl font-bold text-[#1F1612] mb-2">Strict 4-Point Quality Inspection</h3>
-              <p className="text-xs font-royal-body text-stone-600 leading-relaxed">
+              <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
                 Every stitched bag undergoes zero-defect inspection for zipper durability, strap tensile strength, quilting alignment, and clean edge binding.
               </p>
             </div>
 
-            <div className="p-8 bg-white rounded-[28px] shadow-sm border border-stone-200 hover:border-[#C8376B] hover:shadow-xl transition-all">
-              <div className="w-12 h-12 bg-[#FDF0F3] text-[#C8376B] rounded-2xl flex items-center justify-center mb-6 border border-[#F3CAD6]">
-                <Truck className="w-6 h-6 text-[#C8376B]" />
+            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border border-[#D4AF37]/40 hover:border-[#9B332C] hover:shadow-xl transition-all">
+              <div className="w-12 h-12 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-6 border border-[#EACAC0]">
+                <Truck className="w-6 h-6 text-[#9B332C]" />
               </div>
               <h3 className="font-royal-title text-xl font-bold text-[#1F1612] mb-2">Doorstep Air Express Freight</h3>
-              <p className="text-xs font-royal-body text-stone-600 leading-relaxed">
+              <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
                 Direct DHL / FedEx Express air shipments (4-7 business days) with full Certificate of Origin and export clearance handled seamlessly.
               </p>
             </div>
 
-            <div className="p-8 bg-white rounded-[28px] shadow-sm border border-stone-200 hover:border-[#C8376B] hover:shadow-xl transition-all">
-              <div className="w-12 h-12 bg-[#FDF0F3] text-[#C8376B] rounded-2xl flex items-center justify-center mb-6 border border-[#F3CAD6]">
-                <Scissors className="w-6 h-6 text-[#C8376B]" />
+            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border border-[#D4AF37]/40 hover:border-[#9B332C] hover:shadow-xl transition-all">
+              <div className="w-12 h-12 bg-[#FAF0EB] text-[#9B332C] rounded-2xl flex items-center justify-center mb-6 border border-[#EACAC0]">
+                <Scissors className="w-6 h-6 text-[#9B332C]" />
               </div>
               <h3 className="font-royal-title text-xl font-bold text-[#1F1612] mb-2">Low MOQ (25 Pcs) &amp; Private Label</h3>
-              <p className="text-xs font-royal-body text-stone-600 leading-relaxed">
+              <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
                 Start with only 25 pieces per style. Custom brand woven neck tags, hangtags, and packaging are supported seamlessly.
               </p>
             </div>
@@ -718,26 +718,26 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FDF0F3] border border-[#F3CAD6] text-[#C8376B] text-xs font-bold font-royal-title uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-wider mb-2">
             <span>⭐️ Verified Retailer &amp; Boutique Reviews</span>
           </div>
           <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
             Trusted by Luxury Boutiques Worldwide
           </h2>
-          <p className="text-stone-600 font-royal-body text-base mt-2">
+          <p className="text-stone-700 font-royal-body text-base mt-2">
             Over 140+ independent lifestyle stores, resorts, and private labels rely on Ramam Textiles for authentic Jaipur craftsmanship.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-7 rounded-[28px] border border-stone-200 shadow-sm hover:border-[#C8376B] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
+          <div className="bg-[#FAF5EE] p-7 rounded-[28px] border border-[#D4AF37]/40 shadow-sm hover:border-[#9B332C] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
             <div className="space-y-3">
               <div className="flex text-amber-500 text-sm">★★★★★</div>
               <p className="text-xs text-stone-700 leading-relaxed italic font-royal-body">
                 "The channel quilting and hand block print alignment on the weekender duffle bags exceeded our expectations. Our customers in Soho loved the authentic cotton feel. We reordered 150 more pieces within three weeks."
               </p>
             </div>
-            <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
+            <div className="pt-3 border-t border-[#D4AF37]/25 flex items-center justify-between">
               <div>
                 <h5 className="font-royal-title font-bold text-xs text-[#1F1612]">Charlotte Vance</h5>
                 <span className="text-[10px] text-stone-500">Maison &amp; Fleur Boutique • London, UK</span>
@@ -746,14 +746,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          <div className="bg-white p-7 rounded-[28px] border border-stone-200 shadow-sm hover:border-[#C8376B] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
+          <div className="bg-[#FAF5EE] p-7 rounded-[28px] border border-[#D4AF37]/40 shadow-sm hover:border-[#9B332C] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
             <div className="space-y-3">
               <div className="flex text-amber-500 text-sm">★★★★★</div>
               <p className="text-xs text-stone-700 leading-relaxed italic font-royal-body">
                 "Ramam Textiles custom embroidered our brand tags onto 200 units of the playing card vanity cases. The packaging was immaculate, and FedEx delivery to Milan was flawless with full Certificate of Origin."
               </p>
             </div>
-            <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
+            <div className="pt-3 border-t border-[#D4AF37]/25 flex items-center justify-between">
               <div>
                 <h5 className="font-royal-title font-bold text-xs text-[#1F1612]">Matteo Moretti</h5>
                 <span className="text-[10px] text-stone-500">Moretti Lifestyle Concept • Milan, Italy</span>
@@ -762,14 +762,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          <div className="bg-white p-7 rounded-[28px] border border-stone-200 shadow-sm hover:border-[#C8376B] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
+          <div className="bg-[#FAF5EE] p-7 rounded-[28px] border border-[#D4AF37]/40 shadow-sm hover:border-[#9B332C] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
             <div className="space-y-3">
               <div className="flex text-amber-500 text-sm">★★★★★</div>
               <p className="text-xs text-stone-700 leading-relaxed italic font-royal-body">
                 "Finding an authentic Jaipur manufacturer with low MOQs and genuine vegetable-dyed cotton was tough until we connected with Ramam Textiles. Their WhatsApp communication and sample turnaround are world-class."
               </p>
             </div>
-            <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
+            <div className="pt-3 border-t border-[#D4AF37]/25 flex items-center justify-between">
               <div>
                 <h5 className="font-royal-title font-bold text-xs text-[#1F1612]">Hannah Brooks</h5>
                 <span className="text-[10px] text-stone-500">Sanctuary Resort Studio • Byron Bay, Australia</span>
@@ -844,7 +844,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="text-xs uppercase tracking-widest text-[#C8376B] font-bold mb-2 font-royal-title">
+            <div className="text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-2 font-royal-title">
               👑 Jaipur Craft Chronicles
             </div>
             <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
@@ -866,7 +866,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <article 
               key={post.id}
               onClick={() => { onNavigate(`/journal/${post.slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200 hover:border-[#C8376B] hover:shadow-2xl transition-all cursor-pointer flex flex-col hover:-translate-y-1"
+              className="group bg-[#FAF5EE] rounded-[28px] overflow-hidden shadow-sm border border-[#D4AF37]/40 hover:border-[#9B332C] hover:shadow-2xl transition-all cursor-pointer flex flex-col hover:-translate-y-1"
             >
               <div className="aspect-[16/10] overflow-hidden relative">
                 <img
@@ -886,7 +886,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     <span>•</span>
                     <span>{post.readTime}</span>
                   </div>
-                  <h3 className="font-playfair text-lg font-bold text-[#1F1612] group-hover:text-[#C8376B] transition-colors leading-snug">
+                  <h3 className="font-playfair text-lg font-bold text-[#1F1612] group-hover:text-[#9B332C] transition-colors leading-snug">
                     {post.title}
                   </h3>
                   <p className="text-xs text-stone-600 mt-2 line-clamp-3 leading-relaxed">
@@ -894,9 +894,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   </p>
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-stone-200 flex items-center justify-between text-xs font-royal-title font-bold text-[#1F1612]">
-                  <span className="text-[#C8376B]">Read Story</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[#C8376B]" />
+                <div className="mt-4 pt-4 border-t border-[#D4AF37]/25 flex items-center justify-between text-xs font-royal-title font-bold text-[#1F1612]">
+                  <span className="text-[#9B332C]">Read Story</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[#9B332C]" />
                 </div>
               </div>
             </article>

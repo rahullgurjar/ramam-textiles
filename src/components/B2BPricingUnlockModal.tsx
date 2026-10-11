@@ -30,7 +30,7 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-center justify-center animate-fade-in">
-      <div className="w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-[#D4AF37]/50 overflow-hidden text-[#1F1612]">
+      <div className="w-full max-w-lg bg-[#FAF5EE] rounded-3xl shadow-2xl border border-[#D4AF37]/50 overflow-hidden text-[#241A16]">
         {/* Header */}
         <div className="bg-[#241A16] text-[#FAF5EE] p-6 relative border-b border-[#D4AF37]/30 shadow-md">
           <button
@@ -87,7 +87,7 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
                   placeholder="e.g. Amber & Indigo Boutique"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-white rounded-xl border border-[#E0D6CB] text-xs focus:outline-none focus:border-[#9B332C] text-[#241A16]"
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#F5EDE1] rounded-xl border border-[#D4AF37]/35 text-xs focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE] text-[#241A16]"
                 />
               </div>
             </div>
@@ -104,7 +104,7 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
                   placeholder="buyer@domain.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-white rounded-xl border border-[#E0D6CB] text-xs focus:outline-none focus:border-[#9B332C] text-[#241A16]"
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#F5EDE1] rounded-xl border border-[#D4AF37]/35 text-xs focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE] text-[#241A16]"
                 />
               </div>
             </div>
@@ -117,7 +117,7 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
                 <select
                   value={buyerType}
                   onChange={(e) => setBuyerType(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-white rounded-xl border border-[#E0D6CB] text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
+                  className="w-full px-3 py-2.5 bg-[#F5EDE1] rounded-xl border border-[#D4AF37]/35 text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                 >
                   <option value="Boutique Owner">Boutique Owner</option>
                   <option value="Fashion Brand">Fashion Brand</option>
@@ -139,7 +139,7 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                     placeholder="e.g. USA, UK"
-                    className="w-full pl-9 pr-3 py-2.5 bg-white rounded-xl border border-[#E0D6CB] text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
+                    className="w-full pl-9 pr-3 py-2.5 bg-[#F5EDE1] rounded-xl border border-[#D4AF37]/35 text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                   />
                 </div>
               </div>

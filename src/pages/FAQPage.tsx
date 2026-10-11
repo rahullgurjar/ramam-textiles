@@ -51,7 +51,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           placeholder="Search question, keyword, or topic (e.g. MOQ, Samples, Air Cargo)..."
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
-          className="w-full pl-11 pr-4 py-3.5 bg-white border border-[#E0D6CB] rounded-full text-xs text-[#241A16] font-royal-body focus:outline-none focus:border-[#9B332C] shadow-sm"
+          className="w-full pl-11 pr-4 py-3.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-full text-xs text-[#241A16] font-royal-body focus:outline-none focus:border-[#9B332C] shadow-sm"
         />
       </div>
 
@@ -75,7 +75,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       {/* FAQ Accordion List */}
       <div className="space-y-4">
         {filteredFaqs.length === 0 ? (
-          <div className="p-8 text-center text-stone-600 bg-white rounded-2xl border border-stone-200 font-royal-body text-sm">
+          <div className="p-8 text-center text-stone-600 bg-[#FAF5EE] rounded-2xl border border-[#D4AF37]/35 font-royal-body text-sm">
             No matching questions found. Try another search term or message us on Instagram @ramamtextiles.
           </div>
         ) : (
@@ -84,7 +84,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
             return (
               <div
                 key={faq.id}
-                className="bg-white border border-[#E0D6CB] hover:border-[#D48B7A] rounded-2xl overflow-hidden transition-all shadow-sm"
+                className="bg-[#FAF5EE] border border-[#D4AF37]/35 hover:border-[#9B332C] rounded-2xl overflow-hidden transition-all shadow-sm"
               >
                 <button
                   type="button"
@@ -95,7 +95,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
                   <ChevronDown className={`w-5 h-5 text-[#9B332C] transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-stone-600 font-royal-body text-xs sm:text-sm leading-relaxed border-t border-stone-100 animate-fade-in">
+                  <div className="px-5 pb-5 pt-1 text-stone-600 font-royal-body text-xs sm:text-sm leading-relaxed border-t border-[#D4AF37]/20 animate-fade-in">
                     {faq.answer}
                   </div>
                 )}

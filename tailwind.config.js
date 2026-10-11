@@ -7,18 +7,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: '#FAF8F5',
+        base: '#F5EEE6',
         main: '#241A16',
         craft: {
           dark: '#241A16',
           black: '#1A120E',
           rose: '#9B332C',
           'rose-dark': '#822722',
-          'rose-light': '#FAF2EE',
+          'rose-light': '#FAF0EB',
           'rose-border': '#E8CECA',
-          ivory: '#FAF8F5',
-          cream: '#F6F1EA',
-          blush: '#FAF0EB',
+          ivory: '#FAF5EE',
+          cream: '#F4EDE4',
+          blush: '#F7ECE5',
           gold: '#D4AF37',
           amber: '#E5A93C',
         },

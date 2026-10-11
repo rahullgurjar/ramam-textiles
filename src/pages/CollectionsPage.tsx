@@ -33,11 +33,11 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
           return (
             <div 
               key={collection.id}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-6 sm:p-10 rounded-[32px] border border-[#E0D6CB] hover:border-[#D48B7A] shadow-md hover:shadow-2xl transition-all"
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#FAF5EE] p-6 sm:p-10 rounded-[32px] border border-[#D4AF37]/35 hover:border-[#9B332C] shadow-md hover:shadow-2xl transition-all"
             >
               {/* Image Showcase */}
               <div className={`lg:col-span-6 ${isReversed ? 'lg:order-2' : ''}`}>
-                <div className="relative aspect-[16/10] rounded-[24px] overflow-hidden shadow-lg group border border-[#E0D6CB]">
+                <div className="relative aspect-[16/10] rounded-[24px] overflow-hidden shadow-lg group border border-[#D4AF37]/30">
                   <img
                     src={collection.heroImage}
                     alt={collection.name}
@@ -75,7 +75,7 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
                           onClick={() => { onNavigate(`/product/${sp.slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                           className="w-24 cursor-pointer text-center group"
                         >
-                          <div className="w-24 h-28 rounded-xl overflow-hidden border border-[#E0D6CB] group-hover:border-[#9B332C] mb-1 shadow-sm transition-all">
+                          <div className="w-24 h-28 rounded-xl overflow-hidden border border-[#D4AF37]/30 group-hover:border-[#9B332C] mb-1 shadow-sm transition-all bg-[#F0E6D8]">
                             <img src={sp.images[0]} alt={sp.name} className="w-full h-full object-cover group-hover:scale-108 transition-transform" />
                           </div>
                           <span className="text-[10px] text-stone-700 truncate block font-semibold group-hover:text-[#9B332C] font-royal-body">{sp.name}</span>

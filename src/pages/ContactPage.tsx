@@ -114,7 +114,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          <div className="bg-[#FAF7F2] p-6 rounded-[28px] border border-[#E0D6CB] space-y-2.5 shadow-sm">
+          <div className="bg-[#FAF5EE] p-6 rounded-[28px] border border-[#D4AF37]/35 space-y-2.5 shadow-sm">
             <h4 className="font-royal-title font-bold text-[#241A16] text-sm">International Client Showroom Visits</h4>
             <p className="text-xs font-royal-body text-stone-600 leading-relaxed">
               We arrange direct factory pick-up from Jaipur International Airport (JAI) or Jaipur Junction Railway Station for commercial buyers visiting for sampling and production sign-off.
@@ -123,7 +123,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* Inquiry Form */}
-        <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border-2 border-stone-200 shadow-xl relative overflow-hidden">
+        <div className="lg:col-span-7 bg-[#FAF5EE] p-8 sm:p-10 rounded-3xl border border-[#D4AF37]/35 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-10 pointer-events-none" />
 
           {isSubmitted ? (
@@ -144,7 +144,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4 font-royal-body relative z-10">
-              <div className="border-b border-[#E0D6CB] pb-3 mb-4">
+              <div className="border-b border-[#D4AF37]/25 pb-3 mb-4">
                 <h3 className="font-playfair text-2xl font-bold text-[#241A16]">Commercial Inquiry Form</h3>
                 <p className="text-xs text-stone-500 font-royal-body">Provide your requirements for wholesale orders, custom manufacturing, or sampling.</p>
               </div>
@@ -160,7 +160,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                     placeholder="e.g. Radhika Sharma"
                     value={name}
                     onChange={e => setName(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-white border border-[#E0D6CB] rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
+                    className="w-full px-3.5 py-2.5 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                   />
                 </div>
 
@@ -173,7 +173,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                     placeholder="e.g. Atelier Jaipur Paris"
                     value={company}
                     onChange={e => setCompany(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-white border border-[#E0D6CB] rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
+                    className="w-full px-3.5 py-2.5 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                   />
                 </div>
 
@@ -187,7 +187,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                     placeholder="buyer@brand.com"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-white border border-[#E0D6CB] rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
+                    className="w-full px-3.5 py-2.5 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                   />
                 </div>
 
@@ -200,7 +200,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                     placeholder="e.g. USA, UK, UAE, Germany"
                     value={country}
                     onChange={e => setCountry(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-white border border-[#E0D6CB] rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
+                    className="w-full px-3.5 py-2.5 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                   />
                 </div>
               </div>
@@ -212,7 +212,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 <select
                   value={inquiryType}
                   onChange={e => setInquiryType(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-white border border-[#E0D6CB] rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
+                  className="w-full px-3.5 py-2.5 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                 >
                   <option>Wholesale Ready-to-Order Catalog &amp; Pricing</option>
                   <option>Custom Garment Manufacturing / Private Label OEM</option>
@@ -233,7 +233,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                   placeholder="Describe your requirements, target product categories, estimated quantity, timeline, or destination country..."
                   value={message}
                   onChange={e => setMessage(e.target.value)}
-                  className="w-full p-3.5 bg-white border border-[#E0D6CB] rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
+                  className="w-full p-3.5 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                 />
               </div>
 

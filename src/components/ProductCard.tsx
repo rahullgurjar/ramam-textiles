@@ -44,11 +44,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
   return (
     <div 
       onClick={handleCardClick}
-      className="group bg-white rounded-3xl border-2 border-[#D4AF37]/45 overflow-hidden shadow-md hover:shadow-2xl transition-all duration-400 flex flex-col justify-between cursor-pointer relative hover:-translate-y-1.5 hover:border-[#D4AF37] jharokha-arch-card"
+      className="group bg-[#FAF5EE] rounded-3xl border-2 border-[#D4AF37]/50 overflow-hidden shadow-md hover:shadow-2xl transition-all duration-400 flex flex-col justify-between cursor-pointer relative hover:-translate-y-1.5 hover:border-[#9B332C] jharokha-arch-card"
     >
       {/* Image Gallery Container with Arch Contour */}
       <div 
-        className="relative aspect-[3/4] w-full overflow-hidden bg-slate-100"
+        className="relative aspect-[3/4] w-full overflow-hidden bg-[#F0E6D8]"
         onMouseEnter={() => {
           if (product.images.length > 1) setCurrentImgIndex(1);
         }}
@@ -89,7 +89,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
       </div>
 
       {/* Product Information */}
-      <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between bg-white font-royal-body">
+      <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between bg-[#FAF5EE] font-royal-body">
         <div>
           <div className="flex items-center justify-between text-[10px] text-stone-500 font-bold uppercase tracking-wider mb-1 font-royal-title">
             <span className="text-[#C85A53]">🪷 {product.collection}</span>

@@ -27,7 +27,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
       {JOURNAL_POSTS[0] && (
         <div 
           onClick={() => { onNavigate(`/journal/${JOURNAL_POSTS[0].slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-6 sm:p-10 rounded-3xl border border-[#E0D6CB] cursor-pointer group hover:shadow-2xl transition-all relative overflow-hidden"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#FAF5EE] p-6 sm:p-10 rounded-3xl border border-[#D4AF37]/35 cursor-pointer group hover:shadow-2xl transition-all relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-10 pointer-events-none" />
 
@@ -64,7 +64,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
           <article 
             key={post.id}
             onClick={() => { onNavigate(`/journal/${post.slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="group bg-white rounded-3xl overflow-hidden shadow-md border border-[#E0D6CB] hover:shadow-2xl hover:border-[#9B332C] transition-all cursor-pointer flex flex-col"
+            className="group bg-[#FAF5EE] rounded-3xl overflow-hidden shadow-md border border-[#D4AF37]/35 hover:shadow-2xl hover:border-[#9B332C] transition-all cursor-pointer flex flex-col"
           >
             <div className="aspect-[16/10] overflow-hidden relative">
               <img
@@ -92,7 +92,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-[#E0D6CB] flex items-center justify-between text-xs font-royal-title font-bold text-[#9B332C]">
+              <div className="pt-3 border-t border-[#D4AF37]/25 flex items-center justify-between text-xs font-royal-title font-bold text-[#9B332C]">
                 <span>Read Story</span>
                 <ArrowRight className="w-4 h-4 text-[#9B332C] group-hover:translate-x-1 transition-transform" />
               </div>

@@ -37,7 +37,7 @@ export const TrackOrderPage: React.FC = () => {
             placeholder="Enter Order # or Tracking Code (e.g. RAMAM-7892)"
             value={trackingNumber}
             onChange={e => setTrackingNumber(e.target.value)}
-            className="w-full pl-11 pr-3 py-3.5 bg-white border border-[#E0D6CB] rounded-2xl text-xs text-[#241A16] font-royal-body focus:outline-none focus:border-[#9B332C] shadow-sm"
+            className="w-full pl-11 pr-3 py-3.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-2xl text-xs text-[#241A16] font-royal-body focus:outline-none focus:border-[#9B332C] shadow-sm"
           />
         </div>
         <button
@@ -51,10 +51,10 @@ export const TrackOrderPage: React.FC = () => {
 
       {/* Simulated Live Order Milestones Status */}
       {hasSearched && (
-        <div className="bg-[#FAF7F2] rounded-3xl p-6 sm:p-10 border border-[#E0D6CB] shadow-xl space-y-8 animate-fade-in relative overflow-hidden">
+        <div className="bg-[#FAF5EE] rounded-3xl p-6 sm:p-10 border border-[#D4AF37]/35 shadow-xl space-y-8 animate-fade-in relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-10 pointer-events-none" />
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#E0D6CB] gap-4 relative z-10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#D4AF37]/25 gap-4 relative z-10">
             <div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#9B332C] font-bold">Consignment Ref</span>
               <h3 className="font-playfair text-xl font-bold text-[#241A16]">{trackingNumber.toUpperCase()}</h3>
@@ -69,7 +69,7 @@ export const TrackOrderPage: React.FC = () => {
           {/* Timeline */}
           <div className="space-y-6 relative pl-6 before:content-[''] before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-[#D4AF37]/50 relative z-10">
             <div className="relative">
-              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#241A16] flex items-center justify-center text-white ring-4 ring-[#FAF7F2]">
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#241A16] flex items-center justify-center text-white ring-4 ring-[#FAF5EE]">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#E5A93C]" />
               </div>
               <div>
@@ -80,7 +80,7 @@ export const TrackOrderPage: React.FC = () => {
             </div>
 
             <div className="relative">
-              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#241A16] flex items-center justify-center text-white ring-4 ring-[#FAF7F2]">
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#241A16] flex items-center justify-center text-white ring-4 ring-[#FAF5EE]">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#E5A93C]" />
               </div>
               <div>
@@ -91,7 +91,7 @@ export const TrackOrderPage: React.FC = () => {
             </div>
 
             <div className="relative">
-              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#241A16] flex items-center justify-center text-white ring-4 ring-[#FAF7F2]">
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#241A16] flex items-center justify-center text-white ring-4 ring-[#FAF5EE]">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#E5A93C]" />
               </div>
               <div>
@@ -102,7 +102,7 @@ export const TrackOrderPage: React.FC = () => {
             </div>
 
             <div className="relative">
-              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#9B332C] flex items-center justify-center text-white ring-4 ring-[#FAF7F2] animate-pulse shadow-md">
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#9B332C] flex items-center justify-center text-white ring-4 ring-[#FAF5EE] animate-pulse shadow-md">
                 <Truck className="w-3 h-3" />
               </div>
               <div>

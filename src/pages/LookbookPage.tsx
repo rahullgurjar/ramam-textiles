@@ -43,7 +43,7 @@ export const LookbookPage: React.FC<LookbookPageProps> = ({ onNavigate }) => {
             className={`px-4 py-2 rounded-full text-xs font-royal-title font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
               selectedSeason === s
                 ? 'bg-[#241A16] text-[#FAF5EE] shadow-md border border-[#D4AF37]/50'
-                : 'bg-white text-[#241A16] hover:bg-[#FAF7F2] border border-stone-200'
+                : 'bg-[#FAF5EE] text-[#241A16] hover:bg-[#F5EDE1] border border-[#D4AF37]/35'
             }`}
           >
             {s === 'all' ? 'All Seasons' : s}
@@ -57,7 +57,7 @@ export const LookbookPage: React.FC<LookbookPageProps> = ({ onNavigate }) => {
           <div
             key={item.id}
             onClick={() => setSelectedImageModal(item)}
-            className="group relative rounded-3xl overflow-hidden shadow-xl cursor-pointer bg-stone-100 aspect-[4/3] border border-[#E0D6CB]"
+            className="group relative rounded-3xl overflow-hidden shadow-xl cursor-pointer bg-stone-100 aspect-[4/3] border border-[#D4AF37]/35"
           >
             <img
               src={item.image}
@@ -88,7 +88,7 @@ export const LookbookPage: React.FC<LookbookPageProps> = ({ onNavigate }) => {
       {/* Lightbox / Modal */}
       {selectedImageModal && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 p-4 sm:p-8 flex items-center justify-center animate-fade-in font-royal-body">
-          <div className="bg-white rounded-3xl overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-12 shadow-2xl border border-[#D4AF37]/50 text-[#241A16]">
+          <div className="bg-[#FAF5EE] rounded-3xl overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-12 shadow-2xl border border-[#D4AF37]/45 text-[#241A16]">
             <div className="md:col-span-7 bg-black max-h-[70vh] md:max-h-[80vh] flex items-center justify-center">
               <img
                 src={selectedImageModal.image}

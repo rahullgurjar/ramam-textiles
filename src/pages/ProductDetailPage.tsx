@@ -113,7 +113,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
         <div className="lg:col-span-7 space-y-4">
           <div 
             onClick={() => setIsZoomOpen(true)}
-            className="relative aspect-[4/5] rounded-[32px] overflow-hidden bg-slate-50 shadow-xl border border-stone-200 group cursor-zoom-in"
+            className="relative aspect-[4/5] rounded-[32px] overflow-hidden bg-[#F0E6D8] shadow-xl border border-[#D4AF37]/35 group cursor-zoom-in"
           >
             <img
               src={product.images[activeImageIndex] || product.images[0]}
@@ -125,17 +125,17 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             <div className="absolute top-5 right-5 z-20 flex items-center gap-2">
               <button
                 onClick={(e) => { e.stopPropagation(); setIsZoomOpen(true); }}
-                className="p-3 rounded-full bg-white/90 backdrop-blur-md hover:bg-white text-[#1F1612] shadow-lg border border-stone-200 transition-all hover:scale-105"
+                className="p-3 rounded-full bg-[#FAF5EE]/95 backdrop-blur-md hover:bg-[#FAF5EE] text-[#241A16] shadow-lg border border-[#D4AF37]/40 transition-all hover:scale-105"
                 title="Click to Zoom Fabric"
               >
-                <Maximize2 className="w-4 h-4 text-[#1F1612]" />
+                <Maximize2 className="w-4 h-4 text-[#241A16]" />
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); handleShare(); }}
-                className="p-3 rounded-full bg-white/90 backdrop-blur-md hover:bg-white text-[#1F1612] shadow-lg border border-stone-200 transition-all hover:scale-105"
+                className="p-3 rounded-full bg-[#FAF5EE]/95 backdrop-blur-md hover:bg-[#FAF5EE] text-[#241A16] shadow-lg border border-[#D4AF37]/40 transition-all hover:scale-105"
                 title="Share Creation"
               >
-                <Share2 className="w-4 h-4 text-[#1F1612]" />
+                <Share2 className="w-4 h-4 text-[#241A16]" />
               </button>
             </div>
 
@@ -176,8 +176,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                   onClick={() => setActiveImageIndex(idx)}
                   className={`relative w-20 h-24 rounded-2xl overflow-hidden border-2 transition-all flex-shrink-0 ${
                     activeImageIndex === idx 
-                      ? 'border-[#C8376B] ring-2 ring-[#C8376B]/30 shadow-md scale-105' 
-                      : 'border-stone-200 opacity-70 hover:opacity-100'
+                      ? 'border-[#9B332C] ring-2 ring-[#9B332C]/30 shadow-md scale-105' 
+                      : 'border-[#D4AF37]/35 opacity-70 hover:opacity-100'
                   }`}
                 >
                   <img src={img} alt={`${product.name} ${idx}`} className="w-full h-full object-cover" />
@@ -188,21 +188,21 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
 
           {/* Physical Spec & Dimension Highlights Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-            <div className="p-3 bg-[#FAF7F2] rounded-2xl border border-stone-200 text-center">
+            <div className="p-3 bg-[#FAF5EE] rounded-2xl border border-[#D4AF37]/30 text-center shadow-sm">
               <span className="text-[10px] font-royal-title uppercase tracking-wider text-stone-500 block">Structure</span>
-              <span className="text-xs font-bold text-[#1F1612] mt-0.5 block">Double Cotton Padding</span>
+              <span className="text-xs font-bold text-[#241A16] mt-0.5 block">Double Cotton Padding</span>
             </div>
-            <div className="p-3 bg-[#FAF7F2] rounded-2xl border border-stone-200 text-center">
+            <div className="p-3 bg-[#FAF5EE] rounded-2xl border border-[#D4AF37]/30 text-center shadow-sm">
               <span className="text-[10px] font-royal-title uppercase tracking-wider text-stone-500 block">Zippers</span>
-              <span className="text-xs font-bold text-[#1F1612] mt-0.5 block">Heavy-Duty YKK Brass</span>
+              <span className="text-xs font-bold text-[#241A16] mt-0.5 block">Heavy-Duty YKK Brass</span>
             </div>
-            <div className="p-3 bg-[#FAF7F2] rounded-2xl border border-stone-200 text-center">
+            <div className="p-3 bg-[#FAF5EE] rounded-2xl border border-[#D4AF37]/30 text-center shadow-sm">
               <span className="text-[10px] font-royal-title uppercase tracking-wider text-stone-500 block">Handles</span>
-              <span className="text-xs font-bold text-[#1F1612] mt-0.5 block">Reinforced Candy Stripe</span>
+              <span className="text-xs font-bold text-[#241A16] mt-0.5 block">Reinforced Candy Stripe</span>
             </div>
-            <div className="p-3 bg-[#FAF7F2] rounded-2xl border border-stone-200 text-center">
+            <div className="p-3 bg-[#FAF5EE] rounded-2xl border border-[#D4AF37]/30 text-center shadow-sm">
               <span className="text-[10px] font-royal-title uppercase tracking-wider text-stone-500 block">Dyes</span>
-              <span className="text-xs font-bold text-[#1F1612] mt-0.5 block">Azo-Free &amp; Colorfast</span>
+              <span className="text-xs font-bold text-[#241A16] mt-0.5 block">Azo-Free &amp; Colorfast</span>
             </div>
           </div>
         </div>
@@ -223,7 +223,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           </div>
 
           {/* Interactive Volume Pricing Tier Card */}
-          <div className="p-5 bg-[#FAF7F2] rounded-[28px] border border-stone-200 shadow-sm space-y-4">
+          <div className="p-5 bg-[#FAF5EE] rounded-[28px] border border-[#D4AF37]/35 shadow-sm space-y-4">
             <div className="flex items-baseline justify-between">
               <div>
                 <span className="text-[10px] text-stone-500 font-royal-title uppercase tracking-wider block font-bold">Indicative Retail Benchmark</span>
@@ -234,10 +234,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
               </div>
 
               <div className="text-right">
-                <span className="text-[10px] text-[#C8376B] font-royal-title font-bold uppercase tracking-wider block">
+                <span className="text-[10px] text-[#9B332C] font-royal-title font-bold uppercase tracking-wider block">
                   Current Tier Rate ({quantity} Pcs)
                 </span>
-                <span className="text-2xl sm:text-3xl font-playfair font-bold text-[#C8376B]">
+                <span className="text-2xl sm:text-3xl font-playfair font-bold text-[#9B332C]">
                   {formatPrice(currentUnitPrice)}
                 </span>
                 <span className="text-xs text-stone-600 ml-1 font-medium">/ piece</span>
@@ -245,8 +245,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             </div>
 
             {/* Interactive Quantity Slider */}
-            <div className="space-y-2 pt-2 border-t border-stone-200">
-              <div className="flex justify-between text-xs font-royal-title font-bold text-[#1F1612]">
+            <div className="space-y-2 pt-2 border-t border-[#D4AF37]/25">
+              <div className="flex justify-between text-xs font-royal-title font-bold text-[#241A16]">
                 <span>Select Order Volume</span>
                 <span className="text-[#9B332C]">{quantity} Units (Est: {formatPrice(totalEstimatedCost)})</span>
               </div>
@@ -257,7 +257,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                 step={5}
                 value={quantity}
                 onChange={(e) => setQuantity(Number(e.target.value))}
-                className="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#9B332C]"
+                className="w-full h-2 bg-[#EFE4D6] rounded-lg appearance-none cursor-pointer accent-[#9B332C]"
               />
               <div className="flex flex-wrap gap-1.5 pt-1">
                 <button
@@ -266,7 +266,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                   className={`text-[10px] font-mono px-2.5 py-1 rounded-full border transition-all ${
                     quantity === product.moq 
                       ? 'bg-[#9B332C] text-white border-[#9B332C] font-bold shadow-sm' 
-                      : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400'
+                      : 'bg-[#F5EDE1] text-stone-700 border-[#D4AF37]/35 hover:border-[#9B332C]'
                   }`}
                 >
                   MOQ {product.moq} pcs
@@ -277,7 +277,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                   className={`text-[10px] font-mono px-2.5 py-1 rounded-full border transition-all ${
                     quantity === 100 
                       ? 'bg-[#9B332C] text-white border-[#9B332C] font-bold shadow-sm' 
-                      : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400'
+                      : 'bg-[#F5EDE1] text-stone-700 border-[#D4AF37]/35 hover:border-[#9B332C]'
                   }`}
                 >
                   100 pcs (-8%)
@@ -288,7 +288,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                   className={`text-[10px] font-mono px-2.5 py-1 rounded-full border transition-all ${
                     quantity === 200 
                       ? 'bg-[#9B332C] text-white border-[#9B332C] font-bold shadow-sm' 
-                      : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400'
+                      : 'bg-[#F5EDE1] text-stone-700 border-[#D4AF37]/35 hover:border-[#9B332C]'
                   }`}
                 >
                   200 pcs (-15%)
@@ -299,7 +299,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                   className={`text-[10px] font-mono px-2.5 py-1 rounded-full border transition-all ${
                     quantity === 500 
                       ? 'bg-[#9B332C] text-white border-[#9B332C] font-bold shadow-sm' 
-                      : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400'
+                      : 'bg-[#F5EDE1] text-stone-700 border-[#D4AF37]/35 hover:border-[#9B332C]'
                   }`}
                 >
                   500+ pcs (-25%)
@@ -307,8 +307,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
               </div>
             </div>
 
-            <div className="pt-2 border-t border-stone-200 flex items-center justify-between text-xs text-[#1F1612]">
-              <span className="flex items-center gap-1.5 font-semibold text-emerald-700">
+            <div className="pt-2 border-t border-[#D4AF37]/25 flex items-center justify-between text-xs text-[#241A16]">
+              <span className="flex items-center gap-1.5 font-semibold text-emerald-800">
                 <CheckCircle2 className="w-4 h-4" />
                 Direct Jaipur FOB Factory Rate
               </span>
@@ -421,13 +421,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
       </div>
 
       {/* Tabs: Detailed Technical Specifications & Wholesale Tiers */}
-      <div className="bg-white rounded-[32px] p-6 sm:p-10 border border-stone-200 shadow-lg relative overflow-hidden">
-        <div className="flex items-center gap-2 border-b border-stone-200 pb-4 overflow-x-auto scrollbar-none relative z-10">
+      <div className="bg-[#FAF5EE] rounded-[32px] p-6 sm:p-10 border border-[#D4AF37]/35 shadow-lg relative overflow-hidden">
+        <div className="flex items-center gap-2 border-b border-[#D4AF37]/25 pb-4 overflow-x-auto scrollbar-none relative z-10">
           <button
             onClick={() => setActiveTab('details')}
             className={`pill-nav-btn ${
               activeTab === 'details'
-                ? 'pill-nav-btn-active bg-[#C8376B] text-white border-[#C8376B]'
+                ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]'
                 : ''
             }`}
           >
@@ -437,7 +437,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             onClick={() => setActiveTab('specs')}
             className={`pill-nav-btn ${
               activeTab === 'specs'
-                ? 'pill-nav-btn-active bg-[#C8376B] text-white border-[#C8376B]'
+                ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]'
                 : ''
             }`}
           >
@@ -447,7 +447,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             onClick={() => setActiveTab('wholesale')}
             className={`pill-nav-btn ${
               activeTab === 'wholesale'
-                ? 'pill-nav-btn-active bg-[#C8376B] text-white border-[#C8376B]'
+                ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]'
                 : ''
             }`}
           >
@@ -457,7 +457,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             onClick={() => setActiveTab('custom')}
             className={`pill-nav-btn ${
               activeTab === 'custom'
-                ? 'pill-nav-btn-active bg-[#C8376B] text-white border-[#C8376B]'
+                ? 'pill-nav-btn-active bg-[#9B332C] text-white border-[#9B332C]'
                 : ''
             }`}
           >
@@ -468,20 +468,20 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
         {/* Tab Content */}
         <div className="pt-6 relative z-10">
           {activeTab === 'details' && (
-            <div className="space-y-4 max-w-4xl text-[#1F1612] leading-relaxed text-sm">
-              <h3 className="font-playfair text-xl sm:text-2xl font-bold text-[#1F1612]">
+            <div className="space-y-4 max-w-4xl text-[#241A16] leading-relaxed text-sm">
+              <h3 className="font-playfair text-xl sm:text-2xl font-bold text-[#241A16]">
                 The Artisan Heritage of {product.name}
               </h3>
               <p className="text-base text-stone-600">{product.description}</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                <div className="p-5 bg-[#FAF7F2] rounded-2xl border border-stone-200 shadow-sm">
-                  <h4 className="font-royal-title font-bold text-[#C8376B] text-xs uppercase tracking-wider mb-1.5">Authentic Jaipur Handcraft</h4>
+                <div className="p-5 bg-[#F5EDE1] rounded-2xl border border-[#D4AF37]/30 shadow-sm">
+                  <h4 className="font-royal-title font-bold text-[#9B332C] text-xs uppercase tracking-wider mb-1.5">Authentic Jaipur Handcraft</h4>
                   <p className="text-xs text-stone-600 leading-relaxed">
                     Hand-stamped in Rajasthan using hand-carved Sheesham wood blocks. Subtle variations in shade or alignment are the authentic hallmarks of artisan heritage craftsmanship.
                   </p>
                 </div>
-                <div className="p-5 bg-[#FAF7F2] rounded-2xl border border-stone-200 shadow-sm">
-                  <h4 className="font-royal-title font-bold text-[#C8376B] text-xs uppercase tracking-wider mb-1.5">Pre-Washed &amp; Colorfast</h4>
+                <div className="p-5 bg-[#F5EDE1] rounded-2xl border border-[#D4AF37]/30 shadow-sm">
+                  <h4 className="font-royal-title font-bold text-[#9B332C] text-xs uppercase tracking-wider mb-1.5">Pre-Washed &amp; Colorfast</h4>
                   <p className="text-xs text-stone-600 leading-relaxed">
                     Each fabric batch undergoes traditional river and steam washing to lock in natural mineral dyes and prevent post-purchase shrinkage.
                   </p>
@@ -493,29 +493,29 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           {activeTab === 'specs' && (
             <div className="max-w-4xl">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                <div className="bg-[#FAF7F2] p-4 rounded-xl border border-stone-200 flex justify-between items-center shadow-sm">
+                <div className="bg-[#F5EDE1] p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-stone-500 font-medium font-royal-title uppercase">SKU Reference:</span>
-                  <span className="font-mono font-bold text-[#1F1612]">{product.sku}</span>
+                  <span className="font-mono font-bold text-[#241A16]">{product.sku}</span>
                 </div>
-                <div className="bg-[#FAF7F2] p-4 rounded-xl border border-stone-200 flex justify-between items-center shadow-sm">
+                <div className="bg-[#F5EDE1] p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-stone-500 font-medium font-royal-title uppercase">Base Fabric:</span>
-                  <span className="font-bold text-[#1F1612]">{product.fabric}</span>
+                  <span className="font-bold text-[#241A16]">{product.fabric}</span>
                 </div>
-                <div className="bg-[#FAF7F2] p-4 rounded-xl border border-stone-200 flex justify-between items-center shadow-sm">
+                <div className="bg-[#F5EDE1] p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-stone-500 font-medium font-royal-title uppercase">Printing Technique:</span>
-                  <span className="font-bold text-[#1F1612]">{product.printTechnique}</span>
+                  <span className="font-bold text-[#241A16]">{product.printTechnique}</span>
                 </div>
-                <div className="bg-[#FAF7F2] p-4 rounded-xl border border-stone-200 flex justify-between items-center shadow-sm">
+                <div className="bg-[#F5EDE1] p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-stone-500 font-medium font-royal-title uppercase">Craft Origin:</span>
-                  <span className="font-bold text-[#1F1612]">Jaipur, Rajasthan (India)</span>
+                  <span className="font-bold text-[#241A16]">Jaipur, Rajasthan (India)</span>
                 </div>
-                <div className="bg-[#FAF7F2] p-4 rounded-xl border border-stone-200 flex justify-between items-center shadow-sm">
+                <div className="bg-[#F5EDE1] p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-stone-500 font-medium font-royal-title uppercase">Dye Formulation:</span>
-                  <span className="font-bold text-[#1F1612]">Azo-Free / Natural Fermented Indigo</span>
+                  <span className="font-bold text-[#241A16]">Azo-Free / Natural Fermented Indigo</span>
                 </div>
-                <div className="bg-[#FAF7F2] p-4 rounded-xl border border-stone-200 flex justify-between items-center shadow-sm">
+                <div className="bg-[#F5EDE1] p-4 rounded-xl border border-[#D4AF37]/30 flex justify-between items-center shadow-sm">
                   <span className="text-stone-500 font-medium font-royal-title uppercase">Export Carton Specs:</span>
-                  <span className="font-bold text-[#1F1612]">50 units/carton (Double Wall Corrugated)</span>
+                  <span className="font-bold text-[#241A16]">50 units/carton (Double Wall Corrugated)</span>
                 </div>
               </div>
             </div>
@@ -523,12 +523,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
 
           {activeTab === 'wholesale' && (
             <div className="max-w-4xl space-y-4">
-              <h3 className="font-playfair text-lg font-bold text-[#1F1612]">
+              <h3 className="font-playfair text-lg font-bold text-[#241A16]">
                 Tiered Wholesale FOB Pricing Matrix (Jaipur Port / Airport)
               </h3>
-              <div className="overflow-x-auto rounded-2xl border border-stone-200 shadow-md">
-                <table className="w-full text-left text-xs bg-white">
-                  <thead className="bg-[#1F1612] text-[#FAF3DC] font-royal-title uppercase tracking-wider">
+              <div className="overflow-x-auto rounded-2xl border border-[#D4AF37]/35 shadow-md">
+                <table className="w-full text-left text-xs bg-[#FAF5EE]">
+                  <thead className="bg-[#241A16] text-[#FAF5EE] font-royal-title uppercase tracking-wider">
                     <tr>
                       <th className="p-3.5">Order Quantity</th>
                       <th className="p-3.5">Discount Tier</th>
@@ -536,35 +536,35 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                       <th className="p-3.5">Production Lead Time</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-stone-200 text-[#1F1612]">
-                    <tr className="hover:bg-slate-50">
+                  <tbody className="divide-y divide-[#D4AF37]/20 text-[#241A16]">
+                    <tr className="hover:bg-[#F0E6D8]/60 transition-colors">
                       <td className="p-3.5 font-semibold">Sample (1 - 10 pcs)</td>
                       <td className="p-3.5">Sample Rate</td>
                       <td className="p-3.5 font-bold">{formatPrice(retailPrice)}</td>
                       <td className="p-3.5">3 - 5 Days</td>
                     </tr>
-                    <tr className="bg-[#FDF0F3]/60 hover:bg-[#FDF0F3]">
+                    <tr className="bg-[#F7ECE5]/60 hover:bg-[#F7ECE5] transition-colors">
                       <td className="p-3.5 font-semibold">Tier 1 ({product.moq} - 99 pcs)</td>
-                      <td className="p-3.5 text-[#C8376B] font-bold">Standard Wholesale</td>
-                      <td className="p-3.5 font-bold text-[#C8376B]">{formatPrice(baseWholesalePrice)}</td>
+                      <td className="p-3.5 text-[#9B332C] font-bold">Standard Wholesale</td>
+                      <td className="p-3.5 font-bold text-[#9B332C]">{formatPrice(baseWholesalePrice)}</td>
                       <td className="p-3.5">12 - 15 Days</td>
                     </tr>
-                    <tr className="hover:bg-slate-50">
+                    <tr className="hover:bg-[#F0E6D8]/60 transition-colors">
                       <td className="p-3.5 font-semibold">Tier 2 (100 - 199 pcs)</td>
-                      <td className="p-3.5 text-[#C8376B] font-bold">8% Volume Discount</td>
-                      <td className="p-3.5 font-bold text-[#C8376B]">{formatPrice(Math.round(baseWholesalePrice * 0.92))}</td>
+                      <td className="p-3.5 text-[#9B332C] font-bold">8% Volume Discount</td>
+                      <td className="p-3.5 font-bold text-[#9B332C]">{formatPrice(Math.round(baseWholesalePrice * 0.92))}</td>
                       <td className="p-3.5">15 - 18 Days</td>
                     </tr>
-                    <tr className="bg-[#FDF0F3]/60 hover:bg-[#FDF0F3]">
+                    <tr className="bg-[#F7ECE5]/60 hover:bg-[#F7ECE5] transition-colors">
                       <td className="p-3.5 font-semibold">Tier 3 (200 - 499 pcs)</td>
-                      <td className="p-3.5 text-[#C8376B] font-bold">15% Volume Discount</td>
-                      <td className="p-3.5 font-bold text-[#C8376B]">{formatPrice(Math.round(baseWholesalePrice * 0.85))}</td>
+                      <td className="p-3.5 text-[#9B332C] font-bold">15% Volume Discount</td>
+                      <td className="p-3.5 font-bold text-[#9B332C]">{formatPrice(Math.round(baseWholesalePrice * 0.85))}</td>
                       <td className="p-3.5">20 - 25 Days</td>
                     </tr>
-                    <tr className="hover:bg-slate-50">
+                    <tr className="hover:bg-[#F0E6D8]/60 transition-colors">
                       <td className="p-3.5 font-semibold">Tier 4 (500+ pcs)</td>
-                      <td className="p-3.5 text-[#C8376B] font-bold">25% Enterprise Contract Rate</td>
-                      <td className="p-3.5 font-bold text-[#C8376B]">{formatPrice(Math.round(baseWholesalePrice * 0.75))}</td>
+                      <td className="p-3.5 text-[#9B332C] font-bold">25% Enterprise Contract Rate</td>
+                      <td className="p-3.5 font-bold text-[#9B332C]">{formatPrice(Math.round(baseWholesalePrice * 0.75))}</td>
                       <td className="p-3.5">25 - 30 Days</td>
                     </tr>
                   </tbody>
@@ -575,12 +575,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
 
           {activeTab === 'custom' && (
             <div className="max-w-4xl space-y-4 text-xs text-stone-700">
-              <h3 className="font-playfair text-lg font-bold text-[#1F1612]">
+              <h3 className="font-playfair text-lg font-bold text-[#241A16]">
                 Custom Production &amp; Care Guide
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-[#FAF7F2] p-5 rounded-2xl border border-stone-200 space-y-2 shadow-sm">
-                  <h4 className="font-royal-title font-bold text-[#C8376B] uppercase tracking-wider">Custom OEM Atelier Services:</h4>
+                <div className="bg-[#F5EDE1] p-5 rounded-2xl border border-[#D4AF37]/30 space-y-2 shadow-sm">
+                  <h4 className="font-royal-title font-bold text-[#9B332C] uppercase tracking-wider">Custom OEM Atelier Services:</h4>
                   <ul className="list-disc pl-4 space-y-1 text-stone-600">
                     <li>Custom Wooden Printing Block Carvings with bespoke motifs</li>
                     <li>Custom Colorway Strike-offs &amp; Lab Dips</li>
@@ -588,8 +588,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                     <li>Sealed export polybag packaging with barcode tags</li>
                   </ul>
                 </div>
-                <div className="bg-[#FAF7F2] p-5 rounded-2xl border border-stone-200 space-y-2 shadow-sm">
-                  <h4 className="font-royal-title font-bold text-[#C8376B] uppercase tracking-wider">Fabric Care Instructions:</h4>
+                <div className="bg-[#F5EDE1] p-5 rounded-2xl border border-[#D4AF37]/30 space-y-2 shadow-sm">
+                  <h4 className="font-royal-title font-bold text-[#9B332C] uppercase tracking-wider">Fabric Care Instructions:</h4>
                   <ul className="list-disc pl-4 space-y-1 text-stone-600">
                     <li>Gentle cold hand wash or machine wash on delicate cycle</li>
                     <li>Use mild eco-friendly liquid detergent</li>
@@ -608,14 +608,14 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
         <div className="space-y-6 pt-4">
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-xs font-royal-title text-[#C8376B] font-bold uppercase tracking-widest">Atelier Suggestions</span>
-              <h2 className="font-playfair text-2xl font-bold text-[#1F1612]">
+              <span className="text-xs font-royal-title text-[#9B332C] font-bold uppercase tracking-widest">Atelier Suggestions</span>
+              <h2 className="font-playfair text-2xl font-bold text-[#241A16]">
                 Complementary Creations in this Line
               </h2>
             </div>
             <button
               onClick={() => { onNavigate(`/category/${product.category}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="text-xs font-royal-title font-bold text-[#C8376B] uppercase tracking-widest hover:underline"
+              className="text-xs font-royal-title font-bold text-[#9B332C] uppercase tracking-widest hover:underline"
             >
               View Full Category →
             </button>
@@ -654,7 +654,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
       )}
 
       {/* Sticky Mobile Bottom Action Bar */}
-      <div className="lg:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-stone-200 p-3 z-40 shadow-2xl flex items-center gap-2">
+      <div className="lg:hidden fixed bottom-0 inset-x-0 bg-[#F5EEE6]/96 backdrop-blur-md border-t border-[#D4AF37]/35 p-3 z-40 shadow-2xl flex items-center gap-2">
         <a
           href={`https://wa.me/911412890000?text=${whatsappMessage}`}
           target="_blank"

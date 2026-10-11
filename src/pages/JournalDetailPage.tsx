@@ -67,7 +67,7 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
 
       {/* Article Content */}
       <div className="font-royal-body max-w-none text-stone-800 space-y-6 text-base sm:text-lg leading-relaxed">
-        <p className="text-lg sm:text-xl font-editorial italic text-[#241A16] bg-[#FAF7F2] p-6 sm:p-8 rounded-2xl border-l-4 border-[#9B332C] shadow-sm">
+        <p className="text-lg sm:text-xl font-editorial italic text-[#241A16] bg-[#FAF5EE] p-6 sm:p-8 rounded-2xl border-l-4 border-[#9B332C] border border-[#D4AF37]/30 shadow-sm">
           "{article.excerpt}"
         </p>
 
@@ -88,12 +88,12 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
 
       {/* Tags */}
       {article.tags && (
-        <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-stone-200">
+        <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-[#D4AF37]/25">
           <span className="text-xs font-royal-title font-bold text-[#241A16] uppercase tracking-wider flex items-center gap-1">
             <Tag className="w-3.5 h-3.5 text-[#9B332C]" /> Tags:
           </span>
           {article.tags.map(t => (
-            <span key={t} className="px-3 py-1 bg-[#FAF7F2] text-[#241A16] border border-[#E0D6CB] rounded-full text-xs font-royal-body font-semibold">
+            <span key={t} className="px-3 py-1 bg-[#F5EDE1] text-[#241A16] border border-[#D4AF37]/35 rounded-full text-xs font-royal-body font-semibold">
               {t}
             </span>
           ))}
@@ -102,14 +102,14 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
 
       {/* Related Articles */}
       {related.length > 0 && (
-        <div className="pt-10 border-t border-stone-200 space-y-6">
+        <div className="pt-10 border-t border-[#D4AF37]/25 space-y-6">
           <h3 className="font-playfair text-2xl font-bold text-[#241A16]">Recommended Sourcing Guides</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {related.map(r => (
               <div 
                 key={r.id}
                 onClick={() => { onNavigate(`/journal/${r.slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="bg-white p-6 rounded-2xl border border-[#E0D6CB] cursor-pointer hover:shadow-xl hover:border-[#9B332C] transition-all space-y-2.5"
+                className="bg-[#FAF5EE] p-6 rounded-2xl border border-[#D4AF37]/35 cursor-pointer hover:shadow-xl hover:border-[#9B332C] transition-all space-y-2.5"
               >
                 <span className="text-[10px] font-royal-title uppercase text-[#9B332C] font-bold">{r.category}</span>
                 <h4 className="font-playfair font-bold text-[#241A16] text-lg leading-snug">{r.title}</h4>

@@ -48,13 +48,13 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ categoryId, onNaviga
 
       {/* Products Grid */}
       <div className="space-y-6">
-        <div className="flex items-center justify-between pb-4 border-b border-[#E0D6CB]">
+        <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/25">
           <span className="text-xs text-stone-600 font-medium font-royal-body">
             Showing <strong className="text-[#241A16] font-bold">{categoryProducts.length}</strong> handcrafted designs in this line
           </span>
           <button
             onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="pill-btn-outline text-xs"
+            className="pill-btn-outline text-xs bg-[#FAF5EE] border border-[#D4AF37]/40"
           >
             View All Categories →
           </button>

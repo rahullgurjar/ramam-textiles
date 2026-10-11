@@ -66,7 +66,7 @@ export const CustomManufacturingWizard: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-[#FAF7EE] to-[#F3EEDB] border-2 border-[#D4AF37]/35 rounded-3xl shadow-2xl overflow-hidden text-[#0B241C]">
+    <div className="bg-[#FAF5EE] border border-[#D4AF37]/45 rounded-3xl shadow-2xl overflow-hidden text-[#0B241C]">
       {/* Progress Bar */}
       <div className="bg-gradient-to-r from-[#0B241C] via-[#11352A] to-[#0B241C] px-6 py-6 border-b-2 border-[#D4AF37]/40 relative overflow-hidden">
         <div className="absolute inset-0 bg-jaipur-jaali opacity-10 pointer-events-none" />
@@ -112,7 +112,7 @@ export const CustomManufacturingWizard: React.FC = () => {
             Our master sampling master and technical merchandising team in Jaipur will analyze your specifications and email you an exact cost breakdown, sampling timeline, and fabric swatches at <strong>{email}</strong> within 24 hours.
           </p>
 
-          <div className="bg-white p-6 rounded-2xl border-2 border-[#D4AF37]/30 text-left text-xs font-royal-body space-y-2 shadow-sm">
+          <div className="bg-[#F5EDE1] p-6 rounded-2xl border border-[#D4AF37]/35 text-left text-xs font-royal-body space-y-2 shadow-sm">
             <div className="font-royal-title text-sm font-bold text-[#164335] border-b border-[#D4AF37]/30 pb-2">
               Royal Brief Summary Preview:
             </div>
@@ -154,7 +154,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                       className={`p-4 rounded-2xl border text-left transition-all ${
                         category === c.id 
                           ? 'border-2 border-[#D4AF37] bg-gradient-to-r from-[#11352A] to-[#0B241C] text-[#F5E6B5] shadow-lg scale-[1.02]' 
-                          : 'border-[#D4AF37]/30 bg-white hover:border-[#11352A] text-[#0B241C]'
+                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] hover:border-[#9B332C] text-[#0B241C]'
                       }`}
                     >
                       <div className="text-2xl mb-2">{c.icon}</div>
@@ -182,7 +182,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                       className={`p-4 rounded-2xl border text-left transition-all ${
                         fabric === f.id 
                           ? 'border-2 border-[#D4AF37] bg-[#FAF7EE] text-[#0B241C] ring-2 ring-[#11352A] shadow-md' 
-                          : 'border-[#D4AF37]/30 bg-white hover:border-[#11352A] text-[#0B241C]'
+                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] hover:border-[#9B332C] text-[#0B241C]'
                       }`}
                     >
                       <div className="flex items-center justify-between">
@@ -228,7 +228,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                       className={`p-4 rounded-2xl border text-left transition-all ${
                         technique === t.id 
                           ? 'border-2 border-[#D4AF37] bg-[#FAF7EE] text-[#0B241C] ring-2 ring-[#11352A] shadow-md' 
-                          : 'border-[#D4AF37]/30 bg-white hover:border-[#11352A] text-[#0B241C]'
+                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] hover:border-[#9B332C] text-[#0B241C]'
                       }`}
                     >
                       <div className="font-royal-title font-bold text-sm text-[#0B241C]">{t.name}</div>
@@ -259,7 +259,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                       className={`p-3.5 rounded-xl border text-center font-royal-title font-bold text-xs transition-all ${
                         quantity === q 
                           ? 'border-2 border-[#D4AF37] bg-gradient-to-r from-[#11352A] to-[#0B241C] text-[#F5E6B5] shadow-md' 
-                          : 'border-[#D4AF37]/30 bg-white text-[#0B241C] hover:border-[#11352A]'
+                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] text-[#0B241C] hover:border-[#9B332C]'
                       }`}
                     >
                       {q}
@@ -318,10 +318,10 @@ export const CustomManufacturingWizard: React.FC = () => {
                         className={`p-4 rounded-2xl border text-left transition-all flex items-start gap-3 ${
                           isChecked 
                             ? 'border-2 border-emerald-700 bg-emerald-50/70 text-[#0B241C] ring-1 ring-emerald-600' 
-                            : 'border-[#D4AF37]/30 bg-white text-[#0B241C] hover:border-[#11352A]'
+                            : 'border-[#D4AF37]/30 bg-[#F5EDE1] text-[#0B241C] hover:border-[#9B332C]'
                         }`}
                       >
-                        <div className={`w-5 h-5 rounded-md mt-0.5 flex items-center justify-center flex-shrink-0 ${isChecked ? 'bg-emerald-700 text-white' : 'border border-[#D4AF37]/60 bg-white'}`}>
+                        <div className={`w-5 h-5 rounded-md mt-0.5 flex items-center justify-center flex-shrink-0 ${isChecked ? 'bg-emerald-700 text-white' : 'border border-[#D4AF37]/60 bg-[#FAF5EE]'}`}>
                           {isChecked && <CheckCircle2 className="w-4 h-4" />}
                         </div>
                         <div>
@@ -343,7 +343,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                   value={techPackNotes}
                   onChange={e => setTechPackNotes(e.target.value)}
                   placeholder="Describe your design inspirations, Pantone shade codes, sizing breakdown (XS to 3XL), or specific garment dimensions..."
-                  className="w-full p-3.5 bg-white border-2 border-[#D4AF37]/30 rounded-2xl text-xs text-[#0B241C] focus:outline-none focus:border-[#11352A]"
+                  className="w-full p-3.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-2xl text-xs text-[#0B241C] focus:outline-none focus:border-[#9B332C]"
                 />
               </div>
 
@@ -391,7 +391,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="e.g. Radhika Mehta"
                       value={contactName}
                       onChange={e => setContactName(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-white border-2 border-[#D4AF37]/30 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#11352A]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#9B332C]"
                     />
                   </div>
 
@@ -404,7 +404,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="e.g. Jaipur Indigo Co."
                       value={brandName}
                       onChange={e => setBrandName(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-white border-2 border-[#D4AF37]/30 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#11352A]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#9B332C]"
                     />
                   </div>
 
@@ -418,7 +418,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="buyer@brand.com"
                       value={email}
                       onChange={e => setEmail(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-white border-2 border-[#D4AF37]/30 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#11352A]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#9B332C]"
                     />
                   </div>
 
@@ -431,14 +431,14 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="e.g. India (Delhi / Mumbai) or USA (New York, Air Cargo)"
                       value={country}
                       onChange={e => setCountry(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-white border-2 border-[#D4AF37]/30 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#11352A]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#9B332C]"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Summary Card */}
-              <div className="bg-white p-5 rounded-2xl border-2 border-[#D4AF37]/30 text-xs space-y-1.5 shadow-sm">
+              <div className="bg-[#F5EDE1] p-5 rounded-2xl border border-[#D4AF37]/35 text-xs space-y-1.5 shadow-sm">
                 <div className="font-royal-title font-bold text-[#164335] flex items-center gap-2">
                   <Award className="w-4 h-4 text-[#D4AF37]" />
                   <span>Brief Specification Snapshot:</span>

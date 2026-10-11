@@ -17,7 +17,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'terms'
               ? 'bg-[#241A16] text-[#FAF5EE] shadow-md border border-[#D4AF37]/50'
-              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#FAF7F2]'
+              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#F5EDE1]'
           }`}
         >
           Terms of Trade
@@ -27,7 +27,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'shipping'
               ? 'bg-[#241A16] text-[#FAF5EE] shadow-md border border-[#D4AF37]/50'
-              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#FAF7F2]'
+              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#F5EDE1]'
           }`}
         >
           Shipping &amp; Export Policy
@@ -37,7 +37,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'returns'
               ? 'bg-[#241A16] text-[#FAF5EE] shadow-md border border-[#D4AF37]/50'
-              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#FAF7F2]'
+              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#F5EDE1]'
           }`}
         >
           Returns &amp; Quality Claims
@@ -47,7 +47,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
           className={`px-5 py-2.5 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap ${
             activeTab === 'privacy'
               ? 'bg-[#241A16] text-[#FAF5EE] shadow-md border border-[#D4AF37]/50'
-              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#FAF7F2]'
+              : 'text-stone-700 hover:text-[#241A16] hover:bg-[#F5EDE1]'
           }`}
         >
           Privacy Policy
@@ -55,7 +55,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'terms' }) =>
       </div>
 
       {/* Content */}
-      <div className="bg-white p-6 sm:p-10 rounded-3xl border border-[#E0D6CB] shadow-lg text-stone-800 font-royal-body text-sm sm:text-base leading-relaxed space-y-6">
+      <div className="bg-[#FAF5EE] p-6 sm:p-10 rounded-3xl border border-[#D4AF37]/35 shadow-lg text-stone-800 font-royal-body text-sm sm:text-base leading-relaxed space-y-6">
         {activeTab === 'terms' && (
           <div className="space-y-4">
             <h1 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16]">

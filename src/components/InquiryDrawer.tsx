@@ -82,7 +82,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 animate-fade-in font-royal-body">
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-xl bg-white shadow-2xl flex flex-col justify-between overflow-hidden border-l border-stone-200">
+        <div className="w-screen max-w-xl bg-[#FAF5EE] shadow-2xl flex flex-col justify-between overflow-hidden border-l border-[#D4AF37]/35">
           
           {/* Header */}
           <div className="p-5 bg-[#241A16] text-[#FAF5EE] border-b border-[#D4AF37]/30 flex items-center justify-between shadow-md">
@@ -130,12 +130,12 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                   </p>
                 </div>
 
-                <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-stone-200 text-left space-y-2 text-xs shadow-sm">
-                  <div className="flex justify-between pb-2 border-b border-stone-200 font-bold text-[#241A16] font-royal-title">
+                <div className="bg-[#F5EDE1] p-4 rounded-2xl border border-[#D4AF37]/35 text-left space-y-2 text-xs shadow-sm">
+                  <div className="flex justify-between pb-2 border-b border-[#D4AF37]/25 font-bold text-[#241A16] font-royal-title">
                     <span>Summary Overview</span>
                     <span>{totalQuantity} Units</span>
                   </div>
-                  <div className="text-stone-600 space-y-1 font-light">
+                  <div className="text-stone-700 space-y-1 font-light">
                     <p>• <strong>Buyer:</strong> {contactName} ({email})</p>
                     <p>• <strong>Company:</strong> {companyName || 'B2B Client'}</p>
                     <p>• <strong>Destination:</strong> {country}</p>
@@ -222,52 +222,52 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                   {inquiryItems.map((item) => (
                     <div 
                       key={`${item.product.id}-${item.selectedColor}-${item.selectedSize}`}
-                      className="bg-white p-3.5 rounded-2xl border border-stone-200 flex gap-3 shadow-sm relative group hover:border-[#C8376B] transition-all"
+                      className="bg-[#FAF5EE] p-3.5 rounded-2xl border border-[#D4AF37]/35 flex gap-3 shadow-sm relative group hover:border-[#D4AF37] transition-all"
                     >
                       <img 
                         src={item.product.images[0]} 
                         alt={item.product.name}
-                        className="w-16 h-20 rounded-xl object-cover border border-stone-200 shrink-0 shadow-sm"
+                        className="w-16 h-20 rounded-xl object-cover border border-[#D4AF37]/30 shrink-0 shadow-sm"
                       />
                       <div className="flex-1 flex flex-col justify-between">
                         <div>
                           <div className="flex justify-between items-start gap-2">
-                            <h5 className="font-playfair text-xs font-bold text-[#1F1612] line-clamp-1">
+                            <h5 className="font-playfair text-xs font-bold text-[#241A16] line-clamp-1">
                               {item.product.name}
                             </h5>
                             <button
                               onClick={() => removeFromInquiry(item.product.id, item.selectedColor, item.selectedSize)}
-                              className="text-stone-400 hover:text-[#C8376B] p-1"
+                              className="text-stone-400 hover:text-[#9B332C] p-1"
                               title="Remove item"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
                             </button>
                           </div>
-                          <span className="text-[10px] text-stone-500 block mt-0.5">
+                          <span className="text-[10px] text-stone-600 block mt-0.5">
                             SKU: {item.product.sku} | Color: <strong>{item.selectedColor}</strong> | Size: <strong>{item.selectedSize}</strong>
                           </span>
                         </div>
 
-                        <div className="flex items-center justify-between mt-2 pt-2 border-t border-stone-100">
+                        <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#D4AF37]/20">
                           <div className="flex items-center gap-1">
                             <button
                               onClick={() => updateInquiryQuantity(item.product.id, item.selectedColor, item.selectedSize, item.quantity - 5)}
-                              className="w-6 h-6 rounded-full bg-slate-100 text-[#1F1612] font-bold text-xs flex items-center justify-center hover:bg-[#C8376B] hover:text-white transition-colors"
+                              className="w-6 h-6 rounded-full bg-[#EFE4D6] text-[#241A16] font-bold text-xs flex items-center justify-center hover:bg-[#D4AF37] hover:text-[#241A16] transition-colors"
                             >
                               -
                             </button>
-                            <span className="w-12 text-center text-xs font-bold text-[#1F1612]">
+                            <span className="w-12 text-center text-xs font-bold text-[#241A16]">
                               {item.quantity} pcs
                             </span>
                             <button
                               onClick={() => updateInquiryQuantity(item.product.id, item.selectedColor, item.selectedSize, item.quantity + 5)}
-                              className="w-6 h-6 rounded-full bg-slate-100 text-[#1F1612] font-bold text-xs flex items-center justify-center hover:bg-[#C8376B] hover:text-white transition-colors"
+                              className="w-6 h-6 rounded-full bg-[#EFE4D6] text-[#241A16] font-bold text-xs flex items-center justify-center hover:bg-[#D4AF37] hover:text-[#241A16] transition-colors"
                             >
                               +
                             </button>
                           </div>
 
-                          <span className="text-[10px] text-[#C8376B] font-bold bg-[#FDF0F3] border border-[#F3CAD6] px-2.5 py-0.5 rounded-full font-royal-title">
+                          <span className="text-[10px] text-[#9B332C] font-bold bg-[#F7ECE5] border border-[#9B332C]/30 px-2.5 py-0.5 rounded-full font-royal-title">
                             MOQ {item.product.moq}
                           </span>
                         </div>
@@ -277,17 +277,17 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                 </div>
 
                 {/* Buyer Information Form */}
-                <form onSubmit={handleSubmitOfficialRfq} className="bg-[#FAF7F2] p-5 rounded-[24px] border border-stone-200 space-y-3 shadow-sm">
-                  <div className="flex items-center gap-2 pb-2 border-b border-stone-200">
-                    <Building className="w-4 h-4 text-[#C8376B]" />
-                    <span className="text-xs font-bold text-[#1F1612] uppercase tracking-wider font-royal-title">
+                <form onSubmit={handleSubmitOfficialRfq} className="bg-[#FAF5EE] p-5 rounded-[24px] border border-[#D4AF37]/35 space-y-3 shadow-sm">
+                  <div className="flex items-center gap-2 pb-2 border-b border-[#D4AF37]/25">
+                    <Building className="w-4 h-4 text-[#9B332C]" />
+                    <span className="text-xs font-bold text-[#241A16] uppercase tracking-wider font-royal-title">
                       Buyer &amp; Delivery Information
                     </span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     <div>
-                      <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">
+                      <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">
                         Your Full Name *
                       </label>
                       <input 
@@ -295,13 +295,13 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                         value={contactName}
                         onChange={e => setContactName(e.target.value)}
                         placeholder="e.g. Elena Rossi"
-                        className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]"
+                        className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">
+                      <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">
                         Company / Boutique Name
                       </label>
                       <input 
@@ -309,13 +309,13 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                         value={companyName}
                         onChange={e => setCompanyName(e.target.value)}
                         placeholder="e.g. Silk &amp; Sand Studios"
-                        className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]"
+                        className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">
+                    <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">
                       Official Business Email *
                     </label>
                     <input 
@@ -323,19 +323,19 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       value={email}
                       onChange={e => setEmail(e.target.value)}
                       placeholder="buyer@domain.com"
-                      className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]"
+                      className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                       required
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">
+                    <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">
                       Destination Country
                     </label>
                     <select 
                       value={country} 
                       onChange={e => setCountry(e.target.value)}
-                      className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]"
+                      className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                     >
                       <option value="India">India</option>
                       <option value="United States">United States</option>
@@ -351,7 +351,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-bold text-[#1F1612] uppercase mb-0.5 font-royal-title">
+                    <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">
                       Specific Notes / Target Timeline
                     </label>
                     <textarea 
@@ -359,7 +359,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       value={notes}
                       onChange={e => setNotes(e.target.value)}
                       placeholder="Add specific color combinations, packaging instructions or target delivery dates..."
-                      className="w-full px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-[#1F1612] focus:outline-none focus:border-[#C8376B]"
+                      className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                     ></textarea>
                   </div>
 
@@ -380,7 +380,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       rel="noopener noreferrer"
                       className="w-full pill-btn-dark py-2.5 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 rounded-full shadow bg-[#241A16]"
                     >
-                      <InstagramIcon className="w-4 h-4 text-[#E5A93C]" />
+                      <InstagramIcon className="w-4 h-4 text-[#D4AF37]" />
                       <span>Quick Inquiry via Instagram DM</span>
                     </a>
                   </div>
@@ -390,8 +390,8 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
           </div>
 
           {/* Footer Security Badge */}
-          <div className="p-3 bg-[#FAF7F2] border-t border-stone-200 text-center text-[11px] text-stone-600 flex items-center justify-center gap-2 font-medium">
-            <ShieldCheck className="w-4 h-4 text-[#C8376B]" />
+          <div className="p-3 bg-[#EFE4D6] border-t border-[#D4AF37]/30 text-center text-[11px] text-stone-700 flex items-center justify-center gap-2 font-medium">
+            <ShieldCheck className="w-4 h-4 text-[#9B332C]" />
             <span>Confidential B2B Pricing • Direct Manufacturer Rates • FOB Jaipur</span>
           </div>
 

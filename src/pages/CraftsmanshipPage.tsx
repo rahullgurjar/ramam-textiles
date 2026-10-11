@@ -56,10 +56,10 @@ export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate
           return (
             <div 
               key={stage.title}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-6 sm:p-10 rounded-[32px] border border-stone-200 shadow-sm relative overflow-hidden group hover:border-[#9B332C] transition-all"
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#FAF5EE] p-6 sm:p-10 rounded-[32px] border border-[#D4AF37]/35 shadow-sm relative overflow-hidden group hover:border-[#9B332C] transition-all"
             >
               <div className={`lg:col-span-6 ${isReversed ? 'lg:order-2' : ''}`}>
-                <div className="aspect-[16/10] rounded-[24px] overflow-hidden shadow-lg border border-stone-200 group-hover:scale-[1.02] transition-transform duration-500 bg-slate-100">
+                <div className="aspect-[16/10] rounded-[24px] overflow-hidden shadow-lg border border-[#D4AF37]/30 group-hover:scale-[1.02] transition-transform duration-500 bg-[#F0E6D8]">
                   <img src={stage.image} alt={stage.title} className="w-full h-full object-cover" />
                 </div>
               </div>

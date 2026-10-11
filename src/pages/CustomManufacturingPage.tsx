@@ -77,7 +77,7 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
                 onNavigate('/contact');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="pill-btn-outline inline-flex items-center gap-2 px-7 py-3.5 text-xs font-bold uppercase rounded-full bg-white text-[#241A16]"
+              className="pill-btn-outline inline-flex items-center gap-2 px-7 py-3.5 text-xs font-bold uppercase rounded-full bg-[#FAF5EE] text-[#241A16] border border-[#D4AF37]/45"
             >
               <span>Contact Merchandising Desk</span>
             </button>
@@ -96,7 +96,7 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           {steps.map(s => (
-            <div key={s.num} className="bg-white p-6 rounded-[28px] border border-[#E0D6CB] hover:border-[#9B332C] space-y-3 relative shadow-sm hover:shadow-xl transition-all">
+            <div key={s.num} className="bg-[#FAF5EE] p-6 rounded-[28px] border border-[#D4AF37]/35 hover:border-[#9B332C] space-y-3 relative shadow-sm hover:shadow-xl transition-all">
               <span className="font-playfair text-3xl font-bold text-[#9B332C] block">{s.num}</span>
               <h3 className="font-royal-title text-base font-bold text-[#241A16]">{s.title}</h3>
               <p className="text-xs font-royal-body text-stone-600 leading-relaxed">{s.desc}</p>
