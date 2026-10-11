@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, Award, ShieldCheck, Heart, ArrowRight, Building2, MapPin, ExternalLink } from 'lucide-react';
 import { InstagramIcon } from '../components/InstagramIcon';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
@@ -13,7 +14,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       <div className="bg-[#241A16] text-white rounded-[32px] p-8 sm:p-14 relative overflow-hidden shadow-xl border border-[#D4AF37]/30">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url('./products/duffle-kantha-patchwork.jpg')` }}
+          style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/90 to-transparent" />
 

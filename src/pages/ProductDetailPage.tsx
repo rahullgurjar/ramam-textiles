@@ -10,6 +10,7 @@ import { PRODUCTS } from '../data/products';
 import { useApp } from '../context/AppContext';
 import { ProductCard } from '../components/ProductCard';
 import { InstagramIcon } from '../components/InstagramIcon';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface ProductDetailPageProps {
   slug: string;
@@ -116,9 +117,16 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             className="relative aspect-[4/5] rounded-[32px] overflow-hidden bg-[#F0E6D8] shadow-xl border border-[#D4AF37]/35 group cursor-zoom-in"
           >
             <img
-              src={product.images[activeImageIndex] || product.images[0]}
+              src={resolveProductImage(product.images[activeImageIndex] || product.images[0])}
               alt={product.name}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                if (!target.dataset.fallbackTried) {
+                  target.dataset.fallbackTried = 'true';
+                  target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                }
+              }}
             />
 
             {/* Zoom Icon Hint */}
@@ -180,7 +188,18 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                       : 'border-[#D4AF37]/35 opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <img src={img} alt={`${product.name} ${idx}`} className="w-full h-full object-cover" />
+                  <img 
+                    src={resolveProductImage(img)} 
+                    alt={`${product.name} ${idx}`} 
+                    className="w-full h-full object-cover" 
+                    onError={(e) => {
+                      const target = e.currentTarget as HTMLImageElement;
+                      if (!target.dataset.fallbackTried) {
+                        target.dataset.fallbackTried = 'true';
+                        target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                      }
+                    }}
+                  />
                 </button>
               ))}
             </div>
@@ -646,9 +665,16 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             <X className="w-6 h-6" />
           </button>
           <img 
-            src={product.images[activeImageIndex] || product.images[0]} 
+            src={resolveProductImage(product.images[activeImageIndex] || product.images[0])} 
             alt={product.name}
             className="max-h-[90vh] max-w-[90vw] object-contain rounded-2xl shadow-2xl"
+            onError={(e) => {
+              const target = e.currentTarget as HTMLImageElement;
+              if (!target.dataset.fallbackTried) {
+                target.dataset.fallbackTried = 'true';
+                target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+              }
+            }}
           />
         </div>
       )}

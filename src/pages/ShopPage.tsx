@@ -8,6 +8,7 @@ import { COLLECTIONS } from '../data/collections';
 import { ProductCard } from '../components/ProductCard';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface ShopPageProps {
   onNavigate: (path: string) => void;
@@ -118,7 +119,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onNavigate, initialCategory,
       <div className="bg-[#1F1612] text-white rounded-[32px] p-8 md:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-xl">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url('./products/duffle-kantha-patchwork.jpg')` }}
+          style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#1F1612] via-[#1F1612]/90 to-transparent" />
 

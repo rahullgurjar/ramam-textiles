@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: '#F5EEE6',
+        canvas: '#F5EEE6',
         main: '#241A16',
         craft: {
           dark: '#241A16',

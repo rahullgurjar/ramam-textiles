@@ -18,6 +18,7 @@ import {
 import confetti from 'canvas-confetti';
 import { useApp } from '../context/AppContext';
 import { InstagramIcon } from './InstagramIcon';
+import { resolveProductImage } from '../utils/imageUtils';
 
 export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) => {
   const { 
@@ -225,9 +226,16 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       className="bg-[#FAF5EE] p-3.5 rounded-2xl border border-[#D4AF37]/35 flex gap-3 shadow-sm relative group hover:border-[#D4AF37] transition-all"
                     >
                       <img 
-                        src={item.product.images[0]} 
+                        src={resolveProductImage(item.product.images[0])} 
                         alt={item.product.name}
                         className="w-16 h-20 rounded-xl object-cover border border-[#D4AF37]/30 shrink-0 shadow-sm"
+                        onError={(e) => {
+                          const target = e.currentTarget as HTMLImageElement;
+                          if (!target.dataset.fallbackTried) {
+                            target.dataset.fallbackTried = 'true';
+                            target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                          }
+                        }}
                       />
                       <div className="flex-1 flex flex-col justify-between">
                         <div>

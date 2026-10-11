@@ -4,6 +4,7 @@ import { useApp } from '../context/AppContext';
 import { PRODUCTS, CATEGORIES } from '../data/products';
 import { COLLECTIONS } from '../data/collections';
 import { Product } from '../types';
+import { resolveProductImage } from '../utils/imageUtils';
 
 export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) => {
   const { isSearchModalOpen, closeSearch, searchQuery, setSearchQuery } = useApp();
@@ -149,9 +150,16 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
                     className="p-3 bg-[#FAF5EE] rounded-2xl border border-[#D4AF37]/40 hover:border-[#9B332C] flex gap-3 cursor-pointer group shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
                   >
                     <img 
-                      src={product.images[0]} 
+                      src={resolveProductImage(product.images[0])} 
                       alt={product.name} 
                       className="w-16 h-20 rounded-xl object-cover border border-[#D4AF37]/30 shrink-0 shadow-sm"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        if (!target.dataset.fallbackTried) {
+                          target.dataset.fallbackTried = 'true';
+                          target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                        }
+                      }}
                     />
                     <div className="flex-1 flex flex-col justify-between">
                       <div>

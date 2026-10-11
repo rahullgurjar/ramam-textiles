@@ -11,6 +11,7 @@ import { LOOKBOOK_ITEMS } from '../data/lookbook';
 import { ProductCard } from '../components/ProductCard';
 import { CustomManufacturingWizard } from '../components/CustomManufacturingWizard';
 import { InstagramIcon } from '../components/InstagramIcon';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
@@ -121,7 +122,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 {/* Hero Showcase Image */}
                 <div className="aspect-[4/4.5] rounded-[28px] overflow-hidden bg-[#F0E6D8] shadow-inner relative group">
                   <img
-                    src="./products/duffle-kantha-patchwork.jpg"
+                    src={resolveProductImage('./products/duffle-kantha-patchwork.jpg')}
                     alt="Artisan Jaipur Hand Block Quilted Patchwork Duffle Bag"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
@@ -332,13 +333,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               {/* Right Image Card */}
               <div className="lg:col-span-5 aspect-[4/3] rounded-xl overflow-hidden bg-[#F0E6D8] border border-[#D4AF37]/35 shadow-inner relative group">
                 <img
-                  src={
+                  src={resolveProductImage(
                     activeCraftCluster === 'sanganer'
                       ? './products/vanity-trio-turquoise.jpg'
                       : activeCraftCluster === 'bagru'
                       ? './products/duffle-indigo.jpg'
                       : './products/duffle-kantha-patchwork.jpg'
-                  }
+                  )}
                   alt={activeCraftCluster}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -520,7 +521,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border-4 border-[#FAF5EE] bg-[#F0E6D8]">
                 <img
-                  src="./products/duffle-pink-botanical.jpg"
+                  src={resolveProductImage('./products/duffle-pink-botanical.jpg')}
                   alt="Jaipur Hand Block Printed Quilted Weekender Bag"
                   className="w-full h-full object-cover"
                 />

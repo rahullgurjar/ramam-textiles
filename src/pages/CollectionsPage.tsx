@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, Sparkles, ChevronRight, Compass } from 'lucide-react';
 import { COLLECTIONS } from '../data/collections';
 import { PRODUCTS } from '../data/products';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface CollectionsPageProps {
   onNavigate: (path: string) => void;
@@ -39,9 +40,16 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
               <div className={`lg:col-span-6 ${isReversed ? 'lg:order-2' : ''}`}>
                 <div className="relative aspect-[16/10] rounded-[24px] overflow-hidden shadow-lg group border border-[#D4AF37]/30">
                   <img
-                    src={collection.heroImage}
+                    src={resolveProductImage(collection.heroImage)}
                     alt={collection.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => {
+                      const target = e.currentTarget as HTMLImageElement;
+                      if (!target.dataset.fallbackTried) {
+                        target.dataset.fallbackTried = 'true';
+                        target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                      }
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#241A16] via-transparent to-transparent opacity-75" />
                   <div className="absolute bottom-4 left-4 text-[#FAF5EE] font-royal-title text-xs uppercase tracking-widest bg-[#241A16]/95 border border-[#D4AF37]/50 px-3.5 py-1.5 rounded-full shadow-lg">

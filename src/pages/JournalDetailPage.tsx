@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowLeft, ChevronRight, Share2, BookOpen, Clock, Tag } from 'lucide-react';
 import { JOURNAL_ARTICLES } from '../data/journal';
 import { useApp } from '../context/AppContext';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface JournalDetailPageProps {
   slug: string;
@@ -62,7 +63,18 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
 
       {/* Featured Cover Image */}
       <div className="aspect-[16/9] rounded-[32px] overflow-hidden shadow-2xl border border-[#E0D6CB]">
-        <img src={article.coverImage} alt={article.title} className="w-full h-full object-cover" />
+        <img 
+          src={resolveProductImage(article.coverImage)} 
+          alt={article.title} 
+          className="w-full h-full object-cover" 
+          onError={(e) => {
+            const target = e.currentTarget as HTMLImageElement;
+            if (!target.dataset.fallbackTried) {
+              target.dataset.fallbackTried = 'true';
+              target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+            }
+          }}
+        />
       </div>
 
       {/* Article Content */}

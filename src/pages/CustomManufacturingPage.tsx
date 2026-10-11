@@ -4,6 +4,7 @@ import {
   Send, Mail, Package, Award, ArrowRight, HelpCircle
 } from 'lucide-react';
 import { CustomManufacturingWizard } from '../components/CustomManufacturingWizard';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface CustomManufacturingPageProps {
   onNavigate: (path: string) => void;
@@ -44,7 +45,7 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
       <div className="bg-gradient-to-br from-[#241A16] via-[#2F211C] to-[#241A16] text-[#FAF5EE] rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/40 shadow-2xl">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: `url('./products/duffle-kantha-patchwork.jpg')` }}
+          style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/90 to-transparent" />
         <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-15 pointer-events-none" />

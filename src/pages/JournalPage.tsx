@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, ArrowRight, BookOpen } from 'lucide-react';
 import { JOURNAL_POSTS } from '../data/journal';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface JournalPageProps {
   onNavigate: (path: string) => void;
@@ -33,9 +34,16 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
 
           <div className="lg:col-span-7 aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-[#D4AF37]/40">
             <img 
-              src={JOURNAL_POSTS[0].image} 
+              src={resolveProductImage(JOURNAL_POSTS[0].image)} 
               alt={JOURNAL_POSTS[0].title} 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                if (!target.dataset.fallbackTried) {
+                  target.dataset.fallbackTried = 'true';
+                  target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                }
+              }}
             />
           </div>
           <div className="lg:col-span-5 space-y-4">
@@ -72,9 +80,16 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
           >
             <div className="aspect-[16/10] overflow-hidden relative">
               <img
-                src={post.image}
+                src={resolveProductImage(post.image)}
                 alt={post.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  if (!target.dataset.fallbackTried) {
+                    target.dataset.fallbackTried = 'true';
+                    target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                  }
+                }}
               />
               <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-royal-title font-bold uppercase tracking-wider shadow-md border ${
                 pIdx % 3 === 0 

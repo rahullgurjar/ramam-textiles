@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Sparkles, Eye, ArrowRight, Download, CheckCircle2 } from 'lucide-react';
 import { LOOKBOOK_ITEMS } from '../data/lookbook';
 import { useApp } from '../context/AppContext';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface LookbookPageProps {
   onNavigate: (path: string) => void;
@@ -70,9 +71,16 @@ export const LookbookPage: React.FC<LookbookPageProps> = ({ onNavigate }) => {
             className="group relative rounded-3xl overflow-hidden shadow-xl cursor-pointer bg-stone-100 aspect-[4/3] border border-[#D4AF37]/35"
           >
             <img
-              src={item.image}
+              src={resolveProductImage(item.image)}
               alt={item.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                if (!target.dataset.fallbackTried) {
+                  target.dataset.fallbackTried = 'true';
+                  target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                }
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#241A16]/95 via-[#241A16]/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
 
@@ -101,9 +109,16 @@ export const LookbookPage: React.FC<LookbookPageProps> = ({ onNavigate }) => {
           <div className="bg-[#FAF5EE] rounded-3xl overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-12 shadow-2xl border border-[#D4AF37]/45 text-[#241A16]">
             <div className="md:col-span-7 bg-black max-h-[70vh] md:max-h-[80vh] flex items-center justify-center">
               <img
-                src={selectedImageModal.image}
+                src={resolveProductImage(selectedImageModal.image)}
                 alt={selectedImageModal.title}
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  if (!target.dataset.fallbackTried) {
+                    target.dataset.fallbackTried = 'true';
+                    target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                  }
+                }}
               />
             </div>
             <div className="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-6">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sparkles, Award, Layers, ShieldCheck, ArrowRight, Heart, MapPin } from 'lucide-react';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface CraftsmanshipPageProps {
   onNavigate: (path: string) => void;
@@ -68,7 +69,18 @@ export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate
             >
               <div className={`lg:col-span-6 ${isReversed ? 'lg:order-2' : ''}`}>
                 <div className="aspect-[16/10] rounded-[24px] overflow-hidden shadow-lg border border-[#D4AF37]/30 group-hover:scale-[1.02] transition-transform duration-500 bg-[#F0E6D8]">
-                  <img src={stage.image} alt={stage.title} className="w-full h-full object-cover" />
+                  <img 
+                    src={resolveProductImage(stage.image)} 
+                    alt={stage.title} 
+                    className="w-full h-full object-cover" 
+                    onError={(e) => {
+                      const target = e.currentTarget as HTMLImageElement;
+                      if (!target.dataset.fallbackTried) {
+                        target.dataset.fallbackTried = 'true';
+                        target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                      }
+                    }}
+                  />
                 </div>
               </div>
 

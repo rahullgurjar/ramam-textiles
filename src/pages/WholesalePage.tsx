@@ -6,6 +6,7 @@ import {
 import { useApp } from '../context/AppContext';
 import { PRODUCTS } from '../data/products';
 import { InstagramIcon } from '../components/InstagramIcon';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface WholesalePageProps {
   onNavigate: (path: string) => void;
@@ -37,7 +38,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
       <div className="bg-[#241A16] text-white rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/30 shadow-xl">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url('./products/duffle-kantha-patchwork.jpg')` }}
+          style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/90 to-transparent" />
 

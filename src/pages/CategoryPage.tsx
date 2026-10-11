@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowLeft, Sparkles, ChevronRight } from 'lucide-react';
 import { CATEGORIES, PRODUCTS } from '../data/products';
 import { ProductCard } from '../components/ProductCard';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface CategoryPageProps {
   categoryId: string;
@@ -26,9 +27,16 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ categoryId, onNaviga
       {/* Category Hero Banner */}
       <div className="relative rounded-[32px] overflow-hidden bg-gradient-to-br from-[#241A16] via-[#2F211C] to-[#241A16] text-[#FAF5EE] min-h-[260px] flex items-center p-8 sm:p-12 shadow-2xl border border-[#D4AF37]/40">
         <img
-          src={category.image}
+          src={resolveProductImage(category.image)}
           alt={category.name}
           className="absolute inset-0 w-full h-full object-cover opacity-25 scale-105"
+          onError={(e) => {
+            const target = e.currentTarget as HTMLImageElement;
+            if (!target.dataset.fallbackTried) {
+              target.dataset.fallbackTried = 'true';
+              target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+            }
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/85 to-transparent" />
         <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-15 pointer-events-none" />

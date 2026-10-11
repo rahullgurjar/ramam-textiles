@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
+import { resolveProductImage } from '../utils/imageUtils';
 import { 
   ShoppingBag, 
   Eye, 
@@ -55,10 +56,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
         onMouseLeave={() => setCurrentImgIndex(0)}
       >
         <img 
-          src={product.images[currentImgIndex] || product.images[0]} 
+          src={resolveProductImage(product.images[currentImgIndex] || product.images[0])} 
           alt={product.name}
           className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
           loading="lazy"
+          onError={(e) => {
+            const target = e.currentTarget as HTMLImageElement;
+            if (!target.dataset.fallbackTried) {
+              target.dataset.fallbackTried = 'true';
+              target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+            }
+          }}
         />
 
         {/* Badges Overlay */}

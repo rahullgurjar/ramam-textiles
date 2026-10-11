@@ -3,6 +3,7 @@ import { X, FileText, CheckCircle2, ShieldCheck, Layers, Sparkles, Mail } from '
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
 import { InstagramIcon } from './InstagramIcon';
+import { resolveProductImage } from '../utils/imageUtils';
 
 export const QuickQuoteModal: React.FC = () => {
   const { isQuickQuoteOpen, closeQuickQuote, activeQuoteProduct, showToast } = useApp();
@@ -93,9 +94,16 @@ export const QuickQuoteModal: React.FC = () => {
               {/* Product Spotlight Header */}
               <div className="p-3.5 bg-[#F5EDE1] rounded-2xl border border-[#D4AF37]/35 flex gap-3 shadow-sm">
                 <img 
-                  src={activeQuoteProduct.images[0]} 
+                  src={resolveProductImage(activeQuoteProduct.images[0])} 
                   alt={activeQuoteProduct.name} 
                   className="w-14 h-16 object-cover rounded-xl border border-[#D4AF37]/30 shadow-sm"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (!target.dataset.fallbackTried) {
+                      target.dataset.fallbackTried = 'true';
+                      target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                    }
+                  }}
                 />
                 <div className="flex-1 text-xs">
                   <span className="text-[10px] text-[#9B332C] font-bold uppercase font-royal-title">SKU: {activeQuoteProduct.sku}</span>

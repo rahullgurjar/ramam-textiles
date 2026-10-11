@@ -26,32 +26,76 @@ import { TrackOrderPage } from './pages/TrackOrderPage';
 import { FAQPage } from './pages/FAQPage';
 import { LegalPage } from './pages/LegalPage';
 
+const getNormalizedPath = (): string => {
+  if (typeof window === 'undefined') return '/';
+  
+  // 1. Check hash route first (e.g. #/product/slug or #/shop)
+  if (window.location.hash && window.location.hash.startsWith('#/')) {
+    return window.location.hash.slice(1);
+  }
+
+  // 2. Check query parameter redirect (e.g. ?p=/product/slug used by GitHub Pages SPA redirect)
+  const urlParams = new URLSearchParams(window.location.search);
+  const p = urlParams.get('p');
+  if (p) {
+    return p.startsWith('/') ? p : '/' + p;
+  }
+
+  // 3. Check pathname, stripping repository base if present (e.g. /ramam-textiles)
+  let path = window.location.pathname || '/';
+  if (path.startsWith('/ramam-textiles')) {
+    path = path.slice('/ramam-textiles'.length) || '/';
+  }
+  return path;
+};
+
 export const App: React.FC = () => {
   const [currentPath, setCurrentPath] = useState<string>(() => {
-    return window.location.pathname || '/';
+    return getNormalizedPath();
   });
 
   const [isB2BUnlockModalOpen, setIsB2BUnlockModalOpen] = useState(false);
 
-  // Synchronize browser history navigation
+  // Synchronize browser history and hash navigation
   useEffect(() => {
-    const handlePopState = () => {
-      setCurrentPath(window.location.pathname || '/');
+    // If redirected from 404.html with ?p=...
+    const urlParams = new URLSearchParams(window.location.search);
+    const p = urlParams.get('p');
+    if (p) {
+      const isGhPagesRepo = window.location.pathname.startsWith('/ramam-textiles');
+      const basePath = isGhPagesRepo ? '/ramam-textiles' : '';
+      const cleanPath = p.startsWith('/') ? p : '/' + p;
+      window.history.replaceState({}, '', `${basePath}${cleanPath}`);
+      setCurrentPath(cleanPath);
+    }
+
+    const handleRouteSync = () => {
+      setCurrentPath(getNormalizedPath());
     };
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('popstate', handleRouteSync);
+    window.addEventListener('hashchange', handleRouteSync);
+    return () => {
+      window.removeEventListener('popstate', handleRouteSync);
+      window.removeEventListener('hashchange', handleRouteSync);
+    };
   }, []);
 
   const navigate = (path: string) => {
-    if (path.startsWith('#')) {
+    if (path.startsWith('#') && !path.startsWith('#/')) {
       const el = document.querySelector(path);
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' });
         return;
       }
     }
-    window.history.pushState({}, '', path);
-    setCurrentPath(path);
+
+    const isGhPagesRepo = window.location.pathname.startsWith('/ramam-textiles');
+    const basePath = isGhPagesRepo ? '/ramam-textiles' : '';
+    const cleanPath = path.startsWith('#/') ? path.slice(1) : path;
+    const targetUrl = `${basePath}${cleanPath}`;
+
+    window.history.pushState({}, '', targetUrl);
+    setCurrentPath(cleanPath);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
