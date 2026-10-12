@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react';
-import { 
-  Building2, ShieldCheck, Truck, FileCheck, ArrowRight, 
-  HelpCircle, Sparkles, PhoneCall, CheckCircle2, Package
-} from 'lucide-react';
+import { ShieldCheck, Truck, FileCheck } from 'lucide-react';
 import { BulkOrderEnquiryForm } from '../components/BulkOrderEnquiryForm';
-import { resolveProductImage } from '../utils/imageUtils';
 
 interface BulkOrderEnquiryPageProps {
   onNavigate: (path: string) => void;
@@ -13,54 +9,29 @@ interface BulkOrderEnquiryPageProps {
 export const BulkOrderEnquiryPage: React.FC<BulkOrderEnquiryPageProps> = ({ onNavigate }) => {
   useEffect(() => {
     document.title = 'Bulk Order & Wholesale Enquiry | Ramam Textiles Jaipur';
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    const el = document.getElementById('bulk-enquiry');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 font-royal-body">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12 font-royal-body animate-fade-in">
       
-      {/* Editorial Header */}
-      <div className="bg-[#241A16] text-[#FAF5EE] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/35 shadow-2xl">
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none"
-          style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/95 to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-15 pointer-events-none" />
-
-        <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-widest shadow-sm">
-            <Building2 className="w-3.5 h-3.5 text-[#9B332C]" />
-            <span>Direct Jaipur Export Atelier</span>
-          </div>
-
-          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3DC] leading-tight">
-            Bulk Order &amp; Wholesale Quotation
-          </h1>
-
-          <p className="text-stone-300 font-royal-body text-sm sm:text-base leading-relaxed">
-            Direct-from-manufacturer wholesale supply for lifestyle boutiques, resort gift shops, department stores, and independent designers. We offer low minimums (from 25 pieces), certified colorfast pure cotton, bespoke woodblock carving, and reliable door-to-door air freight worldwide.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
-            <span className="flex items-center gap-1.5 text-amber-200/90 font-royal-title">
-              <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
-              <span>MOQ from 25 pcs</span>
-            </span>
-            <span className="text-stone-500">•</span>
-            <span className="flex items-center gap-1.5 text-amber-200/90 font-royal-title">
-              <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
-              <span>Door-to-Door Air Express</span>
-            </span>
-            <span className="text-stone-500">•</span>
-            <span className="flex items-center gap-1.5 text-amber-200/90 font-royal-title">
-              <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
-              <span>Zero-Defect 4-Point QC</span>
-            </span>
-          </div>
-        </div>
+      {/* Breadcrumb Navigation */}
+      <div className="flex items-center gap-2 text-xs text-stone-500 font-royal-title">
+        <button 
+          onClick={() => onNavigate('/')} 
+          className="hover:text-[#9B332C] transition-colors"
+        >
+          Home
+        </button>
+        <span>/</span>
+        <span className="text-[#9B332C] font-semibold">Bulk Order &amp; Wholesale Enquiry</span>
       </div>
 
-      {/* Primary Bulk Order Enquiry Form */}
+      {/* Primary Bulk Order Enquiry Form - Direct & Center */}
       <BulkOrderEnquiryForm id="bulk-enquiry" />
 
       {/* Why Source Directly from Ramam Textiles */}

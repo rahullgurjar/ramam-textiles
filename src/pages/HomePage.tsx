@@ -65,14 +65,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </button>
 
                 <button
-                  onClick={() => {
-                    const el = document.getElementById('bulk-enquiry');
-                    if (el) {
-                      el.scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                      onNavigate('/bulk-enquiry');
-                    }
-                  }}
+                  onClick={() => onNavigate('/bulk-enquiry')}
                   className="pill-btn-outline flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full border-[#1D4ED8]/40 hover:border-[#1D4ED8] hover:text-[#1D4ED8]"
                 >
                   <Scissors className="w-4 h-4 text-[#1D4ED8]" />

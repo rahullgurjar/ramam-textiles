@@ -259,7 +259,20 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             {/* Bulk Orders Subtle CTA */}
             <button 
-              onClick={() => handleNav('/bulk-enquiry')}
+              onClick={() => {
+                setActiveMegaMenu(null);
+                setIsMobileMenuOpen(false);
+                if (currentPath === '/bulk-enquiry') {
+                  const el = document.getElementById('bulk-enquiry');
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                } else {
+                  handleNav('/bulk-enquiry');
+                }
+              }}
               className="nav-subtle-cta ml-1"
             >
               <span>BULK ORDERS</span>
@@ -481,7 +494,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               </a>
 
               <button 
-                onClick={() => { setIsMobileMenuOpen(false); openQuickQuote(); }}
+                onClick={() => { 
+                  setIsMobileMenuOpen(false); 
+                  handleNav('/bulk-enquiry'); 
+                }}
                 className="pill-btn-rose w-full py-3 text-xs font-bold uppercase rounded-xl flex items-center justify-center gap-2 shadow-lg"
               >
                 <FileText className="w-4 h-4 text-white" />
