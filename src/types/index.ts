@@ -133,3 +133,9 @@ export interface FAQItem {
   question: string;
   answer: string;
 }
+
+declare global {
+  interface Window {
+    dataLayer?: any[];
+  }
+}

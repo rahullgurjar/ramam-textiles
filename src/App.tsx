@@ -129,6 +129,19 @@ export const App: React.FC = () => {
     };
   }, []);
 
+  // Track dynamic SPA route transitions in Google Tag Manager dataLayer
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'page_view',
+        page_path: currentPath,
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    }
+  }, [currentPath]);
+
   const navigate = (path: string) => {
     if (path.startsWith('#') && !path.startsWith('#/')) {
       const el = document.querySelector(path);
