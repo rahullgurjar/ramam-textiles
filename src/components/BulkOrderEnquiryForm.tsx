@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { 
-  Send, CheckCircle2, Sparkles, Building2, ShieldCheck, Truck, 
-  Package, Globe2, Clock, Layers, MessageSquare, Phone, Mail, 
-  FileCheck, ArrowRight, RotateCcw, Check, ExternalLink, HelpCircle
+  Send, CheckCircle2, ShieldCheck,
+  MessageSquare, RotateCcw, Check
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -13,13 +12,18 @@ interface BulkOrderEnquiryFormProps {
   onSuccess?: () => void;
 }
 
-const CATEGORY_OPTIONS = [
-  { id: 'duffle', label: 'Quilted Travel Duffle Bags', minQty: '25 pcs', icon: '🧳' },
-  { id: 'pouches', label: 'Block Print Vanity & Cosmetic Pouches', minQty: '50 pcs', icon: '👝' },
-  { id: 'totes', label: 'Ruffle Shoulder Totes & Beach Bags', minQty: '30 pcs', icon: '👜' },
-  { id: 'tech', label: 'Tech Organizers & Laptop Sleeves', minQty: '30 pcs', icon: '💻' },
-  { id: 'fabrics', label: 'Pure Cotton Running Fabric Yardage', minQty: '50 meters', icon: '🧵' },
-  { id: 'custom', label: 'Custom Silhouette / Bespoke Design', minQty: '50 pcs', icon: '✨' },
+export const PRODUCT_OPTIONS = [
+  'Patchwork Duffle Bags',
+  'Quilted Tote Bags',
+  'Ruffled Tote Bags',
+  'Yoga Mat Bags',
+  'Quilted Laptop Sleeves',
+  'Hair Tool & Travel Organizers',
+  'Vanity Boxes & Pouches',
+  'Mini Tote Bags',
+  'Indigo Flat Pouches',
+  'Custom Gifting Hampers',
+  'Assorted Mix Collection',
 ];
 
 const VOLUME_TIERS = [
@@ -28,12 +32,6 @@ const VOLUME_TIERS = [
   { id: 'wholesale', label: '151 – 500 pcs', desc: 'Commercial Wholesale Volume' },
   { id: 'volume', label: '500+ pcs', desc: 'Enterprise / Export Production' },
   { id: 'fabric_meters', label: '100+ Meters', desc: 'Fabric Rolls by Meter' },
-];
-
-const TIMELINE_OPTIONS = [
-  { id: 'standard', label: '4 – 6 Weeks (Standard Artisan Handcraft)' },
-  { id: 'express', label: '2 – 3 Weeks (Express Air Priority)' },
-  { id: 'flexible', label: 'Flexible / Next Season Planning' },
 ];
 
 const CUSTOMIZATION_OPTIONS = [
@@ -59,11 +57,14 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
   const [city, setCity] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState<string[]>(() => {
-    return defaultCategory ? [defaultCategory] : ['duffle'];
+  const [selectedProducts, setSelectedProducts] = useState<string[]>(() => {
+    if (defaultCategory) {
+      const match = PRODUCT_OPTIONS.find(p => p.toLowerCase().includes(defaultCategory.toLowerCase()));
+      if (match) return [match];
+    }
+    return ['Quilted Tote Bags', 'Vanity Boxes & Pouches'];
   });
   const [volumeTier, setVolumeTier] = useState<string>('51 – 150 pcs');
-  const [targetTimeline, setTargetTimeline] = useState<string>('4 – 6 Weeks (Standard Artisan Handcraft)');
   const [customizations, setCustomizations] = useState<string[]>(['tags', 'sample']);
   const [notes, setNotes] = useState('');
 
@@ -72,11 +73,11 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [enquiryRefId, setEnquiryRefId] = useState('');
 
-  const toggleCategory = (catId: string) => {
-    setSelectedCategories(prev => 
-      prev.includes(catId)
-        ? (prev.length > 1 ? prev.filter(c => c !== catId) : prev)
-        : [...prev, catId]
+  const toggleProduct = (product: string) => {
+    setSelectedProducts(prev => 
+      prev.includes(product)
+        ? (prev.length > 1 ? prev.filter(p => p !== product) : prev)
+        : [...prev, product]
     );
   };
 
@@ -96,8 +97,8 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
       return;
     }
 
-    if (selectedCategories.length === 0) {
-      showToast('Please select at least one product category of interest.', 'error');
+    if (selectedProducts.length === 0) {
+      showToast('Please select at least one product of interest.', 'error');
       return;
     }
 
@@ -122,17 +123,14 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
 
   // Pre-formatted WhatsApp inquiry message for instant conversion
   const getWhatsAppMessage = () => {
-    const categoriesNames = selectedCategories
-      .map(c => CATEGORY_OPTIONS.find(opt => opt.id === c)?.label || c)
-      .join(', ');
+    const productsList = selectedProducts.join(', ');
 
     const text = `Namaste Ramam Textiles Jaipur,\n\nI have submitted a Bulk Order Enquiry (Ref: ${enquiryRefId || 'NEW'}).\n\n` +
       `• Name: ${fullName}\n` +
       `• Brand / Boutique: ${brandName || 'Independent Retailer'}\n` +
       `• Destination: ${city ? `${city}, ` : ''}${country}\n` +
-      `• Categories: ${categoriesNames}\n` +
+      `• Products of Interest: ${productsList}\n` +
       `• Order Volume: ${volumeTier}\n` +
-      `• Timeline: ${targetTimeline}\n` +
       (notes ? `• Notes: ${notes}\n` : '') +
       `\nPlease share the bulk wholesale catalog and FOB pricing.`;
 
@@ -148,44 +146,45 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-jaipur-jaali opacity-5 pointer-events-none rounded-tr-full" />
 
         {/* Section Header */}
-        <div className="bg-[#241A16] text-[#FAF5EE] px-6 py-8 sm:px-10 sm:py-10 border-b border-[#D4AF37]/30 relative">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold uppercase tracking-widest font-royal-title">
-                <Sparkles className="w-3.5 h-3.5 text-[#9B332C]" />
-                <span>Direct Jaipur Atelier • Wholesale &amp; Bulk Desk</span>
-              </div>
-              <h2 className="font-playfair text-2xl sm:text-4xl font-bold tracking-tight text-[#FAF3DC]">
-                Bulk Order &amp; Wholesale Enquiry
-              </h2>
-              <p className="text-stone-300 font-royal-body text-xs sm:text-sm leading-relaxed max-w-2xl">
-                Partner directly with our Sanganer &amp; Bagru printing units. Low minimums starting from 25 pieces per style, authentic vegetable dyes, and guaranteed air express door delivery worldwide.
-              </p>
+        <div className="p-6 sm:p-10 border-b border-[#D4AF37]/30 bg-gradient-to-r from-[#FAF0EB] via-[#FAF5EE] to-[#FAF0EB] relative">
+          <div className="max-w-3xl space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF5EE] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-wider shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#9B332C] animate-pulse" />
+              <span>Direct Jaipur Atelier Quotation Desk</span>
             </div>
+            
+            <h2 className="font-playfair text-2xl sm:text-4xl font-bold text-[#241A16] tracking-tight">
+              Submit Your Bulk Order / Wholesale Enquiry
+            </h2>
+            
+            <p className="text-stone-600 font-royal-body text-xs sm:text-sm leading-relaxed">
+              Partner directly with our Sanganer &amp; Bagru printing units. Low minimums starting from 25 pieces per style, authentic vegetable dyes, and guaranteed air express door delivery worldwide.
+            </p>
 
-            {/* Quick Assurance Badges */}
-            <div className="flex flex-row md:flex-col gap-2 shrink-0 text-left border-t md:border-t-0 md:border-l border-[#D4AF37]/25 pt-4 md:pt-0 md:pl-6">
-              <div className="flex items-center gap-2 text-xs text-amber-200/90 font-royal-title">
-                <ShieldCheck className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                <span>Zero-Defect 4-Point QC</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-amber-200/90 font-royal-title">
-                <Truck className="w-4 h-4 text-[#D4AF37] shrink-0" />
+            <div className="flex flex-wrap items-center gap-3 pt-1 text-[11px] text-[#241A16] font-semibold">
+              <span className="flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Low 25 Pcs MOQ</span>
+              </span>
+              <span className="text-stone-400">•</span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-emerald-600" />
                 <span>DHL / FedEx Door Delivery</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-amber-200/90 font-royal-title">
-                <FileCheck className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                <span>Certificate of Origin</span>
-              </div>
+              </span>
+              <span className="text-stone-400">•</span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Sample Approval Before Batch Crafting</span>
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Form Body */}
-        <div className="p-6 sm:p-10 max-w-4xl mx-auto relative z-10 font-royal-body">
+        {/* Form Body Container */}
+        <div className="p-6 sm:p-10">
           {isSubmitted ? (
             /* =========================================================================
-               SUCCESS CONFIRMATION STATE
+               SUBMISSION SUCCESS CONFIRMATION
                ========================================================================= */
             <div className="py-8 sm:py-12 text-center space-y-6 animate-fade-in">
               <div className="w-20 h-20 rounded-full bg-emerald-50 text-emerald-600 border-2 border-emerald-400 mx-auto flex items-center justify-center shadow-lg">
@@ -200,7 +199,7 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
                   Bulk Enquiry Received!
                 </h3>
                 <p className="text-stone-700 max-w-xl mx-auto text-sm leading-relaxed">
-                  Thank you, <strong className="text-[#241A16]">{fullName}</strong>. Our Senior Export Merchandiser is preparing your bespoke line sheet, volume price matrix, and shipping timeline.
+                  Thank you, <strong className="text-[#241A16]">{fullName}</strong>. Our Senior Export Merchandiser is preparing your bespoke line sheet and volume price matrix.
                 </p>
               </div>
 
@@ -215,14 +214,10 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
                   <span className="font-semibold text-[#9B332C]">{volumeTier}</span>
                 </div>
                 <div className="flex justify-between border-b border-[#D4AF37]/20 pb-2">
-                  <span className="font-bold text-[#241A16]">Product Categories:</span>
-                  <span className="text-right">
-                    {selectedCategories.map(c => CATEGORY_OPTIONS.find(o => o.id === c)?.label).filter(Boolean).join(', ')}
+                  <span className="font-bold text-[#241A16]">Products of Interest:</span>
+                  <span className="text-right max-w-[260px] font-semibold text-[#241A16] line-clamp-2">
+                    {selectedProducts.join(', ')}
                   </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-bold text-[#241A16]">Target Delivery:</span>
-                  <span>{targetTimeline}</span>
                 </div>
               </div>
 
@@ -258,49 +253,39 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
                ========================================================================= */
             <form onSubmit={handleSubmit} className="space-y-8">
               
-              {/* Step 1: Product Categories of Interest */}
+              {/* Step 1: Products of Interest (matching craftofpinkcity pill layout) */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-royal-title uppercase tracking-wider text-[#241A16] font-bold flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[#9B332C] text-[#FAF5EE] inline-flex items-center justify-center text-[11px]">1</span>
-                    <span>Product Categories of Interest *</span>
+                    <span>Products of Interest (Select all that apply) *</span>
                   </label>
-                  <span className="text-[11px] text-stone-500 italic">Select one or more</span>
+                  <span className="text-[11px] text-stone-500 italic">{selectedProducts.length} selected</span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                  {CATEGORY_OPTIONS.map(cat => {
-                    const isSelected = selectedCategories.includes(cat.id);
+                <div className="flex flex-wrap gap-2.5 pt-1">
+                  {PRODUCT_OPTIONS.map(product => {
+                    const isSelected = selectedProducts.includes(product);
                     return (
                       <button
-                        key={cat.id}
+                        key={product}
                         type="button"
-                        onClick={() => toggleCategory(cat.id)}
-                        className={`p-3.5 rounded-2xl border text-left transition-all flex items-start gap-3 relative ${
+                        onClick={() => toggleProduct(product)}
+                        className={`px-4 py-2.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
                           isSelected
-                            ? 'bg-[#FAF0EB] border-[#9B332C] shadow-md ring-1 ring-[#9B332C]'
-                            : 'bg-white border-[#D4AF37]/35 hover:border-[#9B332C]/60 hover:bg-[#FAF5EE]'
+                            ? 'bg-[#B81D5B] text-white shadow-md ring-2 ring-[#B81D5B]/30'
+                            : 'bg-white border border-[#D4AF37]/40 text-[#241A16] hover:border-[#B81D5B]/60 hover:text-[#B81D5B] hover:bg-[#FAF5EE]'
                         }`}
                       >
-                        <span className="text-xl shrink-0 mt-0.5">{cat.icon}</span>
-                        <div className="flex-1 pr-5">
-                          <h4 className="text-xs font-bold text-[#241A16] leading-snug">{cat.label}</h4>
-                          <span className="text-[10px] text-stone-500 font-royal-title">MOQ: {cat.minQty}</span>
-                        </div>
-                        <div className={`absolute top-3 right-3 w-4 h-4 rounded-full flex items-center justify-center border text-[10px] transition-colors ${
-                          isSelected 
-                            ? 'bg-[#9B332C] border-[#9B332C] text-white' 
-                            : 'border-stone-300 text-transparent'
-                        }`}>
-                          <Check className="w-2.5 h-2.5 stroke-[3]" />
-                        </div>
+                        <span className="font-bold">{isSelected ? '✓' : '+'}</span>
+                        <span>{product}</span>
                       </button>
                     );
                   })}
                 </div>
               </div>
 
-              {/* Step 2: Order Volume Tier & Delivery Timeline */}
+              {/* Step 2: Order Volume Tier & Customization Add-ons */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 border-t border-[#D4AF37]/25">
                 {/* Volume Tier */}
                 <div className="space-y-3">
@@ -335,56 +320,27 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
                   </div>
                 </div>
 
-                {/* Target Timeline */}
+                {/* Customization Add-ons */}
                 <div className="space-y-3">
                   <label className="text-xs font-royal-title uppercase tracking-wider text-[#241A16] font-bold flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[#9B332C] text-[#FAF5EE] inline-flex items-center justify-center text-[11px]">3</span>
-                    <span>Target Delivery Schedule</span>
+                    <span>Customization Requirements</span>
                   </label>
-                  <div className="space-y-2">
-                    {TIMELINE_OPTIONS.map(time => (
+                  <div className="bg-white border border-[#D4AF37]/35 rounded-xl p-3.5 space-y-2.5 shadow-sm">
+                    {CUSTOMIZATION_OPTIONS.map(cust => (
                       <label 
-                        key={time.id}
-                        className={`flex items-center gap-2.5 p-3 rounded-xl border text-xs cursor-pointer transition-all ${
-                          targetTimeline === time.label
-                            ? 'bg-[#FAF0EB] border-[#9B332C] text-[#241A16] font-bold shadow-sm'
-                            : 'bg-white border-[#D4AF37]/35 text-stone-700 hover:border-stone-400'
-                        }`}
+                        key={cust.id} 
+                        className="flex items-center gap-2.5 text-xs text-stone-700 cursor-pointer select-none hover:text-[#241A16]"
                       >
                         <input
-                          type="radio"
-                          name="targetTimeline"
-                          value={time.label}
-                          checked={targetTimeline === time.label}
-                          onChange={() => setTargetTimeline(time.label)}
-                          className="text-[#9B332C] focus:ring-[#9B332C]"
+                          type="checkbox"
+                          checked={customizations.includes(cust.id)}
+                          onChange={() => toggleCustomization(cust.id)}
+                          className="rounded border-stone-300 text-[#9B332C] focus:ring-[#9B332C]"
                         />
-                        <span>{time.label}</span>
+                        <span className="text-xs font-medium">{cust.label}</span>
                       </label>
                     ))}
-                  </div>
-
-                  {/* Customization Add-ons */}
-                  <div className="pt-2">
-                    <span className="block text-[11px] font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-2">
-                      Customization Requirements
-                    </span>
-                    <div className="space-y-1.5">
-                      {CUSTOMIZATION_OPTIONS.map(cust => (
-                        <label 
-                          key={cust.id} 
-                          className="flex items-center gap-2 text-xs text-stone-700 cursor-pointer select-none hover:text-[#241A16]"
-                        >
-                          <input
-                            type="checkbox"
-                            checked={customizations.includes(cust.id)}
-                            onChange={() => toggleCustomization(cust.id)}
-                            className="rounded border-stone-300 text-[#9B332C] focus:ring-[#9B332C]"
-                          />
-                          <span className="text-[11px]">{cust.label}</span>
-                        </label>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </div>
