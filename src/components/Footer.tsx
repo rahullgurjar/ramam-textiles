@@ -111,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/10 border-2 border-[#D4AF37]/60 shadow-xl flex items-center justify-center p-2 shrink-0 backdrop-blur-sm">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#FAF5EE] via-[#F6EDE2] to-[#ECE1D2] border-2 border-[#D4AF37] shadow-xl flex items-center justify-center p-2 shrink-0">
                 <picture className="w-full h-full block">
                   <source srcSet="./logo.webp" type="image/webp" />
                   <img 
@@ -121,7 +121,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                     height="64"
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-contain filter drop-shadow-md"
+                    className="w-full h-full object-contain filter drop-shadow-sm"
                   />
                 </picture>
               </div>
