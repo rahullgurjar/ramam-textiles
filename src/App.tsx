@@ -129,7 +129,7 @@ export const App: React.FC = () => {
     };
   }, []);
 
-  // Track dynamic SPA route transitions in Google Tag Manager dataLayer
+  // Track dynamic SPA route transitions in Google Tag Manager dataLayer & Google Analytics (gtag.js)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.dataLayer = window.dataLayer || [];
@@ -139,6 +139,14 @@ export const App: React.FC = () => {
         page_location: window.location.href,
         page_title: document.title,
       });
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('config', 'G-J26NMQCWHS', {
+          page_path: currentPath,
+          page_location: window.location.href,
+          page_title: document.title,
+        });
+      }
     }
   }, [currentPath]);
 
