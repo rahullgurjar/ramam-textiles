@@ -58,7 +58,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
       },
       {
         heading: 'Sampling to Production: Best Practices for Brands',
-        body: 'When initiating private-label garment production, ordering initial swatch books and a sample strike-off ensures accurate color matching before commissioning master bolts. At Ramam Textiles, we support flexible low MOQs starting from 25 pieces to empower independent boutique labels and luxury department stores alike.'
+        body: 'When initiating custom garment production, ordering initial swatch books and a sample strike-off ensures accurate color matching before commissioning master bolts. At Ramam Textiles, we support flexible low MOQs starting from 25 pieces to empower independent boutique labels and luxury department stores alike.'
       }
     ],
     tags: ['Fabric Sourcing', 'Mulmul Cotton', 'B2B Manufacturing', 'Garment Technical']
@@ -66,8 +66,8 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
     id: 'how-to-launch-private-label-apparel',
     slug: 'how-to-launch-private-label-apparel',
-    title: 'How to Launch a Private-Label Apparel Line with Indian Artisan Workshops',
-    category: 'Private Label',
+    title: 'How to Launch a Custom Textile & Bag Line with Indian Artisan Workshops',
+    category: 'Custom Manufacturing',
     readTime: '7 min read',
     publishedDate: 'September 2026',
     excerpt: 'Step-by-step roadmap from initial sketches and tech packs to custom wooden block carving, sampling, bulk quality control, and worldwide customs clearance.',
@@ -83,14 +83,14 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
       },
       {
         heading: '2. Custom Branding & Trim Integration',
-        body: 'Private labeling extends beyond the fabric itself. High-end buyers require custom woven damask labels, organic cotton wash care tags with localized multilingual care symbols, branded brass hardware, and eco-friendly compostable polybags.'
+        body: 'Custom manufacturing extends beyond the fabric itself. High-end buyers require custom woven damask labels, organic cotton wash care tags with localized multilingual care symbols, branded brass hardware, and eco-friendly compostable polybags.'
       },
       {
         heading: '3. Quality Assurance and Door-to-Door Logistics',
         body: 'Artisanal production requires stringent 4-point fabric inspection and inline stitching audits to eliminate thread pulls or registration misalignments. Once packed in moisture-sealed export cartons, shipments can be routed seamlessly via air courier (DHL/FedEx) in 4-6 business days or consolidated ocean freight for larger volumes.'
       }
     ],
-    tags: ['Private Label', 'OEM Production', 'Export Logistics', 'Tech Pack']
+    tags: ['Custom Manufacturing', 'OEM Production', 'Export Logistics', 'Tech Pack']
   }
 ];
 

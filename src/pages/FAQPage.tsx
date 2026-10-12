@@ -12,7 +12,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openIds, setOpenIds] = useState<string[]>([FAQS[0]?.id || 'faq-1']);
 
-  const categories = ['all', 'Wholesale & MOQ', 'Custom Manufacturing', 'Fabrics & Quality', 'Shipping & Export', 'Ordering & Payments'];
+  const categories = ['all', 'Wholesale & MOQ', 'Custom Manufacturing', 'Fabrics & Quality', 'Shipping & Export', 'Ordering & Payments', 'Returns & Quality'];
 
   const filteredFaqs = FAQS.filter(f => {
     const matchCat = selectedCategory === 'all' || f.category === selectedCategory;
@@ -39,7 +39,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
           Frequently Asked Questions
         </h1>
         <p className="text-stone-600 font-royal-body text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-          Everything you need to know about wholesale MOQ, custom private label manufacturing, sampling, and global export shipping.
+          Everything you need to know about wholesale MOQ, custom manufacturing, sampling, and global export shipping.
         </p>
       </div>
 

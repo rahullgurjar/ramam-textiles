@@ -26,3 +26,17 @@ export const resolveProductImage = (src: string | undefined): string => {
 
   return `${origin}${basePath}/${clean}`;
 };
+
+/**
+ * Returns the corresponding WebP URL if available for modern browser acceleration.
+ */
+export const resolveWebpImage = (src: string | undefined): string => {
+  if (!src) return '';
+  if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) {
+    return src;
+  }
+  // Convert extension to .webp
+  const webpPath = src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+  return resolveProductImage(webpPath);
+};
+

@@ -15,10 +15,9 @@ import {
   ShieldCheck,
   Sparkles
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
 import { useApp } from '../context/AppContext';
 import { InstagramIcon } from './InstagramIcon';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
 export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) => {
   const { 
@@ -28,7 +27,8 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
     removeFromInquiry, 
     updateInquiryQuantity, 
     clearInquiry, 
-    showToast 
+    showToast,
+    openPolicyModal 
   } = useApp();
 
   const [contactName, setContactName] = useState('');
@@ -43,9 +43,11 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
 
   const totalQuantity = inquiryItems.reduce((sum, item) => sum + item.quantity, 0);
 
-  const triggerConfetti = () => {
+  const triggerConfetti = async () => {
     try {
-      confetti({
+      const confettiModule = await import('canvas-confetti');
+      const confettiFn = confettiModule.default || confettiModule;
+      confettiFn({
         particleCount: 80,
         spread: 60,
         origin: { y: 0.6 }
@@ -225,18 +227,25 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       key={`${item.product.id}-${item.selectedColor}-${item.selectedSize}`}
                       className="bg-[#FAF5EE] p-3.5 rounded-2xl border border-[#D4AF37]/35 flex gap-3 shadow-sm relative group hover:border-[#D4AF37] transition-all"
                     >
-                      <img 
-                        src={resolveProductImage(item.product.images[0])} 
-                        alt={item.product.name}
-                        className="w-16 h-20 rounded-xl object-cover border border-[#D4AF37]/30 shrink-0 shadow-sm"
-                        onError={(e) => {
-                          const target = e.currentTarget as HTMLImageElement;
-                          if (!target.dataset.fallbackTried) {
-                            target.dataset.fallbackTried = 'true';
-                            target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
-                          }
-                        }}
-                      />
+                      <picture className="w-16 h-20 shrink-0 block">
+                        <source srcSet={resolveWebpImage(item.product.images[0])} type="image/webp" />
+                        <img 
+                          src={resolveProductImage(item.product.images[0])} 
+                          alt={item.product.name}
+                          width="64"
+                          height="80"
+                          loading="lazy"
+                          decoding="async"
+                          className="w-16 h-20 rounded-xl object-cover border border-[#D4AF37]/30 shrink-0 shadow-sm"
+                          onError={(e) => {
+                            const target = e.currentTarget as HTMLImageElement;
+                            if (!target.dataset.fallbackTried) {
+                              target.dataset.fallbackTried = 'true';
+                              target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                            }
+                          }}
+                        />
+                      </picture>
                       <div className="flex-1 flex flex-col justify-between">
                         <div>
                           <div className="flex justify-between items-start gap-2">
@@ -371,8 +380,20 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                     ></textarea>
                   </div>
 
+                  {/* Milestone Policy Callout */}
+                  <div className="p-2.5 rounded-xl bg-[#FAF0EB] border border-[#EACAC0] text-[11px] text-[#241A16] flex items-center justify-between">
+                    <span className="font-semibold text-stone-700">💰 60% Advance • 40% Pre-Dispatch (WhatsApp Video Proof)</span>
+                    <button 
+                      type="button" 
+                      onClick={() => openPolicyModal('privacy')} 
+                      className="text-[#9B332C] underline font-bold text-[10px] cursor-pointer shrink-0 ml-2"
+                    >
+                      Policy Details
+                    </button>
+                  </div>
+
                   {/* Submission Buttons */}
-                  <div className="pt-2 space-y-2">
+                  <div className="pt-1 space-y-2">
                     <button
                       type="submit"
                       disabled={isSubmitting}

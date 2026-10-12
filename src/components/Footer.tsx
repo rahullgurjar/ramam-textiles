@@ -18,7 +18,7 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ navigate }) => {
-  const { showToast } = useApp();
+  const { showToast, openPolicyModal } = useApp();
   const [catalogEmail, setCatalogEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
 
@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             </div>
             <div>
               <h4 className="font-royal-title text-sm text-[#FAF3DC] font-bold mb-1">
-                Low MOQ &amp; Private Label
+                Low MOQ &amp; Custom Orders
               </h4>
               <p className="text-xs text-stone-300 leading-relaxed">
                 Starting from 25 pieces with bespoke Sheesham block carvings, strike-offs, and custom woven brand tags.
@@ -112,11 +112,18 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/10 border-2 border-[#D4AF37]/60 shadow-xl flex items-center justify-center p-2 shrink-0 backdrop-blur-sm">
-                <img 
-                  src="./logo.png" 
-                  alt="Ramam Textiles Jaipur" 
-                  className="w-full h-full object-contain filter drop-shadow-md"
-                />
+                <picture className="w-full h-full block">
+                  <source srcSet="./logo.webp" type="image/webp" />
+                  <img 
+                    src="./logo.png" 
+                    alt="Ramam Textiles Jaipur" 
+                    width="64"
+                    height="64"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-contain filter drop-shadow-md"
+                  />
+                </picture>
               </div>
               <div className="whitespace-nowrap">
                 <div className="flex items-baseline gap-2 leading-none">
@@ -222,13 +229,18 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             </h5>
             <ul className="space-y-2.5 text-xs text-stone-300">
               <li>
-                <button onClick={() => handleNav('/wholesale')} className="hover:text-[#C8376B] transition-colors font-semibold text-white">
+                <button onClick={() => handleNav('/bulk-enquiry')} className="hover:text-[#C8376B] transition-colors font-semibold text-white">
+                  Bulk Order Enquiry
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('/wholesale')} className="hover:text-[#C8376B] transition-colors">
                   Wholesale Buyer Portal
                 </button>
               </li>
               <li>
                 <button onClick={() => handleNav('/custom-manufacturing')} className="hover:text-[#C8376B] transition-colors">
-                  Bulk Orders &amp; Private Label
+                  Custom Manufacturing &amp; OEM
                 </button>
               </li>
               <li>
@@ -308,17 +320,20 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           © {new Date().getFullYear()} Ramam Textiles. All rights reserved. Handcrafted in Jaipur, Rajasthan.
         </div>
         <div className="flex flex-wrap items-center gap-6 font-medium">
-          <button onClick={() => handleNav('/faq')} className="hover:text-[#C8376B] transition-colors">
+          <button onClick={() => handleNav('/faq')} className="hover:text-[#C8376B] transition-colors cursor-pointer">
             FAQ
           </button>
-          <button onClick={() => handleNav('/shipping-returns')} className="hover:text-[#C8376B] transition-colors">
-            Shipping &amp; Export Terms
+          <button onClick={() => openPolicyModal('shipping')} className="hover:text-[#C8376B] transition-colors cursor-pointer">
+            Shipping &amp; Delivery
           </button>
-          <button onClick={() => handleNav('/privacy-policy')} className="hover:text-[#C8376B] transition-colors">
+          <button onClick={() => openPolicyModal('privacy')} className="hover:text-[#C8376B] transition-colors cursor-pointer">
             Privacy Policy
           </button>
-          <button onClick={() => handleNav('/terms-conditions')} className="hover:text-[#C8376B] transition-colors">
+          <button onClick={() => openPolicyModal('terms')} className="hover:text-[#C8376B] transition-colors cursor-pointer">
             Terms &amp; Conditions
+          </button>
+          <button onClick={() => openPolicyModal('returns')} className="hover:text-[#C8376B] transition-colors cursor-pointer">
+            Returns &amp; Refunds
           </button>
         </div>
       </div>

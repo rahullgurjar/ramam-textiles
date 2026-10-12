@@ -129,7 +129,7 @@ export interface LookbookSlide {
 
 export interface FAQItem {
   id: string;
-  category: 'Wholesale & MOQ' | 'Custom Manufacturing' | 'Fabrics & Quality' | 'Shipping & Export' | 'Ordering & Payments';
+  category: 'Wholesale & MOQ' | 'Custom Manufacturing' | 'Fabrics & Quality' | 'Shipping & Export' | 'Ordering & Payments' | 'Returns & Quality';
   question: string;
   answer: string;
 }

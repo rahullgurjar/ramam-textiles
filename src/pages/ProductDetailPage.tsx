@@ -10,7 +10,7 @@ import { PRODUCTS } from '../data/products';
 import { useApp } from '../context/AppContext';
 import { ProductCard } from '../components/ProductCard';
 import { InstagramIcon } from '../components/InstagramIcon';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
 interface ProductDetailPageProps {
   slug: string;
@@ -23,7 +23,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
     addToInquiry, 
     openQuickQuote, 
     isB2BPriceUnlocked,
-    showToast 
+    showToast,
+    openPolicyModal 
   } = useApp();
 
   const product = PRODUCTS.find(p => p.slug === slug) || PRODUCTS[0];
@@ -116,18 +117,28 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             onClick={() => setIsZoomOpen(true)}
             className="relative aspect-[4/5] rounded-[32px] overflow-hidden bg-[#F0E6D8] shadow-xl border border-[#D4AF37]/35 group cursor-zoom-in"
           >
-            <img
-              src={resolveProductImage(product.images[activeImageIndex] || product.images[0])}
-              alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
-              onError={(e) => {
-                const target = e.currentTarget as HTMLImageElement;
-                if (!target.dataset.fallbackTried) {
-                  target.dataset.fallbackTried = 'true';
-                  target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
-                }
-              }}
-            />
+            <picture className="w-full h-full block">
+              <source
+                srcSet={resolveWebpImage(product.images[activeImageIndex] || product.images[0])}
+                type="image/webp"
+              />
+              <img
+                src={resolveProductImage(product.images[activeImageIndex] || product.images[0])}
+                alt={product.name}
+                loading="eager"
+                decoding="async"
+                // @ts-ignore
+                fetchPriority="high"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  if (!target.dataset.fallbackTried) {
+                    target.dataset.fallbackTried = 'true';
+                    target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                  }
+                }}
+              />
+            </picture>
 
             {/* Zoom Icon Hint */}
             <div className="absolute top-5 right-5 z-20 flex items-center gap-2">
@@ -188,18 +199,23 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                       : 'border-[#D4AF37]/35 opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <img 
-                    src={resolveProductImage(img)} 
-                    alt={`${product.name} ${idx}`} 
-                    className="w-full h-full object-cover" 
-                    onError={(e) => {
-                      const target = e.currentTarget as HTMLImageElement;
-                      if (!target.dataset.fallbackTried) {
-                        target.dataset.fallbackTried = 'true';
-                        target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
-                      }
-                    }}
-                  />
+                  <picture className="w-full h-full block">
+                    <source srcSet={resolveWebpImage(img)} type="image/webp" />
+                    <img 
+                      src={resolveProductImage(img)} 
+                      alt={`${product.name} ${idx}`} 
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover" 
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        if (!target.dataset.fallbackTried) {
+                          target.dataset.fallbackTried = 'true';
+                          target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                        }
+                      }}
+                    />
+                  </picture>
                 </button>
               ))}
             </div>
@@ -417,23 +433,42 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             </div>
           </div>
 
-          {/* Buyer Trust Guarantees */}
-          <div className="grid grid-cols-2 gap-3 pt-4 border-t border-stone-200 text-xs text-stone-700">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-              <span>100% Quality Inspected</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Truck className="w-4 h-4 text-[#C8376B] flex-shrink-0" />
-              <span>Worldwide Air/Sea Freight</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Award className="w-4 h-4 text-[#E5A93C] flex-shrink-0" />
-              <span>Pure Cotton &amp; Azo-Free</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Scissors className="w-4 h-4 text-[#1F1612] flex-shrink-0" />
-              <span>Direct Jaipur Factory Pricing</span>
+          {/* Store & Shipment Policies matching craftofpinkcity.shop */}
+          <div className="pt-4 border-t border-[#D4AF37]/25 space-y-2.5">
+            <div className="p-4 rounded-2xl bg-white border border-[#D4AF37]/35 space-y-2.5 shadow-xs text-xs text-stone-800">
+              <div className="flex items-center justify-between pb-2 border-b border-[#D4AF37]/20">
+                <span className="font-royal-title font-bold text-[#241A16] flex items-center gap-1.5 text-xs">
+                  <Truck className="w-4 h-4 text-[#9B332C]" />
+                  <span>Pan-India Delivery (19,000+ PINs) &amp; Global Export</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => openPolicyModal('shipping')}
+                  className="text-[11px] font-bold text-[#9B332C] hover:underline cursor-pointer"
+                >
+                  Shipping Terms →
+                </button>
+              </div>
+              <p className="text-[11px] text-stone-600 leading-relaxed">
+                Dispatched in 24–48 hours via Bluedart, Delhivery, DTDC, and Speed Post. Tracked air cargo via DHL/FedEx worldwide.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-[11px]">
+                <div className="flex items-center gap-1.5 text-stone-700">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>48-Hour Unboxing Defect Guarantee</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-stone-700">
+                  <span className="text-xs">💰</span>
+                  <button 
+                    type="button" 
+                    onClick={() => openPolicyModal('privacy')}
+                    className="hover:text-[#9B332C] underline text-left cursor-pointer font-medium"
+                  >
+                    60% Advance Milestone Policy
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

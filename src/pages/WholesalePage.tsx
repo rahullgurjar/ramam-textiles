@@ -13,7 +13,7 @@ interface WholesalePageProps {
 }
 
 export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
-  const { showToast } = useApp();
+  const { showToast, openPolicyModal } = useApp();
   const [swatchKitRequested, setSwatchKitRequested] = useState(false);
   const [name, setName] = useState('');
   const [company, setCompany] = useState('');
@@ -119,6 +119,31 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
             Certificate of Origin, Commercial Invoices, Packing Lists, GSP / Form A, and Phytosanitary certification provided.
           </p>
         </div>
+      </div>
+
+      {/* Milestone Terms Banner matching craftofpinkcity.shop */}
+      <div className="bg-[#FAF5EE] rounded-[28px] p-6 border-2 border-amber-500/30 bg-amber-500/5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-800 flex items-center justify-center font-bold text-lg shrink-0">
+            💰
+          </div>
+          <div>
+            <h4 className="font-royal-title font-bold text-sm text-[#241A16]">
+              Transparent 60% Advance Milestone &amp; Sample Approval Process
+            </h4>
+            <p className="text-xs text-stone-600">
+              60% advance confirms custom batch crafting. Physical sample piece sent first for approval. 40% balance payable prior to courier dispatch after video proof on WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => openPolicyModal('terms')}
+          className="pill-btn-outline px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider shrink-0 cursor-pointer"
+        >
+          View Trade Terms →
+        </button>
       </div>
 
       {/* Order Swatch Booklets Form Section */}
@@ -231,7 +256,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
                     >
                       <option value="25 - 200 pcs">25 - 200 pcs (Boutique Starter)</option>
                       <option value="200 - 1000 pcs">200 - 1,000 pcs (Multi-store)</option>
-                      <option value="1000+ pcs">1,000+ pcs (Enterprise / Private Label)</option>
+                      <option value="1000+ pcs">1,000+ pcs (Enterprise / Custom Manufacturing)</option>
                       <option value="Fabric yardage">Fabric Yardage (100+ meters)</option>
                     </select>
                   </div>

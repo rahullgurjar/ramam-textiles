@@ -74,10 +74,10 @@ export const CustomManufacturingWizard: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4AF37]/20 border border-[#D4AF37]/40 rounded-full text-[#F5E6B5] text-[10px] font-royal-title uppercase tracking-widest mb-1.5 font-bold">
               <Sparkles className="w-3 h-3 text-[#D4AF37]" />
-              <span>Jaipur Private Label &amp; OEM Atelier</span>
+              <span>Jaipur OEM &amp; Custom Atelier</span>
             </div>
             <h3 className="font-royal-heading text-xl md:text-2xl text-white font-bold tracking-wide">
-              Custom Manufacturing &amp; Private Label Studio
+              Custom Manufacturing Studio
             </h3>
           </div>
           <div className="flex items-center gap-2">

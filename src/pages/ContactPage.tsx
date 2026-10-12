@@ -215,7 +215,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                   className="w-full px-3.5 py-2.5 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
                 >
                   <option>Wholesale Ready-to-Order Catalog &amp; Pricing</option>
-                  <option>Custom Garment Manufacturing / Private Label OEM</option>
+                  <option>Custom Manufacturing / OEM Production</option>
                   <option>Fabric Yardage by the Meter (Bulk Rolls)</option>
                   <option>Physical Swatch Kit Courier Request</option>
                   <option>Jaipur Factory / Showroom Visit</option>

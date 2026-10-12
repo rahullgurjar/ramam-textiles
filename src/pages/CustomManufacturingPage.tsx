@@ -24,13 +24,13 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
     },
     {
       num: '03',
-      title: 'Lab Dip & Prototype Approval',
-      desc: 'We dye lab dips in your exact Pantone shades and stitch pre-production fit samples for your physical review before cutting bulk yardage.'
+      title: 'Sample First Prototype Approval',
+      desc: 'We courier a physical pre-production prototype piece for your touch, feel, and fit review. Bulk batch cutting commences strictly after your sample confirmation.'
     },
     {
       num: '04',
-      title: 'Bulk Artisan Printing & Stitching',
-      desc: 'Hand printing by seasoned artisans, river washing, steam setting, single-needle garment tailoring, and private label tag attachment.'
+      title: 'Batch Production & Milestone Proof',
+      desc: '60% advance locks artisan workshop capacity and yardage dyeing. Remaining 40% balance is payable prior to courier dispatch after sharing high-definition WhatsApp video proof of the completed batch.'
     },
     {
       num: '05',
@@ -53,7 +53,7 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold uppercase tracking-wider font-royal-title shadow-sm">
             <Scissors className="w-3.5 h-3.5 text-[#9B332C]" />
-            <span>Jaipur OEM &amp; Private Label Studio</span>
+            <span>Jaipur OEM &amp; Custom Manufacturing Studio</span>
           </div>
 
           <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3DC] leading-tight">

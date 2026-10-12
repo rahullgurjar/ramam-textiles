@@ -112,11 +112,17 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               className="flex items-center gap-3 cursor-pointer group shrink-0"
             >
               <div className="relative shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#FAF5EE] via-[#F6EDE2] to-[#ECE1D2] border border-[#D4AF37]/50 shadow-sm flex items-center justify-center p-1 group-hover:border-[#9B332C] transition-all duration-300 group-hover:scale-105">
-                <img 
-                  src="./logo.png" 
-                  alt="Ramam Textiles Jaipur" 
-                  className="w-full h-full object-contain filter drop-shadow-sm transition-transform duration-300 group-hover:scale-110"
-                />
+                <picture className="w-full h-full block">
+                  <source srcSet="./logo.webp" type="image/webp" />
+                  <img 
+                    src="./logo.png" 
+                    alt="Ramam Textiles Jaipur" 
+                    width="48"
+                    height="48"
+                    decoding="async"
+                    className="w-full h-full object-contain filter drop-shadow-sm transition-transform duration-300 group-hover:scale-110"
+                  />
+                </picture>
               </div>
               <div className="text-left whitespace-nowrap flex flex-col justify-center">
                 <div className="flex items-baseline gap-1.5 leading-none">
@@ -253,7 +259,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             {/* Bulk Orders Subtle CTA */}
             <button 
-              onClick={() => handleNav('/custom-manufacturing')}
+              onClick={() => handleNav('/bulk-enquiry')}
               className="nav-subtle-cta ml-1"
             >
               <span>BULK ORDERS</span>
@@ -345,7 +351,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/30">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FAF5EE] via-[#F6EDE2] to-[#ECE1D2] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 shrink-0">
-                    <img src="./logo.png" alt="Ramam Textiles" className="w-full h-full object-contain filter drop-shadow-sm" />
+                    <picture className="w-full h-full block">
+                      <source srcSet="./logo.webp" type="image/webp" />
+                      <img src="./logo.png" alt="Ramam Textiles" width="48" height="48" decoding="async" className="w-full h-full object-contain filter drop-shadow-sm" />
+                    </picture>
                   </div>
                   <div className="whitespace-nowrap">
                     <div className="flex items-baseline gap-1.5 leading-none">
@@ -406,11 +415,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   Curated Sets
                 </button>
                 <button 
-                  onClick={() => handleNav('/custom-manufacturing')}
+                  onClick={() => handleNav('/bulk-enquiry')}
                   className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider bg-[#FAF0EB] text-[#9B332C] flex items-center gap-2 border border-[#EACAC0]"
                 >
                   <Sparkles className="w-4 h-4 text-[#9B332C]" />
-                  <span>Bulk Orders &amp; Private Label</span>
+                  <span>Bulk Order &amp; Wholesale Enquiry</span>
                 </button>
                 <button 
                   onClick={() => handleNav('/wholesale')}

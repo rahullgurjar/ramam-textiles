@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, Sparkles, ChevronRight, Compass } from 'lucide-react';
 import { COLLECTIONS } from '../data/collections';
 import { PRODUCTS } from '../data/products';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
 interface CollectionsPageProps {
   onNavigate: (path: string) => void;
@@ -39,18 +39,23 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
               {/* Image Showcase */}
               <div className={`lg:col-span-6 ${isReversed ? 'lg:order-2' : ''}`}>
                 <div className="relative aspect-[16/10] rounded-[24px] overflow-hidden shadow-lg group border border-[#D4AF37]/30">
-                  <img
-                    src={resolveProductImage(collection.heroImage)}
-                    alt={collection.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    onError={(e) => {
-                      const target = e.currentTarget as HTMLImageElement;
-                      if (!target.dataset.fallbackTried) {
-                        target.dataset.fallbackTried = 'true';
-                        target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
-                      }
-                    }}
-                  />
+                  <picture className="w-full h-full block">
+                    <source srcSet={resolveWebpImage(collection.heroImage)} type="image/webp" />
+                    <img
+                      src={resolveProductImage(collection.heroImage)}
+                      alt={collection.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        if (!target.dataset.fallbackTried) {
+                          target.dataset.fallbackTried = 'true';
+                          target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                        }
+                      }}
+                    />
+                  </picture>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#241A16] via-transparent to-transparent opacity-75" />
                   <div className="absolute bottom-4 left-4 text-[#FAF5EE] font-royal-title text-xs uppercase tracking-widest bg-[#241A16]/95 border border-[#D4AF37]/50 px-3.5 py-1.5 rounded-full shadow-lg">
                     {collection.tagline}
@@ -136,7 +141,10 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
                           className="w-24 cursor-pointer text-center group"
                         >
                           <div className="w-24 h-28 rounded-xl overflow-hidden border border-[#D4AF37]/30 group-hover:border-[#9B332C] mb-1 shadow-sm transition-all bg-[#F0E6D8]">
-                            <img src={sp.images[0]} alt={sp.name} className="w-full h-full object-cover group-hover:scale-108 transition-transform" />
+                            <picture className="w-full h-full block">
+                              <source srcSet={resolveWebpImage(sp.images[0])} type="image/webp" />
+                              <img src={resolveProductImage(sp.images[0])} alt={sp.name} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-108 transition-transform" />
+                            </picture>
                           </div>
                           <span className="text-[10px] text-stone-700 truncate block font-semibold group-hover:text-[#9B332C] font-royal-body">{sp.name}</span>
                         </div>

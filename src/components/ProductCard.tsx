@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 import { 
   ShoppingBag, 
   Eye, 
@@ -55,19 +55,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
         }}
         onMouseLeave={() => setCurrentImgIndex(0)}
       >
-        <img 
-          src={resolveProductImage(product.images[currentImgIndex] || product.images[0])} 
-          alt={product.name}
-          className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
-          loading="lazy"
-          onError={(e) => {
-            const target = e.currentTarget as HTMLImageElement;
-            if (!target.dataset.fallbackTried) {
-              target.dataset.fallbackTried = 'true';
-              target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
-            }
-          }}
-        />
+        <picture className="w-full h-full block">
+          <source 
+            srcSet={resolveWebpImage(product.images[currentImgIndex] || product.images[0])} 
+            type="image/webp" 
+          />
+          <img 
+            src={resolveProductImage(product.images[currentImgIndex] || product.images[0])} 
+            alt={product.name}
+            className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
+            loading="lazy"
+            decoding="async"
+            onError={(e) => {
+              const target = e.currentTarget as HTMLImageElement;
+              if (!target.dataset.fallbackTried) {
+                target.dataset.fallbackTried = 'true';
+                target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+              }
+            }}
+          />
+        </picture>
 
         {/* Badges Overlay */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">

@@ -851,3 +851,24 @@ body {
   -webkit-text-fill-color: transparent;
   animation: royalShimmer 4s infinite linear;
 }
+
+/* ==========================================================================
+   ⚡ WEB PERFORMANCE & RENDERING ACCELERATION
+   ========================================================================== */
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 400px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+

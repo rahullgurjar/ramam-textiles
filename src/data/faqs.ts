@@ -16,8 +16,8 @@ export const FAQS: FAQItem[] = [
   {
     id: 'faq-3',
     category: 'Custom Manufacturing',
-    question: 'Can Ramam Textiles produce custom private-label collections and custom prints?',
-    answer: 'Yes. We specialize in end-to-end custom and private-label manufacturing. Our master woodcarvers can transform your original CAD/vector designs into bespoke hand-carved printing blocks in 5–7 days. We also offer custom dyeing (Pantone TCX matching), custom size grading, brand woven damask neck labels, custom hangtags, and bespoke packaging.'
+    question: 'Can Ramam Textiles produce custom collections and custom prints?',
+    answer: 'Yes. We specialize in end-to-end custom and OEM manufacturing. Our master woodcarvers can transform your original CAD/vector designs into bespoke hand-carved printing blocks in 5–7 days. We also offer custom dyeing (Pantone TCX matching), custom size grading, brand woven neck labels, custom hangtags, and bespoke packaging.'
   },
   {
     id: 'faq-4',
@@ -34,13 +34,19 @@ export const FAQS: FAQItem[] = [
   {
     id: 'faq-6',
     category: 'Shipping & Export',
-    question: 'Do you export worldwide and handle international customs paperwork?',
-    answer: 'Yes. We ship to over 40 countries across North America, Europe, the UK, Australia, the Middle East, and Asia. We partner with DHL Express, FedEx Priority, and leading international freight forwarders for air cargo and ocean LCL/FCL containers. We supply complete export documentation including Certificate of Origin, Commercial Invoice, Packing List, and GSP documentation where applicable.'
+    question: 'Do you deliver across India and export internationally?',
+    answer: 'Yes! We deliver across 19,000+ postal PIN codes in India through express logistics partners including Bluedart, Delhivery, DTDC, and Speed Post (24–48 hr dispatch for ready stock). Internationally, we ship to over 40 countries (USA, UK, UAE, Europe, Australia) via insured DHL Express and FedEx Priority with full Certificate of Origin and export clearance.'
   },
   {
     id: 'faq-7',
     category: 'Ordering & Payments',
-    question: 'What are the accepted payment methods and commercial terms?',
-    answer: 'For international wholesale orders, we accept SWIFT International Wire Transfer (T/T), Letter of Credit (L/C) for large containers, and secure online B2B payment links. Standard terms are 50% advance deposit on order confirmation with 50% balance payable against inspection and pre-dispatch Bill of Lading / Airway Bill documentation. Domestic Indian orders can also be processed via NEFT/RTGS/UPI.'
+    question: 'What are your payment terms (60% Advance Policy)?',
+    answer: 'For orders, a 60% advance payment is mandatory to confirm the order and begin artisan workshop batch crafting (fabric procurement, dyeing, quilting, and stitching). The remaining 40% balance is payable prior to courier dispatch, after we share high-definition photos and video footage of your completed batch on WhatsApp. We accept UPI, NEFT/IMPS, SWIFT International Wire, and secure payment links.'
+  },
+  {
+    id: 'faq-8',
+    category: 'Returns & Quality',
+    question: 'What is your bulk return policy and defect reporting procedure?',
+    answer: 'Because every bulk order is custom manufactured after a physical sample is approved by you, we operate on a strict no return / no refund policy on bulk orders. However, if any piece has a manufacturing or transit defect, simply notify us with an unboxing video within 48 hours of delivery to receive an immediate complimentary replacement piece or credit adjustment.'
   }
 ];

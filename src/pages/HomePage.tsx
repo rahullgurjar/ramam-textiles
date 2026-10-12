@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   ArrowRight, Sparkles, ShieldCheck, Truck, Layers, Award, CheckCircle2,
-  Download, Eye, PhoneCall, ChevronRight, Compass, Heart, Scissors, Clock, Globe2, MapPin, Feather
+  Eye, PhoneCall, ChevronRight, Compass, Heart, Scissors, Clock, Globe2, MapPin, Feather
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { PRODUCTS, CATEGORIES } from '../data/products';
@@ -9,9 +9,12 @@ import { COLLECTIONS } from '../data/collections';
 import { JOURNAL_POSTS } from '../data/journal';
 import { LOOKBOOK_ITEMS } from '../data/lookbook';
 import { ProductCard } from '../components/ProductCard';
-import { CustomManufacturingWizard } from '../components/CustomManufacturingWizard';
+const CustomManufacturingWizard = React.lazy(() => 
+  import('../components/CustomManufacturingWizard').then(m => ({ default: m.CustomManufacturingWizard }))
+);
 import { InstagramIcon } from '../components/InstagramIcon';
-import { resolveProductImage } from '../utils/imageUtils';
+import { BulkOrderEnquiryForm } from '../components/BulkOrderEnquiryForm';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
@@ -21,19 +24,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const { openQuickQuote, showToast } = useApp();
   const [activeCategoryTab, setActiveCategoryTab] = useState<string>('all');
   const [activeCraftCluster, setActiveCraftCluster] = useState<'sanganer' | 'bagru' | 'kantha'>('sanganer');
-  const [catalogEmail, setCatalogEmail] = useState('');
-  const [catalogDownloaded, setCatalogDownloaded] = useState(false);
-
   const filteredProducts = activeCategoryTab === 'all' 
     ? PRODUCTS 
     : PRODUCTS.filter(p => p.category === activeCategoryTab);
-
-  const handleDownloadCatalog = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!catalogEmail) return;
-    setCatalogDownloaded(true);
-    showToast('2026 Jaipur Wholesale Lookbook & Export Pricing sent to ' + catalogEmail, 'success');
-  };
 
   return (
     <div className="space-y-16 md:space-y-24 bg-[#F5EEE6] text-[#241A16]">
@@ -75,7 +68,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </button>
 
                 <button
-                  onClick={() => { onNavigate('/custom-manufacturing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  onClick={() => {
+                    const el = document.getElementById('bulk-enquiry');
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                      onNavigate('/bulk-enquiry');
+                    }
+                  }}
                   className="pill-btn-outline flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full border-[#1D4ED8]/40 hover:border-[#1D4ED8] hover:text-[#1D4ED8]"
                 >
                   <Scissors className="w-4 h-4 text-[#1D4ED8]" />
@@ -121,11 +121,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
                 {/* Hero Showcase Image */}
                 <div className="aspect-[4/4.5] rounded-[28px] overflow-hidden bg-[#F0E6D8] shadow-inner relative group">
-                  <img
-                    src={resolveProductImage('./products/duffle-kantha-patchwork.jpg')}
-                    alt="Artisan Jaipur Hand Block Quilted Patchwork Duffle Bag"
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
+                  <picture className="w-full h-full block">
+                    <source
+                      srcSet={resolveWebpImage('./products/duffle-kantha-patchwork.jpg')}
+                      type="image/webp"
+                    />
+                    <img
+                      src={resolveProductImage('./products/duffle-kantha-patchwork.jpg')}
+                      alt="Artisan Jaipur Hand Block Quilted Patchwork Duffle Bag"
+                      width="768"
+                      height="864"
+                      loading="eager"
+                      // @ts-ignore
+                      fetchPriority="high"
+                      decoding="async"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                  </picture>
                   {/* Subtle Gradient Shade at bottom */}
                   <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#241A16]/80 via-transparent to-transparent flex items-end p-5">
                     <div className="text-white">
@@ -332,17 +344,31 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
               {/* Right Image Card */}
               <div className="lg:col-span-5 aspect-[4/3] rounded-xl overflow-hidden bg-[#F0E6D8] border border-[#D4AF37]/35 shadow-inner relative group">
-                <img
-                  src={resolveProductImage(
-                    activeCraftCluster === 'sanganer'
-                      ? './products/vanity-trio-turquoise.jpg'
-                      : activeCraftCluster === 'bagru'
-                      ? './products/duffle-indigo.jpg'
-                      : './products/duffle-kantha-patchwork.jpg'
-                  )}
-                  alt={activeCraftCluster}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+                <picture className="w-full h-full block">
+                  <source
+                    srcSet={resolveWebpImage(
+                      activeCraftCluster === 'sanganer'
+                        ? './products/vanity-trio-turquoise.jpg'
+                        : activeCraftCluster === 'bagru'
+                        ? './products/duffle-indigo.jpg'
+                        : './products/duffle-kantha-patchwork.jpg'
+                    )}
+                    type="image/webp"
+                  />
+                  <img
+                    src={resolveProductImage(
+                      activeCraftCluster === 'sanganer'
+                        ? './products/vanity-trio-turquoise.jpg'
+                        : activeCraftCluster === 'bagru'
+                        ? './products/duffle-indigo.jpg'
+                        : './products/duffle-kantha-patchwork.jpg'
+                    )}
+                    alt={activeCraftCluster}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </picture>
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A120E]/80 via-[#1A120E]/30 to-transparent p-3.5 text-white">
                   <span className="text-[10px] uppercase font-bold tracking-widest text-[#E5A93C] font-royal-title block">
                     Authentic Jaipur Atelier
@@ -398,12 +424,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   : 'border-[#10B981]/50 hover:border-[#047857]'
               }`}
             >
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                loading="lazy"
-              />
+              <picture className="w-full h-full block">
+                <source srcSet={resolveWebpImage(cat.image)} type="image/webp" />
+                <img
+                  src={resolveProductImage(cat.image)}
+                  alt={cat.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-[#1F1612] via-[#1F1612]/40 to-transparent group-hover:via-[#1F1612]/60 transition-colors" />
 
               <div className="absolute bottom-0 inset-x-0 p-6 text-white flex flex-col justify-end">
@@ -520,11 +550,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div className="lg:col-span-6 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border-4 border-[#FAF5EE] bg-[#F0E6D8]">
-                <img
-                  src={resolveProductImage('./products/duffle-pink-botanical.jpg')}
-                  alt="Jaipur Hand Block Printed Quilted Weekender Bag"
-                  className="w-full h-full object-cover"
-                />
+                <picture className="w-full h-full block">
+                  <source srcSet={resolveWebpImage('./products/duffle-pink-botanical.jpg')} type="image/webp" />
+                  <img
+                    src={resolveProductImage('./products/duffle-pink-botanical.jpg')}
+                    alt="Jaipur Hand Block Printed Quilted Weekender Bag"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                </picture>
               </div>
 
               {/* Overlapping Royal Medallion */}
@@ -596,7 +631,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div className="text-center max-w-3xl mx-auto mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#9B332C]/20 border border-[#9B332C]/40 text-[#FDF0F3] text-xs font-bold tracking-wider uppercase font-royal-title mb-3">
               <Scissors className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <span>Private Label &amp; OEM Studio</span>
+              <span>Custom Manufacturing &amp; OEM Studio</span>
             </div>
             <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FAF3DC]">
               Launch Your Custom Quilted Bag Collection
@@ -608,7 +643,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
           {/* Interactive Wizard Component */}
           <div className="max-w-4xl mx-auto">
-            <CustomManufacturingWizard />
+            <React.Suspense fallback={
+              <div className="p-12 text-center text-stone-500 bg-[#FAF5EE] rounded-3xl border border-[#D4AF37]/30 shadow-md">
+                <div className="w-10 h-10 rounded-full border-2 border-[#BE185D] border-t-transparent animate-spin mx-auto mb-3" />
+                <p className="font-royal-title text-xs tracking-wider uppercase text-[#BE185D]">Loading Custom Manufacturing Atelier...</p>
+              </div>
+            }>
+              <CustomManufacturingWizard />
+            </React.Suspense>
           </div>
         </div>
       </section>
@@ -646,11 +688,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               onClick={() => { onNavigate('/lookbook'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="group relative rounded-[28px] overflow-hidden shadow-lg cursor-pointer aspect-[3/4] bg-[#FAF5EE] border border-[#D4AF37]/40 hover:border-[#9B332C] transition-all"
             >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
+              <picture className="w-full h-full block">
+                <source srcSet={resolveWebpImage(item.image)} type="image/webp" />
+                <img
+                  src={resolveProductImage(item.image)}
+                  alt={item.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-[#1F1612] via-[#1F1612]/30 to-transparent" />
               <div className="absolute bottom-0 inset-x-0 p-6 text-white">
                 <span className="text-[10px] font-royal-title uppercase tracking-widest text-[#E5A93C] font-bold">{item.season}</span>
@@ -701,7 +748,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <div className="w-12 h-12 bg-[#FDF2F8] text-[#BE185D] rounded-2xl flex items-center justify-center mb-6 border border-[#FBCFE8] shadow-sm">
                 <Scissors className="w-6 h-6 text-[#BE185D]" />
               </div>
-              <h3 className="font-royal-title text-xl font-bold text-[#831843] mb-2">Low MOQ (25 Pcs) &amp; Private Label</h3>
+              <h3 className="font-royal-title text-xl font-bold text-[#831843] mb-2">Low MOQ (25 Pcs) &amp; Custom Orders</h3>
               <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
                 Start with only 25 pieces per style. Custom brand woven neck tags, hangtags, and packaging are supported seamlessly.
               </p>
@@ -722,7 +769,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             Trusted by Luxury Boutiques Worldwide
           </h2>
           <p className="text-stone-700 font-royal-body text-base mt-2">
-            Over 140+ independent lifestyle stores, resorts, and private labels rely on Ramam Textiles for authentic Jaipur craftsmanship.
+            Over 140+ independent lifestyle stores, resorts, and boutiques rely on Ramam Textiles for authentic Jaipur craftsmanship.
           </p>
         </div>
 
@@ -777,62 +824,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
+
+
       {/* =========================================================================
-          9. CATALOG DOWNLOAD
+          9. BULK ORDER ENQUIRY & WHOLESALE QUOTATION
           ========================================================================= */}
-      <section className="bg-[#241A16] py-16 text-white border-t border-[#D4AF37]/30 shadow-2xl relative">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
-          <div className="w-16 h-16 bg-[#D4AF37]/20 border border-[#D4AF37]/60 rounded-full flex items-center justify-center mx-auto mb-6 text-[#E5A93C] shadow-lg">
-            <Download className="w-8 h-8" />
-          </div>
-
-          <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-[#FAF5EE] mb-3">
-            Download 2026 Wholesale Jaipur Bags Catalog
-          </h2>
-          <p className="text-stone-300 font-royal-body text-base max-w-2xl mx-auto mb-8">
-            Receive our high-resolution line sheet featuring all {PRODUCTS.length} ready-to-order Jaipur hand block quilted bag designs, fabric swatches, and FOB wholesale price tiers.
-          </p>
-
-          {catalogDownloaded ? (
-            <div className="p-6 bg-white/10 border border-[#D4AF37]/50 rounded-2xl max-w-md mx-auto text-[#FAF5EE] text-sm flex items-center justify-center gap-3 shadow-lg font-royal-body">
-              <CheckCircle2 className="w-6 h-6 text-[#E5A93C] flex-shrink-0" />
-              <span>Catalog download link dispatched! You can also message @ramamtextiles on Instagram for immediate line sheets.</span>
-            </div>
-          ) : (
-            <div className="space-y-4 max-w-lg mx-auto">
-              <form onSubmit={handleDownloadCatalog} className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your business email..."
-                  value={catalogEmail}
-                  onChange={e => setCatalogEmail(e.target.value)}
-                  className="flex-1 px-5 py-3.5 bg-white/10 border border-[#D4AF37]/50 rounded-full text-sm text-white placeholder-stone-400 focus:outline-none focus:border-[#D4AF37] shadow-inner font-royal-body"
-                />
-                <button
-                  type="submit"
-                  className="pill-btn-rose px-6 py-3.5 rounded-full flex items-center justify-center gap-2 shadow-xl"
-                >
-                  <span>Instant Download</span>
-                  <Download className="w-4 h-4" />
-                </button>
-              </form>
-
-              <div className="pt-2 flex items-center justify-center gap-2 text-xs text-stone-300">
-                <span>Or message directly:</span>
-                <a
-                  href="https://www.instagram.com/ramamtextiles"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#E5A93C] hover:underline font-bold inline-flex items-center gap-1 font-royal-title"
-                >
-                  <InstagramIcon className="w-3.5 h-3.5" />
-                  <span>@ramamtextiles on Instagram</span>
-                </a>
-              </div>
-            </div>
-          )}
-        </div>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <BulkOrderEnquiryForm id="bulk-enquiry" />
       </section>
 
       {/* =========================================================================
@@ -866,11 +864,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               className="group bg-[#FAF5EE] rounded-[28px] overflow-hidden shadow-sm border border-[#D4AF37]/40 hover:border-[#9B332C] hover:shadow-2xl transition-all cursor-pointer flex flex-col hover:-translate-y-1"
             >
               <div className="aspect-[16/10] overflow-hidden relative">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+                <picture className="w-full h-full block">
+                  <source srcSet={resolveWebpImage(post.image)} type="image/webp" />
+                  <img
+                    src={resolveProductImage(post.image)}
+                    alt={post.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </picture>
                 <span className="absolute top-3 left-3 bg-[#1F1612]/95 text-[#FAF3DC] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider font-royal-title border border-[#D4AF37]/40 shadow-sm">
                   🪷 {post.category}
                 </span>

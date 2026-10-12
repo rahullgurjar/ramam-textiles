@@ -1,7 +1,7 @@
 import React from 'react';
 import { Sparkles, ArrowRight, BookOpen } from 'lucide-react';
 import { JOURNAL_POSTS } from '../data/journal';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
 interface JournalPageProps {
   onNavigate: (path: string) => void;
@@ -33,18 +33,23 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
           <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-10 pointer-events-none" />
 
           <div className="lg:col-span-7 aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-[#D4AF37]/40">
-            <img 
-              src={resolveProductImage(JOURNAL_POSTS[0].image)} 
-              alt={JOURNAL_POSTS[0].title} 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-              onError={(e) => {
-                const target = e.currentTarget as HTMLImageElement;
-                if (!target.dataset.fallbackTried) {
-                  target.dataset.fallbackTried = 'true';
-                  target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
-                }
-              }}
-            />
+            <picture className="w-full h-full block">
+              <source srcSet={resolveWebpImage(JOURNAL_POSTS[0].image)} type="image/webp" />
+              <img 
+                src={resolveProductImage(JOURNAL_POSTS[0].image)} 
+                alt={JOURNAL_POSTS[0].title} 
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  if (!target.dataset.fallbackTried) {
+                    target.dataset.fallbackTried = 'true';
+                    target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                  }
+                }}
+              />
+            </picture>
           </div>
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-2 text-xs font-mono">
@@ -79,18 +84,23 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
             }`}
           >
             <div className="aspect-[16/10] overflow-hidden relative">
-              <img
-                src={resolveProductImage(post.image)}
-                alt={post.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onError={(e) => {
-                  const target = e.currentTarget as HTMLImageElement;
-                  if (!target.dataset.fallbackTried) {
-                    target.dataset.fallbackTried = 'true';
-                    target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
-                  }
-                }}
-              />
+              <picture className="w-full h-full block">
+                <source srcSet={resolveWebpImage(post.image)} type="image/webp" />
+                <img
+                  src={resolveProductImage(post.image)}
+                  alt={post.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (!target.dataset.fallbackTried) {
+                      target.dataset.fallbackTried = 'true';
+                      target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                    }
+                  }}
+                />
+              </picture>
               <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-royal-title font-bold uppercase tracking-wider shadow-md border ${
                 pIdx % 3 === 0 
                   ? 'bg-[#1E295B] text-[#BFDBFE] border-[#60A5FA]' 

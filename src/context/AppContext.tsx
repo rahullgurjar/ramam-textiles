@@ -62,6 +62,12 @@ interface AppContextType {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (open: boolean) => void;
 
+  // Policy Modal (Privacy, Shipping, Terms, Returns)
+  isPolicyModalOpen: boolean;
+  policyModalTab: 'privacy' | 'terms' | 'shipping' | 'returns';
+  openPolicyModal: (tab?: 'privacy' | 'terms' | 'shipping' | 'returns') => void;
+  closePolicyModal: () => void;
+
   // Toast
   toast: ToastState;
   showToast: (message: string, type?: 'success' | 'info' | 'error') => void;
@@ -108,6 +114,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [buyerProfile, setBuyerProfile] = useState<BuyerProfile | null>(null);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Policy Modal
+  const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
+  const [policyModalTab, setPolicyModalTab] = useState<'privacy' | 'terms' | 'shipping' | 'returns'>('privacy');
+
+  const openPolicyModal = (tab: 'privacy' | 'terms' | 'shipping' | 'returns' = 'privacy') => {
+    setPolicyModalTab(tab);
+    setIsPolicyModalOpen(true);
+  };
+
+  const closePolicyModal = () => {
+    setIsPolicyModalOpen(false);
+  };
 
   const [toast, setToast] = useState<ToastState>({
     show: false,
@@ -245,6 +264,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         unlockB2BPricing,
         isMobileMenuOpen,
         setIsMobileMenuOpen,
+        isPolicyModalOpen,
+        policyModalTab,
+        openPolicyModal,
+        closePolicyModal,
         toast,
         showToast
       }}

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "generate:sitemap": "node scripts/generate-sitemap.js",
+    "optimize:images": "node scripts/optimize-images.js",
     "prebuild": "node scripts/generate-sitemap.js",
     "build": "tsc && vite build",
     "preview": "vite preview"
@@ -26,8 +27,10 @@
     "jpeg-js": "^0.4.4",
     "pngjs": "^7.0.0",
     "postcss": "^8.4.49",
+    "sharp": "^0.35.5",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.6.3",
-    "vite": "^5.4.10"
+    "vite": "^5.4.10",
+    "vite-plugin-compression": "^0.5.1"
   }
 }
