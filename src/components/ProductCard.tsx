@@ -93,7 +93,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
           )}
 
           {product.isFeatured && (
-            <span className="px-2.5 py-0.5 bg-gradient-to-r from-[#D4AF37] via-[#FDE68A] to-[#B89426] text-[#241A16] text-[9.5px] font-extrabold tracking-wider uppercase rounded-full shadow-md font-royal-title border border-[#F5E6B5]">
+            <span className="px-2.5 py-0.5 bg-[#B81D5B] text-white text-[9.5px] font-extrabold tracking-wider uppercase rounded-full shadow-md font-royal-title border border-[#F472B6]/40">
               👑 Jaipur Signature
             </span>
           )}
@@ -106,9 +106,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
               e.stopPropagation();
               openQuickQuote(product);
             }}
-            className="flex-1 py-2.5 px-3 bg-gradient-to-r from-[#831843] to-[#1E295B] hover:from-[#9D174D] hover:to-[#2563EB] text-[#FAF3DC] text-xs font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-1.5 border border-[#D4AF37] shadow-xl transition-all font-royal-title"
+            className="flex-1 py-2.5 px-3 bg-[#B81D5B] hover:bg-[#981247] text-white text-xs font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-1.5 border border-[#B81D5B] shadow-xl transition-all font-royal-title"
           >
-            <FileText className="w-3.5 h-3.5 text-[#FDE68A]" />
+            <FileText className="w-3.5 h-3.5 text-white" />
             <span>Instant Quote</span>
           </button>
         </div>
@@ -171,7 +171,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
               className={`flex-1 py-2 px-3 text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-sm font-royal-title ${
                 isAdded 
                   ? 'bg-emerald-700 text-white' 
-                  : 'bg-gradient-to-r from-[#9B332C] via-[#831843] to-[#1E295B] text-[#FAF3DC] hover:opacity-95 border border-[#D4AF37]/60 hover:shadow-md'
+                  : 'bg-[#B81D5B] hover:bg-[#981247] text-white hover:opacity-95 border border-[#B81D5B] hover:shadow-md'
               }`}
             >
               {isAdded ? (
@@ -181,7 +181,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
                 </>
               ) : (
                 <>
-                  <ShoppingBag className="w-3.5 h-3.5 text-[#F5E6B5]" />
+                  <ShoppingBag className="w-3.5 h-3.5 text-white" />
                   <span>Add to RFQ</span>
                 </>
               )}
@@ -192,10 +192,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
                 e.stopPropagation();
                 handleCardClick();
               }}
-              className="p-2 border border-[#D4AF37]/50 rounded-xl hover:bg-[#FAF0EC] text-[#7E2822] transition-colors"
+              className="p-2 border border-[#B81D5B]/35 rounded-xl hover:bg-[#FDF2F8] hover:border-[#B81D5B] text-[#B81D5B] transition-colors"
               title="View full technical specs"
             >
-              <ArrowUpRight className="w-4 h-4 text-[#7E2822]" />
+              <ArrowUpRight className="w-4 h-4 text-[#B81D5B]" />
             </button>
           </div>
         </div>

@@ -767,23 +767,23 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Custom Scrollbar in Royal Emerald & Zari Gold */
+/* Custom Scrollbar in Artisan Berry & Rani Pink */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F3EEDB;
+  background: #FAF5EE;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #D4AF37 0%, #11352A 100%);
-  border-radius: 4px;
+  background: #B81D5B;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #E5C058 0%, #164335 100%);
+  background: #981247;
 }
 
 /* Form Styles */

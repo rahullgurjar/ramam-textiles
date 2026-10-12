@@ -167,8 +167,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                 </span>
               )}
               {product.isFeatured && (
-                <span className="bg-[#C8376B] text-white text-[10px] font-royal-title font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
-                  <Sparkles className="w-3 h-3" />
+                <span className="bg-[#B81D5B] text-white text-[10px] font-royal-title font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 border border-[#F472B6]/40">
+                  <Sparkles className="w-3 h-3 text-white" />
                   <span>Jaipur Signature</span>
                 </span>
               )}
