@@ -40,7 +40,7 @@ export const LookbookPage: React.FC<LookbookPageProps> = ({ onNavigate }) => {
         {seasons.map((s, sIdx) => {
           const isSelected = selectedSeason === s;
           const activeBg = 
-            sIdx === 0 ? 'bg-[#241A16] text-[#FAF5EE]' :
+            sIdx === 0 ? 'bg-[#9B332C] text-white border-[#9B332C]' :
             sIdx === 1 ? 'bg-[#BE185D] text-white border-[#BE185D]' :
             sIdx === 2 ? 'bg-[#1D4ED8] text-white border-[#1D4ED8]' :
             sIdx === 3 ? 'bg-[#D97706] text-white border-[#D97706]' :
@@ -87,7 +87,7 @@ export const LookbookPage: React.FC<LookbookPageProps> = ({ onNavigate }) => {
                 }}
               />
             </picture>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#241A16]/95 via-[#241A16]/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#6B2824]/90 via-[#6B2824]/30 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
 
             <div className="absolute bottom-0 inset-x-0 p-6 sm:p-8 text-white flex flex-col justify-end">
               <span className="text-[10px] font-royal-title uppercase tracking-widest text-[#E5A93C] font-bold">

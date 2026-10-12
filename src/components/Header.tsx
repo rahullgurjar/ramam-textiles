@@ -63,26 +63,26 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       
       {/* TOP ATELIER HALLMARK STRIP */}
-      <div className="bg-[#1C1613] text-[#E8D8C3] text-[10.5px] py-1.5 px-4 font-royal-title border-b border-[#D4AF37]/20 shadow-sm">
+      <div className="bg-[#FAF0EB] text-[#6B2824] text-[10.5px] py-1.5 px-4 font-royal-title border-b border-[#EACAC0] shadow-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2 sm:gap-3 overflow-hidden text-ellipsis whitespace-nowrap text-[10.5px] tracking-[0.14em] uppercase">
-            <span className="text-[#F5E6B5] font-semibold">Jaipur Artisan Atelier</span>
-            <span className="text-[#D4AF37]/40">•</span>
-            <span className="text-stone-300 hidden sm:inline">100% Combed Cotton</span>
-            <span className="text-[#D4AF37]/40 hidden md:inline">•</span>
-            <span className="text-stone-300 hidden md:inline">Worldwide Express Cargo</span>
-            <span className="text-[#D4AF37]/40 hidden lg:inline">•</span>
-            <span className="text-[#E5A93C] hidden lg:inline">Low MOQ: 25 Pcs</span>
+            <span className="text-[#9B332C] font-semibold">Jaipur Artisan Atelier</span>
+            <span className="text-[#9B332C]/30">•</span>
+            <span className="text-stone-600 hidden sm:inline">100% Combed Cotton</span>
+            <span className="text-[#9B332C]/30 hidden md:inline">•</span>
+            <span className="text-stone-600 hidden md:inline">Worldwide Express Cargo</span>
+            <span className="text-[#9B332C]/30 hidden lg:inline">•</span>
+            <span className="text-[#9B332C] font-bold hidden lg:inline">Low MOQ: 25 Pcs</span>
           </div>
 
           <div className="flex items-center gap-3 shrink-0 text-[10.5px] tracking-wider">
             <a 
               href="https://www.instagram.com/ramamtextiles" 
               target="_blank" 
-              rel="noopener noreferrer"
-              className="text-[#E8D8C3] hover:text-[#F5E6B5] transition-colors flex items-center gap-1.5 font-medium"
+              rel="noopener noreferrer" 
+              className="text-[#6B2824] hover:text-[#9B332C] transition-colors flex items-center gap-1.5 font-medium"
             >
-              <InstagramIcon className="w-3.5 h-3.5 opacity-80" />
+              <InstagramIcon className="w-3.5 h-3.5 text-[#9B332C]" />
               <span>@ramamtextiles</span>
             </a>
           </div>
@@ -215,7 +215,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                       </div>
                       <button
                         onClick={() => handleNav('/category/bags')}
-                        className="mt-4 w-full py-2 bg-[#241A16] text-[#FAF5EE] font-royal-title font-bold text-[10px] uppercase tracking-widest rounded-full hover:bg-[#9B332C] transition-colors shadow"
+                        className="mt-4 w-full py-2 bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] font-royal-title font-bold text-[10px] uppercase tracking-widest rounded-full hover:bg-[#9B332C] hover:text-white transition-colors shadow-sm"
                       >
                         Explore Bags →
                       </button>

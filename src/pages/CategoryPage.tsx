@@ -25,7 +25,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ categoryId, onNaviga
       </nav>
 
       {/* Category Hero Banner */}
-      <div className="relative rounded-[32px] overflow-hidden bg-gradient-to-br from-[#241A16] via-[#2F211C] to-[#241A16] text-[#FAF5EE] min-h-[260px] flex items-center p-8 sm:p-12 shadow-2xl border border-[#D4AF37]/40">
+      <div className="relative rounded-[32px] overflow-hidden bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] min-h-[260px] flex items-center p-8 sm:p-12 shadow-sm border border-[#D4AF37]/40">
         <picture className="absolute inset-0 w-full h-full block">
           <source srcSet={resolveWebpImage(category.image)} type="image/webp" />
           <img
@@ -33,7 +33,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ categoryId, onNaviga
             alt={category.name}
             loading="eager"
             decoding="async"
-            className="w-full h-full object-cover opacity-25 scale-105"
+            className="w-full h-full object-cover opacity-15 scale-105"
             onError={(e) => {
               const target = e.currentTarget as HTMLImageElement;
               if (!target.dataset.fallbackTried) {
@@ -43,17 +43,17 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ categoryId, onNaviga
             }}
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/85 to-transparent" />
-        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-15 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF0EB] via-[#FAF0EB]/85 to-transparent" />
+        <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
 
         <div className="relative z-10 max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-bold uppercase tracking-wider font-royal-title shadow-sm">
             <span>🪷 Jaipur Hand Block Line</span>
           </div>
-          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3DC]">
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16]">
             {category.name}
           </h1>
-          <p className="text-stone-300 font-royal-body text-base md:text-lg leading-relaxed">
+          <p className="text-stone-700 font-royal-body text-base md:text-lg leading-relaxed">
             {category.description}
           </p>
         </div>

@@ -35,12 +35,12 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-royal-body">
       {/* Hero */}
-      <div className="bg-[#241A16] text-white rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/30 shadow-xl">
+      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
+          className="absolute inset-0 bg-cover bg-center opacity-15"
           style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF0EB]/95 via-[#FAF0EB]/80 to-transparent" />
 
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-widest shadow-sm">
@@ -48,11 +48,11 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
             <span>Direct Jaipur Manufacturer &amp; Exporter</span>
           </div>
 
-          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF5EE] leading-tight">
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16] leading-tight">
             Wholesale B2B Supply &amp; Global Export
           </h1>
 
-          <p className="text-stone-300 font-royal-body text-base sm:text-lg leading-relaxed">
+          <p className="text-stone-700 font-royal-body text-base sm:text-lg leading-relaxed">
             Direct-from-source artisan wholesale pricing for boutiques, department stores, and international fashion brands. Low MOQs from 25 pieces, certified colorfast pure cotton, and reliable worldwide logistics.
           </p>
 

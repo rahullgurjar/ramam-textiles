@@ -12,11 +12,11 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ currentPath, o
   const totalBasketCount = inquiryItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#241A16]/95 backdrop-blur-md border-t border-[#D4AF37]/40 px-2 py-1.5 flex items-center justify-around shadow-2xl">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FAF5EE]/95 backdrop-blur-md border-t border-[#D4AF37]/35 px-2 py-1.5 flex items-center justify-around shadow-lg">
       <button
         onClick={() => { onNavigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         className={`flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold transition-colors font-royal-title ${
-          currentPath === '/' ? 'text-[#E5A93C]' : 'text-stone-300 hover:text-white'
+          currentPath === '/' ? 'text-[#9B332C]' : 'text-stone-600 hover:text-[#9B332C]'
         }`}
       >
         <Home className="w-5 h-5 mb-0.5" />
@@ -26,7 +26,7 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ currentPath, o
       <button
         onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         className={`flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold transition-colors font-royal-title ${
-          currentPath.startsWith('/shop') || currentPath.startsWith('/category') ? 'text-[#E5A93C]' : 'text-stone-300 hover:text-white'
+          currentPath.startsWith('/shop') || currentPath.startsWith('/category') ? 'text-[#9B332C]' : 'text-stone-600 hover:text-[#9B332C]'
         }`}
       >
         <Compass className="w-5 h-5 mb-0.5" />
@@ -36,7 +36,7 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ currentPath, o
       <button
         onClick={() => { onNavigate('/lookbook'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         className={`flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold transition-colors font-royal-title ${
-          currentPath === '/lookbook' ? 'text-[#E5A93C]' : 'text-stone-300 hover:text-white'
+          currentPath === '/lookbook' ? 'text-[#9B332C]' : 'text-stone-600 hover:text-[#9B332C]'
         }`}
       >
         <Sparkles className="w-5 h-5 mb-0.5" />
@@ -45,18 +45,18 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ currentPath, o
 
       <button
         onClick={() => openQuickQuote()}
-        className="flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold text-[#F5E6B5] hover:text-[#E5A93C] font-royal-title"
+        className="flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold text-stone-600 hover:text-[#9B332C] font-royal-title"
       >
-        <FileText className="w-5 h-5 mb-0.5 text-[#E5A93C]" />
+        <FileText className="w-5 h-5 mb-0.5 text-[#9B332C]" />
         <span>Quick RFQ</span>
       </button>
 
       <button
         onClick={openInquiryDrawer}
-        className="relative flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold text-[#FAF7EE] hover:text-white font-royal-title"
+        className="relative flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold text-stone-600 hover:text-[#9B332C] font-royal-title"
       >
         <div className="relative">
-          <ClipboardList className="w-5 h-5 mb-0.5 text-[#F5E6B5]" />
+          <ClipboardList className="w-5 h-5 mb-0.5 text-[#9B332C]" />
           {totalBasketCount > 0 && (
             <span className="absolute -top-1 -right-2 bg-[#9B332C] text-white text-[9px] font-black rounded-full h-4 min-w-4 px-1 flex items-center justify-center shadow-md">
               {totalBasketCount}

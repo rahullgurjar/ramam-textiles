@@ -115,18 +115,18 @@ export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate
       </div>
 
       {/* Artisan Commitment Banner */}
-      <div className="bg-[#241A16] text-[#FAF5EE] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/30 text-center max-w-4xl mx-auto space-y-5 shadow-2xl relative overflow-hidden">
-        <div className="w-14 h-14 bg-white/10 border border-[#D4AF37]/40 rounded-full flex items-center justify-center mx-auto text-[#E5A93C] shadow-lg">
-          <Heart className="w-7 h-7 fill-[#E5A93C]/20" />
+      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/40 text-center max-w-4xl mx-auto space-y-5 shadow-sm relative overflow-hidden">
+        <div className="w-14 h-14 bg-[#FAF0EB] border border-[#EACAC0] rounded-full flex items-center justify-center mx-auto text-[#9B332C] shadow-sm">
+          <Heart className="w-7 h-7 text-[#9B332C] fill-[#9B332C]/20" />
         </div>
-        <h3 className="font-playfair text-2xl sm:text-3xl font-bold text-[#FAF5EE]">Artisan Welfare &amp; Ethical Fair Wages</h3>
-        <p className="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+        <h3 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16]">Artisan Welfare &amp; Ethical Fair Wages</h3>
+        <p className="text-stone-700 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
           Every yard of fabric purchased from Ramam Textiles directly supports traditional craft families in Rajasthan. We guarantee safe working conditions, fair wages, zero child labor, and continuous investment in clean water filtration systems.
         </p>
         <div className="pt-2">
           <button
             onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="pill-btn-rose px-8 py-3.5 text-xs font-bold uppercase tracking-widest rounded-full shadow-xl"
+            className="pill-btn-rani px-8 py-3.5 text-xs font-bold uppercase tracking-widest rounded-full shadow-md"
           >
             Explore Authentic Handcrafted Pieces
           </button>

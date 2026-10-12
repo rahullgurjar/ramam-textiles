@@ -89,14 +89,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
                 {/* Floating Top-Right Rotating Circular Seal */}
                 <div className="absolute top-5 right-5 z-20">
-                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#241A16] text-[#FAF5EE] flex items-center justify-center shadow-xl border border-[#D4AF37]/50">
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#9B332C] text-white flex items-center justify-center shadow-xl border border-[#D4AF37]/60">
                     <svg className="w-full h-full animate-spin-seal" viewBox="0 0 100 100">
                       <path
                         id="heroSealPath"
                         d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
                         fill="none"
                       />
-                      <text className="text-[8.5px] font-bold uppercase tracking-[0.22em] fill-[#FAF5EE]">
+                      <text className="text-[8.5px] font-bold uppercase tracking-[0.22em] fill-white">
                         <textPath href="#heroSealPath" startOffset="0%">
                           • 100% ARTISAN • JAIPUR HANDBLOCK •
                         </textPath>
@@ -104,7 +104,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     </svg>
                     {/* Center Gold Star Emblem */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-[#E5A93C] text-base sm:text-lg">✤</span>
+                      <span className="text-[#F5E6B5] text-base sm:text-lg">✤</span>
                     </div>
                   </div>
                 </div>
@@ -553,13 +553,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
 
               {/* Overlapping Royal Medallion */}
-              <div className="absolute -bottom-6 -right-4 sm:bottom-8 sm:-right-8 bg-[#1F1612] text-[#FAF3DC] p-6 sm:p-7 rounded-[28px] shadow-2xl border border-[#D4AF37]/60 max-w-xs">
-                <div className="flex items-center gap-2 text-[#E5A93C] text-xs font-bold uppercase tracking-wider mb-1 font-royal-title">
-                  <Award className="w-4 h-4 text-[#E5A93C]" />
+              <div className="absolute -bottom-6 -right-4 sm:bottom-8 sm:-right-8 bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-6 sm:p-7 rounded-[28px] shadow-xl border border-[#D4AF37]/50 max-w-xs">
+                <div className="flex items-center gap-2 text-[#9B332C] text-xs font-bold uppercase tracking-wider mb-1 font-royal-title">
+                  <Award className="w-4 h-4 text-[#9B332C]" />
                   <span>3rd Generation Jaipur Artistry</span>
                 </div>
-                <div className="font-playfair text-lg font-bold text-white">Pure Quilted Indian Cotton</div>
-                <p className="text-[11px] font-royal-body text-stone-300 mt-1 leading-relaxed">
+                <div className="font-playfair text-lg font-bold text-[#241A16]">Pure Quilted Indian Cotton</div>
+                <p className="text-[11px] font-royal-body text-stone-700 mt-1 leading-relaxed">
                   Every duffle and pouch is hand-stamped with wooden Sheesham blocks, channel-quilted with cotton batting, and finished with candy-stripe piping.
                 </p>
               </div>
@@ -832,7 +832,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </picture>
-                <span className="absolute top-3 left-3 bg-[#1F1612]/95 text-[#FAF3DC] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider font-royal-title border border-[#D4AF37]/40 shadow-sm">
+                <span className="absolute top-3 left-3 bg-[#FAF5EE]/95 backdrop-blur-md text-[#9B332C] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider font-royal-title border border-[#D4AF37]/40 shadow-sm">
                   🪷 {post.category}
                 </span>
               </div>

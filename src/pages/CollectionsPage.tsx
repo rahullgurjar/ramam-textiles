@@ -56,8 +56,8 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
                       }}
                     />
                   </picture>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#241A16] via-transparent to-transparent opacity-75" />
-                  <div className="absolute bottom-4 left-4 text-[#FAF5EE] font-royal-title text-xs uppercase tracking-widest bg-[#241A16]/95 border border-[#D4AF37]/50 px-3.5 py-1.5 rounded-full shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#6B2824]/80 via-transparent to-transparent opacity-65" />
+                  <div className="absolute bottom-4 left-4 text-[#241A16] font-royal-title text-xs uppercase tracking-widest bg-[#FAF5EE]/95 backdrop-blur-md border border-[#D4AF37]/50 px-3.5 py-1.5 rounded-full shadow-md font-bold">
                     {collection.tagline}
                   </div>
                 </div>
@@ -100,7 +100,7 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
                           style={{ backgroundColor: color }}
                           title={`Jaipur Shade: ${color}`}
                         >
-                          <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-[#241A16] text-[#FAF5EE] text-[9px] px-1.5 py-0.5 rounded opacity-0 group-hover/color:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-20 font-mono shadow">
+                          <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-[#9B332C] text-white text-[9px] px-1.5 py-0.5 rounded opacity-0 group-hover/color:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-20 font-mono shadow-sm">
                             {color}
                           </span>
                         </div>

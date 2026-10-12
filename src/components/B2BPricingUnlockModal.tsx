@@ -32,23 +32,23 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-center justify-center animate-fade-in">
       <div className="w-full max-w-lg bg-[#FAF5EE] rounded-3xl shadow-2xl border border-[#D4AF37]/50 overflow-hidden text-[#241A16]">
         {/* Header */}
-        <div className="bg-[#241A16] text-[#FAF5EE] p-6 relative border-b border-[#D4AF37]/30 shadow-md">
+        <div className="bg-gradient-to-r from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-6 relative border-b border-[#D4AF37]/35 shadow-sm">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 text-stone-300 hover:text-white rounded-full hover:bg-white/10 transition-colors"
+            className="absolute top-4 right-4 p-2 text-stone-600 hover:text-white rounded-full hover:bg-[#9B332C] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
           
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4AF37]/20 border border-[#D4AF37]/45 rounded-full text-[#F5E6B5] text-xs font-bold uppercase tracking-wider mb-3 font-royal-title">
-            <Lock className="w-3.5 h-3.5 text-[#E5A93C]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-bold uppercase tracking-wider mb-3 font-royal-title">
+            <Lock className="w-3.5 h-3.5 text-[#9B332C]" />
             <span>Jaipur B2B Wholesale Portal</span>
           </div>
 
-          <h3 className="font-playfair text-2xl text-[#FAF5EE] font-extrabold tracking-wide">
+          <h3 className="font-playfair text-2xl text-[#241A16] font-extrabold tracking-wide">
             {isB2BPriceUnlocked ? 'B2B Wholesale Access Active' : 'Unlock Wholesale Tier Pricing'}
           </h3>
-          <p className="text-xs text-stone-300 mt-1 font-royal-body">
+          <p className="text-xs text-stone-600 mt-1 font-royal-body">
             Access exporter FOB rates, tiered MOQ discounts (25 - 1,000+ units), and production lead-time estimates.
           </p>
         </div>

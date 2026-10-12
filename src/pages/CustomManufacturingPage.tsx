@@ -42,13 +42,13 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-royal-body">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-[#241A16] via-[#2F211C] to-[#241A16] text-[#FAF5EE] rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/40 shadow-2xl">
+      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-25"
+          className="absolute inset-0 bg-cover bg-center opacity-15"
           style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/90 to-transparent" />
-        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-15 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF0EB] via-[#FAF0EB]/85 to-transparent" />
+        <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold uppercase tracking-wider font-royal-title shadow-sm">
@@ -56,18 +56,18 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
             <span>Jaipur OEM &amp; Custom Manufacturing Studio</span>
           </div>
 
-          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3DC] leading-tight">
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16] leading-tight">
             Bring Your Apparel &amp; Textile Visions to Life in Jaipur
           </h1>
 
-          <p className="text-stone-300 font-royal-body text-base sm:text-lg leading-relaxed">
+          <p className="text-stone-700 font-royal-body text-base sm:text-lg leading-relaxed">
             From custom wooden block carving to full-scale garment manufacturing, we partner with emerging fashion labels, luxury boutiques, and global retailers. Low minimums, certified eco dyes, and reliable turnaround.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
             <a
               href="#wizard"
-              className="pill-btn-rose inline-flex items-center gap-2 shadow-xl px-7 py-3.5 text-xs font-bold uppercase rounded-full"
+              className="pill-btn-rani inline-flex items-center gap-2 shadow-md px-7 py-3.5 text-xs font-bold uppercase rounded-full"
             >
               <span>Build Your Custom Brief</span>
               <ArrowRight className="w-4 h-4" />
@@ -107,12 +107,12 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
       </div>
 
       {/* Interactive Wizard Section */}
-      <div id="wizard" className="bg-[#241A16] text-white p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/35 shadow-2xl relative overflow-hidden">
-        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-20 pointer-events-none" />
+      <div id="wizard" className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/40 shadow-sm relative overflow-hidden">
+        <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
         <div className="max-w-4xl mx-auto relative z-10 space-y-6">
           <div className="text-center space-y-2">
-            <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-[#FAF3DC]">Interactive Brief Builder</h2>
-            <p className="text-sm font-royal-body text-stone-300">
+            <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-[#241A16]">Interactive Brief Builder</h2>
+            <p className="text-sm font-royal-body text-stone-700">
               Customize fabric, silhouette, printing technique, and packaging add-ons. Receive an instant estimate and quotation packet.
             </p>
           </div>

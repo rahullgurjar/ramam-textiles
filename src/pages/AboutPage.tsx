@@ -11,12 +11,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-royal-body">
       {/* Hero */}
-      <div className="bg-[#241A16] text-white rounded-[32px] p-8 sm:p-14 relative overflow-hidden shadow-xl border border-[#D4AF37]/30">
+      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] rounded-[32px] p-8 sm:p-14 relative overflow-hidden shadow-sm border border-[#D4AF37]/40">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
+          className="absolute inset-0 bg-cover bg-center opacity-15"
           style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#241A16] via-[#241A16]/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF0EB]/95 via-[#FAF0EB]/80 to-transparent" />
 
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-widest">
@@ -24,11 +24,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             <span>Rooted in the Pink City of Jaipur</span>
           </div>
 
-          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF5EE] leading-tight">
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16] leading-tight">
             Preserving Indian Textile Heritage, Empowering Global Modern Fashion.
           </h1>
 
-          <p className="text-stone-300 font-royal-body text-base sm:text-lg leading-relaxed">
+          <p className="text-stone-700 font-royal-body text-base sm:text-lg leading-relaxed">
             Ramam Textiles is a premier textile design house and wholesale apparel manufacturer established in Jaipur, Rajasthan. We bridge authentic traditional artisan guilds with modern international quality standards.
           </p>
         </div>
@@ -68,16 +68,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Instagram Studio Showcase Card */}
-      <div className="bg-[#241A16] text-white p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/30 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/40 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm relative overflow-hidden">
         <div className="space-y-3 max-w-xl relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-royal-title font-bold uppercase tracking-wider">
-            <InstagramIcon className="w-3.5 h-3.5 text-[#E5A93C]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-wider">
+            <InstagramIcon className="w-3.5 h-3.5 text-[#9B332C]" />
             <span>Artisan Studio Stories</span>
           </div>
-          <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-white">
+          <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16]">
             Follow Our Craft Journey on Instagram
           </h2>
-          <p className="text-sm text-stone-300 leading-relaxed">
+          <p className="text-sm text-stone-700 leading-relaxed">
             Discover live workshop demonstrations, woodblock carving timelapses, natural botanical dye baths, and client order preparation on <strong>@ramamtextiles</strong>.
           </p>
         </div>
@@ -86,11 +86,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           href="https://www.instagram.com/ramamtextiles"
           target="_blank"
           rel="noopener noreferrer"
-          className="pill-btn-rose px-7 py-3.5 text-xs font-bold uppercase tracking-widest whitespace-nowrap shadow-xl flex items-center gap-2 relative z-10"
+          className="pill-btn-rani px-7 py-3.5 text-xs font-bold uppercase tracking-widest whitespace-nowrap shadow-md flex items-center gap-2 relative z-10"
         >
-          <InstagramIcon className="w-4 h-4" />
+          <InstagramIcon className="w-4 h-4 text-white" />
           <span>Follow @ramamtextiles</span>
-          <ExternalLink className="w-3.5 h-3.5" />
+          <ExternalLink className="w-3.5 h-3.5 text-white" />
         </a>
       </div>
 
@@ -111,7 +111,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
         <button
           onClick={() => { onNavigate('/contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className="pill-btn-dark px-8 py-3.5 text-xs font-bold uppercase tracking-widest whitespace-nowrap shadow-lg bg-[#241A16]"
+          className="pill-btn-rani px-8 py-3.5 text-xs font-bold uppercase tracking-widest whitespace-nowrap shadow-md"
         >
           Schedule Studio Visit
         </button>

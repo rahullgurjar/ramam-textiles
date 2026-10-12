@@ -34,19 +34,19 @@ export const QuickQuoteModal: React.FC = () => {
       <div className="w-full max-w-xl bg-[#FAF5EE] rounded-[28px] shadow-2xl border border-[#D4AF37]/45 overflow-hidden">
         
         {/* Header */}
-        <div className="p-5 bg-[#241A16] text-[#FAF5EE] border-b border-[#D4AF37]/30 flex items-center justify-between shadow-md">
+        <div className="p-5 bg-gradient-to-r from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] border-b border-[#D4AF37]/35 flex items-center justify-between shadow-sm">
           <div className="flex items-center gap-2.5">
-            <FileText className="w-5 h-5 text-[#D4AF37]" />
+            <FileText className="w-5 h-5 text-[#9B332C]" />
             <div>
-              <h3 className="font-royal-title text-sm font-bold text-white uppercase tracking-wider">
+              <h3 className="font-royal-title text-sm font-bold text-[#241A16] uppercase tracking-wider">
                 Wholesale Quote &amp; Sample Request
               </h3>
-              <span className="text-[10px] text-stone-300 font-light">Direct Jaipur Atelier Manufacturer Desk</span>
+              <span className="text-[10px] text-stone-600 font-medium">Direct Jaipur Atelier Manufacturer Desk</span>
             </div>
           </div>
           <button 
             onClick={closeQuickQuote}
-            className="p-1.5 rounded-full text-stone-300 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-1.5 rounded-full text-stone-600 hover:text-white hover:bg-[#9B332C] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -83,7 +83,7 @@ export const QuickQuoteModal: React.FC = () => {
                     setIsSubmitted(false);
                     closeQuickQuote();
                   }}
-                  className="pill-btn-dark text-xs px-6 py-2.5 bg-[#241A16] rounded-full"
+                  className="pill-btn-rani text-xs px-6 py-2.5 rounded-full shadow"
                 >
                   Close Window
                 </button>

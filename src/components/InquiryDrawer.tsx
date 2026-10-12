@@ -88,16 +88,16 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
         <div className="w-screen max-w-xl bg-[#FAF5EE] shadow-2xl flex flex-col justify-between overflow-hidden border-l border-[#D4AF37]/35">
           
           {/* Header */}
-          <div className="p-5 bg-[#241A16] text-[#FAF5EE] border-b border-[#D4AF37]/30 flex items-center justify-between shadow-md">
+          <div className="p-5 bg-gradient-to-r from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] border-b border-[#D4AF37]/35 flex items-center justify-between shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-white/10 border border-[#D4AF37]/40 flex items-center justify-center shadow-inner">
-                <ShoppingBag className="w-5 h-5 text-[#E5A93C]" />
+              <div className="w-10 h-10 rounded-2xl bg-[#FAF0EB] border border-[#EACAC0] flex items-center justify-center shadow-sm">
+                <ShoppingBag className="w-5 h-5 text-[#9B332C]" />
               </div>
               <div>
-                <h3 className="font-royal-title text-base font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                <h3 className="font-royal-title text-base font-bold text-[#241A16] uppercase tracking-wider flex items-center gap-1.5">
                   <span>Wholesale RFQ Basket</span>
                 </h3>
-                <span className="text-[11px] text-stone-300 font-light">
+                <span className="text-[11px] text-stone-600 font-medium">
                   {inquiryItems.length} Products | {totalQuantity} Total Units Selected
                 </span>
               </div>
@@ -105,7 +105,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
 
             <button 
               onClick={closeInquiryDrawer}
-              className="p-2 rounded-full text-stone-300 hover:text-white hover:bg-white/10 transition-colors"
+              className="p-2 rounded-full text-stone-600 hover:text-white hover:bg-[#9B332C] transition-colors"
               aria-label="Close inquiry drawer"
             >
               <X className="w-5 h-5" />
@@ -158,9 +158,9 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
 
                   <button
                     onClick={handlePrintQuotation}
-                    className="w-full pill-btn-dark py-2.5 flex items-center justify-center gap-1.5 shadow rounded-full text-xs font-bold uppercase tracking-wider bg-[#241A16]"
+                    className="w-full pill-btn-rani py-2.5 flex items-center justify-center gap-1.5 shadow rounded-full text-xs font-bold uppercase tracking-wider"
                   >
-                    <Printer className="w-4 h-4 text-[#E5A93C]" />
+                    <Printer className="w-4 h-4 text-white" />
                     <span>Download / Print RFQ Summary</span>
                   </button>
                 </div>
@@ -407,9 +407,9 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                       href="https://www.instagram.com/ramamtextiles"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full pill-btn-dark py-2.5 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 rounded-full shadow bg-[#241A16]"
+                      className="w-full pill-btn-rani py-2.5 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 rounded-full shadow"
                     >
-                      <InstagramIcon className="w-4 h-4 text-[#D4AF37]" />
+                      <InstagramIcon className="w-4 h-4 text-white" />
                       <span>Quick Inquiry via Instagram DM</span>
                     </a>
                   </div>

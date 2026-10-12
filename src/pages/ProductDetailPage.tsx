@@ -161,7 +161,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             {/* Top Badges */}
             <div className="absolute top-5 left-5 flex flex-col gap-2 z-10">
               {product.isBestseller && (
-                <span className="bg-[#1F1612] text-[#FAF3DC] text-[10px] font-royal-title uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-lg border border-[#D4AF37]/50 flex items-center gap-1.5">
+                <span className="bg-[#FAF5EE]/95 backdrop-blur-md text-[#241A16] text-[10px] font-royal-title font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-md border border-[#D4AF37]/50 flex items-center gap-1.5">
                   <Star className="w-3 h-3 text-[#E5A93C] fill-[#E5A93C]" />
                   <span>Bestseller</span>
                 </span>
@@ -175,13 +175,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
             </div>
 
             {/* Bottom SKU and Provenance Bar */}
-            <div className="absolute bottom-4 left-4 right-4 bg-[#1F1612]/95 backdrop-blur-md text-[#FAF3DC] p-3.5 rounded-2xl flex items-center justify-between text-xs border border-[#D4AF37]/40 shadow-xl">
+            <div className="absolute bottom-4 left-4 right-4 bg-[#FAF5EE]/95 backdrop-blur-md text-[#241A16] p-3.5 rounded-2xl flex items-center justify-between text-xs border border-[#D4AF37]/45 shadow-lg">
               <div className="flex items-center gap-2 font-mono">
-                <span className="text-[#E5A93C] font-royal-title">SKU:</span>
-                <span className="font-semibold text-white">{product.sku}</span>
+                <span className="text-[#9B332C] font-royal-title font-bold">SKU:</span>
+                <span className="font-semibold text-[#241A16]">{product.sku}</span>
               </div>
-              <div className="text-[11px] text-stone-300">
-                Crafted in <strong className="text-[#E5A93C]">Jaipur Workshop Guilds</strong>
+              <div className="text-[11px] text-stone-600">
+                Crafted in <strong className="text-[#9B332C]">Jaipur Workshop Guilds</strong>
               </div>
             </div>
           </div>
@@ -406,7 +406,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           <div className="space-y-3 pt-2">
             <button
               onClick={handleAddToBasket}
-              className="pill-btn-rose w-full py-4 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 rounded-full shadow-xl"
+              className="pill-btn-rani w-full py-4 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 rounded-full shadow-lg"
             >
               <Package className="w-4 h-4" />
               <span>Add {quantity} Pcs to Wholesale RFQ Basket</span>
@@ -417,9 +417,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                 href="https://www.instagram.com/ramamtextiles"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pill-btn-dark py-3 text-xs font-bold uppercase tracking-wider rounded-full shadow-md flex items-center justify-center gap-2 bg-[#241A16]"
+                className="pill-btn-outline py-3 text-xs font-bold uppercase tracking-wider rounded-full shadow-sm flex items-center justify-center gap-2 bg-[#FAF5EE] text-[#241A16] border border-[#D4AF37]/45 hover:bg-[#FAF0EB]"
               >
-                <InstagramIcon className="w-4 h-4 text-[#E5A93C]" />
+                <InstagramIcon className="w-4 h-4 text-[#9B332C]" />
                 <span>DM on Instagram</span>
               </a>
 
@@ -582,7 +582,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
               </h3>
               <div className="overflow-x-auto rounded-2xl border border-[#D4AF37]/35 shadow-md">
                 <table className="w-full text-left text-xs bg-[#FAF5EE]">
-                  <thead className="bg-[#241A16] text-[#FAF5EE] font-royal-title uppercase tracking-wider">
+                  <thead className="bg-[#FAF0EB] text-[#6B2824] border-b border-[#D4AF37]/35 font-royal-title uppercase tracking-wider font-bold">
                     <tr>
                       <th className="p-3.5">Order Quantity</th>
                       <th className="p-3.5">Discount Tier</th>
@@ -715,19 +715,19 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
       )}
 
       {/* Sticky Mobile Bottom Action Bar */}
-      <div className="lg:hidden fixed bottom-0 inset-x-0 bg-[#F5EEE6]/96 backdrop-blur-md border-t border-[#D4AF37]/35 p-3 z-40 shadow-2xl flex items-center gap-2">
+      <div className="lg:hidden fixed bottom-0 inset-x-0 bg-[#FAF5EE]/95 backdrop-blur-md border-t border-[#D4AF37]/35 p-3 z-40 shadow-lg flex items-center gap-2">
         <a
           href="https://www.instagram.com/ramamtextiles"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-3 rounded-full bg-[#1F1612] text-white shrink-0 shadow flex items-center justify-center hover:scale-105 transition-all"
+          className="p-3 rounded-full bg-[#9B332C] text-white shrink-0 shadow flex items-center justify-center hover:scale-105 transition-all"
           title="Instagram Direct Inquiry"
         >
           <InstagramIcon className="w-4 h-4 text-white" />
         </a>
         <button
           onClick={handleAddToBasket}
-          className="flex-1 pill-btn-rose py-3 text-xs font-bold uppercase rounded-full shadow-lg flex items-center justify-center gap-1.5"
+          className="flex-1 pill-btn-rani py-3 text-xs font-bold uppercase rounded-full shadow-md flex items-center justify-center gap-1.5"
         >
           <Package className="w-4 h-4" />
           <span>Add to RFQ ({formatPrice(currentUnitPrice)})</span>

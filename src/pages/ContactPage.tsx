@@ -50,53 +50,53 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         {/* Contact Info Sidebar */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="bg-gradient-to-br from-[#241A16] via-[#2E201B] to-[#241A16] text-[#FAF5EE] p-8 rounded-[32px] border border-[#D4AF37]/40 space-y-6 shadow-2xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-15 pointer-events-none" />
-            <h3 className="font-playfair text-2xl font-bold text-[#F5E6B5]">Direct Jaipur Atelier Offices</h3>
+          <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-8 rounded-[32px] border border-[#D4AF37]/40 space-y-6 shadow-sm relative overflow-hidden">
+            <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
+            <h3 className="font-playfair text-2xl font-bold text-[#241A16]">Direct Jaipur Atelier Offices</h3>
 
             <div className="space-y-5 text-xs sm:text-sm font-royal-body relative z-10">
-              <div className="flex items-start gap-3.5 text-stone-200">
-                <div className="p-2 rounded-xl bg-white/10 border border-[#D4AF37]/35 text-[#E5A93C] flex-shrink-0 mt-0.5">
+              <div className="flex items-start gap-3.5 text-stone-700">
+                <div className="p-2 rounded-xl bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] flex-shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <strong className="text-white block font-royal-title text-sm">Main Studio &amp; Production Workshop:</strong>
-                  <span className="text-stone-300">Sanganer &amp; Bagru Artisan Industrial Zone, Jaipur, Rajasthan 302020, India</span>
+                  <strong className="text-[#241A16] block font-royal-title text-sm">Main Studio &amp; Production Workshop:</strong>
+                  <span className="text-stone-600">Sanganer &amp; Bagru Artisan Industrial Zone, Jaipur, Rajasthan 302020, India</span>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 text-stone-200">
-                <div className="p-2 rounded-xl bg-white/10 border border-[#D4AF37]/35 text-[#E5A93C] flex-shrink-0 mt-0.5">
+              <div className="flex items-start gap-3.5 text-stone-700">
+                <div className="p-2 rounded-xl bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] flex-shrink-0 mt-0.5">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
-                  <strong className="text-white block font-royal-title text-sm">Studio Working Hours (IST):</strong>
-                  <span className="text-stone-300">Monday – Saturday: 9:30 AM – 7:30 PM (IST)</span>
+                  <strong className="text-[#241A16] block font-royal-title text-sm">Studio Working Hours (IST):</strong>
+                  <span className="text-stone-600">Monday – Saturday: 9:30 AM – 7:30 PM (IST)</span>
                 </div>
               </div>
 
               {/* Highlighted Instagram Official Connect */}
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-[#D4AF37]/40 space-y-2 mt-2">
+              <div className="p-4 rounded-2xl bg-white/80 border border-[#D4AF37]/40 space-y-2 mt-2 shadow-xs">
                 <div className="flex items-center gap-2">
                   <div className="p-1.5 rounded-lg bg-gradient-to-tr from-[#fd1d1d] to-[#833ab4] text-white">
                     <InstagramIcon className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#E5A93C] font-royal-title block">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#9B332C] font-royal-title block">
                       Primary Contact &amp; Social Desk
                     </span>
                     <a 
                       href="https://www.instagram.com/ramamtextiles" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-white hover:text-[#E5A93C] font-bold text-base inline-flex items-center gap-1.5 transition-colors"
+                      className="text-[#241A16] hover:text-[#9B332C] font-bold text-base inline-flex items-center gap-1.5 transition-colors"
                     >
                       <span>@ramamtextiles</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-[#E5A93C]" />
+                      <ExternalLink className="w-3.5 h-3.5 text-[#9B332C]" />
                     </a>
                   </div>
                 </div>
-                <p className="text-xs text-stone-300 leading-relaxed pt-1">
+                <p className="text-xs text-stone-600 leading-relaxed pt-1">
                   Connect directly on Instagram DM for instant wholesale quotes, fabric swatch videos, custom printing runs, and live workshop demonstrations.
                 </p>
                 <div className="pt-1">
@@ -104,7 +104,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                     href="https://www.instagram.com/ramamtextiles"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="pill-btn-rose text-xs py-2 px-4 rounded-full inline-flex items-center gap-2 shadow-md w-full justify-center"
+                    className="pill-btn-rani text-xs py-2 px-4 rounded-full inline-flex items-center gap-2 shadow-sm w-full justify-center"
                   >
                     <InstagramIcon className="w-3.5 h-3.5 text-white" />
                     <span>Send Message on Instagram</span>

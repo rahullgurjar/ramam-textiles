@@ -116,21 +116,21 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onNavigate, initialCategory,
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 font-royal-body">
       {/* Page Header - Craft of Pink City Style */}
-      <div className="bg-[#1F1612] text-white rounded-[32px] p-8 md:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-xl">
+      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] rounded-[32px] p-8 md:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
+          className="absolute inset-0 bg-cover bg-center opacity-15"
           style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1F1612] via-[#1F1612]/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF0EB]/95 via-[#FAF0EB]/80 to-transparent" />
 
         <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#FDF0F3] border border-[#F3CAD6] rounded-full text-[#C8376B] text-xs font-bold uppercase tracking-wider mb-4 font-royal-title shadow-md">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-bold uppercase tracking-wider mb-4 font-royal-title shadow-sm">
             <span>✨ 2026 Wholesale &amp; Export Catalog</span>
           </div>
-          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3DC] mb-3">
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16] mb-3">
             Handcrafted Textile Catalog
           </h1>
-          <p className="text-stone-300 font-royal-body text-base md:text-lg leading-relaxed">
+          <p className="text-stone-700 font-royal-body text-base md:text-lg leading-relaxed">
             Browse our Jaipur hand block-printed apparel, quilted duffles, vanity pouches, and running pure cotton yardage. Direct artisan pricing with worldwide DHL/FedEx export logistics.
           </p>
         </div>
@@ -313,14 +313,14 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onNavigate, initialCategory,
               <div className="hidden sm:flex items-center gap-1 bg-[#F5EDE1] border border-[#D4AF37]/30 p-1 rounded-xl">
                 <button
                   onClick={() => setGridCols(3)}
-                  className={`p-2 rounded-lg transition-all ${gridCols === 3 ? 'bg-[#1F1612] text-[#FAF5EE] shadow-sm' : 'text-stone-600 hover:text-[#1F1612]'}`}
+                  className={`p-2 rounded-lg transition-all ${gridCols === 3 ? 'bg-[#9B332C] text-white shadow-sm' : 'text-stone-600 hover:text-[#9B332C]'}`}
                   title="3 Columns"
                 >
                   <Grid3X3 className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setGridCols(4)}
-                  className={`p-2 rounded-lg transition-all ${gridCols === 4 ? 'bg-[#1F1612] text-[#FAF5EE] shadow-sm' : 'text-stone-600 hover:text-[#1F1612]'}`}
+                  className={`p-2 rounded-lg transition-all ${gridCols === 4 ? 'bg-[#9B332C] text-white shadow-sm' : 'text-stone-600 hover:text-[#9B332C]'}`}
                   title="4 Columns"
                 >
                   <Grid2X2 className="w-4 h-4" />

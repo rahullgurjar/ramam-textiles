@@ -106,17 +106,17 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Direct Help Callout */}
-      <div className="bg-gradient-to-br from-[#241A16] via-[#2F211C] to-[#241A16] text-[#FAF5EE] p-6 sm:p-8 rounded-[28px] border border-[#D4AF37]/35 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-2xl relative overflow-hidden">
-        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-15 pointer-events-none" />
+      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-6 sm:p-8 rounded-[28px] border border-[#D4AF37]/40 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-sm relative overflow-hidden">
+        <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
         <div className="relative z-10">
-          <h3 className="font-playfair text-xl font-bold text-[#F5E6B5]">Have a specific question not listed here?</h3>
-          <p className="text-stone-300 font-royal-body text-xs sm:text-sm mt-1">Our Jaipur export merchandisers are available on Instagram DM for instant consultations.</p>
+          <h3 className="font-playfair text-xl font-bold text-[#241A16]">Have a specific question not listed here?</h3>
+          <p className="text-stone-700 font-royal-body text-xs sm:text-sm mt-1">Our Jaipur export merchandisers are available on Instagram DM for instant consultations.</p>
         </div>
         <a
           href="https://www.instagram.com/ramamtextiles"
           target="_blank"
           rel="noopener noreferrer"
-          className="pill-btn-rose px-7 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg whitespace-nowrap flex items-center gap-2 relative z-10"
+          className="pill-btn-rani px-7 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full shadow-md whitespace-nowrap flex items-center gap-2 relative z-10"
         >
           <InstagramIcon className="w-4 h-4 text-white" />
           <span>DM @ramamtextiles</span>

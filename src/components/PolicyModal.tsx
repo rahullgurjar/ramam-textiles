@@ -56,21 +56,21 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
       <div className="relative z-10 flex h-[92vh] max-h-[820px] w-full max-w-4xl flex-col overflow-hidden rounded-[32px] bg-[#FAF5EE] border border-[#D4AF37]/40 shadow-2xl font-royal-body">
         
         {/* Modal Top Header */}
-        <div className="flex items-center justify-between border-b border-[#D4AF37]/25 bg-[#241A16] text-[#FAF5EE] px-6 py-4.5">
+        <div className="flex items-center justify-between border-b border-[#D4AF37]/35 bg-gradient-to-r from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] px-6 py-4.5">
           <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-tr from-[#9B332C] to-[#D4AF37] text-white shadow-sm">
+            <div className="grid h-10 w-10 place-items-center rounded-2xl bg-[#9B332C] text-white shadow-sm">
               <ShieldCheck className="w-5 h-5 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="font-playfair text-xl sm:text-2xl font-bold text-[#FAF3DC]">
+                <h2 className="font-playfair text-xl sm:text-2xl font-bold text-[#241A16]">
                   Ramam Textiles Jaipur
                 </h2>
                 <span className="rounded-full bg-[#FAF0EB] text-[#9B332C] border border-[#EACAC0] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider font-royal-title">
                   Official Store Policies
                 </span>
               </div>
-              <p className="text-xs text-stone-300">
+              <p className="text-xs text-stone-600">
                 Direct artisan textile atelier &amp; export desk • Jaipur, Rajasthan 302020
               </p>
             </div>
@@ -79,7 +79,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white/80 transition-colors hover:bg-[#9B332C] hover:text-white cursor-pointer"
+            className="grid h-9 w-9 place-items-center rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] transition-colors hover:bg-[#9B332C] hover:text-white cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-4 h-4" />
@@ -98,11 +98,11 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold font-royal-title uppercase tracking-wider transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-[#241A16] text-[#FAF5EE] shadow-md border border-[#D4AF37]/40'
+                    ? 'bg-[#9B332C] text-white shadow-md border border-[#9B332C]'
                     : 'text-stone-700 hover:bg-[#F5EDE1] hover:text-[#241A16]'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-[#D4AF37]' : 'text-[#9B332C]'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-[#9B332C]'}`} />
                 <span>{tab.label}</span>
               </button>
             );

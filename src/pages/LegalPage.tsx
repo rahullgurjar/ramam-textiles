@@ -37,34 +37,34 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10 font-royal-body">
       
       {/* Header Banner */}
-      <div className="bg-[#241A16] text-[#FAF5EE] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/35 shadow-2xl">
-        <div className="absolute inset-0 bg-jaipur-jaali-dark opacity-15 pointer-events-none" />
+      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
+        <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-widest shadow-sm">
             <span>Official Atelier &amp; Store Policies</span>
           </div>
 
-          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF3DC] leading-tight">
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16] leading-tight">
             Customer, Shipping &amp; Trade Policies
           </h1>
 
-          <p className="text-stone-300 font-royal-body text-xs sm:text-sm leading-relaxed max-w-2xl">
+          <p className="text-stone-700 font-royal-body text-xs sm:text-sm leading-relaxed max-w-2xl">
             Transparent artisan guidelines governing order fulfillment, pan-India &amp; worldwide express shipping, milestone batch payments, sample approvals, and customer data confidentiality.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
-            <span className="flex items-center gap-1.5 text-amber-200/90 font-royal-title">
-              <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
+            <span className="flex items-center gap-1.5 text-[#6B2824] font-royal-title font-semibold">
+              <CheckCircle2 className="w-4 h-4 text-[#9B332C]" />
               <span>Pan-India 19,000+ PIN Codes</span>
             </span>
-            <span className="text-stone-500">•</span>
-            <span className="flex items-center gap-1.5 text-amber-200/90 font-royal-title">
-              <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-stone-400">•</span>
+            <span className="flex items-center gap-1.5 text-[#6B2824] font-royal-title font-semibold">
+              <CheckCircle2 className="w-4 h-4 text-[#9B332C]" />
               <span>60% Advance Milestone Policy</span>
             </span>
-            <span className="text-stone-500">•</span>
-            <span className="flex items-center gap-1.5 text-amber-200/90 font-royal-title">
-              <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-stone-400">•</span>
+            <span className="flex items-center gap-1.5 text-[#6B2824] font-royal-title font-semibold">
+              <CheckCircle2 className="w-4 h-4 text-[#9B332C]" />
               <span>Sample First Confirmation</span>
             </span>
           </div>
@@ -82,11 +82,11 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-5 py-3 rounded-full text-xs font-royal-title uppercase tracking-wider font-bold transition-all whitespace-nowrap cursor-pointer ${
                 isActive
-                  ? 'bg-[#241A16] text-[#FAF5EE] shadow-lg border border-[#D4AF37]/50 scale-[1.02]'
-                  : 'bg-[#FAF5EE] text-[#241A16] hover:bg-[#FAF0EB] hover:text-[#9B332C] border border-[#D4AF37]/25'
+                  ? 'bg-[#9B332C] text-white shadow-md scale-[1.02]'
+                  : 'bg-[#FAF5EE] text-[#241A16] hover:bg-[#FAF0EB] hover:text-[#9B332C] border border-[#D4AF37]/35'
               }`}
             >
-              <Icon className={`w-4 h-4 ${isActive ? 'text-[#D4AF37]' : 'text-[#9B332C]'}`} />
+              <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-[#9B332C]'}`} />
               <span>{tab.label}</span>
             </button>
           );

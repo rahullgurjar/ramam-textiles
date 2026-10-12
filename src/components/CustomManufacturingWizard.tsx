@@ -66,17 +66,17 @@ export const CustomManufacturingWizard: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#FAF5EE] border border-[#D4AF37]/45 rounded-3xl shadow-2xl overflow-hidden text-[#0B241C]">
+    <div className="bg-[#FAF5EE] border border-[#D4AF37]/45 rounded-3xl shadow-sm overflow-hidden text-[#241A16]">
       {/* Progress Bar */}
-      <div className="bg-gradient-to-r from-[#0B241C] via-[#11352A] to-[#0B241C] px-6 py-6 border-b-2 border-[#D4AF37]/40 relative overflow-hidden">
-        <div className="absolute inset-0 bg-jaipur-jaali opacity-10 pointer-events-none" />
+      <div className="bg-gradient-to-r from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] px-6 py-6 border-b-2 border-[#D4AF37]/40 relative overflow-hidden">
+        <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4AF37]/20 border border-[#D4AF37]/40 rounded-full text-[#F5E6B5] text-[10px] font-royal-title uppercase tracking-widest mb-1.5 font-bold">
-              <Sparkles className="w-3 h-3 text-[#D4AF37]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-[10px] font-royal-title uppercase tracking-widest mb-1.5 font-bold">
+              <Sparkles className="w-3 h-3 text-[#9B332C]" />
               <span>Jaipur OEM &amp; Custom Atelier</span>
             </div>
-            <h3 className="font-royal-heading text-xl md:text-2xl text-white font-bold tracking-wide">
+            <h3 className="font-royal-heading text-xl md:text-2xl text-[#241A16] font-bold tracking-wide">
               Custom Manufacturing Studio
             </h3>
           </div>
@@ -86,10 +86,10 @@ export const CustomManufacturingWizard: React.FC = () => {
                 key={s} 
                 className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-royal-title font-bold transition-all ${
                   step === s 
-                    ? 'bg-gradient-to-r from-[#D4AF37] to-[#B89426] text-[#0B241C] ring-4 ring-[#D4AF37]/40 scale-105 shadow-md' 
+                    ? 'bg-[#9B332C] text-white ring-4 ring-[#9B332C]/20 scale-105 shadow-md' 
                     : step > s 
-                      ? 'bg-emerald-700 text-white border border-[#D4AF37]/50' 
-                      : 'bg-white/10 text-[#FAF7EE]/50 border border-white/20'
+                      ? 'bg-[#B81D5B] text-white border border-[#D4AF37]/50' 
+                      : 'bg-[#FAF5EE] text-[#241A16]/60 border border-[#D4AF37]/35'
                 }`}
               >
                 {step > s ? <CheckCircle2 className="w-4 h-4" /> : s}
@@ -139,8 +139,8 @@ export const CustomManufacturingWizard: React.FC = () => {
             <div className="space-y-6 animate-fade-in">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="w-6 h-6 rounded-full bg-[#11352A] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">1</span>
-                  <h4 className="font-royal-title text-lg font-bold text-[#0B241C]">
+                  <span className="w-6 h-6 rounded-full bg-[#9B332C] text-white flex items-center justify-center text-xs font-royal-title font-bold">1</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#241A16]">
                     Select Product Line / Category
                   </h4>
                 </div>
@@ -153,13 +153,13 @@ export const CustomManufacturingWizard: React.FC = () => {
                       onClick={() => setCategory(c.id)}
                       className={`p-4 rounded-2xl border text-left transition-all ${
                         category === c.id 
-                          ? 'border-2 border-[#D4AF37] bg-gradient-to-r from-[#11352A] to-[#0B241C] text-[#F5E6B5] shadow-lg scale-[1.02]' 
-                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] hover:border-[#9B332C] text-[#0B241C]'
+                          ? 'border-2 border-[#9B332C] bg-[#FAF0EB] text-[#241A16] shadow-md scale-[1.02]' 
+                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] hover:border-[#9B332C] text-[#241A16]'
                       }`}
                     >
                       <div className="text-2xl mb-2">{c.icon}</div>
-                      <div className="font-royal-title font-bold text-sm">{c.title}</div>
-                      <div className={`text-[11px] mt-1 leading-snug ${category === c.id ? 'text-[#FAF7EE]/90' : 'text-stone-600'}`}>{c.desc}</div>
+                      <div className="font-royal-title font-bold text-sm text-[#241A16]">{c.title}</div>
+                      <div className={`text-[11px] mt-1 leading-snug ${category === c.id ? 'text-[#9B332C] font-semibold' : 'text-stone-600'}`}>{c.desc}</div>
                     </button>
                   ))}
                 </div>
@@ -167,8 +167,8 @@ export const CustomManufacturingWizard: React.FC = () => {
 
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="w-6 h-6 rounded-full bg-[#11352A] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">2</span>
-                  <h4 className="font-royal-title text-lg font-bold text-[#0B241C]">
+                  <span className="w-6 h-6 rounded-full bg-[#9B332C] text-white flex items-center justify-center text-xs font-royal-title font-bold">2</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#241A16]">
                     Base Fabric Choice
                   </h4>
                 </div>
@@ -181,13 +181,13 @@ export const CustomManufacturingWizard: React.FC = () => {
                       onClick={() => setFabric(f.id)}
                       className={`p-4 rounded-2xl border text-left transition-all ${
                         fabric === f.id 
-                          ? 'border-2 border-[#D4AF37] bg-[#FAF7EE] text-[#0B241C] ring-2 ring-[#11352A] shadow-md' 
-                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] hover:border-[#9B332C] text-[#0B241C]'
+                          ? 'border-2 border-[#9B332C] bg-[#FAF0EB] text-[#241A16] shadow-md' 
+                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] hover:border-[#9B332C] text-[#241A16]'
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="font-royal-title font-bold text-sm text-[#0B241C]">{f.name}</span>
-                        <span className="text-[10px] bg-[#11352A]/15 text-[#11352A] px-2.5 py-0.5 rounded-full font-mono font-bold">{f.gsm}</span>
+                        <span className="font-royal-title font-bold text-sm text-[#241A16]">{f.name}</span>
+                        <span className="text-[10px] bg-[#FAF0EB] text-[#9B332C] border border-[#EACAC0] px-2.5 py-0.5 rounded-full font-mono font-bold">{f.gsm}</span>
                       </div>
                       <p className="text-xs text-stone-600 mt-1">{f.desc}</p>
                     </button>
@@ -199,7 +199,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="btn-royal-gold px-7 py-3 text-xs font-bold uppercase tracking-widest rounded-xl shadow-lg flex items-center gap-2"
+                  className="pill-btn-rani px-7 py-3 text-xs font-bold uppercase tracking-widest rounded-full shadow-md flex items-center gap-2"
                 >
                   <span>Next: Technique &amp; Printing</span>
                   <ArrowRight className="w-4 h-4" />
@@ -213,8 +213,8 @@ export const CustomManufacturingWizard: React.FC = () => {
             <div className="space-y-6 animate-fade-in">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="w-6 h-6 rounded-full bg-[#11352A] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">3</span>
-                  <h4 className="font-royal-title text-lg font-bold text-[#0B241C]">
+                  <span className="w-6 h-6 rounded-full bg-[#9B332C] text-white flex items-center justify-center text-xs font-royal-title font-bold">3</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#241A16]">
                     Select Artisan Technique or Print Style
                   </h4>
                 </div>
@@ -227,11 +227,11 @@ export const CustomManufacturingWizard: React.FC = () => {
                       onClick={() => setTechnique(t.id)}
                       className={`p-4 rounded-2xl border text-left transition-all ${
                         technique === t.id 
-                          ? 'border-2 border-[#D4AF37] bg-[#FAF7EE] text-[#0B241C] ring-2 ring-[#11352A] shadow-md' 
-                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] hover:border-[#9B332C] text-[#0B241C]'
+                          ? 'border-2 border-[#9B332C] bg-[#FAF0EB] text-[#241A16] shadow-md' 
+                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] hover:border-[#9B332C] text-[#241A16]'
                       }`}
                     >
-                      <div className="font-royal-title font-bold text-sm text-[#0B241C]">{t.name}</div>
+                      <div className="font-royal-title font-bold text-sm text-[#241A16]">{t.name}</div>
                       <p className="text-xs text-stone-600 mt-1">{t.desc}</p>
                     </button>
                   ))}
@@ -240,8 +240,8 @@ export const CustomManufacturingWizard: React.FC = () => {
 
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="w-6 h-6 rounded-full bg-[#11352A] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">4</span>
-                  <h4 className="font-royal-title text-lg font-bold text-[#0B241C]">
+                  <span className="w-6 h-6 rounded-full bg-[#9B332C] text-white flex items-center justify-center text-xs font-royal-title font-bold">4</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#241A16]">
                     Target Batch Quantity
                   </h4>
                 </div>
@@ -258,8 +258,8 @@ export const CustomManufacturingWizard: React.FC = () => {
                       onClick={() => setQuantity(q)}
                       className={`p-3.5 rounded-xl border text-center font-royal-title font-bold text-xs transition-all ${
                         quantity === q 
-                          ? 'border-2 border-[#D4AF37] bg-gradient-to-r from-[#11352A] to-[#0B241C] text-[#F5E6B5] shadow-md' 
-                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] text-[#0B241C] hover:border-[#9B332C]'
+                          ? 'border-2 border-[#9B332C] bg-[#FAF0EB] text-[#9B332C] shadow-md' 
+                          : 'border-[#D4AF37]/30 bg-[#F5EDE1] text-[#241A16] hover:border-[#9B332C]'
                       }`}
                     >
                       {q}
@@ -272,7 +272,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="btn-royal-outline px-5 py-3 text-xs uppercase font-bold rounded-xl flex items-center gap-2 text-[#0B241C] border-[#11352A]"
+                  className="pill-btn-outline px-6 py-3 text-xs uppercase font-bold rounded-full flex items-center gap-2 text-[#241A16] border border-[#D4AF37]/45 bg-[#FAF5EE]"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   <span>Back</span>
@@ -280,7 +280,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(3)}
-                  className="btn-royal-gold px-7 py-3 text-xs font-bold uppercase tracking-widest rounded-xl shadow-lg flex items-center gap-2"
+                  className="pill-btn-rani px-7 py-3 text-xs font-bold uppercase tracking-widest rounded-full shadow-md flex items-center gap-2"
                 >
                   <span>Next: Branding &amp; Custom Add-ons</span>
                   <ArrowRight className="w-4 h-4" />
@@ -294,8 +294,8 @@ export const CustomManufacturingWizard: React.FC = () => {
             <div className="space-y-6 animate-fade-in">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="w-6 h-6 rounded-full bg-[#11352A] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">5</span>
-                  <h4 className="font-royal-title text-lg font-bold text-[#0B241C]">
+                  <span className="w-6 h-6 rounded-full bg-[#9B332C] text-white flex items-center justify-center text-xs font-royal-title font-bold">5</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#241A16]">
                     Manufacturing Add-ons &amp; Finishing Specifications
                   </h4>
                 </div>
@@ -317,15 +317,15 @@ export const CustomManufacturingWizard: React.FC = () => {
                         onClick={() => toggleService(srv.title)}
                         className={`p-4 rounded-2xl border text-left transition-all flex items-start gap-3 ${
                           isChecked 
-                            ? 'border-2 border-emerald-700 bg-emerald-50/70 text-[#0B241C] ring-1 ring-emerald-600' 
-                            : 'border-[#D4AF37]/30 bg-[#F5EDE1] text-[#0B241C] hover:border-[#9B332C]'
+                            ? 'border-2 border-[#9B332C] bg-[#FAF0EB] text-[#241A16] shadow-sm' 
+                            : 'border-[#D4AF37]/30 bg-[#F5EDE1] text-[#241A16] hover:border-[#9B332C]'
                         }`}
                       >
-                        <div className={`w-5 h-5 rounded-md mt-0.5 flex items-center justify-center flex-shrink-0 ${isChecked ? 'bg-emerald-700 text-white' : 'border border-[#D4AF37]/60 bg-[#FAF5EE]'}`}>
+                        <div className={`w-5 h-5 rounded-md mt-0.5 flex items-center justify-center flex-shrink-0 ${isChecked ? 'bg-[#9B332C] text-white' : 'border border-[#D4AF37]/60 bg-[#FAF5EE]'}`}>
                           {isChecked && <CheckCircle2 className="w-4 h-4" />}
                         </div>
                         <div>
-                          <div className="font-royal-title font-bold text-xs text-[#0B241C]">{srv.title}</div>
+                          <div className="font-royal-title font-bold text-xs text-[#241A16]">{srv.title}</div>
                           <div className="text-[11px] text-stone-600 mt-0.5 font-royal-body">{srv.desc}</div>
                         </div>
                       </button>
@@ -335,7 +335,7 @@ export const CustomManufacturingWizard: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-royal-title uppercase tracking-wider text-[#0B241C] font-bold mb-1.5">
+                <label className="block text-xs font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1.5">
                   6. Technical Brief &amp; Sizing Details (Optional)
                 </label>
                 <textarea
@@ -343,7 +343,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                   value={techPackNotes}
                   onChange={e => setTechPackNotes(e.target.value)}
                   placeholder="Describe your design inspirations, Pantone shade codes, sizing breakdown (XS to 3XL), or specific garment dimensions..."
-                  className="w-full p-3.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-2xl text-xs text-[#0B241C] focus:outline-none focus:border-[#9B332C]"
+                  className="w-full p-3.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-2xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
                 />
               </div>
 
@@ -351,7 +351,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="btn-royal-outline px-5 py-3 text-xs uppercase font-bold rounded-xl flex items-center gap-2 text-[#0B241C] border-[#11352A]"
+                  className="pill-btn-outline px-6 py-3 text-xs uppercase font-bold rounded-full flex items-center gap-2 text-[#241A16] border border-[#D4AF37]/45 bg-[#FAF5EE]"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   <span>Back</span>
@@ -359,7 +359,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(4)}
-                  className="btn-royal-gold px-7 py-3 text-xs font-bold uppercase tracking-widest rounded-xl shadow-lg flex items-center gap-2"
+                  className="pill-btn-rani px-7 py-3 text-xs font-bold uppercase tracking-widest rounded-full shadow-md flex items-center gap-2"
                 >
                   <span>Next: Contact Details &amp; Submit</span>
                   <ArrowRight className="w-4 h-4" />
@@ -373,8 +373,8 @@ export const CustomManufacturingWizard: React.FC = () => {
             <form onSubmit={handleFinish} className="space-y-6 animate-fade-in">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="w-6 h-6 rounded-full bg-[#11352A] text-[#F5E6B5] flex items-center justify-center text-xs font-royal-title font-bold">7</span>
-                  <h4 className="font-royal-title text-lg font-bold text-[#0B241C]">
+                  <span className="w-6 h-6 rounded-full bg-[#9B332C] text-white flex items-center justify-center text-xs font-royal-title font-bold">7</span>
+                  <h4 className="font-royal-title text-lg font-bold text-[#241A16]">
                     Your Contact &amp; Brand Information
                   </h4>
                 </div>
@@ -382,7 +382,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#0B241C] font-bold mb-1">
+                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1">
                       Full Name *
                     </label>
                     <input
@@ -391,12 +391,12 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="e.g. Radhika Mehta"
                       value={contactName}
                       onChange={e => setContactName(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#9B332C]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#0B241C] font-bold mb-1">
+                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1">
                       Brand / Studio Name
                     </label>
                     <input
@@ -404,12 +404,12 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="e.g. Jaipur Indigo Co."
                       value={brandName}
                       onChange={e => setBrandName(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#9B332C]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
                     />
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#0B241C] font-bold mb-1">
+                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1">
                       Official Work Email *
                     </label>
                     <input
@@ -418,12 +418,12 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="buyer@brand.com"
                       value={email}
                       onChange={e => setEmail(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#9B332C]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
                     />
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#0B241C] font-bold mb-1">
+                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1">
                       Destination Country &amp; Shipping Port
                     </label>
                     <input
@@ -431,15 +431,15 @@ export const CustomManufacturingWizard: React.FC = () => {
                       placeholder="e.g. India (Delhi / Mumbai) or USA (New York, Air Cargo)"
                       value={country}
                       onChange={e => setCountry(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#0B241C] focus:outline-none focus:border-[#9B332C]"
+                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Summary Card */}
-              <div className="bg-[#F5EDE1] p-5 rounded-2xl border border-[#D4AF37]/35 text-xs space-y-1.5 shadow-sm">
-                <div className="font-royal-title font-bold text-[#164335] flex items-center gap-2">
+              <div className="bg-[#FAF0EB] p-5 rounded-2xl border border-[#D4AF37]/35 text-xs space-y-1.5 shadow-sm">
+                <div className="font-royal-title font-bold text-[#9B332C] flex items-center gap-2">
                   <Award className="w-4 h-4 text-[#D4AF37]" />
                   <span>Brief Specification Snapshot:</span>
                 </div>
@@ -455,14 +455,14 @@ export const CustomManufacturingWizard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep(3)}
-                  className="btn-royal-outline px-5 py-3 text-xs uppercase font-bold rounded-xl flex items-center gap-2 text-[#0B241C] border-[#11352A]"
+                  className="pill-btn-outline px-6 py-3 text-xs uppercase font-bold rounded-full flex items-center gap-2 text-[#241A16] border border-[#D4AF37]/45 bg-[#FAF5EE]"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   <span>Back</span>
                 </button>
                 <button
                   type="submit"
-                  className="btn-royal-gold px-8 py-3.5 text-xs font-bold uppercase tracking-widest rounded-xl shadow-xl flex items-center gap-2"
+                  className="pill-btn-rani px-8 py-3.5 text-xs font-bold uppercase tracking-widest rounded-full shadow-lg flex items-center gap-2"
                 >
                   <Send className="w-4 h-4" />
                   <span>Submit Custom Manufacturing Brief</span>

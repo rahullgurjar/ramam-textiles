@@ -42,7 +42,7 @@ export const TrackOrderPage: React.FC = () => {
         </div>
         <button
           type="submit"
-          className="pill-btn-rose px-7 py-3 text-xs font-bold uppercase tracking-wider rounded-2xl shadow-lg flex items-center gap-2"
+          className="pill-btn-rani px-7 py-3 text-xs font-bold uppercase tracking-wider rounded-2xl shadow-md flex items-center gap-2"
         >
           <Search className="w-4 h-4" />
           <span>Track</span>
@@ -51,8 +51,8 @@ export const TrackOrderPage: React.FC = () => {
 
       {/* Simulated Live Order Milestones Status */}
       {hasSearched && (
-        <div className="bg-[#FAF5EE] rounded-3xl p-6 sm:p-10 border border-[#D4AF37]/35 shadow-xl space-y-8 animate-fade-in relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-10 pointer-events-none" />
+        <div className="bg-[#FAF5EE] rounded-3xl p-6 sm:p-10 border border-[#D4AF37]/35 shadow-sm space-y-8 animate-fade-in relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-30 pointer-events-none" />
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#D4AF37]/25 gap-4 relative z-10">
             <div>
@@ -69,8 +69,8 @@ export const TrackOrderPage: React.FC = () => {
           {/* Timeline */}
           <div className="space-y-6 relative pl-6 before:content-[''] before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-[#D4AF37]/50 relative z-10">
             <div className="relative">
-              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#241A16] flex items-center justify-center text-white ring-4 ring-[#FAF5EE]">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#E5A93C]" />
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#9B332C] flex items-center justify-center text-white ring-4 ring-[#FAF5EE]">
+                <CheckCircle2 className="w-3.5 h-3.5 text-white" />
               </div>
               <div>
                 <span className="text-[10px] text-[#9B332C] font-mono">Sep 24, 2026 • 11:30 AM</span>
@@ -80,8 +80,8 @@ export const TrackOrderPage: React.FC = () => {
             </div>
 
             <div className="relative">
-              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#241A16] flex items-center justify-center text-white ring-4 ring-[#FAF5EE]">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#E5A93C]" />
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#9B332C] flex items-center justify-center text-white ring-4 ring-[#FAF5EE]">
+                <CheckCircle2 className="w-3.5 h-3.5 text-white" />
               </div>
               <div>
                 <span className="text-[10px] text-[#9B332C] font-mono">Sep 27, 2026 • 04:15 PM</span>
@@ -91,8 +91,8 @@ export const TrackOrderPage: React.FC = () => {
             </div>
 
             <div className="relative">
-              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#241A16] flex items-center justify-center text-white ring-4 ring-[#FAF5EE]">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#E5A93C]" />
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#9B332C] flex items-center justify-center text-white ring-4 ring-[#FAF5EE]">
+                <CheckCircle2 className="w-3.5 h-3.5 text-white" />
               </div>
               <div>
                 <span className="text-[10px] text-[#9B332C] font-mono">Sep 29, 2026 • 02:00 PM</span>

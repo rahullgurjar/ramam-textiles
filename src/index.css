@@ -319,9 +319,9 @@ body {
   gap: 0.45rem;
   padding: 0.5rem 1.25rem;
   border-radius: 9999px;
-  background: linear-gradient(135deg, #2A1E18 0%, #382A22 100%);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  color: #FAF5EE;
+  background: linear-gradient(135deg, #B81D5B 0%, #9B332C 100%);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  color: #FFFFFF;
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 700;
@@ -329,15 +329,15 @@ body {
   text-transform: uppercase;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(35, 27, 23, 0.2);
+  box-shadow: 0 4px 12px rgba(184, 29, 91, 0.25);
 }
 
 .pill-btn-dark:hover {
-  background: linear-gradient(135deg, #382A22 0%, #4A372E 100%);
+  background: linear-gradient(135deg, #9B332C 0%, #831843 100%);
   border-color: #D4AF37;
   color: #FFFFFF;
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(35, 27, 23, 0.3);
+  box-shadow: 0 6px 18px rgba(184, 29, 91, 0.35);
 }
 
 .pill-btn-rose {
