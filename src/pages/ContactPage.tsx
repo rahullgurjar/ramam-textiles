@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { InstagramIcon } from '../components/InstagramIcon';
+import { submitToGoogleSheet } from '../utils/googleScript';
 
 interface ContactPageProps {
   onNavigate: (path: string) => void;
@@ -26,6 +27,17 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
       showToast('Please fill out all required fields.', 'error');
       return;
     }
+
+    submitToGoogleSheet({
+      formType: 'Contact Page Inquiry',
+      name,
+      company: company || 'N/A',
+      email,
+      country,
+      inquiryType,
+      message,
+    });
+
     setIsSubmitted(true);
     showToast('Your inquiry has been sent to our Jaipur export desk!', 'success');
   };

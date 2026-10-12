@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { InstagramIcon } from './InstagramIcon';
+import { submitToGoogleSheet } from '../utils/googleScript';
 
 interface BulkOrderEnquiryFormProps {
   id?: string;
@@ -164,15 +165,31 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
 
     setIsSubmitting(true);
 
-    // Simulate export server processing & generate Reference ID
+    const generatedId = `RT-BULK-${Math.floor(10000 + Math.random() * 90000)}`;
+
+    // Submit inquiry directly to Google Sheets via Google Apps Script Web App
+    submitToGoogleSheet({
+      enquiryId: generatedId,
+      formType: 'Bulk Order Enquiry',
+      fullName,
+      email,
+      phone: `${countryCode} ${phone}`,
+      companyName: brandName || 'N/A',
+      address,
+      selectedProducts: selectedProducts.join(', '),
+      volumeTier,
+      customizations: customizations.join(', '),
+      notes: notes || 'N/A',
+    });
+
+    // Display confirmation & Reference ID
     setTimeout(() => {
-      const generatedId = `RT-BULK-${Math.floor(10000 + Math.random() * 90000)}`;
       setEnquiryRefId(generatedId);
       setIsSubmitting(false);
       setIsSubmitted(true);
       showToast(`Bulk enquiry #${generatedId} submitted successfully! Our export desk will reply within 24 hours.`, 'success');
       if (onSuccess) onSuccess();
-    }, 700);
+    }, 600);
   };
 
   const handleReset = () => {

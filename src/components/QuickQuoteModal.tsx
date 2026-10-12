@@ -4,6 +4,7 @@ import { useApp } from '../context/AppContext';
 import { Product } from '../types';
 import { InstagramIcon } from './InstagramIcon';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { submitToGoogleSheet } from '../utils/googleScript';
 
 export const QuickQuoteModal: React.FC = () => {
   const { isQuickQuoteOpen, closeQuickQuote, activeQuoteProduct, showToast } = useApp();
@@ -25,6 +26,19 @@ export const QuickQuoteModal: React.FC = () => {
       showToast('Please provide your name and business email address.', 'error');
       return;
     }
+    submitToGoogleSheet({
+      formType: 'Quick Quote & Sample Request',
+      inquiryType,
+      productSku: activeQuoteProduct.sku,
+      productName: activeQuoteProduct.name,
+      name,
+      company,
+      email,
+      country,
+      quantity,
+      notes,
+      submittedAt: new Date().toISOString()
+    });
     setIsSubmitted(true);
     showToast(`Inquiry for ${activeQuoteProduct.name} received! Our Jaipur desk will reply shortly.`, 'success');
   };

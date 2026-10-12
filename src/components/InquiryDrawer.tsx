@@ -18,6 +18,7 @@ import {
 import { useApp } from '../context/AppContext';
 import { InstagramIcon } from './InstagramIcon';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { submitToGoogleSheet } from '../utils/googleScript';
 
 export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) => {
   const { 
@@ -63,8 +64,27 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
     }
 
     setIsSubmitting(true);
+    const generatedId = `RFQ-RT-${Math.floor(100000 + Math.random() * 900000)}`;
+    submitToGoogleSheet({
+      formType: 'Official Wholesale RFQ Drawer',
+      rfqId: generatedId,
+      name: contactName,
+      company: companyName,
+      email,
+      country,
+      notes,
+      totalQuantity,
+      items: inquiryItems.map(item => ({
+        id: item.product.id,
+        sku: item.product.sku,
+        name: item.product.name,
+        quantity: item.quantity,
+        moq: item.product.moq
+      })),
+      submittedAt: new Date().toISOString()
+    });
+
     setTimeout(() => {
-      const generatedId = `RFQ-RT-${Math.floor(100000 + Math.random() * 900000)}`;
       setRfqSubmittedId(generatedId);
       setIsSubmitting(false);
       triggerConfetti();

@@ -4,6 +4,7 @@ import {
   Layers, Palette, Scissors, PackageCheck, FileText, Award, Mail
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { submitToGoogleSheet } from '../utils/googleScript';
 
 export const CustomManufacturingWizard: React.FC = () => {
   const { showToast } = useApp();
@@ -61,6 +62,20 @@ export const CustomManufacturingWizard: React.FC = () => {
       showToast('Please fill in your name and business email address.', 'error');
       return;
     }
+    submitToGoogleSheet({
+      formType: 'Custom Manufacturing Studio Brief',
+      name: contactName,
+      brand: brandName,
+      email,
+      country,
+      category,
+      fabric,
+      technique,
+      quantity,
+      customServices: customServices.join(', '),
+      techPackNotes,
+      submittedAt: new Date().toISOString()
+    });
     setIsSubmitted(true);
     showToast('Custom Manufacturing brief created successfully! Our tech-pack team is reviewing it.', 'success');
   };
