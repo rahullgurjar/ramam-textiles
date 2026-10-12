@@ -9,9 +9,6 @@ import { COLLECTIONS } from '../data/collections';
 import { JOURNAL_POSTS } from '../data/journal';
 import { LOOKBOOK_ITEMS } from '../data/lookbook';
 import { ProductCard } from '../components/ProductCard';
-const CustomManufacturingWizard = React.lazy(() => 
-  import('../components/CustomManufacturingWizard').then(m => ({ default: m.CustomManufacturingWizard }))
-);
 import { InstagramIcon } from '../components/InstagramIcon';
 import { BulkOrderEnquiryForm } from '../components/BulkOrderEnquiryForm';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
@@ -624,39 +621,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* =========================================================================
-          6. INTERACTIVE CUSTOM MANUFACTURING WIZARD SECTION
-          ========================================================================= */}
-      <section className="bg-[#1F1612] py-16 md:py-24 text-white relative overflow-hidden border-y border-[#D4AF37]/30 shadow-2xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#9B332C]/20 border border-[#9B332C]/40 text-[#FDF0F3] text-xs font-bold tracking-wider uppercase font-royal-title mb-3">
-              <Scissors className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <span>Custom Manufacturing &amp; OEM Studio</span>
-            </div>
-            <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FAF3DC]">
-              Launch Your Custom Quilted Bag Collection
-            </h2>
-            <p className="text-stone-300 font-royal-body text-base sm:text-lg mt-2">
-              Customize print artwork, bag dimensions, zipper pullers, and woven brand labels with direct-from-factory Jaipur pricing.
-            </p>
-          </div>
-
-          {/* Interactive Wizard Component */}
-          <div className="max-w-4xl mx-auto">
-            <React.Suspense fallback={
-              <div className="p-12 text-center text-stone-500 bg-[#FAF5EE] rounded-3xl border border-[#D4AF37]/30 shadow-md">
-                <div className="w-10 h-10 rounded-full border-2 border-[#BE185D] border-t-transparent animate-spin mx-auto mb-3" />
-                <p className="font-royal-title text-xs tracking-wider uppercase text-[#BE185D]">Loading Custom Manufacturing Atelier...</p>
-              </div>
-            }>
-              <CustomManufacturingWizard />
-            </React.Suspense>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          7. EDITORIAL LOOKBOOK PREVIEW
+          6. EDITORIAL LOOKBOOK PREVIEW
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
