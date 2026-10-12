@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { 
   ShieldCheck, FileText, Truck, RotateCcw, CheckCircle2, 
-  AlertCircle, MessageSquare, Phone, Mail, ExternalLink, ArrowRight
+  AlertCircle, MessageSquare, Mail, ExternalLink, ArrowRight
 } from 'lucide-react';
+import { InstagramIcon } from '../components/InstagramIcon';
 
 interface LegalPageProps {
   initialTab?: 'privacy' | 'terms' | 'shipping' | 'returns';
@@ -240,7 +241,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
                 5. Your Data Rights &amp; Contact
               </h3>
               <p className="text-stone-700">
-                You have the right to request access, correction, or removal of your contact details from our database at any time. For questions regarding our privacy or store policies, email us at <a href="mailto:ramamtextiles@gmail.com" className="text-[#9B332C] font-bold underline">ramamtextiles@gmail.com</a> or WhatsApp our Jaipur export desk at <a href="https://wa.me/911412890000" className="text-[#9B332C] font-bold underline">+91 141 289 0000</a>.
+                You have the right to request access, correction, or removal of your contact details from our database at any time. For questions regarding our privacy or store policies, email us at <a href="mailto:ramamtextiles@gmail.com" className="text-[#9B332C] font-bold underline">ramamtextiles@gmail.com</a> or connect directly on Instagram at <a href="https://www.instagram.com/ramamtextiles" target="_blank" rel="noopener noreferrer" className="text-[#9B332C] font-bold underline">@ramamtextiles</a>.
               </p>
             </section>
           </div>
@@ -487,7 +488,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
               </p>
               <ul className="list-disc pl-5 space-y-2 text-stone-700 text-xs sm:text-sm">
                 <li>
-                  Please notify us within <strong>48 hours of delivery</strong> by sending an unboxing photo/video and invoice details to our WhatsApp support team at <strong>+91 141 289 0000</strong>.
+                  Please notify us within <strong>48 hours of delivery</strong> by sending an unboxing photo/video and invoice details to our support email at <a href="mailto:ramamtextiles@gmail.com" className="text-[#9B332C] font-bold underline">ramamtextiles@gmail.com</a> or via Instagram <a href="https://www.instagram.com/ramamtextiles" target="_blank" rel="noopener noreferrer" className="text-[#9B332C] font-bold underline">@ramamtextiles</a>.
                 </li>
                 <li>
                   Upon verification of the defect, we will arrange a complimentary replacement piece or process a refund/credit for that piece immediately.
@@ -535,13 +536,13 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
 
         <div className="flex items-center gap-3">
           <a
-            href="https://wa.me/911412890000?text=Hello%20Ramam%20Textiles%2C%20I%20have%20a%20question%20regarding%20your%20store%20policies."
+            href="https://www.instagram.com/ramamtextiles"
             target="_blank"
             rel="noopener noreferrer"
             className="pill-btn-rose px-5 py-2.5 rounded-full font-bold uppercase tracking-wider text-xs flex items-center gap-1.5 shadow-md"
           >
-            <MessageSquare className="w-3.5 h-3.5" />
-            <span>Chat on WhatsApp</span>
+            <InstagramIcon className="w-3.5 h-3.5 text-white" />
+            <span>Message @ramamtextiles</span>
           </a>
         </div>
       </div>

@@ -717,13 +717,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
       {/* Sticky Mobile Bottom Action Bar */}
       <div className="lg:hidden fixed bottom-0 inset-x-0 bg-[#F5EEE6]/96 backdrop-blur-md border-t border-[#D4AF37]/35 p-3 z-40 shadow-2xl flex items-center gap-2">
         <a
-          href={`https://wa.me/911412890000?text=${whatsappMessage}`}
+          href="https://www.instagram.com/ramamtextiles"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-3 rounded-full bg-[#1F1612] text-emerald-400 shrink-0 shadow"
-          title="WhatsApp Quote"
+          className="p-3 rounded-full bg-[#1F1612] text-white shrink-0 shadow flex items-center justify-center hover:scale-105 transition-all"
+          title="Instagram Direct Inquiry"
         >
-          <span className="text-base">💬</span>
+          <InstagramIcon className="w-4 h-4 text-white" />
         </a>
         <button
           onClick={handleAddToBasket}

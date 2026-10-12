@@ -329,16 +329,15 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             </button>
 
             {/* Subtle Inquire Button */}
-            <a 
-              href="https://wa.me/911412890000?text=Hi%20Ramam%20Textiles,%20I%20am%20interested%20in%20Jaipur%20hand%20block%20quilted%20bags%20and%20wholesale%20catalog."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full border border-[#241A16]/20 hover:border-[#9B332C] text-[#241A16] hover:text-[#9B332C] hover:bg-[#FAF0EB] text-[11px] font-royal-title font-semibold tracking-wider transition-all whitespace-nowrap shrink-0"
-              title="Chat with Jaipur Export Desk"
+            <button 
+              type="button"
+              onClick={() => navigate('/bulk-enquiry')}
+              className="hidden sm:inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full border border-[#241A16]/20 hover:border-[#9B332C] text-[#241A16] hover:text-[#9B332C] hover:bg-[#FAF0EB] text-[11px] font-royal-title font-semibold tracking-wider transition-all whitespace-nowrap shrink-0 cursor-pointer"
+              title="Submit Bulk Enquiry"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
               <span>INQUIRE</span>
-            </a>
+            </button>
           </div>
         </div>
       </div>

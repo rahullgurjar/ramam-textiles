@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { 
   Send, CheckCircle2, ShieldCheck,
-  MessageSquare, RotateCcw, Check
+  RotateCcw, Check
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { InstagramIcon } from './InstagramIcon';
 
 interface BulkOrderEnquiryFormProps {
   id?: string;
@@ -55,8 +56,7 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
   const [brandName, setBrandName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [country, setCountry] = useState('');
-  const [city, setCity] = useState('');
+  const [address, setAddress] = useState('');
   const [selectedProducts, setSelectedProducts] = useState<string[]>(() => {
     if (defaultCategory) {
       const match = PRODUCT_OPTIONS.find(p => p.toLowerCase().includes(defaultCategory.toLowerCase()));
@@ -92,8 +92,8 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!fullName.trim() || !email.trim() || !country.trim()) {
-      showToast('Please fill in your name, email, and country.', 'error');
+    if (!fullName.trim() || !email.trim() || !address.trim()) {
+      showToast('Please fill in your name, email, and delivery address.', 'error');
       return;
     }
 
@@ -119,22 +119,6 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
     setIsSubmitted(false);
     setEnquiryRefId('');
     setNotes('');
-  };
-
-  // Pre-formatted WhatsApp inquiry message for instant conversion
-  const getWhatsAppMessage = () => {
-    const productsList = selectedProducts.join(', ');
-
-    const text = `Namaste Ramam Textiles Jaipur,\n\nI have submitted a Bulk Order Enquiry (Ref: ${enquiryRefId || 'NEW'}).\n\n` +
-      `• Name: ${fullName}\n` +
-      `• Brand / Boutique: ${brandName || 'Independent Retailer'}\n` +
-      `• Destination: ${city ? `${city}, ` : ''}${country}\n` +
-      `• Products of Interest: ${productsList}\n` +
-      `• Order Volume: ${volumeTier}\n` +
-      (notes ? `• Notes: ${notes}\n` : '') +
-      `\nPlease share the bulk wholesale catalog and FOB pricing.`;
-
-    return encodeURIComponent(text);
   };
 
   return (
@@ -206,8 +190,8 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
               {/* Inquiry Summary Box */}
               <div className="bg-[#FAF0EB] border border-[#D4AF37]/35 rounded-2xl p-5 text-left max-w-lg mx-auto text-xs space-y-2.5 text-stone-800 shadow-sm">
                 <div className="flex justify-between border-b border-[#D4AF37]/20 pb-2">
-                  <span className="font-bold text-[#241A16]">Destination:</span>
-                  <span>{city ? `${city}, ` : ''}{country}</span>
+                  <span className="font-bold text-[#241A16]">Delivery Address:</span>
+                  <span className="text-right max-w-[260px] truncate">{address}</span>
                 </div>
                 <div className="flex justify-between border-b border-[#D4AF37]/20 pb-2">
                   <span className="font-bold text-[#241A16]">Selected Volume:</span>
@@ -224,19 +208,19 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
               {/* Action Buttons for immediate response */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 max-w-md mx-auto">
                 <a
-                  href={`https://wa.me/911412890000?text=${getWhatsAppMessage()}`}
+                  href="https://www.instagram.com/ramamtextiles"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto flex-1 pill-btn-rose py-3.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg"
+                  className="w-full sm:w-auto flex-1 pill-btn-rose py-3.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-all"
                 >
-                  <MessageSquare className="w-4 h-4" />
-                  <span>Send via WhatsApp (+91 141 289 0000)</span>
+                  <InstagramIcon className="w-4 h-4 text-white" />
+                  <span>Message @ramamtextiles on Instagram</span>
                 </a>
 
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="w-full sm:w-auto pill-btn-outline py-3.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto pill-btn-outline py-3.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <RotateCcw className="w-4 h-4" />
                   <span>New Enquiry</span>
@@ -244,7 +228,7 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
               </div>
 
               <p className="text-[11px] text-stone-500 italic">
-                A confirmation has been logged with our Jaipur atelier. Average email response time: 4 to 12 hours.
+                A confirmation has been logged with our Jaipur atelier. Average response time: 4 to 12 hours.
               </p>
             </div>
           ) : (
@@ -408,29 +392,16 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
                     />
                   </div>
 
-                  <div>
+                  <div className="sm:col-span-2">
                     <label className="block text-[11px] font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1">
-                      Destination Country *
+                      Delivery / Shipping Address *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. United States, UK, Australia"
-                      value={country}
-                      onChange={e => setCountry(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-white border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:ring-1 focus:ring-[#9B332C] transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1">
-                      Destination City / Nearest Airport
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. Los Angeles / LAX"
-                      value={city}
-                      onChange={e => setCity(e.target.value)}
+                      placeholder="Complete courier shipping address with Street, City, State, Postal PIN & Country"
+                      value={address}
+                      onChange={e => setAddress(e.target.value)}
                       className="w-full px-3.5 py-2.5 bg-white border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:ring-1 focus:ring-[#9B332C] transition-all"
                     />
                   </div>
@@ -497,14 +468,21 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
           <div className="flex items-center gap-2 text-center sm:text-left">
             <span className="text-base">💬</span>
             <span>
-              Prefer instant dialogue? WhatsApp our Jaipur Export Director directly:{' '}
+              Prefer instant dialogue? Connect directly on Instagram{' '}
               <a
-                href="https://wa.me/911412890000"
+                href="https://www.instagram.com/ramamtextiles"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold text-[#9B332C] hover:underline"
               >
-                +91 141 289 0000
+                @ramamtextiles
+              </a>
+              {' '}or email{' '}
+              <a
+                href="mailto:ramamtextiles@gmail.com"
+                className="font-bold text-[#9B332C] hover:underline"
+              >
+                ramamtextiles@gmail.com
               </a>
             </span>
           </div>

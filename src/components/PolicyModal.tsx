@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { 
   ShieldCheck, Truck, FileText, RotateCcw, X, MessageSquare, 
-  ExternalLink, CheckCircle2, ChevronRight, Phone
+  ExternalLink, CheckCircle2, ChevronRight
 } from 'lucide-react';
+import { InstagramIcon } from './InstagramIcon';
 
 interface PolicyModalProps {
   isOpen: boolean;
@@ -203,7 +204,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
               <section className="space-y-2">
                 <h3 className="font-playfair text-base sm:text-lg font-bold text-[#241A16]">5. Your Data Rights &amp; Contact</h3>
                 <p className="text-stone-700">
-                  You have the right to request access, correction, or removal of your contact details from our database at any time. For questions regarding our privacy or store policies, email us at <a href="mailto:ramamtextiles@gmail.com" className="text-[#9B332C] font-bold underline">ramamtextiles@gmail.com</a> or WhatsApp us at <a href="https://wa.me/911412890000" className="text-[#9B332C] font-bold underline">+91 141 289 0000</a>.
+                  You have the right to request access, correction, or removal of your contact details from our database at any time. For questions regarding our privacy or store policies, email us at <a href="mailto:ramamtextiles@gmail.com" className="text-[#9B332C] font-bold underline">ramamtextiles@gmail.com</a> or message us on Instagram at <a href="https://www.instagram.com/ramamtextiles" target="_blank" rel="noopener noreferrer" className="text-[#9B332C] font-bold underline">@ramamtextiles</a>.
                 </p>
               </section>
             </div>
@@ -321,7 +322,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
                 <h3 className="font-playfair text-base sm:text-lg font-bold text-[#241A16]">2. Defective or Damaged Item Reporting (48-Hour Policy)</h3>
                 <p className="text-stone-700 text-xs">In the rare event that you receive a defective item or an item damaged during transit:</p>
                 <ul className="list-disc pl-5 space-y-1 text-stone-600 text-xs">
-                  <li>Please notify us within <strong>48 hours of delivery</strong> by sending an unboxing photo/video and invoice details to our WhatsApp support team at <strong>+91 141 289 0000</strong>.</li>
+                  <li>Please notify us within <strong>48 hours of delivery</strong> by sending an unboxing photo/video and invoice details to our support email at <a href="mailto:ramamtextiles@gmail.com" className="text-[#9B332C] font-bold underline">ramamtextiles@gmail.com</a> or via Instagram <a href="https://www.instagram.com/ramamtextiles" target="_blank" rel="noopener noreferrer" className="text-[#9B332C] font-bold underline">@ramamtextiles</a>.</li>
                   <li>Upon verification of the defect, we will arrange a complimentary replacement piece or process a refund/credit for that piece.</li>
                 </ul>
               </section>
@@ -353,13 +354,13 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
 
           <div className="flex items-center gap-2">
             <a
-              href="https://wa.me/911412890000?text=Hello%20Ramam%20Textiles%2C%20I%20have%20a%20question%20regarding%20your%20store%20policies."
+              href="https://www.instagram.com/ramamtextiles"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full bg-[#25D366] px-4 py-2 text-xs font-bold text-white shadow-sm hover:scale-105 transition-all"
+              className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-tr from-[#fd1d1d] to-[#833ab4] px-4 py-2 text-xs font-bold text-white shadow-sm hover:scale-105 transition-all"
             >
-              <MessageSquare className="w-3.5 h-3.5" />
-              <span>Ask on WhatsApp</span>
+              <InstagramIcon className="w-3.5 h-3.5 text-white" />
+              <span>Ask on Instagram</span>
             </a>
 
             <button
