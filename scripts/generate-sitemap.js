@@ -173,8 +173,10 @@ function generateSitemapXml() {
     xml += `    <changefreq>monthly</changefreq>\n`;
     xml += `    <priority>0.75</priority>\n`;
     if (art.image) {
+      const cleanImg = art.image.replace(/^\.?\//, '');
+      const imgUrl = cleanImg.startsWith('http') ? cleanImg : `${BASE_URL}/${cleanImg}`;
       xml += '    <image:image>\n';
-      xml += `      <image:loc>${escapeXml(art.image)}</image:loc>\n`;
+      xml += `      <image:loc>${escapeXml(imgUrl)}</image:loc>\n`;
       xml += `      <image:title>${escapeXml(art.title)}</image:title>\n`;
       xml += '    </image:image>\n';
     }
