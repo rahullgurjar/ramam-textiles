@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { 
   Sparkles, CheckCircle2, ArrowRight, ArrowLeft, Send, ShieldCheck, 
-  Layers, Palette, Scissors, PackageCheck, FileText, Award, Mail
+  Layers, Palette, Scissors, PackageCheck, FileText, Award, Mail,
+  ShoppingBag, Shirt, User, Home, AlertCircle
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { submitToGoogleSheet } from '../utils/googleScript';
+import { validateComprehensiveLead } from '../utils/formValidation';
+import { CountrySelect } from './CountrySelect';
+import { PhoneInputWithCountry } from './PhoneInputWithCountry';
 
 export const CustomManufacturingWizard: React.FC = () => {
   const { showToast } = useApp();
   const [step, setStep] = useState<number>(1);
+  const [formError, setFormError] = useState<string | null>(null);
 
   // Form State
   const [category, setCategory] = useState('Quilted Bags & Pouches');
@@ -24,14 +29,16 @@ export const CustomManufacturingWizard: React.FC = () => {
   const [brandName, setBrandName] = useState('');
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('India');
+  const [countryCode, setCountryCode] = useState('+91');
+  const [phone, setPhone] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const categories = [
-    { id: 'Quilted Bags & Pouches', title: 'Quilted Bags & Pouches', desc: 'Duffles, Vanity Boxes, Totes, Cosmetic Kits, Tech Sleeves', icon: '👜' },
-    { id: 'Women Apparel', title: 'Women Apparel', desc: 'Dresses, Kurtas, Kaftans, Co-ords, Tops', icon: '👗' },
-    { id: 'Men Fashion', title: 'Men Fashion', desc: 'Short Kurtas, Resort Shirts, Bandhgalas', icon: '👔' },
-    { id: 'Fabrics by Meter', title: 'Running Fabric by Meter', desc: 'Bulk Yardage for Designers & Garment Houses', icon: '🧵' },
-    { id: 'Home & Living', title: 'Home & Living', desc: 'Quilts, Cushion Covers, Table Runners, Napkins', icon: '🛏️' },
+    { id: 'Quilted Bags & Pouches', title: 'Quilted Bags & Pouches', desc: 'Duffles, Vanity Boxes, Totes, Cosmetic Kits, Tech Sleeves', icon: ShoppingBag },
+    { id: 'Women Apparel', title: 'Women Apparel', desc: 'Dresses, Kurtas, Kaftans, Co-ords, Tops', icon: Shirt },
+    { id: 'Men Fashion', title: 'Men Fashion', desc: 'Short Kurtas, Resort Shirts, Bandhgalas', icon: User },
+    { id: 'Fabrics by Meter', title: 'Running Fabric by Meter', desc: 'Bulk Yardage for Designers & Garment Houses', icon: Scissors },
+    { id: 'Home & Living', title: 'Home & Living', desc: 'Quilts, Cushion Covers, Table Runners, Napkins', icon: Home },
   ];
 
   const fabrics = [
@@ -58,8 +65,21 @@ export const CustomManufacturingWizard: React.FC = () => {
 
   const handleFinish = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contactName || !email) {
-      showToast('Please fill in your name and business email address.', 'error');
+    setFormError(null);
+
+    const validation = validateComprehensiveLead({
+      name: contactName,
+      email,
+      phone: phone.trim() ? phone : undefined,
+      countryCode: phone.trim() ? countryCode : undefined,
+      company: brandName,
+      message: techPackNotes,
+    });
+
+    if (!validation.isValid) {
+      const err = validation.error || 'Please provide genuine contact details.';
+      setFormError(err);
+      showToast(err, 'error');
       return;
     }
     submitToGoogleSheet({
@@ -67,6 +87,7 @@ export const CustomManufacturingWizard: React.FC = () => {
       name: contactName,
       brand: brandName,
       email,
+      phone: phone.trim() ? `${countryCode} ${phone}` : 'N/A',
       country,
       category,
       fabric,
@@ -83,7 +104,7 @@ export const CustomManufacturingWizard: React.FC = () => {
   return (
     <div className="bg-[#FAF5EE] border border-[#D4AF37]/45 rounded-3xl shadow-sm overflow-hidden text-[#241A16]">
       {/* Progress Bar */}
-      <div className="bg-gradient-to-r from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] px-6 py-6 border-b-2 border-[#D4AF37]/40 relative overflow-hidden">
+      <div className="bg-[#FAF0EB] px-6 py-6 border-b-2 border-[#D4AF37]/40 relative overflow-hidden">
         <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
@@ -172,7 +193,7 @@ export const CustomManufacturingWizard: React.FC = () => {
                           : 'border-[#D4AF37]/30 bg-[#F5EDE1] hover:border-[#9B332C] text-[#241A16]'
                       }`}
                     >
-                      <div className="text-2xl mb-2">{c.icon}</div>
+                      <c.icon className="w-6 h-6 mb-2 text-[#9B332C]" />
                       <div className="font-royal-title font-bold text-sm text-[#241A16]">{c.title}</div>
                       <div className={`text-[11px] mt-1 leading-snug ${category === c.id ? 'text-[#9B332C] font-semibold' : 'text-stone-600'}`}>{c.desc}</div>
                     </button>
@@ -395,6 +416,13 @@ export const CustomManufacturingWizard: React.FC = () => {
                 </div>
                 <p className="text-xs text-stone-600 mb-4 font-royal-body">Where should our export department send the formal quotation and tech proposal?</p>
                 
+                {formError && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+                    <span>{formError}</span>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1">
@@ -437,16 +465,23 @@ export const CustomManufacturingWizard: React.FC = () => {
                     />
                   </div>
 
-                  <div className="sm:col-span-2">
-                    <label className="block text-xs font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1">
-                      Destination Country &amp; Shipping Port
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. India (Delhi / Mumbai) or USA (New York, Air Cargo)"
+                  <div>
+                    <CountrySelect
                       value={country}
-                      onChange={e => setCountry(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C]"
+                      onChange={setCountry}
+                      label="Destination Country *"
+                      selectClassName="bg-[#FAF5EE]"
+                    />
+                  </div>
+
+                  <div className="sm:col-span-2">
+                    <PhoneInputWithCountry
+                      phone={phone}
+                      countryCode={countryCode}
+                      onPhoneChange={setPhone}
+                      onCountryCodeChange={setCountryCode}
+                      required={false}
+                      label="WhatsApp / Phone Number (For prototype videos & sampling updates)"
                     />
                   </div>
                 </div>

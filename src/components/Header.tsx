@@ -9,6 +9,7 @@ import {
   Sparkles, 
   FileText, 
   Mail, 
+  Phone,
   ShieldCheck,
   Factory,
   Layers,
@@ -75,7 +76,25 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             <span className="text-[#9B332C] font-bold hidden lg:inline">Low MOQ: 25 Pcs</span>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0 text-[10.5px] tracking-wider">
+          <div className="flex items-center gap-3.5 shrink-0 text-[10.5px] tracking-wider">
+            <a 
+              href="tel:+911412890000" 
+              className="text-[#6B2824] hover:text-[#9B332C] transition-colors flex items-center gap-1 font-semibold"
+              title="Call Jaipur Atelier Desk"
+            >
+              <Phone className="w-3 h-3 text-[#9B332C]" />
+              <span className="hidden sm:inline">+91 141 289 0000</span>
+            </a>
+            <span className="text-[#9B332C]/30 hidden sm:inline">•</span>
+            <a 
+              href="mailto:ramamtextiles@gmail.com" 
+              className="text-[#6B2824] hover:text-[#9B332C] transition-colors hidden md:flex items-center gap-1 font-semibold"
+              title="Email Jaipur Atelier"
+            >
+              <Mail className="w-3 h-3 text-[#9B332C]" />
+              <span className="hidden xl:inline">ramamtextiles@gmail.com</span>
+            </a>
+            <span className="text-[#9B332C]/30 hidden md:inline">•</span>
             <a 
               href="https://www.instagram.com/ramamtextiles" 
               target="_blank" 
@@ -103,19 +122,22 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden p-2 text-[#241A16] hover:text-[#9B332C] transition-colors rounded-lg hover:bg-[#FAF0EB]"
               aria-label="Toggle navigation menu"
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#241A16]" />}
             </button>
 
-            <div 
-              onClick={() => handleNav('/')}
+            <a 
+              href="/"
+              onClick={(e) => { e.preventDefault(); handleNav('/'); }}
+              aria-label="Ramam Textiles Jaipur - Return to Homepage"
               className="flex items-center gap-3 cursor-pointer group shrink-0"
             >
-              <div className="relative shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#FAF5EE] via-[#F6EDE2] to-[#ECE1D2] border border-[#D4AF37]/50 shadow-sm flex items-center justify-center p-1 group-hover:border-[#9B332C] transition-all duration-300 group-hover:scale-105">
+              <div className="relative shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#FAF5EE] border border-[#D4AF37]/50 shadow-sm flex items-center justify-center p-1 group-hover:border-[#9B332C] transition-all duration-300 group-hover:scale-105">
                 <picture className="w-full h-full block">
-                  <source srcSet="./logo.webp" type="image/webp" />
+                  <source srcSet="/logo.webp" type="image/webp" />
                   <img 
-                    src="./logo.png" 
+                    src="/logo.png" 
                     alt="Ramam Textiles Jaipur" 
                     width="48"
                     height="48"
@@ -137,7 +159,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   JAIPUR ARTISAN ATELIER
                 </span>
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Center: Refined Luxury Atelier Navigation Links */}
@@ -160,12 +182,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               </button>
 
               {activeMegaMenu === 'shop' && (
-                <div className="absolute top-full left-0 mt-2 w-[720px] bg-[#FAF5EE] border border-[#D4AF37]/45 shadow-2xl rounded-2xl p-6 z-50 animate-fade-in text-[#241A16]">
+                <div className="absolute top-full left-0 mt-2 w-[min(720px,calc(100vw-2rem))] max-w-[calc(100vw-2rem)] bg-[#FAF5EE] border border-[#D4AF37]/45 shadow-2xl rounded-2xl p-6 z-50 animate-fade-in text-[#241A16] overflow-hidden">
                   <div className="grid grid-cols-3 gap-6">
                     <div className="col-span-2">
                       <div className="flex items-center justify-between pb-2 border-b border-[#D4AF37]/30 mb-3">
                         <span className="text-[11px] font-bold text-[#241A16] tracking-widest uppercase font-royal-title">
-                          🌸 Curated Jaipur Product Lines
+                          Curated Jaipur Product Lines
                         </span>
                         <button 
                           onClick={() => handleNav('/shop')} 
@@ -201,7 +223,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                     </div>
 
                     {/* Spotlight Card */}
-                    <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F4ECE1] to-[#EFE4D6] p-5 rounded-2xl border border-[#D4AF37]/40 flex flex-col justify-between shadow-sm">
+                    <div className="bg-[#FAF0EB] p-5 rounded-2xl border border-[#D4AF37]/40 flex flex-col justify-between shadow-sm">
                       <div>
                         <span className="text-[10px] font-mono uppercase tracking-widest text-[#9B332C] font-bold">
                           Featured Line
@@ -357,15 +379,26 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
       {/* Mobile Drawer Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden bg-black/60">
+        <div 
+          id="mobile-nav-drawer"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile Navigation Menu"
+          className="fixed inset-0 z-50 lg:hidden bg-black/60"
+        >
           <div className="fixed inset-y-0 left-0 w-5/6 max-w-sm bg-[#F5EEE6] shadow-2xl flex flex-col justify-between overflow-y-auto p-5 border-r border-[#D4AF37]/35 animate-fade-in text-[#241A16]">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/30">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FAF5EE] via-[#F6EDE2] to-[#ECE1D2] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 shrink-0">
+                <a 
+                  href="/"
+                  onClick={(e) => { e.preventDefault(); handleNav('/'); }}
+                  aria-label="Ramam Textiles - Home"
+                  className="flex items-center gap-3"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#FAF5EE] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 shrink-0">
                     <picture className="w-full h-full block">
-                      <source srcSet="./logo.webp" type="image/webp" />
-                      <img src="./logo.png" alt="Ramam Textiles" width="48" height="48" decoding="async" className="w-full h-full object-contain filter drop-shadow-sm" />
+                      <source srcSet="/logo.webp" type="image/webp" />
+                      <img src="/logo.png" alt="Ramam Textiles" width="48" height="48" decoding="async" className="w-full h-full object-contain filter drop-shadow-sm" />
                     </picture>
                   </div>
                   <div className="whitespace-nowrap">
@@ -381,7 +414,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                       JAIPUR ARTISAN ATELIER
                     </span>
                   </div>
-                </div>
+                </a>
                 <button 
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-1.5 rounded-full text-[#241A16] hover:bg-[#FAF0EB] border border-[#D4AF37]/40"
@@ -391,19 +424,33 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 </button>
               </div>
 
+              {/* Mobile Quick Search Bar */}
+              <div className="pt-3">
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    openSearch();
+                  }}
+                  className="w-full flex items-center gap-2.5 px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/40 rounded-xl text-stone-500 hover:text-[#9B332C] hover:border-[#9B332C] transition-colors text-xs font-medium"
+                >
+                  <Search className="w-4 h-4 text-[#9B332C]" />
+                  <span>Search products, prints, SKUs...</span>
+                </button>
+              </div>
+
               {/* Mobile Navigation Links */}
-              <div className="py-4 space-y-1 font-royal-body">
+              <div className="py-3 space-y-1 font-royal-body">
                 <button 
                   onClick={() => handleNav('/')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
                 >
                   Home
                 </button>
                 <button 
                   onClick={() => handleNav('/shop')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16] flex justify-between items-center"
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16] flex justify-between items-center"
                 >
-                  <span>Collection</span>
+                  <span>Full Collection</span>
                   <ArrowRight className="w-4 h-4 text-[#9B332C]" />
                 </button>
 
@@ -415,60 +462,103 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                       onClick={() => handleNav(`/category/${c.id}`)}
                       className="w-full text-left px-3 py-1.5 text-xs text-stone-700 hover:text-[#9B332C] font-medium"
                     >
-                      ✦ {c.name}
+                      {c.name}
                     </button>
                   ))}
                 </div>
 
                 <button 
                   onClick={() => handleNav('/collections')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
                 >
                   Curated Sets
                 </button>
                 <button 
                   onClick={() => handleNav('/bulk-enquiry')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider bg-[#FAF0EB] text-[#9B332C] flex items-center gap-2 border border-[#EACAC0]"
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider bg-[#FAF0EB] text-[#9B332C] flex items-center gap-2 border border-[#EACAC0]"
                 >
                   <Sparkles className="w-4 h-4 text-[#9B332C]" />
                   <span>Bulk Order &amp; Wholesale Enquiry</span>
                 </button>
                 <button 
+                  onClick={() => handleNav('/custom-manufacturing')}
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
+                >
+                  Custom Manufacturing &amp; OEM
+                </button>
+                <button 
                   onClick={() => handleNav('/wholesale')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
                 >
                   Wholesale Trade Portal
                 </button>
                 <button 
                   onClick={() => handleNav('/craftsmanship')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
                 >
-                  Our Craft
+                  Our Craft &amp; Heritage
                 </button>
                 <button 
                   onClick={() => handleNav('/lookbook')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
                 >
                   Editorial Lookbook
                 </button>
                 <button 
+                  onClick={() => handleNav('/journal')}
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
+                >
+                  Textile Sourcing Journal
+                </button>
+                <button 
                   onClick={() => handleNav('/about')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
                 >
                   About Atelier
                 </button>
                 <button 
                   onClick={() => handleNav('/contact')}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
                 >
                   Contact Jaipur Workshop
+                </button>
+                <button 
+                  onClick={() => handleNav('/track')}
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
+                >
+                  Track Consignment
+                </button>
+                <button 
+                  onClick={() => handleNav('/faq')}
+                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
+                >
+                  Buyer FAQ
                 </button>
               </div>
             </div>
 
-            {/* Mobile Footer CTAs */}
-            <div className="pt-4 border-t border-[#D4AF37]/30 space-y-2">
-              <div className="flex items-center justify-between px-1 pb-1">
+            {/* Mobile Footer CTAs & Direct Contact */}
+            <div className="pt-3 border-t border-[#D4AF37]/30 space-y-2">
+              <div className="grid grid-cols-2 gap-2 text-[11px] font-semibold">
+                <a 
+                  href="tel:+911412890000"
+                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-[#241A16] hover:text-[#9B332C] transition-colors"
+                  title="Call Jaipur Atelier"
+                >
+                  <Phone className="w-3.5 h-3.5 text-[#9B332C]" />
+                  <span>Call Atelier</span>
+                </a>
+                <a 
+                  href="mailto:ramamtextiles@gmail.com"
+                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-[#241A16] hover:text-[#9B332C] transition-colors"
+                  title="Email Ramam Textiles"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#9B332C]" />
+                  <span>Email Desk</span>
+                </a>
+              </div>
+
+              <div className="flex items-center justify-between px-1">
                 <span className="text-xs text-stone-600 font-royal-title uppercase font-bold">Currency:</span>
                 <select
                   value={currency.code}
@@ -487,7 +577,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 href="https://www.instagram.com/ramamtextiles"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2.5 px-4 bg-gradient-to-r from-[#833ab4]/15 via-[#fd1d1d]/15 to-[#fcb045]/15 border border-[#E1306C]/40 text-[#9B332C] text-xs font-royal-title font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-[#FAF0EB] transition-all shadow-sm"
+                className="w-full py-2 px-4 bg-[#FAF0EB] border border-[#D4AF37]/40 text-[#9B332C] text-xs font-royal-title font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-[#F5E6DE] transition-all shadow-sm"
               >
                 <InstagramIcon className="w-4 h-4 text-[#9B332C]" />
                 <span>Follow @ramamtextiles on Instagram</span>
@@ -498,7 +588,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   setIsMobileMenuOpen(false); 
                   handleNav('/bulk-enquiry'); 
                 }}
-                className="pill-btn-rose w-full py-3 text-xs font-bold uppercase rounded-xl flex items-center justify-center gap-2 shadow-lg"
+                className="pill-btn-rose w-full py-2.5 text-xs font-bold uppercase rounded-xl flex items-center justify-center gap-2 shadow-lg"
               >
                 <FileText className="w-4 h-4 text-white" />
                 <span>Request Bulk Wholesale Quote</span>

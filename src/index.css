@@ -4,7 +4,7 @@
 
 :root {
   /* ==========================================================================
-     👑 AUTHENTIC JAIPUR HERITAGE PALACE DESIGN SYSTEM
+     AUTHENTIC JAIPUR HERITAGE DESIGN SYSTEM
      Inspired by Pink City Terracotta, Royal Bagru Indigo, Marwar Gold & Emerald Court
      ========================================================================== */
   
@@ -80,7 +80,7 @@
 }
 
 /* ==========================================================================
-   🪷 Bespoke Typography System
+   Bespoke Typography System
    ========================================================================== */
 .font-royal-title {
   font-family: 'Playfair Display', Georgia, serif;
@@ -113,24 +113,34 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #F5EEE6;
+  position: relative;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* ==========================================================================
-   🏛️ JAIPUR ARCHITECTURAL MOTIFS & JHAROKHA UTILITIES
+   JAIPUR ARCHITECTURAL MOTIFS & JHAROKHA UTILITIES
    ========================================================================== */
 
 /* Rajasthani Jaali (Lattice) Subtle Background Pattern */
@@ -190,7 +200,7 @@ body {
 }
 
 /* ==========================================================================
-   🌸 CRAFT OF PINK CITY SIGNATURE PILL NAVIGATION & BUTTONS (SOFT & PREMIUM)
+   JAIPUR SIGNATURE NAVIGATION & BUTTONS (SOFT & PREMIUM)
    ========================================================================== */
 
 .pill-nav-btn {
@@ -476,20 +486,6 @@ body {
   box-shadow: 0 8px 24px rgba(4, 120, 87, 0.45);
 }
 
-/* Rotating Artisan Circular Seal */
-@keyframes spinSeal {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-seal {
-  animation: spinSeal 18s linear infinite;
-}
-
 .royal-seal {
   display: inline-flex;
   align-items: center;
@@ -525,7 +521,7 @@ body {
 }
 
 /* ==========================================================================
-   👑 JAIPUR BUTTON SYSTEM (TERRACOTTA, GOLD & EMERALD)
+   JAIPUR BUTTON SYSTEM (TERRACOTTA, GOLD & EMERALD)
    ========================================================================== */
 
 /* Primary: Jaipur Pink City / Terracotta Button */
@@ -557,7 +553,7 @@ body {
 }
 
 /* ==========================================================================
-   👑 ROYAL BUTTON SYSTEM (EMERALD COURT & GOLD)
+   ROYAL BUTTON SYSTEM (EMERALD COURT & GOLD)
    ========================================================================== */
 
 /* Primary: Royal Zari 24K Gold */
@@ -583,26 +579,10 @@ body {
   overflow: hidden;
 }
 
-.btn-royal-gold::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transform: rotate(30deg) translateY(-100%);
-  transition: transform 0.7s ease;
-}
-
 .btn-royal-gold:hover {
   background: linear-gradient(135deg, #FAF3DC 0%, #E5C058 50%, #D4AF37 100%);
   box-shadow: 0 8px 28px rgba(212, 175, 55, 0.5);
   transform: translateY(-2px);
-}
-
-.btn-royal-gold:hover::after {
-  transform: rotate(30deg) translateY(100%);
 }
 
 /* Bagru Natural Indigo Button */
@@ -825,35 +805,8 @@ body {
   box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
 }
 
-/* Animations */
-@keyframes goldPulse {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-  }
-}
-
-.animate-gold-pulse {
-  animation: goldPulse 3s infinite ease-in-out;
-}
-
-@keyframes royalShimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.shimmer-badge {
-  background: linear-gradient(90deg, #D4AF37 0%, #FFF 50%, #D4AF37 100%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: royalShimmer 4s infinite linear;
-}
-
 /* ==========================================================================
-   ⚡ WEB PERFORMANCE & RENDERING ACCELERATION
+   WEB PERFORMANCE & RENDERING ACCELERATION
    ========================================================================== */
 .transform-gpu {
   transform: translateZ(0);

@@ -3,6 +3,7 @@ import { ArrowLeft, Sparkles, ChevronRight } from 'lucide-react';
 import { CATEGORIES, PRODUCTS } from '../data/products';
 import { ProductCard } from '../components/ProductCard';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { usePageSEO } from '../utils/seo';
 
 interface CategoryPageProps {
   categoryId: string;
@@ -12,6 +13,13 @@ interface CategoryPageProps {
 export const CategoryPage: React.FC<CategoryPageProps> = ({ categoryId, onNavigate }) => {
   const category = CATEGORIES.find(c => c.id === categoryId) || CATEGORIES[0];
   const categoryProducts = PRODUCTS.filter(p => p.category === category.id);
+
+  usePageSEO({
+    title: `${category.name} | Ramam Textiles Jaipur`,
+    description: category.description,
+    path: `/category/${category.id}`,
+    image: category.image
+  });
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10 font-royal-body">
@@ -25,7 +33,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ categoryId, onNaviga
       </nav>
 
       {/* Category Hero Banner */}
-      <div className="relative rounded-[32px] overflow-hidden bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] min-h-[260px] flex items-center p-8 sm:p-12 shadow-sm border border-[#D4AF37]/40">
+      <div className="relative rounded-[32px] overflow-hidden bg-[#FAF0EB] text-[#241A16] min-h-[260px] flex items-center p-8 sm:p-12 shadow-sm border border-[#D4AF37]/40">
         <picture className="absolute inset-0 w-full h-full block">
           <source srcSet={resolveWebpImage(category.image)} type="image/webp" />
           <img
@@ -38,17 +46,17 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({ categoryId, onNaviga
               const target = e.currentTarget as HTMLImageElement;
               if (!target.dataset.fallbackTried) {
                 target.dataset.fallbackTried = 'true';
-                target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
               }
             }}
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF0EB] via-[#FAF0EB]/85 to-transparent" />
+        <div className="absolute inset-0 bg-[#FAF0EB]/80" />
         <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
 
         <div className="relative z-10 max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-bold uppercase tracking-wider font-royal-title shadow-sm">
-            <span>🪷 Jaipur Hand Block Line</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#FAF5EE] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-bold uppercase tracking-wider font-royal-title shadow-sm">
+            <span>Jaipur Hand Block Line</span>
           </div>
           <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16]">
             {category.name}

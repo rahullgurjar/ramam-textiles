@@ -1,4 +1,4 @@
-# 👑 RAMAM TEXTILES — Premium Luxury B2B & E-Commerce Platform
+# RAMAM TEXTILES: Premium Luxury B2B & E-Commerce Platform
 
 > **Authentic Jaipur Craftsmanship • Global Luxury Textiles • Wholesale OEM & Private Label**
 
@@ -6,39 +6,39 @@
 
 ---
 
-## ✨ Key Features & Architecture
+## Key Features & Architecture
 
-### 1. 🏛️ Luxury Visual Identity & Heritage Storytelling
+### 1. Luxury Visual Identity & Heritage Storytelling
 - Curated color palette inspired by Jaipur palace frescoes, natural indigo vats, sandstone terracotta, and gold foil accents.
 - Responsive typography pairing: **Cinzel** (Royal Headings), **Cormorant Garamond** (Editorial Accents), and **Plus Jakarta Sans** (Ultra-crisp modern UI).
 - Real artisan workshop imagery covering Bagru printing tables, natural dye boiling, and hand-carved Sheesham woodblocks.
 
-### 2. 💼 B2B Wholesale Engine & Instant RFQ
-- **Wholesale Inquiry Basket & RFQ Drawer:** Multi-item selection with customizable MOQ counters (25–50+ units), custom specs notes, and instant quotation dispatch.
+### 2. B2B Wholesale Engine & Instant RFQ
+- **Wholesale Inquiry Basket & RFQ Drawer:** Multi-item selection with customizable MOQ counters (25-50+ units), custom specs notes, and instant quotation dispatch.
 - **Export Merchandising Desk:** Direct commercial RFQ submission to Jaipur export headquarters with tiered estimates and PDF/print summary export.
 - **Tiered Volume Pricing Matrices:** Tier 1 (MOQ), Tier 2 (Volume 10% off), Tier 3 (OEM Contract Rate) with production lead times.
 - **Physical Swatch Folder Courier Request:** Built-in sample booking form for international boutique owners and designers.
 
-### 3. ✂️ Interactive Custom Manufacturing & Private Label Wizard
+### 3. Interactive Custom Manufacturing & Private Label Wizard
 - 4-Step interactive brief builder allowing designers to customize:
   1. Product Line (Apparel, Bags, Fabrics, Home)
   2. Base Fabric (60s Cambric, Mulmul Muslin, Chanderi Silk, Heavy Quilted Canvas)
   3. Print / Dye Technique (Wooden Hand Block, Bagru Dabu Indigo, Azo-free Natural Dyes)
   4. Private Label Add-ons (Custom Wooden Block Carving, Damask Woven Neck Tags, Gold Foil Swing Tags, Export Barcoding)
 
-### 4. 🛍️ Comprehensive Product Catalog & Sourcing Engine
+### 4. Comprehensive Product Catalog & Sourcing Engine
 - Fast multi-criteria filtering: Category, Collection, Base Fabric, Printing Technique, and Sorting.
 - Detailed Product Pages with interactive color swatch pickers, size matrices, multi-image galleries, and technical care guides.
 - High-resolution **2026 Lookbook** with seasonal filters and lightbox viewing.
 
-### 5. 🌐 Global Currency Converter & Worldwide Export Logistics
+### 5. Global Currency Converter & Worldwide Export Logistics
 - Instant multi-currency calculation: **INR (₹), USD ($), EUR (€), GBP (£), AED (د.إ), AUD (A$)**.
 - Dedicated export documentation guides (Certificate of Origin, GSP, DHL/FedEx Express Air & Ocean FCL/LCL Freight).
 - Simulated real-time order and shipment milestone tracking.
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Core:** React 18 + TypeScript + Vite 5
 - **Styling:** Modular CSS design system with custom luxury tokens (`src/index.css`)
@@ -48,7 +48,7 @@
 
 ---
 
-## 🚀 Getting Started Locally
+## Getting Started Locally
 
 ### Prerequisites
 - Node.js (v18 or higher recommended)
@@ -73,7 +73,7 @@ The app will be available at `http://localhost:5173/`.
 
 ---
 
-## 📦 How to Deploy & Host on GitHub
+## How to Deploy & Host on GitHub
 
 ### Option A: Deploy to GitHub Pages
 1. Install `gh-pages`:
@@ -110,5 +110,5 @@ The app will be available at `http://localhost:5173/`.
 
 ---
 
-## 📜 License & Copyright
+## License & Copyright
 © 2026 Ramam Textiles. All rights reserved. Handcrafted with pride in Jaipur, Rajasthan, India.

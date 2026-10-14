@@ -5,12 +5,14 @@ import {
 } from 'lucide-react';
 import { CustomManufacturingWizard } from '../components/CustomManufacturingWizard';
 import { resolveProductImage } from '../utils/imageUtils';
+import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface CustomManufacturingPageProps {
   onNavigate: (path: string) => void;
 }
 
 export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = ({ onNavigate }) => {
+  usePageSEO(DEFAULT_SEO.customManufacturing);
   const steps = [
     {
       num: '01',
@@ -42,12 +44,12 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-royal-body">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
+      <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
+          style={{ backgroundImage: `url('${resolveProductImage('/products/laptop-sleeve-kalamkari.jpg')}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF0EB] via-[#FAF0EB]/85 to-transparent" />
+        <div className="absolute inset-0 bg-[#FAF0EB]/85" />
         <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl space-y-4">
@@ -107,7 +109,7 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
       </div>
 
       {/* Interactive Wizard Section */}
-      <div id="wizard" className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/40 shadow-sm relative overflow-hidden">
+      <div id="wizard" className="bg-[#FAF0EB] text-[#241A16] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/40 shadow-sm relative overflow-hidden">
         <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
         <div className="max-w-4xl mx-auto relative z-10 space-y-6">
           <div className="text-center space-y-2">

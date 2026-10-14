@@ -45,9 +45,11 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
 
   return (
     <div 
+      id="policy-modal"
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#241A16]/70 p-3 sm:p-6 backdrop-blur-sm animate-fade-in"
       role="dialog"
       aria-modal="true"
+      aria-labelledby="policy-modal-title"
     >
       {/* Backdrop click to close */}
       <div className="absolute inset-0" onClick={onClose} />
@@ -56,14 +58,14 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
       <div className="relative z-10 flex h-[92vh] max-h-[820px] w-full max-w-4xl flex-col overflow-hidden rounded-[32px] bg-[#FAF5EE] border border-[#D4AF37]/40 shadow-2xl font-royal-body">
         
         {/* Modal Top Header */}
-        <div className="flex items-center justify-between border-b border-[#D4AF37]/35 bg-gradient-to-r from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] px-6 py-4.5">
+        <div className="flex items-center justify-between border-b border-[#D4AF37]/35 bg-[#FAF0EB] text-[#241A16] px-6 py-4.5">
           <div className="flex items-center gap-3">
             <div className="grid h-10 w-10 place-items-center rounded-2xl bg-[#9B332C] text-white shadow-sm">
               <ShieldCheck className="w-5 h-5 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="font-playfair text-xl sm:text-2xl font-bold text-[#241A16]">
+                <h2 id="policy-modal-title" className="font-playfair text-xl sm:text-2xl font-bold text-[#241A16]">
                   Ramam Textiles Jaipur
                 </h2>
                 <span className="rounded-full bg-[#FAF0EB] text-[#9B332C] border border-[#EACAC0] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider font-royal-title">
@@ -126,28 +128,28 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
 
                 <div className="grid gap-3 sm:grid-cols-2 text-xs text-stone-800">
                   <div className="rounded-xl bg-white p-3.5 border border-[#FBCFE8] space-y-1">
-                    <p className="font-bold text-[#831843]">💰 60% Advance Payment Policy</p>
+                    <p className="font-bold text-[#831843]">60% Advance Payment Policy</p>
                     <p className="text-stone-600 leading-relaxed">
                       A <strong>60% advance payment</strong> is mandatory to confirm your order and initiate custom artisan crafting and batch production. The remaining <strong>40% balance</strong> is payable prior to dispatch after we share video proof of the finished batch.
                     </p>
                   </div>
 
                   <div className="rounded-xl bg-white p-3.5 border border-[#FBCFE8] space-y-1">
-                    <p className="font-bold text-[#831843]">📦 Sample First Approval Process</p>
+                    <p className="font-bold text-[#831843]">Sample First Approval Process</p>
                     <p className="text-stone-600 leading-relaxed">
                       For bulk orders, we send you a <strong>sample piece first</strong>. Only once you inspect and <strong>confirm/approve the sample</strong> do our artisans start manufacturing your full order.
                     </p>
                   </div>
 
                   <div className="rounded-xl bg-white p-3.5 border border-[#FBCFE8] space-y-1">
-                    <p className="font-bold text-[#831843]">⚖️ Sample vs. Bulk Orders</p>
+                    <p className="font-bold text-[#831843]">Sample vs. Bulk Orders</p>
                     <p className="text-stone-600 leading-relaxed">
                       Sample orders are <strong>not the same as bulk orders</strong>. Pricing, production timelines, and customization specifications depend on the specific product category.
                     </p>
                   </div>
 
                   <div className="rounded-xl bg-white p-3.5 border border-[#FBCFE8] space-y-1">
-                    <p className="font-bold text-[#831843]">🚫 Bulk Return &amp; Refund Policy</p>
+                    <p className="font-bold text-[#831843]">Bulk Return &amp; Refund Policy</p>
                     <p className="text-stone-600 leading-relaxed">
                       Strictly <strong>NO returns or refunds on bulk orders</strong> because production starts only after sample approval. However, if any piece is verified to be <strong>defective or damaged</strong> upon delivery, we replace or credit it immediately.
                     </p>
@@ -227,7 +229,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
                 <div className="grid gap-3 sm:grid-cols-2 text-xs">
                   <div className="rounded-xl border border-[#D4AF37]/35 bg-white p-3.5 space-y-1">
                     <p className="font-bold text-[#241A16] uppercase tracking-wider font-royal-title">Ready Stock Retail Orders</p>
-                    <p className="text-stone-600">Dispatched within 24–48 hours from Jaipur. Delivery takes 3–5 business days depending on destination.</p>
+                    <p className="text-stone-600">Dispatched within 24-48 hours from Jaipur. Delivery takes 3-5 business days depending on destination.</p>
                   </div>
                   <div className="rounded-xl border border-[#D4AF37]/35 bg-white p-3.5 space-y-1">
                     <p className="font-bold text-[#241A16] uppercase tracking-wider font-royal-title">Wholesale &amp; Custom Orders</p>
@@ -338,7 +340,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
               <section className="space-y-2">
                 <h3 className="font-playfair text-base sm:text-lg font-bold text-[#241A16]">4. Refund Processing Time</h3>
                 <p className="text-stone-700 text-xs">
-                  Approved refunds for verified defective pieces are initiated within <strong>24–48 hours</strong> and credited back to your original payment mode or UPI within <strong>3–5 working days</strong>.
+                  Approved refunds for verified defective pieces are initiated within <strong>24-48 hours</strong> and credited back to your original payment mode or UPI within <strong>3-5 working days</strong>.
                 </p>
               </section>
             </div>
@@ -357,7 +359,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
               href="https://www.instagram.com/ramamtextiles"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-tr from-[#fd1d1d] to-[#833ab4] px-4 py-2 text-xs font-bold text-white shadow-sm hover:scale-105 transition-all"
+              className="inline-flex items-center gap-1.5 rounded-full bg-[#9B332C] px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-[#832721] transition-all"
             >
               <InstagramIcon className="w-3.5 h-3.5 text-white" />
               <span>Ask on Instagram</span>

@@ -3,6 +3,7 @@ import { ArrowLeft, ChevronRight, Share2, BookOpen, Clock, Tag } from 'lucide-re
 import { JOURNAL_ARTICLES } from '../data/journal';
 import { useApp } from '../context/AppContext';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { usePageSEO } from '../utils/seo';
 
 interface JournalDetailPageProps {
   slug: string;
@@ -13,6 +14,13 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
   const { showToast } = useApp();
   const article = JOURNAL_ARTICLES.find(a => a.slug === slug) || JOURNAL_ARTICLES[0];
   const related = JOURNAL_ARTICLES.filter(a => a.slug !== article.slug).slice(0, 2);
+
+  usePageSEO({
+    title: `${article.title} | Ramam Textiles Journal`,
+    description: article.excerpt,
+    path: `/journal/${article.slug}`,
+    image: article.coverImage
+  });
 
   const handleShare = () => {
     if (navigator.share) {
@@ -74,7 +82,7 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
               const target = e.currentTarget as HTMLImageElement;
               if (!target.dataset.fallbackTried) {
                 target.dataset.fallbackTried = 'true';
-                target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
               }
             }}
           />

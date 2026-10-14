@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { X, FileText, CheckCircle2, ShieldCheck, Layers, Sparkles, Mail } from 'lucide-react';
+import { X, FileText, CheckCircle2, ShieldCheck, Layers, Sparkles, Mail, AlertTriangle } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
 import { InstagramIcon } from './InstagramIcon';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 import { submitToGoogleSheet } from '../utils/googleScript';
+import { validateComprehensiveLead } from '../utils/formValidation';
+import { CountrySelect } from './CountrySelect';
+import { PhoneInputWithCountry } from './PhoneInputWithCountry';
 
 export const QuickQuoteModal: React.FC = () => {
   const { isQuickQuoteOpen, closeQuickQuote, activeQuoteProduct, showToast } = useApp();
@@ -14,18 +17,35 @@ export const QuickQuoteModal: React.FC = () => {
   const [company, setCompanyName] = useState('');
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('India');
+  const [countryCode, setCountryCode] = useState('+91');
+  const [phone, setPhone] = useState('');
   const [quantity, setQuantity] = useState(activeQuoteProduct ? activeQuoteProduct.moq : 50);
   const [notes, setNotes] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formError, setFormError] = useState('');
 
   if (!isQuickQuoteOpen || !activeQuoteProduct) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email) {
-      showToast('Please provide your name and business email address.', 'error');
+
+    const validation = validateComprehensiveLead({
+      name,
+      email,
+      phone: phone.trim() ? phone : undefined,
+      countryCode: phone.trim() ? countryCode : undefined,
+      company,
+      message: notes,
+    });
+
+    if (!validation.isValid) {
+      const err = validation.error || 'Please provide genuine contact details.';
+      setFormError(err);
+      showToast(err, 'error');
       return;
     }
+
+    setFormError('');
     submitToGoogleSheet({
       formType: 'Quick Quote & Sample Request',
       inquiryType,
@@ -34,6 +54,7 @@ export const QuickQuoteModal: React.FC = () => {
       name,
       company,
       email,
+      phone: phone.trim() ? `${countryCode} ${phone}` : 'N/A',
       country,
       quantity,
       notes,
@@ -44,15 +65,21 @@ export const QuickQuoteModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-center justify-center animate-fade-in font-royal-body">
+    <div 
+      id="quick-quote-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="quick-quote-modal-title"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-center justify-center animate-fade-in font-royal-body"
+    >
       <div className="w-full max-w-xl bg-[#FAF5EE] rounded-[28px] shadow-2xl border border-[#D4AF37]/45 overflow-hidden">
         
         {/* Header */}
-        <div className="p-5 bg-gradient-to-r from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] border-b border-[#D4AF37]/35 flex items-center justify-between shadow-sm">
+        <div className="p-5 bg-[#FAF0EB] text-[#241A16] border-b border-[#D4AF37]/35 flex items-center justify-between shadow-sm">
           <div className="flex items-center gap-2.5">
             <FileText className="w-5 h-5 text-[#9B332C]" />
             <div>
-              <h3 className="font-royal-title text-sm font-bold text-[#241A16] uppercase tracking-wider">
+              <h3 id="quick-quote-modal-title" className="font-royal-title text-sm font-bold text-[#241A16] uppercase tracking-wider">
                 Wholesale Quote &amp; Sample Request
               </h3>
               <span className="text-[10px] text-stone-600 font-medium">Direct Jaipur Atelier Manufacturer Desk</span>
@@ -78,7 +105,7 @@ export const QuickQuoteModal: React.FC = () => {
                   Quotation Request Dispatched
                 </h4>
                 <p className="text-xs text-stone-600 max-w-md mx-auto mt-1 leading-relaxed font-light">
-                  Thank you, <strong>{name}</strong>. Your inquiry for <strong>{activeQuoteProduct.name}</strong> (Qty: {quantity} pcs) has been routed to our Jaipur desk. We will follow up within 4–6 business hours.
+                  Thank you, <strong>{name}</strong>. Your inquiry for <strong>{activeQuoteProduct.name}</strong> (Qty: {quantity} pcs) has been routed to our Jaipur desk. We will follow up within 4-6 business hours.
                 </p>
               </div>
 
@@ -105,6 +132,12 @@ export const QuickQuoteModal: React.FC = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {formError && (
+                <div className="p-3 bg-red-50 border border-red-300 rounded-xl text-xs text-red-800 flex items-start gap-2">
+                  <AlertTriangle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                  <span>{formError}</span>
+                </div>
+              )}
               {/* Product Spotlight Header */}
               <div className="p-3.5 bg-[#F5EDE1] rounded-2xl border border-[#D4AF37]/35 flex gap-3 shadow-sm">
                 <picture className="w-14 h-16 shrink-0 block">
@@ -119,7 +152,7 @@ export const QuickQuoteModal: React.FC = () => {
                       const target = e.currentTarget as HTMLImageElement;
                       if (!target.dataset.fallbackTried) {
                         target.dataset.fallbackTried = 'true';
-                        target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                        target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
                       }
                     }}
                   />
@@ -185,8 +218,11 @@ export const QuickQuoteModal: React.FC = () => {
                   <input 
                     type="text" 
                     value={name} 
-                    onChange={e => setName(e.target.value)} 
-                    placeholder="Full name" 
+                    onChange={e => {
+                      setName(e.target.value);
+                      if (formError) setFormError('');
+                    }} 
+                    placeholder="e.g. Radhika Sharma" 
                     className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]" 
                     required 
                   />
@@ -197,7 +233,7 @@ export const QuickQuoteModal: React.FC = () => {
                     type="text" 
                     value={company} 
                     onChange={e => setCompanyName(e.target.value)} 
-                    placeholder="Boutique / Company" 
+                    placeholder="e.g. Jaipur Indigo Boutique" 
                     className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]" 
                   />
                 </div>
@@ -206,8 +242,11 @@ export const QuickQuoteModal: React.FC = () => {
                   <input 
                     type="email" 
                     value={email} 
-                    onChange={e => setEmail(e.target.value)} 
-                    placeholder="name@domain.com" 
+                    onChange={e => {
+                      setEmail(e.target.value);
+                      if (formError) setFormError('');
+                    }} 
+                    placeholder="radhika@jaipurindigo.com" 
                     className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]" 
                     required 
                   />
@@ -223,13 +262,21 @@ export const QuickQuoteModal: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">Destination Country</label>
-                  <input 
-                    type="text" 
-                    value={country} 
-                    onChange={e => setCountry(e.target.value)} 
-                    placeholder="e.g. India, USA, UK" 
-                    className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]" 
+                  <CountrySelect
+                    value={country}
+                    onChange={setCountry}
+                    label="Destination Country *"
+                    selectClassName="bg-[#F5EDE1]"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <PhoneInputWithCountry
+                    phone={phone}
+                    countryCode={countryCode}
+                    onPhoneChange={setPhone}
+                    onCountryCodeChange={setCountryCode}
+                    required={false}
+                    label="WhatsApp / Phone Number (Optional - for faster quote dispatch)"
                   />
                 </div>
               </div>

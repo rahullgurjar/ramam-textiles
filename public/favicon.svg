@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="goldRing" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E5C158"/>
+      <stop offset="70%" stop-color="#C59B27"/>
+      <stop offset="100%" stop-color="#997316"/>
+    </radialGradient>
+  </defs>
+  <!-- Base Background Badge -->
+  <rect width="100" height="100" rx="22" fill="#241A16"/>
+  <!-- Circular Gold Filigree Border -->
+  <circle cx="50" cy="50" r="43" fill="none" stroke="url(#goldRing)" stroke-width="2.5"/>
+  <circle cx="50" cy="50" r="39" fill="#9B332C"/>
+  <circle cx="50" cy="50" r="36" fill="none" stroke="#E5C158" stroke-width="1" stroke-dasharray="2 2"/>
+  <!-- Royal Monogram RT -->
+  <text x="50" y="58" font-family="'Playfair Display', Georgia, serif" font-size="34" font-weight="bold" font-style="italic" fill="#FAF5EE" text-anchor="middle" letter-spacing="1">RT</text>
+  <!-- Tiny Jaipur Craft Dot -->
+  <circle cx="50" cy="74" r="2" fill="#E5C158"/>
+</svg>

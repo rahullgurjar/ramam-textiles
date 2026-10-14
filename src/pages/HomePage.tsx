@@ -12,12 +12,15 @@ import { ProductCard } from '../components/ProductCard';
 import { InstagramIcon } from '../components/InstagramIcon';
 import { BulkOrderEnquiryForm } from '../components/BulkOrderEnquiryForm';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
+  usePageSEO(DEFAULT_SEO.home);
+
   const { openQuickQuote, showToast } = useApp();
   const [activeCategoryTab, setActiveCategoryTab] = useState<string>('all');
   const [activeCraftCluster, setActiveCraftCluster] = useState<'sanganer' | 'bagru' | 'kantha'>('sanganer');
@@ -41,24 +44,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               {/* Crafted in Jaipur Pill Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDF2F8] border border-[#F472B6] text-[#BE185D] text-xs font-bold tracking-wider uppercase font-royal-title shadow-sm">
                 <Sparkles className="w-3.5 h-3.5 text-[#DB2777]" />
-                <span>CRAFTED IN JAIPUR • PINK CITY ATELIER</span>
+                <span>Handcrafted in Jaipur • Heritage Textile Manufacturer</span>
               </div>
 
               {/* Editorial Headline */}
               <h1 className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-[58px] xl:text-[66px] font-medium text-[#241A16] leading-[1.08] tracking-tight">
-                The Art of Block Printing, <span className="italic font-editorial font-normal text-[#BE185D]">Crafted</span> in Jaipur.
+                Authentic Hand Block Textiles &amp; Quilted Bags, <span className="italic font-editorial font-normal text-[#BE185D]">Crafted</span> in Jaipur.
               </h1>
 
               {/* Subtext */}
               <p className="text-stone-700 font-royal-body text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
-                Discover thoughtfully crafted fabrics, quilted travel duffles, and handmade vanity pouches inspired by traditional block-printing techniques and the rich textile heritage of Jaipur.
+                Direct manufacturing of pure cotton hand-block fabrics, channel-quilted travel duffles, and artisanal vanity cases crafted in traditional Rajasthani artisan clusters.
               </p>
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
                   onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="pill-btn-rani flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg"
+                  className="pill-btn-rani flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full shadow-md"
                 >
                   <span>Explore Collection ({PRODUCTS.length} Styles)</span>
                   <ArrowRight className="w-4 h-4" />
@@ -73,39 +76,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </button>
               </div>
 
-
-
             </div>
 
-            {/* Right Column: Blush Card with Artisan Patchwork Bag & Rotating Seal */}
+            {/* Right Column: Clean Artisan Card */}
             <div className="lg:col-span-6 xl:col-span-5">
-              <div className="relative bg-gradient-to-br from-[#FAF0EB] via-[#F7ECE5] to-[#F2DFD7] rounded-[36px] p-5 sm:p-7 border border-[#E8CECA] shadow-2xl overflow-hidden">
+              <div className="relative bg-[#FAF0EB] rounded-[36px] p-5 sm:p-7 border border-[#E8CECA] shadow-xl overflow-hidden">
                 
-                {/* Floating Top-Left Artisan Patchwork Badge */}
+                {/* Clean Top-Left Tag */}
                 <div className="absolute top-6 left-6 z-20 bg-[#FAF5EE]/95 backdrop-blur-md px-4 py-1.5 rounded-full shadow-md border border-[#D4AF37]/40 flex items-center gap-2 text-xs font-bold text-[#241A16]">
-                  <span className="text-[#9B332C] text-sm">🪄</span>
-                  <span className="font-royal-title tracking-wider text-[11px]">ARTISAN PATCHWORK</span>
+                  <span className="font-royal-title tracking-wider text-[11px]">Artisan Kantha Quilting</span>
                 </div>
 
-                {/* Floating Top-Right Rotating Circular Seal */}
+                {/* Static Professional Badge */}
                 <div className="absolute top-5 right-5 z-20">
-                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#9B332C] text-white flex items-center justify-center shadow-xl border border-[#D4AF37]/60">
-                    <svg className="w-full h-full animate-spin-seal" viewBox="0 0 100 100">
-                      <path
-                        id="heroSealPath"
-                        d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                        fill="none"
-                      />
-                      <text className="text-[8.5px] font-bold uppercase tracking-[0.22em] fill-white">
-                        <textPath href="#heroSealPath" startOffset="0%">
-                          • 100% ARTISAN • JAIPUR HANDBLOCK •
-                        </textPath>
-                      </text>
-                    </svg>
-                    {/* Center Gold Star Emblem */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-[#F5E6B5] text-base sm:text-lg">✤</span>
-                    </div>
+                  <div className="px-3.5 py-1.5 rounded-full bg-[#9B332C] text-white flex items-center gap-1.5 shadow-md border border-[#D4AF37]/40 text-[10px] font-bold uppercase tracking-wider font-royal-title">
+                    <span>100% Handblock Cotton</span>
                   </div>
                 </div>
 
@@ -113,11 +98,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <div className="aspect-[4/4.5] rounded-[28px] overflow-hidden bg-[#F0E6D8] shadow-inner relative group">
                   <picture className="w-full h-full block">
                     <source
-                      srcSet={resolveWebpImage('./products/duffle-kantha-patchwork.jpg')}
+                      srcSet={resolveWebpImage('/products/duffle-kantha-patchwork.jpg')}
                       type="image/webp"
                     />
                     <img
-                      src={resolveProductImage('./products/duffle-kantha-patchwork.jpg')}
+                      src={resolveProductImage('/products/duffle-kantha-patchwork.jpg')}
                       alt="Artisan Jaipur Hand Block Quilted Patchwork Duffle Bag"
                       width="768"
                       height="864"
@@ -188,14 +173,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               onClick={() => setActiveCraftCluster('sanganer')}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'sanganer'
-                  ? 'bg-gradient-to-br from-[#FDF2F8] via-[#FAF5EE] to-[#FCE7F3] border-[#DB2777] shadow-xl ring-2 ring-[#DB2777]/30'
-                  : 'bg-[#FAF5EE] border-[#FBCFE8] hover:border-[#DB2777] hover:bg-[#FDF2F8] shadow-sm'
+                  ? 'bg-white border-[#BE185D] shadow-md ring-1 ring-[#BE185D]/20'
+                  : 'bg-[#FAF5EE] border-stone-200 hover:border-[#BE185D] hover:bg-white shadow-sm'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xl">🪷</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FCE7F3] text-[#BE185D] border border-[#F472B6] font-royal-title">
-                  Jaipur Rani Pink
+                <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FCE7F3] text-[#BE185D] border border-[#F472B6] font-royal-title">
+                  Jaipur Floral Print
                 </span>
               </div>
               <h3 className={`font-playfair font-bold text-lg leading-snug transition-colors ${activeCraftCluster === 'sanganer' ? 'text-[#BE185D]' : 'text-[#1A120E]'}`}>
@@ -210,14 +194,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               onClick={() => setActiveCraftCluster('bagru')}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'bagru'
-                  ? 'bg-gradient-to-br from-[#EFF6FF] via-[#FAF5EE] to-[#DBEAFE] border-[#1D4ED8] shadow-xl ring-2 ring-[#1D4ED8]/30'
-                  : 'bg-[#FAF5EE] border-[#BFDBFE] hover:border-[#1D4ED8] hover:bg-[#EFF6FF] shadow-sm'
+                  ? 'bg-white border-[#1D4ED8] shadow-md ring-1 ring-[#1D4ED8]/20'
+                  : 'bg-[#FAF5EE] border-stone-200 hover:border-[#1D4ED8] hover:bg-white shadow-sm'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xl">🌿</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#DBEAFE] text-[#1E40AF] border border-[#93C5FD] font-royal-title">
-                  Bagru Indigo Vats
+                <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#DBEAFE] text-[#1E40AF] border border-[#93C5FD] font-royal-title">
+                  Bagru Indigo Works
                 </span>
               </div>
               <h3 className={`font-playfair font-bold text-lg leading-snug transition-colors ${activeCraftCluster === 'bagru' ? 'text-[#1D4ED8]' : 'text-[#1A120E]'}`}>
@@ -232,13 +215,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               onClick={() => setActiveCraftCluster('kantha')}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'kantha'
-                  ? 'bg-gradient-to-br from-[#FFFBEB] via-[#FAF5EE] to-[#FEF3C7] border-[#D97706] shadow-xl ring-2 ring-[#D97706]/30'
-                  : 'bg-[#FAF5EE] border-[#FDE68A] hover:border-[#D97706] hover:bg-[#FFFBEB] shadow-sm'
+                  ? 'bg-white border-[#D97706] shadow-md ring-1 ring-[#D97706]/20'
+                  : 'bg-[#FAF5EE] border-stone-200 hover:border-[#D97706] hover:bg-white shadow-sm'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xl">🧵</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FEF3C7] text-[#B45309] border border-[#FCD34D] font-royal-title">
+                <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FEF3C7] text-[#B45309] border border-[#FCD34D] font-royal-title">
                   Marigold &amp; Kantha
                 </span>
               </div>
@@ -252,13 +234,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Interactive Cluster Spotlight Panel */}
-          <div className={`rounded-2xl p-6 border shadow-lg mb-6 transition-all animate-fade-in ${
-            activeCraftCluster === 'sanganer'
-              ? 'bg-gradient-to-br from-[#FAF5EE] via-[#FDF2F8] to-[#FAF0EB] border-[#F472B6]/60'
-              : activeCraftCluster === 'bagru'
-              ? 'bg-gradient-to-br from-[#FAF5EE] via-[#EFF6FF] to-[#FAF5EE] border-[#93C5FD]/60'
-              : 'bg-gradient-to-br from-[#FAF5EE] via-[#FFFBEB] to-[#FAF5EE] border-[#FDE68A]/60'
-          }`}>
+          <div className="rounded-2xl p-6 border shadow-sm mb-6 transition-all bg-white border-[#D4AF37]/35">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
               
               {/* Left Details */}
@@ -270,7 +246,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     ? 'bg-[#DBEAFE] border-[#93C5FD] text-[#1E40AF]'
                     : 'bg-[#FEF3C7] border-[#FCD34D] text-[#B45309]'
                 }`}>
-                  <span>✨ Cluster Deep Dive</span>
+                  <span>Artisan Craft Cluster</span>
                   <span>•</span>
                   <span>
                     {activeCraftCluster === 'sanganer' && 'Sanganer Woodblock Guild'}
@@ -309,7 +285,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                           : 'bg-[#FFFBEB] text-[#92400E] border-[#FDE68A]'
                       }`}
                     >
-                      ✓ {tag}
+                      {tag}
                     </span>
                   ))}
                 </div>
@@ -338,20 +314,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <source
                     srcSet={resolveWebpImage(
                       activeCraftCluster === 'sanganer'
-                        ? './products/vanity-trio-turquoise.jpg'
+                        ? '/products/vanity-trio-turquoise.jpg'
                         : activeCraftCluster === 'bagru'
-                        ? './products/duffle-indigo.jpg'
-                        : './products/duffle-kantha-patchwork.jpg'
+                        ? '/products/duffle-indigo.jpg'
+                        : '/products/duffle-kantha-patchwork.jpg'
                     )}
                     type="image/webp"
                   />
                   <img
                     src={resolveProductImage(
                       activeCraftCluster === 'sanganer'
-                        ? './products/vanity-trio-turquoise.jpg'
+                        ? '/products/vanity-trio-turquoise.jpg'
                         : activeCraftCluster === 'bagru'
-                        ? './products/duffle-indigo.jpg'
-                        : './products/duffle-kantha-patchwork.jpg'
+                        ? '/products/duffle-indigo.jpg'
+                        : '/products/duffle-kantha-patchwork.jpg'
                     )}
                     alt={activeCraftCluster}
                     loading="lazy"
@@ -373,7 +349,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="flex items-center justify-between pt-3 border-t border-[#D4AF37]/30 text-xs font-royal-title">
-            <span className="text-[#1A120E] font-bold">👑 GI-Certified Jaipur Hand Block Craftsmanship</span>
+            <span className="text-[#1A120E] font-bold">GI-Certified Jaipur Hand Block Craftsmanship</span>
             <button 
               onClick={() => { onNavigate('/craftsmanship'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="text-[#9B332C] hover:text-[#1A120E] font-bold flex items-center gap-1 transition-colors"
@@ -391,7 +367,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDF0F3] border border-[#F3CAD6] text-[#C8376B] text-xs font-bold tracking-wider uppercase font-royal-title mb-3">
-            <span>👑 Curated Jaipur Haveli Lines</span>
+            <span>Curated Jaipur Textile Collections</span>
           </div>
           <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
             Handcrafted Masterpieces of Rajasthan
@@ -434,7 +410,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     ? 'bg-[#831843]/90 text-[#FBCFE8] border-[#EC4899]'
                     : 'bg-[#064E3B]/90 text-[#A7F3D0] border-[#10B981]'
                 }`}>
-                  {cat.id === 'bags' ? '🌿 Bagru Indigo & Duffles' : cat.id === 'women' ? '🪷 Sanganer Rani Pink Sets' : '✨ Panna Emerald Organizers'}
+                  {cat.id === 'bags' ? 'Bagru Indigo & Duffles' : cat.id === 'women' ? 'Sanganer Floral Sets' : 'Panna Emerald Organizers'}
                 </span>
                 <h3 className="font-playfair text-xl sm:text-2xl font-bold text-white group-hover:text-[#FAF3DC] transition-colors">
                   {cat.name}
@@ -461,7 +437,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
               <div className="text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-2 font-royal-title">
-                👑 Ready-To-Order &amp; Custom Runs
+                Ready-To-Order &amp; Custom Production
               </div>
               <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
                 Signature Hand Block Quilted Creations
@@ -541,9 +517,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl border-4 border-[#FAF5EE] bg-[#F0E6D8]">
                 <picture className="w-full h-full block">
-                  <source srcSet={resolveWebpImage('./products/duffle-pink-botanical.jpg')} type="image/webp" />
+                  <source srcSet={resolveWebpImage('/products/duffle-pink-botanical.jpg')} type="image/webp" />
                   <img
-                    src={resolveProductImage('./products/duffle-pink-botanical.jpg')}
+                    src={resolveProductImage('/products/duffle-pink-botanical.jpg')}
                     alt="Jaipur Hand Block Printed Quilted Weekender Bag"
                     loading="lazy"
                     decoding="async"
@@ -553,10 +529,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
 
               {/* Overlapping Royal Medallion */}
-              <div className="absolute -bottom-6 -right-4 sm:bottom-8 sm:-right-8 bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-6 sm:p-7 rounded-[28px] shadow-xl border border-[#D4AF37]/50 max-w-xs">
+              <div className="absolute -bottom-6 -right-4 sm:bottom-8 sm:-right-8 bg-[#FAF0EB] text-[#241A16] p-6 sm:p-7 rounded-[28px] shadow-xl border border-[#D4AF37]/50 max-w-xs">
                 <div className="flex items-center gap-2 text-[#9B332C] text-xs font-bold uppercase tracking-wider mb-1 font-royal-title">
                   <Award className="w-4 h-4 text-[#9B332C]" />
-                  <span>3rd Generation Jaipur Artistry</span>
+                  <span>Generational Jaipur Artistry</span>
                 </div>
                 <div className="font-playfair text-lg font-bold text-[#241A16]">Pure Quilted Indian Cotton</div>
                 <p className="text-[11px] font-royal-body text-stone-700 mt-1 leading-relaxed">
@@ -574,11 +550,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
 
             <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl text-[#1F1612] font-bold leading-tight">
-              Where Ancient Mud-Resist Meets Modern Luxury Travel.
+              Where Ancient Mud-Resist Meets Modern Travel Accessories.
             </h2>
 
             <p className="text-stone-700 font-royal-body text-base sm:text-lg leading-relaxed">
-              At <strong>Ramam Textiles</strong>, every bag is a tribute to the artisan quarters of Jaipur. In our Bagru and Sanganer workshops, master block-printers stamp intricate Mughal botanicals, delicate rose bootas, and vibrant wildlife art onto 100% pure combed cotton.
+              At <strong>Ramam Textiles</strong>, every bag is crafted in the artisan quarters of Jaipur. In our Bagru and Sanganer workshops, master block-printers stamp intricate Mughal botanicals, delicate rose bootas, and vibrant wildlife art onto 100% pure combed cotton.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -620,7 +596,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
             <div className="text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-2 font-royal-title">
-              🪷 Editorial Visuals
+              Editorial Lookbook
             </div>
             <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
               2026 Quilted Collection Lookbook
@@ -674,10 +650,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <div className="text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-2 font-royal-title">
-              👑 Jaipur B2B Manufacturing Partner
+              Jaipur B2B Manufacturing Partner
             </div>
             <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
-              Why Global Boutiques Partner With Ramam Textiles
+              Why Retailers &amp; Boutiques Partner With Ramam Textiles
             </h2>
           </div>
 
@@ -716,75 +692,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>
 
       {/* =========================================================================
-          8B. GLOBAL BOUTIQUE REVIEWS & CLIENT PROOF
-          ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-wider mb-2">
-            <span>⭐️ Verified Retailer &amp; Boutique Reviews</span>
-          </div>
-          <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
-            Trusted by Luxury Boutiques Worldwide
-          </h2>
-          <p className="text-stone-700 font-royal-body text-base mt-2">
-            Over 140+ independent lifestyle stores, resorts, and boutiques rely on Ramam Textiles for authentic Jaipur craftsmanship.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-[#FAF5EE] p-7 rounded-[28px] border border-[#D4AF37]/40 shadow-sm hover:border-[#9B332C] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
-            <div className="space-y-3">
-              <div className="flex text-amber-500 text-sm">★★★★★</div>
-              <p className="text-xs text-stone-700 leading-relaxed italic font-royal-body">
-                "The channel quilting and hand block print alignment on the weekender duffle bags exceeded our expectations. Our customers in Soho loved the authentic cotton feel. We reordered 150 more pieces within three weeks."
-              </p>
-            </div>
-            <div className="pt-3 border-t border-[#D4AF37]/25 flex items-center justify-between">
-              <div>
-                <h5 className="font-royal-title font-bold text-xs text-[#1F1612]">Charlotte Vance</h5>
-                <span className="text-[10px] text-stone-500">Maison &amp; Fleur Boutique • London, UK</span>
-              </div>
-              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Verified B2B</span>
-            </div>
-          </div>
-
-          <div className="bg-[#FAF5EE] p-7 rounded-[28px] border border-[#D4AF37]/40 shadow-sm hover:border-[#9B332C] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
-            <div className="space-y-3">
-              <div className="flex text-amber-500 text-sm">★★★★★</div>
-              <p className="text-xs text-stone-700 leading-relaxed italic font-royal-body">
-                "Ramam Textiles custom embroidered our brand tags onto 200 units of the playing card vanity cases. The packaging was immaculate, and FedEx delivery to Milan was flawless with full Certificate of Origin."
-              </p>
-            </div>
-            <div className="pt-3 border-t border-[#D4AF37]/25 flex items-center justify-between">
-              <div>
-                <h5 className="font-royal-title font-bold text-xs text-[#1F1612]">Matteo Moretti</h5>
-                <span className="text-[10px] text-stone-500">Moretti Lifestyle Concept • Milan, Italy</span>
-              </div>
-              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Verified B2B</span>
-            </div>
-          </div>
-
-          <div className="bg-[#FAF5EE] p-7 rounded-[28px] border border-[#D4AF37]/40 shadow-sm hover:border-[#9B332C] hover:shadow-lg transition-all flex flex-col justify-between space-y-4">
-            <div className="space-y-3">
-              <div className="flex text-amber-500 text-sm">★★★★★</div>
-              <p className="text-xs text-stone-700 leading-relaxed italic font-royal-body">
-                "Finding an authentic Jaipur manufacturer with low MOQs and genuine vegetable-dyed cotton was tough until we connected with Ramam Textiles. Their WhatsApp communication and sample turnaround are world-class."
-              </p>
-            </div>
-            <div className="pt-3 border-t border-[#D4AF37]/25 flex items-center justify-between">
-              <div>
-                <h5 className="font-royal-title font-bold text-xs text-[#1F1612]">Hannah Brooks</h5>
-                <span className="text-[10px] text-stone-500">Sanctuary Resort Studio • Byron Bay, Australia</span>
-              </div>
-              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Verified B2B</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* =========================================================================
           9. BULK ORDER ENQUIRY & WHOLESALE QUOTATION
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -798,7 +705,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
             <div className="text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-2 font-royal-title">
-              👑 Jaipur Craft Chronicles
+              Jaipur Craft Chronicles
             </div>
             <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
               Artisan Stories &amp; Textile Heritage
@@ -833,7 +740,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   />
                 </picture>
                 <span className="absolute top-3 left-3 bg-[#FAF5EE]/95 backdrop-blur-md text-[#9B332C] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider font-royal-title border border-[#D4AF37]/40 shadow-sm">
-                  🪷 {post.category}
+                  {post.category}
                 </span>
               </div>
 

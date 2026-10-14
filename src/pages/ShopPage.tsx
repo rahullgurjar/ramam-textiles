@@ -9,6 +9,7 @@ import { ProductCard } from '../components/ProductCard';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
 import { resolveProductImage } from '../utils/imageUtils';
+import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface ShopPageProps {
   onNavigate: (path: string) => void;
@@ -17,6 +18,8 @@ interface ShopPageProps {
 }
 
 export const ShopPage: React.FC<ShopPageProps> = ({ onNavigate, initialCategory, initialCollection }) => {
+  usePageSEO(DEFAULT_SEO.shop);
+
   const { isB2BPriceUnlocked } = useApp();
 
   // Filter States
@@ -116,16 +119,16 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onNavigate, initialCategory,
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 font-royal-body">
       {/* Page Header - Craft of Pink City Style */}
-      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] rounded-[32px] p-8 md:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
+      <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 md:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
+          className="absolute inset-0 bg-cover bg-center opacity-25"
+          style={{ backgroundImage: `url('${resolveProductImage('/products/tote-sanganeri-ruffle-lifestyle.jpg')}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF0EB]/95 via-[#FAF0EB]/80 to-transparent" />
+        <div className="absolute inset-0 bg-[#FAF0EB]/85" />
 
         <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-bold uppercase tracking-wider mb-4 font-royal-title shadow-sm">
-            <span>✨ 2026 Wholesale &amp; Export Catalog</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#FAF5EE] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-bold uppercase tracking-wider mb-4 font-royal-title shadow-sm">
+            <span>2026 Wholesale &amp; Export Catalog</span>
           </div>
           <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16] mb-3">
             Handcrafted Textile Catalog

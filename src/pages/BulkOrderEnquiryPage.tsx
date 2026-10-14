@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
-import { ShieldCheck, Truck, FileCheck } from 'lucide-react';
+import { ShieldCheck, Truck, FileCheck, Layers } from 'lucide-react';
 import { BulkOrderEnquiryForm } from '../components/BulkOrderEnquiryForm';
+import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface BulkOrderEnquiryPageProps {
   onNavigate: (path: string) => void;
 }
 
 export const BulkOrderEnquiryPage: React.FC<BulkOrderEnquiryPageProps> = ({ onNavigate }) => {
+  usePageSEO(DEFAULT_SEO.bulkEnquiry);
+
   useEffect(() => {
-    document.title = 'Bulk Order & Wholesale Enquiry | Ramam Textiles Jaipur';
     window.scrollTo({ top: 0, behavior: 'instant' });
     const el = document.getElementById('bulk-enquiry');
     if (el) {
@@ -17,7 +20,7 @@ export const BulkOrderEnquiryPage: React.FC<BulkOrderEnquiryPageProps> = ({ onNa
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12 font-royal-body animate-fade-in">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10 font-royal-body animate-fade-in">
       
       {/* Breadcrumb Navigation */}
       <div className="flex items-center gap-2 text-xs text-stone-500 font-royal-title">
@@ -31,6 +34,28 @@ export const BulkOrderEnquiryPage: React.FC<BulkOrderEnquiryPageProps> = ({ onNa
         <span className="text-[#9B332C] font-semibold">Bulk Order &amp; Wholesale Enquiry</span>
       </div>
 
+      {/* Dedicated Custom Photo Hero Banner */}
+      <div className="relative rounded-3xl overflow-hidden border border-[#D4AF37]/35 shadow-md h-52 sm:h-64">
+        <img 
+          src={resolveProductImage('/products/organizer-dyson-airwrap.jpg')} 
+          alt="Ramam Textiles Jaipur Bulk Manufacturing Line" 
+          className="w-full h-full object-cover" 
+          loading="eager" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#241A16]/90 via-[#241A16]/40 to-transparent flex flex-col justify-end p-6 sm:p-10 text-white">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-[#E5C058] text-[11px] font-royal-title font-bold uppercase tracking-widest w-fit mb-2">
+            <Layers className="w-3.5 h-3.5 text-[#E5C058]" />
+            <span>Direct Jaipur Manufacturer Facility</span>
+          </div>
+          <h1 className="font-playfair text-2xl sm:text-4xl font-bold">
+            Bulk Order &amp; Wholesale Quotations
+          </h1>
+          <p className="text-xs sm:text-sm text-stone-200 mt-1 max-w-xl font-light">
+            Flexible production minimums starting at 25 units. Handcrafted woodblock printing, export packaging, and global air dispatch.
+          </p>
+        </div>
+      </div>
+
       {/* Primary Bulk Order Enquiry Form - Direct & Center */}
       <BulkOrderEnquiryForm id="bulk-enquiry" />
 
@@ -41,7 +66,7 @@ export const BulkOrderEnquiryPage: React.FC<BulkOrderEnquiryPageProps> = ({ onNa
             Manufacturer Credentials
           </span>
           <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16]">
-            Why 140+ Global Boutiques Partner With Us
+            Why Boutiques &amp; Retailers Partner With Us
           </h2>
         </div>
 
@@ -62,7 +87,7 @@ export const BulkOrderEnquiryPage: React.FC<BulkOrderEnquiryPageProps> = ({ onNa
             </div>
             <h3 className="font-royal-title font-bold text-base text-[#1E295B]">Air Express Doorstep Freight</h3>
             <p className="text-xs text-stone-600 leading-relaxed">
-              Tracked air cargo delivery directly to your store or warehouse in 4–7 business days via DHL Express / FedEx with all export customs documents.
+              Tracked air cargo delivery directly to your store or warehouse in 4-7 business days via DHL Express / FedEx with all export customs documents.
             </p>
           </div>
 
@@ -114,7 +139,7 @@ export const BulkOrderEnquiryPage: React.FC<BulkOrderEnquiryPageProps> = ({ onNa
           <div className="p-4 bg-white/70 rounded-2xl border border-[#D4AF37]/25 space-y-1.5">
             <h4 className="font-royal-title font-bold text-[#241A16]">How long does production take?</h4>
             <p className="text-stone-600 leading-relaxed">
-              Standard turnaround is 3 to 5 weeks depending on hand-block printing weather and order size. Urgent rush runs can be expedited in 14–18 days.
+              Standard turnaround is 3 to 5 weeks depending on hand-block printing weather and order size. Urgent rush runs can be expedited in 14-18 days.
             </p>
           </div>
         </div>

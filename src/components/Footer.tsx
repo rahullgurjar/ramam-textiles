@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Mail, 
+  Phone,
   MapPin, 
   ShieldCheck, 
   Globe, 
@@ -12,6 +13,8 @@ import {
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { InstagramIcon } from './InstagramIcon';
+import { submitToGoogleSheet } from '../utils/googleScript';
+import { validateEmailAddress } from '../utils/formValidation';
 
 interface FooterProps {
   navigate: (path: string) => void;
@@ -20,14 +23,25 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ navigate }) => {
   const { showToast, openPolicyModal } = useApp();
   const [catalogEmail, setCatalogEmail] = useState('');
+  const [catalogError, setCatalogError] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
 
   const handleCatalogSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!catalogEmail || !catalogEmail.includes('@')) {
-      showToast('Please provide a valid email address.', 'error');
+    const emailRes = validateEmailAddress(catalogEmail);
+    if (!emailRes.isValid) {
+      const err = emailRes.error || 'Please provide a valid business email address.';
+      setCatalogError(err);
+      showToast(err, 'error');
       return;
     }
+
+    setCatalogError('');
+    submitToGoogleSheet({
+      formType: 'Wholesale Catalog PDF Download',
+      email: catalogEmail.trim(),
+    });
+
     setIsSubscribed(true);
     showToast('Success! The 2026 Wholesale Lookbook & Line Sheet has been sent to your email.', 'success');
     setCatalogEmail('');
@@ -110,18 +124,23 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#FAF5EE] via-[#F6EDE2] to-[#ECE1D2] border-2 border-[#D4AF37] shadow-md flex items-center justify-center p-2 shrink-0">
+            <a 
+              href="/"
+              onClick={(e) => { e.preventDefault(); handleNav('/'); }}
+              aria-label="Ramam Textiles Jaipur - Return to Homepage"
+              className="flex items-center gap-4 cursor-pointer group"
+            >
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FAF5EE] border-2 border-[#D4AF37] shadow-md flex items-center justify-center p-2 shrink-0 group-hover:border-[#9B332C] transition-colors">
                 <picture className="w-full h-full block">
-                  <source srcSet="./logo.webp" type="image/webp" />
+                  <source srcSet="/logo.webp" type="image/webp" />
                   <img 
-                    src="./logo.png" 
+                    src="/logo.png" 
                     alt="Ramam Textiles Jaipur" 
                     width="64"
                     height="64"
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-contain filter drop-shadow-sm"
+                    className="w-full h-full object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform"
                   />
                 </picture>
               </div>
@@ -138,7 +157,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                   JAIPUR ARTISAN ATELIER
                 </span>
               </div>
-            </div>
+            </a>
 
             <p className="text-xs text-stone-600 leading-relaxed pr-6">
               Ramam Textiles is an authentic Jaipur heritage artisan house based in Rajasthan, India. We supply luxury boutiques, independent retailers, and travel lifestyle brands worldwide with handcrafted quilted duffle bags, vanity cosmetic pouches, and pure block-printed cotton fabrics.
@@ -155,22 +174,32 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                   <span>Wholesale catalog sent! Check your inbox.</span>
                 </div>
               ) : (
-                <form onSubmit={handleCatalogSubscribe} className="flex gap-2">
-                  <input 
-                    type="email" 
-                    value={catalogEmail}
-                    onChange={e => setCatalogEmail(e.target.value)}
-                    placeholder="Enter your business email..."
-                    className="flex-1 px-4 py-2.5 bg-white border border-[#D4AF37]/40 rounded-full text-xs text-[#241A16] placeholder-stone-400 focus:outline-none focus:border-[#9B332C]"
-                    required
-                  />
-                  <button 
-                    type="submit"
-                    className="pill-btn-rani px-5 py-2.5 text-xs font-bold uppercase rounded-full shrink-0 shadow-md"
-                  >
-                    Send PDF
-                  </button>
-                </form>
+                <div>
+                  <form onSubmit={handleCatalogSubscribe} className="flex gap-2">
+                    <input 
+                      type="email" 
+                      value={catalogEmail}
+                      onChange={e => {
+                        setCatalogEmail(e.target.value);
+                        if (catalogError) setCatalogError('');
+                      }}
+                      placeholder="Enter your business email..."
+                      className={`flex-1 px-4 py-2.5 bg-white border ${catalogError ? 'border-red-500' : 'border-[#D4AF37]/40'} rounded-full text-xs text-[#241A16] placeholder-stone-400 focus:outline-none focus:border-[#9B332C]`}
+                      required
+                    />
+                    <button 
+                      type="submit"
+                      className="pill-btn-rani px-5 py-2.5 text-xs font-bold uppercase rounded-full shrink-0 shadow-md"
+                    >
+                      Send PDF
+                    </button>
+                  </form>
+                  {catalogError && (
+                    <span className="text-[11px] text-red-600 block mt-1.5 pl-2 font-medium">
+                      {catalogError}
+                    </span>
+                  )}
+                </div>
               )}
             </div>
 
@@ -250,7 +279,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
               </li>
               <li>
                 <button onClick={() => handleNav('/lookbook')} className="hover:text-[#9B332C] transition-colors">
-                  Editorial Lookbook &amp; Reviews
+                  Editorial Lookbook
                 </button>
               </li>
               <li>
@@ -278,6 +307,18 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                   Ramam Textiles Artisan Workshops,<br />
                   Jaipur, Rajasthan 302020, India
                 </span>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-[#9B332C] shrink-0" />
+                <a href="tel:+911412890000" className="hover:text-[#9B332C] font-semibold text-[#241A16] transition-colors" title="Call Atelier">
+                  +91 141 289 0000
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-[#9B332C] shrink-0" />
+                <a href="mailto:ramamtextiles@gmail.com" className="hover:text-[#9B332C] font-semibold text-[#241A16] transition-colors" title="Email Atelier Desk">
+                  ramamtextiles@gmail.com
+                </a>
               </li>
               <li className="pt-2">
                 <div className="p-3.5 rounded-2xl bg-white border border-[#D4AF37]/35 space-y-2 shadow-sm">

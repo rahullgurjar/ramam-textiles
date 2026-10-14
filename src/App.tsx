@@ -24,6 +24,7 @@ const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ defaul
 const TrackOrderPage = lazy(() => import('./pages/TrackOrderPage').then(m => ({ default: m.TrackOrderPage })));
 const FAQPage = lazy(() => import('./pages/FAQPage').then(m => ({ default: m.FAQPage })));
 const LegalPage = lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })));
+const AdminPortalPage = lazy(() => import('./pages/AdminPortalPage').then(m => ({ default: m.AdminPortalPage })));
 
 // Lazy load heavy interactive drawers & modals
 const InquiryDrawer = lazy(() => import('./components/InquiryDrawer').then(m => ({ default: m.InquiryDrawer })));
@@ -40,7 +41,7 @@ const PageLoadingFallback: React.FC = () => (
       <div className="absolute inset-0 rounded-full border-2 border-[#D4AF37]/30" />
       <div className="absolute inset-0 rounded-full border-2 border-[#9B332C] border-t-transparent animate-spin" />
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-sm font-royal-title text-[#9B332C]">🪷</span>
+        <span className="text-xs font-royal-title text-[#9B332C] font-bold">RT</span>
       </div>
     </div>
     <span className="font-royal-title text-xs uppercase tracking-widest text-[#241A16] font-bold">
@@ -269,6 +270,11 @@ export const App: React.FC = () => {
     }
     if (currentPath.startsWith('/returns') || currentPath.startsWith('/refunds')) {
       return <LegalPage initialTab="returns" />;
+    }
+
+    // 17. Protected Admin & Staff Console
+    if (currentPath === '/admin' || currentPath.startsWith('/admin') || currentPath === '/staff') {
+      return <AdminPortalPage onNavigate={navigate} />;
     }
 
     // Default Fallback: Shop

@@ -11,6 +11,7 @@ import { useApp } from '../context/AppContext';
 import { ProductCard } from '../components/ProductCard';
 import { InstagramIcon } from '../components/InstagramIcon';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { usePageSEO } from '../utils/seo';
 
 interface ProductDetailPageProps {
   slug: string;
@@ -28,6 +29,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
   } = useApp();
 
   const product = PRODUCTS.find(p => p.slug === slug) || PRODUCTS[0];
+
+  usePageSEO({
+    title: `${product.name} | Ramam Textiles Jaipur`,
+    description: product.description,
+    path: `/product/${product.slug}`,
+    image: product.images[0]
+  });
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
@@ -134,7 +142,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                   const target = e.currentTarget as HTMLImageElement;
                   if (!target.dataset.fallbackTried) {
                     target.dataset.fallbackTried = 'true';
-                    target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                    target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
                   }
                 }}
               />
@@ -211,7 +219,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                         const target = e.currentTarget as HTMLImageElement;
                         if (!target.dataset.fallbackTried) {
                           target.dataset.fallbackTried = 'true';
-                          target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                          target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
                         }
                       }}
                     />
@@ -246,13 +254,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
         <div className="lg:col-span-5 space-y-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDF0F3] border border-[#F3CAD6] text-[#C8376B] text-[11px] font-royal-title uppercase tracking-widest font-bold mb-2">
-              <span>🪷 {product.collection}</span>
+              <span>{product.collection}</span>
             </div>
             <h1 className="font-playfair text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1F1612] leading-tight">
               {product.name}
             </h1>
             <p className="text-xs text-stone-600 mt-1.5 flex items-center gap-2">
-              <span className="text-[#C8376B]">✦</span>
               Technique: <span className="text-[#1F1612] font-semibold">{product.printTechnique}</span>
             </p>
           </div>
@@ -450,7 +457,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                 </button>
               </div>
               <p className="text-[11px] text-stone-600 leading-relaxed">
-                Dispatched in 24–48 hours via Bluedart, Delhivery, DTDC, and Speed Post. Tracked air cargo via DHL/FedEx worldwide.
+                Dispatched in 24-48 hours via Bluedart, Delhivery, DTDC, and Speed Post. Tracked air cargo via DHL/FedEx worldwide.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-[11px]">
@@ -459,7 +466,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                   <span>48-Hour Unboxing Defect Guarantee</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-stone-700">
-                  <span className="text-xs">💰</span>
+                  <FileText className="w-3.5 h-3.5 text-[#9B332C] shrink-0" />
                   <button 
                     type="button" 
                     onClick={() => openPolicyModal('privacy')}
@@ -690,6 +697,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
       {/* Lightbox Image Zoom Modal */}
       {isZoomOpen && (
         <div 
+          id="product-zoom-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Product Image Zoom Lightbox"
           onClick={() => setIsZoomOpen(false)}
           className="fixed inset-0 z-50 bg-black/90 p-4 sm:p-8 flex items-center justify-center animate-fade-in cursor-zoom-out"
         >
@@ -707,7 +718,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
               const target = e.currentTarget as HTMLImageElement;
               if (!target.dataset.fallbackTried) {
                 target.dataset.fallbackTried = 'true';
-                target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
               }
             }}
           />

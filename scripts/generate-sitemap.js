@@ -42,6 +42,13 @@ function escapeXml(unsafe) {
   });
 }
 
+function toAbsoluteImageUrl(img) {
+  if (!img) return null;
+  if (img.startsWith('http://') || img.startsWith('https://')) return img;
+  const clean = String(img).replace(/^(\.|\/)+/, '');
+  return `${BASE_URL}/${clean}`;
+}
+
 function extractQuotedField(text, fieldName) {
   const dq = text.match(new RegExp(`${fieldName}:\\s*"([^"]+)"`));
   if (dq) return dq[1];
@@ -139,7 +146,7 @@ function generateSitemapXml() {
     xml += `    <changefreq>weekly</changefreq>\n`;
     xml += `    <priority>0.85</priority>\n`;
     if (cat.image) {
-      const imgUrl = cat.image.startsWith('http') ? cat.image : `${BASE_URL}/${cat.image}`;
+      const imgUrl = toAbsoluteImageUrl(cat.image);
       xml += '    <image:image>\n';
       xml += `      <image:loc>${escapeXml(imgUrl)}</image:loc>\n`;
       xml += `      <image:title>${escapeXml(cat.name)}</image:title>\n`;
@@ -156,7 +163,7 @@ function generateSitemapXml() {
     xml += `    <changefreq>weekly</changefreq>\n`;
     xml += `    <priority>0.80</priority>\n`;
     if (prod.image) {
-      const imgUrl = prod.image.startsWith('http') ? prod.image : `${BASE_URL}/${prod.image}`;
+      const imgUrl = toAbsoluteImageUrl(prod.image);
       xml += '    <image:image>\n';
       xml += `      <image:loc>${escapeXml(imgUrl)}</image:loc>\n`;
       xml += `      <image:title>${escapeXml(prod.name)}</image:title>\n`;
@@ -173,8 +180,9 @@ function generateSitemapXml() {
     xml += `    <changefreq>monthly</changefreq>\n`;
     xml += `    <priority>0.75</priority>\n`;
     if (art.image) {
+      const imgUrl = toAbsoluteImageUrl(art.image);
       xml += '    <image:image>\n';
-      xml += `      <image:loc>${escapeXml(art.image)}</image:loc>\n`;
+      xml += `      <image:loc>${escapeXml(imgUrl)}</image:loc>\n`;
       xml += `      <image:title>${escapeXml(art.title)}</image:title>\n`;
       xml += '    </image:image>\n';
     }

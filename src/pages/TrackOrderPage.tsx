@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Search, Package, CheckCircle2, Clock, Truck, ShieldCheck, MapPin, AlertCircle } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { resolveProductImage } from '../utils/imageUtils';
+import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 export const TrackOrderPage: React.FC = () => {
+  usePageSEO(DEFAULT_SEO.trackOrder);
   const [trackingNumber, setTrackingNumber] = useState('');
   const [hasSearched, setHasSearched] = useState(false);
 
@@ -14,17 +17,24 @@ export const TrackOrderPage: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-12">
-      <div className="text-center space-y-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-widest shadow-sm">
-          <Truck className="w-3.5 h-3.5 text-[#9B332C]" />
-          <span>Real-Time Production &amp; Shipment Tracking</span>
+      <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm text-center">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: `url('${resolveProductImage('/products/vanity-trio-meadow-green.jpg')}')` }}
+        />
+        <div className="absolute inset-0 bg-[#FAF0EB]/85" />
+        <div className="relative z-10 max-w-2xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-widest shadow-sm">
+            <Truck className="w-3.5 h-3.5 text-[#9B332C]" />
+            <span>Real-Time Production &amp; Shipment Tracking</span>
+          </div>
+          <h1 className="font-playfair text-3xl sm:text-4xl font-bold tracking-tight text-[#241A16]">
+            Track Your Royal Consignment
+          </h1>
+          <p className="text-stone-700 font-royal-body text-base max-w-xl mx-auto">
+            Enter your Ramam Order Reference (e.g. <code>RAMAM-2026-8941</code>) or DHL/FedEx Air Waybill tracking code.
+          </p>
         </div>
-        <h1 className="font-playfair text-3xl sm:text-4xl font-bold tracking-tight text-[#241A16]">
-          Track Your Royal Consignment
-        </h1>
-        <p className="text-stone-600 font-royal-body text-base max-w-xl mx-auto">
-          Enter your Ramam Order Reference (e.g. <code>RAMAM-2026-8941</code>) or DHL/FedEx Air Waybill tracking code.
-        </p>
       </div>
 
       {/* Search Input Box */}

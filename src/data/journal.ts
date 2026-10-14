@@ -9,7 +9,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     readTime: '6 min read',
     publishedDate: 'September 2026',
     excerpt: 'Deep in the desert artisan settlements of Bagru, master printers combine riverbed mud, gum, and biological fermentation to achieve immortal shades of indigo blue.',
-    coverImage: './products/duffle-indigo.jpg',
+    coverImage: '/products/duffle-indigo.jpg',
     author: {
       name: 'Ramam Textiles Craft Archive',
       role: 'Textile Research Desk'
@@ -20,7 +20,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
         body: 'Dabu is an ancient mud-resist hand-block printing technique practiced for centuries in the arid soils of Rajasthan. The resist paste is a carefully proportioned mixture of clay collected from local dried riverbeds (Kaali Mitti), calcium hydroxide (Chuna), and natural tree gum (Gond). Applied with heavy carved woodblocks onto unbleached cotton, it shields specific design sections from subsequent dyeing.'
       },
       {
-        quote: 'In authentic Dabu, the subtle imperfections, veins of mud crackle, and variations in indigo penetration are not flaws—they are the living signature of handmade textile heritage.',
+        quote: 'In authentic Dabu, the subtle imperfections, veins of mud crackle, and variations in indigo penetration are not flaws: they are the living signature of handmade textile heritage.',
         body: 'Once stamped, fine wood sawdust is sprinkled across the wet mud paste to prevent smudging during sun drying. Under the intense Rajasthani sun, the clay solidifies into an impervious barrier.'
       },
       {
@@ -42,7 +42,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     readTime: '8 min read',
     publishedDate: 'September 2026',
     excerpt: 'Understand thread counts, GSM weights, shrinkage tolerances, and dye fastness when sourcing Jaipur handloom cottons for commercial collections.',
-    coverImage: './products/duffle-kantha-patchwork.jpg',
+    coverImage: '/products/duffle-kantha-patchwork.jpg',
     author: {
       name: 'Ramam Textiles Technical Guild',
       role: 'Quality & Sourcing Specialist'
@@ -71,7 +71,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     readTime: '7 min read',
     publishedDate: 'September 2026',
     excerpt: 'Step-by-step roadmap from initial sketches and tech packs to custom wooden block carving, sampling, bulk quality control, and worldwide customs clearance.',
-    coverImage: './products/tote-sanganeri-ruffle-lifestyle.jpg',
+    coverImage: '/products/tote-sanganeri-ruffle-lifestyle.jpg',
     author: {
       name: 'Ramam Textiles Production Desk',
       role: 'Export Director'
@@ -79,7 +79,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     contentSections: [
       {
         heading: '1. Converting Tech Packs to Heritage Craft',
-        body: 'Launching a custom textile line begins with translating design intent—measurements, grading scales, and seam allowances—into production parameters suited for artisanal craftsmanship. Master block carvers can turn vector artwork into hand-carved sheesham woodblocks in just 5-7 working days.'
+        body: 'Launching a custom textile line begins with translating design intent (measurements, grading scales, and seam allowances) into production parameters suited for artisanal craftsmanship. Master block carvers can turn vector artwork into hand-carved sheesham woodblocks in just 5-7 working days.'
       },
       {
         heading: '2. Custom Branding & Trim Integration',

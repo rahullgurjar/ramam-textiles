@@ -2,21 +2,23 @@ import React from 'react';
 import { Sparkles, Award, ShieldCheck, Heart, ArrowRight, Building2, MapPin, ExternalLink } from 'lucide-react';
 import { InstagramIcon } from '../components/InstagramIcon';
 import { resolveProductImage } from '../utils/imageUtils';
+import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
+  usePageSEO(DEFAULT_SEO.about);
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-royal-body">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] rounded-[32px] p-8 sm:p-14 relative overflow-hidden shadow-sm border border-[#D4AF37]/40">
+      <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-14 relative overflow-hidden shadow-sm border border-[#D4AF37]/40">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
+          style={{ backgroundImage: `url('${resolveProductImage('/products/vanity-playing-cards.jpg')}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF0EB]/95 via-[#FAF0EB]/80 to-transparent" />
+        <div className="absolute inset-0 bg-[#FAF0EB]/85" />
 
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-widest">
@@ -68,7 +70,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* Instagram Studio Showcase Card */}
-      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/40 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm relative overflow-hidden">
+      <div className="bg-[#FAF0EB] text-[#241A16] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/40 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm relative overflow-hidden">
         <div className="space-y-3 max-w-xl relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-wider">
             <InstagramIcon className="w-3.5 h-3.5 text-[#9B332C]" />

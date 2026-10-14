@@ -19,6 +19,9 @@ import { useApp } from '../context/AppContext';
 import { InstagramIcon } from './InstagramIcon';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 import { submitToGoogleSheet } from '../utils/googleScript';
+import { validateComprehensiveLead } from '../utils/formValidation';
+import { CountrySelect } from './CountrySelect';
+import { PhoneInputWithCountry } from './PhoneInputWithCountry';
 
 export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = ({ onNavigate }) => {
   const { 
@@ -36,6 +39,8 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
   const [companyName, setCompanyName] = useState('');
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('India');
+  const [countryCode, setCountryCode] = useState('+91');
+  const [phone, setPhone] = useState('');
   const [notes, setNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rfqSubmittedId, setRfqSubmittedId] = useState<string | null>(null);
@@ -58,8 +63,18 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
 
   const handleSubmitOfficialRfq = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contactName || !email) {
-      showToast('Please fill in your Name and Official Email address.', 'error');
+
+    const validation = validateComprehensiveLead({
+      name: contactName,
+      email,
+      phone: phone.trim() ? phone : undefined,
+      countryCode: phone.trim() ? countryCode : undefined,
+      company: companyName,
+      message: notes,
+    });
+
+    if (!validation.isValid) {
+      showToast(validation.error || 'Please provide genuine contact details.', 'error');
       return;
     }
 
@@ -71,6 +86,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
       name: contactName,
       company: companyName,
       email,
+      phone: phone.trim() ? `${countryCode} ${phone}` : 'N/A',
       country,
       notes,
       totalQuantity,
@@ -103,18 +119,24 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 animate-fade-in font-royal-body">
+    <div 
+      id="inquiry-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="inquiry-drawer-title"
+      className="fixed inset-0 z-50 overflow-hidden bg-black/60 animate-fade-in font-royal-body"
+    >
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
         <div className="w-screen max-w-xl bg-[#FAF5EE] shadow-2xl flex flex-col justify-between overflow-hidden border-l border-[#D4AF37]/35">
           
           {/* Header */}
-          <div className="p-5 bg-gradient-to-r from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] border-b border-[#D4AF37]/35 flex items-center justify-between shadow-sm">
+          <div className="p-5 bg-[#FAF0EB] text-[#241A16] border-b border-[#D4AF37]/35 flex items-center justify-between shadow-sm">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-[#FAF0EB] border border-[#EACAC0] flex items-center justify-center shadow-sm">
                 <ShoppingBag className="w-5 h-5 text-[#9B332C]" />
               </div>
               <div>
-                <h3 className="font-royal-title text-base font-bold text-[#241A16] uppercase tracking-wider flex items-center gap-1.5">
+                <h3 id="inquiry-drawer-title" className="font-royal-title text-base font-bold text-[#241A16] uppercase tracking-wider flex items-center gap-1.5">
                   <span>Wholesale RFQ Basket</span>
                 </h3>
                 <span className="text-[11px] text-stone-600 font-medium">
@@ -149,7 +171,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                     Wholesale RFQ #{rfqSubmittedId}
                   </h4>
                   <p className="text-xs text-stone-600 max-w-sm mx-auto leading-relaxed font-light">
-                    Thank you, <strong>{contactName}</strong> ({companyName || 'B2B Client'}). Our export desk in Jaipur will review your items and follow up within 4–6 business hours.
+                    Thank you, <strong>{contactName}</strong> ({companyName || 'B2B Client'}). Our export desk in Jaipur will review your items and follow up within 4-6 business hours.
                   </p>
                 </div>
 
@@ -261,7 +283,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                             const target = e.currentTarget as HTMLImageElement;
                             if (!target.dataset.fallbackTried) {
                               target.dataset.fallbackTried = 'true';
-                              target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                              target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
                             }
                           }}
                         />
@@ -366,25 +388,23 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-bold text-[#241A16] uppercase mb-0.5 font-royal-title">
-                      Destination Country
-                    </label>
-                    <select 
-                      value={country} 
-                      onChange={e => setCountry(e.target.value)}
-                      className="w-full px-3 py-2 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
-                    >
-                      <option value="India">India</option>
-                      <option value="United States">United States</option>
-                      <option value="United Kingdom">United Kingdom</option>
-                      <option value="United Arab Emirates">United Arab Emirates</option>
-                      <option value="Australia">Australia</option>
-                      <option value="Germany">Germany</option>
-                      <option value="France">France</option>
-                      <option value="Italy">Italy</option>
-                      <option value="Canada">Canada</option>
-                      <option value="Other / Global">Other / Global</option>
-                    </select>
+                    <CountrySelect
+                      value={country}
+                      onChange={setCountry}
+                      label="Destination Country *"
+                      selectClassName="bg-[#F5EDE1]"
+                    />
+                  </div>
+
+                  <div>
+                    <PhoneInputWithCountry
+                      phone={phone}
+                      countryCode={countryCode}
+                      onPhoneChange={setPhone}
+                      onCountryCodeChange={setCountryCode}
+                      required={false}
+                      label="WhatsApp / Phone Number (Optional - for quotation alerts)"
+                    />
                   </div>
 
                   <div>
@@ -402,7 +422,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
 
                   {/* Milestone Policy Callout */}
                   <div className="p-2.5 rounded-xl bg-[#FAF0EB] border border-[#EACAC0] text-[11px] text-[#241A16] flex items-center justify-between">
-                    <span className="font-semibold text-stone-700">💰 60% Advance • 40% Pre-Dispatch (WhatsApp Video Proof)</span>
+                    <span className="font-semibold text-stone-700">60% Advance • 40% Pre-Dispatch (WhatsApp Video Proof)</span>
                     <button 
                       type="button" 
                       onClick={() => openPolicyModal('privacy')} 

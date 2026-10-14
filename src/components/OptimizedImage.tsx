@@ -14,7 +14,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   alt,
   className = '',
   priority = false,
-  fallbackSrc = './products/duffle-kantha-patchwork.jpg',
+  fallbackSrc = '/products/duffle-kantha-patchwork.jpg',
   onError,
   ...rest
 }) => {

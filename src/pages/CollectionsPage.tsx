@@ -3,26 +3,35 @@ import { ArrowRight, Sparkles, ChevronRight, Compass } from 'lucide-react';
 import { COLLECTIONS } from '../data/collections';
 import { PRODUCTS } from '../data/products';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface CollectionsPageProps {
   onNavigate: (path: string) => void;
 }
 
 export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) => {
+  usePageSEO(DEFAULT_SEO.collections);
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 font-royal-body">
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-widest shadow-sm">
-          <Sparkles className="w-3.5 h-3.5 text-[#9B332C]" />
-          <span>Jaipur Heritage Curations</span>
+      {/* Header Banner */}
+      <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm text-center">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: `url('${resolveProductImage('/products/vanity-trio-turquoise.jpg')}')` }}
+        />
+        <div className="absolute inset-0 bg-[#FAF0EB]/85" />
+        <div className="relative z-10 max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-widest shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#9B332C]" />
+            <span>Jaipur Heritage Curations</span>
+          </div>
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16]">
+            Artisan Craft Collections
+          </h1>
+          <p className="text-stone-700 font-royal-body text-base sm:text-lg leading-relaxed">
+            Explore our thematic design chapters rooted in centuries-old Rajasthani royal history, natural indigo mud resist, and luxury cotton tailoring.
+          </p>
         </div>
-        <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16]">
-          Artisan Craft Collections
-        </h1>
-        <p className="text-stone-600 font-royal-body text-base sm:text-lg leading-relaxed">
-          Explore our thematic design chapters rooted in centuries-old Rajasthani royal history, natural indigo mud resist, and luxury cotton tailoring.
-        </p>
       </div>
 
       {/* Collections List */}
@@ -51,7 +60,7 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
                         const target = e.currentTarget as HTMLImageElement;
                         if (!target.dataset.fallbackTried) {
                           target.dataset.fallbackTried = 'true';
-                          target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                          target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
                         }
                       }}
                     />
@@ -75,7 +84,7 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
                       ? 'bg-[#ECFDF5] text-[#047857] border-[#A7F3D0]'
                       : 'bg-[#FFFBEB] text-[#B45309] border-[#FDE68A]'
                   }`}>
-                    ✦ Heritage Chapter 0{idx + 1} • {collection.season}
+                    Heritage Chapter 0{idx + 1} • {collection.season}
                   </span>
                 </div>
 
@@ -122,7 +131,7 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
                           : 'bg-[#ECFDF5] text-[#065F46] border-[#A7F3D0]'
                       }`}
                     >
-                      ✦ {tag}
+                      {tag}
                     </span>
                   ))}
                 </div>

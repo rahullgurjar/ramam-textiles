@@ -48,7 +48,13 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 sm:p-6 md:p-12 animate-fade-in flex items-start justify-center font-royal-body">
+    <div 
+      id="search-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Search Catalog Modal"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 sm:p-6 md:p-12 animate-fade-in flex items-start justify-center font-royal-body"
+    >
       <div className="w-full max-w-3xl bg-[#FAF5EE] rounded-3xl shadow-2xl border border-[#D4AF37]/45 overflow-hidden flex flex-col max-h-[85vh]">
         
         {/* Search Input Bar */}
@@ -161,7 +167,7 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
                           const target = e.currentTarget as HTMLImageElement;
                           if (!target.dataset.fallbackTried) {
                             target.dataset.fallbackTried = 'true';
-                            target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                            target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
                           }
                         }}
                       />

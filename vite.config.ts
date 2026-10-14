@@ -1,3 +1,4 @@
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteCompression from 'vite-plugin-compression';
@@ -20,10 +21,29 @@ export default defineConfig({
       deleteOriginFile: false
     })
   ],
-  base: './',
+  base: '/',
+  esbuild: {
+    // Turn off debug mode in production bundles (strips console and debuggers)
+    drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
+  },
   server: {
     port: 3000,
     open: false,
+    cors: false,
+    headers: {
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'SAMEORIGIN',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+    },
+  },
+  preview: {
+    port: 3000,
+    cors: false,
+    headers: {
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'SAMEORIGIN',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+    },
   },
   build: {
     outDir: 'dist',

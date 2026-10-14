@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { X, Lock, Unlock, ShieldCheck, Building2, Mail, Globe2, Sparkles, CheckCircle2 } from 'lucide-react';
+import { X, Lock, Unlock, ShieldCheck, Building2, Mail, Globe2, Sparkles, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { submitToGoogleSheet } from '../utils/googleScript';
+import { validateCompanyName, validateEmailAddress } from '../utils/formValidation';
+import { CountrySelect } from './CountrySelect';
 
 interface B2BPricingUnlockModalProps {
   isOpen: boolean;
@@ -8,17 +11,42 @@ interface B2BPricingUnlockModalProps {
 }
 
 export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ isOpen, onClose }) => {
-  const { unlockB2BPricing, isB2BPriceUnlocked, buyerProfile } = useApp();
+  const { unlockB2BPricing, isB2BPriceUnlocked, buyerProfile, showToast } = useApp();
   const [companyName, setCompanyName] = useState(buyerProfile?.companyName || '');
   const [email, setEmail] = useState(buyerProfile?.email || '');
   const [country, setCountry] = useState(buyerProfile?.country || 'India');
   const [buyerType, setBuyerType] = useState('Boutique Owner');
+  const [formError, setFormError] = useState('');
 
   if (!isOpen) return null;
 
   const handleUnlock = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!companyName || !email) return;
+
+    const compRes = validateCompanyName(companyName);
+    if (!compRes.isValid || !companyName.trim()) {
+      const err = compRes.error || 'Please enter your genuine company or boutique name.';
+      setFormError(err);
+      showToast(err, 'error');
+      return;
+    }
+
+    const emailRes = validateEmailAddress(email);
+    if (!emailRes.isValid) {
+      const err = emailRes.error || 'Please provide your official business email.';
+      setFormError(err);
+      showToast(err, 'error');
+      return;
+    }
+
+    setFormError('');
+    submitToGoogleSheet({
+      formType: 'B2B Wholesale Price Tier Unlock',
+      company: companyName,
+      email,
+      country,
+      buyerType,
+    });
 
     unlockB2BPricing({
       companyName,
@@ -29,10 +57,16 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-center justify-center animate-fade-in">
+    <div 
+      id="b2b-pricing-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="b2b-pricing-modal-title"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-center justify-center animate-fade-in"
+    >
       <div className="w-full max-w-lg bg-[#FAF5EE] rounded-3xl shadow-2xl border border-[#D4AF37]/50 overflow-hidden text-[#241A16]">
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-6 relative border-b border-[#D4AF37]/35 shadow-sm">
+        <div className="bg-[#FAF0EB] text-[#241A16] p-6 relative border-b border-[#D4AF37]/35 shadow-sm">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 p-2 text-stone-600 hover:text-white rounded-full hover:bg-[#9B332C] transition-colors"
@@ -45,7 +79,7 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
             <span>Jaipur B2B Wholesale Portal</span>
           </div>
 
-          <h3 className="font-playfair text-2xl text-[#241A16] font-extrabold tracking-wide">
+          <h3 id="b2b-pricing-modal-title" className="font-playfair text-2xl text-[#241A16] font-extrabold tracking-wide">
             {isB2BPriceUnlocked ? 'B2B Wholesale Access Active' : 'Unlock Wholesale Tier Pricing'}
           </h3>
           <p className="text-xs text-stone-600 mt-1 font-royal-body">
@@ -75,6 +109,12 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
           </div>
         ) : (
           <form onSubmit={handleUnlock} className="p-6 space-y-4 font-royal-body">
+            {formError && (
+              <div className="p-3 bg-red-50 border border-red-300 rounded-xl text-xs text-red-800 flex items-start gap-2">
+                <AlertTriangle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                <span>{formError}</span>
+              </div>
+            )}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
                 Company / Boutique Name *
@@ -86,7 +126,10 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
                   required
                   placeholder="e.g. Amber & Indigo Boutique"
                   value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
+                  onChange={(e) => {
+                    setCompanyName(e.target.value);
+                    if (formError) setFormError('');
+                  }}
                   className="w-full pl-10 pr-4 py-2.5 bg-[#F5EDE1] rounded-xl border border-[#D4AF37]/35 text-xs focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE] text-[#241A16]"
                 />
               </div>
@@ -101,9 +144,12 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
                 <input
                   type="email"
                   required
-                  placeholder="buyer@domain.com"
+                  placeholder="buyer@amberindigo.com"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (formError) setFormError('');
+                  }}
                   className="w-full pl-10 pr-4 py-2.5 bg-[#F5EDE1] rounded-xl border border-[#D4AF37]/35 text-xs focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE] text-[#241A16]"
                 />
               </div>
@@ -129,19 +175,12 @@ export const B2BPricingUnlockModal: React.FC<B2BPricingUnlockModalProps> = ({ is
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
-                  Country
-                </label>
-                <div className="relative">
-                  <Globe2 className="w-4 h-4 text-[#9B332C] absolute left-3 top-3" />
-                  <input
-                    type="text"
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    placeholder="e.g. USA, UK"
-                    className="w-full pl-9 pr-3 py-2.5 bg-[#F5EDE1] rounded-xl border border-[#D4AF37]/35 text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
-                  />
-                </div>
+                <CountrySelect
+                  value={country}
+                  onChange={setCountry}
+                  label="Country *"
+                  selectClassName="bg-[#F5EDE1]"
+                />
               </div>
             </div>
 

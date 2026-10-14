@@ -4,6 +4,8 @@ import {
   AlertCircle, MessageSquare, Mail, ExternalLink, ArrowRight
 } from 'lucide-react';
 import { InstagramIcon } from '../components/InstagramIcon';
+import { resolveProductImage } from '../utils/imageUtils';
+import { setPageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface LegalPageProps {
   initialTab?: 'privacy' | 'terms' | 'shipping' | 'returns';
@@ -24,20 +26,35 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
   }, [initialTab]);
 
   useEffect(() => {
-    const titles = {
+    const titles: Record<string, string> = {
       privacy: 'Privacy Policy | Ramam Textiles Jaipur',
       shipping: 'Shipping & Delivery Policy | Ramam Textiles Jaipur',
       terms: 'Terms & Conditions | Ramam Textiles Jaipur',
       returns: 'Returns & Refunds Policy | Ramam Textiles Jaipur',
     };
-    document.title = titles[activeTab] || 'Customer Policies | Ramam Textiles Jaipur';
+    const descriptions: Record<string, string> = {
+      privacy: 'Learn how Ramam Textiles protects and encrypts client data, RFQ submissions, and international billing credentials.',
+      shipping: 'Explore Pan-India doorstep delivery to 19,000+ PIN codes and worldwide express air freight terms by Ramam Textiles Jaipur.',
+      terms: 'Review wholesale B2B manufacturing terms, sample-first approval safeguards, and 60% advance milestone guidelines.',
+      returns: 'Learn about our 48-hour transit defect guarantee, fabric exchange procedures, and unboxing verification rules.',
+    };
+    setPageSEO({
+      title: titles[activeTab] || DEFAULT_SEO.legal.title,
+      description: descriptions[activeTab] || DEFAULT_SEO.legal.description,
+      path: '/legal',
+    });
   }, [activeTab]);
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10 font-royal-body">
       
       {/* Header Banner */}
-      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
+      <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: `url('${resolveProductImage('/products/vanity-trio-pink-paisley.jpg')}')` }}
+        />
+        <div className="absolute inset-0 bg-[#FAF0EB]/85" />
         <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-widest shadow-sm">
@@ -120,7 +137,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
               <div className="grid gap-3 sm:grid-cols-2 text-xs text-[#241A16]">
                 <div className="rounded-xl bg-white p-4 border border-[#FBCFE8] space-y-1.5 shadow-xs">
                   <p className="font-bold text-[#831843] flex items-center gap-1.5 text-xs">
-                    <span>💰</span> 60% Advance Payment Policy
+                    60% Advance Payment Policy
                   </p>
                   <p className="text-stone-700 leading-relaxed">
                     A <strong>60% advance payment</strong> is mandatory to confirm your order and initiate custom artisan crafting and batch production. The remaining <strong>40% balance</strong> is payable prior to courier dispatch after we share video proof of the finished batch.
@@ -129,7 +146,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
 
                 <div className="rounded-xl bg-white p-4 border border-[#FBCFE8] space-y-1.5 shadow-xs">
                   <p className="font-bold text-[#831843] flex items-center gap-1.5 text-xs">
-                    <span>📦</span> Sample First Approval Process
+                    Sample First Approval Process
                   </p>
                   <p className="text-stone-700 leading-relaxed">
                     For bulk orders, we send you a <strong>sample piece first</strong>. Only once you inspect and <strong>confirm/approve the sample</strong> do our artisans begin manufacturing your full order.
@@ -138,7 +155,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
 
                 <div className="rounded-xl bg-white p-4 border border-[#FBCFE8] space-y-1.5 shadow-xs">
                   <p className="font-bold text-[#831843] flex items-center gap-1.5 text-xs">
-                    <span>⚖️</span> Sample vs. Bulk Orders
+                    Sample vs. Bulk Orders
                   </p>
                   <p className="text-stone-700 leading-relaxed">
                     Sample orders are <strong>not the same as bulk orders</strong>. Unit pricing, production timelines, and customization specifications depend on the specific product category.
@@ -147,7 +164,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
 
                 <div className="rounded-xl bg-white p-4 border border-[#FBCFE8] space-y-1.5 shadow-xs">
                   <p className="font-bold text-[#831843] flex items-center gap-1.5 text-xs">
-                    <span>🚫</span> Bulk Return &amp; Refund Policy
+                    Bulk Return &amp; Refund Policy
                   </p>
                   <p className="text-stone-700 leading-relaxed">
                     Strictly <strong>NO returns or refunds on bulk orders</strong> because production commences only after sample approval. However, if any piece is verified to be <strong>defective or damaged</strong> upon delivery, we replace or credit it immediately.
@@ -282,7 +299,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
                     Ready Stock Retail Orders
                   </p>
                   <p className="text-stone-700 leading-relaxed">
-                    Dispatched within <strong>24–48 hours</strong> from our Jaipur atelier. Delivery takes <strong>3–5 business days</strong> depending on destination postal code.
+                    Dispatched within <strong>24-48 hours</strong> from our Jaipur atelier. Delivery takes <strong>3-5 business days</strong> depending on destination postal code.
                   </p>
                 </div>
 
@@ -517,7 +534,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
                 4. Refund Processing Time
               </h3>
               <p className="text-stone-700 text-xs sm:text-sm">
-                Approved refunds for verified defective pieces are initiated within <strong>24–48 hours</strong> and credited back to your original payment mode or UPI within <strong>3–5 working days</strong>.
+                Approved refunds for verified defective pieces are initiated within <strong>24-48 hours</strong> and credited back to your original payment mode or UPI within <strong>3-5 working days</strong>.
               </p>
             </section>
           </div>
@@ -528,7 +545,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
       {/* Footer Support Banner */}
       <div className="bg-[#FAF5EE] rounded-2xl border border-[#D4AF37]/35 p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-700">
         <div className="flex items-center gap-2">
-          <span>💬</span>
+          <MessageSquare className="w-4 h-4 text-[#9B332C]" />
           <span>
             Need policy clarification or custom contract assistance? Talk directly with our Jaipur Export Desk:
           </span>

@@ -1,25 +1,103 @@
 /**
- * Google Apps Script Webhook Integration
- * Endpoint: https://script.google.com/macros/s/AKfycbyVKY1Ngb3tAY9rY463syrZ2gh_zWq5ZRUYjXQsucx-b8tXRJKg7VV3KY39b5u-taUa/exec
+ * RAMAM TEXTILES: SECURE GOOGLE SHEETS WEBHOOK INTEGRATION
  * 
- * Automatically captures customer inquiries, bulk order quotes, and contact forms
- * directly into the linked Google Sheets document.
+ * Features:
+ * 1. Automatic Input Sanitization (Strips XSS and neutralizes formula injection)
+ * 2. Rate Limiting Protection (Prevents automated spam floods & quota exhaustion)
+ * 3. Secure Fallback & Environment Resolution
+ * 4. Protected Storage (Restricts runtime URL tampering in production)
  */
 
-export const GOOGLE_SCRIPT_URL =
-  (typeof window !== 'undefined' && (window as any).GOOGLE_SCRIPT_URL) ||
-  'https://script.google.com/macros/s/AKfycbyVKY1Ngb3tAY9rY463syrZ2gh_zWq5ZRUYjXQsucx-b8tXRJKg7VV3KY39b5u-taUa/exec';
+import { sanitizeFormPayload } from './securitySanitizer';
+import { checkRateLimit, recordRateLimitEvent, RateLimitCheckResult } from './rateLimiter';
 
-export async function submitToGoogleSheet(data: Record<string, any>): Promise<boolean> {
+const DEFAULT_GOOGLE_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbz5j4RS8gNobRrHVb0l9hsJylHisj9MjJFpJzIx7pu4r3z0x7D7Dl8DORT_pI2y3g7X/exec';
+
+/**
+ * Validates whether a URL looks like an authentic Google Apps Script web app endpoint.
+ */
+function isValidGoogleScriptUrl(url: string): boolean {
+  if (!url || typeof url !== 'string') return false;
+  return url.startsWith('https://script.google.com/macros/s/') && url.endsWith('/exec');
+}
+
+/**
+ * Returns the active Google Apps Script Web App URL with resolution priority:
+ * 1. Vite environment variable (VITE_GOOGLE_SCRIPT_URL)
+ * 2. Local storage override (ENABLED ONLY IN LOCAL DEV ENVIRONMENT to prevent production hijacking)
+ * 3. Default fallback endpoint
+ */
+export function getGoogleScriptUrl(): string {
+  // Only allow localStorage overrides in local development mode
+  if (typeof window !== 'undefined' && (import.meta as any)?.env?.DEV) {
+    try {
+      const localOverride = localStorage.getItem('RAMAM_GOOGLE_SCRIPT_URL');
+      if (localOverride && isValidGoogleScriptUrl(localOverride.trim())) {
+        return localOverride.trim();
+      }
+    } catch {
+      // Storage access disabled / private browsing
+    }
+  }
+
+  const envUrl = (import.meta as any)?.env?.VITE_GOOGLE_SCRIPT_URL;
+  if (envUrl && typeof envUrl === 'string' && isValidGoogleScriptUrl(envUrl.trim())) {
+    return envUrl.trim();
+  }
+
+  return DEFAULT_GOOGLE_SCRIPT_URL;
+}
+
+export const GOOGLE_SCRIPT_URL = getGoogleScriptUrl();
+
+/**
+ * Checks if the current client is allowed to submit a form under active rate limits.
+ */
+export function checkSubmissionRateLimit(): RateLimitCheckResult {
+  return checkRateLimit('form_submission');
+}
+
+export interface SubmissionResponse {
+  success: boolean;
+  rateLimited?: boolean;
+  error?: string;
+}
+
+/**
+ * Submits sanitized form data to the connected Google Spreadsheet.
+ * Automatically enforces rate limits and sanitizes against XSS and Formula Injection.
+ */
+export async function submitToGoogleSheet(data: Record<string, any>): Promise<SubmissionResponse> {
+  // 1. Rate Limit Check
+  const rateLimitStatus = checkRateLimit('form_submission');
+  if (!rateLimitStatus.allowed) {
+    return {
+      success: false,
+      rateLimited: true,
+      error: rateLimitStatus.reason || 'Please wait before submitting another inquiry.'
+    };
+  }
+
+  const url = getGoogleScriptUrl();
+
   try {
+    // 2. Security Sanitization (XSS and Formula Injection neutralization)
+    const sanitizedData = sanitizeFormPayload(data);
+
     const payload = {
-      ...data,
+      ...sanitizedData,
       timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-      sourceUrl: typeof window !== 'undefined' ? window.location.href : '',
+      submittedAtIso: new Date().toISOString(),
+      sourceUrl: typeof window !== 'undefined' ? window.location.href.split('#')[0] : '',
     };
 
+    // 3. Register submission event in rate limiter
+    recordRateLimitEvent('form_submission');
+
+    // 4. Transmission
     // Google Apps Script accepts text/plain to avoid preflight CORS restrictions in browsers
-    await fetch(GOOGLE_SCRIPT_URL, {
+    await fetch(url, {
       method: 'POST',
       mode: 'no-cors',
       headers: {
@@ -28,9 +106,11 @@ export async function submitToGoogleSheet(data: Record<string, any>): Promise<bo
       body: JSON.stringify(payload),
     });
 
-    return true;
+    return { success: true };
   } catch (err) {
-    console.warn('Google Apps Script submission notice:', err);
-    return false;
+    return {
+      success: false,
+      error: 'Inquiry transmission encountered a network issue. Please check your connection.'
+    };
   }
 }

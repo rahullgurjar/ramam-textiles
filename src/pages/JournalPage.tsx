@@ -2,26 +2,35 @@ import React from 'react';
 import { Sparkles, ArrowRight, BookOpen } from 'lucide-react';
 import { JOURNAL_POSTS } from '../data/journal';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface JournalPageProps {
   onNavigate: (path: string) => void;
 }
 
 export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
+  usePageSEO(DEFAULT_SEO.journal);
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-widest shadow-sm">
-          <BookOpen className="w-3.5 h-3.5 text-[#9B332C]" />
-          <span>Jaipur Craft Archive</span>
+      {/* Header Banner */}
+      <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm text-center">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: `url('${resolveProductImage('/products/tote-pink-ruffle.jpg')}')` }}
+        />
+        <div className="absolute inset-0 bg-[#FAF0EB]/85" />
+        <div className="relative z-10 max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-widest shadow-sm">
+            <BookOpen className="w-3.5 h-3.5 text-[#9B332C]" />
+            <span>Jaipur Craft Archive</span>
+          </div>
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16]">
+            The Textile Journal &amp; Sourcing Guide
+          </h1>
+          <p className="text-stone-700 font-royal-body text-base sm:text-lg leading-relaxed">
+            In-depth technical guides, craft chronicles, natural dye chemistry, and export masterclasses for fashion designers and boutique founders.
+          </p>
         </div>
-        <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16]">
-          The Textile Journal &amp; Sourcing Guide
-        </h1>
-        <p className="text-stone-600 font-royal-body text-base sm:text-lg leading-relaxed">
-          In-depth technical guides, craft chronicles, natural dye chemistry, and export masterclasses for fashion designers and boutique founders.
-        </p>
       </div>
 
       {/* Featured Lead Article */}
@@ -45,7 +54,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
                   const target = e.currentTarget as HTMLImageElement;
                   if (!target.dataset.fallbackTried) {
                     target.dataset.fallbackTried = 'true';
-                    target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                    target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
                   }
                 }}
               />
@@ -54,7 +63,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-2 text-xs font-mono">
               <span className="bg-[#FDF2F8] text-[#BE185D] border border-[#F472B6] px-2.5 py-0.5 rounded-full font-royal-title font-bold uppercase shadow-sm">
-                🪷 {JOURNAL_POSTS[0].category}
+                {JOURNAL_POSTS[0].category}
               </span>
               <span>•</span>
               <span className="font-royal-body text-stone-500">{JOURNAL_POSTS[0].readTime}</span>
@@ -96,7 +105,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
                     const target = e.currentTarget as HTMLImageElement;
                     if (!target.dataset.fallbackTried) {
                       target.dataset.fallbackTried = 'true';
-                      target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                      target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
                     }
                   }}
                 />

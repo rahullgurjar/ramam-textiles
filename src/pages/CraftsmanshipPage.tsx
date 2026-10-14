@@ -1,53 +1,62 @@
 import React from 'react';
 import { Sparkles, Award, Layers, ShieldCheck, ArrowRight, Heart, MapPin } from 'lucide-react';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface CraftsmanshipPageProps {
   onNavigate: (path: string) => void;
 }
 
 export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate }) => {
+  usePageSEO(DEFAULT_SEO.craftsmanship);
   const craftStages = [
     {
       title: '1. Hand Carving of Sheesham Wood Blocks',
       location: 'Sanganer & Jaipur Workshops',
       desc: 'Master wood-carvers (Kharod) spend up to 10 days hand-chiseling intricate botanical and royal lattice patterns into seasoned Sheesham and Teak wood. Each block includes pin-sized air escape holes to allow uniform dye absorption.',
-      image: './products/duffle-kantha-patchwork.jpg'
+      image: '/products/duffle-kantha-patchwork.jpg'
     },
     {
       title: '2. Preparation of Natural & Azo-Free Dyes',
       location: 'Bagru Natural Dye Gardens',
       desc: 'We brew natural mineral and herbal dyes using pomegranate rind (yellow), madder root / manjistha (rich brick red), turmeric, rusted iron filings with jaggery (deep black kashish), and fermented indigo leaves.',
-      image: './products/duffle-indigo.jpg'
+      image: '/products/duffle-indigo.jpg'
     },
     {
       title: '3. Bagru Dabu Mud-Resist Printing',
       location: 'Chhipa Artisan Courtyards, Bagru',
       desc: 'A thick paste of local clay (kali mitti), gum (beedan), and sawdust is applied to the fabric using wooden blocks. The sawdust prevents the clay from sticking, allowing the printed areas to resist deep natural indigo vat dyeing.',
-      image: './products/duffle-pink-botanical.jpg'
+      image: '/products/duffle-pink-botanical.jpg'
     },
     {
       title: '4. Sun-Drying & River Washing',
       location: 'Sanjarria Riverbed & Open Courtyards',
       desc: 'Dyed fabrics are laid out in the radiant Rajasthan sunlight for natural oxidation. Once the color fixes, fabrics undergo multiple cold-water rinses to remove the mud paste, revealing sharp, crisp natural contrasts.',
-      image: './products/tote-sanganeri-ruffle-lifestyle.jpg'
+      image: '/products/tote-sanganeri-ruffle-lifestyle.jpg'
     }
   ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-royal-body">
-      {/* Hero */}
-      <div className="text-center max-w-3xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-widest shadow-sm">
-          <Sparkles className="w-3.5 h-3.5 text-[#9B332C]" />
-          <span>Heritage of the Pink City</span>
+      {/* Hero Banner */}
+      <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm text-center">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: `url('${resolveProductImage('/products/duffle-pink-botanical.jpg')}')` }}
+        />
+        <div className="absolute inset-0 bg-[#FAF0EB]/85" />
+        <div className="relative z-10 max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-widest shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#9B332C]" />
+            <span>Heritage of the Pink City</span>
+          </div>
+          <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16]">
+            The Art of Jaipur Hand Block Printing
+          </h1>
+          <p className="text-stone-700 font-royal-body text-base sm:text-lg leading-relaxed">
+            An unhurried tradition passed down through generations of Chhipa master artisans in Bagru and Sanganer. Discover the living craft behind every Ramam Textiles creation.
+          </p>
         </div>
-        <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16]">
-          The Art of Jaipur Hand Block Printing
-        </h1>
-        <p className="text-stone-600 font-royal-body text-base sm:text-lg leading-relaxed">
-          An unhurried tradition passed down through generations of Chhipa master artisans in Bagru and Sanganer. Discover the living craft behind every Ramam Textiles creation.
-        </p>
       </div>
 
       {/* Craft Stages */}
@@ -81,7 +90,7 @@ export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate
                         const target = e.currentTarget as HTMLImageElement;
                         if (!target.dataset.fallbackTried) {
                           target.dataset.fallbackTried = 'true';
-                          target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                          target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
                         }
                       }}
                     />
@@ -99,7 +108,6 @@ export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate
                     ? 'bg-[#EFF6FF] text-[#1D4ED8] border-[#BFDBFE]' 
                     : 'bg-[#ECFDF5] text-[#047857] border-[#A7F3D0]'
                 }`}>
-                  <span>✦</span>
                   <span>{stage.location}</span>
                 </div>
                 <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16]">
@@ -115,7 +123,7 @@ export const CraftsmanshipPage: React.FC<CraftsmanshipPageProps> = ({ onNavigate
       </div>
 
       {/* Artisan Commitment Banner */}
-      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/40 text-center max-w-4xl mx-auto space-y-5 shadow-sm relative overflow-hidden">
+      <div className="bg-[#FAF0EB] text-[#241A16] p-8 sm:p-12 rounded-[32px] border border-[#D4AF37]/40 text-center max-w-4xl mx-auto space-y-5 shadow-sm relative overflow-hidden">
         <div className="w-14 h-14 bg-[#FAF0EB] border border-[#EACAC0] rounded-full flex items-center justify-center mx-auto text-[#9B332C] shadow-sm">
           <Heart className="w-7 h-7 text-[#9B332C] fill-[#9B332C]/20" />
         </div>

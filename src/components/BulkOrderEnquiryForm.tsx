@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { 
   Send, CheckCircle2, ShieldCheck,
-  RotateCcw, Check
+  RotateCcw, Check, MessageSquare, AlertTriangle
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { InstagramIcon } from './InstagramIcon';
 import { submitToGoogleSheet } from '../utils/googleScript';
+import { validateComprehensiveLead } from '../utils/formValidation';
+import { PhoneInputWithCountry } from './PhoneInputWithCountry';
 
 interface BulkOrderEnquiryFormProps {
   id?: string;
@@ -28,69 +30,10 @@ export const PRODUCT_OPTIONS = [
   'Assorted Mix Collection',
 ];
 
-interface CountryDialCode {
-  code: string;
-  dialCode: string;
-  flag: string;
-  name: string;
-}
-
-export const COUNTRY_DIAL_CODES: CountryDialCode[] = [
-  { code: 'IN', dialCode: '+91', flag: '🇮🇳', name: 'India' },
-  { code: 'US', dialCode: '+1', flag: '🇺🇸', name: 'USA / Canada' },
-  { code: 'GB', dialCode: '+44', flag: '🇬🇧', name: 'UK' },
-  { code: 'AU', dialCode: '+61', flag: '🇦🇺', name: 'Australia' },
-  { code: 'AE', dialCode: '+971', flag: '🇦🇪', name: 'UAE' },
-  { code: 'DE', dialCode: '+49', flag: '🇩🇪', name: 'Germany' },
-  { code: 'FR', dialCode: '+33', flag: '🇫🇷', name: 'France' },
-  { code: 'IT', dialCode: '+39', flag: '🇮🇹', name: 'Italy' },
-  { code: 'ES', dialCode: '+34', flag: '🇪🇸', name: 'Spain' },
-  { code: 'NL', dialCode: '+31', flag: '🇳🇱', name: 'Netherlands' },
-  { code: 'SG', dialCode: '+65', flag: '🇸🇬', name: 'Singapore' },
-  { code: 'JP', dialCode: '+81', flag: '🇯🇵', name: 'Japan' },
-  { code: 'NZ', dialCode: '+64', flag: '🇳🇿', name: 'New Zealand' },
-  { code: 'SA', dialCode: '+966', flag: '🇸🇦', name: 'Saudi Arabia' },
-  { code: 'CH', dialCode: '+41', flag: '🇨🇭', name: 'Switzerland' },
-  { code: 'SE', dialCode: '+46', flag: '🇸🇪', name: 'Sweden' },
-  { code: 'NO', dialCode: '+47', flag: '🇳🇴', name: 'Norway' },
-  { code: 'DK', dialCode: '+45', flag: '🇩🇰', name: 'Denmark' },
-  { code: 'IE', dialCode: '+353', flag: '🇮🇪', name: 'Ireland' },
-  { code: 'PT', dialCode: '+351', flag: '🇵🇹', name: 'Portugal' },
-  { code: 'ZA', dialCode: '+27', flag: '🇿🇦', name: 'South Africa' },
-  { code: 'BR', dialCode: '+55', flag: '🇧🇷', name: 'Brazil' },
-  { code: 'MX', dialCode: '+52', flag: '🇲🇽', name: 'Mexico' },
-  { code: 'MY', dialCode: '+60', flag: '🇲🇾', name: 'Malaysia' },
-  { code: 'ID', dialCode: '+62', flag: '🇮🇩', name: 'Indonesia' },
-  { code: 'TH', dialCode: '+66', flag: '🇹🇭', name: 'Thailand' },
-  { code: 'PH', dialCode: '+63', flag: '🇵🇭', name: 'Philippines' },
-  { code: 'KR', dialCode: '+82', flag: '🇰🇷', name: 'South Korea' },
-  { code: 'HK', dialCode: '+852', flag: '🇭🇰', name: 'Hong Kong' },
-  { code: 'TR', dialCode: '+90', flag: '🇹🇷', name: 'Turkey' },
-  { code: 'GR', dialCode: '+30', flag: '🇬🇷', name: 'Greece' },
-  { code: 'BE', dialCode: '+32', flag: '🇧🇪', name: 'Belgium' },
-  { code: 'AT', dialCode: '+43', flag: '🇦🇹', name: 'Austria' },
-  { code: 'PL', dialCode: '+48', flag: '🇵🇱', name: 'Poland' },
-  { code: 'QA', dialCode: '+974', flag: '🇶🇦', name: 'Qatar' },
-  { code: 'KW', dialCode: '+965', flag: '🇰🇼', name: 'Kuwait' },
-  { code: 'OM', dialCode: '+968', flag: '🇴🇲', name: 'Oman' },
-  { code: 'BH', dialCode: '+973', flag: '🇧🇭', name: 'Bahrain' },
-  { code: 'EG', dialCode: '+20', flag: '🇪🇬', name: 'Egypt' },
-  { code: 'NG', dialCode: '+234', flag: '🇳🇬', name: 'Nigeria' },
-  { code: 'KE', dialCode: '+254', flag: '🇰🇪', name: 'Kenya' },
-  { code: 'IL', dialCode: '+972', flag: '🇮🇱', name: 'Israel' },
-  { code: 'VN', dialCode: '+84', flag: '🇻🇳', name: 'Vietnam' },
-  { code: 'NP', dialCode: '+977', flag: '🇳🇵', name: 'Nepal' },
-  { code: 'LK', dialCode: '+94', flag: '🇱🇰', name: 'Sri Lanka' },
-  { code: 'BD', dialCode: '+880', flag: '🇧🇩', name: 'Bangladesh' },
-  { code: 'AR', dialCode: '+54', flag: '🇦🇷', name: 'Argentina' },
-  { code: 'CL', dialCode: '+56', flag: '🇨🇱', name: 'Chile' },
-  { code: 'CO', dialCode: '+57', flag: '🇨🇴', name: 'Colombia' },
-];
-
 const VOLUME_TIERS = [
-  { id: 'trial', label: '25 – 50 pcs', desc: 'Sample Trial / Boutique Starter' },
-  { id: 'boutique', label: '51 – 150 pcs', desc: 'Popular Boutique Batch' },
-  { id: 'wholesale', label: '151 – 500 pcs', desc: 'Commercial Wholesale Volume' },
+  { id: 'trial', label: '25 - 50 pcs', desc: 'Sample Trial / Boutique Starter' },
+  { id: 'boutique', label: '51 - 150 pcs', desc: 'Popular Boutique Batch' },
+  { id: 'wholesale', label: '151 - 500 pcs', desc: 'Commercial Wholesale Volume' },
   { id: 'volume', label: '500+ pcs', desc: 'Enterprise / Export Production' },
   { id: 'fabric_meters', label: '100+ Meters', desc: 'Fabric Rolls by Meter' },
 ];
@@ -125,16 +68,19 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
     }
     return ['Quilted Tote Bags', 'Vanity Boxes & Pouches'];
   });
-  const [volumeTier, setVolumeTier] = useState<string>('51 – 150 pcs');
+  const [volumeTier, setVolumeTier] = useState<string>('51 - 150 pcs');
   const [customizations, setCustomizations] = useState<string[]>(['tags', 'sample']);
   const [notes, setNotes] = useState('');
+  const [botHoneypot, setBotHoneypot] = useState('');
 
   // Submission Status
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [enquiryRefId, setEnquiryRefId] = useState('');
+  const [formError, setFormError] = useState<{ field?: string; message: string } | null>(null);
 
   const toggleProduct = (product: string) => {
+    if (formError?.field === 'products') setFormError(null);
     setSelectedProducts(prev => 
       prev.includes(product)
         ? (prev.length > 1 ? prev.filter(p => p !== product) : prev)
@@ -153,16 +99,33 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!fullName.trim() || !email.trim() || !address.trim() || !phone.trim()) {
-      showToast('Please fill in your name, email, phone number, and delivery address.', 'error');
+    // 1. Comprehensive Fake Details & Bot Detection
+    const validation = validateComprehensiveLead({
+      name: fullName,
+      email,
+      phone,
+      countryCode,
+      company: brandName,
+      address,
+      message: notes,
+      botHoneypot,
+    });
+
+    if (!validation.isValid) {
+      const err = validation.error || 'Please provide genuine contact details.';
+      setFormError({ field: validation.field, message: err });
+      showToast(err, 'error');
       return;
     }
 
     if (selectedProducts.length === 0) {
-      showToast('Please select at least one product of interest.', 'error');
+      const err = 'Please select at least one product of interest.';
+      setFormError({ field: 'products', message: err });
+      showToast(err, 'error');
       return;
     }
 
+    setFormError(null);
     setIsSubmitting(true);
 
     const generatedId = `RT-BULK-${Math.floor(10000 + Math.random() * 90000)}`;
@@ -207,7 +170,7 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-jaipur-jaali opacity-5 pointer-events-none rounded-tr-full" />
 
         {/* Section Header */}
-        <div className="p-6 sm:p-10 border-b border-[#D4AF37]/30 bg-gradient-to-r from-[#FAF0EB] via-[#FAF5EE] to-[#FAF0EB] relative">
+        <div className="p-6 sm:p-10 border-b border-[#D4AF37]/30 bg-[#FAF0EB] relative">
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF5EE] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-wider shadow-sm">
               <span className="w-2 h-2 rounded-full bg-[#9B332C] animate-pulse" />
@@ -316,7 +279,29 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
             /* =========================================================================
                ACTIVE INTERACTIVE FORM
                ========================================================================= */
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-8 relative">
+              {/* Visible Form Validation Error Message Banner */}
+              {formError && (
+                <div className="p-4 bg-red-50 border border-red-300 rounded-2xl text-xs text-red-800 flex items-start gap-3 shadow-sm animate-fade-in">
+                  <AlertTriangle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block font-bold">Please correct the following:</strong>
+                    <span>{formError.message}</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Bot Honeypot Trap (Completely hidden from real users, caught if filled by bots) */}
+              <div className="absolute opacity-0 pointer-events-none -z-50 h-0 w-0 overflow-hidden" tabIndex={-1} aria-hidden="true">
+                <input
+                  type="text"
+                  name="rt_website_fax_verification"
+                  value={botHoneypot}
+                  onChange={e => setBotHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
               
               {/* Step 1: Products of Interest (matching craftofpinkcity pill layout) */}
               <div className="space-y-3">
@@ -342,7 +327,7 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
                             : 'bg-white border border-[#D4AF37]/40 text-[#241A16] hover:border-[#B81D5B]/60 hover:text-[#B81D5B] hover:bg-[#FAF5EE]'
                         }`}
                       >
-                        <span className="font-bold">{isSelected ? '✓' : '+'}</span>
+                        <span className="font-bold flex items-center">{isSelected ? <Check className="w-3.5 h-3.5" /> : '+'}</span>
                         <span>{product}</span>
                       </button>
                     );
@@ -459,33 +444,12 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-[11px] font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1">
-                      WhatsApp / Phone Number *
-                    </label>
-                    <div className="flex rounded-xl border border-[#D4AF37]/35 bg-white overflow-hidden focus-within:border-[#9B332C] focus-within:ring-1 focus-within:ring-[#9B332C] transition-all">
-                      <select
-                        aria-label="Country Calling Code"
-                        value={countryCode}
-                        onChange={e => setCountryCode(e.target.value)}
-                        className="bg-[#FAF5EE] border-r border-[#D4AF37]/35 px-2.5 py-2.5 text-xs text-[#241A16] font-bold focus:outline-none cursor-pointer max-w-[105px] shrink-0"
-                      >
-                        {COUNTRY_DIAL_CODES.map(c => (
-                          <option key={`${c.code}-${c.dialCode}`} value={c.dialCode}>
-                            {c.flag} {c.dialCode} ({c.name})
-                          </option>
-                        ))}
-                      </select>
-                      <input
-                        type="tel"
-                        required
-                        placeholder={countryCode === '+91' ? 'e.g. 98765 43210' : 'e.g. 415 555 2671'}
-                        value={phone}
-                        onChange={e => setPhone(e.target.value)}
-                        className="flex-1 px-3 py-2.5 text-xs text-[#241A16] bg-transparent focus:outline-none"
-                      />
-                    </div>
-                  </div>
+                  <PhoneInputWithCountry
+                    phone={phone}
+                    countryCode={countryCode}
+                    onPhoneChange={setPhone}
+                    onCountryCodeChange={setCountryCode}
+                  />
 
                   <div className="sm:col-span-2">
                     <label className="block text-[11px] font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1">
@@ -561,7 +525,7 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
         {/* Bottom Direct Connect Footer Banner */}
         <div className="bg-[#FAF0EB] px-6 py-4 sm:px-10 border-t border-[#D4AF37]/25 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-700">
           <div className="flex items-center gap-2 text-center sm:text-left">
-            <span className="text-base">💬</span>
+            <MessageSquare className="w-4 h-4 text-[#9B332C]" />
             <span>
               Prefer instant dialogue? Connect directly on Instagram{' '}
               <a
@@ -583,7 +547,7 @@ export const BulkOrderEnquiryForm: React.FC<BulkOrderEnquiryFormProps> = ({
           </div>
 
           <div className="flex items-center gap-3 text-[11px] text-stone-500 font-royal-title uppercase tracking-wider">
-            <span>Hours: 09:30 – 19:30 IST</span>
+            <span>Hours: 09:30 - 19:30 IST</span>
             <span>•</span>
             <span>Worldwide Air Delivery</span>
           </div>

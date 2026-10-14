@@ -1,38 +1,64 @@
 import React, { useState } from 'react';
 import { 
-  MapPin, Mail, Clock, Send, MessageSquare, CheckCircle2, 
-  Building2, Globe2, Sparkles, ShieldCheck, ExternalLink
+  MapPin, Mail, Phone, Clock, Send, MessageSquare, CheckCircle2, 
+  Building2, Globe2, Sparkles, ShieldCheck, ExternalLink, AlertTriangle
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { InstagramIcon } from '../components/InstagramIcon';
 import { submitToGoogleSheet } from '../utils/googleScript';
+import { validateComprehensiveLead } from '../utils/formValidation';
+import { CountrySelect } from '../components/CountrySelect';
+import { PhoneInputWithCountry } from '../components/PhoneInputWithCountry';
+import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface ContactPageProps {
   onNavigate: (path: string) => void;
 }
 
 export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
+  usePageSEO(DEFAULT_SEO.contact);
+
   const { showToast } = useApp();
   const [name, setName] = useState('');
   const [company, setCompany] = useState('');
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('India');
+  const [countryCode, setCountryCode] = useState('+91');
+  const [phone, setPhone] = useState('');
   const [inquiryType, setInquiryType] = useState('Wholesale Catalog & Pricing');
   const [message, setMessage] = useState('');
+  const [botHoneypot, setBotHoneypot] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formError, setFormError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !message) {
-      showToast('Please fill out all required fields.', 'error');
+
+    const validation = validateComprehensiveLead({
+      name,
+      email,
+      phone: phone.trim() ? phone : undefined,
+      countryCode: phone.trim() ? countryCode : undefined,
+      company,
+      message,
+      botHoneypot,
+    });
+
+    if (!validation.isValid) {
+      const err = validation.error || 'Please provide genuine contact details.';
+      setFormError(err);
+      showToast(err, 'error');
       return;
     }
 
+    setFormError('');
     submitToGoogleSheet({
       formType: 'Contact Page Inquiry',
       name,
       company: company || 'N/A',
       email,
+      phone: phone.trim() ? `${countryCode} ${phone}` : 'N/A',
       country,
       inquiryType,
       message,
@@ -43,26 +69,34 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FAF0EB] border border-[#EACAC0] rounded-full text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-widest shadow-sm">
-          <MessageSquare className="w-3.5 h-3.5 text-[#9B332C]" />
-          <span>Jaipur Artisan Atelier &amp; Export Desk</span>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+      {/* Dedicated Custom Page Photo Banner */}
+      <div className="relative rounded-3xl overflow-hidden border border-[#D4AF37]/35 shadow-md h-56 sm:h-72">
+        <img 
+          src={resolveProductImage('/products/vanity-trio-mint-lotus.jpg')} 
+          alt="Ramam Textiles Jaipur Atelier Communication Desk" 
+          className="w-full h-full object-cover" 
+          loading="eager" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#241A16]/90 via-[#241A16]/45 to-transparent flex flex-col justify-end p-6 sm:p-10 text-white">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-[#E5C058] text-[11px] font-royal-title font-bold uppercase tracking-widest w-fit mb-2">
+            <MessageSquare className="w-3.5 h-3.5 text-[#E5C058]" />
+            <span>Jaipur Artisan Atelier &amp; Export Desk</span>
+          </div>
+          <h1 className="font-playfair text-2xl sm:text-4xl font-bold">
+            Connect With Ramam Textiles
+          </h1>
+          <p className="text-xs sm:text-sm text-stone-200 mt-1 max-w-xl font-light">
+            Direct manufacturer coordination for global boutiques, retail brands, and custom printing runs.
+          </p>
         </div>
-        <h1 className="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-[#241A16]">
-          Connect With Ramam Textiles
-        </h1>
-        <p className="text-stone-600 font-royal-body text-base sm:text-lg leading-relaxed">
-          Reach our Jaipur design studio, wholesale production workshop, and master craftsman quarters. Direct manufacturer coordination for global boutiques &amp; brands.
-        </p>
       </div>
 
       {/* Contact Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         {/* Contact Info Sidebar */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] p-8 rounded-[32px] border border-[#D4AF37]/40 space-y-6 shadow-sm relative overflow-hidden">
+          <div className="bg-[#FAF0EB] text-[#241A16] p-8 rounded-[32px] border border-[#D4AF37]/40 space-y-6 shadow-sm relative overflow-hidden">
             <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />
             <h3 className="font-playfair text-2xl font-bold text-[#241A16]">Direct Jaipur Atelier Offices</h3>
 
@@ -79,18 +113,42 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
 
               <div className="flex items-start gap-3.5 text-stone-700">
                 <div className="p-2 rounded-xl bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] flex-shrink-0 mt-0.5">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div>
+                  <strong className="text-[#241A16] block font-royal-title text-sm">Direct Telephone &amp; WhatsApp:</strong>
+                  <a href="tel:+911412890000" className="text-[#9B332C] font-semibold hover:underline" title="Call Jaipur Workshop">
+                    +91 141 289 0000
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3.5 text-stone-700">
+                <div className="p-2 rounded-xl bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] flex-shrink-0 mt-0.5">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <div>
+                  <strong className="text-[#241A16] block font-royal-title text-sm">Official Commercial Email:</strong>
+                  <a href="mailto:ramamtextiles@gmail.com" className="text-[#9B332C] font-semibold hover:underline" title="Email Ramam Textiles">
+                    ramamtextiles@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3.5 text-stone-700">
+                <div className="p-2 rounded-xl bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] flex-shrink-0 mt-0.5">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
                   <strong className="text-[#241A16] block font-royal-title text-sm">Studio Working Hours (IST):</strong>
-                  <span className="text-stone-600">Monday – Saturday: 9:30 AM – 7:30 PM (IST)</span>
+                  <span className="text-stone-600">Monday - Saturday: 9:30 AM - 7:30 PM (IST)</span>
                 </div>
               </div>
 
               {/* Highlighted Instagram Official Connect */}
               <div className="p-4 rounded-2xl bg-white/80 border border-[#D4AF37]/40 space-y-2 mt-2 shadow-xs">
                 <div className="flex items-center gap-2">
-                  <div className="p-1.5 rounded-lg bg-gradient-to-tr from-[#fd1d1d] to-[#833ab4] text-white">
+                  <div className="p-1.5 rounded-lg bg-[#9B332C] text-white">
                     <InstagramIcon className="w-4 h-4" />
                   </div>
                   <div>
@@ -156,6 +214,26 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4 font-royal-body relative z-10">
+              {formError && (
+                <div className="p-4 bg-red-50 border border-red-300 rounded-2xl text-xs text-red-800 flex items-start gap-3 shadow-sm animate-fade-in">
+                  <AlertTriangle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block font-bold">Please correct the following:</strong>
+                    <span>{formError}</span>
+                  </div>
+                </div>
+              )}
+              {/* Bot Honeypot Trap */}
+              <div className="absolute opacity-0 pointer-events-none -z-50 h-0 w-0 overflow-hidden" tabIndex={-1} aria-hidden="true">
+                <input
+                  type="text"
+                  name="contact_honeypot_fax"
+                  value={botHoneypot}
+                  onChange={e => setBotHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
               <div className="border-b border-[#D4AF37]/25 pb-3 mb-4">
                 <h3 className="font-playfair text-2xl font-bold text-[#241A16]">Commercial Inquiry Form</h3>
                 <p className="text-xs text-stone-500 font-royal-body">Provide your requirements for wholesale orders, custom manufacturing, or sampling.</p>
@@ -204,15 +282,22 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-royal-title uppercase tracking-wider text-[#241A16] font-bold mb-1">
-                    Buyer Country / Port
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. USA, UK, UAE, Germany"
+                  <CountrySelect
                     value={country}
-                    onChange={e => setCountry(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-[#F5EDE1] border border-[#D4AF37]/35 rounded-xl text-xs text-[#241A16] focus:outline-none focus:border-[#9B332C] focus:bg-[#FAF5EE]"
+                    onChange={setCountry}
+                    label="Buyer Country / Port *"
+                    selectClassName="bg-[#F5EDE1]"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <PhoneInputWithCountry
+                    phone={phone}
+                    countryCode={countryCode}
+                    onPhoneChange={setPhone}
+                    onCountryCodeChange={setCountryCode}
+                    required={false}
+                    label="WhatsApp / Phone Number (For video catalog proofs)"
                   />
                 </div>
               </div>

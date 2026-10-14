@@ -10,7 +10,7 @@ const productsDir = path.join(rootDir, 'public', 'products');
 const publicDir = path.join(rootDir, 'public');
 
 async function optimizeImages() {
-  console.log('🚀 Starting image optimization pipeline...\n');
+  console.log(' Starting image optimization pipeline...\n');
 
   let totalOriginalBytes = 0;
   let totalOptimizedJpgBytes = 0;
@@ -60,8 +60,8 @@ async function optimizeImages() {
         const webpKb = (webpBuffer.length / 1024).toFixed(1);
         const savings = (100 - (webpBuffer.length / originalStats.size) * 100).toFixed(1);
 
-        console.log(`📸 ${file}:`);
-        console.log(`   Original: ${origKb} KB ➔ JPG: ${jpgKb} KB ➔ WebP: ${webpKb} KB (${savings}% saved)`);
+        console.log(` ${file}:`);
+        console.log(`   Original: ${origKb} KB  JPG: ${jpgKb} KB  WebP: ${webpKb} KB (${savings}% saved)`);
       }
     }
   }
@@ -78,8 +78,8 @@ async function optimizeImages() {
       .toBuffer();
     fs.writeFileSync(logoWebpPath, webpBuffer);
 
-    console.log(`\n👑 logo.png:`);
-    console.log(`   Original: ${(origStats.size / 1024).toFixed(1)} KB ➔ logo.webp: ${(webpBuffer.length / 1024).toFixed(1)} KB`);
+    console.log(`\n logo.png:`);
+    console.log(`   Original: ${(origStats.size / 1024).toFixed(1)} KB  logo.webp: ${(webpBuffer.length / 1024).toFixed(1)} KB`);
   }
 
   const logoJpegPath = path.join(publicDir, 'logo.jpeg');
@@ -91,16 +91,16 @@ async function optimizeImages() {
       .toBuffer();
     fs.writeFileSync(logoJpegPath, optimizedLogo);
 
-    console.log(`👑 logo.jpeg:`);
-    console.log(`   Original: ${(origStats.size / 1024).toFixed(1)} KB ➔ Optimized: ${(optimizedLogo.length / 1024).toFixed(1)} KB`);
+    console.log(` logo.jpeg:`);
+    console.log(`   Original: ${(origStats.size / 1024).toFixed(1)} KB  Optimized: ${(optimizedLogo.length / 1024).toFixed(1)} KB`);
   }
 
   console.log('\n==================================================');
-  console.log(`✨ Total Original: ${(totalOriginalBytes / 1024).toFixed(1)} KB`);
-  console.log(`✨ Total Optimized JPG: ${(totalOptimizedJpgBytes / 1024).toFixed(1)} KB`);
-  console.log(`✨ Total WebP: ${(totalWebpBytes / 1024).toFixed(1)} KB`);
+  console.log(` Total Original: ${(totalOriginalBytes / 1024).toFixed(1)} KB`);
+  console.log(` Total Optimized JPG: ${(totalOptimizedJpgBytes / 1024).toFixed(1)} KB`);
+  console.log(` Total WebP: ${(totalWebpBytes / 1024).toFixed(1)} KB`);
   const totalSavings = (100 - (totalWebpBytes / totalOriginalBytes) * 100).toFixed(1);
-  console.log(`🎉 Overall WebP payload reduction: ${totalSavings}% !`);
+  console.log(` Overall WebP payload reduction: ${totalSavings}% !`);
   console.log('==================================================\n');
 }
 

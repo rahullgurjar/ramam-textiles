@@ -70,7 +70,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
               const target = e.currentTarget as HTMLImageElement;
               if (!target.dataset.fallbackTried) {
                 target.dataset.fallbackTried = 'true';
-                target.src = resolveProductImage('./products/duffle-kantha-patchwork.jpg');
+                target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
               }
             }}
           />
@@ -94,7 +94,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
 
           {product.isFeatured && (
             <span className="px-2.5 py-0.5 bg-[#B81D5B] text-white text-[9.5px] font-extrabold tracking-wider uppercase rounded-full shadow-md font-royal-title border border-[#F472B6]/40">
-              👑 Jaipur Signature
+              Jaipur Signature
             </span>
           )}
         </div>

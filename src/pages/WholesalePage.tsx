@@ -1,46 +1,91 @@
 import React, { useState } from 'react';
 import { 
   Building2, Sparkles, ShieldCheck, Truck, Download, CheckCircle2, 
-  HelpCircle, ArrowRight, Globe2, Package, Mail, Layers, FileCheck
+  HelpCircle, ArrowRight, Globe2, Package, Mail, Layers, FileCheck, AlertCircle, Phone
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { PRODUCTS } from '../data/products';
 import { InstagramIcon } from '../components/InstagramIcon';
 import { resolveProductImage } from '../utils/imageUtils';
+import { submitToGoogleSheet } from '../utils/googleScript';
+import { validateComprehensiveLead } from '../utils/formValidation';
+import { CountrySelect } from '../components/CountrySelect';
+import { PhoneInputWithCountry } from '../components/PhoneInputWithCountry';
+import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface WholesalePageProps {
   onNavigate: (path: string) => void;
 }
 
 export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
+  usePageSEO(DEFAULT_SEO.wholesale);
   const { showToast, openPolicyModal } = useApp();
   const [swatchKitRequested, setSwatchKitRequested] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
   const [name, setName] = useState('');
   const [company, setCompany] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [countryCode, setCountryCode] = useState('+1');
   const [targetVolume, setTargetVolume] = useState('25 - 200 pcs');
-  const [country, setCountry] = useState('');
+  const [country, setCountry] = useState('United States');
+  const [address, setAddress] = useState('');
   const [notes, setNotes] = useState('');
 
   const handleSwatchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !country) {
-      showToast('Please provide your full contact details.', 'error');
+    setFormError(null);
+
+    const validation = validateComprehensiveLead({
+      name,
+      email,
+      phone: phone.trim() ? phone : undefined,
+      countryCode: phone.trim() ? countryCode : undefined,
+      company,
+      address,
+      message: notes,
+    });
+
+    if (!validation.isValid) {
+      const err = validation.error || 'Please provide genuine contact details.';
+      setFormError(err);
+      showToast(err, 'error');
       return;
     }
+
+    if (!country.trim()) {
+      const err = 'Please select your shipping destination country.';
+      setFormError(err);
+      showToast(err, 'error');
+      return;
+    }
+
+    submitToGoogleSheet({
+      formType: 'Fabric Swatch Booklet Request',
+      name,
+      company: company || 'N/A',
+      email,
+      phone: phone.trim() ? `${countryCode} ${phone}` : 'N/A',
+      country,
+      address,
+      targetVolume,
+      notes: notes || 'N/A',
+    });
+
     setSwatchKitRequested(true);
+    setFormError(null);
     showToast('Fabric Swatch Booklet request received! We will courier tracking info shortly.', 'success');
   };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-royal-body">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#F8EDE6] to-[#FAF5EE] text-[#241A16] rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
+      <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${resolveProductImage('./products/duffle-kantha-patchwork.jpg')}')` }}
+          style={{ backgroundImage: `url('${resolveProductImage('/products/duffle-indigo.jpg')}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF0EB]/95 via-[#FAF0EB]/80 to-transparent" />
+        <div className="absolute inset-0 bg-[#FAF0EB]/85" />
 
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs font-bold font-royal-title uppercase tracking-widest shadow-sm">
@@ -125,7 +170,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
       <div className="bg-[#FAF5EE] rounded-[28px] p-6 border-2 border-amber-500/30 bg-amber-500/5 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-800 flex items-center justify-center font-bold text-lg shrink-0">
-            💰
+            <FileCheck className="w-5 h-5 text-amber-800" />
           </div>
           <div>
             <h4 className="font-royal-title font-bold text-sm text-[#241A16]">
@@ -202,6 +247,13 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
                   Buyer Swatch Kit Courier Request
                 </h3>
 
+                {formError && (
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+                    <span>{formError}</span>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
@@ -261,16 +313,35 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
                     </select>
                   </div>
 
+                  <div>
+                    <CountrySelect
+                      value={country}
+                      onChange={setCountry}
+                      label="Destination Country *"
+                      selectClassName="bg-[#FAF5EE]"
+                    />
+                  </div>
+
+                  <div className="sm:col-span-2">
+                    <PhoneInputWithCountry
+                      phone={phone}
+                      countryCode={countryCode}
+                      onPhoneChange={setPhone}
+                      onCountryCodeChange={setCountryCode}
+                      label="WhatsApp / Phone Number (For courier tracking updates) *"
+                    />
+                  </div>
+
                   <div className="sm:col-span-2">
                     <label className="block text-xs font-bold uppercase tracking-wider text-[#241A16] mb-1 font-royal-title">
-                      Studio Shipping Address &amp; Destination Country *
+                      Studio / Boutique Courier Shipping Address *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="Complete physical courier delivery address with City and Postal Code"
-                      value={country}
-                      onChange={e => setCountry(e.target.value)}
+                      placeholder="Street address, Suite / Floor, City, State / Province & Postal PIN"
+                      value={address}
+                      onChange={e => setAddress(e.target.value)}
                       className="w-full px-3.5 py-2.5 bg-[#FAF5EE] border border-[#D4AF37]/35 rounded-xl text-xs focus:outline-none focus:border-[#9B332C] text-[#241A16]"
                     />
                   </div>
