@@ -18,6 +18,7 @@ const CORE_PAGES = [
   { url: '/wholesale', changefreq: 'weekly', priority: '0.9' },
   { url: '/craftsmanship', changefreq: 'monthly', priority: '0.8' },
   { url: '/lookbook', changefreq: 'weekly', priority: '0.8' },
+  { url: '/blog', changefreq: 'weekly', priority: '0.85' },
   { url: '/journal', changefreq: 'weekly', priority: '0.8' },
   { url: '/about', changefreq: 'monthly', priority: '0.7' },
   { url: '/contact', changefreq: 'monthly', priority: '0.7' },
@@ -172,8 +173,24 @@ function generateSitemapXml() {
     xml += '  </url>\n';
   }
 
-  // 4. Journal / Blog Pages
+  // 4. Journal & Blog Pages
   for (const art of articles) {
+    // Primary /blog URL
+    xml += '  <url>\n';
+    xml += `    <loc>${BASE_URL}/blog/${escapeXml(art.slug)}</loc>\n`;
+    xml += `    <lastmod>${TODAY}</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`;
+    xml += `    <priority>0.80</priority>\n`;
+    if (art.image) {
+      const imgUrl = toAbsoluteImageUrl(art.image);
+      xml += '    <image:image>\n';
+      xml += `      <image:loc>${escapeXml(imgUrl)}</image:loc>\n`;
+      xml += `      <image:title>${escapeXml(art.title)}</image:title>\n`;
+      xml += '    </image:image>\n';
+    }
+    xml += '  </url>\n';
+
+    // Alias /journal URL
     xml += '  <url>\n';
     xml += `    <loc>${BASE_URL}/journal/${escapeXml(art.slug)}</loc>\n`;
     xml += `    <lastmod>${TODAY}</lastmod>\n`;
@@ -190,7 +207,7 @@ function generateSitemapXml() {
   }
 
   xml += '</urlset>\n';
-  return { xml, count: CORE_PAGES.length + categories.length + products.length + articles.length, categories, products, articles };
+  return { xml, count: CORE_PAGES.length + categories.length + products.length + (articles.length * 2), categories, products, articles };
 }
 
 const { xml, count, categories, products, articles } = generateSitemapXml();

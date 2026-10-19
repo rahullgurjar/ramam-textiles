@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, ChevronRight, Share2, BookOpen, Clock, Tag } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Share2, BookOpen, Clock, Tag, Sparkles, MessageCircle, FileText } from 'lucide-react';
 import { JOURNAL_ARTICLES } from '../data/journal';
 import { useApp } from '../context/AppContext';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
@@ -11,16 +11,60 @@ interface JournalDetailPageProps {
 }
 
 export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNavigate }) => {
-  const { showToast } = useApp();
+  const { showToast, openQuickQuote } = useApp();
   const article = JOURNAL_ARTICLES.find(a => a.slug === slug) || JOURNAL_ARTICLES[0];
   const related = JOURNAL_ARTICLES.filter(a => a.slug !== article.slug).slice(0, 2);
+  const isBlogPath = typeof window !== 'undefined' && (window.location.pathname.includes('/blog') || window.location.pathname.includes('/blogs'));
+  const basePath = isBlogPath ? '/blog' : '/journal';
+  const getArticleUrl = (articleSlug: string) => `${basePath}/${articleSlug}`;
 
   usePageSEO({
-    title: `${article.title} | Ramam Textiles Journal`,
+    title: `${article.title} | Ramam Textiles Blog & Journal`,
     description: article.excerpt,
-    path: `/journal/${article.slug}`,
+    path: getArticleUrl(article.slug),
     image: article.coverImage
   });
+
+  // Inject BlogPosting Structured Data into <head> for Google Rich Results
+  React.useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const scriptId = 'blog-posting-schema';
+    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = scriptId;
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    const schemaData = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: article.title,
+      description: article.excerpt,
+      image: article.coverImage.startsWith('http') ? article.coverImage : `https://ramamtextiles.shop${article.coverImage}`,
+      author: {
+        '@type': 'Person',
+        name: article.author.name,
+        jobTitle: article.author.role
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Ramam Textiles',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://ramamtextiles.shop/logo.png'
+        }
+      },
+      mainEntityOfPage: `https://ramamtextiles.shop${getArticleUrl(article.slug)}`,
+      datePublished: '2026-09-01T08:00:00+05:30',
+      keywords: article.tags ? article.tags.join(', ') : 'Jaipur hand block print, cotton sourcing'
+    };
+    script.textContent = JSON.stringify(schemaData);
+    return () => {
+      const el = document.getElementById(scriptId);
+      if (el) el.remove();
+    };
+  }, [article, basePath]);
 
   const handleShare = () => {
     if (navigator.share) {
@@ -37,7 +81,7 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
       <nav className="flex items-center gap-2 text-xs text-stone-500 font-royal-body">
         <button onClick={() => { onNavigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-[#9B332C] hover:underline font-royal-title font-bold">Atelier</button>
         <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
-        <button onClick={() => { onNavigate('/journal'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-[#9B332C] hover:underline font-royal-title font-bold">Journal</button>
+        <button onClick={() => { onNavigate(basePath); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-[#9B332C] hover:underline font-royal-title font-bold">Artisan Blog &amp; Journal</button>
         <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
         <span className="text-[#241A16] font-bold truncate max-w-xs">{article.title}</span>
       </nav>
@@ -110,6 +154,42 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
         ))}
       </div>
 
+      {/* Luxury Atelier Sourcing & Sampling CTA Card */}
+      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#FAF5EE] to-[#FAF0EB] rounded-3xl p-8 border border-[#D4AF37]/45 shadow-md space-y-4 relative overflow-hidden">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#D4AF37]/35 text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-wider shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <span>Jaipur Production &amp; Sampling Desk</span>
+            </div>
+            <h3 className="font-playfair text-xl sm:text-2xl font-bold text-[#241A16]">
+              Planning a Custom Textile, Apparel, or Quilted Bag Line?
+            </h3>
+            <p className="text-stone-600 font-royal-body text-sm max-w-xl leading-relaxed">
+              Commission bespoke wooden block prints, certified natural indigo vat dyeing, or low-MOQ private label production starting from 25 pieces per style. Worldwide insured air express dispatch.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+            <button
+              onClick={() => openQuickQuote()}
+              className="px-5 py-2.5 rounded-full bg-[#9B332C] text-white text-xs font-royal-title font-bold uppercase tracking-wider hover:bg-[#801B18] transition-colors shadow-md flex items-center justify-center gap-2"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>Request Quote</span>
+            </button>
+            <a
+              href="https://wa.me/911412890000?text=Hello%20Ramam%20Textiles,%20I%20am%20interested%20in%20custom%20manufacturing%20and%20sourcing."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-full bg-white text-[#241A16] border border-[#D4AF37]/50 text-xs font-royal-title font-bold uppercase tracking-wider hover:bg-[#FAF0EB] hover:text-[#9B332C] transition-colors shadow-sm flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+              <span>WhatsApp Atelier</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Tags */}
       {article.tags && (
         <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-[#D4AF37]/25">
@@ -117,9 +197,13 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
             <Tag className="w-3.5 h-3.5 text-[#9B332C]" /> Tags:
           </span>
           {article.tags.map(t => (
-            <span key={t} className="px-3 py-1 bg-[#F5EDE1] text-[#241A16] border border-[#D4AF37]/35 rounded-full text-xs font-royal-body font-semibold">
-              {t}
-            </span>
+            <button 
+              key={t} 
+              onClick={() => { onNavigate(basePath); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="px-3 py-1 bg-[#F5EDE1] text-[#241A16] hover:bg-[#FAF0EB] hover:text-[#9B332C] border border-[#D4AF37]/35 rounded-full text-xs font-royal-body font-semibold transition-colors cursor-pointer"
+            >
+              #{t}
+            </button>
           ))}
         </div>
       )}
@@ -132,7 +216,7 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
             {related.map(r => (
               <div 
                 key={r.id}
-                onClick={() => { onNavigate(`/journal/${r.slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                onClick={() => { onNavigate(getArticleUrl(r.slug)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                 className="bg-[#FAF5EE] p-6 rounded-2xl border border-[#D4AF37]/35 cursor-pointer hover:shadow-xl hover:border-[#9B332C] transition-all space-y-2.5"
               >
                 <span className="text-[10px] font-royal-title uppercase text-[#9B332C] font-bold">{r.category}</span>

@@ -9,12 +9,15 @@ import {
   Sparkles, 
   CheckCircle2,
   ExternalLink,
-  Download
+  Download,
+  BookOpen
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { InstagramIcon } from './InstagramIcon';
 import { submitToGoogleSheet } from '../utils/googleScript';
 import { validateEmailAddress } from '../utils/formValidation';
+import { JOURNAL_POSTS } from '../data/journal';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface FooterProps {
   navigate: (path: string) => void;
@@ -118,12 +121,62 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         </div>
       </div>
 
+      {/* Featured Blog Section in Footer to Boost Site Ranking & User Engagement */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border-b border-[#D4AF37]/25 relative z-10">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-3">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-widest text-[#9B332C] font-bold font-royal-title">
+              <BookOpen className="w-3.5 h-3.5 text-[#9B332C]" />
+              <span>Jaipur Artisan Blog &amp; Sourcing Guides</span>
+            </div>
+            <h4 className="font-playfair text-xl sm:text-2xl text-[#241A16] font-bold mt-1">
+              Textile Chronicles, Fabric Insights &amp; Manufacturing Roadmaps
+            </h4>
+          </div>
+          <a
+            href="/blog"
+            onClick={(e) => { e.preventDefault(); handleNav('/blog'); }}
+            className="text-xs font-royal-title font-bold text-[#9B332C] hover:text-[#241A16] flex items-center gap-1 transition-colors uppercase tracking-wider shrink-0"
+          >
+            <span>Read All 5 Guides</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#9B332C]" />
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {JOURNAL_POSTS.slice(0, 3).map(post => (
+            <a
+              key={post.id}
+              href={`/blog/${post.slug}`}
+              onClick={(e) => { e.preventDefault(); handleNav(`/blog/${post.slug}`); }}
+              className="group bg-white/75 hover:bg-white rounded-2xl p-4 border border-[#D4AF37]/35 hover:border-[#9B332C] transition-all hover:shadow-lg flex items-center gap-3.5 cursor-pointer"
+            >
+              <img
+                src={resolveProductImage(post.image)}
+                alt={post.title}
+                className="w-16 h-16 rounded-xl object-cover border border-[#D4AF37]/30 shrink-0 group-hover:scale-105 transition-transform"
+              />
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 text-[10px] text-stone-500 font-mono mb-1">
+                  <span className="text-[#9B332C] font-royal-title font-bold uppercase">{post.category}</span>
+                  <span>•</span>
+                  <span>{post.readTime}</span>
+                </div>
+                <h5 className="font-playfair font-bold text-xs sm:text-sm text-[#241A16] group-hover:text-[#9B332C] transition-colors line-clamp-2 leading-snug">
+                  {post.title}
+                </h5>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
       {/* Main Multi-Column Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6">
           
           {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="sm:col-span-2 lg:col-span-4 space-y-4">
             <a 
               href="/"
               onClick={(e) => { e.preventDefault(); handleNav('/'); }}
@@ -159,7 +212,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
               </div>
             </a>
 
-            <p className="text-xs text-stone-600 leading-relaxed pr-6">
+            <p className="text-xs text-stone-600 leading-relaxed pr-2">
               Ramam Textiles is an authentic Jaipur heritage artisan house based in Rajasthan, India. We supply luxury boutiques, independent retailers, and travel lifestyle brands worldwide with handcrafted quilted duffle bags, vanity cosmetic pouches, and pure block-printed cotton fabrics.
             </p>
 
@@ -184,12 +237,12 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                         if (catalogError) setCatalogError('');
                       }}
                       placeholder="Enter your business email..."
-                      className={`flex-1 px-4 py-2.5 bg-white border ${catalogError ? 'border-red-500' : 'border-[#D4AF37]/40'} rounded-full text-xs text-[#241A16] placeholder-stone-400 focus:outline-none focus:border-[#9B332C]`}
+                      className={`flex-1 px-4 py-2 bg-white border ${catalogError ? 'border-red-500' : 'border-[#D4AF37]/40'} rounded-full text-xs text-[#241A16] placeholder-stone-400 focus:outline-none focus:border-[#9B332C]`}
                       required
                     />
                     <button 
                       type="submit"
-                      className="pill-btn-rani px-5 py-2.5 text-xs font-bold uppercase rounded-full shrink-0 shadow-md"
+                      className="pill-btn-rani px-4 py-2 text-xs font-bold uppercase rounded-full shrink-0 shadow-md"
                     >
                       Send PDF
                     </button>
@@ -203,12 +256,12 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
               )}
             </div>
 
-            <div className="pt-2">
+            <div className="pt-1">
               <a
                 href="https://www.instagram.com/ramamtextiles"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs hover:bg-[#9B332C] hover:text-white transition-all group shadow-sm font-semibold"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] text-xs hover:bg-[#9B332C] hover:text-white transition-all group shadow-sm font-semibold"
               >
                 <InstagramIcon className="w-4 h-4 text-[#9B332C] group-hover:text-white group-hover:scale-110 transition-transform" />
                 <span>Follow <strong>@ramamtextiles</strong> on Instagram</span>
@@ -218,24 +271,24 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           </div>
 
           {/* Product Categories */}
-          <div>
+          <div className="lg:col-span-2">
             <h5 className="font-royal-title text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-4 pb-1 border-b border-[#D4AF37]/25">
-              Collections &amp; Categories
+              Collections
             </h5>
-            <ul className="space-y-2.5 text-xs text-stone-600">
+            <ul className="space-y-2 text-xs text-stone-600">
               <li>
                 <button onClick={() => handleNav('/category/bags')} className="hover:text-[#9B332C] transition-colors font-semibold text-[#241A16]">
-                  Quilted Travel Duffles &amp; Totes
+                  Quilted Travel Duffles
                 </button>
               </li>
               <li>
                 <button onClick={() => handleNav('/category/women')} className="hover:text-[#9B332C] transition-colors">
-                  Cosmetic &amp; Vanity Pouch Sets
+                  Cosmetic Vanity Sets
                 </button>
               </li>
               <li>
                 <button onClick={() => handleNav('/category/home')} className="hover:text-[#9B332C] transition-colors">
-                  Specialty Organizers &amp; Sleeves
+                  Specialty Organizers
                 </button>
               </li>
               <li>
@@ -252,11 +305,11 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           </div>
 
           {/* B2B & Manufacturing */}
-          <div>
+          <div className="lg:col-span-2">
             <h5 className="font-royal-title text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-4 pb-1 border-b border-[#D4AF37]/25">
-              B2B &amp; Manufacturing
+              B2B Portal
             </h5>
-            <ul className="space-y-2.5 text-xs text-stone-600">
+            <ul className="space-y-2 text-xs text-stone-600">
               <li>
                 <button onClick={() => handleNav('/bulk-enquiry')} className="hover:text-[#9B332C] transition-colors font-semibold text-[#241A16]">
                   Bulk Order Enquiry
@@ -269,7 +322,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
               </li>
               <li>
                 <button onClick={() => handleNav('/custom-manufacturing')} className="hover:text-[#9B332C] transition-colors">
-                  Custom Manufacturing &amp; OEM
+                  Custom OEM Production
                 </button>
               </li>
               <li>
@@ -284,68 +337,109 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
               </li>
               <li>
                 <button onClick={() => handleNav('/craftsmanship')} className="hover:text-[#9B332C] transition-colors">
-                  The Bagru &amp; Sanganer Craft
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNav('/journal')} className="hover:text-[#9B332C] transition-colors">
-                  Textile Sourcing Journal
+                  Bagru &amp; Sanganer Craft
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Direct Atelier Contact */}
-          <div>
+          {/* Artisan Blog & Sourcing Guides (Dedicated SEO Ranking Column) */}
+          <div className="lg:col-span-2">
             <h5 className="font-royal-title text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-4 pb-1 border-b border-[#D4AF37]/25">
-              Jaipur Atelier &amp; Contact
+              Artisan Blog &amp; Guides
             </h5>
-            <ul className="space-y-3 text-xs text-stone-600">
-              <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#9B332C] shrink-0 mt-0.5" />
-                <span>
-                  Ramam Textiles Artisan Workshops,<br />
-                  Jaipur, Rajasthan 302020, India
-                </span>
+            <ul className="space-y-2 text-xs text-stone-600">
+              <li>
+                <a 
+                  href="/blog/alchemy-of-bagru-dabu-indigo" 
+                  onClick={(e) => { e.preventDefault(); handleNav('/blog/alchemy-of-bagru-dabu-indigo'); }}
+                  className="hover:text-[#9B332C] transition-colors line-clamp-1"
+                  title="Bagru Dabu Mud-Resist Printing and Indigo Dyeing Guide"
+                >
+                  Bagru Dabu &amp; Indigo Guide
+                </a>
               </li>
-              <li className="flex items-center gap-2.5">
+              <li>
+                <a 
+                  href="/blog/sourcing-guide-pure-cotton-mulmul" 
+                  onClick={(e) => { e.preventDefault(); handleNav('/blog/sourcing-guide-pure-cotton-mulmul'); }}
+                  className="hover:text-[#9B332C] transition-colors line-clamp-1"
+                  title="Sourcing Pure Jaipur Cotton Mulmul & Cambric"
+                >
+                  Pure Cotton Mulmul Sourcing
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/blog/block-print-vs-screen-print-guide" 
+                  onClick={(e) => { e.preventDefault(); handleNav('/blog/block-print-vs-screen-print-guide'); }}
+                  className="hover:text-[#9B332C] transition-colors font-semibold text-[#241A16] line-clamp-1"
+                  title="Hand Block Print vs Screen Print Identification Guide"
+                >
+                  Block Print vs Screen Print
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/blog/how-to-launch-private-label-apparel" 
+                  onClick={(e) => { e.preventDefault(); handleNav('/blog/how-to-launch-private-label-apparel'); }}
+                  className="hover:text-[#9B332C] transition-colors line-clamp-1"
+                  title="How to Launch Private Label Apparel and Bag Line"
+                >
+                  Private Label Production Guide
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/blog/low-moq-textile-sourcing-india-guide" 
+                  onClick={(e) => { e.preventDefault(); handleNav('/blog/low-moq-textile-sourcing-india-guide'); }}
+                  className="hover:text-[#9B332C] transition-colors line-clamp-1"
+                  title="Low-MOQ Textile Sourcing and Export from India"
+                >
+                  Low-MOQ Sourcing &amp; Export
+                </a>
+              </li>
+              <li className="pt-1">
+                <a 
+                  href="/blog" 
+                  onClick={(e) => { e.preventDefault(); handleNav('/blog'); }}
+                  className="text-[#9B332C] font-royal-title font-bold text-[11px] hover:underline flex items-center gap-1 uppercase tracking-wider"
+                >
+                  <span>All Sourcing Guides</span>
+                  <ArrowRight className="w-3 h-3 text-[#9B332C]" />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Direct Atelier Contact */}
+          <div className="lg:col-span-2">
+            <h5 className="font-royal-title text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-4 pb-1 border-b border-[#D4AF37]/25">
+              Jaipur Atelier
+            </h5>
+            <ul className="space-y-2.5 text-xs text-stone-600">
+              <li className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-[#9B332C] shrink-0 mt-0.5" />
+                <span>Jaipur, Rajasthan 302020, India</span>
+              </li>
+              <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#9B332C] shrink-0" />
                 <a href="tel:+911412890000" className="hover:text-[#9B332C] font-semibold text-[#241A16] transition-colors" title="Call Atelier">
                   +91 141 289 0000
                 </a>
               </li>
-              <li className="flex items-center gap-2.5">
+              <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#9B332C] shrink-0" />
                 <a href="mailto:ramamtextiles@gmail.com" className="hover:text-[#9B332C] font-semibold text-[#241A16] transition-colors" title="Email Atelier Desk">
                   ramamtextiles@gmail.com
                 </a>
               </li>
               <li className="pt-2">
-                <div className="p-3.5 rounded-2xl bg-white border border-[#D4AF37]/35 space-y-2 shadow-sm">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#9B332C] font-royal-title block">
-                    Official Social Desk
-                  </span>
-                  <a 
-                    href="https://www.instagram.com/ramamtextiles" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="inline-flex items-center gap-2 text-[#241A16] font-bold hover:text-[#9B332C] transition-colors group"
-                  >
-                    <InstagramIcon className="w-5 h-5 text-[#9B332C] group-hover:scale-110 transition-transform" />
-                    <span className="text-sm">@ramamtextiles</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#9B332C] opacity-70 group-hover:opacity-100" />
-                  </a>
-                  <p className="text-[11px] text-stone-600 leading-snug">
-                    DM for wholesale inquiries, custom batch consultations, and live atelier videos.
-                  </p>
-                </div>
-              </li>
-              <li className="pt-1">
                 <button 
                   onClick={() => handleNav('/contact')}
-                  className="w-full inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-xs text-[#9B332C] hover:bg-[#9B332C] hover:text-white transition-all font-royal-title font-bold shadow-sm"
+                  className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[11px] text-[#9B332C] hover:bg-[#9B332C] hover:text-white transition-all font-royal-title font-bold shadow-sm"
                 >
-                  <span>Inquire Online &amp; Book Studio Visit</span>
+                  <span>Book Studio Visit</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </li>
@@ -360,7 +454,10 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         <div>
           © {new Date().getFullYear()} Ramam Textiles. All rights reserved. Handcrafted in Jaipur, Rajasthan.
         </div>
-        <div className="flex flex-wrap items-center gap-6 font-medium">
+        <div className="flex flex-wrap items-center gap-5 font-medium">
+          <a href="/blog" onClick={(e) => { e.preventDefault(); handleNav('/blog'); }} className="hover:text-[#9B332C] transition-colors cursor-pointer font-semibold text-[#241A16]">
+            Artisan Blog &amp; Guides
+          </a>
           <button onClick={() => handleNav('/faq')} className="hover:text-[#9B332C] transition-colors cursor-pointer">
             FAQ
           </button>

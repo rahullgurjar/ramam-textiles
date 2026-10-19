@@ -26,6 +26,21 @@ const FAQPage = lazy(() => import('./pages/FAQPage').then(m => ({ default: m.FAQ
 const LegalPage = lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })));
 const AdminPortalPage = lazy(() => import('./pages/AdminPortalPage').then(m => ({ default: m.AdminPortalPage })));
 
+// Preload high-traffic secondary routes during browser idle time so transitions feel instantaneous
+if (typeof window !== 'undefined') {
+  const preloadCriticalRoutes = () => {
+    import('./pages/ShopPage');
+    import('./pages/CategoryPage');
+    import('./pages/WholesalePage');
+    import('./pages/BulkOrderEnquiryPage');
+  };
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(() => setTimeout(preloadCriticalRoutes, 2000), { timeout: 4000 });
+  } else {
+    setTimeout(preloadCriticalRoutes, 2800);
+  }
+}
+
 // Lazy load heavy interactive drawers & modals
 const InquiryDrawer = lazy(() => import('./components/InquiryDrawer').then(m => ({ default: m.InquiryDrawer })));
 const QuickQuoteModal = lazy(() => import('./components/QuickQuoteModal').then(m => ({ default: m.QuickQuoteModal })));
@@ -167,7 +182,7 @@ export const App: React.FC = () => {
 
     window.history.pushState({}, '', targetUrl);
     setCurrentPath(cleanPath);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   // Route matching logic
@@ -232,14 +247,22 @@ export const App: React.FC = () => {
       return <LookbookPage onNavigate={navigate} />;
     }
 
-    // 11. Journal Detail Page
+    // 11. Blog & Journal Detail Page
+    if (currentPath.startsWith('/blog/') || currentPath.startsWith('/blogs/')) {
+      const slug = currentPath.replace(/^\/blogs?\//, '').split('?')[0];
+      return <JournalDetailPage slug={slug} onNavigate={navigate} />;
+    }
     if (currentPath.startsWith('/journal/')) {
       const slug = currentPath.replace('/journal/', '').split('?')[0];
       return <JournalDetailPage slug={slug} onNavigate={navigate} />;
     }
 
-    // 12. Journal Index Page
-    if (currentPath.startsWith('/journal')) {
+    // 12. Blog & Journal Index Page
+    if (
+      currentPath === '/blog' || currentPath.startsWith('/blog?') || currentPath === '/blog/' ||
+      currentPath === '/blogs' || currentPath.startsWith('/blogs?') || currentPath === '/blogs/' ||
+      currentPath === '/journal' || currentPath.startsWith('/journal?') || currentPath === '/journal/'
+    ) {
       return <JournalPage onNavigate={navigate} />;
     }
 

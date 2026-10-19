@@ -171,6 +171,18 @@ const CORE_PAGE_SEO = {
     h1: 'Editorial Lifestyle Lookbook — Jaipur Royal Palaces',
     snippet: 'Visual style gallery showcasing our handcrafted quilted travel luggage, vanity cases, and resort lifestyle accessories in heritage Rajasthani architectural settings.'
   },
+  '/blog': {
+    title: 'Jaipur Artisan Textile Blog & Sourcing Guides | Ramam Textiles',
+    description: 'Expert technical guides on authentic Jaipur hand block printing, Bagru Dabu indigo dyeing, pure mulmul cotton sourcing, and private label apparel manufacturing.',
+    h1: 'Jaipur Artisan Textile Blog & Technical Sourcing Guides',
+    snippet: 'Comprehensive chronicles, natural dye chemistry, block vs screen print verification, and low-MOQ export guides for fashion founders.'
+  },
+  '/blogs': {
+    title: 'Jaipur Artisan Textile Blog & Sourcing Guides | Ramam Textiles',
+    description: 'Expert technical guides on authentic Jaipur hand block printing, Bagru Dabu indigo dyeing, pure mulmul cotton sourcing, and private label apparel manufacturing.',
+    h1: 'Jaipur Artisan Textile Blog & Technical Sourcing Guides',
+    snippet: 'Comprehensive chronicles, natural dye chemistry, block vs screen print verification, and low-MOQ export guides for fashion founders.'
+  },
   '/journal': {
     title: 'Textile Sourcing Journal & Artisan Insights | Ramam Textiles',
     description: 'Practical guides and deep dives on sourcing pure Indian cotton, discerning authentic woodblock prints, caring for botanical dyes, and private label best practices.',
@@ -265,8 +277,33 @@ products.forEach(prod => {
   });
 });
 
-// 4. Articles
+// 4. Articles (Dual generate /blog and /journal for maximum SEO indexing)
 articles.forEach(art => {
+  // Primary /blog route
+  allRoutes.push({
+    route: `/blog/${art.slug}`,
+    title: `${art.title} | Ramam Textiles Blog`,
+    description: art.excerpt,
+    h1: `${art.title}`,
+    snippet: art.excerpt,
+    image: art.image,
+    schemaType: 'BlogPosting',
+    articleData: art
+  });
+
+  // Alias /blogs route
+  allRoutes.push({
+    route: `/blogs/${art.slug}`,
+    title: `${art.title} | Ramam Textiles Blog`,
+    description: art.excerpt,
+    h1: `${art.title}`,
+    snippet: art.excerpt,
+    image: art.image,
+    schemaType: 'BlogPosting',
+    articleData: art
+  });
+
+  // Alias /journal route
   allRoutes.push({
     route: `/journal/${art.slug}`,
     title: `${art.title} | Ramam Textiles Journal`,

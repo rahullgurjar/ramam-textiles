@@ -133,6 +133,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
               <img
                 src={resolveProductImage(product.images[activeImageIndex] || product.images[0])}
                 alt={product.name}
+                width="800"
+                height="1000"
                 loading="eager"
                 decoding="async"
                 // @ts-ignore

@@ -36,6 +36,10 @@ async function run() {
     'https://ramamtextiles.shop/product/jaipur-quilted-playing-card-vanity-pouch',
     'https://ramamtextiles.shop/product/jaipur-quilted-playing-card-vanity-pouch/',
     'https://ramamtextiles.shop/about',
+    'https://ramamtextiles.shop/blog',
+    'https://ramamtextiles.shop/blog/',
+    'https://ramamtextiles.shop/blog/alchemy-of-bagru-dabu-indigo',
+    'https://ramamtextiles.shop/blogs',
     'https://ramamtextiles.shop/journal/alchemy-of-bagru-dabu-indigo'
   ];
 

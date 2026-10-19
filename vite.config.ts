@@ -25,6 +25,7 @@ export default defineConfig({
   esbuild: {
     // Turn off debug mode in production bundles (strips console and debuggers)
     drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
+    legalComments: 'none',
   },
   server: {
     port: 3000,
@@ -51,6 +52,8 @@ export default defineConfig({
     sourcemap: false,
     target: 'es2020',
     cssCodeSplit: true,
+    cssMinify: true,
+    reportCompressedSize: false,
     chunkSizeWarningLimit: 600,
     minify: 'esbuild',
     rollupOptions: {

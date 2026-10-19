@@ -44,6 +44,10 @@ export const DEFAULT_SEO: Record<string, { title: string; description: string }>
     title: 'Editorial Lookbook & Lifestyle Catalog | Ramam Textiles Jaipur',
     description: 'High-fashion editorial showcase of handcrafted quilted cotton duffles, tote bags, and vanity pouches styled in Jaipur palatial architecture.'
   },
+  blog: {
+    title: 'Jaipur Artisan Textile Blog & Sourcing Guides | Ramam Textiles',
+    description: 'Expert technical guides on authentic Jaipur hand block printing, Bagru Dabu indigo dyeing, pure mulmul cotton sourcing, and private label apparel manufacturing.'
+  },
   journal: {
     title: 'Textile Sourcing Journal & Artisan Insights | Ramam Textiles',
     description: 'Practical guides and deep dives on sourcing pure Indian cotton, discerning authentic woodblock prints, caring for botanical dyes, and private label best practices.'
@@ -88,7 +92,17 @@ export function setPageSEO({ title, description, path = '', image = '/logo.png' 
   }
   metaDesc.setAttribute('content', description);
 
-  // 3. Update OpenGraph tags
+  // 3. Update Canonical link
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonical);
+  }
+  const cleanPath = path ? (path.startsWith('/') ? path : '/' + path) : '';
+  canonical.setAttribute('href', `https://ramamtextiles.shop${cleanPath}`);
+
+  // 4. Update OpenGraph tags
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) ogTitle.setAttribute('content', title);
 
@@ -97,7 +111,6 @@ export function setPageSEO({ title, description, path = '', image = '/logo.png' 
 
   const ogUrl = document.querySelector('meta[property="og:url"]');
   if (ogUrl) {
-    const cleanPath = path ? (path.startsWith('/') ? path : '/' + path) : '';
     ogUrl.setAttribute('content', `https://ramamtextiles.shop${cleanPath}`);
   }
 
@@ -107,7 +120,7 @@ export function setPageSEO({ title, description, path = '', image = '/logo.png' 
     ogImage.setAttribute('content', fullImage);
   }
 
-  // 4. Update Twitter Card tags
+  // 5. Update Twitter Card tags
   const twTitle = document.querySelector('meta[name="twitter:title"]');
   if (twTitle) twTitle.setAttribute('content', title);
 

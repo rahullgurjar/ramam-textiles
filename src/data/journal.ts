@@ -91,6 +91,72 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
       }
     ],
     tags: ['Custom Manufacturing', 'OEM Production', 'Export Logistics', 'Tech Pack']
+  },
+  {
+    id: 'block-print-vs-screen-print-guide',
+    slug: 'block-print-vs-screen-print-guide',
+    title: 'Hand Block Print vs Screen Print: How to Identify Authentic Jaipur Craftsmanship',
+    category: 'Craft Heritage',
+    readTime: '7 min read',
+    publishedDate: 'October 2026',
+    excerpt: 'Learn how to spot genuine hand block printing through registration overlap, ink penetration, and border joints versus flat industrial screen printing.',
+    coverImage: '/products/duffle-pink-botanical.jpg',
+    author: {
+      name: 'Ramam Textiles Technical Guild',
+      role: 'Master Craftsman & Sourcing Lead'
+    },
+    contentSections: [
+      {
+        heading: 'Why Genuine Hand Block Printing Outclasses Industrial Screens',
+        body: 'Jaipur hand-block printing holds a centuries-old geographical identity. However, global fashion markets are increasingly flooded with rotary screen-printed fabrics claiming to be authentic handcrafted textiles. Understanding the physical signatures of genuine woodblock craftsmanship protects both brand reputation and buyer investment.'
+      },
+      {
+        quote: 'A true hand block print breathes with micro-variations. The slight pressure differentials of the artisan’s palm and subtle registration overlaps are marks of human soul that mechanical screens cannot replicate.',
+        body: 'When examining authentic Bagru or Sanganer printwork, inspect the reverse side of the textile. Pure hand-stamped fabrics exhibit deep natural pigment penetration into the cotton fiber core, whereas screen-printing leaves pigments resting primarily on the fabric surface.'
+      },
+      {
+        heading: 'The 3 Physical Benchmarks of Authentic Block Print',
+        body: '1. Registration Imperfections (Chhapa Joint): Where successive wood blocks meet, look for gentle overlap or slight negative space variations. Perfectly identical repeat patterns across 50 meters indicate automated machinery.\n2. Pigment Veining: In Dabu mud-resist dyeing, hair-thin cracks in the dried riverbed clay create distinctive marbling lines across the motifs.\n3. Organic Fragrance & Natural Softness: Authentic Jaipur cottons dried under the desert sun retain an earthy, crisp texture that softens dramatically with each wash.'
+      },
+      {
+        heading: 'Commercial Sourcing Advice for Independent Labels',
+        body: 'For luxury lifestyle brands, selling authentic artisanal stories justifies premium retail price points. Always demand certified workshop inspection proofs and AZO-free dye compliance test reports from your manufacturing partner.'
+      }
+    ],
+    tags: ['Block Print vs Screen Print', 'Authentic Jaipur Craft', 'Textile Authentication', 'Quality Control']
+  },
+  {
+    id: 'low-moq-textile-sourcing-india-guide',
+    slug: 'low-moq-textile-sourcing-india-guide',
+    title: 'Ultimate Guide to Low-MOQ Textile Sourcing & Export from Jaipur, India',
+    category: 'B2B Sourcing',
+    readTime: '9 min read',
+    publishedDate: 'October 2026',
+    excerpt: 'Everything international buyers need to know about sampling, low minimum order quantities, air cargo transit times, and HS code export compliance.',
+    coverImage: '/products/laptop-sleeve-kalamkari.jpg',
+    author: {
+      name: 'Ramam Textiles Export Desk',
+      role: 'International Trade Director'
+    },
+    contentSections: [
+      {
+        heading: 'Navigating Minimum Order Quantities (MOQs) in India',
+        body: 'Traditional textile export mills often demand massive minimums of 500 to 1,000 units per style, locking out emerging fashion designers and boutique retailers. At Ramam Textiles, we restructured artisan workshop clusters in Jaipur to allow flexible low MOQs starting at just 25 units per colorway or style.'
+      },
+      {
+        quote: 'Low MOQs empower independent boutique brands to test diverse heritage prints in their local markets without tying up vital cash flow in stagnant bulk inventory.',
+        body: 'This agile production model allows boutique founders in the US, UK, Australia, and Europe to commission curated seasonal drops, limited-edition quilted bags, and bespoke apparel lines with rapid sample turnaround.'
+      },
+      {
+        heading: 'Sampling Protocols & Pre-Production Approvals',
+        body: 'Before master cutting and bulk printing commences, reputable ateliers dispatch physical strike-offs and swatch cards. This ensures Pantone color validation, seam tensile strength testing, and precise zipper and hardware fit.'
+      },
+      {
+        heading: 'Export Logistics, HS Codes & Customs Clearance',
+        body: 'Consignments shipped via international air couriers (DHL Express, FedEx) typically reach major worldwide hubs within 4 to 7 business days. Commercial invoices with accurate HS Classification Codes (e.g., 4202.92 for Quilted Bags, 6204.42 for Cotton Dresses) ensure frictionless customs clearance and accurate tariff calculation.'
+      }
+    ],
+    tags: ['Low MOQ Manufacturing', 'India Textile Sourcing', 'Export Logistics', 'Wholesale Purchasing']
   }
 ];
 

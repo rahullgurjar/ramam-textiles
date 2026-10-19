@@ -1,31 +1,64 @@
 <!DOCTYPE html>
 <html lang="en" class="overflow-x-hidden">
   <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MF9DKWFK');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J26NMQCWHS"></script>
+    <!-- Performance Stubs & Non-Blocking Analytics (Zero Main-Thread Blocking) -->
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(){window.dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-J26NMQCWHS');
-    </script>
+      window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
 
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "ywjnsdr277");
+      // Deferred non-blocking analytics loader: runs after initial critical render or on user interaction
+      (function() {
+        var loaded = false;
+        function initAnalytics() {
+          if (loaded) return;
+          loaded = true;
+
+          // 1. Google Tag Manager
+          try {
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-MF9DKWFK');
+          } catch(e) {}
+
+          // 2. Google Analytics (gtag.js)
+          try {
+            var gScript = document.createElement('script');
+            gScript.async = true;
+            gScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-J26NMQCWHS';
+            document.head.appendChild(gScript);
+          } catch(e) {}
+
+          // 3. Microsoft Clarity
+          try {
+            var cScript = document.createElement('script');
+            cScript.async = true;
+            cScript.src = 'https://www.clarity.ms/tag/ywjnsdr277';
+            document.head.appendChild(cScript);
+          } catch(e) {}
+        }
+
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(function() {
+            setTimeout(initAnalytics, 1500);
+          }, { timeout: 3000 });
+        } else {
+          window.addEventListener('load', function() {
+            setTimeout(initAnalytics, 1800);
+          });
+        }
+
+        var events = ['scroll', 'pointerdown', 'touchstart', 'keydown'];
+        var listener = function() {
+          initAnalytics();
+          events.forEach(function(e) { window.removeEventListener(e, listener); });
+        };
+        events.forEach(function(e) { window.addEventListener(e, listener, { passive: true }); });
+      })();
     </script>
 
     <!-- Security & Content Protection Headers -->
@@ -40,10 +73,11 @@
     <title>RAMAM TEXTILES | Luxury Indian Textiles, Apparel & Wholesale Manufacturer | Jaipur</title>
     
     <meta name="description" content="Ramam Textiles is an authentic Indian luxury textile manufacturer based in Jaipur, Rajasthan. Specializing in hand block prints, artisan apparel, quilted cotton bags, pure fabrics by meter, and custom manufacturing for global brands." />
-    <meta name="keywords" content="Ramam Textiles, Jaipur textile manufacturer, hand block print wholesale, Indian apparel supplier, custom apparel fashion India, quilted cotton duffle bags, pure cotton fabrics meter, Dabu indigo block print, Sanganeri print supplier, Rajasthan textile export" />
+    <meta name="keywords" content="Ramam Textiles, Jaipur textile manufacturer, hand block print wholesale, Indian apparel supplier, custom apparel fashion India, quilted cotton duffle bags, pure cotton fabrics meter, Dabu indigo block print, Sanganeri print supplier, Rajasthan textile export, Jaipur block print blog, cotton mulmul sourcing guide, hand block print vs screen print, low MOQ textile export India, sustainable artisan textiles India" />
     <meta name="author" content="Ramam Textiles" />
     <meta name="theme-color" content="#241A16" />
     <link rel="canonical" href="https://ramamtextiles.shop/" />
+    <link rel="alternate" type="application/rss+xml" title="Ramam Textiles Artisan Blog &amp; Sourcing Guides" href="https://ramamtextiles.shop/sitemap.xml" />
 
     <!-- Open Graph / Meta Social -->
     <meta property="og:type" content="website" />
@@ -67,6 +101,8 @@
     <!-- Resource Hints & Non-Blocking Font Loading -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://script.google.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
@@ -103,7 +139,67 @@
         "Sanganeri Floral Prints",
         "Custom Garment Manufacturing",
         "Pure Mulmul Cotton & Chanderi Silk",
-        "Quilted Cotton Accessories"
+        "Quilted Cotton Accessories",
+        "Textile Sourcing India",
+        "Sustainable Block Printing"
+      ]
+    }
+    </script>
+
+    <!-- Schema.org JSON-LD Structured Data: Artisan Blog & Knowledge Base -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "@id": "https://ramamtextiles.shop/blog#blog",
+      "name": "Ramam Textiles Jaipur Artisan Blog & Sourcing Guides",
+      "url": "https://ramamtextiles.shop/blog",
+      "description": "Comprehensive technical guides, artisan chronicles, natural indigo dye chemistry, and export masterclasses from Jaipur, Rajasthan.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ramam Textiles",
+        "url": "https://ramamtextiles.shop/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ramamtextiles.shop/logo.png"
+        }
+      },
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "headline": "The Alchemy of Bagru: Traditional Dabu Mud-Resist Printing and Natural Indigo Vats",
+          "url": "https://ramamtextiles.shop/blog/alchemy-of-bagru-dabu-indigo",
+          "description": "Deep in the desert artisan settlements of Bagru, master printers combine riverbed mud, gum, and biological fermentation to achieve immortal shades of indigo blue.",
+          "image": "https://ramamtextiles.shop/products/duffle-indigo.jpg"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "A Designer's Technical Guide to Sourcing Pure Jaipur Cotton Mulmul & Cambric",
+          "url": "https://ramamtextiles.shop/blog/sourcing-guide-pure-cotton-mulmul",
+          "description": "Understand thread counts, GSM weights, shrinkage tolerances, and dye fastness when sourcing Jaipur handloom cottons for commercial collections.",
+          "image": "https://ramamtextiles.shop/products/duffle-kantha-patchwork.jpg"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "Hand Block Print vs Screen Print: How to Identify Authentic Jaipur Craftsmanship",
+          "url": "https://ramamtextiles.shop/blog/block-print-vs-screen-print-guide",
+          "description": "Learn how to spot genuine hand block printing through registration overlap, ink penetration, and border joints versus flat industrial screen printing.",
+          "image": "https://ramamtextiles.shop/products/duffle-pink-botanical.jpg"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "How to Launch a Custom Textile & Bag Line with Indian Artisan Workshops",
+          "url": "https://ramamtextiles.shop/blog/how-to-launch-private-label-apparel",
+          "description": "Step-by-step roadmap from initial sketches and tech packs to custom wooden block carving, sampling, bulk quality control, and worldwide customs clearance.",
+          "image": "https://ramamtextiles.shop/products/tote-sanganeri-ruffle-lifestyle.jpg"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "Ultimate Guide to Low-MOQ Textile Sourcing & Export from Jaipur, India",
+          "url": "https://ramamtextiles.shop/blog/low-moq-textile-sourcing-india-guide",
+          "description": "Everything international buyers need to know about sampling, low minimum order quantities, air cargo transit times, and HS code export compliance.",
+          "image": "https://ramamtextiles.shop/products/laptop-sleeve-kalamkari.jpg"
+        }
       ]
     }
     </script>

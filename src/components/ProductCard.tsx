@@ -39,21 +39,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
 
   const handleCardClick = () => {
     onNavigate(`/product/${product.slug}`);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div 
       onClick={handleCardClick}
+      onMouseEnter={() => import('../pages/ProductDetailPage')}
       className="group bg-[#FAF5EE] rounded-3xl border-2 border-[#D4AF37]/50 overflow-hidden shadow-md hover:shadow-2xl transition-all duration-400 flex flex-col justify-between cursor-pointer relative hover:-translate-y-1.5 hover:border-[#9B332C] jharokha-arch-card"
     >
       {/* Image Gallery Container with Arch Contour */}
       <div 
         className="relative aspect-[3/4] w-full overflow-hidden bg-[#F0E6D8]"
         onMouseEnter={() => {
-          if (product.images.length > 1) setCurrentImgIndex(1);
+          if (product.images.length > 1 && currentImgIndex !== 1) setCurrentImgIndex(1);
         }}
-        onMouseLeave={() => setCurrentImgIndex(0)}
+        onMouseLeave={() => {
+          if (product.images.length > 1 && currentImgIndex !== 0) setCurrentImgIndex(0);
+        }}
       >
         <picture className="w-full h-full block">
           <source 
@@ -63,6 +65,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
           <img 
             src={resolveProductImage(product.images[currentImgIndex] || product.images[0])} 
             alt={product.name}
+            width="600"
+            height="800"
             className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
             loading="lazy"
             decoding="async"

@@ -116,6 +116,19 @@ html {
   overflow-x: hidden;
   max-width: 100vw;
   width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+button, a, input, select, textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -183,11 +196,14 @@ body {
 .jharokha-arch-card {
   border-radius: 28px 28px 10px 10px;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
 }
 
 .jharokha-arch-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) translateZ(0);
   box-shadow: 0 16px 36px -8px rgba(155, 51, 44, 0.2);
 }
 
@@ -816,7 +832,20 @@ body {
 
 .content-visibility-auto {
   content-visibility: auto;
-  contain-intrinsic-size: 1px 400px;
+  contain-intrinsic-size: 1px 650px;
+}
+
+/* Acceleration for interactive buttons and pills */
+.pill-btn-rose,
+.pill-btn-outline,
+.pill-btn-rani,
+.pill-btn-indigo,
+.pill-btn-emerald,
+.pill-btn-dark,
+.pill-nav-btn {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 body {

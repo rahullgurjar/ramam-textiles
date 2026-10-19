@@ -60,7 +60,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
-                  onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  onMouseEnter={() => import('./ShopPage')}
+                  onClick={() => onNavigate('/shop')}
                   className="pill-btn-rani flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full shadow-md"
                 >
                   <span>Explore Collection ({PRODUCTS.length} Styles)</span>
@@ -68,6 +69,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </button>
 
                 <button
+                  onMouseEnter={() => import('./BulkOrderEnquiryPage')}
                   onClick={() => onNavigate('/bulk-enquiry')}
                   className="pill-btn-outline flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full border-[#1D4ED8]/40 hover:border-[#1D4ED8] hover:text-[#1D4ED8]"
                 >
@@ -151,7 +153,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* =========================================================================
           2. JAIPUR CRAFT CLUSTERS INTERACTIVE ATLAS (HIGH CONTRAST & RICH DETAILS)
           ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 content-visibility-auto">
         <div className="bg-[#EFE4D6] rounded-[32px] p-6 sm:p-10 border border-[#D4AF37]/35 shadow-md relative overflow-hidden">
           
           <div className="max-w-3xl mb-8">
@@ -330,6 +332,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                         : '/products/duffle-kantha-patchwork.jpg'
                     )}
                     alt={activeCraftCluster}
+                    width="800"
+                    height="600"
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -381,7 +385,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           {CATEGORIES.map((cat) => (
             <div
               key={cat.id}
-              onClick={() => { onNavigate(`/category/${cat.id}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onMouseEnter={() => import('./CategoryPage')}
+              onClick={() => onNavigate(`/category/${cat.id}`)}
               className={`group relative h-96 rounded-[28px] overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 bg-[#FAF5EE] border-2 ${
                 cat.id === 'bags'
                   ? 'border-[#3B82F6]/50 hover:border-[#1D4ED8]'
@@ -395,6 +400,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <img
                   src={resolveProductImage(cat.image)}
                   alt={cat.name}
+                  width="600"
+                  height="800"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   loading="lazy"
                   decoding="async"
@@ -497,7 +504,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
           <div className="mt-14 text-center">
             <button
-              onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onMouseEnter={() => import('./ShopPage')}
+              onClick={() => onNavigate('/shop')}
               className="pill-btn-rose inline-flex items-center gap-3 px-8 py-4 text-xs uppercase tracking-wider rounded-full shadow-xl"
             >
               <span>Explore Complete Jaipur Wholesale Catalog ({PRODUCTS.length} SKUs)</span>
@@ -510,7 +518,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* =========================================================================
           5. THE ARTISAN STORY & HERITAGE
           ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 content-visibility-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Visual Showcase with Real Product */}
           <div className="lg:col-span-6 relative">
@@ -521,6 +529,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <img
                     src={resolveProductImage('/products/duffle-pink-botanical.jpg')}
                     alt="Jaipur Hand Block Printed Quilted Weekender Bag"
+                    width="640"
+                    height="800"
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover"
@@ -592,7 +602,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* =========================================================================
           6. EDITORIAL LOOKBOOK PREVIEW
           ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 content-visibility-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
             <div className="text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-2 font-royal-title">
@@ -607,7 +617,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           <button
-            onClick={() => { onNavigate('/lookbook'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            onMouseEnter={() => import('./LookbookPage')}
+            onClick={() => onNavigate('/lookbook')}
             className="pill-btn-outline rounded-full text-xs font-bold uppercase tracking-wider"
           >
             <span>View Full Editorial Gallery</span>
@@ -619,7 +630,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           {LOOKBOOK_ITEMS.slice(0, 3).map((item) => (
             <div 
               key={item.id}
-              onClick={() => { onNavigate('/lookbook'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onMouseEnter={() => import('./LookbookPage')}
+              onClick={() => onNavigate('/lookbook')}
               className="group relative rounded-[28px] overflow-hidden shadow-lg cursor-pointer aspect-[3/4] bg-[#FAF5EE] border border-[#D4AF37]/40 hover:border-[#9B332C] transition-all"
             >
               <picture className="w-full h-full block">
@@ -627,6 +639,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <img
                   src={resolveProductImage(item.image)}
                   alt={item.title}
+                  width="600"
+                  height="800"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -646,7 +660,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* =========================================================================
           8. WHOLESALE BUYER ADVANTAGES & LOGISTICS
           ========================================================================= */}
-      <section className="bg-[#F7ECE5] py-16 md:py-20 border-t border-[#D4AF37]/30">
+      <section className="bg-[#F7ECE5] py-16 md:py-20 border-t border-[#D4AF37]/30 content-visibility-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <div className="text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-2 font-royal-title">
@@ -694,29 +708,30 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* =========================================================================
           9. BULK ORDER ENQUIRY & WHOLESALE QUOTATION
           ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 content-visibility-auto">
         <BulkOrderEnquiryForm id="bulk-enquiry" />
       </section>
 
       {/* =========================================================================
-          10. JOURNAL / JAIPUR CRAFT CHRONICLES PREVIEW
+          10. JOURNAL & BLOG / JAIPUR CRAFT CHRONICLES PREVIEW
           ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 content-visibility-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
             <div className="text-xs uppercase tracking-widest text-[#9B332C] font-bold mb-2 font-royal-title">
-              Jaipur Craft Chronicles
+              Jaipur Craft Chronicles &amp; Artisan Blog
             </div>
             <h2 className="font-playfair text-3xl sm:text-4xl text-[#1F1612] font-bold tracking-tight">
-              Artisan Stories &amp; Textile Heritage
+              Artisan Stories &amp; Sourcing Guides
             </h2>
           </div>
 
           <button
-            onClick={() => { onNavigate('/journal'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            onMouseEnter={() => import('./JournalPage')}
+            onClick={() => onNavigate('/blog')}
             className="pill-btn-outline rounded-full text-xs font-bold uppercase tracking-wider"
           >
-            <span>Read All Articles</span>
+            <span>Read All 5 Guides</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -725,7 +740,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           {JOURNAL_POSTS.slice(0, 3).map(post => (
             <article 
               key={post.id}
-              onClick={() => { onNavigate(`/journal/${post.slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onMouseEnter={() => import('./JournalDetailPage')}
+              onClick={() => onNavigate(`/blog/${post.slug}`)}
               className="group bg-[#FAF5EE] rounded-[28px] overflow-hidden shadow-sm border border-[#D4AF37]/40 hover:border-[#9B332C] hover:shadow-2xl transition-all cursor-pointer flex flex-col hover:-translate-y-1"
             >
               <div className="aspect-[16/10] overflow-hidden relative">
@@ -734,6 +750,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <img
                     src={resolveProductImage(post.image)}
                     alt={post.title}
+                    width="640"
+                    height="400"
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

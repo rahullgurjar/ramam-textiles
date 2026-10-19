@@ -14,12 +14,15 @@ import {
   Factory,
   Layers,
   ArrowRight,
-  MessageCircle
+  MessageCircle,
+  BookOpen
 } from 'lucide-react';
 import { useApp, CURRENCIES } from '../context/AppContext';
 import { CATEGORIES } from '../data/products';
 import { COLLECTIONS } from '../data/collections';
+import { JOURNAL_POSTS } from '../data/journal';
 import { InstagramIcon } from './InstagramIcon';
+import { resolveProductImage } from '../utils/imageUtils';
 
 interface HeaderProps {
   currentPath: string;
@@ -46,8 +49,20 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
   const totalInquiryCount = inquiryItems.reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
+    let ticking = false;
+    let lastScrolled = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 20;
+          if (scrolled !== lastScrolled) {
+            lastScrolled = scrolled;
+            setIsScrolled(scrolled);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -57,7 +72,6 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
     setActiveMegaMenu(null);
     setIsMobileMenuOpen(false);
     navigate(path);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -168,7 +182,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
             {/* Collection Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setActiveMegaMenu('shop')}
+              onMouseEnter={() => {
+                setActiveMegaMenu('shop');
+                import('../pages/ShopPage');
+              }}
               onMouseLeave={() => setActiveMegaMenu(null)}
             >
               <button 
@@ -201,6 +218,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                         {CATEGORIES.map(cat => (
                           <div 
                             key={cat.id}
+                            onMouseEnter={() => import('../pages/CategoryPage')}
                             onClick={() => handleNav(`/category/${cat.id}`)}
                             className="group/item flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF0EB] cursor-pointer transition-all border border-[#D4AF37]/30 hover:border-[#9B332C] bg-[#FAF5EE] shadow-sm"
                           >
@@ -236,6 +254,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                         </p>
                       </div>
                       <button
+                        onMouseEnter={() => import('../pages/CategoryPage')}
                         onClick={() => handleNav('/category/bags')}
                         className="mt-4 w-full py-2 bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] font-royal-title font-bold text-[10px] uppercase tracking-widest rounded-full hover:bg-[#9B332C] hover:text-white transition-colors shadow-sm"
                       >
@@ -249,6 +268,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             {/* Curated Sets */}
             <button 
+              onMouseEnter={() => import('../pages/CollectionsPage')}
               onClick={() => handleNav('/collections')}
               className={`nav-luxury-link ${currentPath === '/collections' ? 'active' : ''}`}
             >
@@ -257,6 +277,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             {/* Our Craft */}
             <button 
+              onMouseEnter={() => import('../pages/CraftsmanshipPage')}
               onClick={() => handleNav('/craftsmanship')}
               className={`nav-luxury-link ${currentPath === '/craftsmanship' ? 'active' : ''}`}
             >
@@ -265,14 +286,92 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             {/* Lookbook */}
             <button 
+              onMouseEnter={() => import('../pages/LookbookPage')}
               onClick={() => handleNav('/lookbook')}
               className={`nav-luxury-link ${currentPath === '/lookbook' ? 'active' : ''}`}
             >
               <span>LOOKBOOK</span>
             </button>
 
+            {/* Blog & Sourcing Journal Mega Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => {
+                setActiveMegaMenu('blog');
+                import('../pages/JournalPage');
+              }}
+              onMouseLeave={() => setActiveMegaMenu(null)}
+            >
+              <button 
+                onClick={() => handleNav('/blog')} 
+                className={`nav-luxury-link ${
+                  currentPath.startsWith('/blog') || currentPath.startsWith('/blogs') || currentPath.startsWith('/journal') ? 'active' : ''
+                }`}
+              >
+                <span>BLOG</span>
+                <ChevronDown className="w-3 h-3 opacity-50" />
+              </button>
+
+              {activeMegaMenu === 'blog' && (
+                <div className="absolute top-full -left-28 mt-2 w-[min(560px,calc(100vw-2rem))] bg-[#FAF5EE] border border-[#D4AF37]/45 shadow-2xl rounded-2xl p-5 z-50 animate-fade-in text-[#241A16] overflow-hidden">
+                  <div className="flex items-center justify-between pb-2.5 border-b border-[#D4AF37]/30 mb-3">
+                    <div className="flex items-center gap-2">
+                      <BookOpen className="w-4 h-4 text-[#9B332C]" />
+                      <span className="text-[11px] font-bold text-[#241A16] tracking-widest uppercase font-royal-title">
+                        Jaipur Artisan Blog &amp; Sourcing Guides
+                      </span>
+                    </div>
+                    <button 
+                      onClick={() => handleNav('/blog')} 
+                      className="text-[11px] text-[#9B332C] hover:text-[#241A16] flex items-center gap-1 font-semibold"
+                    >
+                      <span>view all 5 articles</span>
+                      <ArrowRight className="w-3 h-3 text-[#9B332C]" />
+                    </button>
+                  </div>
+
+                  <div className="space-y-2.5">
+                    {JOURNAL_POSTS.slice(0, 3).map(post => (
+                      <div 
+                        key={post.id}
+                        onClick={() => handleNav(`/blog/${post.slug}`)}
+                        className="group/item flex items-center gap-3 p-2 rounded-xl hover:bg-[#FAF0EB] cursor-pointer transition-all border border-[#D4AF37]/25 hover:border-[#9B332C] bg-[#FAF5EE]"
+                      >
+                        <img 
+                          src={resolveProductImage(post.image)} 
+                          alt={post.title} 
+                          className="w-12 h-12 rounded-lg object-cover border border-[#D4AF37]/30 shadow-sm shrink-0"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 text-[10px] text-stone-500 font-mono">
+                            <span className="text-[#9B332C] font-royal-title font-bold uppercase">{post.category}</span>
+                            <span>•</span>
+                            <span>{post.readTime}</span>
+                          </div>
+                          <h4 className="text-xs font-bold text-[#241A16] group-hover/item:text-[#9B332C] transition-colors font-royal-title truncate">
+                            {post.title}
+                          </h4>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-3 pt-3 border-t border-[#D4AF37]/20 flex items-center justify-between text-[11px]">
+                    <span className="text-stone-600 font-royal-body">Topics: Dabu Indigo • 60x60 Mulmul • Block Print vs Screen • OEM</span>
+                    <button 
+                      onClick={() => handleNav('/blog')}
+                      className="text-[#9B332C] font-bold hover:underline"
+                    >
+                      Browse Archive →
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* About */}
             <button 
+              onMouseEnter={() => import('../pages/AboutPage')}
               onClick={() => handleNav('/about')}
               className={`nav-luxury-link ${currentPath === '/about' ? 'active' : ''}`}
             >
@@ -281,6 +380,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
             {/* Bulk Orders Subtle CTA */}
             <button 
+              onMouseEnter={() => import('../pages/BulkOrderEnquiryPage')}
               onClick={() => {
                 setActiveMegaMenu(null);
                 setIsMobileMenuOpen(false);
@@ -504,12 +604,29 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 >
                   Editorial Lookbook
                 </button>
-                <button 
-                  onClick={() => handleNav('/journal')}
-                  className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
-                >
-                  Textile Sourcing Journal
-                </button>
+                <div className="py-1">
+                  <button 
+                    onClick={() => handleNav('/blog')}
+                    className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider bg-[#FAF0EB] text-[#9B332C] border border-[#EACAC0] flex items-center justify-between shadow-sm"
+                  >
+                    <div className="flex items-center gap-2">
+                      <BookOpen className="w-4 h-4 text-[#9B332C]" />
+                      <span>Artisan Blog &amp; Sourcing Guides</span>
+                    </div>
+                    <span className="text-[10px] bg-white px-2 py-0.5 rounded-full border border-[#D4AF37]/30 font-mono font-bold">5 Posts</span>
+                  </button>
+                  <div className="pl-6 pt-1.5 space-y-1">
+                    {JOURNAL_POSTS.slice(0, 3).map(post => (
+                      <button
+                        key={post.id}
+                        onClick={() => handleNav(`/blog/${post.slug}`)}
+                        className="w-full text-left py-1 text-[11px] text-stone-600 hover:text-[#9B332C] truncate block"
+                      >
+                        • {post.title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
                 <button 
                   onClick={() => handleNav('/about')}
                   className="w-full text-left px-3.5 py-2 rounded-xl font-royal-title font-bold text-xs uppercase tracking-wider hover:bg-[#FAF0EB] text-[#241A16]"
