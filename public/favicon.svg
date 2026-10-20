@@ -1,19 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
   <defs>
-    <radialGradient id="goldRing" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#E5C158"/>
-      <stop offset="70%" stop-color="#C59B27"/>
-      <stop offset="100%" stop-color="#997316"/>
+    <!-- Royal Gold Inlay Gradient -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F6E7B9"/>
+      <stop offset="25%" stop-color="#D4AF37"/>
+      <stop offset="70%" stop-color="#AA7C11"/>
+      <stop offset="100%" stop-color="#7B5600"/>
+    </linearGradient>
+
+    <!-- Deep Jaipur Ruby / Carmine Medallion -->
+    <radialGradient id="rubyRed" cx="35%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#B23A32"/>
+      <stop offset="60%" stop-color="#9B332C"/>
+      <stop offset="100%" stop-color="#6B1E19"/>
     </radialGradient>
+
+    <!-- Subtle Drop Shadow for depth on all tab colors -->
+    <filter id="tabShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
   </defs>
-  <!-- Base Background Badge -->
-  <rect width="100" height="100" rx="22" fill="#241A16"/>
-  <!-- Circular Gold Filigree Border -->
-  <circle cx="50" cy="50" r="43" fill="none" stroke="url(#goldRing)" stroke-width="2.5"/>
-  <circle cx="50" cy="50" r="39" fill="#9B332C"/>
-  <circle cx="50" cy="50" r="36" fill="none" stroke="#E5C158" stroke-width="1" stroke-dasharray="2 2"/>
-  <!-- Royal Monogram RT -->
-  <text x="50" y="58" font-family="'Playfair Display', Georgia, serif" font-size="34" font-weight="bold" font-style="italic" fill="#FAF5EE" text-anchor="middle" letter-spacing="1">RT</text>
-  <!-- Tiny Jaipur Craft Dot -->
-  <circle cx="50" cy="74" r="2" fill="#E5C158"/>
+
+  <!-- Transparent Background Circular Royal Medallion -->
+  <circle cx="50" cy="50" r="46" fill="url(#rubyRed)" stroke="url(#goldGradient)" stroke-width="3.5" filter="url(#tabShadow)"/>
+
+  <!-- Inner Delicate Gold Filigree Ring -->
+  <circle cx="50" cy="50" r="40" fill="none" stroke="#FAF5EE" stroke-opacity="0.35" stroke-width="0.8"/>
+  <circle cx="50" cy="50" r="38" fill="none" stroke="url(#goldGradient)" stroke-width="1.2" stroke-dasharray="2.5 1.5"/>
+
+  <!-- Royal RT Monogram -->
+  <text 
+    x="50" 
+    y="59" 
+    font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif" 
+    font-size="35" 
+    font-weight="700" 
+    font-style="italic" 
+    fill="#FAF5EE" 
+    text-anchor="middle" 
+    letter-spacing="0.5"
+    filter="drop-shadow(0 1px 2px rgba(0,0,0,0.45))"
+  >RT</text>
+
+  <!-- Jaipur Heritage Artisan Hallmark Dot -->
+  <circle cx="50" cy="74" r="2.5" fill="url(#goldGradient)"/>
 </svg>

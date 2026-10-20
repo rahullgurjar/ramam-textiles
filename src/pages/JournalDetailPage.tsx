@@ -42,7 +42,7 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
   }, [article]);
 
   usePageSEO({
-    title: `${article.title} | Ramam Textiles Blog & Journal`,
+    title: `Ramam Textiles • ${article.title}`,
     description: article.excerpt,
     path: getArticleUrl(article.slug),
     image: article.coverImage

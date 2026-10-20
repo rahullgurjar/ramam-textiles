@@ -15,7 +15,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
   const basePath = isBlogPath ? '/blog' : '/journal';
 
   usePageSEO({
-    title: 'Jaipur Artisan Textile Blog & Sourcing Journal | Ramam Textiles',
+    title: 'Ramam Textiles • Artisan Blog & Sourcing Journal',
     description: 'Explore in-depth technical guides, Bagru Dabu indigo dyeing chemistry, pure mulmul cotton sourcing, and private label apparel manufacturing in Jaipur.',
     path: basePath
   });

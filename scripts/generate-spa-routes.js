@@ -282,7 +282,7 @@ articles.forEach(art => {
   // Primary /blog route
   allRoutes.push({
     route: `/blog/${art.slug}`,
-    title: `${art.title} | Ramam Textiles Blog`,
+    title: `Ramam Textiles • ${art.title}`,
     description: art.excerpt,
     h1: `${art.title}`,
     snippet: art.excerpt,
@@ -294,7 +294,7 @@ articles.forEach(art => {
   // Alias /blogs route
   allRoutes.push({
     route: `/blogs/${art.slug}`,
-    title: `${art.title} | Ramam Textiles Blog`,
+    title: `Ramam Textiles • ${art.title}`,
     description: art.excerpt,
     h1: `${art.title}`,
     snippet: art.excerpt,
@@ -306,7 +306,7 @@ articles.forEach(art => {
   // Alias /journal route
   allRoutes.push({
     route: `/journal/${art.slug}`,
-    title: `${art.title} | Ramam Textiles Journal`,
+    title: `Ramam Textiles • ${art.title}`,
     description: art.excerpt,
     h1: `${art.title}`,
     snippet: art.excerpt,
