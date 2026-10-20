@@ -172,13 +172,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           {/* Interactive Cluster Selector Tabs */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <div
+              onMouseEnter={() => setActiveCraftCluster('sanganer')}
               onClick={() => {
-                if (activeCraftCluster === 'sanganer') {
-                  onNavigate('/craftsmanship');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                  setActiveCraftCluster('sanganer');
-                }
+                onNavigate('/blog/sanganeri-vs-bagru-print-differences');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'sanganer'
@@ -190,14 +187,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FCE7F3] text-[#BE185D] border border-[#F472B6] font-royal-title">
                   Jaipur Floral Print
                 </span>
-                <span 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onNavigate('/craftsmanship');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="text-[11px] font-bold text-[#BE185D] hover:underline flex items-center gap-1 font-royal-title cursor-pointer"
-                >
+                <span className="text-[11px] font-bold text-[#BE185D] hover:underline flex items-center gap-1 font-royal-title">
                   <span>Explore Story</span>
                   <ArrowRight className="w-3 h-3" />
                 </span>
@@ -211,13 +201,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
 
             <div
+              onMouseEnter={() => setActiveCraftCluster('bagru')}
               onClick={() => {
-                if (activeCraftCluster === 'bagru') {
-                  onNavigate('/blog/alchemy-of-bagru-dabu-indigo');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                  setActiveCraftCluster('bagru');
-                }
+                onNavigate('/blog/alchemy-of-bagru-dabu-indigo');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'bagru'
@@ -229,14 +216,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#DBEAFE] text-[#1E40AF] border border-[#93C5FD] font-royal-title">
                   Bagru Indigo Works
                 </span>
-                <span 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onNavigate('/blog/alchemy-of-bagru-dabu-indigo');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="text-[11px] font-bold text-[#1D4ED8] hover:underline flex items-center gap-1 font-royal-title cursor-pointer"
-                >
+                <span className="text-[11px] font-bold text-[#1D4ED8] hover:underline flex items-center gap-1 font-royal-title">
                   <span>Explore Story</span>
                   <ArrowRight className="w-3 h-3" />
                 </span>
@@ -250,13 +230,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
 
             <div
+              onMouseEnter={() => setActiveCraftCluster('kantha')}
               onClick={() => {
-                if (activeCraftCluster === 'kantha') {
-                  onNavigate('/craftsmanship');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                  setActiveCraftCluster('kantha');
-                }
+                onNavigate('/craftsmanship');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'kantha'
@@ -268,14 +245,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FEF3C7] text-[#B45309] border border-[#FCD34D] font-royal-title">
                   Marigold &amp; Kantha
                 </span>
-                <span 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onNavigate('/craftsmanship');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="text-[11px] font-bold text-[#B45309] hover:underline flex items-center gap-1 font-royal-title cursor-pointer"
-                >
+                <span className="text-[11px] font-bold text-[#B45309] hover:underline flex items-center gap-1 font-royal-title">
                   <span>Explore Story</span>
                   <ArrowRight className="w-3 h-3" />
                 </span>
@@ -738,34 +708,61 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border-2 border-[#A7F3D0]/60 hover:border-[#059669] hover:shadow-xl transition-all">
-              <div className="w-12 h-12 bg-[#ECFDF5] text-[#047857] rounded-2xl flex items-center justify-center mb-6 border border-[#A7F3D0] shadow-sm">
-                <ShieldCheck className="w-6 h-6 text-[#047857]" />
+            <div 
+              onClick={() => { onNavigate('/custom-manufacturing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border-2 border-[#A7F3D0]/60 hover:border-[#059669] hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-12 h-12 bg-[#ECFDF5] text-[#047857] rounded-2xl flex items-center justify-center mb-6 border border-[#A7F3D0] shadow-sm">
+                  <ShieldCheck className="w-6 h-6 text-[#047857]" />
+                </div>
+                <h3 className="font-royal-title text-xl font-bold text-[#065F46] mb-2">Strict 4-Point Quality Inspection</h3>
+                <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
+                  Every stitched bag undergoes zero-defect inspection for zipper durability, strap tensile strength, quilting alignment, and clean edge binding.
+                </p>
               </div>
-              <h3 className="font-royal-title text-xl font-bold text-[#065F46] mb-2">Strict 4-Point Quality Inspection</h3>
-              <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
-                Every stitched bag undergoes zero-defect inspection for zipper durability, strap tensile strength, quilting alignment, and clean edge binding.
-              </p>
+              <div className="mt-4 pt-3 border-t border-[#A7F3D0]/50 flex items-center justify-between text-xs font-royal-title font-bold text-[#065F46]">
+                <span>OEM &amp; Quality Standards</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
             </div>
 
-            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border-2 border-[#BFDBFE]/60 hover:border-[#2563EB] hover:shadow-xl transition-all">
-              <div className="w-12 h-12 bg-[#EFF6FF] text-[#1D4ED8] rounded-2xl flex items-center justify-center mb-6 border border-[#BFDBFE] shadow-sm">
-                <Truck className="w-6 h-6 text-[#1D4ED8]" />
+            <div 
+              onClick={() => { onNavigate('/wholesale'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border-2 border-[#BFDBFE]/60 hover:border-[#2563EB] hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-12 h-12 bg-[#EFF6FF] text-[#1D4ED8] rounded-2xl flex items-center justify-center mb-6 border border-[#BFDBFE] shadow-sm">
+                  <Truck className="w-6 h-6 text-[#1D4ED8]" />
+                </div>
+                <h3 className="font-royal-title text-xl font-bold text-[#1E295B] mb-2">Doorstep Air Express Freight</h3>
+                <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
+                  Direct DHL / FedEx Express air shipments (4-7 business days) with full Certificate of Origin and export clearance handled seamlessly.
+                </p>
               </div>
-              <h3 className="font-royal-title text-xl font-bold text-[#1E295B] mb-2">Doorstep Air Express Freight</h3>
-              <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
-                Direct DHL / FedEx Express air shipments (4-7 business days) with full Certificate of Origin and export clearance handled seamlessly.
-              </p>
+              <div className="mt-4 pt-3 border-t border-[#BFDBFE]/50 flex items-center justify-between text-xs font-royal-title font-bold text-[#1E295B]">
+                <span>Wholesale Logistics Portal</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
             </div>
 
-            <div className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border-2 border-[#FBCFE8]/60 hover:border-[#DB2777] hover:shadow-xl transition-all">
-              <div className="w-12 h-12 bg-[#FDF2F8] text-[#BE185D] rounded-2xl flex items-center justify-center mb-6 border border-[#FBCFE8] shadow-sm">
-                <Scissors className="w-6 h-6 text-[#BE185D]" />
+            <div 
+              onClick={() => { onNavigate('/bulk-enquiry'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="p-8 bg-[#FAF5EE] rounded-[28px] shadow-md border-2 border-[#FBCFE8]/60 hover:border-[#DB2777] hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-12 h-12 bg-[#FDF2F8] text-[#BE185D] rounded-2xl flex items-center justify-center mb-6 border border-[#FBCFE8] shadow-sm">
+                  <Scissors className="w-6 h-6 text-[#BE185D]" />
+                </div>
+                <h3 className="font-royal-title text-xl font-bold text-[#831843] mb-2">Low MOQ (25 Pcs) &amp; Custom Orders</h3>
+                <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
+                  Start with only 25 pieces per style. Custom brand woven neck tags, hangtags, and packaging are supported seamlessly.
+                </p>
               </div>
-              <h3 className="font-royal-title text-xl font-bold text-[#831843] mb-2">Low MOQ (25 Pcs) &amp; Custom Orders</h3>
-              <p className="text-xs font-royal-body text-stone-700 leading-relaxed">
-                Start with only 25 pieces per style. Custom brand woven neck tags, hangtags, and packaging are supported seamlessly.
-              </p>
+              <div className="mt-4 pt-3 border-t border-[#FBCFE8]/50 flex items-center justify-between text-xs font-royal-title font-bold text-[#831843]">
+                <span>Request Bulk Quotation</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
             </div>
           </div>
         </div>

@@ -2,6 +2,43 @@ import { JournalArticle } from '../types';
 
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
+    id: 'demystifying-fabric-gsm-cotton-weights',
+    slug: 'demystifying-fabric-gsm-cotton-weights',
+    title: "Demystifying Fabric GSM: A Fashion Designer's Guide to Cotton Weights",
+    category: 'Fabric Sourcing',
+    readTime: '8 min read',
+    publishedDate: 'October 20, 2026',
+    excerpt: "Learn how to choose the ideal Grams per Square Meter (GSM) for resort dresses, summer kurtas, structured bags, and quilted home textiles when sourcing Jaipur cottons.",
+    coverImage: '/products/duffle-kantha-patchwork.jpg',
+    author: {
+      name: "Ramam Textiles Technical Guild",
+      role: "Head Sourcing Engineer"
+    },
+    contentSections: [
+      {
+            heading: "What Exactly is GSM and Why Does It Determine Garment Success?",
+            body: "Grams per Square Meter (GSM) is the international metric standard measuring the areal density of woven and knitted fabrics. For fashion designers and product developers, GSM is the single most reliable parameter dictating fabric opacity, drape fluidness, structural stiffness, and thermal breathability.\n\nA common mistake among emerging brands is equating heavier GSM with 'higher quality.' In reality, luxury is defined by selecting the exact right GSM engineered for the intended functional silhouette."
+      },
+      {
+            quote: "A 75 GSM superfine mulmul is not 'flimsy'—it is an exquisite feat of microscopic spinning delivering featherlight breathability in 40°C desert heat. Quality is fit-for-purpose, not sheer weight.",
+            body: "Let us break down the standard GSM tiers encountered when sourcing pure Indian handloom and artisan cottons."
+      },
+      {
+            heading: "Tier 1: Featherlight (60 to 85 GSM) — Superfine Mulmul & Voile",
+            body: "Woven with high-count 60s and 80s yarns, this tier represents legendary Jaipur mulmul. Characteristics include cloud-like softness, ultra-fast drying, and dramatic fluid drape. Ideal for:\n• Tiered maxi dresses and resort cover-ups\n• Lightweight scarves and breezy dupattas\n• Delicate baby swaddles and nightwear\nNote: Requires French seams or delicate clean-finish edge binding to prevent seam slippage."
+      },
+      {
+            heading: "Tier 2: Medium Lightweight (95 to 130 GSM) — 60s & 40s Cambric",
+            body: "The commercial workhorse of Indian artisan fashion. Cambric offers a denser warp and weft weave that provides opacity without sacrificing summer breathability. Ideal for:\n• Tailored button-down shirts and tunic kurtas\n• Lined midi skirts and summer trousers\n• Cushion covers and pillow shams"
+      },
+      {
+            heading: "Tier 3: Heavyweight & Structural (200 to 350+ GSM) — Quilted Cottons & Canvas",
+            body: "Created by channel-quilting two layers of 110 GSM printed cambric over an uncompressed layer of 100% natural cotton wadding (150-180 GSM). The resulting composite fabric delivers remarkable cushioning, shock absorption, and architectural shape. Ideal for:\n• Weekender duffle bags and cosmetic vanity cases\n• Padded laptop and tablet sleeves\n• Reversible winter quilts (Jaipuri Razai)"
+      }
+],
+    tags: ["Fabric GSM","Cotton Sourcing","Textile Manufacturing","Fashion Design","Apparel Production"]
+  },
+  {
     id: 'how-to-wash-natural-indigo-cotton',
     slug: 'how-to-wash-natural-indigo-cotton',
     title: "The Complete Guide to Washing & Caring for Natural Indigo Dyed Cotton",

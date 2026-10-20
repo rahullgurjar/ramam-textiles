@@ -1,14 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import { Sparkles, ArrowRight, BookOpen, Search, X, Tag, Clock, Calendar, CheckCircle2, ChevronRight } from 'lucide-react';
 import { JOURNAL_POSTS } from '../data/journal';
+import { InstagramIcon } from '../components/InstagramIcon';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 import { usePageSEO } from '../utils/seo';
 
 interface JournalPageProps {
   onNavigate: (path: string) => void;
 }
-
-const CATEGORIES = ['All', 'Craft Heritage', 'B2B Sourcing', 'Custom Manufacturing'];
 
 export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
   const isBlogPath = typeof window !== 'undefined' && (window.location.pathname.includes('/blog') || window.location.pathname.includes('/blogs'));
@@ -24,6 +23,12 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const getArticleUrl = (slug: string) => `${basePath}/${slug}`;
+
+  // Dynamically extract all available categories across published posts
+  const dynamicCategories = useMemo(() => {
+    const unique = Array.from(new Set(JOURNAL_POSTS.map(p => p.category)));
+    return ['All', ...unique];
+  }, []);
 
   // Filter articles based on category and search query
   const filteredPosts = useMemo(() => {
@@ -89,7 +94,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
       {/* Category Filter Tabs */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#D4AF37]/25 pb-4">
         <div className="flex flex-wrap items-center gap-2">
-          {CATEGORIES.map(category => {
+          {dynamicCategories.map(category => {
             const count = category === 'All' 
               ? JOURNAL_POSTS.length 
               : JOURNAL_POSTS.filter(p => p.category === category).length;
@@ -262,6 +267,36 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
           ))}
         </div>
       )}
+
+      {/* Official Atelier Instagram Spotlight (@ramamtextiles) */}
+      <div className="bg-[#FAF0EB] rounded-3xl p-6 sm:p-8 border border-[#EACAC0] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 rounded-2xl bg-white border border-[#D4AF37]/40 shadow-md flex items-center justify-center shrink-0">
+            <InstagramIcon className="w-7 h-7 text-[#9B332C]" />
+          </div>
+          <div>
+            <div className="flex items-center justify-center sm:justify-start gap-2">
+              <span className="text-xs font-royal-title text-[#9B332C] font-bold uppercase tracking-wider">Follow Our Artisan Journey</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#9B332C]/10 text-[#9B332C] font-mono font-bold">@ramamtextiles</span>
+            </div>
+            <h4 className="font-playfair text-lg sm:text-xl font-bold text-[#241A16] mt-0.5">
+              Live Printing Videos &amp; Workshop Reels from Jaipur
+            </h4>
+            <p className="text-xs text-stone-600 font-royal-body mt-1">
+              Watch master woodcarvers, natural indigo vat stirrings, and behind-the-scenes production reels daily on Instagram.
+            </p>
+          </div>
+        </div>
+        <a
+          href="https://www.instagram.com/ramamtextiles"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-6 py-2.5 rounded-full bg-[#9B332C] text-white text-xs font-royal-title font-bold uppercase tracking-widest hover:bg-[#801B18] transition-all shadow-md shrink-0 flex items-center gap-2 group"
+        >
+          <InstagramIcon className="w-4 h-4 text-white" />
+          <span>Follow @ramamtextiles</span>
+        </a>
+      </div>
 
       {/* B2B Sourcing Support CTA Banner */}
       <div className="bg-gradient-to-r from-[#FAF0EB] via-[#FAF5EE] to-[#FAF0EB] rounded-3xl p-8 sm:p-10 border border-[#D4AF37]/45 shadow-sm text-center space-y-4 relative overflow-hidden">
