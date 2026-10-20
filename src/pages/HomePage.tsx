@@ -171,8 +171,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
           {/* Interactive Cluster Selector Tabs */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <button
-              onClick={() => setActiveCraftCluster('sanganer')}
+            <div
+              onClick={() => {
+                if (activeCraftCluster === 'sanganer') {
+                  onNavigate('/craftsmanship');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                  setActiveCraftCluster('sanganer');
+                }
+              }}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'sanganer'
                   ? 'bg-white border-[#BE185D] shadow-md ring-1 ring-[#BE185D]/20'
@@ -183,6 +190,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FCE7F3] text-[#BE185D] border border-[#F472B6] font-royal-title">
                   Jaipur Floral Print
                 </span>
+                <span 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNavigate('/craftsmanship');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="text-[11px] font-bold text-[#BE185D] hover:underline flex items-center gap-1 font-royal-title cursor-pointer"
+                >
+                  <span>Explore Story</span>
+                  <ArrowRight className="w-3 h-3" />
+                </span>
               </div>
               <h3 className={`font-playfair font-bold text-lg leading-snug transition-colors ${activeCraftCluster === 'sanganer' ? 'text-[#BE185D]' : 'text-[#1A120E]'}`}>
                 Sanganer Atelier
@@ -190,10 +208,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <p className="text-xs text-stone-700 font-royal-body mt-1 leading-relaxed font-medium">
                 Delicate botanical bootas and Mughal trellis patterns printed on pure combed cotton.
               </p>
-            </button>
+            </div>
 
-            <button
-              onClick={() => setActiveCraftCluster('bagru')}
+            <div
+              onClick={() => {
+                if (activeCraftCluster === 'bagru') {
+                  onNavigate('/blog/alchemy-of-bagru-dabu-indigo');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                  setActiveCraftCluster('bagru');
+                }
+              }}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'bagru'
                   ? 'bg-white border-[#1D4ED8] shadow-md ring-1 ring-[#1D4ED8]/20'
@@ -204,6 +229,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#DBEAFE] text-[#1E40AF] border border-[#93C5FD] font-royal-title">
                   Bagru Indigo Works
                 </span>
+                <span 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNavigate('/blog/alchemy-of-bagru-dabu-indigo');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="text-[11px] font-bold text-[#1D4ED8] hover:underline flex items-center gap-1 font-royal-title cursor-pointer"
+                >
+                  <span>Explore Story</span>
+                  <ArrowRight className="w-3 h-3" />
+                </span>
               </div>
               <h3 className={`font-playfair font-bold text-lg leading-snug transition-colors ${activeCraftCluster === 'bagru' ? 'text-[#1D4ED8]' : 'text-[#1A120E]'}`}>
                 Bagru Indigo Works
@@ -211,10 +247,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <p className="text-xs text-stone-700 font-royal-body mt-1 leading-relaxed font-medium">
                 Natural fermented indigo, clay mud-resist stamps, and sun-curing on riverbank drying fields.
               </p>
-            </button>
+            </div>
 
-            <button
-              onClick={() => setActiveCraftCluster('kantha')}
+            <div
+              onClick={() => {
+                if (activeCraftCluster === 'kantha') {
+                  onNavigate('/craftsmanship');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                  setActiveCraftCluster('kantha');
+                }
+              }}
               className={`p-5 rounded-2xl text-left transition-all border-2 cursor-pointer ${
                 activeCraftCluster === 'kantha'
                   ? 'bg-white border-[#D97706] shadow-md ring-1 ring-[#D97706]/20'
@@ -225,6 +268,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FEF3C7] text-[#B45309] border border-[#FCD34D] font-royal-title">
                   Marigold &amp; Kantha
                 </span>
+                <span 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNavigate('/craftsmanship');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="text-[11px] font-bold text-[#B45309] hover:underline flex items-center gap-1 font-royal-title cursor-pointer"
+                >
+                  <span>Explore Story</span>
+                  <ArrowRight className="w-3 h-3" />
+                </span>
               </div>
               <h3 className={`font-playfair font-bold text-lg leading-snug transition-colors ${activeCraftCluster === 'kantha' ? 'text-[#B45309]' : 'text-[#1A120E]'}`}>
                 Barmer Kantha Stitching
@@ -232,7 +286,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <p className="text-xs text-stone-700 font-royal-body mt-1 leading-relaxed font-medium">
                 Double-channel padded cotton batting, running kantha embroidery, and candy-stripe piping.
               </p>
-            </button>
+            </div>
           </div>
 
           {/* Interactive Cluster Spotlight Panel */}
@@ -293,7 +347,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </div>
 
                 {/* Action CTA */}
-                <div className="pt-2 flex items-center gap-3">
+                <div className="pt-2 flex flex-wrap items-center gap-3">
+                  <button
+                    onClick={() => { onNavigate('/craftsmanship'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    className="pill-btn-outline px-5 py-2.5 text-xs font-bold uppercase rounded-full shadow-sm flex items-center gap-2 border-[#9B332C]/40 text-[#9B332C] hover:bg-[#FAF0EB]"
+                  >
+                    <span>Read Full Craft Heritage Story</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                   <button
                     onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                     className={`${
@@ -383,11 +444,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {CATEGORIES.map((cat) => (
-            <div
+            <a
               key={cat.id}
+              href={`/category/${cat.id}`}
               onMouseEnter={() => import('./CategoryPage')}
-              onClick={() => onNavigate(`/category/${cat.id}`)}
-              className={`group relative h-96 rounded-[28px] overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 bg-[#FAF5EE] border-2 ${
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate(`/category/${cat.id}`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className={`group relative h-96 rounded-[28px] overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 bg-[#FAF5EE] border-2 block text-left ${
                 cat.id === 'bags'
                   ? 'border-[#3B82F6]/50 hover:border-[#1D4ED8]'
                   : cat.id === 'women'
@@ -431,7 +497,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <ChevronRight className="w-4 h-4" />
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </section>
@@ -731,18 +797,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             onClick={() => onNavigate('/blog')}
             className="pill-btn-outline rounded-full text-xs font-bold uppercase tracking-wider"
           >
-            <span>Read All 5 Guides</span>
+            <span>Read All {JOURNAL_POSTS.length} Guides</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {JOURNAL_POSTS.slice(0, 3).map(post => (
-            <article 
+            <a 
               key={post.id}
+              href={`/blog/${post.slug}`}
               onMouseEnter={() => import('./JournalDetailPage')}
-              onClick={() => onNavigate(`/blog/${post.slug}`)}
-              className="group bg-[#FAF5EE] rounded-[28px] overflow-hidden shadow-sm border border-[#D4AF37]/40 hover:border-[#9B332C] hover:shadow-2xl transition-all cursor-pointer flex flex-col hover:-translate-y-1"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate(`/blog/${post.slug}`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="group bg-[#FAF5EE] rounded-[28px] overflow-hidden shadow-sm border border-[#D4AF37]/40 hover:border-[#9B332C] hover:shadow-2xl transition-all cursor-pointer flex flex-col hover:-translate-y-1 block text-left"
             >
               <div className="aspect-[16/10] overflow-hidden relative">
                 <picture className="w-full h-full block">
@@ -782,7 +853,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[#9B332C]" />
                 </div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </section>

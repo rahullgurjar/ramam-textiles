@@ -139,9 +139,14 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
 
       {/* Featured Lead Article (Only when All or first item matches and no query) */}
       {featuredPost && (
-        <div 
-          onClick={() => { onNavigate(getArticleUrl(featuredPost.slug)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#FAF5EE] p-6 sm:p-10 rounded-3xl border border-[#D4AF37]/35 cursor-pointer group hover:shadow-2xl transition-all relative overflow-hidden"
+        <a 
+          href={getArticleUrl(featuredPost.slug)}
+          onClick={(e) => { 
+            e.preventDefault(); 
+            onNavigate(getArticleUrl(featuredPost.slug)); 
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+          }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#FAF5EE] p-6 sm:p-10 rounded-3xl border border-[#D4AF37]/35 cursor-pointer group hover:shadow-2xl transition-all relative overflow-hidden block text-left"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-jaipur-jaali opacity-10 pointer-events-none" />
 
@@ -185,17 +190,22 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
               <ArrowRight className="w-4 h-4 text-[#9B332C] group-hover:translate-x-1.5 transition-transform" />
             </div>
           </div>
-        </div>
+        </a>
       )}
 
       {/* All Remaining Articles Grid */}
       {remainingPosts.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {remainingPosts.map((post, pIdx) => (
-            <article 
+            <a 
               key={post.id}
-              onClick={() => { onNavigate(getArticleUrl(post.slug)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className={`group bg-[#FAF5EE] rounded-3xl overflow-hidden shadow-md border-2 hover:shadow-2xl transition-all cursor-pointer flex flex-col ${
+              href={getArticleUrl(post.slug)}
+              onClick={(e) => { 
+                e.preventDefault(); 
+                onNavigate(getArticleUrl(post.slug)); 
+                window.scrollTo({ top: 0, behavior: 'smooth' }); 
+              }}
+              className={`group bg-[#FAF5EE] rounded-3xl overflow-hidden shadow-md border-2 hover:shadow-2xl transition-all cursor-pointer flex flex-col block text-left ${
                 pIdx % 3 === 0 ? 'border-[#BFDBFE]/60 hover:border-[#1D4ED8]' : pIdx % 3 === 1 ? 'border-[#FBCFE8]/60 hover:border-[#BE185D]' : 'border-[#A7F3D0]/60 hover:border-[#047857]'
               }`}
             >
@@ -248,7 +258,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
                   <ArrowRight className="w-4 h-4 text-[#9B332C] group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       )}

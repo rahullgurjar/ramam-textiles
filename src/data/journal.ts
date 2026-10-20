@@ -2,6 +2,104 @@ import { JournalArticle } from '../types';
 
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
+    id: 'how-to-wash-natural-indigo-cotton',
+    slug: 'how-to-wash-natural-indigo-cotton',
+    title: "The Complete Guide to Washing & Caring for Natural Indigo Dyed Cotton",
+    category: 'Care & Maintenance',
+    readTime: '7 min read',
+    publishedDate: 'October 20, 2026',
+    excerpt: "Discover why authentic plant-derived indigo bleeds, how to prevent dry crocking, the truth about vinegar soaking, and how to preserve botanical blues for decades.",
+    coverImage: '/products/duffle-indigo.jpg',
+    author: {
+      name: "Ramam Textiles Conservation Desk",
+      role: "Master Textile Chemist"
+    },
+    contentSections: [
+      {
+            heading: "Why Authentic Indigo Behaves Differently Than Chemical Dyes",
+            body: "Natural indigo derived from the Indigofera tinctoria plant does not bond chemically with cellulose cotton fibers the way synthetic reactive dyes do. Instead, indigo molecules physically adhere to the exterior surfaces and fissures of each cotton fiber during subterranean vat dips. Because the pigment rests mechanistically on the outer yarn layer, microscopic particles naturally slough off during initial handling and washing. This phenomenon is known in the textile guild as 'crocking'."
+      },
+      {
+            quote: "Natural indigo is a living patina. It is not meant to stay frozen like plastic; it softens, breathes, and matures into unique personal whiskerings over years of gentle wear.",
+            body: "Understanding that crocking is a hallmark of genuine botanical indigo rather than a fabric defect is the first step in properly educating your retail customers and caring for artisanal heirlooms."
+      },
+      {
+            heading: "1. The First Wash: Cold Water Soak with Mild Rock Salt",
+            body: "For the first laundering, submerge your indigo textile into a tub of cool water (below 25°C / 77°F). Dissolve two tablespoons of non-iodized rock salt per gallon of water. Salt increases the ionic strength of the water, gently tightening the fiber structure and setting unbound surface pigment particles.\n\nAvoid hot or even lukewarm water, as elevated thermal energy expands cotton pores, causing rapid pigment loss and blotchy streaking."
+      },
+      {
+            heading: "2. Debunking the Vinegar Myth",
+            body: "An internet myth suggests soaking indigo in white vinegar to 'set' the dye. In reality, vinegar (acetic acid) is effective for setting acid dyes on protein fibers like silk and wool, but has negligible fixing effect on plant-based indigo on cellulose cotton. High acidity can actually weaken fine combed cotton fibers over time. Stick to pH-neutral plant-based soaps like soapnut (Reetha) or delicate enzyme-free liquid detergents."
+      },
+      {
+            heading: "3. Hand Washing vs Machine Cycles",
+            body: "Always wash natural indigo garments and quilted accessories inside out. If using a washing machine, select a gentle hand-wash cycle with minimal spin. Never wash natural indigo alongside white or pastel apparel, as free indigo particles will cause light blue cross-staining."
+      },
+      {
+            heading: "4. Drying in Open Shade: Guarding Against Solar Photo-Degradation",
+            body: "While Rajasthan's artisans sun-dry unwashed bolts during production, finished indigo pieces should never be left in harsh direct sunlight for extended drying. Direct ultraviolet rays trigger photo-reduction of indigo blue into isatin, causing fading along fold lines. Dry your textiles flat or draped evenly across a wooden clothes horse in open, well-ventilated shade."
+      }
+],
+    tags: ["Natural Indigo","Fabric Care","Indigo Washing Guide","Sustainable Fashion","Textile Conservation"]
+  },
+  {
+    id: 'sanganeri-vs-bagru-print-differences',
+    slug: 'sanganeri-vs-bagru-print-differences',
+    title: 'Sanganeri vs Bagru Print: 5 Crucial Differences Every Textile Designer Must Know',
+    category: 'Craft Heritage',
+    readTime: '8 min read',
+    publishedDate: 'October 20, 2026',
+    excerpt: 'Confused between Sanganeri and Bagru hand block prints? Discover the essential differences in ground fabric colors, floral vs geometric motifs, mud-resist Dabu techniques, and natural dye chemistry.',
+    coverImage: '/products/sanganeri-vs-bagru.jpg',
+    author: {
+      name: 'Master Craftsman Guild',
+      role: 'Heritage Textile Research Desk'
+    },
+    contentSections: [
+      {
+        heading: 'The Twin Pillars of Rajasthani Hand Block Printing',
+        body: 'Jaipur is celebrated globally as the epicenter of Indian hand-block printing. Yet, within a 35-kilometer radius of the Pink City lie two distinct artisan settlements that have preserved completely different printing philosophies for over four centuries: Sanganer and Bagru.\n\nWhile casual shoppers often group them under the generic banner of "Jaipur prints," textile designers, sourcing directors, and craft connoisseurs know that Sanganeri and Bagru prints differ fundamentally in their chemical processes, motif origins, ground fabrics, and cultural contexts. Here is your definitive technical guide to distinguishing between these two historic traditions.'
+      },
+      {
+        heading: '1. Ground Fabric Tone: Pure Bleached White vs Earthy Cream & Mud',
+        body: 'The most immediate visual differentiator between Sanganeri and Bagru textiles is the base background color of the fabric:\n\n• Sanganeri Prints: Traditionally executed on crisp white, off-white, or bleached ivory cotton grounds. Historically, the water of the local Saraswati River in Sanganer possessed natural mineral properties that bleached unbleached kora cotton to radiant brightness when washed under the desert sun.\n\n• Bagru Prints: Always set against warm, unbleached, cream, mud-resist, or dyed backgrounds. Bagru craftspeople traditionally wash their fabrics in the local Sanjaria riverbed water, rich in iron and saline minerals that chemically bond with river clay and myrobalan (harda) tannins to produce deep, earthy tones.'
+      },
+      {
+        quote: 'In Sanganer, the artisan works with light and luminescence; in Bagru, the artisan works with earth, shadow, and soil.',
+        body: 'Because of this background difference, Sanganeri textiles feel light, airy, and summery, making them historically favored for royal turbans (angarkhas) and delicate summer dupattas, whereas Bagru textiles exude grounded warmth and rustic depth.'
+      },
+      {
+        heading: '2. Motif Grammar: Delicate Royal Florals vs Bold Tribal Geometrics',
+        body: 'The design motifs of each craft village reflect its historical patrons:\n\n• The Sanganeri Repertoire: Flourished under the direct royal patronage of the Kachwaha Maharajas of Jaipur. Consequently, Sanganeri prints feature delicate Mughal and Persian botanical influences: intricately curving bel (creepers), fine jaal (floral trellises), single floral sprays (buta), iris, narcissus, rose petals, and graceful carnations. The carved lines are razor-thin, often requiring a three-to-four-block sequence: the Rekh (fine outline), followed by Datta and Gad blocks for colored inner fills.\n\n• The Bagru Repertoire: Developed by the Chippa community to serve local agrarian communities and nomadic tribes. Motifs are noticeably bolder, wider, and more geometric. Typical Bagru chhaap patterns include chaubandi (four-petal motifs), leheriya diagonals, concentric circles, jali diamonds, and stylized botanical buds with heavy, grounded silhouettes.'
+      },
+      {
+        heading: '3. Printing Technique: Direct Stamping vs Dabu Mud-Resist',
+        body: 'The technical mechanism of transferring color to cloth represents another fundamental distinction:\n\n• Sanganeri Direct Printing: Sanganer is primarily known for direct block printing. Wooden blocks saturated with color paste are stamped directly onto the pre-treated cotton fabric in layered sequences. There is no physical resist paste barrier applied to the background.\n\n• Bagru Dabu Resist Technique: While Bagru also practices direct printing, its global hallmark is Dabu—a mud-resist printing method. Artisans stamp a dense paste made of dried riverbed clay, slaked lime (chuna), and natural tree gum (gond) onto the cloth. Once dried under the sun, the fabric is plunged into deep subterranean indigo vats. The mud shields the stamped pattern from absorbing dye, creating Bagru’s iconic crackled resist borders and mystical midnight silhouettes.'
+      },
+      {
+        heading: '4. Dye Chemistry & Color Palettes',
+        body: 'The palettes of both craft clusters are deeply tied to their historical chemical formulations:\n\n• Sanganeri Color Spectrum: Vibrant, radiant, and expansive. Traditional botanical colors like madder red (majjith), turmeric yellow (haldi), and indigo have evolved into safe, modern AZO-free and reactive dyes that deliver vivid coral pinks, turquoise, saffron, and mint greens without sacrificing environmental safety.\n\n• Bagru Color Spectrum: Deeply conservative, organic, and mineral-centric. Bagru master dyers strictly prioritize natural botanical and mineral ingredients:\n  - Syahi: Intense charcoal black prepared by fermenting rusted iron scrap, molasses, and horse-gram flour for over 30 days.\n  - Begar: Rich terracotta red achieved by combining alum, red clay, and madder roots.\n  - Dabu Indigo: Natural subterranean fermented indigo vats that produce four gradations of blue from light Asmani to deep midnight Surmai.\n  - Kashish: Earthy stone grey and chocolate brown obtained from iron sulfate salts.'
+      },
+      {
+        quote: 'Bagru natural dyes smell of the earth, the sun, and the river. They soften and deepen with every wash, gaining a vintage patina that synthetic pigments can never emulate.',
+        body: 'When sourcing authentic Bagru textiles, one should expect gentle color transfer during the first two cold-water hand washes. This is the hallmark of genuine biological and mineral pigments, not a defect.'
+      },
+      {
+        heading: '5. Sourcing & Authentication Checklist for Independent Designers',
+        body: 'If you are sourcing artisanal Indian textiles for an apparel line, resort wear collection, or interior accessories, use this 4-step authentication framework:\n\n1. Inspect the Reverse Face: Hand block printed fabrics—whether Sanganeri or Bagru—show substantial pigment bleed on the reverse side of the cloth. Flat screen prints have a stark, faded, or white backing.\n2. Look for the Rekh-Joints: Scan the borders for subtle registration overlaps where the master printer pressed successive wooden blocks together. Uniform mechanical repeats across 50 meters indicate machine printing.\n3. Verify Thread Count: Authentic Jaipur artisan fabrics perform best on 60x60 superfine mulmul or 60s cambric cotton. Heavy synthetic blends resist botanical dye penetration and will stiffen.\n4. Request GOTS & AZO-Free Lab Certifications: For commercial collections destined for the US, EU, or UK, ensure your manufacturing partner provides zero-toxicity dye reports.'
+      }
+    ],
+    tags: [
+      'Sanganeri Print',
+      'Bagru Block Print',
+      'Dabu Printing',
+      'Indian Textiles',
+      'Natural Dyes',
+      'Fabric Sourcing',
+      'Textile Authentication'
+    ]
+  },
+  {
     id: 'alchemy-of-bagru-dabu-indigo',
     slug: 'alchemy-of-bagru-dabu-indigo',
     title: 'The Alchemy of Bagru: Traditional Dabu Mud-Resist Printing and Natural Indigo Vats',

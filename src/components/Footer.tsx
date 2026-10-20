@@ -138,7 +138,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             onClick={(e) => { e.preventDefault(); handleNav('/blog'); }}
             className="text-xs font-royal-title font-bold text-[#9B332C] hover:text-[#241A16] flex items-center gap-1 transition-colors uppercase tracking-wider shrink-0"
           >
-            <span>Read All 5 Guides</span>
+            <span>Read All {JOURNAL_POSTS.length} Guides</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#9B332C]" />
           </a>
         </div>

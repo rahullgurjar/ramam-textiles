@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "blog:publish": "node scripts/automate-daily-blog.js",
     "generate:sitemap": "node scripts/generate-sitemap.js",
     "optimize:images": "node scripts/optimize-images.js",
     "prebuild": "node scripts/generate-sitemap.js",

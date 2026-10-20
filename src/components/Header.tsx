@@ -302,15 +302,19 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               }}
               onMouseLeave={() => setActiveMegaMenu(null)}
             >
-              <button 
-                onClick={() => handleNav('/blog')} 
-                className={`nav-luxury-link ${
+              <a 
+                href="/blog"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNav('/blog');
+                }} 
+                className={`nav-luxury-link flex items-center gap-1 ${
                   currentPath.startsWith('/blog') || currentPath.startsWith('/blogs') || currentPath.startsWith('/journal') ? 'active' : ''
                 }`}
               >
                 <span>BLOG</span>
                 <ChevronDown className="w-3 h-3 opacity-50" />
-              </button>
+              </a>
 
               {activeMegaMenu === 'blog' && (
                 <div className="absolute top-full -left-28 mt-2 w-[min(560px,calc(100vw-2rem))] bg-[#FAF5EE] border border-[#D4AF37]/45 shadow-2xl rounded-2xl p-5 z-50 animate-fade-in text-[#241A16] overflow-hidden">
@@ -321,21 +325,29 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                         Jaipur Artisan Blog &amp; Sourcing Guides
                       </span>
                     </div>
-                    <button 
-                      onClick={() => handleNav('/blog')} 
+                    <a 
+                      href="/blog"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNav('/blog');
+                      }} 
                       className="text-[11px] text-[#9B332C] hover:text-[#241A16] flex items-center gap-1 font-semibold"
                     >
-                      <span>view all 5 articles</span>
+                      <span>view all {JOURNAL_POSTS.length} articles</span>
                       <ArrowRight className="w-3 h-3 text-[#9B332C]" />
-                    </button>
+                    </a>
                   </div>
 
                   <div className="space-y-2.5">
                     {JOURNAL_POSTS.slice(0, 3).map(post => (
-                      <div 
+                      <a 
                         key={post.id}
-                        onClick={() => handleNav(`/blog/${post.slug}`)}
-                        className="group/item flex items-center gap-3 p-2 rounded-xl hover:bg-[#FAF0EB] cursor-pointer transition-all border border-[#D4AF37]/25 hover:border-[#9B332C] bg-[#FAF5EE]"
+                        href={`/blog/${post.slug}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNav(`/blog/${post.slug}`);
+                        }}
+                        className="group/item flex items-center gap-3 p-2 rounded-xl hover:bg-[#FAF0EB] cursor-pointer transition-all border border-[#D4AF37]/25 hover:border-[#9B332C] bg-[#FAF5EE] block text-left"
                       >
                         <img 
                           src={resolveProductImage(post.image)} 
@@ -352,7 +364,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                             {post.title}
                           </h4>
                         </div>
-                      </div>
+                      </a>
                     ))}
                   </div>
 
@@ -613,7 +625,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                       <BookOpen className="w-4 h-4 text-[#9B332C]" />
                       <span>Artisan Blog &amp; Sourcing Guides</span>
                     </div>
-                    <span className="text-[10px] bg-white px-2 py-0.5 rounded-full border border-[#D4AF37]/30 font-mono font-bold">5 Posts</span>
+                    <span className="text-[10px] bg-white px-2 py-0.5 rounded-full border border-[#D4AF37]/30 font-mono font-bold">{JOURNAL_POSTS.length} Posts</span>
                   </button>
                   <div className="pl-6 pt-1.5 space-y-1">
                     {JOURNAL_POSTS.slice(0, 3).map(post => (
