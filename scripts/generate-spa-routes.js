@@ -316,35 +316,62 @@ articles.forEach(art => {
   });
 });
 
+// Check for manual overrides saved or exported to public/seo-published.json
+let publishedOverrides = {};
+const overridesFile = path.join(rootDir, 'public', 'seo-published.json');
+if (fs.existsSync(overridesFile)) {
+  try {
+    publishedOverrides = JSON.parse(fs.readFileSync(overridesFile, 'utf-8'));
+    console.log(`📄 Found and applied ${Object.keys(publishedOverrides).length} custom published SEO overrides from public/seo-published.json`);
+  } catch (err) {
+    console.warn(`Could not parse public/seo-published.json: ${err.message}`);
+  }
+}
+
 console.log(`Generating ${allRoutes.length} static entrypoint pages in dist/ for Google indexing & HTTP 200...`);
 
 allRoutes.forEach(entry => {
-  const canonicalUrl = `${BASE_URL}${entry.route}`;
+  const override = publishedOverrides[entry.route];
+  const title = (override && override.seoTitle) ? override.seoTitle : entry.title;
+  const description = (override && override.metaDescription) ? override.metaDescription : entry.description;
+  const canonicalUrl = (override && override.canonicalUrl) ? override.canonicalUrl : `${BASE_URL}${entry.route}`;
+  const image = (override && override.ogImage) ? override.ogImage : entry.image;
   let html = baseIndexHtml;
 
   // 1. Update Title Tag
-  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeXml(entry.title)}</title>`);
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeXml(title)}</title>`);
 
   // 2. Update Meta Description
-  html = html.replace(/<meta\s+name=["']description["'][^>]*>/i, `<meta name="description" content="${escapeXml(entry.description)}" />`);
+  html = html.replace(/<meta\s+name=["']description["'][^>]*>/i, `<meta name="description" content="${escapeXml(description)}" />`);
 
   // 3. Update Canonical Tag
   html = html.replace(/<link\s+rel=["']canonical["'][^>]*>/i, `<link rel="canonical" href="${canonicalUrl}" />`);
 
   // 4. Update OpenGraph Tags
-  html = html.replace(/<meta\s+property=["']og:title["'][^>]*>/i, `<meta property="og:title" content="${escapeXml(entry.title)}" />`);
-  html = html.replace(/<meta\s+property=["']og:description["'][^>]*>/i, `<meta property="og:description" content="${escapeXml(entry.description)}" />`);
+  html = html.replace(/<meta\s+property=["']og:title["'][^>]*>/i, `<meta property="og:title" content="${escapeXml(title)}" />`);
+  html = html.replace(/<meta\s+property=["']og:description["'][^>]*>/i, `<meta property="og:description" content="${escapeXml(description)}" />`);
   html = html.replace(/<meta\s+property=["']og:url["'][^>]*>/i, `<meta property="og:url" content="${canonicalUrl}" />`);
-  html = html.replace(/<meta\s+property=["']og:image["'][^>]*>/i, `<meta property="og:image" content="${entry.image}" />`);
+  html = html.replace(/<meta\s+property=["']og:image["'][^>]*>/i, `<meta property="og:image" content="${image}" />`);
 
   // 5. Update Twitter Tags
-  html = html.replace(/<meta\s+name=["']twitter:title["'][^>]*>/i, `<meta name="twitter:title" content="${escapeXml(entry.title)}" />`);
-  html = html.replace(/<meta\s+name=["']twitter:description["'][^>]*>/i, `<meta name="twitter:description" content="${escapeXml(entry.description)}" />`);
-  html = html.replace(/<meta\s+name=["']twitter:image["'][^>]*>/i, `<meta name="twitter:image" content="${entry.image}" />`);
+  html = html.replace(/<meta\s+name=["']twitter:title["'][^>]*>/i, `<meta name="twitter:title" content="${escapeXml(title)}" />`);
+  html = html.replace(/<meta\s+name=["']twitter:description["'][^>]*>/i, `<meta name="twitter:description" content="${escapeXml(description)}" />`);
+  html = html.replace(/<meta\s+name=["']twitter:image["'][^>]*>/i, `<meta name="twitter:image" content="${image}" />`);
+
+  // 5.1 Update Robots Directives if overridden
+  if (override && override.robotsDirectives) {
+    if (html.includes('<meta name="robots"')) {
+      html = html.replace(/<meta\s+name=["']robots["'][^>]*>/i, `<meta name="robots" content="${escapeXml(override.robotsDirectives)}" />`);
+    } else {
+      html = html.replace('</head>', `  <meta name="robots" content="${escapeXml(override.robotsDirectives)}" />\n</head>`);
+    }
+  }
 
   // 6. Inject Schema.org JSON-LD
   let schemaJson = '';
-  if (entry.schemaType === 'Product' && entry.productData) {
+  if (override && override.schemaJson && override.schemaJson.trim()) {
+    schemaJson = override.schemaJson.trim();
+  } else if (entry.schemaType === 'Product' && entry.productData) {
     const p = entry.productData;
     schemaJson = JSON.stringify({
       '@context': 'https://schema.org',

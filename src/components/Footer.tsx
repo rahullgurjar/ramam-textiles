@@ -10,7 +10,8 @@ import {
   CheckCircle2,
   ExternalLink,
   Download,
-  BookOpen
+  BookOpen,
+  Lock
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { InstagramIcon } from './InstagramIcon';
@@ -473,6 +474,15 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           <button onClick={() => openPolicyModal('returns')} className="hover:text-[#9B332C] transition-colors cursor-pointer">
             Returns &amp; Refunds
           </button>
+          <a
+            href="/admin"
+            onClick={(e) => { e.preventDefault(); navigate('/admin'); }}
+            className="hover:text-[#9B332C] transition-colors cursor-pointer flex items-center gap-1 text-stone-400 hover:text-stone-700"
+            title="Internal Staff & SEO Control Room"
+          >
+            <Lock className="w-3 h-3" />
+            <span>Atelier Portal</span>
+          </a>
         </div>
       </div>
     </footer>

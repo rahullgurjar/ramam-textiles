@@ -7,10 +7,12 @@
     "dev": "vite",
     "blog:publish": "node scripts/automate-daily-blog.js",
     "generate:sitemap": "node scripts/generate-sitemap.js",
+    "generate:favicons": "node scripts/generate-all-favicons.cjs",
     "optimize:images": "node scripts/optimize-images.js",
     "prebuild": "node scripts/generate-sitemap.js",
     "build": "tsc && vite build",
     "postbuild": "node scripts/generate-spa-routes.js",
+    "test:seo": "npx tsx scripts/test-seo.js",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -26,6 +28,7 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
+    "opentype.js": "^2.0.0",
     "postcss": "^8.4.49",
     "sharp": "^0.35.5",
     "tailwindcss": "^3.4.17",

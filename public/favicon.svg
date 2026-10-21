@@ -1,47 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
   <defs>
-    <!-- Royal Gold Inlay Gradient -->
-    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F6E7B9"/>
-      <stop offset="25%" stop-color="#D4AF37"/>
-      <stop offset="70%" stop-color="#AA7C11"/>
-      <stop offset="100%" stop-color="#7B5600"/>
+    <!-- Royal Gold Gradient -->
+    <linearGradient id="rtGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0C2"/>
+      <stop offset="30%" stop-color="#E6C35C"/>
+      <stop offset="70%" stop-color="#CA9A26"/>
+      <stop offset="100%" stop-color="#9E7212"/>
     </linearGradient>
 
-    <!-- Deep Jaipur Ruby / Carmine Medallion -->
-    <radialGradient id="rubyRed" cx="35%" cy="35%" r="70%">
-      <stop offset="0%" stop-color="#B23A32"/>
-      <stop offset="60%" stop-color="#9B332C"/>
-      <stop offset="100%" stop-color="#6B1E19"/>
+    <!-- Deep Jaipur Ruby Carmine Gradient -->
+    <radialGradient id="rtRuby" cx="36%" cy="32%" r="72%">
+      <stop offset="0%" stop-color="#BA3931"/>
+      <stop offset="55%" stop-color="#932821"/>
+      <stop offset="100%" stop-color="#5E1410"/>
     </radialGradient>
-
-    <!-- Subtle Drop Shadow for depth on all tab colors -->
-    <filter id="tabShadow" x="-15%" y="-15%" width="130%" height="130%">
-      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#000000" flood-opacity="0.3"/>
-    </filter>
   </defs>
 
-  <!-- Transparent Background Circular Royal Medallion -->
-  <circle cx="50" cy="50" r="46" fill="url(#rubyRed)" stroke="url(#goldGradient)" stroke-width="3.5" filter="url(#tabShadow)"/>
+  <!-- Razor-Sharp Circular Medallion -->
+  <circle cx="50" cy="50" r="47" fill="url(#rtRuby)" stroke="url(#rtGold)" stroke-width="4.5"/>
 
-  <!-- Inner Delicate Gold Filigree Ring -->
-  <circle cx="50" cy="50" r="40" fill="none" stroke="#FAF5EE" stroke-opacity="0.35" stroke-width="0.8"/>
-  <circle cx="50" cy="50" r="38" fill="none" stroke="url(#goldGradient)" stroke-width="1.2" stroke-dasharray="2.5 1.5"/>
+  <!-- Inner Delicate Royal Filigree Ring -->
+  <circle cx="50" cy="50" r="41.5" fill="none" stroke="url(#rtGold)" stroke-width="1" stroke-opacity="0.55"/>
 
-  <!-- Royal RT Monogram -->
-  <text 
-    x="50" 
-    y="59" 
-    font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif" 
-    font-size="35" 
-    font-weight="700" 
-    font-style="italic" 
-    fill="#FAF5EE" 
-    text-anchor="middle" 
-    letter-spacing="0.5"
-    filter="drop-shadow(0 1px 2px rgba(0,0,0,0.45))"
-  >RT</text>
+  <!-- Crisp 1px Shadow for Legibility & Contrast (Non-blurred) -->
+  <path d="M41.95 40.17Q41.95 38.26 40.75 37.32Q39.55 36.39 37.27 36.39L36.05 36.39L33.58 47.13L35.31 47.13Q38.21 47.13 40.08 45.31Q41.95 43.48 41.95 40.17M33.22 48.69L31.49 56.12Q31.42 56.42 31.38 56.69Q31.33 56.95 31.33 57.10Q31.33 57.90 31.99 58.27Q32.65 58.65 34.50 58.84L34.20 60.14L20.53 60.14L20.83 58.84Q21.28 58.83 22.16 58.71Q23.04 58.59 23.47 58.45Q24.17 58.22 24.53 57.76Q24.90 57.29 25.04 56.67L29.12 38.99Q29.21 38.62 29.25 38.37Q29.28 38.12 29.28 37.99Q29.28 37.24 28.52 36.82Q27.77 36.41 26.06 36.16L26.36 34.86L40.30 34.86Q44.64 34.86 46.83 36.08Q49.01 37.31 49.01 39.81Q49.01 42.75 46.89 44.74Q44.77 46.72 40.90 47.65Q41.63 48.99 42.75 50.98Q43.86 52.96 45.34 55.55Q45.77 56.31 46.45 57.28Q47.14 58.26 47.91 58.52Q48.28 58.65 48.94 58.74Q49.60 58.83 49.88 58.84L49.56 60.14L40.33 60.14Q38.66 56.31 37.47 54.01Q36.29 51.70 34.50 48.69 M54.96 34.86L79.47 34.86L77.79 42.09L76.42 42.09Q76.35 41.48 76.15 40.58Q75.94 39.67 75.58 38.78Q75.21 37.85 74.77 37.24Q74.34 36.64 73.73 36.53Q73.20 36.46 72.37 36.41Q71.54 36.35 70.93 36.35L70.04 36.35L65.50 56.01Q65.43 56.31 65.38 56.59Q65.34 56.87 65.34 56.99Q65.34 57.42 65.51 57.75Q65.68 58.08 66.14 58.27Q66.57 58.45 67.39 58.62Q68.21 58.79 68.74 58.84L68.44 60.14L54.34 60.14L54.64 58.84Q55.14 58.81 56.10 58.70Q57.07 58.59 57.48 58.45Q58.19 58.17 58.55 57.69Q58.90 57.20 59.05 56.54L63.71 36.35L63.02 36.35Q62.34 36.35 61.66 36.40Q60.97 36.44 60.10 36.53Q59.46 36.62 58.66 37.30Q57.87 37.97 57.12 38.78Q56.23 39.77 55.65 40.58Q55.07 41.40 54.66 42.09L53.29 42.09" fill="#3C0B08" stroke="#3C0B08" stroke-width="0.6" stroke-linejoin="round" transform="translate(0, 1.2)"/>
+
+  <!-- Royal RT Monogram Inlay (Warm artisan ivory with crisp outline) -->
+  <path d="M41.95 40.17Q41.95 38.26 40.75 37.32Q39.55 36.39 37.27 36.39L36.05 36.39L33.58 47.13L35.31 47.13Q38.21 47.13 40.08 45.31Q41.95 43.48 41.95 40.17M33.22 48.69L31.49 56.12Q31.42 56.42 31.38 56.69Q31.33 56.95 31.33 57.10Q31.33 57.90 31.99 58.27Q32.65 58.65 34.50 58.84L34.20 60.14L20.53 60.14L20.83 58.84Q21.28 58.83 22.16 58.71Q23.04 58.59 23.47 58.45Q24.17 58.22 24.53 57.76Q24.90 57.29 25.04 56.67L29.12 38.99Q29.21 38.62 29.25 38.37Q29.28 38.12 29.28 37.99Q29.28 37.24 28.52 36.82Q27.77 36.41 26.06 36.16L26.36 34.86L40.30 34.86Q44.64 34.86 46.83 36.08Q49.01 37.31 49.01 39.81Q49.01 42.75 46.89 44.74Q44.77 46.72 40.90 47.65Q41.63 48.99 42.75 50.98Q43.86 52.96 45.34 55.55Q45.77 56.31 46.45 57.28Q47.14 58.26 47.91 58.52Q48.28 58.65 48.94 58.74Q49.60 58.83 49.88 58.84L49.56 60.14L40.33 60.14Q38.66 56.31 37.47 54.01Q36.29 51.70 34.50 48.69 M54.96 34.86L79.47 34.86L77.79 42.09L76.42 42.09Q76.35 41.48 76.15 40.58Q75.94 39.67 75.58 38.78Q75.21 37.85 74.77 37.24Q74.34 36.64 73.73 36.53Q73.20 36.46 72.37 36.41Q71.54 36.35 70.93 36.35L70.04 36.35L65.50 56.01Q65.43 56.31 65.38 56.59Q65.34 56.87 65.34 56.99Q65.34 57.42 65.51 57.75Q65.68 58.08 66.14 58.27Q66.57 58.45 67.39 58.62Q68.21 58.79 68.74 58.84L68.44 60.14L54.34 60.14L54.64 58.84Q55.14 58.81 56.10 58.70Q57.07 58.59 57.48 58.45Q58.19 58.17 58.55 57.69Q58.90 57.20 59.05 56.54L63.71 36.35L63.02 36.35Q62.34 36.35 61.66 36.40Q60.97 36.44 60.10 36.53Q59.46 36.62 58.66 37.30Q57.87 37.97 57.12 38.78Q56.23 39.77 55.65 40.58Q55.07 41.40 54.66 42.09L53.29 42.09" fill="#FAF5EE" stroke="#FAF5EE" stroke-width="0.6" stroke-linejoin="round"/>
 
   <!-- Jaipur Heritage Artisan Hallmark Dot -->
-  <circle cx="50" cy="74" r="2.5" fill="url(#goldGradient)"/>
+  <circle cx="50" cy="74.5" r="2.8" fill="url(#rtGold)"/>
 </svg>

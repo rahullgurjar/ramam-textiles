@@ -74,58 +74,167 @@ export const DEFAULT_SEO: Record<string, { title: string; description: string }>
   }
 };
 
+import { getPublishedSEORecord } from './seoStorage';
+
 /**
- * Updates document title, meta descriptions, and OpenGraph metadata dynamically
+ * Updates document title, meta descriptions, and OpenGraph metadata dynamically,
+ * incorporating any manual published SEO overrides from the SEO Admin Panel.
  */
 export function setPageSEO({ title, description, path = '', image = '/logo.png' }: SEOProps): void {
   if (typeof document === 'undefined') return;
 
-  // 1. Update Title
-  document.title = title;
+  const cleanPath = path ? (path.startsWith('/') ? path : '/' + path) : '/';
+  
+  // Check if a published manual SEO override exists for this route
+  let effectiveTitle = title;
+  let effectiveDesc = description;
+  let effectiveCanonical = `https://ramamtextiles.shop${cleanPath === '/' ? '' : cleanPath}`;
+  let effectiveRobots = 'index, follow';
+  let effectiveOgTitle = title;
+  let effectiveOgDesc = description;
+  let effectiveOgImage = image;
+  let effectiveTwCard = 'summary_large_image';
+  let effectiveTwTitle = title;
+  let effectiveTwDesc = description;
+  let effectiveTwImage = image;
+  let customJsonLd: string | null = null;
+  let imageAltOverrides: Record<string, string> = {};
 
-  // 2. Update meta description
+  try {
+    const override = getPublishedSEORecord(cleanPath);
+    if (override) {
+      if (override.seoTitle) effectiveTitle = override.seoTitle;
+      if (override.metaDescription) effectiveDesc = override.metaDescription;
+      if (override.canonicalUrl) effectiveCanonical = override.canonicalUrl;
+      if (override.robotsDirectives) effectiveRobots = override.robotsDirectives;
+      if (override.ogTitle) effectiveOgTitle = override.ogTitle;
+      if (override.ogDescription) effectiveOgDesc = override.ogDescription;
+      if (override.ogImage) effectiveOgImage = override.ogImage;
+      if (override.twitterCard) effectiveTwCard = override.twitterCard;
+      if (override.twitterTitle) effectiveTwTitle = override.twitterTitle;
+      if (override.twitterDescription) effectiveTwDesc = override.twitterDescription;
+      if (override.twitterImage) effectiveTwImage = override.twitterImage;
+      if (override.jsonLd) customJsonLd = override.jsonLd;
+      
+      if (override.images && override.images.length > 0) {
+        override.images.forEach(img => {
+          if (img.src && img.alt) {
+            imageAltOverrides[img.src] = img.alt;
+            if (img.filename) imageAltOverrides[img.filename] = img.alt;
+          }
+        });
+      }
+    }
+  } catch (e) {
+    // Graceful fallback to default props
+  }
+
+  // 1. Update Title
+  document.title = effectiveTitle;
+
+  // 2. Update Meta Description
   let metaDesc = document.querySelector('meta[name="description"]');
   if (!metaDesc) {
     metaDesc = document.createElement('meta');
     metaDesc.setAttribute('name', 'description');
     document.head.appendChild(metaDesc);
   }
-  metaDesc.setAttribute('content', description);
+  metaDesc.setAttribute('content', effectiveDesc);
 
-  // 3. Update Canonical link
+  // 3. Update Canonical Link
   let canonical = document.querySelector('link[rel="canonical"]');
   if (!canonical) {
     canonical = document.createElement('link');
     canonical.setAttribute('rel', 'canonical');
     document.head.appendChild(canonical);
   }
-  const cleanPath = path ? (path.startsWith('/') ? path : '/' + path) : '';
-  canonical.setAttribute('href', `https://ramamtextiles.shop${cleanPath}`);
+  canonical.setAttribute('href', effectiveCanonical);
 
-  // 4. Update OpenGraph tags
+  // 4. Update Meta Robots
+  let robotsMeta = document.querySelector('meta[name="robots"]');
+  if (!robotsMeta) {
+    robotsMeta = document.createElement('meta');
+    robotsMeta.setAttribute('name', 'robots');
+    document.head.appendChild(robotsMeta);
+  }
+  robotsMeta.setAttribute('content', effectiveRobots);
+
+  // 5. Update OpenGraph Tags
   const ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle) ogTitle.setAttribute('content', title);
+  if (ogTitle) ogTitle.setAttribute('content', effectiveOgTitle);
 
   const ogDesc = document.querySelector('meta[property="og:description"]');
-  if (ogDesc) ogDesc.setAttribute('content', description);
+  if (ogDesc) ogDesc.setAttribute('content', effectiveOgDesc);
 
   const ogUrl = document.querySelector('meta[property="og:url"]');
   if (ogUrl) {
-    ogUrl.setAttribute('content', `https://ramamtextiles.shop${cleanPath}`);
+    ogUrl.setAttribute('content', effectiveCanonical);
   }
 
   const ogImage = document.querySelector('meta[property="og:image"]');
-  if (ogImage && image) {
-    const fullImage = image.startsWith('http') ? image : `https://ramamtextiles.shop${image.startsWith('/') ? image : '/' + image}`;
+  if (ogImage && effectiveOgImage) {
+    const fullImage = effectiveOgImage.startsWith('http') 
+      ? effectiveOgImage 
+      : `https://ramamtextiles.shop${effectiveOgImage.startsWith('/') ? effectiveOgImage : '/' + effectiveOgImage}`;
     ogImage.setAttribute('content', fullImage);
   }
 
-  // 5. Update Twitter Card tags
+  // 6. Update Twitter Card Tags
+  let twCardTag = document.querySelector('meta[name="twitter:card"]');
+  if (!twCardTag) {
+    twCardTag = document.createElement('meta');
+    twCardTag.setAttribute('name', 'twitter:card');
+    document.head.appendChild(twCardTag);
+  }
+  twCardTag.setAttribute('content', effectiveTwCard);
+
   const twTitle = document.querySelector('meta[name="twitter:title"]');
-  if (twTitle) twTitle.setAttribute('content', title);
+  if (twTitle) twTitle.setAttribute('content', effectiveTwTitle);
 
   const twDesc = document.querySelector('meta[name="twitter:description"]');
-  if (twDesc) twDesc.setAttribute('content', description);
+  if (twDesc) twDesc.setAttribute('content', effectiveTwDesc);
+
+  let twImage = document.querySelector('meta[name="twitter:image"]');
+  if (!twImage) {
+    twImage = document.createElement('meta');
+    twImage.setAttribute('name', 'twitter:image');
+    document.head.appendChild(twImage);
+  }
+  const fullTwImg = effectiveTwImage.startsWith('http')
+    ? effectiveTwImage
+    : `https://ramamtextiles.shop${effectiveTwImage.startsWith('/') ? effectiveTwImage : '/' + effectiveTwImage}`;
+  twImage.setAttribute('content', fullTwImg);
+
+  // 7. Inject / Update Custom JSON-LD Structured Data
+  if (customJsonLd) {
+    try {
+      // Validate JSON syntax before injecting
+      JSON.parse(customJsonLd);
+      let schemaScript = document.getElementById('rt-custom-page-schema') as HTMLScriptElement;
+      if (!schemaScript) {
+        schemaScript = document.createElement('script');
+        schemaScript.id = 'rt-custom-page-schema';
+        schemaScript.type = 'application/ld+json';
+        document.head.appendChild(schemaScript);
+      }
+      schemaScript.textContent = customJsonLd;
+    } catch {}
+  }
+
+  // 8. Apply image alt overrides to visible DOM images if available
+  if (Object.keys(imageAltOverrides).length > 0) {
+    setTimeout(() => {
+      document.querySelectorAll('img').forEach(img => {
+        const src = img.getAttribute('src') || '';
+        const filename = src.split('/').pop() || '';
+        if (imageAltOverrides[src]) {
+          img.setAttribute('alt', imageAltOverrides[src]);
+        } else if (imageAltOverrides[filename]) {
+          img.setAttribute('alt', imageAltOverrides[filename]);
+        }
+      });
+    }, 100);
+  }
 }
 
 /**
@@ -136,3 +245,4 @@ export function usePageSEO(seo: SEOProps): void {
     setPageSEO(seo);
   }, [seo.title, seo.description, seo.path, seo.image]);
 }
+
