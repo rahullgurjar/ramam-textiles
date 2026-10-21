@@ -2,6 +2,43 @@ import { JournalArticle } from '../types';
 
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
+    id: '16-sacred-stages-ajrakh-block-printing',
+    slug: '16-sacred-stages-ajrakh-block-printing',
+    title: "The 16 Sacred Stages of Ajrakh Block Printing and Natural Resist Dyeing",
+    category: 'Craft Heritage',
+    readTime: '9 min read',
+    publishedDate: 'October 21, 2026',
+    excerpt: "Journey through the ancient, month-long alchemy of Ajrakh: from camel-dung river bleaching and harda mordanting to symmetrical mud resists and indigo vats.",
+    coverImage: '/products/laptop-sleeve-kalamkari.jpg',
+    author: {
+      name: "Heritage Craft Archive",
+      role: "Traditional Textile Scholar"
+    },
+    contentSections: [
+      {
+            heading: "Ajrakh: The Cosmic Geometry of the Indus Valley",
+            body: "Dating back over 4,500 years to the ancient Harappan civilization, Ajrakh is widely regarded by master dyers as the most technically complex hand-block printing tradition on Earth. The name originates from the Arabic word 'Azrak' (meaning blue, sky, or heaven), reflecting its celestial midnight hues and starry geometric grids.\n\nPracticed traditionally by the Khatri artisan community in Kutch and western Rajasthan, creating a single authentic Ajrakh textile requires up to 16 distinct stages spanning 25 to 30 days of sun, water, mud, and biological fermentation."
+      },
+      {
+            heading: "Stage 1 to 4: Preparation and Cleansing (Saaj & Harda)",
+            body: "1. Saaj: The kora unbleached cotton is washed in an emulsion of camel dung, castor oil, and soda ash to scour natural starches and open cotton fiber lumens.\n2. Kasayan: The fabric is soaked in a bath of powdered Harda (myrobalan nuts) and dried under the morning sun, coating the fibers with essential tannins.\n3. Rekh: The master printer stamps the fine outline block using Syahi (fermented scrap iron and molasses paste) to create permanent black guidelines.\n4. Datta: Filler blocks stamp alum and red clay paste onto sections destined for madder red."
+      },
+      {
+            quote: "In authentic double-sided Ajrakh (Bipat), the artisan stamps identical blocks onto the exact reverse face of the fabric with zero registration error. It is a feat of human spatial memory and sensory touch.",
+            body: "Because both faces are printed symmetrically, double-sided Ajrakh can be worn reversibly with indistinguishable vibrance on either side."
+      },
+      {
+            heading: "Stage 5 to 12: Resists, Indigo Vats, and Alizarin Boiling",
+            body: "5. Gadh: Applying a resist paste of gum, lime, and Fuller's earth to protect white areas.\n6. Taperi: Applying a second resist paste of millet flour, gum, and clay over red sections.\n7. Bodav: Dipping into deep underground indigo vats for the first blue layer.\n8. Bichhav: Sun drying on river sand dunes.\n9. Rang: Boiling the sun-cured fabric in large copper cauldrons with madder root and Dhawda flowers to develop brilliant terracotta rubies."
+      },
+      {
+            heading: "Why Modern Designers Revere Ajrakh",
+            body: "Ajrakh is 100% bio-degradable, uses zero heavy metals, and celebrates mathematical sacred geometry. For luxury resort and slow-fashion collections, an Ajrakh piece carries an irreplaceable narrative of human patience and ecological equilibrium."
+      }
+],
+    tags: ["Ajrakh Printing","Khatri Craft","Natural Dyes","Ancient Textiles","Sustainable Fashion"]
+  },
+  {
     id: 'demystifying-fabric-gsm-cotton-weights',
     slug: 'demystifying-fabric-gsm-cotton-weights',
     title: "Demystifying Fabric GSM: A Fashion Designer's Guide to Cotton Weights",
