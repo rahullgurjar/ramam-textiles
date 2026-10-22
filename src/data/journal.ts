@@ -2,6 +2,39 @@ import { JournalArticle } from '../types';
 
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
+    id: 'what-are-azo-free-dyes-certifications',
+    slug: 'what-are-azo-free-dyes-certifications',
+    title: "What are AZO-Free Dyes? Global Eco-Certifications & Chemical Safety",
+    category: 'Sustainable Fashion',
+    readTime: '7 min read',
+    publishedDate: 'October 22, 2026',
+    excerpt: "A transparent technical explanation of banned aromatic amines, EU REACH regulations, OEKO-TEX Standard 100 testing, and how safe modern colorfast dyes are formulated.",
+    coverImage: '/products/duffle-pink-botanical.jpg',
+    author: {
+      name: "Ramam Textiles Compliance Desk",
+      role: "Director of Chemical Safety & Export"
+    },
+    contentSections: [
+      {
+            heading: "The Dark Side of Synthetic Dye History: The Aromatic Amine Crisis",
+            body: "Throughout the late 20th century, synthetic azo dyes dominated global textile manufacturing due to their cheap manufacturing costs and bright colorfastness. However, chemical research in the 1990s revealed that certain azo compounds break down during wear and perspiration, releasing harmful aromatic amines that are known carcinogens and skin allergens.\n\nIn 2002, the European Union implemented landmark REACH legislation (Regulation EC 1907/2006) strictly banning 24 specific carcinogenic aromatic amines in consumer textiles."
+      },
+      {
+            heading: "What 'AZO-Free' Actually Means in Commercial Manufacturing",
+            body: "When a textile manufacturer states that fabrics are 'AZO-Free,' it certifies that:\n• The dye formulation contains zero regulated aromatic amines that split under reductive cleavage.\n• Formaldehyde levels remain below strict human skin safety thresholds (<75 ppm for apparel, <20 ppm for infant products).\n• Heavy metals such as lead, cadmium, nickel, and hexavalent chromium are absent.\n\nAt Ramam Textiles, all our reactive, pigment, and botanical dyes are certified 100% AZO-Free, compliant with both EU REACH and US CPSIA guidelines."
+      },
+      {
+            quote: "AZO-Free reactive dyes represent the ideal synthesis: the brilliant washfastness and Pantone accuracy demanded by modern retailers, paired with zero carcinogenic risk for skin and zero micro-toxicity for effluent waterways.",
+            body: "This balance allows global designers to commission pastel corals, vivid turquoises, and sunflower yellows with complete confidence in regulatory clearance."
+      },
+      {
+            heading: "Key International Certifications Buyers Should Demand",
+            body: "When vetting an overseas textile supplier, always request valid test reports from accredited labs (SGS, Intertek, or TÜV Rheinland) certifying:\n1. OEKO-TEX Standard 100 (Product Class I or II)\n2. GOTS (Global Organic Textile Standard) Version 7.0 for organic cottons\n3. Zero Discharge of Hazardous Chemicals (ZDHC) wastewater compliance"
+      }
+],
+    tags: ["AZO Free Dyes","Textile Safety","EU REACH","Eco Fashion","Quality Compliance"]
+  },
+  {
     id: '16-sacred-stages-ajrakh-block-printing',
     slug: '16-sacred-stages-ajrakh-block-printing',
     title: "The 16 Sacred Stages of Ajrakh Block Printing and Natural Resist Dyeing",
