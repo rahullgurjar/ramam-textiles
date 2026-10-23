@@ -2,6 +2,47 @@ import { JournalArticle } from '../types';
 
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
+    id: 'how-teak-chhaap-woodblocks-are-made',
+    slug: 'how-teak-chhaap-woodblocks-are-made',
+    title: "Inside a Master Woodcarver's Workshop: How Teak Chhaap Blocks are Made",
+    category: 'Craft Heritage',
+    readTime: '8 min read',
+    publishedDate: 'October 23, 2026',
+    excerpt: "Discover the centuries-old art of wooden block carving in Rajasthan: choosing seasoned Sheesham and Teak, hand-chiseling with steel tools, and oil curing.",
+    coverImage: '/products/sanganeri-vs-bagru.jpg',
+    author: {
+      name: "Ramam Textiles Craft Archive",
+      role: "Heritage Tool Conservator"
+    },
+    contentSections: [
+      {
+            heading: "The Unsung Heroes Behind Every Hand Block Print",
+            body: "When fashion lovers admire the intricate floral vines of a Jaipur dress or the crisp borders of a quilted duffle bag, praise is rightly directed to the printer. Yet, before a single meter of fabric is stamped, a master woodcarver (known locally as a Bhatiikar or Kharodi) spends up to 10 days hand-sculpting seasoned hardwood with miniature steel chisels."
+      },
+      {
+            heading: "1. Selecting and Seasoning the Hardwood",
+            body: "Authentic printing blocks are crafted from three specific indigenous Indian hardwoods:\n• Sheesham (Indian Rosewood): Extremely dense and moisture-resistant, prized for razor-thin outline (Rekh) blocks that must endure tens of thousands of hammer blows.\n• Sagwan (Teak Wood): Naturally oily grain that repels water and prevents warping during water-based dye immersion.\n• Roheda (Desert Teak): Softer grain ideal for broad color filler (Datta) blocks.\n\nThe wood planks are seasoned in dry desert air for 12 to 18 months to eliminate residual sap and prevent shrinking."
+      },
+      {
+            quote: "A master carver does not use magnifying lenses or electric routers. With only a compass, steel ruler, and a half-inch wooden mallet, they carve floral motifs smaller than a sesame seed.",
+            body: "The precision achieved entirely by hand and intuition remains one of the wonders of Indian craft guilds."
+      },
+      {
+            heading: "2. Transferring the Vector Artwork to Wood",
+            body: "The designer's artwork is traced onto translucent parchment paper. The wood block face is coated with a thin layer of white chalk paste (Khadia). The paper design is placed face-down and pricked with needle-sharp steel points, transferring fine guide dots directly into the chalk."
+      },
+      {
+            heading: "3. The 3-Block Guild Hierarchy",
+            body: "Most intricate prints require a synchronized family of blocks:\n1. Rekh: The outline block carved in relief, defining contours.\n2. Datta: The secondary filler blocks carving inner petals and leaves.\n3. Gad: The background background-ground block creating negative color space.\nEach block features drilled air-relief holes (Pawa) across the reverse to prevent air vacuum pockets from smudging the wet color paste during stamping."
+      },
+      {
+            heading: "4. Curing in Mustard Oil Baths",
+            body: "Once chiseled, the finished blocks are submerged in pure mustard or sesame oil for 7 to 10 days. The oil penetrates deep into the wood grain, sealing pores against water swelling and ensuring decades of flawless printing service."
+      }
+],
+    tags: ["Block Carving","Woodcraft","Jaipur Artisans","Handmade Tools","Heritage Craft"]
+  },
+  {
     id: 'what-are-azo-free-dyes-certifications',
     slug: 'what-are-azo-free-dyes-certifications',
     title: "What are AZO-Free Dyes? Global Eco-Certifications & Chemical Safety",
