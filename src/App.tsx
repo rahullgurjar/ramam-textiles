@@ -12,6 +12,7 @@ const ShopPage = lazy(() => import('./pages/ShopPage').then(m => ({ default: m.S
 const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage').then(m => ({ default: m.ProductDetailPage })));
 const CategoryPage = lazy(() => import('./pages/CategoryPage').then(m => ({ default: m.CategoryPage })));
 const CollectionsPage = lazy(() => import('./pages/CollectionsPage').then(m => ({ default: m.CollectionsPage })));
+const ClusterCollectionPage = lazy(() => import('./pages/ClusterCollectionPage').then(m => ({ default: m.ClusterCollectionPage })));
 const CustomManufacturingPage = lazy(() => import('./pages/CustomManufacturingPage').then(m => ({ default: m.CustomManufacturingPage })));
 const BulkOrderEnquiryPage = lazy(() => import('./pages/BulkOrderEnquiryPage').then(m => ({ default: m.BulkOrderEnquiryPage })));
 const WholesalePage = lazy(() => import('./pages/WholesalePage').then(m => ({ default: m.WholesalePage })));
@@ -71,16 +72,26 @@ const PageLoadingFallback: React.FC = () => (
 const getNormalizedPath = (): string => {
   if (typeof window === 'undefined') return '/';
   
-  // 1. Check hash route first (e.g. #/product/slug or #/shop)
-  if (window.location.hash && window.location.hash.startsWith('#/')) {
-    return window.location.hash.slice(1);
+  // 1. Check hash route first (e.g. #/product/slug, #/admin, #admin, #staff)
+  if (window.location.hash) {
+    const rawHash = window.location.hash;
+    if (rawHash.startsWith('#/')) {
+      return rawHash.slice(1);
+    }
+    const cleanHash = rawHash.replace(/^#/, '');
+    if (cleanHash === 'admin' || cleanHash === 'staff' || cleanHash.startsWith('admin/')) {
+      return '/' + cleanHash;
+    }
   }
 
-  // 2. Check query parameter redirect (e.g. ?p=/product/slug used by GitHub Pages SPA redirect)
+  // 2. Check query parameter redirect (e.g. ?p=/admin or ?admin=true)
   const urlParams = new URLSearchParams(window.location.search);
   const p = urlParams.get('p');
   if (p) {
     return p.startsWith('/') ? p : '/' + p;
+  }
+  if (urlParams.has('admin') || urlParams.has('staff') || urlParams.has('blog-admin')) {
+    return '/admin';
   }
 
   // 3. Check pathname, stripping repository base if present (e.g. /ramam-textiles)
@@ -212,8 +223,12 @@ export const App: React.FC = () => {
       return <CategoryPage categoryId={categoryId} onNavigate={navigate} />;
     }
 
-    // 5. Collections
+    // 5. Collections & Thematic Cluster Landing Hubs
     if (currentPath.startsWith('/collections')) {
+      const clusterSlug = currentPath.replace(/^\/collections\/?/, '').split('?')[0];
+      if (clusterSlug) {
+        return <ClusterCollectionPage slug={clusterSlug} onNavigate={navigate} />;
+      }
       return <CollectionsPage onNavigate={navigate} />;
     }
 

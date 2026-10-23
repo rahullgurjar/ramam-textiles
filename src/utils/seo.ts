@@ -71,6 +71,31 @@ export const DEFAULT_SEO: Record<string, { title: string; description: string }>
   admin: {
     title: 'Atelier Staff Console & Admin Verification | Ramam Textiles',
     description: 'Authorized administrative terminal for lead reconciliation, Google Sheets order tracking, and export dispatch verification.'
+  },
+  // Master SEO Clusters from WEBSITE CLUSTER SERP & METADATA DIRECTORY.xlsx
+  clusterBlockPrintFabrics: {
+    title: 'Hand Block Print Fabrics & Artisan Textiles | Buy Online',
+    description: 'Explore authentic hand block print, Ajrakh, and Dabu artisan cotton fabrics. Ethical craftsmanship, vibrant natural dyes, and custom yardage. Shop today!'
+  },
+  clusterApparelEthnicWear: {
+    title: 'Block Print Apparel & Ethnic Wear Collections',
+    description: 'Discover handcrafted block print kurtis, ethnic dresses, and breathable artisan garments. Premium organic cotton fabrics tailored for elegance. Browse now!'
+  },
+  clusterCanvasToteBags: {
+    title: 'Canvas Tote Bags Wholesale & Custom Printed Totes',
+    description: 'Shop eco-friendly canvas tote bags in bulk. Customizable block prints, heavy-duty cotton, and wholesale manufacturing pricing. Request your instant quote!'
+  },
+  clusterWholesaleBulkFabrics: {
+    title: 'Wholesale Fabric Suppliers & Bulk Textile Manufacturing',
+    description: 'Source wholesale apparel and artisan fabric direct from manufacturers. Low MOQs, global door-to-door delivery, and factory pricing. Partner with us today!'
+  },
+  clusterHomeLivingDecor: {
+    title: 'Handcrafted Home Decor & Block Print Living Furnishings',
+    description: 'Elevate your living space with artisanal block print cushion covers, throws, table linens, and heavy upholstery fabrics. Bring craft home—order online!'
+  },
+  clusterCraftDiySupplies: {
+    title: 'Carved Wooden Printing Blocks & DIY Textile Craft Kits',
+    description: 'Shop hand-carved wooden textile printing blocks, felt sheets, and premium DIY fabric materials. Perfect for printmakers and artisans. Start crafting today!'
   }
 };
 

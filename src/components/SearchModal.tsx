@@ -3,6 +3,8 @@ import { Search, X, ArrowRight, Layers, Tag, Sparkles } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { PRODUCTS, CATEGORIES } from '../data/products';
 import { COLLECTIONS } from '../data/collections';
+import { SEO_CLUSTERS } from '../data/seoClusters';
+import { ALL_CLUSTER_KEYWORDS } from '../data/allClusterKeywords';
 import { Product } from '../types';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
@@ -135,6 +137,55 @@ export const SearchModal: React.FC<{ onNavigate: (path: string) => void }> = ({ 
                 ))}
               </div>
             </div>
+          )}
+
+          {/* Matched Sourcing Categories & Craft Hubs */}
+          {searchQuery && (
+            (() => {
+              const q = searchQuery.toLowerCase().trim();
+              const matchedClusters = Object.values(SEO_CLUSTERS).filter(c => {
+                const kws = ALL_CLUSTER_KEYWORDS[c.slug] || [];
+                return (
+                  c.clusterHub.toLowerCase().includes(q) ||
+                  c.mainTargetKeyword.toLowerCase().includes(q) ||
+                  c.subThemes.some(st => st.name.toLowerCase().includes(q)) ||
+                  kws.some(k => k.keyword.toLowerCase().includes(q))
+                );
+              });
+
+              if (matchedClusters.length === 0) return null;
+
+              return (
+                <div className="space-y-2 pb-2">
+                  <span className="text-[11px] font-bold text-[#9B332C] uppercase tracking-wider block font-royal-title">
+                    Matching Artisan Clusters & Wholesale Hubs ({matchedClusters.length})
+                  </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {matchedClusters.map(c => (
+                      <div
+                        key={c.id}
+                        onClick={() => {
+                          closeSearch();
+                          onNavigate(c.path);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="p-3 bg-white rounded-xl border border-[#D4AF37]/50 hover:border-[#9B332C] hover:bg-[#FAF0EB] transition-all cursor-pointer flex items-center justify-between shadow-xs group"
+                      >
+                        <div>
+                          <span className="text-[10px] uppercase font-bold text-[#9B332C] font-royal-title block">
+                            {c.targetPageType}
+                          </span>
+                          <span className="text-xs font-bold text-[#241A16] group-hover:text-[#9B332C]">
+                            {c.clusterHub}
+                          </span>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-[#9B332C] group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()
           )}
 
           {/* Results List */}

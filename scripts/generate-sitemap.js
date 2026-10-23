@@ -14,6 +14,13 @@ const CORE_PAGES = [
   { url: '/', changefreq: 'daily', priority: '1.0' },
   { url: '/shop', changefreq: 'daily', priority: '0.9' },
   { url: '/collections', changefreq: 'weekly', priority: '0.9' },
+  // Master SEO Clusters (from WEBSITE CLUSTER SERP & METADATA DIRECTORY.xlsx)
+  { url: '/collections/block-print-fabrics', changefreq: 'weekly', priority: '0.95' },
+  { url: '/collections/apparel-ethnic-wear', changefreq: 'weekly', priority: '0.90' },
+  { url: '/collections/canvas-tote-bags', changefreq: 'weekly', priority: '0.90' },
+  { url: '/collections/wholesale-bulk-fabrics', changefreq: 'weekly', priority: '0.95' },
+  { url: '/collections/home-living-decor', changefreq: 'weekly', priority: '0.85' },
+  { url: '/collections/craft-diy-supplies', changefreq: 'weekly', priority: '0.85' },
   { url: '/custom-manufacturing', changefreq: 'monthly', priority: '0.9' },
   { url: '/wholesale', changefreq: 'weekly', priority: '0.9' },
   { url: '/craftsmanship', changefreq: 'monthly', priority: '0.8' },

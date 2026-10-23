@@ -17,6 +17,8 @@ import { DEFAULT_SEO } from './seo';
 import { PRODUCTS, CATEGORIES } from '../data/products';
 import { COLLECTIONS } from '../data/collections';
 import { JOURNAL_ARTICLES } from '../data/journal';
+import { SEO_CLUSTERS } from '../data/seoClusters';
+import { ALL_CLUSTER_KEYWORDS } from '../data/allClusterKeywords';
 
 const BASE_URL = 'https://ramamtextiles.shop';
 const PUBLISHED_STORAGE_KEY = 'rt_seo_published_v1';
@@ -188,6 +190,114 @@ function buildFactoryPages(): PageSEOData[] {
         { id: 'il-shop', targetPath: '/shop', anchorText: 'Wholesale Catalog' },
         { id: 'il-custom', targetPath: '/custom-manufacturing', anchorText: 'Custom Private Label' },
         { id: 'il-contact', targetPath: '/contact', anchorText: 'Inquire Directly' }
+      ],
+      status: 'published',
+      lastUpdated: now,
+      lastPublished: now
+    });
+  });
+
+  // 1B. Master SEO Clusters from WEBSITE CLUSTER SERP & METADATA DIRECTORY.xlsx
+  Object.values(SEO_CLUSTERS).forEach(cluster => {
+    const clusterKeywords = (ALL_CLUSTER_KEYWORDS[cluster.slug] || []).map(k => k.keyword);
+    const clusterJsonLd = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'BreadcrumbList',
+          'itemListElement': [
+            {
+              '@type': 'ListItem',
+              'position': 1,
+              'name': 'Home',
+              'item': BASE_URL
+            },
+            {
+              '@type': 'ListItem',
+              'position': 2,
+              'name': 'Collections',
+              'item': `${BASE_URL}/collections`
+            },
+            {
+              '@type': 'ListItem',
+              'position': 3,
+              'name': cluster.clusterHub,
+              'item': `${BASE_URL}${cluster.path}`
+            }
+          ]
+        },
+        {
+          '@type': 'CollectionPage',
+          '@id': `${BASE_URL}${cluster.path}`,
+          'url': `${BASE_URL}${cluster.path}`,
+          'name': cluster.seoTitle,
+          'description': cluster.metaDescription,
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'Ramam Textiles Jaipur',
+            'logo': `${BASE_URL}/logo.png`
+          }
+        },
+        {
+          '@type': 'FAQPage',
+          'mainEntity': cluster.faqs.map(faq => ({
+            '@type': 'Question',
+            'name': faq.question,
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': faq.answer
+            }
+          }))
+        }
+      ]
+    }, null, 2);
+
+    pages.push({
+      path: cluster.path,
+      pageName: `Cluster: ${cluster.clusterHub}`,
+      pageType: 'collection',
+      focusKeyword: cluster.mainTargetKeyword,
+      secondaryKeywords: clusterKeywords,
+      searchIntent: 'commercial',
+      pageTitle: cluster.clusterHub,
+      seoTitle: cluster.seoTitle,
+      metaDescription: cluster.metaDescription,
+      urlSlug: cluster.slug,
+      canonicalUrl: `${BASE_URL}${cluster.path}`,
+      robotsDirectives: 'index, follow',
+      isIndexable: true,
+      isFollowable: true,
+      h1: cluster.h1,
+      h2s: cluster.h2s,
+      h3s: cluster.h3s,
+      images: [
+        {
+          src: cluster.heroImage,
+          filename: cluster.heroImage.split('/').pop() || 'cluster-hero.jpg',
+          alt: `${cluster.clusterHub} - ${cluster.mainTargetKeyword} Jaipur wholesale`
+        }
+      ],
+      ogTitle: cluster.seoTitle,
+      ogDescription: cluster.metaDescription,
+      ogImage: cluster.heroImage,
+      ogType: 'website',
+      twitterCard: 'summary_large_image',
+      twitterTitle: cluster.seoTitle,
+      twitterDescription: cluster.metaDescription,
+      twitterImage: cluster.heroImage,
+      schemaType: 'CollectionPage' as any,
+      jsonLd: clusterJsonLd,
+      customMetaTags: [],
+      hreflang: [{ lang: 'en', href: `${BASE_URL}${cluster.path}` }],
+      internalLinks: [
+        { id: `il-coll-${cluster.slug}`, targetPath: '/collections', anchorText: 'All Curated Collections' },
+        { id: `il-shop-${cluster.slug}`, targetPath: '/shop', anchorText: 'Wholesale Catalog' },
+        { id: `il-bulk-${cluster.slug}`, targetPath: '/bulk-enquiry', anchorText: 'Request Wholesale Quote' },
+        ...cluster.relatedClusters.map((rc, idx) => ({
+          id: `il-rel-${cluster.slug}-${idx}`,
+          targetPath: `/collections/${rc.slug}`,
+          anchorText: rc.name
+        }))
       ],
       status: 'published',
       lastUpdated: now,
@@ -755,7 +865,11 @@ export function validatePageSEO(page: PageSEOData): PageAuditReport {
     const descLower = (page.metaDescription || '').toLowerCase();
     const h1Lower = (page.h1 || '').toLowerCase();
 
-    if (!titleLower.includes(kw)) {
+    const kwTokens = kw.split(/[\s,&]+/).filter(w => w.length > 2 && !['and', 'for', 'the', 'with', 'in'].includes(w));
+    const titleHasExact = titleLower.includes(kw);
+    const titleHasTokens = kwTokens.length > 0 && kwTokens.every(t => titleLower.includes(t));
+
+    if (!titleHasExact && !titleHasTokens) {
       issues.push({
         id: 'kw-not-in-title',
         code: 'KEYWORD_NOT_IN_TITLE',
@@ -767,7 +881,9 @@ export function validatePageSEO(page: PageSEOData): PageAuditReport {
       score -= 6;
     }
 
-    if (!descLower.includes(kw)) {
+    const descHasExact = descLower.includes(kw);
+    const descHasTokens = kwTokens.length > 0 && kwTokens.every(t => descLower.includes(t));
+    if (!descHasExact && !descHasTokens) {
       issues.push({
         id: 'kw-not-in-desc',
         code: 'KEYWORD_NOT_IN_DESCRIPTION',
@@ -779,7 +895,9 @@ export function validatePageSEO(page: PageSEOData): PageAuditReport {
       score -= 3;
     }
 
-    if (!h1Lower.includes(kw)) {
+    const h1HasExact = h1Lower.includes(kw);
+    const h1HasTokens = kwTokens.length > 0 && kwTokens.every(t => h1Lower.includes(t));
+    if (!h1HasExact && !h1HasTokens) {
       issues.push({
         id: 'kw-not-in-h1',
         code: 'KEYWORD_NOT_IN_H1',

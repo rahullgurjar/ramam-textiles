@@ -18,7 +18,7 @@ import { InstagramIcon } from './InstagramIcon';
 import { submitToGoogleSheet } from '../utils/googleScript';
 import { validateEmailAddress } from '../utils/formValidation';
 import { JOURNAL_POSTS } from '../data/journal';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
 interface FooterProps {
   navigate: (path: string) => void;
@@ -152,11 +152,14 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
               onClick={(e) => { e.preventDefault(); handleNav(`/blog/${post.slug}`); }}
               className="group bg-white/75 hover:bg-white rounded-2xl p-4 border border-[#D4AF37]/35 hover:border-[#9B332C] transition-all hover:shadow-lg flex items-center gap-3.5 cursor-pointer"
             >
-              <img
-                src={resolveProductImage(post.image)}
-                alt={post.title}
-                className="w-16 h-16 rounded-xl object-cover border border-[#D4AF37]/30 shrink-0 group-hover:scale-105 transition-transform"
-              />
+              <picture className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-[#D4AF37]/30 block group-hover:scale-105 transition-transform">
+                <source srcSet={resolveWebpImage(post.image)} type="image/webp" />
+                <img
+                  src={resolveProductImage(post.image)}
+                  alt={post.title}
+                  className="w-full h-full object-cover"
+                />
+              </picture>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 text-[10px] text-stone-500 font-mono mb-1">
                   <span className="text-[#9B332C] font-royal-title font-bold uppercase">{post.category}</span>
@@ -410,6 +413,17 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                   <ArrowRight className="w-3 h-3 text-[#9B332C]" />
                 </a>
               </li>
+              <li className="pt-2 border-t border-[#D4AF37]/25 mt-2">
+                <a 
+                  href="/admin" 
+                  onClick={(e) => { e.preventDefault(); handleNav('/admin'); }}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#FAF0EB] text-[#801B18] hover:bg-[#801B18] hover:text-white font-royal-title font-bold text-[11px] uppercase tracking-wider transition-all border border-[#EACAC0] shadow-xs"
+                  title="Blog Admin Panel: Review and Publish Blogs"
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-[#D4AF37]" />
+                  <span>Blog Admin &amp; Review Desk</span>
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -477,11 +491,11 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           <a
             href="/admin"
             onClick={(e) => { e.preventDefault(); navigate('/admin'); }}
-            className="hover:text-[#9B332C] transition-colors cursor-pointer flex items-center gap-1 text-stone-400 hover:text-stone-700"
-            title="Internal Staff & SEO Control Room"
+            className="px-3 py-1 rounded-full bg-[#FAF0EB] text-[#801B18] hover:bg-[#801B18] hover:text-white transition-all font-bold text-xs flex items-center gap-1.5 border border-[#EACAC0] shadow-2xs"
+            title="Blog Admin, Review Queue & Publishing Console"
           >
-            <Lock className="w-3 h-3" />
-            <span>Atelier Portal</span>
+            <BookOpen className="w-3.5 h-3.5 text-[#D4AF37]" />
+            <span>Blog Admin &amp; Atelier Portal</span>
           </a>
         </div>
       </div>

@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Sparkles, ArrowRight, BookOpen, Search, X, Tag, Clock, Calendar, CheckCircle2, ChevronRight } from 'lucide-react';
 import { JOURNAL_POSTS } from '../data/journal';
+import { getPublishedArticles } from '../utils/blogStorage';
 import { InstagramIcon } from '../components/InstagramIcon';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 import { usePageSEO } from '../utils/seo';
@@ -19,6 +20,36 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
     path: basePath
   });
 
+  const [liveArticles, setLiveArticles] = useState(() => getPublishedArticles());
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setLiveArticles(getPublishedArticles());
+    };
+    window.addEventListener('rt:blog-updated', handleUpdate);
+    return () => window.removeEventListener('rt:blog-updated', handleUpdate);
+  }, []);
+
+  // Map published articles to view format
+  const activePosts = useMemo(() => {
+    if (!liveArticles || liveArticles.length === 0) {
+      return JOURNAL_POSTS;
+    }
+    return liveArticles.map(a => ({
+      id: a.id,
+      slug: a.slug,
+      title: a.title,
+      category: a.category,
+      readTime: a.readTime,
+      date: a.publishedDate || 'October 2026',
+      excerpt: a.excerpt,
+      image: a.coverImage,
+      author: a.author,
+      contentSections: a.contentSections,
+      tags: a.tags
+    }));
+  }, [liveArticles]);
+
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -26,13 +57,13 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
 
   // Dynamically extract all available categories across published posts
   const dynamicCategories = useMemo(() => {
-    const unique = Array.from(new Set(JOURNAL_POSTS.map(p => p.category)));
+    const unique = Array.from(new Set(activePosts.map(p => p.category)));
     return ['All', ...unique];
-  }, []);
+  }, [activePosts]);
 
   // Filter articles based on category and search query
   const filteredPosts = useMemo(() => {
-    return JOURNAL_POSTS.filter(post => {
+    return activePosts.filter(post => {
       const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
       const q = searchQuery.toLowerCase().trim();
       const matchesSearch = !q || 
@@ -42,18 +73,49 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
         (post.tags && post.tags.some(t => t.toLowerCase().includes(q)));
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [activePosts, selectedCategory, searchQuery]);
 
   const featuredPost = filteredPosts[0];
   const remainingPosts = filteredPosts.slice(1);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+      {/* Quick Staff & Editorial Desk Access Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-[#241A16] text-[#FAF5EE] border border-[#D4AF37]/40 shadow-sm text-xs">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-xl bg-[#801B18] text-[#D4AF37] flex items-center justify-center font-bold shadow-xs shrink-0">
+            <BookOpen className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <strong className="text-[#FCE5A4] font-playfair tracking-wide">
+                Atelier Editorial Desk
+              </strong>
+              <span className="px-2 py-0.5 rounded-full bg-[#D4AF37]/20 text-[#FAF5EE] font-mono text-[10px] font-bold">
+                Staff Review Portal
+              </span>
+            </div>
+            <p className="text-[11px] text-stone-300">
+              Review queued craft guides, inspect E-E-A-T quality scores, and publish scheduled posts live.
+            </p>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => onNavigate('/admin')}
+          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-[#801B18] hover:bg-[#9B332C] text-white font-bold transition-all shadow-xs shrink-0 self-start sm:self-auto"
+        >
+          <span>Open Blog Admin Panel</span>
+          <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37]" />
+        </button>
+      </div>
+
       {/* Header Banner */}
       <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm text-center">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${resolveProductImage('/products/tote-pink-ruffle.jpg')}')` }}
+          style={{ backgroundImage: `url('${resolveWebpImage('/products/tote-pink-ruffle.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-[#FAF0EB]/85" />
         <div className="relative z-10 max-w-3xl mx-auto space-y-4">
@@ -96,8 +158,8 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
         <div className="flex flex-wrap items-center gap-2">
           {dynamicCategories.map(category => {
             const count = category === 'All' 
-              ? JOURNAL_POSTS.length 
-              : JOURNAL_POSTS.filter(p => p.category === category).length;
+              ? activePosts.length 
+              : activePosts.filter(p => p.category === category).length;
             const isActive = selectedCategory === category;
             return (
               <button
@@ -121,7 +183,7 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
         </div>
 
         <div className="text-xs text-stone-500 font-royal-body">
-          Showing <strong>{filteredPosts.length}</strong> of {JOURNAL_POSTS.length} artisan guides
+          Showing <strong>{filteredPosts.length}</strong> of {activePosts.length} artisan guides
         </div>
       </div>
 

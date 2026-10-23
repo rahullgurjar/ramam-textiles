@@ -230,6 +230,18 @@ const CORE_PAGE_SEO = {
     description: 'Official commercial terms, production milestones, sampling policies, and wholesale agreements.',
     h1: 'Commercial Terms, Production Milestones & Supply Agreement',
     snippet: 'Clear and transparent commercial agreements for sampling approvals, production lead times, intellectual property protections, and international export delivery.'
+  },
+  '/admin': {
+    title: 'Staff & Admin Portal | Blog Review & Publishing Suite | Ramam Textiles',
+    description: 'Authorized personnel portal for reviewing and publishing artisan blogs, SEO authority calibration, and webhook gateways.',
+    h1: 'Ramam Textiles Atelier Administration & Blog Review Suite',
+    snippet: 'Review and publish scheduled artisan blogs, audit E-E-A-T depth, and manage daily editorial pipelines.'
+  },
+  '/staff': {
+    title: 'Staff Portal & Editorial Desk | Ramam Textiles',
+    description: 'Staff portal for daily blog publishing and review.',
+    h1: 'Ramam Textiles Staff Portal',
+    snippet: 'Staff portal for daily blog publishing and review.'
   }
 };
 
@@ -246,6 +258,91 @@ Object.keys(CORE_PAGE_SEO).forEach(route => {
       schemaType: 'WebPage'
     });
   }
+});
+
+// 1B. Master SEO Clusters from WEBSITE CLUSTER SERP & METADATA DIRECTORY.xlsx
+let allKeywordsMap = {};
+try {
+  const kwFile = fs.readFileSync(path.join(rootDir, 'src/data/allClusterKeywords.ts'), 'utf-8');
+  const jsonMatch = kwFile.match(/export const ALL_CLUSTER_KEYWORDS:[^{]*=([\s\S]*?);/);
+  if (jsonMatch) {
+    allKeywordsMap = (new Function('return ' + jsonMatch[1]))();
+  }
+} catch (e) {
+  console.warn('Could not load allClusterKeywords in generate-spa-routes:', e.message);
+}
+
+const SEO_MASTER_CLUSTERS = [
+  {
+    slug: 'block-print-fabrics',
+    route: '/collections/block-print-fabrics',
+    title: 'Hand Block Print Fabrics & Artisan Textiles | Buy Online',
+    description: 'Explore authentic hand block print, Ajrakh, and Dabu artisan cotton fabrics. Ethical craftsmanship, vibrant natural dyes, and custom yardage. Shop today!',
+    h1: 'Hand Block Print Fabrics & Artisan Textiles Direct from Jaipur',
+    snippet: 'Explore authentic hand block print, Ajrakh, and Dabu artisan cotton fabrics. Ethical craftsmanship, vibrant natural dyes, and custom yardage. Shop today!',
+    image: `${BASE_URL}/products/duffle-indigo.jpg`,
+    schemaType: 'CollectionPage',
+    clusterKeywords: allKeywordsMap['block-print-fabrics'] || []
+  },
+  {
+    slug: 'apparel-ethnic-wear',
+    route: '/collections/apparel-ethnic-wear',
+    title: 'Block Print Apparel & Ethnic Wear Collections',
+    description: 'Discover handcrafted block print kurtis, ethnic dresses, and breathable artisan garments. Premium organic cotton fabrics tailored for elegance. Browse now!',
+    h1: 'Block Print Apparel & Handcrafted Ethnic Wear Collections',
+    snippet: 'Discover handcrafted block print kurtis, ethnic dresses, and breathable artisan garments. Premium organic cotton fabrics tailored for elegance. Browse now!',
+    image: `${BASE_URL}/products/duffle-kantha-patchwork.jpg`,
+    schemaType: 'CollectionPage',
+    clusterKeywords: allKeywordsMap['apparel-ethnic-wear'] || []
+  },
+  {
+    slug: 'canvas-tote-bags',
+    route: '/collections/canvas-tote-bags',
+    title: 'Cotton Canvas Tote Bags in Bulk & Wholesale Custom Totes',
+    description: 'Shop eco-friendly cotton canvas tote bags in bulk. Customizable block prints, heavy-duty fabric, and wholesale manufacturing pricing. Request your instant quote!',
+    h1: 'Cotton Canvas Tote Bags Wholesale & Custom Printed Totes',
+    snippet: 'Shop eco-friendly canvas tote bags in bulk. Customizable block prints, heavy-duty cotton, and wholesale manufacturing pricing. Request your instant quote!',
+    image: `${BASE_URL}/products/tote-sanganeri-ruffle-lifestyle.jpg`,
+    schemaType: 'CollectionPage',
+    clusterKeywords: allKeywordsMap['canvas-tote-bags'] || []
+  },
+  {
+    slug: 'wholesale-bulk-fabrics',
+    route: '/collections/wholesale-bulk-fabrics',
+    title: 'Wholesale Fabric Suppliers & Bulk Textile Manufacturing',
+    description: 'Source wholesale apparel and artisan fabric direct from manufacturers. Low MOQs, global door-to-door delivery, and factory pricing. Partner with us today!',
+    h1: 'Wholesale Fabric Suppliers & Bulk Textile Manufacturing in Jaipur',
+    snippet: 'Source wholesale apparel and artisan fabric direct from manufacturers. Low MOQs, global door-to-door delivery, and factory pricing. Partner with us today!',
+    image: `${BASE_URL}/products/duffle-pink-botanical.jpg`,
+    schemaType: 'CollectionPage',
+    clusterKeywords: allKeywordsMap['wholesale-bulk-fabrics'] || []
+  },
+  {
+    slug: 'home-living-decor',
+    route: '/collections/home-living-decor',
+    title: 'Handcrafted Home Decor & Block Print Living Furnishings',
+    description: 'Elevate your living space with artisanal block print cushion covers, throws, table linens, and heavy upholstery fabrics. Bring craft home—order online!',
+    h1: 'Handcrafted Home Decor & Hand Block Print Living Furnishings',
+    snippet: 'Elevate your living space with artisanal block print cushion covers, throws, table linens, and heavy upholstery fabrics. Bring craft home—order online!',
+    image: `${BASE_URL}/products/yoga-safari.jpg`,
+    schemaType: 'CollectionPage',
+    clusterKeywords: allKeywordsMap['home-living-decor'] || []
+  },
+  {
+    slug: 'craft-diy-supplies',
+    route: '/collections/craft-diy-supplies',
+    title: 'Carved Wooden Printing Blocks & Textile Craft Supplies',
+    description: 'Shop hand-carved wooden textile printing blocks, felt sheets, and premium DIY fabric materials. Perfect for printmakers and artisans. Start crafting today!',
+    h1: 'Carved Wooden Printing Blocks & DIY Textile Craft Supplies',
+    snippet: 'Shop hand-carved wooden textile printing blocks, felt sheets, and premium DIY fabric materials. Perfect for printmakers and artisans. Start crafting today!',
+    image: `${BASE_URL}/products/vanity-playing-cards.jpg`,
+    schemaType: 'CollectionPage',
+    clusterKeywords: allKeywordsMap['craft-diy-supplies'] || []
+  }
+];
+
+SEO_MASTER_CLUSTERS.forEach(cluster => {
+  allRoutes.push(cluster);
 });
 
 // 2. Categories
@@ -482,6 +579,22 @@ allRoutes.forEach(entry => {
           </div>
         `).join('')}
       </div>
+    `;
+  }
+
+  if (entry.clusterKeywords && entry.clusterKeywords.length > 0) {
+    fallbackContent += `
+      <section style="margin-top:36px;padding:24px;border-radius:12px;background:#FDFCFA;border:1px solid #E8DFD8;">
+        <h3 style="font-size:18px;color:#9B332C;margin-bottom:8px;">Target Technical Sourcing & Keyword Directory (${entry.clusterKeywords.length} Search Terms)</h3>
+        <p style="font-size:13px;color:#7A6E65;margin-bottom:16px;">Authentic commercial textile search phrases and production categories directly supported by our Jaipur workshop:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          ${entry.clusterKeywords.map(k => `
+            <a href="/shop?query=${encodeURIComponent(k.keyword || k)}" style="display:inline-block;padding:6px 14px;background:#FAF6F2;border:1px solid #E0D5C7;border-radius:20px;font-size:12px;color:#241A16;text-decoration:none;">
+              ${escapeXml(k.keyword || k)} ${k.monthlySearches ? `<span style="font-size:10px;color:#9B332C;margin-left:4px;">(${k.monthlySearches >= 1000 ? (k.monthlySearches/1000).toFixed(0)+'k' : k.monthlySearches}/mo)</span>` : ''}
+            </a>
+          `).join('')}
+        </div>
+      </section>
     `;
   }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   ShieldCheck, Lock, Unlock, Key, AlertTriangle, CheckCircle2, 
-  ExternalLink, LogOut, Database, RefreshCw, Eye, EyeOff, Layers, FileSpreadsheet, Activity, Globe
+  ExternalLink, LogOut, Database, RefreshCw, Eye, EyeOff, Layers, FileSpreadsheet, Activity, Globe, BookOpen
 } from 'lucide-react';
 import { 
   authenticateAdmin, checkAdminSession, logoutAdmin, getLockoutState, LockoutState 
@@ -10,6 +10,7 @@ import { getGoogleScriptUrl } from '../utils/googleScript';
 import { useApp } from '../context/AppContext';
 import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 import { SEOAdminContainer } from '../components/seo/SEOAdminContainer';
+import { BlogAdminContainer } from '../components/admin/blog/BlogAdminContainer';
 
 interface AdminPortalPageProps {
   onNavigate: (path: string) => void;
@@ -94,14 +95,16 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
     }
   };
 
-  const [adminSection, setAdminSection] = useState<'seo' | 'security'>(() => {
+  const [adminSection, setAdminSection] = useState<'blogs' | 'seo' | 'security'>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.toLowerCase();
       const search = window.location.search.toLowerCase();
       if (hash.includes('security') || search.includes('security')) return 'security';
-      return 'seo';
+      if (hash.includes('seo') || search.includes('seo')) return 'seo';
+      if (hash.includes('blog') || search.includes('blog')) return 'blogs';
+      return 'blogs';
     }
-    return 'seo';
+    return 'blogs';
   });
 
   const handleLogout = () => {
@@ -110,7 +113,64 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
     showToast('Admin session terminated.', 'info');
   };
 
-  // If authenticated and on SEO panel, render full-bleed luxury SEO console
+  // 1. If authenticated and on Blog Admin Suite
+  if (isAuthenticated && adminSection === 'blogs') {
+    return (
+      <div className="min-h-screen bg-[#FAF5EE]">
+        {/* Top Atelier Administration Bar */}
+        <div className="bg-[#241A16] text-[#FAF5EE] px-4 sm:px-6 py-2.5 border-b border-[#D4AF37]/30">
+          <div className="max-w-7xl mx-auto flex items-center justify-between text-xs">
+            <div className="flex items-center gap-2">
+              <span className="font-playfair font-bold text-[#FCE5A4] hidden sm:inline">
+                Atelier Administration:
+              </span>
+              <button
+                type="button"
+                onClick={() => setAdminSection('blogs')}
+                className="px-3 py-1 rounded-lg bg-[#801B18] text-[#FAF5EE] font-bold border border-[#D4AF37]/40 flex items-center gap-1.5 shadow-sm"
+              >
+                <BookOpen className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <span>Blog Admin & Editorial</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setAdminSection('seo')}
+                className="px-3 py-1 rounded-lg hover:bg-white/10 text-stone-300 font-semibold flex items-center gap-1.5 transition-colors"
+              >
+                <Globe className="w-3.5 h-3.5" />
+                <span>On-Page SEO Panel</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setAdminSection('security')}
+                className="px-3 py-1 rounded-lg hover:bg-white/10 text-stone-300 font-semibold flex items-center gap-1.5 transition-colors"
+              >
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Security & Webhook Console</span>
+              </button>
+            </div>
+
+            <button
+              onClick={handleLogout}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold transition-colors"
+            >
+              <LogOut className="w-3 h-3" />
+              <span>Log Out</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Master Blog Admin Suite */}
+        <BlogAdminContainer 
+          onNavigate={onNavigate} 
+          onBackToSecurity={() => setAdminSection('security')}
+          onBackToSEO={() => setAdminSection('seo')}
+        />
+      </div>
+    );
+  }
+
+  // 2. If authenticated and on SEO panel, render full-bleed luxury SEO console
   if (isAuthenticated && adminSection === 'seo') {
     return (
       <div className="min-h-screen bg-[#FAF5EE]">
@@ -121,6 +181,14 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
               <span className="font-playfair font-bold text-[#FCE5A4] hidden sm:inline">
                 Atelier Administration:
               </span>
+              <button
+                type="button"
+                onClick={() => setAdminSection('blogs')}
+                className="px-3 py-1 rounded-lg hover:bg-white/10 text-stone-300 font-semibold flex items-center gap-1.5 transition-colors"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Blog Admin & Editorial</span>
+              </button>
               <button
                 type="button"
                 onClick={() => setAdminSection('seo')}
@@ -177,11 +245,19 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
             <div className="flex items-center gap-2">
               <button
                 type="button"
+                onClick={() => setAdminSection('blogs')}
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#FAF0EB] hover:bg-[#801B18] text-[#9B332C] hover:text-white text-xs font-bold transition-all shadow-sm"
+              >
+                <BookOpen className="w-4 h-4" />
+                <span>Blog Admin Panel</span>
+              </button>
+              <button
+                type="button"
                 onClick={() => setAdminSection('seo')}
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#FAF0EB] hover:bg-[#9B332C] text-[#9B332C] hover:text-white text-xs font-bold transition-all shadow-sm"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold transition-all"
               >
                 <Globe className="w-4 h-4" />
-                <span>Open SEO Panel</span>
+                <span>SEO Panel</span>
               </button>
               <button
                 onClick={handleLogout}

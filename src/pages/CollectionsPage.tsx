@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Sparkles, ChevronRight, Compass } from 'lucide-react';
 import { COLLECTIONS } from '../data/collections';
+import { SEO_CLUSTERS } from '../data/seoClusters';
 import { PRODUCTS } from '../data/products';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
@@ -17,7 +18,7 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
       <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm text-center">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${resolveProductImage('/products/vanity-trio-turquoise.jpg')}')` }}
+          style={{ backgroundImage: `url('${resolveWebpImage('/products/vanity-trio-turquoise.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-[#FAF0EB]/85" />
         <div className="relative z-10 max-w-3xl mx-auto space-y-3">
@@ -33,6 +34,73 @@ export const CollectionsPage: React.FC<CollectionsPageProps> = ({ onNavigate }) 
           </p>
         </div>
       </div>
+
+      {/* Master Pillar Clusters (from WEBSITE CLUSTER SERP & METADATA DIRECTORY) */}
+      <section className="space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#D4AF37]/30 pb-3">
+          <div>
+            <span className="text-[11px] font-royal-title uppercase tracking-widest text-[#9B332C] font-bold">
+              Pillar Directories & Sourcing Hubs
+            </span>
+            <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16]">
+              Artisan Fabric & Wholesale Categories
+            </h2>
+          </div>
+          <span className="text-xs text-stone-500 font-royal-title uppercase tracking-wider font-semibold">
+            6 Commercial Sourcing Hubs
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {Object.values(SEO_CLUSTERS).map(cluster => (
+            <div
+              key={cluster.id}
+              onClick={() => {
+                onNavigate(cluster.path);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="group bg-[#FAF5EE] rounded-3xl p-6 border border-[#D4AF37]/35 hover:border-[#9B332C] shadow-sm hover:shadow-xl transition-all cursor-pointer flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-royal-title uppercase tracking-wider font-bold px-2.5 py-0.5 rounded-full bg-white border border-[#D4AF37]/40 text-[#9B332C]">
+                    {cluster.targetPageType}
+                  </span>
+                  <span className="text-[11px] text-stone-500 font-mono">
+                    {cluster.keywordCount} Keywords
+                  </span>
+                </div>
+
+                <h3 className="font-playfair text-lg font-bold text-[#241A16] group-hover:text-[#9B332C] transition-colors leading-snug">
+                  {cluster.clusterHub}
+                </h3>
+
+                <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed">
+                  {cluster.metaDescription}
+                </p>
+
+                <div className="flex flex-wrap gap-1 pt-1">
+                  {cluster.subThemes.slice(0, 3).map(st => (
+                    <span key={st.name} className="text-[10px] px-2 py-0.5 bg-white/70 border border-stone-200 rounded text-stone-600">
+                      {st.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-4 mt-4 border-t border-stone-200 flex items-center justify-between text-xs font-royal-title">
+                <span className="text-[11px] text-[#9B332C] font-bold uppercase tracking-wider group-hover:underline inline-flex items-center gap-1">
+                  <span>Explore Hub</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+                <span className="text-[10px] text-stone-400">
+                  {cluster.monthlySearchVolume.toLocaleString()} Mo. Demand
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Collections List */}
       <div className="space-y-12">

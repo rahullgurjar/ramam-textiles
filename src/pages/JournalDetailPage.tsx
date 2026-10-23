@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, ChevronRight, Share2, BookOpen, Clock, Tag, Sparkles, MessageCircle, FileText, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
 import { JOURNAL_ARTICLES } from '../data/journal';
+import { getBlogArticleBySlug, getPublishedArticles } from '../utils/blogStorage';
 import { PRODUCTS } from '../data/products';
 import { InstagramIcon } from '../components/InstagramIcon';
 import { useApp } from '../context/AppContext';
@@ -14,8 +15,9 @@ interface JournalDetailPageProps {
 
 export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNavigate }) => {
   const { showToast, openQuickQuote } = useApp();
-  const article = JOURNAL_ARTICLES.find(a => a.slug === slug) || JOURNAL_ARTICLES[0];
-  const related = JOURNAL_ARTICLES.filter(a => a.slug !== article.slug).slice(0, 2);
+  const article = getBlogArticleBySlug(slug) || JOURNAL_ARTICLES.find(a => a.slug === slug) || JOURNAL_ARTICLES[0];
+  const allArticles = getPublishedArticles();
+  const related = (allArticles.length > 0 ? allArticles : JOURNAL_ARTICLES).filter(a => a.slug !== article.slug).slice(0, 2);
   const isBlogPath = typeof window !== 'undefined' && (window.location.pathname.includes('/blog') || window.location.pathname.includes('/blogs'));
   const basePath = isBlogPath ? '/blog' : '/journal';
   const getArticleUrl = (articleSlug: string) => `${basePath}/${articleSlug}`;

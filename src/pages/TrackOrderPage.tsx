@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Package, CheckCircle2, Clock, Truck, ShieldCheck, MapPin, AlertCircle } from 'lucide-react';
 import { useApp } from '../context/AppContext';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 export const TrackOrderPage: React.FC = () => {
@@ -20,7 +20,7 @@ export const TrackOrderPage: React.FC = () => {
       <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm text-center">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${resolveProductImage('/products/vanity-trio-meadow-green.jpg')}')` }}
+          style={{ backgroundImage: `url('${resolveWebpImage('/products/vanity-trio-meadow-green.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-[#FAF0EB]/85" />
         <div className="relative z-10 max-w-2xl mx-auto space-y-3">

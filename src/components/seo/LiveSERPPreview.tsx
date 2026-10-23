@@ -136,8 +136,8 @@ export const LiveSERPPreview: React.FC<LiveSERPPreviewProps> = ({
       }`}>
         {/* Google Header: Favicon + Brand Name + Breadcrumb */}
         <div className="flex items-center gap-3 mb-1.5">
-          <div className="w-6 h-6 rounded-full bg-[#801B18] border border-[#D4AF37] flex items-center justify-center shrink-0 shadow-sm overflow-hidden p-0.5">
-            <img src="/favicon.svg" alt="RT" className="w-full h-full object-contain" />
+          <div className="w-7 h-7 rounded-full bg-stone-100 flex items-center justify-center shrink-0 shadow-sm overflow-hidden p-0.5">
+            <img src="/favicon.svg" alt="Ramam Textiles" className="w-full h-full object-contain" />
           </div>
           <div className="leading-tight truncate">
             <div className="text-[13px] font-medium text-[#202124] flex items-center gap-1">

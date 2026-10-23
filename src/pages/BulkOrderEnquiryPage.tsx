@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { ShieldCheck, Truck, FileCheck, Layers } from 'lucide-react';
 import { BulkOrderEnquiryForm } from '../components/BulkOrderEnquiryForm';
 import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
 interface BulkOrderEnquiryPageProps {
   onNavigate: (path: string) => void;
@@ -36,12 +36,15 @@ export const BulkOrderEnquiryPage: React.FC<BulkOrderEnquiryPageProps> = ({ onNa
 
       {/* Dedicated Custom Photo Hero Banner */}
       <div className="relative rounded-3xl overflow-hidden border border-[#D4AF37]/35 shadow-md h-52 sm:h-64">
-        <img 
-          src={resolveProductImage('/products/organizer-dyson-airwrap.jpg')} 
-          alt="Ramam Textiles Jaipur Bulk Manufacturing Line" 
-          className="w-full h-full object-cover" 
-          loading="eager" 
-        />
+        <picture className="w-full h-full block">
+          <source srcSet={resolveWebpImage('/products/organizer-dyson-airwrap.jpg')} type="image/webp" />
+          <img 
+            src={resolveProductImage('/products/organizer-dyson-airwrap.jpg')} 
+            alt="Ramam Textiles Jaipur Bulk Manufacturing Line" 
+            className="w-full h-full object-cover" 
+            loading="eager" 
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-[#241A16]/90 via-[#241A16]/40 to-transparent flex flex-col justify-end p-6 sm:p-10 text-white">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-[#E5C058] text-[11px] font-royal-title font-bold uppercase tracking-widest w-fit mb-2">
             <Layers className="w-3.5 h-3.5 text-[#E5C058]" />

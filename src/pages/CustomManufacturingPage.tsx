@@ -4,7 +4,7 @@ import {
   Send, Mail, Package, Award, ArrowRight, HelpCircle
 } from 'lucide-react';
 import { CustomManufacturingWizard } from '../components/CustomManufacturingWizard';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface CustomManufacturingPageProps {
@@ -47,7 +47,7 @@ export const CustomManufacturingPage: React.FC<CustomManufacturingPageProps> = (
       <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${resolveProductImage('/products/laptop-sleeve-kalamkari.jpg')}')` }}
+          style={{ backgroundImage: `url('${resolveWebpImage('/products/laptop-sleeve-kalamkari.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-[#FAF0EB]/85" />
         <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />

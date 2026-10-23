@@ -22,7 +22,7 @@ import { CATEGORIES } from '../data/products';
 import { COLLECTIONS } from '../data/collections';
 import { JOURNAL_POSTS } from '../data/journal';
 import { InstagramIcon } from './InstagramIcon';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
 interface HeaderProps {
   currentPath: string;
@@ -222,11 +222,14 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                             onClick={() => handleNav(`/category/${cat.id}`)}
                             className="group/item flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#FAF0EB] cursor-pointer transition-all border border-[#D4AF37]/30 hover:border-[#9B332C] bg-[#FAF5EE] shadow-sm"
                           >
-                            <img 
-                              src={cat.image} 
-                              alt={cat.name} 
-                              className="w-12 h-12 rounded-lg object-cover border border-[#D4AF37]/30 shadow-sm"
-                            />
+                            <picture className="w-12 h-12 rounded-lg shrink-0 overflow-hidden border border-[#D4AF37]/30 shadow-sm block">
+                              <source srcSet={resolveWebpImage(cat.image)} type="image/webp" />
+                              <img 
+                                src={resolveProductImage(cat.image)} 
+                                alt={cat.name} 
+                                className="w-full h-full object-cover"
+                              />
+                            </picture>
                             <div>
                               <h4 className="text-xs font-bold text-[#241A16] group-hover/item:text-[#9B332C] transition-colors font-royal-title">
                                 {cat.name}
@@ -349,11 +352,14 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                         }}
                         className="group/item flex items-center gap-3 p-2 rounded-xl hover:bg-[#FAF0EB] cursor-pointer transition-all border border-[#D4AF37]/25 hover:border-[#9B332C] bg-[#FAF5EE] block text-left"
                       >
-                        <img 
-                          src={resolveProductImage(post.image)} 
-                          alt={post.title} 
-                          className="w-12 h-12 rounded-lg object-cover border border-[#D4AF37]/30 shadow-sm shrink-0"
-                        />
+                        <picture className="w-12 h-12 rounded-lg shrink-0 overflow-hidden border border-[#D4AF37]/30 shadow-sm block">
+                          <source srcSet={resolveWebpImage(post.image)} type="image/webp" />
+                          <img 
+                            src={resolveProductImage(post.image)} 
+                            alt={post.title} 
+                            className="w-full h-full object-cover"
+                          />
+                        </picture>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 text-[10px] text-stone-500 font-mono">
                             <span className="text-[#9B332C] font-royal-title font-bold uppercase">{post.category}</span>
@@ -369,7 +375,13 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   </div>
 
                   <div className="mt-3 pt-3 border-t border-[#D4AF37]/20 flex items-center justify-between text-[11px]">
-                    <span className="text-stone-600 font-royal-body">Topics: Dabu Indigo • 60x60 Mulmul • Block Print vs Screen • OEM</span>
+                    <button 
+                      onClick={() => handleNav('/admin')}
+                      className="text-stone-700 hover:text-[#9B332C] font-semibold flex items-center gap-1.5"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-[#801B18]" />
+                      <span>Staff Editorial Desk: Review &amp; Publish Blogs</span>
+                    </button>
                     <button 
                       onClick={() => handleNav('/blog')}
                       className="text-[#9B332C] font-bold hover:underline"
@@ -637,6 +649,13 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                         • {post.title}
                       </button>
                     ))}
+                    <button
+                      onClick={() => handleNav('/admin')}
+                      className="w-full text-left pt-2 pb-1 text-[11px] font-bold text-[#801B18] hover:text-[#9B332C] flex items-center gap-1.5 border-t border-[#D4AF37]/20 mt-1"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#801B18]" />
+                      <span>Review &amp; Publish Blogs (Admin Desk) →</span>
+                    </button>
                   </div>
                 </div>
                 <button 

@@ -10,7 +10,7 @@ import { validateComprehensiveLead } from '../utils/formValidation';
 import { CountrySelect } from '../components/CountrySelect';
 import { PhoneInputWithCountry } from '../components/PhoneInputWithCountry';
 import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
 interface ContactPageProps {
   onNavigate: (path: string) => void;
@@ -72,12 +72,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
       {/* Dedicated Custom Page Photo Banner */}
       <div className="relative rounded-3xl overflow-hidden border border-[#D4AF37]/35 shadow-md h-56 sm:h-72">
-        <img 
-          src={resolveProductImage('/products/vanity-trio-mint-lotus.jpg')} 
-          alt="Ramam Textiles Jaipur Atelier Communication Desk" 
-          className="w-full h-full object-cover" 
-          loading="eager" 
-        />
+        <picture className="w-full h-full block">
+          <source srcSet={resolveWebpImage('/products/vanity-trio-mint-lotus.jpg')} type="image/webp" />
+          <img 
+            src={resolveProductImage('/products/vanity-trio-mint-lotus.jpg')} 
+            alt="Ramam Textiles Jaipur Atelier Communication Desk" 
+            className="w-full h-full object-cover" 
+            loading="eager" 
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-t from-[#241A16]/90 via-[#241A16]/45 to-transparent flex flex-col justify-end p-6 sm:p-10 text-white">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-[#E5C058] text-[11px] font-royal-title font-bold uppercase tracking-widest w-fit mb-2">
             <MessageSquare className="w-3.5 h-3.5 text-[#E5C058]" />

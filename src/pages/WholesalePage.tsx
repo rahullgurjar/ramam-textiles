@@ -6,7 +6,7 @@ import {
 import { useApp } from '../context/AppContext';
 import { PRODUCTS } from '../data/products';
 import { InstagramIcon } from '../components/InstagramIcon';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 import { submitToGoogleSheet } from '../utils/googleScript';
 import { validateComprehensiveLead } from '../utils/formValidation';
 import { CountrySelect } from '../components/CountrySelect';
@@ -83,7 +83,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
       <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-14 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${resolveProductImage('/products/duffle-indigo.jpg')}')` }}
+          style={{ backgroundImage: `url('${resolveWebpImage('/products/duffle-indigo.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-[#FAF0EB]/85" />
 

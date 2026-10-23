@@ -712,18 +712,24 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           >
             <X className="w-6 h-6" />
           </button>
-          <img 
-            src={resolveProductImage(product.images[activeImageIndex] || product.images[0])} 
-            alt={product.name}
-            className="max-h-[90vh] max-w-[90vw] object-contain rounded-2xl shadow-2xl"
-            onError={(e) => {
-              const target = e.currentTarget as HTMLImageElement;
-              if (!target.dataset.fallbackTried) {
-                target.dataset.fallbackTried = 'true';
-                target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
-              }
-            }}
-          />
+          <picture className="max-h-[90vh] max-w-[90vw] flex items-center justify-center">
+            <source 
+              srcSet={resolveWebpImage(product.images[activeImageIndex] || product.images[0])} 
+              type="image/webp" 
+            />
+            <img 
+              src={resolveProductImage(product.images[activeImageIndex] || product.images[0])} 
+              alt={product.name}
+              className="max-h-[90vh] max-w-[90vw] object-contain rounded-2xl shadow-2xl"
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                if (!target.dataset.fallbackTried) {
+                  target.dataset.fallbackTried = 'true';
+                  target.src = resolveProductImage('/products/duffle-kantha-patchwork.jpg');
+                }
+              }}
+            />
+          </picture>
         </div>
       )}
 

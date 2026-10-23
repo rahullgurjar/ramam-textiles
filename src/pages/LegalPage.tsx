@@ -4,7 +4,7 @@ import {
   AlertCircle, MessageSquare, Mail, ExternalLink, ArrowRight
 } from 'lucide-react';
 import { InstagramIcon } from '../components/InstagramIcon';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 import { setPageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface LegalPageProps {
@@ -52,7 +52,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialTab = 'privacy' }) 
       <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${resolveProductImage('/products/vanity-trio-pink-paisley.jpg')}')` }}
+          style={{ backgroundImage: `url('${resolveWebpImage('/products/vanity-trio-pink-paisley.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-[#FAF0EB]/85" />
         <div className="absolute inset-0 bg-jaipur-jaali opacity-30 pointer-events-none" />

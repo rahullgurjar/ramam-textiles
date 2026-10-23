@@ -8,7 +8,7 @@ import { COLLECTIONS } from '../data/collections';
 import { ProductCard } from '../components/ProductCard';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
-import { resolveProductImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface ShopPageProps {
@@ -122,7 +122,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onNavigate, initialCategory,
       <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 md:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: `url('${resolveProductImage('/products/tote-sanganeri-ruffle-lifestyle.jpg')}')` }}
+          style={{ backgroundImage: `url('${resolveWebpImage('/products/tote-sanganeri-ruffle-lifestyle.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-[#FAF0EB]/85" />
 

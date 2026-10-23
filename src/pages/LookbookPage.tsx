@@ -27,7 +27,7 @@ export const LookbookPage: React.FC<LookbookPageProps> = ({ onNavigate }) => {
       <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm text-center">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${resolveProductImage('/products/yoga-safari.jpg')}')` }}
+          style={{ backgroundImage: `url('${resolveWebpImage('/products/yoga-safari.jpg')}')` }}
         />
         <div className="absolute inset-0 bg-[#FAF0EB]/85" />
         <div className="relative z-10 max-w-3xl mx-auto space-y-3">
