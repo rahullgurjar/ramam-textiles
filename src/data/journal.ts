@@ -2,6 +2,114 @@ import { JournalArticle } from '../types';
 
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
+    id: 'mulmul-vs-voile-vs-cambric-cotton-guide',
+    slug: 'mulmul-vs-voile-vs-cambric-cotton-guide',
+    title: "Mulmul vs Voile vs Cambric: Which Jaipur Cotton Weave is Right for You?",
+    category: 'Fabric Sourcing',
+    readTime: '8 min read',
+    publishedDate: 'October 24, 2026',
+    excerpt: "A technical side-by-side comparison of yarn counts, warp-weft density, transparency, tactile handfeel, and shrinkage for apparel and accessories.",
+    coverImage: '/products/tote-sanganeri-ruffle-lifestyle.jpg',
+    author: {
+      name: "Ramam Textiles Technical Guild",
+      role: "Textile Weaving Specialist",
+      bio: "Guiding international fashion designers on yarn counts, loom reed-pick densities, and fabric drape selection."
+    },
+    contentSections: [
+      {
+            heading: "Navigating the World of Indian Cotton Weaves",
+            subheading: "Understanding Loom Construction Beyond Generic Terms",
+            body: "When international fashion designers begin sourcing pure cotton fabrics from Jaipur, they are often overwhelmed by traditional trade terms: Mulmul, Cotton Voile, and Cambric.\n\nWhile all three are 100% natural plain-weave cottons, their differences in yarn spinning, thread twist, and reed-pick construction fundamentally alter how a finished garment drapes, breathes, and wears."
+      },
+      {
+            heading: "1. Jaipur Cotton Mulmul (The Feather of Bengal & Rajasthan)",
+            subheading: "Superfine Combed 60s & 80s Yarns with Cloud Softness",
+            body: "• Yarn Count: 60s combed cotton in warp and weft.\n• Construction: Balanced, open plain weave (approx. 72x68 threads per inch).\n• Weight: 75 - 85 GSM.\n• Handfeel: Incomparably soft, fluid, and semi-sheer.\n• Best Used For: Tiered resort dresses, lightweight lining, voluminous summer scarves, and heirloom baby swaddles.",
+            bullets: [
+                  "Superfine 60s & 80s combed yarns",
+                  "Cloud-soft handfeel that softens further with every wash",
+                  "Ideal for hot, humid tropical climates"
+            ]
+      },
+      {
+            heading: "2. Cotton Voile (The Crisp High-Twist Weave)",
+            subheading: "Hard-Twist Crepe Yarns for Non-Cling Summer Silhouettes",
+            body: "• Yarn Count: 60s or 80s hard-twist (crepe twist) yarns.\n• Construction: Plain weave with tight yarn twist creating tiny air spaces.\n• Weight: 65 - 75 GSM.\n• Handfeel: Crisp, slightly springy hand with clean drape and minimal cling.\n• Best Used For: High-fashion resort wear, breezy beach shirts, and layered curtains."
+      },
+      {
+            heading: "3. 60s & 40s Cotton Cambric (The Structural Luxury Standard)",
+            subheading: "Close Plain Weave for Tailored Apparel and Quilted Bags",
+            body: "• Yarn Count: 60s or 40s high-density yarns.\n• Construction: Close plain weave with calendared, smooth surface finish (approx. 92x88 threads per inch).\n• Weight: 100 - 120 GSM.\n• Handfeel: Opaque, smooth, holding crisp tailored pleats and embroidery.\n• Best Used For: Structured button-downs, tailored kurtas, channel-quilted tote bags, and vanity cosmetics cases."
+      },
+      {
+            quote: "Choosing the wrong weave is the number one cause of commercial garment return rates. A design requiring crisp collar structure will fail on mulmul; a summer kaftan requiring liquid drape will feel stiff on heavy cambric.",
+            body: "Always order physical A4 fabric swatches to test drape under natural light before confirming master production yardage."
+      }
+],
+    tags: ["Mulmul Cotton","Cambric","Cotton Voile","Fabric Comparison","Textile Sourcing"],
+    table: {
+      caption: "Mulmul vs Voile vs Cambric Technical Comparison",
+      headers: [
+            "Fabric Property",
+            "Jaipur Mulmul",
+            "Cotton Voile",
+            "Cotton Cambric"
+      ],
+      rows: [
+            [
+                  "Yarn Count",
+                  "60s / 80s Combed",
+                  "60s Hard-Twist Crepe",
+                  "60s x 60s High Density / 40s"
+            ],
+            [
+                  "Fabric GSM",
+                  "75 – 85 GSM",
+                  "65 – 75 GSM",
+                  "105 – 120 GSM"
+            ],
+            [
+                  "Transparency",
+                  "Semi-sheer",
+                  "Translucent crisp",
+                  "100% Opaque"
+            ],
+            [
+                  "Handfeel",
+                  "Ultra-soft, cloud drape",
+                  "Crisp, springy, non-cling",
+                  "Smooth, structured, tailorable"
+            ],
+            [
+                  "Best Silhouettes",
+                  "Tiered maxi dresses, swaddles",
+                  "Beach kaftans, airy blouses",
+                  "Button-downs, quilted bags, vanity cases"
+            ]
+      ]
+},
+    faqs: [
+      {
+            question: "Does mulmul require lining when making dresses?",
+            answer: "Yes, for body-conscious or formal day dresses, a lightweight voile or self-fabric mulmul lining is recommended for complete opacity."
+      },
+      {
+            question: "Which fabric holds wooden block print registration best?",
+            answer: "Cotton cambric offers the smoothest, flattest surface for razor-sharp geometric alignment, while mulmul gives a soft, watercolor-like bleed."
+      },
+      {
+            question: "Can I order mixed swatch packs of all three fabrics?",
+            answer: "Yes! We ship curated swatch cards with A4 swatches of mulmul, voile, and cambric directly to international designers."
+      }
+],
+    leadCta: {
+      title: "Request a Fabric Swatch Kit: Mulmul, Voile & Cambric",
+      description: "Touch and test all three iconic Jaipur cotton weaves. Low MOQ sample bolt orders starting from 25 meters per design with worldwide air delivery.",
+      primaryBtnText: "Order Fabric Swatches (/contact)",
+      primaryBtnLink: "/contact"
+}
+  },
+  {
     id: 'how-teak-chhaap-woodblocks-are-made',
     slug: 'how-teak-chhaap-woodblocks-are-made',
     title: "Inside a Master Woodcarver's Workshop: How Teak Chhaap Blocks are Made",
