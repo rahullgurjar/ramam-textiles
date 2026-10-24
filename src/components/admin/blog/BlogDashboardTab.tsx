@@ -14,7 +14,7 @@ interface BlogDashboardTabProps {
   onReviewArticle: (article: BlogArticleItem) => void;
   onEditArticle: (article: BlogArticleItem) => void;
   onPublishArticle: (articleId: string) => void;
-  onNavigateToTab: (tab: 'dashboard' | 'queue' | 'editor' | 'sync') => void;
+  onNavigateToTab: (tab: 'dashboard' | 'queue' | 'claude-writer' | 'editor' | 'sync') => void;
   onViewLiveBlog: () => void;
 }
 
@@ -97,11 +97,19 @@ export const BlogDashboardTab: React.FC<BlogDashboardTabProps> = ({
             </button>
             <button
               type="button"
-              onClick={() => onNavigateToTab('editor')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#801B18] hover:bg-[#9B332C] text-white font-bold text-xs shadow-md hover:shadow-lg transition-all"
+              onClick={() => onNavigateToTab('claude-writer')}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#9B332C] via-[#801B18] to-[#9B332C] hover:brightness-110 text-white font-bold text-xs shadow-md hover:shadow-lg transition-all border border-[#D4AF37]/40"
             >
-              <FileText className="w-4 h-4" />
-              <span>+ Write New Article</span>
+              <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+              <span>Write with Claude (3.7)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigateToTab('editor')}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-stone-50 text-stone-800 font-bold text-xs border border-stone-200 shadow-sm transition-all"
+            >
+              <FileText className="w-4 h-4 text-[#801B18]" />
+              <span>Manual Editor</span>
             </button>
           </div>
         </div>

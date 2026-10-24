@@ -15,6 +15,7 @@ interface BlogQueueTabProps {
   onUnpublishArticle: (articleId: string) => void;
   onDeleteArticle: (articleId: string) => void;
   onCreateNew: () => void;
+  onOpenClaudeWriter?: () => void;
 }
 
 export const BlogQueueTab: React.FC<BlogQueueTabProps> = ({
@@ -24,7 +25,8 @@ export const BlogQueueTab: React.FC<BlogQueueTabProps> = ({
   onPublishArticle,
   onUnpublishArticle,
   onDeleteArticle,
-  onCreateNew
+  onCreateNew,
+  onOpenClaudeWriter
 }) => {
   const { showToast } = useApp();
   const [statusFilter, setStatusFilter] = useState<'all' | BlogArticleStatus>('all');
@@ -106,13 +108,25 @@ export const BlogQueueTab: React.FC<BlogQueueTabProps> = ({
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={onCreateNew}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#801B18] hover:bg-[#9B332C] text-white font-bold text-xs shadow-md transition-all self-start sm:self-auto"
-          >
-            <span>+ Write Article</span>
-          </button>
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            {onOpenClaudeWriter && (
+              <button
+                type="button"
+                onClick={onOpenClaudeWriter}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#9B332C] to-[#801B18] hover:brightness-110 text-white font-bold text-xs shadow-md transition-all border border-[#D4AF37]/40"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <span>Write with Claude (3.7)</span>
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={onCreateNew}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-stone-50 text-stone-800 border border-stone-200 font-bold text-xs shadow-xs transition-all"
+            >
+              <span>+ Manual Draft</span>
+            </button>
+          </div>
         </div>
 
         {/* Primary Status Tabs */}

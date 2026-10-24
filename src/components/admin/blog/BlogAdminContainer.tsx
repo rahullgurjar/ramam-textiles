@@ -318,6 +318,7 @@ export const BlogAdminContainer: React.FC<BlogAdminContainerProps> = ({
             onUnpublishArticle={handleUnpublish}
             onDeleteArticle={handleDelete}
             onCreateNew={handleCreateNew}
+            onOpenClaudeWriter={() => setActiveTab('claude-writer')}
           />
         )}
 

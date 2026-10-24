@@ -37,13 +37,15 @@ jobs:
         run: npm ci
 
       - name: Auto-publish today's SEO blog post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/automate-daily-blog.js
 
       - name: Commit & push updated blog and sitemap
         run: |
           git config user.name "Ramam Blog Bot"
           git config user.email "bot@ramamtextiles.shop"
-          git add src/data/journal.ts DAILY_BLOG_CALENDAR.md public/sitemap.xml
+          git add src/data/journal.ts DAILY_BLOG_CALENDAR.md public/sitemap.xml src/data/blogQueue.json
           git commit -m "Auto-publish daily SEO blog guide [skip ci]" || echo "No changes to commit"
           git push origin main || echo "Push skipped or up-to-date"
 

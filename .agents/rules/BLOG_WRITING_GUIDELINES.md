@@ -60,6 +60,12 @@ This document specifies the mandatory requirements for all blog posts, articles,
   - "Get In Touch With Our Jaipur Workshop"
 - Secondary Action: Quick Quote trigger / WhatsApp direct line.
 
+## 10. Always Use Claude (Mandatory AI Model)
+- Every single blog post, article, draft, outline, expansion, revision, and humanization step MUST ALWAYS be written using Claude (specifically **Claude 3.7 Sonnet** / `claude-3-7-sonnet-20250219`).
+- Claude 3.7 Sonnet is the sole mandated model for its deep craft reasoning, authentic human prose, nuanced sensory descriptions, and flawless adherence to the under-3-line paragraph constraint.
+- Never use generic or ungrounded models. Claude powers the Admin AI Writer tab (`/admin`), the terminal CLI (`npm run blog:generate`), and the GitHub Actions daily publisher (`daily-blog.yml`).
+
+
 ---
 
 ## 4-Step Blog Writing Workflow

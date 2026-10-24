@@ -45,7 +45,12 @@ async function runDailyBlogAutomation() {
 
   if (!nextArticle) {
     console.log('✨ All queued articles in blogQueue.json are already published!');
-    console.log('📖 Generating next scheduled post from DAILY_BLOG_CALENDAR.md...');
+    console.log('📖 Generating next scheduled post from DAILY_BLOG_CALENDAR.md using Claude 3.7 Sonnet...');
+    try {
+      execSync(`node "${path.join(rootDir, 'scripts/generate-blog-with-claude.js')}" --next --publish`, { stdio: 'inherit' });
+    } catch (err) {
+      console.error('❌ Claude auto-generation failed or API key not set:', err.message);
+    }
     return;
   }
 
