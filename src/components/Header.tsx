@@ -374,19 +374,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                     ))}
                   </div>
 
-                  <div className="mt-3 pt-3 border-t border-[#D4AF37]/20 flex items-center justify-between text-[11px]">
-                    <button 
-                      onClick={() => handleNav('/admin')}
-                      className="text-stone-700 hover:text-[#9B332C] font-semibold flex items-center gap-1.5"
-                    >
-                      <span className="w-2 h-2 rounded-full bg-[#801B18]" />
-                      <span>Staff Editorial Desk: Review &amp; Publish Blogs</span>
-                    </button>
+                  <div className="mt-3 pt-3 border-t border-[#D4AF37]/20 flex items-center justify-end text-[11px]">
                     <button 
                       onClick={() => handleNav('/blog')}
                       className="text-[#9B332C] font-bold hover:underline"
                     >
-                      Browse Archive →
+                      Browse Full Archive →
                     </button>
                   </div>
                 </div>
@@ -650,11 +643,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                       </button>
                     ))}
                     <button
-                      onClick={() => handleNav('/admin')}
-                      className="w-full text-left pt-2 pb-1 text-[11px] font-bold text-[#801B18] hover:text-[#9B332C] flex items-center gap-1.5 border-t border-[#D4AF37]/20 mt-1"
+                      onClick={() => handleNav('/blog')}
+                      className="w-full text-left pt-2 pb-1 text-[11px] font-bold text-[#9B332C] hover:underline flex items-center gap-1.5 border-t border-[#D4AF37]/20 mt-1"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#801B18]" />
-                      <span>Review &amp; Publish Blogs (Admin Desk) →</span>
+                      <span>Browse All Journal Guides →</span>
                     </button>
                   </div>
                 </div>

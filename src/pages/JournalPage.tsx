@@ -80,36 +80,6 @@ export const JournalPage: React.FC<JournalPageProps> = ({ onNavigate }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
-      {/* Quick Staff & Editorial Desk Access Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-[#241A16] text-[#FAF5EE] border border-[#D4AF37]/40 shadow-sm text-xs">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-[#801B18] text-[#D4AF37] flex items-center justify-center font-bold shadow-xs shrink-0">
-            <BookOpen className="w-4 h-4" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <strong className="text-[#FCE5A4] font-playfair tracking-wide">
-                Atelier Editorial Desk
-              </strong>
-              <span className="px-2 py-0.5 rounded-full bg-[#D4AF37]/20 text-[#FAF5EE] font-mono text-[10px] font-bold">
-                Staff Review Portal
-              </span>
-            </div>
-            <p className="text-[11px] text-stone-300">
-              Review queued craft guides, inspect E-E-A-T quality scores, and publish scheduled posts live.
-            </p>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => onNavigate('/admin')}
-          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-[#801B18] hover:bg-[#9B332C] text-white font-bold transition-all shadow-xs shrink-0 self-start sm:self-auto"
-        >
-          <span>Open Blog Admin Panel</span>
-          <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37]" />
-        </button>
-      </div>
 
       {/* Header Banner */}
       <div className="bg-[#FAF0EB] text-[#241A16] rounded-[32px] p-8 sm:p-12 relative overflow-hidden border border-[#D4AF37]/40 shadow-sm text-center">

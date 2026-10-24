@@ -29,6 +29,21 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
   const [catalogEmail, setCatalogEmail] = useState('');
   const [catalogError, setCatalogError] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const clickCountRef = React.useRef(0);
+  const clickTimerRef = React.useRef<any>(null);
+
+  const handleSecretTrigger = () => {
+    clickCountRef.current++;
+    if (clickTimerRef.current) clearTimeout(clickTimerRef.current);
+    clickTimerRef.current = setTimeout(() => {
+      clickCountRef.current = 0;
+    }, 700);
+
+    if (clickCountRef.current >= 3) {
+      clickCountRef.current = 0;
+      window.dispatchEvent(new CustomEvent('open-secret-admin-modal'));
+    }
+  };
 
   const handleCatalogSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -413,17 +428,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                   <ArrowRight className="w-3 h-3 text-[#9B332C]" />
                 </a>
               </li>
-              <li className="pt-2 border-t border-[#D4AF37]/25 mt-2">
-                <a 
-                  href="/admin" 
-                  onClick={(e) => { e.preventDefault(); handleNav('/admin'); }}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#FAF0EB] text-[#801B18] hover:bg-[#801B18] hover:text-white font-royal-title font-bold text-[11px] uppercase tracking-wider transition-all border border-[#EACAC0] shadow-xs"
-                  title="Blog Admin Panel: Review and Publish Blogs"
-                >
-                  <BookOpen className="w-3.5 h-3.5 text-[#D4AF37]" />
-                  <span>Blog Admin &amp; Review Desk</span>
-                </a>
-              </li>
+
             </ul>
           </div>
 
@@ -466,7 +471,11 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
 
       {/* Bottom Legal & Copyright Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-[#D4AF37]/25 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-500 relative z-10 font-royal-body">
-        <div>
+        <div 
+          onClick={handleSecretTrigger} 
+          className="select-none cursor-default" 
+          title="© Ramam Textiles Jaipur"
+        >
           © {new Date().getFullYear()} Ramam Textiles. All rights reserved. Handcrafted in Jaipur, Rajasthan.
         </div>
         <div className="flex flex-wrap items-center gap-5 font-medium">
@@ -488,15 +497,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           <button onClick={() => openPolicyModal('returns')} className="hover:text-[#9B332C] transition-colors cursor-pointer">
             Returns &amp; Refunds
           </button>
-          <a
-            href="/admin"
-            onClick={(e) => { e.preventDefault(); navigate('/admin'); }}
-            className="px-3 py-1 rounded-full bg-[#FAF0EB] text-[#801B18] hover:bg-[#801B18] hover:text-white transition-all font-bold text-xs flex items-center gap-1.5 border border-[#EACAC0] shadow-2xs"
-            title="Blog Admin, Review Queue & Publishing Console"
-          >
-            <BookOpen className="w-3.5 h-3.5 text-[#D4AF37]" />
-            <span>Blog Admin &amp; Atelier Portal</span>
-          </a>
+
         </div>
       </div>
     </footer>

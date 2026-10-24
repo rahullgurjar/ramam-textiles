@@ -48,6 +48,7 @@ const QuickQuoteModal = lazy(() => import('./components/QuickQuoteModal').then(m
 const SearchModal = lazy(() => import('./components/SearchModal').then(m => ({ default: m.SearchModal })));
 const B2BPricingUnlockModal = lazy(() => import('./components/B2BPricingUnlockModal').then(m => ({ default: m.B2BPricingUnlockModal })));
 const PolicyModal = lazy(() => import('./components/PolicyModal').then(m => ({ default: m.PolicyModal })));
+const SecretAdminKeyModal = lazy(() => import('./components/admin/SecretAdminKeyModal').then(m => ({ default: m.SecretAdminKeyModal })));
 import { useApp } from './context/AppContext';
 
 // Luxury Jaipur atelier loading state for route transitions
@@ -108,7 +109,27 @@ export const App: React.FC = () => {
   });
 
   const [isB2BUnlockModalOpen, setIsB2BUnlockModalOpen] = useState(false);
+  const [isSecretAdminModalOpen, setIsSecretAdminModalOpen] = useState(false);
   const { isPolicyModalOpen, policyModalTab, closePolicyModal, openPolicyModal } = useApp();
+
+  // Listen for secret keyboard shortcut (Ctrl+Shift+A or Alt+A) and custom event to open hidden admin key modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) ||
+          (e.altKey && (e.key === 'a' || e.key === 'A'))) {
+        e.preventDefault();
+        setIsSecretAdminModalOpen(prev => !prev);
+      }
+    };
+    const handleOpenSecretModal = () => setIsSecretAdminModalOpen(true);
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('open-secret-admin-modal', handleOpenSecretModal);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('open-secret-admin-modal', handleOpenSecretModal);
+    };
+  }, []);
 
   // Listen for hash policy shortcuts like #privacy, #shipping, #terms, #refunds
   useEffect(() => {
@@ -350,6 +371,11 @@ export const App: React.FC = () => {
           isOpen={isPolicyModalOpen}
           initialTab={policyModalTab}
           onClose={closePolicyModal}
+        />
+        <SecretAdminKeyModal
+          isOpen={isSecretAdminModalOpen}
+          onClose={() => setIsSecretAdminModalOpen(false)}
+          onSuccessNavigate={navigate}
         />
       </Suspense>
 

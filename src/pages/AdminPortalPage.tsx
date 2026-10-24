@@ -38,6 +38,21 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
     return () => clearInterval(interval);
   }, [lockout.isLocked]);
 
+  // Check URL params or hash for instant key authentication (e.g. ?key=5557 or #5557)
+  useEffect(() => {
+    if (typeof window === 'undefined' || isAuthenticated) return;
+    const searchParams = new URLSearchParams(window.location.search);
+    const candidate = searchParams.get('key') || searchParams.get('passkey') || searchParams.get('pin') || window.location.hash.replace(/^#/, '');
+    if (candidate === '5557' || candidate === 'RamamTextiles@Jaipur2026') {
+      authenticateAdmin(candidate).then(res => {
+        if (res.success) {
+          setIsAuthenticated(true);
+          showToast('Administrative session authenticated securely.', 'success');
+        }
+      });
+    }
+  }, [isAuthenticated]);
+
   // Check webhook health once logged in
   useEffect(() => {
     if (isAuthenticated) {
@@ -223,6 +238,78 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
     );
   }
 
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-[85vh] bg-[#FAF5EE] flex items-center justify-center py-12 px-4 sm:px-6 font-royal-body text-[#241A16]">
+        <div className="w-full max-w-md bg-white rounded-3xl p-8 sm:p-10 border border-[#D4AF37]/50 shadow-2xl text-center">
+          <div className="w-16 h-16 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] flex items-center justify-center mx-auto mb-4 shadow-sm">
+            <Lock className="w-8 h-8 text-[#9B332C]" />
+          </div>
+
+          <h2 className="font-playfair text-2xl font-bold text-[#241A16]">
+            Atelier Private Portal
+          </h2>
+          <p className="text-xs text-stone-600 mt-2">
+            Restricted Access. Enter the specific key to unlock the Blog Admin Suite.
+          </p>
+
+          {lockout.isLocked ? (
+            <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-2xl text-red-800 text-xs space-y-1">
+              <AlertTriangle className="w-5 h-5 mx-auto text-red-600" />
+              <p className="font-bold">Security Lockout Active</p>
+              <p>Too many failed attempts. Try again in {lockout.remainingSeconds} seconds.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleLogin} className="mt-6 space-y-4 text-left">
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1">
+                  Access Key
+                </label>
+                <div className="relative">
+                  <input
+                    type={showPass ? 'text' : 'password'}
+                    value={passphrase}
+                    onChange={(e) => setPassphrase(e.target.value)}
+                    placeholder="Enter specific key..."
+                    required
+                    autoFocus
+                    className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:border-[#9B332C] focus:ring-1 focus:ring-[#9B332C] outline-none text-sm pr-10 bg-white font-mono tracking-wider"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPass(!showPass)}
+                    className="absolute right-3 top-3 text-stone-400 hover:text-stone-600"
+                  >
+                    {showPass ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                </div>
+                {lockout.attemptsLeft < 5 && (
+                  <p className="text-[11px] text-amber-700 mt-1 flex items-center gap-1">
+                    <AlertTriangle className="w-3.5 h-3.5 text-amber-600 inline" />
+                    <span>{lockout.attemptsLeft} attempt(s) remaining before temporary lockout.</span>
+                  </p>
+                )}
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting || lockout.isLocked}
+                className="w-full py-3 rounded-xl bg-[#9B332C] hover:bg-[#801B18] text-white font-bold text-xs uppercase tracking-widest disabled:opacity-50 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+              >
+                <Key className="w-4 h-4 text-[#FCE5A4]" />
+                <span>{isSubmitting ? 'Verifying Key...' : 'Unlock Blog Admin Panel'}</span>
+              </button>
+            </form>
+          )}
+
+          <div className="mt-6 pt-4 border-t border-stone-100 text-[11px] text-stone-500">
+            Protected by Salted SHA-256 Web Crypto Authentication &amp; Brute-Force Rate Limiting.
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-[85vh] bg-[#FAF5EE] py-12 px-4 sm:px-6 lg:px-8 font-royal-body text-[#241A16]">
       <div className="max-w-4xl mx-auto">
@@ -234,111 +321,42 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
             </div>
             <div>
               <h1 className="font-playfair text-2xl font-extrabold text-[#241A16] tracking-wide">
-                Ramam Textiles: Admin & Security Console
+                Ramam Textiles: Admin &amp; Security Console
               </h1>
               <p className="text-xs text-stone-600">
-                Atelier Security Guard, Webhook Gateway & Lead Engine Status
+                Atelier Security Guard, Webhook Gateway &amp; Lead Engine Status
               </p>
             </div>
           </div>
-          {isAuthenticated && (
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setAdminSection('blogs')}
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#FAF0EB] hover:bg-[#801B18] text-[#9B332C] hover:text-white text-xs font-bold transition-all shadow-sm"
-              >
-                <BookOpen className="w-4 h-4" />
-                <span>Blog Admin Panel</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setAdminSection('seo')}
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold transition-all"
-              >
-                <Globe className="w-4 h-4" />
-                <span>SEO Panel</span>
-              </button>
-              <button
-                onClick={handleLogout}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-stone-200 hover:bg-stone-300 text-stone-800 text-xs font-bold transition-colors"
-              >
-                <LogOut className="w-4 h-4" />
-                <span>Log Out</span>
-              </button>
-            </div>
-          )}
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setAdminSection('blogs')}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#FAF0EB] hover:bg-[#801B18] text-[#9B332C] hover:text-white text-xs font-bold transition-all shadow-sm"
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>Blog Admin Panel</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setAdminSection('seo')}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold transition-all"
+            >
+              <Globe className="w-4 h-4" />
+              <span>SEO Panel</span>
+            </button>
+            <button
+              onClick={handleLogout}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-stone-200 hover:bg-stone-300 text-stone-800 text-xs font-bold transition-colors"
+            >
+              <LogOut className="w-4 h-4" />
+              <span>Log Out</span>
+            </button>
+          </div>
         </div>
 
-        {!isAuthenticated ? (
-          /* Authentication Screen */
-          <div className="max-w-md mx-auto bg-white rounded-3xl p-8 border border-[#D4AF37]/40 shadow-xl text-center">
-            <div className="w-16 h-16 rounded-full bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] flex items-center justify-center mx-auto mb-4 shadow-sm">
-              <Lock className="w-8 h-8 text-[#9B332C]" />
-            </div>
-
-            <h2 className="font-playfair text-xl font-bold text-[#241A16]">
-              Authorized Personnel Portal
-            </h2>
-            <p className="text-xs text-stone-600 mt-2">
-              Protected by Salted SHA-256 Web Crypto Authentication & Brute-Force Rate Limiting.
-            </p>
-
-            {lockout.isLocked ? (
-              <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-2xl text-red-800 text-xs space-y-1">
-                <AlertTriangle className="w-5 h-5 mx-auto text-red-600" />
-                <p className="font-bold">Security Lockout Active</p>
-                <p>Too many failed attempts. Try again in {lockout.remainingSeconds} seconds.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleLogin} className="mt-6 space-y-4 text-left">
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1">
-                    Administrative Passphrase
-                  </label>
-                  <div className="relative">
-                    <input
-                      type={showPass ? 'text' : 'password'}
-                      value={passphrase}
-                      onChange={(e) => setPassphrase(e.target.value)}
-                      placeholder="Enter master passkey..."
-                      required
-                      className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:border-[#9B332C] focus:ring-1 focus:ring-[#9B332C] outline-none text-sm pr-10"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPass(!showPass)}
-                      className="absolute right-3 top-3 text-stone-400 hover:text-stone-600"
-                    >
-                      {showPass ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                    </button>
-                  </div>
-                  {lockout.attemptsLeft < 5 && (
-                    <p className="text-[11px] text-amber-700 mt-1 flex items-center gap-1">
-                      <AlertTriangle className="w-3.5 h-3.5 text-amber-600 inline" />
-                      <span>{lockout.attemptsLeft} attempt(s) remaining before temporary lockout.</span>
-                    </p>
-                  )}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting || lockout.isLocked}
-                  className="w-full pill-btn-rose py-3 text-xs uppercase tracking-widest font-bold disabled:opacity-50 transition-all flex items-center justify-center gap-2"
-                >
-                  <Key className="w-4 h-4" />
-                  <span>{isSubmitting ? 'Verifying Hash...' : 'Unlock Console'}</span>
-                </button>
-              </form>
-            )}
-
-            <div className="mt-6 pt-4 border-t border-stone-100 text-[11px] text-stone-500">
-              Session is encrypted in ephemeral memory and automatically logs out after 15 minutes of inactivity.
-            </div>
-          </div>
-        ) : (
-          /* Authenticated Dashboard */
-          <div className="space-y-6 animate-fade-in">
+        {/* Authenticated Dashboard */}
+        <div className="space-y-6 animate-fade-in">
             {/* Quick Status Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-white rounded-2xl p-5 border border-emerald-200 shadow-sm flex items-start gap-3">
@@ -450,7 +468,6 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
               </p>
             </div>
           </div>
-        )}
       </div>
     </div>
   );
