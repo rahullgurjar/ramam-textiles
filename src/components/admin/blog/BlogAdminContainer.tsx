@@ -18,6 +18,7 @@ import { BlogQueueTab } from './BlogQueueTab';
 import { BlogEditorTab } from './BlogEditorTab';
 import { BlogSyncTab } from './BlogSyncTab';
 import { BlogReviewModal } from './BlogReviewModal';
+import { BlogClaudeWriterTab } from './BlogClaudeWriterTab';
 import { useApp } from '../../../context/AppContext';
 
 interface BlogAdminContainerProps {
@@ -26,7 +27,7 @@ interface BlogAdminContainerProps {
   onBackToSEO?: () => void;
 }
 
-export type BlogAdminTabId = 'dashboard' | 'queue' | 'editor' | 'sync';
+export type BlogAdminTabId = 'dashboard' | 'queue' | 'claude-writer' | 'editor' | 'sync';
 
 export const BlogAdminContainer: React.FC<BlogAdminContainerProps> = ({
   onNavigate,
@@ -167,6 +168,15 @@ export const BlogAdminContainer: React.FC<BlogAdminContainerProps> = ({
 
           {/* Quick Action Buttons */}
           <div className="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setActiveTab('claude-writer')}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#9B332C] to-[#801B18] hover:brightness-110 text-white text-xs font-bold shadow-sm transition-all border border-[#D4AF37]/40"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <span>Write with Claude (3.7)</span>
+            </button>
+
             {nextQueued && (
               <button
                 type="button"
@@ -190,7 +200,7 @@ export const BlogAdminContainer: React.FC<BlogAdminContainerProps> = ({
             <button
               type="button"
               onClick={() => handleViewLiveBlog()}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold transition-colors"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               <span>Live Blog</span>
@@ -211,6 +221,22 @@ export const BlogAdminContainer: React.FC<BlogAdminContainerProps> = ({
           >
             <LayoutDashboard className="w-4 h-4" />
             <span>Dashboard & Calendar</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('claude-writer')}
+            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-2 shrink-0 ${
+              activeTab === 'claude-writer'
+                ? 'bg-[#801B18] text-white shadow-xs'
+                : 'text-[#9B332C] hover:bg-[#FAF0EB] bg-[#FAF5EE] border border-[#D4AF37]/35'
+            }`}
+          >
+            <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+            <span>Claude AI Writer</span>
+            <span className="px-1.5 py-0.2 rounded-full text-[9px] bg-[#9B332C] text-white font-mono font-bold uppercase">
+              3.7
+            </span>
           </button>
 
           <button
@@ -269,6 +295,17 @@ export const BlogAdminContainer: React.FC<BlogAdminContainerProps> = ({
             onPublishArticle={handlePublish}
             onNavigateToTab={setActiveTab}
             onViewLiveBlog={() => handleViewLiveBlog()}
+          />
+        )}
+
+        {activeTab === 'claude-writer' && (
+          <BlogClaudeWriterTab
+            onOpenReview={handleOpenReview}
+            onOpenEdit={handleOpenEdit}
+            onArticlePublished={() => {
+              reloadArticles();
+              setActiveTab('queue');
+            }}
           />
         )}
 

@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "blog:generate": "node scripts/generate-blog-with-claude.js",
+    "blog:claude": "node scripts/generate-blog-with-claude.js",
     "blog:publish": "node scripts/automate-daily-blog.js",
     "generate:sitemap": "node scripts/generate-sitemap.js",
     "generate:favicons": "node scripts/generate-all-favicons.cjs",
