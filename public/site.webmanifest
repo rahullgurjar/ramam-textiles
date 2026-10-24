@@ -1,0 +1,21 @@
+{
+  "name": "Ramam Textiles Jaipur",
+  "short_name": "Ramam Textiles",
+  "description": "Authentic Indian luxury textile manufacturer based in Jaipur, Rajasthan.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png?v=5",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png?v=5",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#241A16",
+  "background_color": "#FAF5EE",
+  "display": "standalone",
+  "start_url": "/"
+}

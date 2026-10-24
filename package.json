@@ -11,7 +11,7 @@
     "generate:sitemap": "node scripts/generate-sitemap.js",
     "generate:favicons": "node scripts/generate-all-favicons.cjs",
     "optimize:images": "node scripts/optimize-images.js",
-    "prebuild": "node scripts/generate-sitemap.js",
+    "prebuild": "node scripts/generate-all-favicons.cjs && node scripts/generate-sitemap.js",
     "build": "tsc && vite build",
     "postbuild": "node scripts/generate-spa-routes.js",
     "test:seo": "npx tsx scripts/test-seo.js",
