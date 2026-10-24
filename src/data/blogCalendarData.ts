@@ -318,32 +318,73 @@ export const SEED_QUEUED_CALENDAR_ARTICLES: BlogArticleItem[] = [
     coverImage: '/products/duffle-kantha-patchwork.jpg',
     author: {
       name: 'Ramam Textiles Technical Guild',
-      role: 'Chief Production Engineer'
+      role: 'Chief Production Engineer',
+      bio: 'Directing pattern engineering, textile dimensional stability, and production efficiency across Jaipur workshops.'
     },
     status: 'queued',
     tags: ['Fabric Shrinkage', 'Garment Production', 'Pattern Making', 'Apparel Manufacturing', 'Textile Costing'],
     contentSections: [
       {
         heading: 'Why Shrinkage Calculations Make or Break Production Margins',
-        body: 'In natural cotton apparel manufacturing, unexpected fabric shrinkage is the leading cause of fit deviations, customer returns, and ruined garment orders. Cotton fibers are hydrophilic; when exposed to water and thermal agitation during laundering, the hydrogen bonds within cellulose relax, causing yarns to contract. Calculating exact warp and weft shrinkage before cutting pattern markers is non-negotiable for luxury brands.'
+        subheading: 'Cellulose Relaxation and Dimensional Fit Tolerances',
+        body: 'In natural cotton apparel manufacturing, unexpected fabric shrinkage is the leading cause of fit deviations, customer returns, and ruined garment orders.\n\nCotton fibers are hydrophilic; when exposed to water and thermal agitation during laundering, the hydrogen bonds within cellulose relax, causing yarns to contract.\n\nCalculating exact warp and weft shrinkage before cutting pattern markers is non-negotiable for luxury brands.'
       },
       {
-        quote: 'A 4% uncalculated warp shrinkage turns a 42-inch maxi dress into a 40.3-inch calf length after its first wash. Quality brands never guess shrinkage; they test and mathematically compensate in the digital pattern grading.',
+        quote: 'A 4% uncalculated warp shrinkage turns a 42-inch maxi dress into a 40.3-inch calf length after its first wash. Quality brands never guess shrinkage; they test and mathematically compensate in digital pattern grading.',
         body: 'Let us review the standard AATCC 135 testing method used across Jaipur export houses.'
       },
       {
         heading: '1. Standard 50cm Benchmarking Formula',
-        body: 'Cut a 50cm x 50cm test swatch from bulk yardage. Mark three distinct benchmark lines along the warp (lengthwise) and three along the weft (crosswise) with indelible textile ink, spaced exactly 35cm apart. Wash the swatch under intended commercial conditions (30°C delicate cycle) and air dry flat.\n\nMeasure the distances between marks. Calculate shrinkage using the international standard formula:\nShrinkage % = ((Initial Distance - Washed Distance) / Initial Distance) x 100.'
+        subheading: 'Warp vs Weft Distance Measurement Protocols',
+        body: 'Cut a 50cm x 50cm test swatch from bulk yardage.\n\nMark three distinct benchmark lines along the warp (lengthwise) and three along the weft (crosswise) with indelible textile ink, spaced exactly 35cm apart.\n\nWash the swatch under intended commercial conditions (30°C delicate cycle) and air dry flat.\n\nMeasure distances between marks. Calculate shrinkage using the international formula:\nShrinkage % = ((Initial Distance - Washed Distance) / Initial Distance) x 100.',
+        bullets: [
+          "Cut a clean 50cm x 50cm swatch avoiding selvedge edges",
+          "Mark 35cm reference intervals along both grainlines",
+          "Wash on delicate 30°C cycle without tumble drying",
+          "Record millimeter variations across 3 distinct points"
+        ]
       },
       {
         heading: '2. Typical Shrinkage Tiers for Indian Cottons',
+        subheading: 'Sanforized vs Non-Sanforized Fabric Variations',
         body: '• Pre-sanforized Cambric: 1.5% to 2.5% Warp, 1% Weft.\n• Pure Unwashed Mulmul: 3.5% to 5.0% Warp, 2% Weft.\n• Heavyweight Channel-Quilted Canvas: 2.0% to 3.0% Uniform.\n\nAt Ramam Textiles, all yardage is pre-washed and tumble-softened prior to precision cutting, guaranteeing dimensionally stable garments.'
       },
       {
         heading: '3. Calculating Cutting Marker Wastage',
-        body: 'Artisanal block-printed fabrics feature repeating motifs that require pattern matching at center-front plackets, pocket flaps, and shoulder seams. Expect 12% to 18% cutting wastage for matched prints versus 8% to 10% for solid yardage. Always factor this delta into your master BOM (Bill of Materials).'
+        subheading: 'Motif Repeat Matching and Fabric Yield Efficiency',
+        body: 'Artisanal block-printed fabrics feature repeating motifs that require pattern matching at plackets, pocket flaps, and shoulder seams.\n\nExpect 12% to 18% cutting wastage for matched prints versus 8% to 10% for solid yardage.\n\nAlways factor this delta into your master BOM (Bill of Materials).'
       }
-    ]
+    ],
+    table: {
+      caption: "Indian Cotton Shrinkage & Marker Allowance Matrix",
+      headers: ["Fabric Construction", "Typical Warp Shrinkage", "Typical Weft Shrinkage", "Recommended Pattern Compensation", "Cutting Wastage Buffer"],
+      rows: [
+        ["60s Mulmul (Pre-washed)", "2.0% – 3.0%", "1.0% – 1.5%", "+1.5 cm length grading", "10% – 12% buffer"],
+        ["60s Cambric (Sanforized)", "1.5% – 2.0%", "0.5% – 1.0%", "+0.8 cm length grading", "8% – 10% buffer"],
+        ["20s Heavy Sheeting", "4.0% – 6.0%", "2.0% – 3.0%", "+2.5 cm length grading", "12% – 15% buffer"],
+        ["Quilted Cotton Composite", "2.0% – 2.5%", "1.5% – 2.0%", "+1.0 cm length grading", "14% – 18% pattern match buffer"]
+      ]
+    },
+    faqs: [
+      {
+        question: "Why does warp (length) shrink more than weft (width)?",
+        answer: "Warp yarns endure intense mechanical tension during weaving on the loom. When washed, this tension releases, causing greater lengthwise contraction."
+      },
+      {
+        question: "What is sanforization, and does it eliminate 100% of shrinkage?",
+        answer: "Sanforization is a mechanical compressive shrinking process using steam and rubber blankets. It reduces residual shrinkage to under 1-2%, but minor shrinkage can still occur in boiling water."
+      },
+      {
+        question: "How does Ramam Textiles ensure garments do not shrink after customer purchase?",
+        answer: "We perform mill-level soft washing and hot-air tumble curing on all fabrics before precision pattern cutting."
+      }
+    ],
+    leadCta: {
+      title: "Manufacture Dimensionally Stable Apparel & Quilted Bags",
+      description: "Consult our pattern engineers to calculate exact yardage requirements, cutting markers, and shrinkage allowances for your private label lines.",
+      primaryBtnText: "Contact Atelier / Production Desk",
+      primaryBtnLink: "/contact"
+    }
   },
   {
     id: 'dabu-mud-resist-vs-batik-wax-resist',
@@ -358,18 +399,26 @@ export const SEED_QUEUED_CALENDAR_ARTICLES: BlogArticleItem[] = [
     coverImage: '/products/duffle-indigo.jpg',
     author: {
       name: 'Heritage Craft Archive',
-      role: 'Resist Art Historian'
+      role: 'Resist Art Historian',
+      bio: "Comparing global negative-space resist methodologies across Asia and Africa."
     },
     status: 'queued',
     tags: ['Dabu Printing', 'Batik Resist', 'Natural Indigo', 'Craft Heritage', 'Textile Alchemy'],
     contentSections: [
       {
         heading: 'Two Continents, One Ancient Quest for Negative Space',
-        body: 'Human beings have used resist dyeing for millennia to protect specific sections of cloth from absorbing color. Two of the most celebrated resist traditions on Earth are Dabu (from Rajasthan, India) and Batik (from Java, Indonesia and Santiniketan, India). While casual buyers sometimes conflate them because of their characteristic dye veining, their chemistry, application tools, and visual textures are completely distinct.'
+        subheading: 'Clay from Riverbeds vs Wax from Honeycombs',
+        body: 'Human beings have used resist dyeing for millennia to protect specific sections of cloth from absorbing color.\n\nTwo of the most celebrated resist traditions on Earth are Dabu (from Rajasthan, India) and Batik (from Java, Indonesia and Santiniketan, India).\n\nWhile casual buyers sometimes conflate them because of their characteristic dye veining, their chemistry, application tools, and visual textures are completely distinct.'
       },
       {
         heading: '1. The Resist Medium: Riverbed Clay vs Molten Beeswax',
-        body: '• Dabu Paste: Prepared cold from dried river mud (kaali mitti), slaked lime (chuna), and natural tree resin (gond). It is thick, viscous, and completely water-soluble.\n\n• Batik Resist: Applied hot (60°C to 70°C) using a molten blend of beeswax and paraffin wax. Beeswax provides flexible adhesion, while paraffin provides brittle fracture lines.'
+        subheading: 'Cold Water Soluble Paste vs Hot Molten Polymers',
+        body: '• Dabu Paste: Prepared cold from dried river mud (kaali mitti), slaked lime (chuna), and natural tree resin (gond). It is thick, viscous, and completely water-soluble.\n\n• Batik Resist: Applied hot (60°C to 70°C) using a molten blend of beeswax and paraffin wax. Beeswax provides flexible adhesion, while paraffin provides brittle fracture lines.',
+        bullets: [
+          "Dabu: 100% organic kaali mitti river clay and gum; cold-stamped",
+          "Batik: Molten beeswax and paraffin; applied at 65°C with a stylus",
+          "Dabu veins are earthy and soft; Batik cracks are sharp and spiderweb-like"
+        ]
       },
       {
         quote: 'Dabu mud breathes with earthy terracotta warmth and organic crackle veins. Batik wax creates sharp, spiderweb veins caused by intentional ice-bath fracturing of brittle paraffin.',
@@ -377,13 +426,46 @@ export const SEED_QUEUED_CALENDAR_ARTICLES: BlogArticleItem[] = [
       },
       {
         heading: '2. Application Tools: Carved Wooden Blocks vs Copper Canting Pens',
-        body: 'Dabu is primarily stamped with heavy wooden blocks (Datta), requiring immense physical force to transfer thick clay onto cotton. Batik is traditionally drawn by hand using a Canting (a copper spouted stylus that dispenses molten wax) or stamped with copper tjap stamps.'
+        subheading: 'Heavy Physical Stamping vs Delicate Calligraphic Flow',
+        body: 'Dabu is primarily stamped with heavy wooden blocks (Datta), requiring immense physical force to transfer thick clay onto cotton.\n\nBatik is traditionally drawn by hand using a Canting (a copper spouted stylus that dispenses molten wax) or stamped with copper tjap stamps.'
       },
       {
         heading: '3. Removal Chemistry: River Wash vs Boiling Dewaxing',
-        body: 'Dabu washes away harmlessly in cold river water, leaving zero petroleum residue. Batik requires boiling the cloth in caustic soda water to melt and skim away wax, requiring more thermal energy.'
+        subheading: 'Effluent Impact and Thermal Processing Differences',
+        body: 'Dabu washes away harmlessly in cold river water, leaving zero petroleum residue.\n\nBatik requires boiling the cloth in caustic soda water to melt and skim away wax, requiring more thermal energy.'
       }
-    ]
+    ],
+    table: {
+      caption: "Dabu Mud Resist vs Batik Wax Resist Comparison",
+      headers: ["Criterion", "Dabu Mud Resist (Jaipur, India)", "Batik Wax Resist (Java & Bengal)"],
+      rows: [
+        ["Resist Composition", "Riverbed clay, slaked lime, acacia gum", "Molten beeswax & paraffin wax blend"],
+        ["Application Temperature", "Ambient cold paste (25°C – 35°C)", "Molten liquid (65°C – 75°C)"],
+        ["Primary Tools", "Carved Sheesham wooden blocks (Datta)", "Copper Canting spouted pens & metal tjaps"],
+        ["Resist Removal", "Cold running water soak (mud falls away)", "Boiling water cauldron dewaxing"],
+        ["Veining Character", "Soft earthy crackle veins", "Sharp, geometric spiderweb lines"]
+      ]
+    },
+    faqs: [
+      {
+        question: "Is Dabu printing more eco-friendly than Batik?",
+        answer: "Yes, because Dabu uses 100% natural river clay and tree gum that dissolve cleanly in cold water with zero petroleum paraffin wax or boiling chemical baths."
+      },
+      {
+        question: "Can Dabu printing create ultra-fine lines like Javanese Batik?",
+        answer: "Dabu creates bolder, earthy silhouettes due to the thickness of mud paste, whereas fine Canting wax can draw razor-thin calligraphic curves."
+      },
+      {
+        question: "Can I commission custom Dabu prints with my brand's motifs?",
+        answer: "Yes. Our Bagru workshop carves custom wooden blocks to stamp your custom patterns in authentic Dabu mud resist."
+      }
+    ],
+    leadCta: {
+      title: "Explore Authentic Dabu Mud-Resist Collections",
+      description: "Source authentic indigo mud-resist quilted bags, scarves, and apparel handcrafted in Bagru. Direct artisan pricing with low minimum orders.",
+      primaryBtnText: "Inquire About Dabu Sourcing (/contact)",
+      primaryBtnLink: "/contact"
+    }
   },
   {
     id: 'revival-of-kala-cotton-organic-rainfed',
@@ -398,18 +480,26 @@ export const SEED_QUEUED_CALENDAR_ARTICLES: BlogArticleItem[] = [
     coverImage: '/products/laptop-sleeve-kalamkari.jpg',
     author: {
       name: 'Ramam Textiles Sustainability Desk',
-      role: 'Ethical Sourcing Director'
+      role: 'Ethical Sourcing Director',
+      bio: "Championing drought-resilient indigenous seed varieties and ethical handloom cooperatives across Western India."
     },
     status: 'queued',
     tags: ['Kala Cotton', 'Organic Textiles', 'Rainfed Cotton', 'Slow Fashion', 'Sustainable Sourcing'],
     contentSections: [
       {
         heading: 'The Forgotten Indigenous Miracle of the Thar & Rann Deserts',
-        body: 'Before British colonial interventions introduced American long-staple hybrid cottons to India, the subcontinent grew indigenous old-world cottons for thousands of years. Chief among these was Kala Cotton (Gossypium herbaceum), an indigenous, drought-resilient cotton variety native to the arid desert regions of Gujarat and western Rajasthan.'
+        subheading: 'Gossypium Herbaceum: 5,000 Years of Desert Adaptation',
+        body: 'Before British colonial interventions introduced American long-staple hybrid cottons to India, the subcontinent grew indigenous old-world cottons for thousands of years.\n\nChief among these was Kala Cotton (Gossypium herbaceum), an indigenous, drought-resilient cotton variety native to the arid desert regions of Gujarat and western Rajasthan.'
       },
       {
         heading: '1. 100% Rainfed: Zero Ground-Water Depletion',
-        body: 'Commercial hybrid Bt-cotton consumes an astonishing 10,000 to 20,000 liters of water per kilogram of fiber. Kala Cotton, by contrast, is completely rain-dependent. It survives in barren arid soils on minimal monsoon moisture without requiring canal irrigation or electric deep-tube wells.'
+        subheading: 'Surviving on Monsoon Dew Without Tube-Well Irrigation',
+        body: 'Commercial hybrid Bt-cotton consumes an astonishing 10,000 to 20,000 liters of water per kilogram of fiber.\n\nKala Cotton, by contrast, is completely rain-dependent.\n\nIt survives in barren arid soils on minimal monsoon moisture without requiring canal irrigation or electric deep-tube wells.',
+        bullets: [
+          "100% rainfed: Conserves up to 20,000 liters of fresh water per kg",
+          "Naturally pest-resilient: Zero synthetic pesticides or chemical fertilizers",
+          "Genetically pure non-GMO indigenous seed stock"
+        ]
       },
       {
         quote: 'Kala Cotton is the ultimate anti-fast-fashion fiber. It cannot be forced by synthetic nitrogen fertilizers; it matures at nature’s pace, yielding a rich, coarse, linen-like tactile luxury.',
@@ -417,8 +507,40 @@ export const SEED_QUEUED_CALENDAR_ARTICLES: BlogArticleItem[] = [
       },
       {
         heading: '2. Pest Resistant by Nature: Completely Pesticide-Free',
-        body: 'Because it evolved over millennia in harsh desert ecosystems, Kala Cotton possesses natural biological immunity to bollworms and fungal blights. Farmers cultivate it with zero synthetic pesticides or chemical fertilizers, making it naturally organic even without cost-prohibitive formal certifications.'
+        subheading: 'Evolutionary Immunity to Bollworms and Desert Blights',
+        body: 'Because it evolved over millennia in harsh desert ecosystems, Kala Cotton possesses natural biological immunity to bollworms and fungal blights.\n\nFarmers cultivate it with zero synthetic pesticides or chemical fertilizers, making it naturally organic even without cost-prohibitive formal certifications.'
       }
-    ]
+    ],
+    table: {
+      caption: "Indigenous Kala Cotton vs Commercial Hybrid Bt-Cotton",
+      headers: ["Metric", "Indigenous Kala Cotton", "Commercial Hybrid Bt-Cotton"],
+      rows: [
+        ["Irrigation Requirement", "100% Rainfed (zero ground-water pumping)", "Heavy flood/drip irrigation (10,000-20,000L/kg)"],
+        ["Pesticide & Fertilizer Need", "Zero synthetic chemicals needed", "Heavy chemical pesticides & nitrogen inputs"],
+        ["Genetic Origin", "Non-GMO Gossypium herbaceum", "Genetically modified hybrid varieties"],
+        ["Fabric Handfeel", "Textured, tactile linen-like hand", "Uniform, smooth, mechanically uniform"],
+        ["Soil Regeneration", "Improves soil biodiversity in arid zones", "Depletes soil microbiome and water tables"]
+      ]
+    },
+    faqs: [
+      {
+        question: "Why does Kala Cotton feel more textured than regular cotton?",
+        answer: "Kala cotton has a shorter staple length and is traditionally handspun on Amber Charkhas, creating subtle slubs and an earthy, breathable linen-like texture."
+      },
+      {
+        question: "Is Kala Cotton certified organic?",
+        answer: "Yes, Kala Cotton is cultivated without synthetic chemicals by traditional dryland farming cooperatives, making it organically pure by heritage."
+      },
+      {
+        question: "Can Kala Cotton be block printed with natural dyes?",
+        answer: "Kala Cotton is an exceptional base for natural indigo, harda, and madder dyes. Its textured fibers absorb botanical mordants deeply."
+      }
+    ],
+    leadCta: {
+      title: "Source Certified Rainfed Kala Cotton Handlooms",
+      description: "Introduce authentic indigenous desert cotton to your luxury apparel and accessories line. Ethical handloom yardage and low MOQ finished collections.",
+      primaryBtnText: "Source Kala Cotton (/contact)",
+      primaryBtnLink: "/contact"
+    }
   }
 ];

@@ -58,7 +58,21 @@ async function runDailyBlogAutomation() {
   console.log(`   • Slug: ${nextArticle.slug}`);
   console.log(`   • Date: ${todayStr}`);
 
-  // Format the new article block as valid TypeScript
+  // Format the new article block as valid TypeScript following all 9 guidelines
+  let extraFields = '';
+  if (nextArticle.table) {
+    extraFields += `,\n    table: ${JSON.stringify(nextArticle.table, null, 6).replace(/"([^"]+)":/g, '$1:')}`;
+  }
+  if (nextArticle.infographic) {
+    extraFields += `,\n    infographic: ${JSON.stringify(nextArticle.infographic, null, 6).replace(/"([^"]+)":/g, '$1:')}`;
+  }
+  if (nextArticle.faqs && nextArticle.faqs.length > 0) {
+    extraFields += `,\n    faqs: ${JSON.stringify(nextArticle.faqs, null, 6).replace(/"([^"]+)":/g, '$1:')}`;
+  }
+  if (nextArticle.leadCta) {
+    extraFields += `,\n    leadCta: ${JSON.stringify(nextArticle.leadCta, null, 6).replace(/"([^"]+)":/g, '$1:')}`;
+  }
+
   const newArticleCode = `  {\n` +
     `    id: '${nextArticle.id}',\n` +
     `    slug: '${nextArticle.slug}',\n` +
@@ -70,10 +84,10 @@ async function runDailyBlogAutomation() {
     `    coverImage: '${nextArticle.coverImage}',\n` +
     `    author: {\n` +
     `      name: ${JSON.stringify(nextArticle.author.name)},\n` +
-    `      role: ${JSON.stringify(nextArticle.author.role)}\n` +
+    `      role: ${JSON.stringify(nextArticle.author.role)}${nextArticle.author.bio ? `,\n      bio: ${JSON.stringify(nextArticle.author.bio)}` : ''}\n` +
     `    },\n` +
     `    contentSections: ${JSON.stringify(nextArticle.contentSections, null, 6).replace(/"([^"]+)":/g, '$1:')},\n` +
-    `    tags: ${JSON.stringify(nextArticle.tags)}\n` +
+    `    tags: ${JSON.stringify(nextArticle.tags)}${extraFields}\n` +
     `  },\n`;
 
   // Inject at the beginning of JOURNAL_ARTICLES array

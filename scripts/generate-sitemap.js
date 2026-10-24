@@ -58,10 +58,8 @@ function toAbsoluteImageUrl(img) {
 }
 
 function extractQuotedField(text, fieldName) {
-  const dq = text.match(new RegExp(`${fieldName}:\\s*"([^"]+)"`));
-  if (dq) return dq[1];
-  const sq = text.match(new RegExp(`${fieldName}:\\s*'([^']+)'`));
-  if (sq) return sq[1];
+  const match = text.match(new RegExp(`${fieldName}:\\s*(['"])([\\s\\S]*?)\\1`));
+  if (match) return match[2];
   return null;
 }
 

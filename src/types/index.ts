@@ -106,13 +106,49 @@ export interface JournalArticle {
   author: {
     name: string;
     role: string;
+    bio?: string;
+    avatar?: string;
+    credentials?: string;
   };
   contentSections: {
     heading?: string;
+    subheading?: string;
     body: string;
     image?: string;
+    imageCaption?: string;
     quote?: string;
+    bullets?: string[];
+    table?: {
+      caption?: string;
+      headers: string[];
+      rows: string[][];
+    };
   }[];
+  table?: {
+    caption?: string;
+    headers: string[];
+    rows: string[][];
+  };
+  infographic?: {
+    title: string;
+    subtitle?: string;
+    steps: {
+      step: string;
+      title: string;
+      desc: string;
+    }[];
+  };
+  faqs?: {
+    question: string;
+    answer: string;
+  }[];
+  leadCta?: {
+    title?: string;
+    description?: string;
+    primaryBtnText?: string;
+    primaryBtnLink?: string;
+    badge?: string;
+  };
   tags: string[];
 }
 

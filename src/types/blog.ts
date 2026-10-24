@@ -3,20 +3,57 @@ export type BlogArticleStatus = 'published' | 'queued' | 'draft';
 export interface BlogArticleAuthor {
   name: string;
   role: string;
+  bio?: string;
   avatar?: string;
+  credentials?: string;
+}
+
+export interface BlogTableData {
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+}
+
+export interface BlogFAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface BlogInfographicStep {
+  step: string;
+  title: string;
+  desc: string;
+}
+
+export interface BlogInfographicData {
+  title: string;
+  subtitle?: string;
+  steps: BlogInfographicStep[];
+}
+
+export interface BlogLeadCta {
+  title: string;
+  description: string;
+  primaryBtnText: string;
+  primaryBtnLink: string;
+  badge?: string;
 }
 
 export interface BlogArticleSection {
-  heading?: string;
+  heading?: string;      // H2 Heading
+  subheading?: string;   // H3 Subheading
   body: string;
   image?: string;
+  imageCaption?: string;
   quote?: string;
+  bullets?: string[];    // Bite-sized bullet points
+  table?: BlogTableData; // Contextual data table
 }
 
 export interface BlogArticleItem {
   id: string;
   slug: string;
-  title: string;
+  title: string;         // H1
   category: string;
   readTime: string;
   publishedDate?: string;
@@ -24,6 +61,10 @@ export interface BlogArticleItem {
   coverImage: string;
   author: BlogArticleAuthor;
   contentSections: BlogArticleSection[];
+  table?: BlogTableData;
+  infographic?: BlogInfographicData;
+  faqs?: BlogFAQItem[];
+  leadCta?: BlogLeadCta;
   tags: string[];
   status: BlogArticleStatus;
   focusKeyword?: string;
@@ -42,7 +83,7 @@ export interface BlogSEOCheckItem {
   message: string;
   points: number;
   maxPoints: number;
-  category: 'title' | 'keywords' | 'content' | 'structure' | 'readability';
+  category: 'title' | 'keywords' | 'content' | 'structure' | 'readability' | 'guidelines';
 }
 
 export interface BlogSEOCheckResult {

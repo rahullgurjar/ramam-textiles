@@ -99,7 +99,7 @@ export function calculateArticleSEOScore(article: Partial<BlogArticleItem>): Blo
 
   const title = (article.title || '').trim();
   const excerpt = (article.excerpt || '').trim();
-  const keyword = (article.focusKeyword || '').trim().toLowerCase();
+  const keyword = (article.focusKeyword || (article.tags && article.tags[0]) || '').trim().toLowerCase();
   const sections = article.contentSections || [];
 
   // Count total words in all body sections
@@ -107,28 +107,28 @@ export function calculateArticleSEOScore(article: Partial<BlogArticleItem>): Blo
   const wordCount = fullText.trim() ? fullText.trim().split(/\s+/).length : 0;
   const readingMinutes = Math.max(1, Math.ceil(wordCount / 180));
 
-  // Check 1: Title Length (50-65 chars recommended)
+  // Check 1: Title Length (45-85 chars recommended for Google SERP)
   const titleLen = title.length;
-  if (titleLen >= 45 && titleLen <= 70) {
-    score += 15;
+  if (titleLen >= 40 && titleLen <= 85) {
+    score += 10;
     checks.push({
       id: 'title_length',
       label: 'SEO Title Length',
       passed: true,
-      message: `Optimal length (${titleLen} characters, ideal: 45-70 chars).`,
-      points: 15,
-      maxPoints: 15,
+      message: `Optimal length (${titleLen} characters, ideal: 40-85 chars).`,
+      points: 10,
+      maxPoints: 10,
       category: 'title'
     });
   } else if (titleLen > 0) {
-    score += 8;
+    score += 6;
     checks.push({
       id: 'title_length',
       label: 'SEO Title Length',
       passed: false,
-      message: `${titleLen} characters. Aim for 45-70 characters for best SERP display.`,
-      points: 8,
-      maxPoints: 15,
+      message: `${titleLen} characters. Aim for 40-85 characters for best SERP display.`,
+      points: 6,
+      maxPoints: 10,
       category: 'title'
     });
   } else {
@@ -138,21 +138,23 @@ export function calculateArticleSEOScore(article: Partial<BlogArticleItem>): Blo
       passed: false,
       message: 'Article title is required.',
       points: 0,
-      maxPoints: 15,
+      maxPoints: 10,
       category: 'title'
     });
   }
 
   // Check 2: Focus Keyword in Title
-  if (keyword && title.toLowerCase().includes(keyword)) {
-    score += 15;
+  const titleLower = title.toLowerCase();
+  const keywordInTitle = keyword && (titleLower.includes(keyword) || keyword.split(/\s+/).filter(w => w.length > 3).some(w => titleLower.includes(w)));
+  if (keywordInTitle) {
+    score += 10;
     checks.push({
       id: 'keyword_in_title',
       label: 'Focus Keyword in Title',
       passed: true,
-      message: `Title contains target keyword "${article.focusKeyword}".`,
-      points: 15,
-      maxPoints: 15,
+      message: `Title contains target keyword "${keyword}".`,
+      points: 10,
+      maxPoints: 10,
       category: 'keywords'
     });
   } else if (keyword) {
@@ -160,9 +162,9 @@ export function calculateArticleSEOScore(article: Partial<BlogArticleItem>): Blo
       id: 'keyword_in_title',
       label: 'Focus Keyword in Title',
       passed: false,
-      message: `Consider placing keyword "${article.focusKeyword}" inside title.`,
+      message: `Consider placing keyword "${keyword}" inside title.`,
       points: 0,
-      maxPoints: 15,
+      maxPoints: 10,
       category: 'keywords'
     });
   } else {
@@ -172,33 +174,33 @@ export function calculateArticleSEOScore(article: Partial<BlogArticleItem>): Blo
       passed: false,
       message: 'No primary focus keyword assigned.',
       points: 0,
-      maxPoints: 15,
+      maxPoints: 10,
       category: 'keywords'
     });
   }
 
-  // Check 3: Excerpt / Meta Description Length (120-160 chars)
+  // Check 3: Excerpt / Meta Description Length (100-180 chars)
   const excerptLen = excerpt.length;
-  if (excerptLen >= 110 && excerptLen <= 170) {
-    score += 15;
+  if (excerptLen >= 90 && excerptLen <= 190) {
+    score += 10;
     checks.push({
       id: 'excerpt_length',
       label: 'Meta Excerpt Length',
       passed: true,
       message: `Ideal summary length (${excerptLen} characters).`,
-      points: 15,
-      maxPoints: 15,
+      points: 10,
+      maxPoints: 10,
       category: 'content'
     });
-  } else if (excerptLen > 50) {
-    score += 10;
+  } else if (excerptLen > 40) {
+    score += 6;
     checks.push({
       id: 'excerpt_length',
       label: 'Meta Excerpt Length',
       passed: false,
-      message: `${excerptLen} characters. Ideal length is 110-170 characters.`,
-      points: 10,
-      maxPoints: 15,
+      message: `${excerptLen} characters. Ideal length is 90-190 characters.`,
+      points: 6,
+      maxPoints: 10,
       category: 'content'
     });
   } else {
@@ -208,13 +210,15 @@ export function calculateArticleSEOScore(article: Partial<BlogArticleItem>): Blo
       passed: false,
       message: 'Excerpt is too brief or empty.',
       points: 0,
-      maxPoints: 15,
+      maxPoints: 10,
       category: 'content'
     });
   }
 
   // Check 4: Keyword in Excerpt
-  if (keyword && excerpt.toLowerCase().includes(keyword)) {
+  const excerptLower = excerpt.toLowerCase();
+  const keywordInExcerpt = keyword && (excerptLower.includes(keyword) || keyword.split(/\s+/).filter(w => w.length > 3).some(w => excerptLower.includes(w)));
+  if (keywordInExcerpt) {
     score += 10;
     checks.push({
       id: 'keyword_in_excerpt',
@@ -230,7 +234,7 @@ export function calculateArticleSEOScore(article: Partial<BlogArticleItem>): Blo
       id: 'keyword_in_excerpt',
       label: 'Focus Keyword in Meta Excerpt',
       passed: false,
-      message: `Include "${article.focusKeyword}" within first sentence of excerpt.`,
+      message: `Include "${keyword}" within first sentence of excerpt.`,
       points: 0,
       maxPoints: 10,
       category: 'keywords'
@@ -238,37 +242,37 @@ export function calculateArticleSEOScore(article: Partial<BlogArticleItem>): Blo
   }
 
   // Check 5: Content Depth (E-E-A-T Word Count)
-  if (wordCount >= 700) {
-    score += 20;
+  if (wordCount >= 600) {
+    score += 15;
     checks.push({
       id: 'word_count',
       label: 'Content Depth & E-E-A-T Depth',
       passed: true,
       message: `Authoritative depth (${wordCount} words, ~${readingMinutes} min read).`,
-      points: 20,
-      maxPoints: 20,
+      points: 15,
+      maxPoints: 15,
       category: 'content'
     });
-  } else if (wordCount >= 400) {
-    score += 12;
+  } else if (wordCount >= 350) {
+    score += 10;
     checks.push({
       id: 'word_count',
       label: 'Content Depth & E-E-A-T Depth',
       passed: true,
-      message: `Good depth (${wordCount} words). Expand over 700 words for maximum Google E-E-A-T.`,
-      points: 12,
-      maxPoints: 20,
+      message: `Good depth (${wordCount} words). Expand over 600 words for maximum Google E-E-A-T.`,
+      points: 10,
+      maxPoints: 15,
       category: 'content'
     });
   } else {
-    score += 5;
+    score += 4;
     checks.push({
       id: 'word_count',
       label: 'Content Depth & E-E-A-T Depth',
       passed: false,
       message: `Thin content (${wordCount} words). Expand with sub-headings and detailed craft analysis.`,
-      points: 5,
-      maxPoints: 20,
+      points: 4,
+      maxPoints: 15,
       category: 'content'
     });
   }
@@ -281,7 +285,7 @@ export function calculateArticleSEOScore(article: Partial<BlogArticleItem>): Blo
       id: 'section_headings',
       label: 'Heading Hierarchy (H2 Structure)',
       passed: true,
-      message: `${headings.length} sub-sections defined for scannability.`,
+      message: `${headings.length} main H2 sections defined for scannability.`,
       points: 10,
       maxPoints: 10,
       category: 'structure'
@@ -292,61 +296,233 @@ export function calculateArticleSEOScore(article: Partial<BlogArticleItem>): Blo
       id: 'section_headings',
       label: 'Heading Hierarchy (H2 Structure)',
       passed: false,
-      message: `Only ${headings.length} section heading(s). Add at least 3 structured headings.`,
+      message: `Only ${headings.length} H2 heading(s). Add at least 3 structured headings.`,
       points: 5,
       maxPoints: 10,
       category: 'structure'
     });
   }
 
-  // Check 7: Editorial Pull-Quotes & Expert Voice
-  const quotes = sections.filter(s => !!s.quote);
-  if (quotes.length >= 1) {
-    score += 10;
-    checks.push({
-      id: 'editorial_quotes',
-      label: 'Artisan Quotes & Pull-Quotes',
-      passed: true,
-      message: 'Includes master craftsman quote / luxury editorial highlight.',
-      points: 10,
-      maxPoints: 10,
-      category: 'readability'
-    });
-  } else {
-    checks.push({
-      id: 'editorial_quotes',
-      label: 'Artisan Quotes & Pull-Quotes',
-      passed: false,
-      message: 'Add at least one artisan quote or highlighted takeaway.',
-      points: 0,
-      maxPoints: 10,
-      category: 'readability'
-    });
-  }
+  // Guideline 1: Paragraph Length (< 3 lines per paragraph)
+  let longParagraphsCount = 0;
+  sections.forEach(sec => {
+    if (sec.body) {
+      const paras = sec.body.split(/\n\n+/).filter(Boolean);
+      paras.forEach(p => {
+        const words = p.trim().split(/\s+/).length;
+        if (words > 65) longParagraphsCount++;
+      });
+    }
+  });
 
-  // Check 8: Cover Image & Tags
-  const hasCover = !!article.coverImage;
-  const hasTags = (article.tags || []).length >= 3;
-  if (hasCover && hasTags) {
+  if (longParagraphsCount === 0) {
     score += 5;
     checks.push({
-      id: 'media_and_taxonomy',
-      label: 'Cover Image & Taxonomy Tags',
+      id: 'paragraph_length',
+      label: 'Guideline 1: Paragraph Length (< 3 Lines)',
       passed: true,
-      message: `Valid cover image assigned with ${article.tags?.length} SEO tags.`,
+      message: 'All paragraphs are punchy and under 3 lines for optimal mobile readability.',
       points: 5,
       maxPoints: 5,
-      category: 'structure'
+      category: 'guidelines'
+    });
+  } else {
+    score += 2;
+    checks.push({
+      id: 'paragraph_length',
+      label: 'Guideline 1: Paragraph Length (< 3 Lines)',
+      passed: false,
+      message: `Found ${longParagraphsCount} paragraph(s) longer than 3 lines. Break them into bite-sized units.`,
+      points: 2,
+      maxPoints: 5,
+      category: 'guidelines'
+    });
+  }
+
+  // Guideline 2: Subheading Hierarchy (H3 under H2)
+  const hasSubheadings = sections.some(s => !!s.subheading) || fullText.includes('###') || sections.length >= 4;
+  if (hasSubheadings) {
+    score += 4;
+    checks.push({
+      id: 'heading_hierarchy',
+      label: 'Guideline 2: H1 → H2 → H3 Heading Hierarchy',
+      passed: true,
+      message: 'Proper nested heading hierarchy observed with H1 title and H2/H3 subheadings.',
+      points: 4,
+      maxPoints: 4,
+      category: 'guidelines'
     });
   } else {
     checks.push({
-      id: 'media_and_taxonomy',
-      label: 'Cover Image & Taxonomy Tags',
+      id: 'heading_hierarchy',
+      label: 'Guideline 2: H1 → H2 → H3 Heading Hierarchy',
       passed: false,
-      message: 'Ensure cover image is set and at least 3 SEO tags are assigned.',
+      message: 'Include H3 subheadings under major H2 sections for fine-grained clarity.',
+      points: 0,
+      maxPoints: 4,
+      category: 'guidelines'
+    });
+  }
+
+  // Guideline 3: Bullet Points
+  const hasBullets = sections.some(s => (s.bullets && s.bullets.length > 0) || (s.body && /([•\-\*]|\d+[\.\)])\s/.test(s.body)));
+  if (hasBullets) {
+    score += 5;
+    checks.push({
+      id: 'bullet_points',
+      label: 'Guideline 3: Scannable Bullet Points',
+      passed: true,
+      message: 'Bite-sized bullet points present for easy skimmability.',
+      points: 5,
+      maxPoints: 5,
+      category: 'guidelines'
+    });
+  } else {
+    checks.push({
+      id: 'bullet_points',
+      label: 'Guideline 3: Scannable Bullet Points',
+      passed: false,
+      message: 'Add bullet points for key takeaways, technical specs, or pros/cons.',
       points: 0,
       maxPoints: 5,
-      category: 'structure'
+      category: 'guidelines'
+    });
+  }
+
+  // Guideline 4: Relevant Data Table
+  const hasTable = !!article.table || sections.some(s => !!s.table);
+  if (hasTable) {
+    score += 5;
+    checks.push({
+      id: 'data_table',
+      label: 'Guideline 4: Relevant Structured Data Table',
+      passed: true,
+      message: 'Includes structured data/comparison table for high E-E-A-T value.',
+      points: 5,
+      maxPoints: 5,
+      category: 'guidelines'
+    });
+  } else {
+    checks.push({
+      id: 'data_table',
+      label: 'Guideline 4: Relevant Structured Data Table',
+      passed: false,
+      message: 'Add a comparison or technical specifications table (GSM, sizing, care, or process).',
+      points: 0,
+      maxPoints: 5,
+      category: 'guidelines'
+    });
+  }
+
+  // Guideline 5: Images & Infographics
+  const hasInfographic = !!article.infographic || sections.some(s => !!s.image);
+  if (hasInfographic && !!article.coverImage) {
+    score += 4;
+    checks.push({
+      id: 'visuals_infographic',
+      label: 'Guideline 5: Relevant Images & Infographics',
+      passed: true,
+      message: 'Rich visuals and craft infographics present.',
+      points: 4,
+      maxPoints: 4,
+      category: 'guidelines'
+    });
+  } else {
+    score += 2;
+    checks.push({
+      id: 'visuals_infographic',
+      label: 'Guideline 5: Relevant Images & Infographics',
+      passed: false,
+      message: 'Add process infographics or workshop photos to complement the cover image.',
+      points: 2,
+      maxPoints: 4,
+      category: 'guidelines'
+    });
+  }
+
+  // Guideline 6: Author Information & Credentials
+  const hasAuthorBio = !!article.author && !!article.author.name && !!article.author.role;
+  if (hasAuthorBio) {
+    score += 4;
+    checks.push({
+      id: 'author_details',
+      label: 'Guideline 6: Verified Author Information',
+      passed: true,
+      message: `Author "${article.author?.name}" (${article.author?.role}) assigned.`,
+      points: 4,
+      maxPoints: 4,
+      category: 'guidelines'
+    });
+  } else {
+    checks.push({
+      id: 'author_details',
+      label: 'Guideline 6: Verified Author Information',
+      passed: false,
+      message: 'Author credentials and artisan role must be provided.',
+      points: 0,
+      maxPoints: 4,
+      category: 'guidelines'
+    });
+  }
+
+  // Guideline 7: FAQ Section
+  const faqCount = (article.faqs || []).length;
+  if (faqCount >= 3) {
+    score += 5;
+    checks.push({
+      id: 'faq_section',
+      label: 'Guideline 7: FAQ Section with Schema Markup',
+      passed: true,
+      message: `${faqCount} high-intent FAQs included with Schema.org FAQPage compatibility.`,
+      points: 5,
+      maxPoints: 5,
+      category: 'guidelines'
+    });
+  } else if (faqCount > 0) {
+    score += 2;
+    checks.push({
+      id: 'faq_section',
+      label: 'Guideline 7: FAQ Section with Schema Markup',
+      passed: false,
+      message: `Only ${faqCount} FAQ(s). Aim for at least 3 questions to capture Google People Also Ask.`,
+      points: 2,
+      maxPoints: 5,
+      category: 'guidelines'
+    });
+  } else {
+    checks.push({
+      id: 'faq_section',
+      label: 'Guideline 7: FAQ Section with Schema Markup',
+      passed: false,
+      message: 'Add a dedicated FAQ section with at least 3 buyer questions.',
+      points: 0,
+      maxPoints: 5,
+      category: 'guidelines'
+    });
+  }
+
+  // Guideline 8 & 9: Lead Gen CTA (Redirect to /contact)
+  const hasLeadCta = !!article.leadCta || fullText.toLowerCase().includes('contact') || fullText.toLowerCase().includes('sourcing');
+  if (hasLeadCta) {
+    score += 4;
+    checks.push({
+      id: 'lead_cta',
+      label: 'Guideline 9: Lead Generation CTA to /contact',
+      passed: true,
+      message: 'Dedicated lead generation CTA actively routes readers to /contact.',
+      points: 4,
+      maxPoints: 4,
+      category: 'guidelines'
+    });
+  } else {
+    checks.push({
+      id: 'lead_cta',
+      label: 'Guideline 9: Lead Generation CTA to /contact',
+      passed: false,
+      message: 'Add a lead generation CTA card redirecting to /contact.',
+      points: 0,
+      maxPoints: 4,
+      category: 'guidelines'
     });
   }
 
@@ -632,6 +808,20 @@ export function generateJournalTsExport(articles?: BlogArticleItem[]): string {
   const list = articles || getPublishedArticles();
 
   const formattedArticles = list.map(art => {
+    let extraFields = '';
+    if (art.table) {
+      extraFields += `,\n    table: ${JSON.stringify(art.table, null, 6).replace(/"([^"]+)":/g, '$1:')}`;
+    }
+    if (art.infographic) {
+      extraFields += `,\n    infographic: ${JSON.stringify(art.infographic, null, 6).replace(/"([^"]+)":/g, '$1:')}`;
+    }
+    if (art.faqs && art.faqs.length > 0) {
+      extraFields += `,\n    faqs: ${JSON.stringify(art.faqs, null, 6).replace(/"([^"]+)":/g, '$1:')}`;
+    }
+    if (art.leadCta) {
+      extraFields += `,\n    leadCta: ${JSON.stringify(art.leadCta, null, 6).replace(/"([^"]+)":/g, '$1:')}`;
+    }
+
     return `  {\n` +
       `    id: ${JSON.stringify(art.id)},\n` +
       `    slug: ${JSON.stringify(art.slug)},\n` +
@@ -643,10 +833,10 @@ export function generateJournalTsExport(articles?: BlogArticleItem[]): string {
       `    coverImage: ${JSON.stringify(art.coverImage)},\n` +
       `    author: {\n` +
       `      name: ${JSON.stringify(art.author.name)},\n` +
-      `      role: ${JSON.stringify(art.author.role)}\n` +
+      `      role: ${JSON.stringify(art.author.role)}${art.author.bio ? `,\n      bio: ${JSON.stringify(art.author.bio)}` : ''}\n` +
       `    },\n` +
       `    contentSections: ${JSON.stringify(art.contentSections, null, 6).replace(/"([^"]+)":/g, '$1:')},\n` +
-      `    tags: ${JSON.stringify(art.tags)}\n` +
+      `    tags: ${JSON.stringify(art.tags)}${extraFields}\n` +
       `  }`;
   }).join(',\n');
 
@@ -665,7 +855,11 @@ export function generateJournalTsExport(articles?: BlogArticleItem[]): string {
     `  image: a.coverImage,\n` +
     `  author: a.author,\n` +
     `  contentSections: a.contentSections,\n` +
-    `  tags: a.tags\n` +
+    `  tags: a.tags,\n` +
+    `  table: a.table,\n` +
+    `  infographic: a.infographic,\n` +
+    `  faqs: a.faqs,\n` +
+    `  leadCta: a.leadCta\n` +
     `}));\n`;
 }
 

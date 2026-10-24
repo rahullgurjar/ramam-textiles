@@ -425,11 +425,102 @@ export const BlogReviewModal: React.FC<BlogReviewModalProps> = ({
                       </blockquote>
                     )}
 
-                    <p className="whitespace-pre-line text-stone-700 leading-relaxed">
-                      {section.body}
-                    </p>
+                    {/* Guideline 4: Section Table */}
+                    {section.table && (
+                      <div className="my-4 overflow-hidden rounded-xl border border-[#D4AF37]/40">
+                        {section.table.caption && (
+                          <div className="bg-[#FAF0EB] px-4 py-2 text-xs font-bold text-[#9B332C]">
+                            📊 {section.table.caption}
+                          </div>
+                        )}
+                        <table className="w-full text-xs text-left">
+                          <thead className="bg-[#FAF5EE] text-[#241A16] font-bold">
+                            <tr>
+                              {section.table.headers.map((h, i) => (
+                                <th key={i} className="px-3 py-2 border-b border-stone-200">{h}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-stone-100">
+                            {section.table.rows.map((r, ri) => (
+                              <tr key={ri}>
+                                {r.map((c, ci) => (
+                                  <td key={ci} className="px-3 py-2">{c}</td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
                   </div>
                 ))}
+
+                {/* Guideline 4: Top-level Table */}
+                {article.table && (
+                  <div className="my-4 overflow-hidden rounded-xl border border-[#D4AF37]/40">
+                    {article.table.caption && (
+                      <div className="bg-[#FAF0EB] px-4 py-2 text-xs font-bold text-[#9B332C]">
+                        📊 {article.table.caption}
+                      </div>
+                    )}
+                    <table className="w-full text-xs text-left">
+                      <thead className="bg-[#FAF5EE] text-[#241A16] font-bold">
+                        <tr>
+                          {article.table.headers.map((h, i) => (
+                            <th key={i} className="px-3 py-2 border-b border-stone-200">{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-stone-100">
+                        {article.table.rows.map((r, ri) => (
+                          <tr key={ri}>
+                            {r.map((c, ci) => (
+                              <td key={ci} className="px-3 py-2">{c}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                {/* Guideline 7: FAQ Section */}
+                {article.faqs && article.faqs.length > 0 && (
+                  <div className="my-6 p-5 rounded-2xl bg-[#FAF5EE] border border-[#D4AF37]/35 space-y-3">
+                    <h4 className="font-playfair font-bold text-base text-[#241A16]">
+                      Frequently Asked Questions
+                    </h4>
+                    <div className="space-y-2">
+                      {article.faqs.map((f, fi) => (
+                        <div key={fi} className="p-3 bg-white rounded-xl border border-stone-200">
+                          <span className="font-bold text-xs text-[#9B332C] block mb-1">Q: {f.question}</span>
+                          <span className="text-xs text-stone-700 block">{f.answer}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Guideline 9: Lead Generation CTA to /contact */}
+                <div className="my-6 p-6 rounded-2xl bg-gradient-to-r from-[#FAF0EB] to-[#FAF5EE] border-2 border-[#D4AF37]/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="space-y-1 text-center sm:text-left">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#9B332C]">Lead Generation CTA</span>
+                    <h5 className="font-playfair font-bold text-base text-[#241A16]">
+                      {article.leadCta?.title || 'Plan Your Custom Sourcing & Sampling with Jaipur Artisans'}
+                    </h5>
+                    <p className="text-xs text-stone-600">
+                      {article.leadCta?.description || 'Low MOQ production starting from 25 pieces per style. Direct artisan dispatch from Jaipur.'}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => onViewLive(article.slug)}
+                    className="px-5 py-2.5 rounded-full bg-[#9B332C] text-white text-xs font-bold shrink-0 hover:bg-[#801B18] shadow-sm flex items-center gap-1.5"
+                  >
+                    <span>{article.leadCta?.primaryBtnText || 'Contact Atelier (/contact)'}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
 
               {/* Tags */}

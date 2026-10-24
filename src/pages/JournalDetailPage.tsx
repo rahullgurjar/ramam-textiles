@@ -1,5 +1,9 @@
 import React from 'react';
-import { ArrowLeft, ChevronRight, Share2, BookOpen, Clock, Tag, Sparkles, MessageCircle, FileText, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
+import { 
+  ArrowLeft, ChevronRight, Share2, BookOpen, Clock, Tag, Sparkles, 
+  MessageCircle, FileText, ShieldCheck, CheckCircle2, ArrowRight,
+  HelpCircle, ChevronDown, ChevronUp, Table as TableIcon, Layers, Award
+} from 'lucide-react';
 import { JOURNAL_ARTICLES } from '../data/journal';
 import { getBlogArticleBySlug, getPublishedArticles } from '../utils/blogStorage';
 import { PRODUCTS } from '../data/products';
@@ -21,6 +25,8 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
   const isBlogPath = typeof window !== 'undefined' && (window.location.pathname.includes('/blog') || window.location.pathname.includes('/blogs'));
   const basePath = isBlogPath ? '/blog' : '/journal';
   const getArticleUrl = (articleSlug: string) => `${basePath}/${articleSlug}`;
+
+  const [openFaqIndex, setOpenFaqIndex] = React.useState<number | null>(0);
 
   // Find contextually matching Ramam Textiles product to recommend like a master consultant
   const featuredProduct = React.useMemo(() => {
@@ -44,13 +50,13 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
   }, [article]);
 
   usePageSEO({
-    title: `Ramam Textiles • ${article.title}`,
+    title: `${article.title} | Ramam Textiles Journal`,
     description: article.excerpt,
     path: getArticleUrl(article.slug),
     image: article.coverImage
   });
 
-  // Inject BlogPosting Structured Data into <head> for Google Rich Results
+  // Inject BlogPosting & FAQPage Structured Data into <head> for Google Rich Results
   React.useEffect(() => {
     if (typeof document === 'undefined') return;
     const scriptId = 'blog-posting-schema';
@@ -61,29 +67,53 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
       script.type = 'application/ld+json';
       document.head.appendChild(script);
     }
+
+    const schemaGraph: any[] = [
+      {
+        '@type': 'BlogPosting',
+        '@id': `https://ramamtextiles.shop${getArticleUrl(article.slug)}#article`,
+        headline: article.title,
+        description: article.excerpt,
+        image: article.coverImage.startsWith('http') ? article.coverImage : `https://ramamtextiles.shop${article.coverImage}`,
+        author: {
+          '@type': 'Person',
+          name: article.author.name,
+          jobTitle: article.author.role
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Ramam Textiles',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://ramamtextiles.shop/logo.png'
+          }
+        },
+        mainEntityOfPage: `https://ramamtextiles.shop${getArticleUrl(article.slug)}`,
+        datePublished: (article as any).publishedDate || '2026-10-20T08:00:00+05:30',
+        keywords: article.tags ? article.tags.join(', ') : 'Jaipur hand block print, cotton sourcing'
+      }
+    ];
+
+    if (article.faqs && article.faqs.length > 0) {
+      schemaGraph.push({
+        '@type': 'FAQPage',
+        '@id': `https://ramamtextiles.shop${getArticleUrl(article.slug)}#faq`,
+        mainEntity: article.faqs.map(f => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: f.answer
+          }
+        }))
+      });
+    }
+
     const schemaData = {
       '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      headline: article.title,
-      description: article.excerpt,
-      image: article.coverImage.startsWith('http') ? article.coverImage : `https://ramamtextiles.shop${article.coverImage}`,
-      author: {
-        '@type': 'Person',
-        name: article.author.name,
-        jobTitle: article.author.role
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Ramam Textiles',
-        logo: {
-          '@type': 'ImageObject',
-          url: 'https://ramamtextiles.shop/logo.png'
-        }
-      },
-      mainEntityOfPage: `https://ramamtextiles.shop${getArticleUrl(article.slug)}`,
-      datePublished: '2026-09-01T08:00:00+05:30',
-      keywords: article.tags ? article.tags.join(', ') : 'Jaipur hand block print, cotton sourcing'
+      '@graph': schemaGraph
     };
+
     script.textContent = JSON.stringify(schemaData);
     return () => {
       const el = document.getElementById(scriptId);
@@ -100,6 +130,226 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
     }
   };
 
+  // Helper to render body paragraphs with strict under-3-lines readability & auto-bullet detection
+  const renderFormattedBody = (text: string) => {
+    if (!text) return null;
+    const rawParagraphs = text.split(/\n\n+/).filter(Boolean);
+
+    return rawParagraphs.map((para, pIdx) => {
+      const lines = para.split('\n').map(l => l.trim()).filter(Boolean);
+      const isBulletList = lines.length > 1 && lines.every(l => /^(\d+[\.\)]|[•\-\*])\s/.test(l));
+
+      if (isBulletList) {
+        return (
+          <ul key={pIdx} className="space-y-2.5 my-4 pl-1">
+            {lines.map((item, iIdx) => {
+              const cleanItem = item.replace(/^(\d+[\.\)]|[•\-\*])\s*/, '');
+              return (
+                <li key={iIdx} className="flex items-start gap-2.5 text-stone-700 text-sm sm:text-base leading-relaxed">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#9B332C] mt-2.5 shrink-0" />
+                  <span>{cleanItem}</span>
+                </li>
+              );
+            })}
+          </ul>
+        );
+      }
+
+      return (
+        <p key={pIdx} className="leading-relaxed text-stone-700 text-base sm:text-lg mb-4">
+          {para}
+        </p>
+      );
+    });
+  };
+
+  // Helper to render structured data tables
+  const renderTable = (tableData: { caption?: string; headers: string[]; rows: string[][] }) => {
+    if (!tableData || !tableData.headers || tableData.headers.length === 0) return null;
+    return (
+      <div className="my-8 overflow-hidden rounded-2xl border border-[#D4AF37]/45 shadow-sm bg-white">
+        {tableData.caption && (
+          <div className="bg-[#FAF0EB] px-5 py-3 border-b border-[#D4AF37]/35 text-xs font-royal-title font-bold uppercase tracking-wider text-[#9B332C] flex items-center gap-2">
+            <TableIcon className="w-4 h-4 text-[#9B332C]" />
+            <span>{tableData.caption}</span>
+          </div>
+        )}
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs sm:text-sm">
+            <thead>
+              <tr className="bg-[#FAF5EE] border-b border-[#E0D6CB] text-[#241A16] font-royal-title font-bold">
+                {tableData.headers.map((h, i) => (
+                  <th key={i} className="px-4 py-3.5 border-r border-[#E0D6CB]/60 last:border-r-0 whitespace-nowrap bg-[#FAF5EE]">
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[#E0D6CB]/60 font-royal-body">
+              {tableData.rows.map((row, rIdx) => (
+                <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white hover:bg-[#FAF5EE]/50 transition-colors' : 'bg-[#FAF5EE]/30 hover:bg-[#FAF5EE]/70 transition-colors'}>
+                  {row.map((cell, cIdx) => (
+                    <td key={cIdx} className="px-4 py-3 text-stone-700 border-r border-[#E0D6CB]/40 last:border-r-0">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  };
+
+  // Helper to render visual craft workflow / infographics
+  const renderInfographic = (info: { title: string; subtitle?: string; steps: { step: string; title: string; desc: string }[] }) => {
+    if (!info || !info.steps || info.steps.length === 0) return null;
+    return (
+      <div className="my-8 bg-[#FAF5EE] rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/45 shadow-sm space-y-6">
+        <div className="space-y-1">
+          <span className="text-[10px] font-royal-title uppercase tracking-widest text-[#9B332C] font-bold flex items-center gap-1.5">
+            <Layers className="w-3.5 h-3.5 text-[#9B332C]" /> Visual Craft Workflow &amp; Infographic
+          </span>
+          <h3 className="font-playfair text-xl sm:text-2xl font-bold text-[#241A16]">
+            {info.title}
+          </h3>
+          {info.subtitle && (
+            <p className="text-xs sm:text-sm text-stone-600 font-royal-body">{info.subtitle}</p>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {info.steps.map((st, sIdx) => (
+            <div key={sIdx} className="bg-white rounded-2xl p-5 border border-[#D4AF37]/35 shadow-sm relative space-y-2">
+              <span className="inline-block px-2.5 py-1 bg-[#FAF0EB] text-[#9B332C] text-xs font-mono font-bold rounded-lg border border-[#EACAC0]">
+                Step {st.step || (sIdx + 1)}
+              </span>
+              <h4 className="font-playfair font-bold text-[#241A16] text-base">{st.title}</h4>
+              <p className="text-xs text-stone-600 font-royal-body leading-relaxed">{st.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  // Helper to render Frequently Asked Questions
+  const renderFaqSection = (faqs: { question: string; answer: string }[]) => {
+    if (!faqs || faqs.length === 0) return null;
+    return (
+      <section className="my-10 space-y-4 pt-6 border-t border-[#D4AF37]/25">
+        <div className="space-y-1">
+          <span className="text-xs font-royal-title text-[#9B332C] font-bold uppercase tracking-wider flex items-center gap-1.5">
+            <HelpCircle className="w-4 h-4 text-[#9B332C]" /> Frequently Asked Questions
+          </span>
+          <h3 className="font-playfair text-2xl font-bold text-[#241A16]">
+            Direct Answers from Jaipur Master Artisans
+          </h3>
+          <p className="text-xs text-stone-600 font-royal-body">
+            Common questions on craft authenticity, chemical safety, fabric weights, and wholesale minimums.
+          </p>
+        </div>
+
+        <div className="space-y-3 pt-2">
+          {faqs.map((faq, idx) => {
+            const isOpen = openFaqIndex === idx;
+            return (
+              <div key={idx} className="bg-[#FAF5EE] rounded-2xl border border-[#D4AF37]/35 overflow-hidden transition-all shadow-sm">
+                <button
+                  onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                  className="w-full px-5 py-4 text-left flex items-center justify-between gap-4 font-royal-title font-bold text-sm sm:text-base text-[#241A16] hover:text-[#9B332C] transition-colors"
+                >
+                  <span>{faq.question}</span>
+                  {isOpen ? (
+                    <ChevronUp className="w-4 h-4 text-[#9B332C] shrink-0" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4 text-stone-400 shrink-0" />
+                  )}
+                </button>
+                {isOpen && (
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-stone-700 font-royal-body leading-relaxed border-t border-[#D4AF37]/20">
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    );
+  };
+
+  // Helper to render Author Profile Box
+  const renderAuthorBox = (author: any) => {
+    return (
+      <div className="bg-[#FAF5EE] rounded-2xl p-6 border border-[#D4AF37]/40 shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-4 my-8">
+        <div className="w-16 h-16 rounded-full bg-[#FAF0EB] border-2 border-[#D4AF37] flex items-center justify-center text-[#9B332C] font-royal-title font-bold text-xl shrink-0 shadow-inner">
+          {author.name.charAt(0)}
+        </div>
+        <div className="space-y-1.5 text-center sm:text-left flex-1">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+            <h4 className="font-playfair text-lg font-bold text-[#241A16]">{author.name}</h4>
+            <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#FAF0EB] text-[#9B332C] border border-[#EACAC0] font-royal-title font-bold uppercase tracking-wider flex items-center gap-1">
+              <Award className="w-3 h-3 text-[#9B332C]" /> Verified Artisan Author
+            </span>
+          </div>
+          <p className="text-xs text-[#9B332C] font-royal-title font-semibold">{author.role}</p>
+          <p className="text-xs text-stone-600 font-royal-body leading-relaxed">
+            {author.bio || 'Veteran textile researcher and master artisan contributor at Ramam Textiles, Jaipur. Specializing in geographical indication block prints, natural dye fermentation chemistry, and export quality controls.'}
+          </p>
+        </div>
+      </div>
+    );
+  };
+
+  // Helper to render High-Converting Lead Generation CTA (redirecting to /contact)
+  const renderLeadCta = (cta?: any) => {
+    const title = cta?.title || "Plan Your Custom Collection or Sourcing With Jaipur Artisans";
+    const desc = cta?.description || "Looking to commission custom woodblock prints, low-MOQ apparel, or certified organic fabrics? Our atelier team is here to assist with sampling, pricing, and rapid worldwide fulfillment.";
+    const btnText = cta?.primaryBtnText || "Contact Atelier & Start Sourcing";
+    const btnLink = cta?.primaryBtnLink || "/contact";
+
+    return (
+      <div className="my-10 bg-gradient-to-br from-[#FAF0EB] via-[#FAF5EE] to-[#FAF0EB] rounded-3xl p-7 sm:p-9 border-2 border-[#D4AF37]/50 shadow-lg relative overflow-hidden space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+          <div className="space-y-2 max-w-xl">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#D4AF37]/35 text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-wider shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <span>Jaipur Production &amp; Sampling Desk</span>
+            </div>
+            <h3 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16] leading-snug">
+              {title}
+            </h3>
+            <p className="text-stone-700 font-royal-body text-sm leading-relaxed">
+              {desc}
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+            <button
+              onClick={() => {
+                onNavigate(btnLink);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="px-6 py-3 rounded-full bg-[#9B332C] text-white text-xs font-royal-title font-bold uppercase tracking-wider hover:bg-[#801B18] transition-all shadow-md flex items-center justify-center gap-2 group"
+            >
+              <span>{btnText}</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={() => openQuickQuote()}
+              className="px-5 py-3 rounded-full bg-white text-[#241A16] border border-[#D4AF37]/50 text-xs font-royal-title font-bold uppercase tracking-wider hover:bg-[#FAF0EB] hover:text-[#9B332C] transition-colors shadow-sm flex items-center justify-center gap-2"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>Request Quote</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-10 font-royal-body">
       {/* Breadcrumbs */}
@@ -111,7 +361,7 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
         <span className="text-[#241A16] font-bold truncate max-w-xs">{article.title}</span>
       </nav>
 
-      {/* Article Header */}
+      {/* Article Header (H1) */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <span className="px-3.5 py-1.5 bg-[#FAF0EB] text-[#9B332C] border border-[#EACAC0] rounded-full text-xs font-royal-title font-bold uppercase tracking-wider">
@@ -126,15 +376,17 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
           </button>
         </div>
 
+        {/* Guideline 2: H1 Main Heading */}
         <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-[#241A16] leading-tight">
           {article.title}
         </h1>
 
+        {/* Guideline 6: Author Information Bar */}
         <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-stone-500 font-mono border-y border-[#E0D6CB] py-3">
           <div className="flex items-center gap-2">
             <span>By <strong>{article.author.name}</strong> ({article.author.role})</span>
             <span>•</span>
-            <span>{article.publishedDate}</span>
+            <span>{(article as any).publishedDate || 'Published'}</span>
             <span>•</span>
             <span>{article.readTime}</span>
           </div>
@@ -162,6 +414,7 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
         </div>
       </div>
 
+      {/* Guideline 5: Featured Image */}
       <div className="aspect-[16/9] rounded-[32px] overflow-hidden shadow-2xl border border-[#E0D6CB]">
         <picture className="w-full h-full block">
           <source srcSet={resolveWebpImage(article.coverImage)} type="image/webp" />
@@ -182,30 +435,85 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
         </picture>
       </div>
 
-      {/* Article Content */}
+      {/* Article Excerpt */}
       <div className="font-royal-body max-w-none text-stone-800 space-y-6 text-base sm:text-lg leading-relaxed">
         <p className="text-lg sm:text-xl font-editorial italic text-[#241A16] bg-[#FAF5EE] p-6 sm:p-8 rounded-2xl border-l-4 border-[#9B332C] border border-[#D4AF37]/30 shadow-sm">
           "{article.excerpt}"
         </p>
 
+        {/* Infographic (if article has a top-level infographic) */}
+        {article.infographic && renderInfographic(article.infographic)}
+
+        {/* Article Content Sections with H2, H3, Bullets, Tables, and Short Paragraphs */}
         {article.contentSections.map((sec, idx) => (
-          <div key={idx} className="space-y-3">
+          <div key={idx} className="space-y-4">
+            {/* Guideline 2: H2 Heading */}
             {sec.heading && (
-              <h2 className="font-playfair text-2xl font-bold text-[#241A16] mt-8">{sec.heading}</h2>
+              <h2 className="font-playfair text-2xl sm:text-3xl font-bold text-[#241A16] mt-8 mb-2">
+                {sec.heading}
+              </h2>
             )}
+
+            {/* Guideline 2: H3 Subheading */}
+            {sec.subheading && (
+              <h3 className="font-playfair text-xl sm:text-2xl font-semibold text-[#9B332C] mt-4 mb-2">
+                {sec.subheading}
+              </h3>
+            )}
+
+            {/* Pull Quote */}
             {sec.quote && (
-              <blockquote className="border-l-2 border-[#D4AF37] pl-4 italic text-[#9B332C] my-4 font-editorial text-lg">
+              <blockquote className="border-l-4 border-[#D4AF37] pl-4 italic text-[#9B332C] my-4 font-editorial text-lg bg-[#FAF5EE]/60 p-4 rounded-r-xl">
                 {sec.quote}
               </blockquote>
             )}
-            {sec.body && <p className="leading-relaxed text-stone-700 whitespace-pre-line">{sec.body}</p>}
+
+            {/* Guideline 1 & 3: Short Paragraphs (< 3 lines) and Bullets */}
+            {sec.body && renderFormattedBody(sec.body)}
+
+            {/* Explicit Bullets Array */}
+            {sec.bullets && sec.bullets.length > 0 && (
+              <ul className="space-y-2.5 my-4 pl-1">
+                {sec.bullets.map((b, bIdx) => (
+                  <li key={bIdx} className="flex items-start gap-2.5 text-stone-700 text-sm sm:text-base leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#9B332C] mt-2.5 shrink-0" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* In-section Image or Infographic */}
+            {sec.image && (
+              <div className="my-6 rounded-2xl overflow-hidden border border-[#D4AF37]/35 shadow-md">
+                <img src={resolveProductImage(sec.image)} alt={sec.imageCaption || sec.heading || 'Craft detail'} className="w-full h-auto object-cover max-h-96" />
+                {sec.imageCaption && (
+                  <div className="bg-[#FAF5EE] px-4 py-2 text-xs text-stone-600 font-royal-body italic border-t border-[#D4AF37]/20">
+                    📷 {sec.imageCaption}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Guideline 4: Section-level Data Table */}
+            {sec.table && renderTable(sec.table)}
           </div>
         ))}
+
+        {/* Guideline 4: Top-level Data Table (if defined at article level) */}
+        {article.table && renderTable(article.table)}
+
+        {/* Guideline 6: Author Details Card */}
+        {article.author && renderAuthorBox(article.author)}
+
+        {/* Guideline 7: FAQ Section */}
+        {article.faqs && article.faqs.length > 0 && renderFaqSection(article.faqs)}
+
+        {/* Guideline 9: Lead Generation CTA Redirecting to /contact */}
+        {renderLeadCta(article.leadCta)}
       </div>
 
-      {/* =========================================================================
-          CONSULTATIVE LUXURY SALES SHOWCASE (Natural, Respectful, High Conversion)
-          ========================================================================= */}
+      {/* Consultative Luxury Sales Showcase */}
       {featuredProduct && (
         <section className="bg-[#FAF5EE] rounded-3xl p-6 sm:p-8 border-2 border-[#D4AF37]/45 shadow-lg relative overflow-hidden space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#D4AF37]/30 pb-4">
@@ -283,9 +591,7 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
         </section>
       )}
 
-      {/* =========================================================================
-          OFFICIAL ATELIER INSTAGRAM SPOTLIGHT CARD (@ramamtextiles)
-          ========================================================================= */}
+      {/* Official Atelier Instagram Spotlight Card */}
       <div className="bg-[#FAF0EB] rounded-3xl p-6 sm:p-7 border border-[#EACAC0] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
         <div className="flex items-center gap-4">
           <div className="w-14 h-14 rounded-2xl bg-white border border-[#D4AF37]/40 shadow-md flex items-center justify-center shrink-0">
@@ -313,42 +619,6 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
           <InstagramIcon className="w-4 h-4 text-white" />
           <span>Follow @ramamtextiles</span>
         </a>
-      </div>
-
-      {/* Luxury Atelier Sourcing & Sampling CTA Card */}
-      <div className="bg-gradient-to-br from-[#FAF0EB] via-[#FAF5EE] to-[#FAF0EB] rounded-3xl p-8 border border-[#D4AF37]/45 shadow-md space-y-4 relative overflow-hidden">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#D4AF37]/35 text-[#9B332C] text-xs font-royal-title font-bold uppercase tracking-wider shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <span>Jaipur Production &amp; Sampling Desk</span>
-            </div>
-            <h3 className="font-playfair text-xl sm:text-2xl font-bold text-[#241A16]">
-              Planning a Custom Textile, Apparel, or Quilted Bag Line?
-            </h3>
-            <p className="text-stone-600 font-royal-body text-sm max-w-xl leading-relaxed">
-              Commission bespoke wooden block prints, certified natural indigo vat dyeing, or low-MOQ private label production starting from 25 pieces per style. Worldwide insured air express dispatch.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-            <button
-              onClick={() => openQuickQuote()}
-              className="px-5 py-2.5 rounded-full bg-[#9B332C] text-white text-xs font-royal-title font-bold uppercase tracking-wider hover:bg-[#801B18] transition-colors shadow-md flex items-center justify-center gap-2"
-            >
-              <FileText className="w-3.5 h-3.5" />
-              <span>Request Quote</span>
-            </button>
-            <a
-              href="https://wa.me/911412890000?text=Hello%20Ramam%20Textiles,%20I%20am%20interested%20in%20custom%20manufacturing%20and%20sourcing."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-full bg-white text-[#241A16] border border-[#D4AF37]/50 text-xs font-royal-title font-bold uppercase tracking-wider hover:bg-[#FAF0EB] hover:text-[#9B332C] transition-colors shadow-sm flex items-center justify-center gap-2"
-            >
-              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
-              <span>WhatsApp Atelier</span>
-            </a>
-          </div>
-        </div>
       </div>
 
       {/* Tags */}
@@ -391,4 +661,3 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
     </div>
   );
 };
-
