@@ -2,6 +2,102 @@ import { JournalArticle } from '../types';
 
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
+    id: 'chemistry-natural-mordants-harda-alum-syahi',
+    slug: 'chemistry-natural-mordants-harda-alum-syahi',
+    title: "The Chemistry of Natural Mordants: Harda, Alum, and Iron Rust Syahi",
+    category: 'Natural Dyeing',
+    readTime: '8 min read',
+    publishedDate: 'October 25, 2026',
+    excerpt: "Why natural botanical dyes cannot bond with cotton without mordants: tannin chemistry, alum bath ratios, and fermenting scrap iron with jaggery.",
+    coverImage: '/products/vanity-trio-marigold-cream.jpg',
+    author: {
+      name: "Ramam Textiles Dyes Guild",
+      role: "Master Natural Chemist",
+      bio: "Researching non-toxic botanical mordants, natural dye fixation, and green organometallic chemistry."
+    },
+    contentSections: [
+      {
+            heading: "Why Cellulose Fibers Demand Mordants",
+            subheading: "Surface Molecular Charge and Coordination Complexes",
+            body: "Unlike protein fibers (silk and wool) which possess naturally receptive amine and carboxyl groups, cellulose cotton fibers possess a neutral molecular surface that repels most botanical dye molecules.\n\nIf you boil pure cotton in madder root or pomegranate peel without a mordant, the color will rinse out completely in cold water.\n\nA mordant (derived from Latin 'mordere', meaning 'to bite') forms an insoluble coordination complex between the cotton cellulose and the natural dye pigment, locking the color into the molecular core."
+      },
+      {
+            heading: "1. Harda (Myrobalan Tannin) — The Essential Primer",
+            subheading: "Gallotannin Priming Creating Acidic Receptive Anchors",
+            body: "Dried fruits of the Terminalia chebula tree are ground into a golden-yellow powder called Harda.\n\nCotton fabric is submerged in a 10% harda bath.\n\nThe rich gallotannins coat every cotton fibril, providing an acidic chemical anchor that bonds avidly with metallic mordants.",
+            bullets: [
+                  "Prepares cellulose fibers for metallic mordant bonding",
+                  "Imparts a mild, warm cream ground tone",
+                  "100% natural, biodegradable plant tannin"
+            ]
+      },
+      {
+            heading: "2. Fitkari (Potash Alum) — The Brightener for Reds and Yellows",
+            subheading: "Potassium Aluminum Sulfate Chelates for Crimson Madder",
+            body: "Aluminum potassium sulfate is the cleanest metallic mordant on Earth.\n\nWhen stamped onto harda-treated cloth and boiled with madder root (Rubia cordifolia), aluminum ions form vibrant crimson and terracotta red chelates that are completely colorfast."
+      },
+      {
+            heading: "3. Syahi (Fermented Iron Acetate) — The Immortal Black",
+            subheading: "30-Day Subterranean Bacterial Fermentation of Scrap Nails",
+            body: "In Bagru and Sanganer, black is never achieved with synthetic coal-tar dyes.\n\nMaster artisans place rusted scrap iron nails and discarded horseshoes into earthen clay vats filled with water, unrefined sugarcane jaggery (gur), and horse-gram flour.\n\nOver 30 days of biological fermentation, acetic acid bacteria convert metallic iron into ferrous acetate.\n\nWhen stamped onto tannin-rich harda cloth, a spontaneous chemical reaction forms ferric gallate—an impenetrable, non-fading jet black ink used in Rajasthan since the 14th century."
+      },
+      {
+            quote: "Natural mordanting is not merely ancient tradition—it is green organometallic chemistry at its most elegant.",
+            body: "Because these processes use biodegradable plant tannins and food-grade iron salts, the rinse wastewater is non-toxic and traditionally used to irrigate local desert crops."
+      }
+],
+    tags: ["Natural Mordants","Harda Tannin","Alum Dyeing","Syahi Black","Zero Waste Dyeing"],
+    table: {
+      caption: "Natural Mordants Used in Jaipur Block Printing",
+      headers: [
+            "Mordant Name",
+            "Chemical Source",
+            "Colors Developed",
+            "Eco & Effluent Profile"
+      ],
+      rows: [
+            [
+                  "Harda (Myrobalan)",
+                  "Dried fruit gallotannins",
+                  "Cream base primer, yellow-green with iron",
+                  "100% food-grade, biodegradable"
+            ],
+            [
+                  "Fitkari (Alum)",
+                  "Potash alum salt",
+                  "Vibrant crimson reds with madder, bright yellows",
+                  "Non-toxic, safe for skin contact"
+            ],
+            [
+                  "Syahi (Iron Acetate)",
+                  "Fermented rusted iron & jaggery",
+                  "Deep permanent jet black",
+                  "Zero petrochemicals, organic effluent"
+            ]
+      ]
+},
+    faqs: [
+      {
+            question: "Is fermented iron black (Syahi) safe for sensitive skin?",
+            answer: "Yes, completely. Syahi is composed solely of iron acetate and natural molasses, producing zero aromatic amines or synthetic toxins."
+      },
+      {
+            question: "Can I achieve bright pinks or turquoises with 100% natural mordants?",
+            answer: "Natural mordants produce earthy terracottas, indigos, blacks, and mustard yellows. For bright coral pinks and neon turquoises, certified AZO-free reactive dyes are utilized."
+      },
+      {
+            question: "Do natural mordants weaken cotton fabric over time?",
+            answer: "Properly neutralized alum and harda do not weaken cotton. When washed thoroughly after dye fixing, the cotton maintains full tensile strength for decades."
+      }
+],
+    leadCta: {
+      title: "Develop 100% Botanical Natural Dye Collections",
+      description: "Commission certified organic hand-block prints using ancient Harda, Alum, and Syahi mordants. Tailored low MOQs for sustainable boutique labels.",
+      primaryBtnText: "Contact Atelier / Natural Dye Desk",
+      primaryBtnLink: "/contact"
+}
+  },
+  {
     id: 'mulmul-vs-voile-vs-cambric-cotton-guide',
     slug: 'mulmul-vs-voile-vs-cambric-cotton-guide',
     title: "Mulmul vs Voile vs Cambric: Which Jaipur Cotton Weave is Right for You?",
