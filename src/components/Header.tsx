@@ -114,17 +114,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   />
                 </picture>
               </div>
-              <div className="text-left whitespace-nowrap flex flex-col justify-center">
-                <div className="flex items-baseline gap-1.5 leading-none">
-                  <span className="font-playfair text-xl sm:text-2xl lg:text-[25px] font-bold tracking-tight text-[#241A16]">
-                    Ramam
-                  </span>
-                  <span className="font-editorial italic text-xl sm:text-2xl lg:text-[25px] font-semibold text-[#9B332C]">
-                    Textiles
-                  </span>
-                </div>
-                <span className="text-[8.5px] sm:text-[9px] uppercase tracking-[0.24em] text-[#7E2822] font-royal-title font-semibold mt-1 leading-none">
-                  JAIPUR ARTISAN ATELIER
+              <div className="text-left whitespace-nowrap flex items-baseline gap-1.5 leading-none">
+                <span className="font-playfair text-xl sm:text-2xl lg:text-[25px] font-bold tracking-tight text-[#241A16]">
+                  Ramam
+                </span>
+                <span className="font-editorial italic text-xl sm:text-2xl lg:text-[25px] font-semibold text-[#9B332C]">
+                  Textiles
                 </span>
               </div>
             </a>
@@ -349,32 +344,20 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               <span>ABOUT</span>
             </button>
 
-            {/* Bulk Orders Subtle CTA */}
-            <button 
-              onMouseEnter={() => import('../pages/BulkOrderEnquiryPage')}
-              onClick={() => {
-                setActiveMegaMenu(null);
-                setIsMobileMenuOpen(false);
-                if (currentPath === '/bulk-enquiry') {
-                  const el = document.getElementById('bulk-enquiry');
-                  if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' });
-                  } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }
-                } else {
-                  handleNav('/bulk-enquiry');
-                }
-              }}
-              className="nav-subtle-cta ml-1"
-            >
-              <span>BULK ORDERS</span>
-            </button>
           </nav>
 
-          {/* Right Action Suite (Minimalist, Subtle, Zero Clutter) */}
-          <div className="flex items-center gap-1 sm:gap-2 shrink-0 whitespace-nowrap">
+          {/* Right Action Suite (Clean, Balanced & Organized) */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 whitespace-nowrap">
             
+            {/* Search Quick Icon Button */}
+            <button
+              onClick={openSearch}
+              className="w-8 h-8 rounded-full text-[#241A16] hover:text-[#9B332C] hover:bg-[#FAF0EB] transition-colors flex items-center justify-center shrink-0 cursor-pointer"
+              title="Search Catalog"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+
             {/* Currency Selector */}
             <div className="relative hidden sm:block shrink-0">
               <button 
@@ -411,15 +394,6 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               )}
             </div>
 
-            {/* Search Quick Icon Button */}
-            <button
-              onClick={openSearch}
-              className="w-8 h-8 rounded-full text-[#241A16] hover:text-[#9B332C] hover:bg-[#FAF0EB] transition-colors flex items-center justify-center shrink-0 cursor-pointer"
-              title="Search Catalog"
-            >
-              <Search className="w-4 h-4" />
-            </button>
-
             {/* BAG Icon with delicate ruby count badge */}
             <button 
               onClick={openInquiryDrawer}
@@ -434,15 +408,14 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               )}
             </button>
 
-            {/* Subtle Inquire Button */}
+            {/* Primary Bulk Orders CTA Button */}
             <button 
               type="button"
-              onClick={() => navigate('/bulk-enquiry')}
-              className="hidden sm:inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full border border-[#241A16]/20 hover:border-[#9B332C] text-[#241A16] hover:text-[#9B332C] hover:bg-[#FAF0EB] text-[11px] font-royal-title font-semibold tracking-wider transition-all whitespace-nowrap shrink-0 cursor-pointer"
-              title="Submit Bulk Enquiry"
+              onClick={() => handleNav('/bulk-enquiry')}
+              className="nav-subtle-cta ml-1 hidden sm:inline-flex"
+              title="Bulk Orders & Wholesale Enquiries"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
-              <span>INQUIRE</span>
+              <span>BULK ORDERS</span>
             </button>
           </div>
         </div>
@@ -472,17 +445,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                       <img src="/logo.png" alt="Ramam Textiles" width="48" height="48" decoding="async" className="w-full h-full object-contain filter drop-shadow-sm" />
                     </picture>
                   </div>
-                  <div className="whitespace-nowrap">
-                    <div className="flex items-baseline gap-1.5 leading-none">
-                      <span className="font-playfair font-bold text-lg text-[#241A16]">
-                        Ramam
-                      </span>
-                      <span className="italic font-editorial font-semibold text-lg text-[#9B332C]">
-                        Textiles
-                      </span>
-                    </div>
-                    <span className="text-[9px] font-royal-title text-[#7E2822] tracking-[0.24em] block uppercase font-bold mt-1.5">
-                      JAIPUR ARTISAN ATELIER
+                  <div className="whitespace-nowrap flex items-baseline gap-1.5 leading-none">
+                    <span className="font-playfair font-bold text-lg text-[#241A16]">
+                      Ramam
+                    </span>
+                    <span className="italic font-editorial font-semibold text-lg text-[#9B332C]">
+                      Textiles
                     </span>
                   </div>
                 </a>
