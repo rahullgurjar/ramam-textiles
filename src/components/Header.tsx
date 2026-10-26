@@ -82,10 +82,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           ? 'shadow-sm border-b border-[#D4AF37]/35 py-2' 
           : 'border-b border-[#D4AF37]/25 py-2.5 sm:py-3'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 lg:gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 lg:gap-8 xl:gap-12">
           
           {/* Left: Mobile Toggle & Brand Logo */}
-          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 lg:mr-8 xl:mr-14">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden p-2 text-[#241A16] hover:text-[#9B332C] transition-colors rounded-lg hover:bg-[#FAF0EB]"
@@ -126,7 +126,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           </div>
 
           {/* Center: Refined Luxury Atelier Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 font-royal-body">
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-3 font-royal-body">
             
             {/* Collection Dropdown */}
             <div 
