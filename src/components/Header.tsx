@@ -76,52 +76,6 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
 
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
-      
-      {/* TOP ATELIER HALLMARK STRIP */}
-      <div className="bg-[#FAF0EB] text-[#6B2824] text-[10.5px] py-1.5 px-4 font-royal-title border-b border-[#EACAC0] shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2 sm:gap-3 overflow-hidden text-ellipsis whitespace-nowrap text-[10.5px] tracking-[0.14em] uppercase">
-            <span className="text-[#9B332C] font-semibold">Jaipur Artisan Atelier</span>
-            <span className="text-[#9B332C]/30">•</span>
-            <span className="text-stone-600 hidden sm:inline">100% Combed Cotton</span>
-            <span className="text-[#9B332C]/30 hidden md:inline">•</span>
-            <span className="text-stone-600 hidden md:inline">Worldwide Express Cargo</span>
-            <span className="text-[#9B332C]/30 hidden lg:inline">•</span>
-            <span className="text-[#9B332C] font-bold hidden lg:inline">Low MOQ: 25 Pcs</span>
-          </div>
-
-          <div className="flex items-center gap-3.5 shrink-0 text-[10.5px] tracking-wider">
-            <a 
-              href="tel:+911412890000" 
-              className="text-[#6B2824] hover:text-[#9B332C] transition-colors flex items-center gap-1 font-semibold"
-              title="Call Jaipur Atelier Desk"
-            >
-              <Phone className="w-3 h-3 text-[#9B332C]" />
-              <span className="hidden sm:inline">+91 141 289 0000</span>
-            </a>
-            <span className="text-[#9B332C]/30 hidden sm:inline">•</span>
-            <a 
-              href="mailto:ramamtextiles@gmail.com" 
-              className="text-[#6B2824] hover:text-[#9B332C] transition-colors hidden md:flex items-center gap-1 font-semibold"
-              title="Email Jaipur Atelier"
-            >
-              <Mail className="w-3 h-3 text-[#9B332C]" />
-              <span className="hidden xl:inline">ramamtextiles@gmail.com</span>
-            </a>
-            <span className="text-[#9B332C]/30 hidden md:inline">•</span>
-            <a 
-              href="https://www.instagram.com/ramamtextiles" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-[#6B2824] hover:text-[#9B332C] transition-colors flex items-center gap-1.5 font-medium"
-            >
-              <InstagramIcon className="w-3.5 h-3.5 text-[#9B332C]" />
-              <span>@ramamtextiles</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* MAIN LUXURY HEADER BAR */}
       <div className={`w-full transition-all duration-300 bg-[#FAF5EE]/95 backdrop-blur-md ${
         isScrolled 
