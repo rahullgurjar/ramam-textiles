@@ -250,12 +250,14 @@ const allRoutes = [];
 
 // 1. Core pages
 Object.keys(CORE_PAGE_SEO).forEach(route => {
-  allRoutes.push({
-    route,
-    ...CORE_PAGE_SEO[route],
-    image: `${BASE_URL}/logo.png`,
-    schemaType: route === '/' ? 'WebSite' : 'WebPage'
-  });
+  if (route !== '/') {
+    allRoutes.push({
+      route,
+      ...CORE_PAGE_SEO[route],
+      image: `${BASE_URL}/logo.png`,
+      schemaType: 'WebPage'
+    });
+  }
 });
 
 // 1B. Master SEO Clusters from WEBSITE CLUSTER SERP & METADATA DIRECTORY.xlsx
@@ -648,24 +650,20 @@ allRoutes.forEach(entry => {
 
   // 1. Write to dist/[cleanRoute]/index.html (handles trailing slash: /route/)
   const cleanRoute = entry.route.replace(/^\//, '');
-  if (!cleanRoute) {
-    fs.writeFileSync(indexPath, html, 'utf-8');
-  } else {
-    const targetDir = path.join(distDir, cleanRoute);
-    if (!fs.existsSync(targetDir)) {
-      fs.mkdirSync(targetDir, { recursive: true });
-    }
-    const targetIndex = path.join(targetDir, 'index.html');
-    fs.writeFileSync(targetIndex, html, 'utf-8');
-
-    // 2. Also write to dist/[cleanRoute].html (handles non-trailing slash: /route with direct 200 OK)
-    const targetHtmlFile = path.join(distDir, `${cleanRoute}.html`);
-    const parentDir = path.dirname(targetHtmlFile);
-    if (!fs.existsSync(parentDir)) {
-      fs.mkdirSync(parentDir, { recursive: true });
-    }
-    fs.writeFileSync(targetHtmlFile, html, 'utf-8');
+  const targetDir = path.join(distDir, cleanRoute);
+  if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
   }
+  const targetIndex = path.join(targetDir, 'index.html');
+  fs.writeFileSync(targetIndex, html, 'utf-8');
+
+  // 2. Also write to dist/[cleanRoute].html (handles non-trailing slash: /route with direct 200 OK)
+  const targetHtmlFile = path.join(distDir, `${cleanRoute}.html`);
+  const parentDir = path.dirname(targetHtmlFile);
+  if (!fs.existsSync(parentDir)) {
+    fs.mkdirSync(parentDir, { recursive: true });
+  }
+  fs.writeFileSync(targetHtmlFile, html, 'utf-8');
 });
 
 console.log(`✅ Successfully generated ${allRoutes.length} static entrypoint pages in dist/.`);
