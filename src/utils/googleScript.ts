@@ -106,6 +106,14 @@ export async function submitToGoogleSheet(data: Record<string, any>): Promise<Su
       body: JSON.stringify(payload),
     });
 
+    // 5. Auto-sync lead into internal Atelier CRM storage
+    try {
+      const { recordLeadAsOrder } = await import('./crmStorage');
+      recordLeadAsOrder(data);
+    } catch (e) {
+      // Non-blocking for external submission
+    }
+
     return { success: true };
   } catch (err) {
     return {

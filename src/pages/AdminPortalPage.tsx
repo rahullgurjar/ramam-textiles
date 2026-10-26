@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   ShieldCheck, Lock, Unlock, Key, AlertTriangle, CheckCircle2, 
-  ExternalLink, LogOut, Database, RefreshCw, Eye, EyeOff, Layers, FileSpreadsheet, Activity, Globe, BookOpen
+  ExternalLink, LogOut, Database, RefreshCw, Eye, EyeOff, Layers, FileSpreadsheet, Activity, Globe, BookOpen, ShoppingBag
 } from 'lucide-react';
 import { 
   authenticateAdmin, checkAdminSession, logoutAdmin, getLockoutState, LockoutState 
@@ -11,6 +11,7 @@ import { useApp } from '../context/AppContext';
 import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 import { SEOAdminContainer } from '../components/seo/SEOAdminContainer';
 import { BlogAdminContainer } from '../components/admin/blog/BlogAdminContainer';
+import { CRMAdminContainer } from '../components/admin/crm/CRMAdminContainer';
 
 interface AdminPortalPageProps {
   onNavigate: (path: string) => void;
@@ -110,16 +111,17 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
     }
   };
 
-  const [adminSection, setAdminSection] = useState<'blogs' | 'seo' | 'security'>(() => {
+  const [adminSection, setAdminSection] = useState<'crm' | 'blogs' | 'seo' | 'security'>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.toLowerCase();
       const search = window.location.search.toLowerCase();
       if (hash.includes('security') || search.includes('security')) return 'security';
       if (hash.includes('seo') || search.includes('seo')) return 'seo';
       if (hash.includes('blog') || search.includes('blog')) return 'blogs';
-      return 'blogs';
+      if (hash.includes('crm') || search.includes('crm') || hash.includes('order') || search.includes('product')) return 'crm';
+      return 'crm';
     }
-    return 'blogs';
+    return 'crm';
   });
 
   const handleLogout = () => {
@@ -128,17 +130,38 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
     showToast('Admin session terminated.', 'info');
   };
 
-  // 1. If authenticated and on Blog Admin Suite
+  // 1. If authenticated and on CRM Hub
+  if (isAuthenticated && adminSection === 'crm') {
+    return (
+      <CRMAdminContainer
+        onNavigate={onNavigate}
+        onBackToSecurity={() => setAdminSection('security')}
+        onBackToSEO={() => setAdminSection('seo')}
+        onBackToBlogs={() => setAdminSection('blogs')}
+        onLogout={handleLogout}
+      />
+    );
+  }
+
+  // 2. If authenticated and on Blog Admin Suite
   if (isAuthenticated && adminSection === 'blogs') {
     return (
       <div className="min-h-screen bg-[#FAF5EE]">
         {/* Top Atelier Administration Bar */}
         <div className="bg-[#241A16] text-[#FAF5EE] px-4 sm:px-6 py-2.5 border-b border-[#D4AF37]/30">
           <div className="max-w-7xl mx-auto flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 overflow-x-auto py-1">
               <span className="font-playfair font-bold text-[#FCE5A4] hidden sm:inline">
                 Atelier Administration:
               </span>
+              <button
+                type="button"
+                onClick={() => setAdminSection('crm')}
+                className="px-3 py-1 rounded-lg hover:bg-white/10 text-stone-300 font-semibold flex items-center gap-1.5 transition-colors"
+              >
+                <ShoppingBag className="w-3.5 h-3.5" />
+                <span>CRM &amp; Orders Hub</span>
+              </button>
               <button
                 type="button"
                 onClick={() => setAdminSection('blogs')}
@@ -185,17 +208,25 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
     );
   }
 
-  // 2. If authenticated and on SEO panel, render full-bleed luxury SEO console
+  // 3. If authenticated and on SEO panel, render full-bleed luxury SEO console
   if (isAuthenticated && adminSection === 'seo') {
     return (
       <div className="min-h-screen bg-[#FAF5EE]">
         {/* Sub-header tab switcher */}
         <div className="bg-[#241A16] text-[#FAF5EE] px-4 sm:px-6 py-2.5 border-b border-[#D4AF37]/30">
           <div className="max-w-7xl mx-auto flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 overflow-x-auto py-1">
               <span className="font-playfair font-bold text-[#FCE5A4] hidden sm:inline">
                 Atelier Administration:
               </span>
+              <button
+                type="button"
+                onClick={() => setAdminSection('crm')}
+                className="px-3 py-1 rounded-lg hover:bg-white/10 text-stone-300 font-semibold flex items-center gap-1.5 transition-colors"
+              >
+                <ShoppingBag className="w-3.5 h-3.5" />
+                <span>CRM &amp; Orders Hub</span>
+              </button>
               <button
                 type="button"
                 onClick={() => setAdminSection('blogs')}
@@ -331,8 +362,16 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({ onNavigate }) 
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => setAdminSection('blogs')}
+              onClick={() => setAdminSection('crm')}
               className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#FAF0EB] hover:bg-[#801B18] text-[#9B332C] hover:text-white text-xs font-bold transition-all shadow-sm"
+            >
+              <ShoppingBag className="w-4 h-4" />
+              <span>CRM &amp; Orders Hub</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setAdminSection('blogs')}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold transition-all"
             >
               <BookOpen className="w-4 h-4" />
               <span>Blog Admin Panel</span>

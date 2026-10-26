@@ -27,7 +27,7 @@ const HISTORY_STORAGE_KEY = 'rt_seo_history_v1';
 const SETTINGS_STORAGE_KEY = 'rt_seo_settings_v1';
 
 export const DEFAULT_SEO_SETTINGS: SEOSettings = {
-  siteName: 'Ramam Textiles Jaipur',
+  siteName: 'Ramam Textiles',
   siteBaseUrl: BASE_URL,
   titleTemplate: '%title% | Ramam Textiles',
   defaultOgImage: '/logo.png',
@@ -101,10 +101,51 @@ function generateDefaultSchema(type: PageType, name: string, path: string, desc:
     }, null, 2);
   }
 
+  if (type === 'home' || path === '/') {
+    return JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'WebSite',
+          '@id': `${BASE_URL}/#website`,
+          'name': 'Ramam Textiles',
+          'alternateName': [
+            'Ramam Textiles Jaipur',
+            'Ramam',
+            'RamamTextiles',
+            'Ramam Textiles Atelier'
+          ],
+          'url': `${BASE_URL}/`,
+          'publisher': {
+            '@id': `${BASE_URL}/#organization`
+          }
+        },
+        {
+          '@type': 'Organization',
+          '@id': `${BASE_URL}/#organization`,
+          'name': 'Ramam Textiles',
+          'legalName': 'Ramam Textiles Jaipur',
+          'url': `${BASE_URL}/`,
+          'logo': `${BASE_URL}/logo.png`,
+          'description': desc,
+          'address': {
+            '@type': 'PostalAddress',
+            'addressLocality': 'Jaipur',
+            'addressRegion': 'Rajasthan',
+            'addressCountry': 'IN'
+          },
+          'sameAs': [
+            'https://www.instagram.com/ramamtextiles'
+          ]
+        }
+      ]
+    }, null, 2);
+  }
+
   return JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    'name': 'Ramam Textiles Jaipur',
+    'name': 'Ramam Textiles',
     'url': fullUrl,
     'logo': `${BASE_URL}/logo.png`,
     'description': desc,
