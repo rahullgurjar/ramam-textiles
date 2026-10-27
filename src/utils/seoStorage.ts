@@ -32,7 +32,7 @@ export const DEFAULT_SEO_SETTINGS: SEOSettings = {
   titleTemplate: '%title% | Ramam Textiles',
   defaultOgImage: '/logo.png',
   defaultRobots: 'index, follow',
-  googleVerification: 'GTM-MF9DKWFK',
+  googleVerification: 'zX1Y2k_PASTE_YOUR_GSC_TOKEN_HERE', // ← Google Search Console HTML tag token (NOT the GTM ID)
   bingVerification: '',
   pinterestVerification: '',
   sitemapUrl: `${BASE_URL}/sitemap.xml`,
@@ -579,12 +579,35 @@ export function getSEOSettings(): SEOSettings {
 }
 
 /**
- * Saves global SEO settings
+ * Saves global SEO settings and updates verification meta tags live in the DOM
  */
 export function saveSEOSettings(settings: SEOSettings, user = 'Admin'): void {
   if (typeof window === 'undefined') return;
   try {
     localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
+
+    // Sync google-site-verification meta tag live in DOM
+    if (settings.googleVerification) {
+      let gMeta = document.querySelector('meta[name="google-site-verification"]') as HTMLMetaElement;
+      if (!gMeta) {
+        gMeta = document.createElement('meta');
+        gMeta.setAttribute('name', 'google-site-verification');
+        document.head.appendChild(gMeta);
+      }
+      gMeta.setAttribute('content', settings.googleVerification);
+    }
+
+    // Sync Bing/Microsoft webmaster verification meta tag live in DOM
+    if (settings.bingVerification) {
+      let bMeta = document.querySelector('meta[name="msvalidate.01"]') as HTMLMetaElement;
+      if (!bMeta) {
+        bMeta = document.createElement('meta');
+        bMeta.setAttribute('name', 'msvalidate.01');
+        document.head.appendChild(bMeta);
+      }
+      bMeta.setAttribute('content', settings.bingVerification);
+    }
+
     recordHistory({
       id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
       timestamp: new Date().toISOString(),
@@ -600,6 +623,7 @@ export function saveSEOSettings(settings: SEOSettings, user = 'Admin'): void {
     console.error('Failed to save SEO settings:', e);
   }
 }
+
 
 /**
  * Records an entry into the audit trail
