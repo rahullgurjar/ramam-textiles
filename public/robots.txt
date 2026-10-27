@@ -5,7 +5,41 @@
 User-agent: *
 Allow: /
 
-# Disallow private and administrative pages
+# Explicitly Allowed Public Pages & Blogs
+Allow: /blog
+Allow: /blog/
+Allow: /blogs
+Allow: /blogs/
+Allow: /journal
+Allow: /journal/
+Allow: /shop
+Allow: /shop/
+Allow: /collections
+Allow: /collections/
+Allow: /category/
+Allow: /product/
+Allow: /custom-manufacturing
+Allow: /custom-manufacturing/
+Allow: /wholesale
+Allow: /wholesale/
+Allow: /craftsmanship
+Allow: /craftsmanship/
+Allow: /lookbook
+Allow: /lookbook/
+Allow: /about
+Allow: /about/
+Allow: /contact
+Allow: /contact/
+Allow: /faq
+Allow: /faq/
+Allow: /shipping-returns
+Allow: /shipping-returns/
+Allow: /privacy-policy
+Allow: /privacy-policy/
+Allow: /terms-conditions
+Allow: /terms-conditions/
+
+# Disallow Private & Administrative Pages
 Disallow: /admin
 Disallow: /admin/
 Disallow: /staff
