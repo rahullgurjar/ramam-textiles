@@ -1,7 +1,9 @@
 # ============================================================
 # robots.txt — Ramam Textiles (ramamtextiles.shop)
+# Optimized for Search Engine Indexing & AI Search Discovery
 # ============================================================
 
+# ——— Default for All Search Crawlers ————————————————————————
 User-agent: *
 Allow: /
 
@@ -39,7 +41,7 @@ Allow: /privacy-policy/
 Allow: /terms-conditions
 Allow: /terms-conditions/
 
-# Disallow Private & Administrative Pages
+# Disallow Private & Administrative Pages Only
 Disallow: /admin
 Disallow: /admin/
 Disallow: /staff
@@ -49,5 +51,63 @@ Disallow: /track/
 Disallow: /track-order
 Disallow: /track-order/
 
-# Sitemaps
+# ——— Google Search & Image Crawlers (Full Access) ——————————
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /staff
+Disallow: /staff/
+Disallow: /track
+Disallow: /track/
+
+User-agent: Googlebot-Image
+Allow: /
+Disallow: /admin
+Disallow: /staff
+
+# ——— Microsoft Bing & Copilot Crawlers ——————————————————————
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /staff
+Disallow: /staff/
+Disallow: /track
+Disallow: /track/
+
+# ——— Apple Search & Siri / Spotlight Crawlers ———————————————
+User-agent: Applebot
+Allow: /
+Disallow: /admin
+Disallow: /staff
+
+# ——— DuckDuckGo Search Crawler ——————————————————————————————
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /admin
+Disallow: /staff
+
+# ——— AI Search Engines (ChatGPT Search & Perplexity) ————————
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+Disallow: /staff
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /staff
+
+# ——— Social & Visual Discovery Crawlers —————————————————————
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# ——— Sitemaps ————————————————————————————————————————————————
 Sitemap: https://ramamtextiles.shop/sitemap.xml
