@@ -19,8 +19,7 @@ import {
 } from 'lucide-react';
 import { useApp, CURRENCIES } from '../context/AppContext';
 import { CATEGORIES } from '../data/products';
-import { COLLECTIONS } from '../data/collections';
-import { JOURNAL_POSTS } from '../data/journal';
+import { FEATURED_JOURNAL_PREVIEWS, TOTAL_JOURNAL_COUNT } from '../data/featuredJournal';
 import { InstagramIcon } from './InstagramIcon';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
@@ -285,13 +284,13 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                       }} 
                       className="text-[11px] text-[#9B332C] hover:text-[#241A16] flex items-center gap-1 font-semibold"
                     >
-                      <span>view all {JOURNAL_POSTS.length} articles</span>
+                      <span>view all {TOTAL_JOURNAL_COUNT} articles</span>
                       <ArrowRight className="w-3 h-3 text-[#9B332C]" />
                     </a>
                   </div>
 
                   <div className="space-y-2.5">
-                    {JOURNAL_POSTS.slice(0, 3).map(post => (
+                    {FEATURED_JOURNAL_PREVIEWS.map(post => (
                       <a 
                         key={post.id}
                         href={`/blog/${post.slug}`}
@@ -552,10 +551,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                       <BookOpen className="w-4 h-4 text-[#9B332C]" />
                       <span>Artisan Blog &amp; Sourcing Guides</span>
                     </div>
-                    <span className="text-[10px] bg-white px-2 py-0.5 rounded-full border border-[#D4AF37]/30 font-mono font-bold">{JOURNAL_POSTS.length} Posts</span>
+                    <span className="text-[10px] bg-white px-2 py-0.5 rounded-full border border-[#D4AF37]/30 font-mono font-bold">{TOTAL_JOURNAL_COUNT} Posts</span>
                   </button>
                   <div className="pl-6 pt-1.5 space-y-1">
-                    {JOURNAL_POSTS.slice(0, 3).map(post => (
+                    {FEATURED_JOURNAL_PREVIEWS.map(post => (
                       <button
                         key={post.id}
                         onClick={() => handleNav(`/blog/${post.slug}`)}

@@ -17,7 +17,7 @@ import { useApp } from '../context/AppContext';
 import { InstagramIcon } from './InstagramIcon';
 import { submitToGoogleSheet } from '../utils/googleScript';
 import { validateEmailAddress } from '../utils/formValidation';
-import { JOURNAL_POSTS } from '../data/journal';
+import { FEATURED_JOURNAL_PREVIEWS, TOTAL_JOURNAL_COUNT } from '../data/featuredJournal';
 import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
 
 interface FooterProps {
@@ -154,13 +154,13 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             onClick={(e) => { e.preventDefault(); handleNav('/blog'); }}
             className="text-xs font-royal-title font-bold text-[#9B332C] hover:text-[#241A16] flex items-center gap-1 transition-colors uppercase tracking-wider shrink-0"
           >
-            <span>Read All {JOURNAL_POSTS.length} Guides</span>
+            <span>Read All {TOTAL_JOURNAL_COUNT} Guides</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#9B332C]" />
           </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {JOURNAL_POSTS.slice(0, 3).map(post => (
+          {FEATURED_JOURNAL_PREVIEWS.map(post => (
             <a
               key={post.id}
               href={`/blog/${post.slug}`}

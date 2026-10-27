@@ -5,9 +5,8 @@ import {
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { PRODUCTS, CATEGORIES } from '../data/products';
-import { COLLECTIONS } from '../data/collections';
-import { JOURNAL_POSTS } from '../data/journal';
 import { LOOKBOOK_ITEMS } from '../data/lookbook';
+import { FEATURED_JOURNAL_PREVIEWS, TOTAL_JOURNAL_COUNT } from '../data/featuredJournal';
 import { ProductCard } from '../components/ProductCard';
 import { InstagramIcon } from '../components/InstagramIcon';
 import { BulkOrderEnquiryForm } from '../components/BulkOrderEnquiryForm';
@@ -99,6 +98,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 {/* Hero Showcase Image */}
                 <div className="aspect-[4/4.5] rounded-[28px] overflow-hidden bg-[#F0E6D8] shadow-inner relative group">
                   <picture className="w-full h-full block">
+                    <source
+                      media="(max-width: 640px)"
+                      srcSet="/products/duffle-kantha-patchwork-mobile.webp"
+                      type="image/webp"
+                    />
                     <source
                       srcSet={resolveWebpImage('/products/duffle-kantha-patchwork.jpg')}
                       type="image/webp"
@@ -794,13 +798,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             onClick={() => onNavigate('/blog')}
             className="pill-btn-outline rounded-full text-xs font-bold uppercase tracking-wider"
           >
-            <span>Read All {JOURNAL_POSTS.length} Guides</span>
+            <span>Read All {TOTAL_JOURNAL_COUNT} Guides</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {JOURNAL_POSTS.slice(0, 3).map(post => (
+          {FEATURED_JOURNAL_PREVIEWS.map(post => (
             <a 
               key={post.id}
               href={`/blog/${post.slug}`}

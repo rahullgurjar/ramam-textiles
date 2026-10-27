@@ -132,8 +132,9 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
     </noscript>
 
-    <!-- Critical LCP Hero Image Preload -->
-    <link rel="preload" as="image" href="/products/duffle-kantha-patchwork.webp" type="image/webp" fetchpriority="high" />
+    <!-- Critical LCP Hero Image Preload with responsive mobile/desktop variants -->
+    <link rel="preload" as="image" href="/products/duffle-kantha-patchwork-mobile.webp" type="image/webp" media="(max-width: 640px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/products/duffle-kantha-patchwork.webp" type="image/webp" media="(min-width: 641px)" fetchpriority="high" />
 
     <!-- Schema.org JSON-LD Structured Data: Google Search Site Name (Mandatory for Brand Name in SERP) -->
     <script type="application/ld+json">

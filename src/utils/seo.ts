@@ -99,7 +99,20 @@ export const DEFAULT_SEO: Record<string, { title: string; description: string }>
   }
 };
 
-import { getPublishedSEORecord } from './seoStorage';
+const PUBLISHED_SEO_STORAGE_KEY = 'ramam_seo_published_v1';
+
+function getPublishedSEORecord(path: string): any {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = localStorage.getItem(PUBLISHED_SEO_STORAGE_KEY);
+    if (!raw) return null;
+    const published = JSON.parse(raw);
+    const cleanPath = path ? (path.startsWith('/') ? path : '/' + path) : '/';
+    return published[cleanPath] || null;
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Updates document title, meta descriptions, and OpenGraph metadata dynamically,
@@ -142,7 +155,7 @@ export function setPageSEO({ title, description, path = '', image = '/logo.png' 
       if (override.jsonLd) customJsonLd = override.jsonLd;
       
       if (override.images && override.images.length > 0) {
-        override.images.forEach(img => {
+        override.images.forEach((img: any) => {
           if (img.src && img.alt) {
             imageAltOverrides[img.src] = img.alt;
             if (img.filename) imageAltOverrides[img.filename] = img.alt;
