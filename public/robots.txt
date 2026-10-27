@@ -1,162 +1,19 @@
 # ============================================================
 # robots.txt — Ramam Textiles (ramamtextiles.shop)
-# Last Updated: 2026-10-27
 # ============================================================
 
-# ——— All crawlers: public SEO pages ——————————————————————————
 User-agent: *
-
-# Core public pages
-Allow: /$
-Allow: /shop$
-Allow: /shop/
-Allow: /collections$
-Allow: /collections/
-Allow: /collections/block-print-fabrics
-Allow: /collections/apparel-ethnic-wear
-Allow: /collections/canvas-tote-bags
-Allow: /collections/wholesale-bulk-fabrics
-Allow: /collections/home-living-decor
-Allow: /collections/craft-diy-supplies
-Allow: /category/
-Allow: /product/
-Allow: /custom-manufacturing$
-Allow: /custom-manufacturing/
-Allow: /wholesale$
-Allow: /wholesale/
-Allow: /craftsmanship$
-Allow: /craftsmanship/
-Allow: /lookbook$
-Allow: /lookbook/
-Allow: /blog$
-Allow: /blog/
-Allow: /journal$
-Allow: /journal/
-Allow: /about$
-Allow: /about/
-Allow: /contact$
-Allow: /contact/
-Allow: /faq$
-Allow: /faq/
-Allow: /shipping-returns$
-Allow: /shipping-returns/
-Allow: /privacy-policy$
-Allow: /privacy-policy/
-Allow: /terms-conditions$
-Allow: /terms-conditions/
-
-# ——— Disallow: Admin & staff portals ————————————————————————
-Disallow: /admin
-Disallow: /admin/
-Disallow: /staff
-Disallow: /staff/
-
-# ——— Disallow: Order tracking (private user data) ———————————
-Disallow: /track
-Disallow: /track/
-
-# ——— Disallow: Duplicate blog alias /blogs/ ——————————————————
-# Primary canonical blog is /blog/ — /blogs/ is an internal alias
-Disallow: /blogs
-Disallow: /blogs/
-
-# ——— Disallow: URL query parameters (search/filter noise) ————
-Disallow: /*?*
-
-# ——— Disallow: SPA hash routing fragments ————————————————————
-Disallow: /*#*
-
-# ——— Disallow: Internal asset and build paths ————————————————
-Disallow: /src/
-Disallow: /dist/
-Disallow: /node_modules/
-Disallow: /scripts/
-Disallow: /.github/
-Disallow: /.agents/
-
-# ——— Disallow: Dev & config files ————————————————————————————
-Disallow: /*.json$
-Disallow: /*.ts$
-Disallow: /*.tsx$
-Disallow: /*.js$
-Disallow: /*.map$
-Disallow: /*.env$
-
-# ——— Crawl-delay for polite crawling ————————————————————————
-Crawl-delay: 2
-
-# ——— Googlebot: no additional restrictions —————————————————
-User-agent: Googlebot
 Allow: /
+
+# Disallow private and administrative pages
 Disallow: /admin
 Disallow: /admin/
 Disallow: /staff
 Disallow: /staff/
 Disallow: /track
 Disallow: /track/
-Disallow: /blogs
-Disallow: /blogs/
-Disallow: /*?*
+Disallow: /track-order
+Disallow: /track-order/
 
-# ——— Bingbot ————————————————————————————————————————————————
-User-agent: Bingbot
-Allow: /
-Disallow: /admin
-Disallow: /admin/
-Disallow: /staff
-Disallow: /staff/
-Disallow: /track
-Disallow: /track/
-Disallow: /blogs
-Disallow: /blogs/
-Disallow: /*?*
-
-# ——— AI Training Crawlers: fully blocked —————————————————————
-User-agent: GPTBot
-Disallow: /
-
-User-agent: ChatGPT-User
-Disallow: /
-
-User-agent: Google-Extended
-Disallow: /
-
-User-agent: anthropic-ai
-Disallow: /
-
-User-agent: Claude-Web
-Disallow: /
-
-User-agent: cohere-ai
-Disallow: /
-
-User-agent: PerplexityBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: Amazonbot
-Disallow: /
-
-User-agent: Applebot-Extended
-Disallow: /
-
-# ——— Aggressive / scraper bots: blocked ——————————————————————
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-User-agent: BLEXBot
-Disallow: /
-
-# ——— Sitemaps ————————————————————————————————————————————————
+# Sitemaps
 Sitemap: https://ramamtextiles.shop/sitemap.xml
