@@ -136,7 +136,7 @@
     <link rel="preload" as="image" href="/products/duffle-kantha-patchwork-mobile.webp" type="image/webp" media="(max-width: 640px)" fetchpriority="high" />
     <link rel="preload" as="image" href="/products/duffle-kantha-patchwork.webp" type="image/webp" media="(min-width: 641px)" fetchpriority="high" />
 
-    <!-- Schema.org JSON-LD Structured Data: Google Search Site Name (Mandatory for Brand Name in SERP) -->
+    <!-- Schema.org JSON-LD Structured Data: Google Search Site Name & Sitelinks Searchbox (0 Warnings) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -150,12 +150,27 @@
         "Ramam Textiles Atelier"
       ],
       "url": "https://ramamtextiles.shop/",
+      "description": "Authentic Jaipur luxury hand block prints, artisan apparel, quilted cotton bags, pure fabrics by meter, and custom manufacturing from Jaipur, Rajasthan.",
+      "inLanguage": "en-US",
       "publisher": {
         "@type": "Organization",
         "@id": "https://ramamtextiles.shop/#organization",
         "name": "Ramam Textiles",
         "url": "https://ramamtextiles.shop/",
-        "logo": "https://ramamtextiles.shop/logo.png"
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ramamtextiles.shop/logo.png",
+          "width": "512",
+          "height": "512"
+        }
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://ramamtextiles.shop/shop?query={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
       }
     }
     </script>
