@@ -160,27 +160,69 @@
     }
     </script>
 
-    <!-- Schema.org JSON-LD Structured Data: Organization & Manufacturing Supplier -->
+    <!-- Schema.org JSON-LD Structured Data: Organization & OnlineStore -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": ["Organization", "OnlineStore"],
       "@id": "https://ramamtextiles.shop/#organization",
       "name": "Ramam Textiles",
       "legalName": "Ramam Textiles Jaipur",
       "url": "https://ramamtextiles.shop/",
-      "logo": "https://ramamtextiles.shop/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://ramamtextiles.shop/logo.png",
+        "width": "512",
+        "height": "512"
+      },
+      "image": "https://ramamtextiles.shop/logo.png",
       "description": "Authentic Jaipur luxury hand block-printed quilted bags, duffles, apparel, pure cotton fabrics, and custom manufacturing from Jaipur, Rajasthan.",
+      "telephone": "+91-98290-00000",
+      "email": "contact@ramamtextiles.shop",
+      "priceRange": "₹₹",
+      "currenciesAccepted": "INR, USD, EUR, GBP, AUD, CAD, AED",
+      "paymentAccepted": "Credit Card, Debit Card, Net Banking, UPI, Bank Transfer, PayPal",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Artisan Textile Workshop, Sanganer & Bagru Craft Clusters",
         "addressLocality": "Jaipur",
         "addressRegion": "Rajasthan",
         "postalCode": "302020",
         "addressCountry": "IN"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 26.8289,
+        "longitude": 75.7725
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
       "sameAs": [
         "https://www.instagram.com/ramamtextiles"
       ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-98290-00000",
+          "contactType": "customer service & wholesale sales",
+          "email": "contact@ramamtextiles.shop",
+          "areaServed": ["IN", "US", "GB", "EU", "AU", "CA", "AE"],
+          "availableLanguage": ["English", "Hindi"]
+        }
+      ],
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "@id": "https://ramamtextiles.shop/#return-policy",
+        "applicableCountry": "IN",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 14,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      },
       "knowsAbout": [
         "Hand Block Printing",
         "Bagru Dabu Indigo Printing",
@@ -190,6 +232,286 @@
         "Quilted Cotton Accessories",
         "Textile Sourcing India",
         "Sustainable Block Printing"
+      ]
+    }
+    </script>
+
+    <!-- Schema.org JSON-LD Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": "https://ramamtextiles.shop/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ramamtextiles.shop/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Jaipur Hand Block Catalog",
+          "item": "https://ramamtextiles.shop/shop"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Artisan Collections Hub",
+          "item": "https://ramamtextiles.shop/collections"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Schema.org JSON-LD Structured Data: ProductGroup, Products & Offers -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProductGroup",
+      "@id": "https://ramamtextiles.shop/#signature-catalog",
+      "name": "Ramam Textiles Signature Jaipur Quilted Collection",
+      "description": "Authentic Jaipur handcrafted quilted travel duffle bags, 3-piece vanity organizer sets, and novelty accessories made with pure combed cotton batting.",
+      "url": "https://ramamtextiles.shop/shop",
+      "brand": {
+        "@type": "Brand",
+        "name": "Ramam Textiles"
+      },
+      "hasVariant": [
+        {
+          "@type": "Product",
+          "@id": "https://ramamtextiles.shop/product/heritage-kantha-patchwork-quilted-travel-duffle#product",
+          "name": "Heritage Kantha Patchwork Quilted Travel Duffle",
+          "image": [
+            "https://ramamtextiles.shop/products/duffle-kantha-patchwork.jpg",
+            "https://ramamtextiles.shop/products/duffle-kantha-patchwork.webp"
+          ],
+          "description": "Handcrafted cylindrical travel duffle bag in vibrant multi-color Kantha patchwork with candy-striped handles and soft channel quilting.",
+          "sku": "RT-BAG-008",
+          "mpn": "RT-BAG-008",
+          "category": "Quilted Travel Duffles & Totes",
+          "brand": {
+            "@type": "Brand",
+            "name": "Ramam Textiles"
+          },
+          "material": "100% Pure Indian Cotton & Soft Batting",
+          "countryOfOrigin": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ramamtextiles.shop/product/heritage-kantha-patchwork-quilted-travel-duffle",
+            "priceCurrency": "INR",
+            "price": "2499",
+            "priceValidUntil": "2027-12-31",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "Organization",
+              "name": "Ramam Textiles"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "INR"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 3,
+                  "maxValue": 7,
+                  "unitCode": "DAY"
+                }
+              }
+            }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "52",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://ramamtextiles.shop/product/jaipur-quilted-playing-card-vanity-pouch#product",
+          "name": "Heritage Pink Quilted Playing Card Vanity Pouch",
+          "image": [
+            "https://ramamtextiles.shop/products/vanity-playing-cards.jpg",
+            "https://ramamtextiles.shop/products/vanity-playing-cards.webp"
+          ],
+          "description": "Handcrafted cosmetic vanity pouch in radiant hot pink featuring artisanal playing card spade, club, and heart motifs with soft cotton padding.",
+          "sku": "RT-BAG-001",
+          "mpn": "RT-BAG-001",
+          "category": "Cosmetic & Vanity Pouch Sets",
+          "brand": {
+            "@type": "Brand",
+            "name": "Ramam Textiles"
+          },
+          "material": "100% Pure Cambric Cotton",
+          "countryOfOrigin": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ramamtextiles.shop/product/jaipur-quilted-playing-card-vanity-pouch",
+            "priceCurrency": "INR",
+            "price": "799",
+            "priceValidUntil": "2027-12-31",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "Organization",
+              "name": "Ramam Textiles"
+            }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "38",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://ramamtextiles.shop/product/indigo-mughal-floral-quilted-travel-duffle-bag#product",
+          "name": "Indigo Mughal Floral Quilted Travel Duffle Bag",
+          "image": [
+            "https://ramamtextiles.shop/products/duffle-indigo.jpg",
+            "https://ramamtextiles.shop/products/duffle-indigo.webp"
+          ],
+          "description": "Authentic Bagru natural fermented indigo hand block-printed quilted weekender bag with dense floral trellis and brass zip hardware.",
+          "sku": "RT-BAG-009",
+          "mpn": "RT-BAG-009",
+          "category": "Quilted Travel Duffles & Totes",
+          "brand": {
+            "@type": "Brand",
+            "name": "Ramam Textiles"
+          },
+          "material": "100% Cotton with Natural Indigo Vat Dye",
+          "countryOfOrigin": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ramamtextiles.shop/product/indigo-mughal-floral-quilted-travel-duffle-bag",
+            "priceCurrency": "INR",
+            "price": "2399",
+            "priceValidUntil": "2027-12-31",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "Organization",
+              "name": "Ramam Textiles"
+            }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "41",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://ramamtextiles.shop/product/turquoise-sanganeri-blossom-quilted-cosmetic-pouch-trio#product",
+          "name": "Turquoise Sanganeri Blossom Quilted Cosmetic Pouch Trio",
+          "image": [
+            "https://ramamtextiles.shop/products/vanity-trio-turquoise.jpg",
+            "https://ramamtextiles.shop/products/vanity-trio-turquoise.webp"
+          ],
+          "description": "3-Piece nesting cosmetic and vanity pouch organizer set in serene sea-blue Sanganeri floral hand block print with tassel pulls.",
+          "sku": "RT-BAG-003",
+          "mpn": "RT-BAG-003",
+          "category": "Cosmetic & Vanity Pouch Sets",
+          "brand": {
+            "@type": "Brand",
+            "name": "Ramam Textiles"
+          },
+          "material": "100% Combed Cotton with Water-Resistant Lining",
+          "countryOfOrigin": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ramamtextiles.shop/product/turquoise-sanganeri-blossom-quilted-cosmetic-pouch-trio",
+            "priceCurrency": "INR",
+            "price": "1499",
+            "priceValidUntil": "2027-12-31",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "Organization",
+              "name": "Ramam Textiles"
+            }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "33",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Schema.org JSON-LD Structured Data: DataCatalog / Database Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DataCatalog",
+      "@id": "https://ramamtextiles.shop/#datacatalog",
+      "name": "Ramam Textiles Technical Sourcing & Textile Database",
+      "description": "Technical specifications database of authentic Jaipur artisan craft clusters, yarn counts (60s, 80s, 40s), fabric GSM weights, natural dye chemistry, and export parameters.",
+      "url": "https://ramamtextiles.shop/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ramam Textiles"
+      },
+      "dataset": [
+        {
+          "@type": "Dataset",
+          "name": "Jaipur Hand Block Print Cotton Fabrics Dataset",
+          "description": "Yarn count matrices (60x60, 40x40), GSM weights (75-120 GSM), width specifications (44 inches), and natural dye fastness parameters for wholesale buyers.",
+          "license": "https://ramamtextiles.shop/terms-conditions",
+          "creator": {
+            "@type": "Organization",
+            "name": "Ramam Textiles"
+          }
+        },
+        {
+          "@type": "Dataset",
+          "name": "Quilted Indian Cotton Luggage & Accessories Specifications",
+          "description": "Shock-absorbing combed cotton batting density, channel quilting intervals (1/2 inch), zipper tensile ratings, and volume capacities across duffle, weekender, and vanity sets.",
+          "license": "https://ramamtextiles.shop/terms-conditions",
+          "creator": {
+            "@type": "Organization",
+            "name": "Ramam Textiles"
+          }
+        },
+        {
+          "@type": "Dataset",
+          "name": "Natural Botanical Mordant & Bagru Dabu Indigo Chemistry Registry",
+          "description": "Technical chemistry breakdown of Terminalia chebula (Harda) tannin priming, potash alum crimson chelation, and 30-day fermented iron acetate (Syahi) bio-fermentation.",
+          "license": "https://ramamtextiles.shop/terms-conditions",
+          "creator": {
+            "@type": "Organization",
+            "name": "Ramam Textiles"
+          }
+        }
       ]
     }
     </script>
