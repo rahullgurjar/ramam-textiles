@@ -40,3 +40,17 @@ export const resolveWebpImage = (src: string | undefined): string => {
   return resolveProductImage(webpPath);
 };
 
+/**
+ * Returns the corresponding AVIF URL if available for cutting-edge browser acceleration (~30-50% smaller than WebP).
+ */
+export const resolveAvifImage = (src: string | undefined): string => {
+  if (!src) return '';
+  if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) {
+    return src;
+  }
+  // Convert extension to .avif
+  const avifPath = src.replace(/\.(jpg|jpeg|png|webp)$/i, '.avif');
+  return resolveProductImage(avifPath);
+};
+
+

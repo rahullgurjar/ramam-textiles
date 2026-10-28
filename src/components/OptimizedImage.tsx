@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage, resolveAvifImage } from '../utils/imageUtils';
 
 interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -21,6 +21,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const [hasError, setHasError] = useState(false);
 
   const activeSrc = hasError ? fallbackSrc : src;
+  const avifUrl = resolveAvifImage(activeSrc);
   const webpUrl = resolveWebpImage(activeSrc);
   const jpgUrl = resolveProductImage(activeSrc);
 
@@ -28,6 +29,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
 
   return (
     <picture className="contents">
+      {isLocalImage && <source srcSet={avifUrl} type="image/avif" />}
       {isLocalImage && <source srcSet={webpUrl} type="image/webp" />}
       <img
         src={jpgUrl}

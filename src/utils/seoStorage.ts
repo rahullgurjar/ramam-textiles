@@ -199,7 +199,7 @@ function buildFactoryPages(): PageSEOData[] {
       seoTitle: seoDef.title,
       metaDescription: seoDef.description,
       urlSlug: item.path === '/' ? '' : item.path.replace('/', ''),
-      canonicalUrl: `${BASE_URL}${item.path === '/' ? '' : item.path}`,
+      canonicalUrl: `${BASE_URL}${item.path === '/' ? '/' : item.path}`,
       robotsDirectives: isLegal ? 'noindex, follow' : 'index, follow',
       isIndexable: !isLegal,
       isFollowable: true,

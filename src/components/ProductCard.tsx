@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
-import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage, resolveAvifImage } from '../utils/imageUtils';
 import { 
   ShoppingBag, 
   Eye, 
@@ -58,6 +58,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
         }}
       >
         <picture className="w-full h-full block">
+          <source 
+            srcSet={resolveAvifImage(product.images[currentImgIndex] || product.images[0])} 
+            type="image/avif" 
+          />
           <source 
             srcSet={resolveWebpImage(product.images[currentImgIndex] || product.images[0])} 
             type="image/webp" 

@@ -9,8 +9,8 @@ import { LOOKBOOK_ITEMS } from '../data/lookbook';
 import { FEATURED_JOURNAL_PREVIEWS, TOTAL_JOURNAL_COUNT } from '../data/featuredJournal';
 import { ProductCard } from '../components/ProductCard';
 import { InstagramIcon } from '../components/InstagramIcon';
-import { BulkOrderEnquiryForm } from '../components/BulkOrderEnquiryForm';
-import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+const BulkOrderEnquiryForm = React.lazy(() => import('../components/BulkOrderEnquiryForm').then(m => ({ default: m.BulkOrderEnquiryForm })));
+import { resolveProductImage, resolveWebpImage, resolveAvifImage } from '../utils/imageUtils';
 import { usePageSEO, DEFAULT_SEO } from '../utils/seo';
 
 interface HomePageProps {
@@ -100,8 +100,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   <picture className="w-full h-full block">
                     <source
                       media="(max-width: 640px)"
+                      srcSet="/products/duffle-kantha-patchwork-mobile.avif"
+                      type="image/avif"
+                    />
+                    <source
+                      media="(max-width: 640px)"
                       srcSet="/products/duffle-kantha-patchwork-mobile.webp"
                       type="image/webp"
+                    />
+                    <source
+                      srcSet={resolveAvifImage('/products/duffle-kantha-patchwork.jpg')}
+                      type="image/avif"
                     />
                     <source
                       srcSet={resolveWebpImage('/products/duffle-kantha-patchwork.jpg')}
@@ -776,7 +785,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           9. BULK ORDER ENQUIRY & WHOLESALE QUOTATION
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 content-visibility-auto">
-        <BulkOrderEnquiryForm id="bulk-enquiry" />
+        <React.Suspense fallback={
+          <div className="min-h-[380px] rounded-[32px] bg-[#FAF5EE] border border-[#D4AF37]/35 flex flex-col items-center justify-center p-8 text-center">
+            <span className="font-royal-title text-sm uppercase tracking-widest text-[#9B332C] font-bold">
+              Ramam Textiles Wholesale Atelier
+            </span>
+            <span className="text-xs text-stone-500 font-royal-body mt-1">
+              Preparing custom enquiry portal...
+            </span>
+          </div>
+        }>
+          <BulkOrderEnquiryForm id="bulk-enquiry" />
+        </React.Suspense>
       </section>
 
       {/* =========================================================================

@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Toast } from './components/Toast';
 import { MobileBottomBar } from './components/MobileBottomBar';
+import { updateCanonicalTag } from './utils/seo';
 
 // Keep HomePage in primary critical chunk for instant First Contentful Paint
 import { HomePage } from './pages/HomePage';
@@ -110,7 +111,15 @@ export const App: React.FC = () => {
 
   const [isB2BUnlockModalOpen, setIsB2BUnlockModalOpen] = useState(false);
   const [isSecretAdminModalOpen, setIsSecretAdminModalOpen] = useState(false);
-  const { isPolicyModalOpen, policyModalTab, closePolicyModal, openPolicyModal } = useApp();
+  const { 
+    isPolicyModalOpen, 
+    policyModalTab, 
+    closePolicyModal, 
+    openPolicyModal,
+    isInquiryDrawerOpen,
+    isQuickQuoteOpen,
+    isSearchModalOpen
+  } = useApp();
 
   // Listen for secret keyboard shortcut (Ctrl+Shift+A or Alt+A) and custom event to open hidden admin key modal
   useEffect(() => {
@@ -177,8 +186,12 @@ export const App: React.FC = () => {
     };
   }, []);
 
-  // Track dynamic SPA route transitions in Google Tag Manager dataLayer & Google Analytics (gtag.js)
+  // Synchronize canonical tag, OpenGraph URL, and analytics on every SPA route transition
   useEffect(() => {
+    // 1. Maintain technically perfect, self-referencing canonical tag across SPA route changes
+    updateCanonicalTag(currentPath);
+
+    // 2. Track SPA route transition in Google Tag Manager dataLayer & Google Analytics (gtag.js)
     if (typeof window !== 'undefined') {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
@@ -358,25 +371,31 @@ export const App: React.FC = () => {
       {/* Mobile Quick Thumb Navigation Bar */}
       <MobileBottomBar currentPath={currentPath} onNavigate={navigate} />
 
-      {/* Interactive Drawers & Modals (Lazy Loaded) */}
+      {/* Interactive Drawers & Modals (Lazy Loaded on Demand) */}
       <Suspense fallback={null}>
-        <InquiryDrawer onNavigate={navigate} />
-        <QuickQuoteModal />
-        <SearchModal onNavigate={navigate} />
-        <B2BPricingUnlockModal 
-          isOpen={isB2BUnlockModalOpen} 
-          onClose={() => setIsB2BUnlockModalOpen(false)} 
-        />
-        <PolicyModal 
-          isOpen={isPolicyModalOpen}
-          initialTab={policyModalTab}
-          onClose={closePolicyModal}
-        />
-        <SecretAdminKeyModal
-          isOpen={isSecretAdminModalOpen}
-          onClose={() => setIsSecretAdminModalOpen(false)}
-          onSuccessNavigate={navigate}
-        />
+        {isInquiryDrawerOpen && <InquiryDrawer onNavigate={navigate} />}
+        {isQuickQuoteOpen && <QuickQuoteModal />}
+        {isSearchModalOpen && <SearchModal onNavigate={navigate} />}
+        {isB2BUnlockModalOpen && (
+          <B2BPricingUnlockModal 
+            isOpen={isB2BUnlockModalOpen} 
+            onClose={() => setIsB2BUnlockModalOpen(false)} 
+          />
+        )}
+        {isPolicyModalOpen && (
+          <PolicyModal 
+            isOpen={isPolicyModalOpen}
+            initialTab={policyModalTab}
+            onClose={closePolicyModal}
+          />
+        )}
+        {isSecretAdminModalOpen && (
+          <SecretAdminKeyModal
+            isOpen={isSecretAdminModalOpen}
+            onClose={() => setIsSecretAdminModalOpen(false)}
+            onSuccessNavigate={navigate}
+          />
+        )}
       </Suspense>
 
       {/* Global Toast Notification System */}

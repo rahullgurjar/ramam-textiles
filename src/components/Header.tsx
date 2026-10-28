@@ -100,11 +100,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               aria-label="Ramam Textiles Jaipur - Return to Homepage"
               className="flex items-center gap-3 cursor-pointer group shrink-0"
             >
-              <div className="relative shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#FAF5EE] border border-[#D4AF37]/50 shadow-sm flex items-center justify-center p-1 group-hover:border-[#9B332C] transition-all duration-300 group-hover:scale-105">
+              <div className="relative shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden bg-[#FAF5EE] border border-[#D4AF37]/50 shadow-sm flex items-center justify-center p-1 group-hover:border-[#9B332C] transition-all duration-300 group-hover:scale-105">
                 <picture className="w-full h-full block">
-                  <source srcSet="/logo.webp" type="image/webp" />
+                  <source srcSet="/logo.avif?v=2" type="image/avif" />
+                  <source srcSet="/logo.webp?v=2" type="image/webp" />
                   <img 
-                    src="/logo.png" 
+                    src="/logo.png?v=2" 
                     alt="Ramam Textiles Jaipur" 
                     width="48"
                     height="48"
@@ -438,10 +439,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   aria-label="Ramam Textiles - Home"
                   className="flex items-center gap-3"
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#FAF5EE] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 shrink-0">
+                  <div className="w-12 h-12 rounded-full overflow-hidden bg-[#FAF5EE] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 shrink-0">
                     <picture className="w-full h-full block">
-                      <source srcSet="/logo.webp" type="image/webp" />
-                      <img src="/logo.png" alt="Ramam Textiles" width="48" height="48" decoding="async" className="w-full h-full object-contain filter drop-shadow-sm" />
+                      <source srcSet="/logo.avif?v=2" type="image/avif" />
+                      <source srcSet="/logo.webp?v=2" type="image/webp" />
+                      <img src="/logo.png?v=2" alt="Ramam Textiles" width="48" height="48" decoding="async" className="w-full h-full object-contain filter drop-shadow-sm" />
                     </picture>
                   </div>
                   <div className="whitespace-nowrap flex items-baseline gap-1.5 leading-none">

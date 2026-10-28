@@ -10,7 +10,7 @@ import { PRODUCTS } from '../data/products';
 import { useApp } from '../context/AppContext';
 import { ProductCard } from '../components/ProductCard';
 import { InstagramIcon } from '../components/InstagramIcon';
-import { resolveProductImage, resolveWebpImage } from '../utils/imageUtils';
+import { resolveProductImage, resolveWebpImage, resolveAvifImage } from '../utils/imageUtils';
 import { usePageSEO } from '../utils/seo';
 
 interface ProductDetailPageProps {
@@ -127,6 +127,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
           >
             <picture className="w-full h-full block">
               <source
+                srcSet={resolveAvifImage(product.images[activeImageIndex] || product.images[0])}
+                type="image/avif"
+              />
+              <source
                 srcSet={resolveWebpImage(product.images[activeImageIndex] || product.images[0])}
                 type="image/webp"
               />
@@ -210,6 +214,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ slug, onNa
                   }`}
                 >
                   <picture className="w-full h-full block">
+                    <source srcSet={resolveAvifImage(img)} type="image/avif" />
                     <source srcSet={resolveWebpImage(img)} type="image/webp" />
                     <img 
                       src={resolveProductImage(img)} 

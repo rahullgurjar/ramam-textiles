@@ -431,7 +431,12 @@ allRoutes.forEach(entry => {
   const override = publishedOverrides[entry.route];
   const title = (override && override.seoTitle) ? override.seoTitle : entry.title;
   const description = (override && override.metaDescription) ? override.metaDescription : entry.description;
-  const canonicalUrl = (override && override.canonicalUrl) ? override.canonicalUrl : `${BASE_URL}${entry.route}`;
+  let canonicalUrl = (override && override.canonicalUrl) ? override.canonicalUrl : `${BASE_URL}${entry.route}`;
+  if (entry.route === '/' && !canonicalUrl.endsWith('/')) {
+    canonicalUrl += '/';
+  } else if (entry.route !== '/' && canonicalUrl.endsWith('/')) {
+    canonicalUrl = canonicalUrl.slice(0, -1);
+  }
   const image = (override && override.ogImage) ? override.ogImage : entry.image;
   let html = baseIndexHtml;
 
@@ -441,8 +446,12 @@ allRoutes.forEach(entry => {
   // 2. Update Meta Description
   html = html.replace(/<meta\s+name=["']description["'][^>]*>/i, `<meta name="description" content="${escapeXml(description)}" />`);
 
-  // 3. Update Canonical Tag
-  html = html.replace(/<link\s+rel=["']canonical["'][^>]*>/i, `<link rel="canonical" href="${canonicalUrl}" />`);
+  // 3. Update Canonical Tag (strictly normalized absolute HTTPS)
+  if (html.includes('<link rel="canonical"')) {
+    html = html.replace(/<link\s+rel=["']canonical["'][^>]*>/i, `<link rel="canonical" href="${canonicalUrl}" />`);
+  } else {
+    html = html.replace('</head>', `  <link rel="canonical" href="${canonicalUrl}" />\n</head>`);
+  }
 
   // 4. Update OpenGraph Tags
   html = html.replace(/<meta\s+property=["']og:title["'][^>]*>/i, `<meta property="og:title" content="${escapeXml(title)}" />`);

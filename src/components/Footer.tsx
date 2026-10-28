@@ -202,11 +202,12 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
               aria-label="Ramam Textiles Jaipur - Return to Homepage"
               className="flex items-center gap-4 cursor-pointer group"
             >
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FAF5EE] border-2 border-[#D4AF37] shadow-md flex items-center justify-center p-2 shrink-0 group-hover:border-[#9B332C] transition-colors">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-[#FAF5EE] border-2 border-[#D4AF37] shadow-md flex items-center justify-center p-2 shrink-0 group-hover:border-[#9B332C] transition-colors">
                 <picture className="w-full h-full block">
-                  <source srcSet="/logo.webp" type="image/webp" />
+                  <source srcSet="/logo.avif?v=2" type="image/avif" />
+                  <source srcSet="/logo.webp?v=2" type="image/webp" />
                   <img 
-                    src="/logo.png" 
+                    src="/logo.png?v=2" 
                     alt="Ramam Textiles Jaipur" 
                     width="64"
                     height="64"

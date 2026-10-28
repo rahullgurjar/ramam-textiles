@@ -115,6 +115,112 @@ function getPublishedSEORecord(path: string): any {
 }
 
 /**
+ * Builds a technically perfect canonical URL strictly following Google Search Central standards:
+ * 1. Absolute HTTPS URL with the official domain: https://ramamtextiles.shop
+ * 2. Strips all query parameters (?utm_..., ?ref=..., ?sort=..., etc.)
+ * 3. Strips all URL hash fragments (#...)
+ * 4. Normalizes root domain to have a trailing slash: https://ramamtextiles.shop/
+ * 5. Normalizes subpaths to have NO trailing slash: https://ramamtextiles.shop/shop
+ * 6. Consolidates alias/redirect routes to their canonical target:
+ *    - /blogs/ -> /blog/
+ *    - /journal/ -> /blog/
+ *    - /bulk-order -> /bulk-enquiry
+ * 7. Enforces lowercase ASCII paths
+ */
+export function getCanonicalUrl(rawPath: string = ''): string {
+  const BASE_URL = 'https://ramamtextiles.shop';
+  
+  if (!rawPath || rawPath === '/' || rawPath === '') {
+    return `${BASE_URL}/`;
+  }
+
+  let pathOnly = rawPath;
+  if (pathOnly.startsWith('http://') || pathOnly.startsWith('https://')) {
+    try {
+      const parsed = new URL(pathOnly);
+      pathOnly = parsed.pathname;
+    } catch {
+      pathOnly = pathOnly.replace(/^https?:\/\/[^\/]+/, '');
+    }
+  }
+
+  // Strip query strings and hash anchors
+  pathOnly = pathOnly.split('?')[0].split('#')[0];
+
+  // Ensure leading slash
+  if (!pathOnly.startsWith('/')) {
+    pathOnly = '/' + pathOnly;
+  }
+
+  // Consolidate aliases to primary canonical paths
+  if (pathOnly.startsWith('/blogs/')) {
+    pathOnly = pathOnly.replace('/blogs/', '/blog/');
+  } else if (pathOnly === '/blogs') {
+    pathOnly = '/blog';
+  } else if (pathOnly.startsWith('/journal/')) {
+    pathOnly = pathOnly.replace('/journal/', '/blog/');
+  } else if (pathOnly === '/journal') {
+    pathOnly = '/blog';
+  } else if (pathOnly.startsWith('/bulk-order')) {
+    pathOnly = pathOnly.replace('/bulk-order', '/bulk-enquiry');
+  }
+
+  // Check root
+  if (pathOnly === '/' || pathOnly === '') {
+    return `${BASE_URL}/`;
+  }
+
+  // Remove trailing slash for subpaths
+  if (pathOnly.endsWith('/')) {
+    pathOnly = pathOnly.slice(0, -1);
+  }
+
+  return `${BASE_URL}${pathOnly.toLowerCase()}`;
+}
+
+/**
+ * Updates or injects the <link rel="canonical"> tag in document.head.
+ * Guarantees:
+ * - Exactly ONE canonical tag exists in <head> (removes any accidental duplicates)
+ * - href is absolute, HTTPS, clean, and self-referencing
+ * - Synchronizes <meta property="og:url"> in tandem
+ */
+export function updateCanonicalTag(path?: string, customCanonical?: string): string {
+  if (typeof document === 'undefined') return '';
+
+  const finalUrl = customCanonical && customCanonical.startsWith('https://')
+    ? (customCanonical === 'https://ramamtextiles.shop' ? 'https://ramamtextiles.shop/' : customCanonical)
+    : getCanonicalUrl(path || (typeof window !== 'undefined' ? window.location.pathname : '/'));
+
+  // Remove any duplicate canonical tags to strictly prevent Googlebot invalidation
+  const existingCanonicals = document.querySelectorAll('link[rel="canonical"]');
+  if (existingCanonicals.length > 1) {
+    for (let i = 1; i < existingCanonicals.length; i++) {
+      existingCanonicals[i].parentNode?.removeChild(existingCanonicals[i]);
+    }
+  }
+
+  let canonical = existingCanonicals[0] as HTMLLinkElement | undefined;
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonical);
+  }
+  canonical.setAttribute('href', finalUrl);
+
+  // Synchronize OpenGraph URL with canonical URL
+  let ogUrl = document.querySelector('meta[property="og:url"]');
+  if (!ogUrl) {
+    ogUrl = document.createElement('meta');
+    ogUrl.setAttribute('property', 'og:url');
+    document.head.appendChild(ogUrl);
+  }
+  ogUrl.setAttribute('content', finalUrl);
+
+  return finalUrl;
+}
+
+/**
  * Updates document title, meta descriptions, and OpenGraph metadata dynamically,
  * incorporating any manual published SEO overrides from the SEO Admin Panel.
  */
@@ -126,7 +232,7 @@ export function setPageSEO({ title, description, path = '', image = '/logo.png' 
   // Check if a published manual SEO override exists for this route
   let effectiveTitle = title;
   let effectiveDesc = description;
-  let effectiveCanonical = `https://ramamtextiles.shop${cleanPath === '/' ? '' : cleanPath}`;
+  let effectiveCanonical = getCanonicalUrl(cleanPath);
   let effectiveRobots = 'index, follow';
   let effectiveOgTitle = title;
   let effectiveOgDesc = description;
@@ -143,7 +249,11 @@ export function setPageSEO({ title, description, path = '', image = '/logo.png' 
     if (override) {
       if (override.seoTitle) effectiveTitle = override.seoTitle;
       if (override.metaDescription) effectiveDesc = override.metaDescription;
-      if (override.canonicalUrl) effectiveCanonical = override.canonicalUrl;
+      if (override.canonicalUrl) {
+        effectiveCanonical = override.canonicalUrl === 'https://ramamtextiles.shop' 
+          ? 'https://ramamtextiles.shop/' 
+          : override.canonicalUrl;
+      }
       if (override.robotsDirectives) effectiveRobots = override.robotsDirectives;
       if (override.ogTitle) effectiveOgTitle = override.ogTitle;
       if (override.ogDescription) effectiveOgDesc = override.ogDescription;
@@ -179,14 +289,8 @@ export function setPageSEO({ title, description, path = '', image = '/logo.png' 
   }
   metaDesc.setAttribute('content', effectiveDesc);
 
-  // 3. Update Canonical Link
-  let canonical = document.querySelector('link[rel="canonical"]');
-  if (!canonical) {
-    canonical = document.createElement('link');
-    canonical.setAttribute('rel', 'canonical');
-    document.head.appendChild(canonical);
-  }
-  canonical.setAttribute('href', effectiveCanonical);
+  // 3. Update Canonical Link (strictly unique, normalized and verified)
+  updateCanonicalTag(cleanPath, effectiveCanonical);
 
   // 4. Update Meta Robots
   let robotsMeta = document.querySelector('meta[name="robots"]');
