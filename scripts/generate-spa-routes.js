@@ -13,6 +13,30 @@ if (!fs.existsSync(indexPath)) {
   process.exit(1);
 }
 
+
+function clampTitle(rawTitle, siteSuffix = ' | Ramam Textiles') {
+  if (!rawTitle) return 'Ramam Textiles | Luxury Indian Textiles Jaipur';
+  let t = rawTitle.trim();
+  // Strip existing suffix
+  let clean = t.replace(/\s*(\||\•)\s*Ramam Textiles.*$/i, '').trim();
+  let result = clean + siteSuffix;
+  // If XML-escaped result is > 60 chars, trim clean further
+  while (escapeXml(result).length > 60 && clean.length > 5) {
+    clean = clean.substring(0, clean.length - 2).trim() + '…';
+    result = clean + siteSuffix;
+  }
+  return result;
+}
+
+function clampDescription(rawDesc) {
+  if (!rawDesc) return 'Authentic Jaipur luxury hand block prints, artisan apparel, quilted bags, and custom textiles direct from Rajasthan.';
+  let d = rawDesc.trim();
+  if (d.length <= 155) return d;
+  const trimmed = d.substring(0, 151);
+  const lastSpace = trimmed.lastIndexOf(' ');
+  return (lastSpace > 110 ? trimmed.substring(0, lastSpace) : trimmed).trim() + '...';
+}
+
 const BASE_URL = 'https://ramamtextiles.shop';
 const baseIndexHtml = fs.readFileSync(indexPath, 'utf-8');
 
@@ -130,10 +154,10 @@ const articles = parseJournalData();
 // Core Static Page Definitions
 const CORE_PAGE_SEO = {
   '/': {
-    title: 'RAMAM TEXTILES | Luxury Indian Textiles, Apparel & Wholesale Manufacturer | Jaipur',
-    description: 'Ramam Textiles is an authentic Indian luxury textile manufacturer based in Jaipur, Rajasthan. Specializing in hand block prints, artisan apparel, quilted cotton bags, pure fabrics by meter, and custom manufacturing for global brands.',
-    h1: 'Authentic Jaipur Artisan Textiles & Wholesale Manufacturing',
-    snippet: 'Discover royal Rajasthani craftsmanship, hand block printed quilted duffles, nesting vanity pouches, and private label apparel direct from our Jaipur workshop.'
+    title: 'Ramam Textiles | Luxury Indian Textiles & Apparel Jaipur',
+    description: 'Ramam Textiles in Jaipur crafts luxury hand block prints, artisan apparel, quilted bags, and custom textiles for global fashion brands.',
+    h1: 'Ramam Textiles — Luxury Indian Hand Block Prints & Artisan Apparel Manufacturer Jaipur',
+    snippet: 'Discover authentic Jaipur hand block prints, artisan apparel, quilted cotton duffle bags, and custom manufacturing direct from our Rajasthan atelier.'
   },
   '/shop': {
     title: 'Wholesale Catalog & Ready-To-Order SKUs | Ramam Textiles Jaipur',
@@ -152,6 +176,13 @@ const CORE_PAGE_SEO = {
     description: 'Bespoke apparel production, custom wooden block carving, botanical dyeing, and private label packaging from our Jaipur atelier. Flexible minimums and global shipping.',
     h1: 'Custom Manufacturing & Private Label Atelier Jaipur',
     snippet: 'Full end-to-end manufacturing for global retail boutiques, fashion designers, and hospitality brands: custom woodblock carving, lab-dip color matching, and custom woven tags.'
+  },
+  
+  '/bulk-enquiry': {
+    title: 'Bulk Order & Wholesale Quote | Ramam Textiles',
+    description: 'Submit wholesale inquiries for custom printing, apparel, and quilted bags with low MOQs and worldwide air dispatch from Jaipur.',
+    h1: 'Request Wholesale Price Sheet & Bulk Order Quotation',
+    snippet: 'Connect with our Jaipur export coordinators for tiered wholesale pricing, proto-sample strike-offs, and custom manufacturing tech packs.'
   },
   '/wholesale': {
     title: 'Wholesale Buyer Portal & Direct Atelier Terms | Ramam Textiles Jaipur',
@@ -429,8 +460,10 @@ console.log(`Generating ${allRoutes.length} static entrypoint pages in dist/ for
 
 allRoutes.forEach(entry => {
   const override = publishedOverrides[entry.route];
-  const title = (override && override.seoTitle) ? override.seoTitle : entry.title;
-  const description = (override && override.metaDescription) ? override.metaDescription : entry.description;
+  const rawTitle = (override && override.seoTitle) ? override.seoTitle : entry.title;
+  const title = clampTitle(rawTitle);
+  const rawDesc = (override && override.metaDescription) ? override.metaDescription : entry.description;
+  const description = clampDescription(rawDesc);
   let canonicalUrl = (override && override.canonicalUrl) ? override.canonicalUrl : `${BASE_URL}${entry.route}`;
   if (entry.route === '/' && !canonicalUrl.endsWith('/')) {
     canonicalUrl += '/';
@@ -584,19 +617,41 @@ allRoutes.forEach(entry => {
 
   // 7. Inject Semantic Static Fallback inside <div id="root">
   let fallbackContent = `
-    <header style="padding:24px 20px;border-bottom:1px solid #E8DFD8;background:#FDFCFA;display:flex;justify-content:space-between;align-items:center;">
-      <a href="/" style="font-family:serif;font-size:20px;font-weight:700;color:#9B332C;text-decoration:none;letter-spacing:1px;">RAMAM TEXTILES</a>
-      <nav style="display:flex;gap:18px;font-size:14px;">
-        <a href="/shop" style="color:#241A16;text-decoration:none;">Shop Catalog</a>
+    <header style="padding:20px 24px;border-bottom:1px solid #E8DFD8;background:#FDFCFA;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <a href="/" style="font-family:Georgia,serif;font-size:22px;font-weight:700;color:#9B332C;text-decoration:none;letter-spacing:1px;">RAMAM TEXTILES</a>
+      <nav style="display:flex;gap:16px;font-size:14px;flex-wrap:wrap;font-weight:600;">
+        <a href="/shop" style="color:#241A16;text-decoration:none;">Wholesale Catalog</a>
         <a href="/collections" style="color:#241A16;text-decoration:none;">Collections</a>
         <a href="/wholesale" style="color:#241A16;text-decoration:none;">Wholesale</a>
+        <a href="/custom-manufacturing" style="color:#241A16;text-decoration:none;">Custom OEM</a>
         <a href="/about" style="color:#241A16;text-decoration:none;">About</a>
+        <a href="/journal" style="color:#241A16;text-decoration:none;">Journal</a>
         <a href="/contact" style="color:#241A16;text-decoration:none;">Contact</a>
       </nav>
     </header>
-    <main style="max-width:1100px;margin:40px auto;padding:0 20px;font-family:sans-serif;color:#241A16;line-height:1.6;">
-      <h1 style="font-family:serif;font-size:32px;color:#9B332C;margin-bottom:16px;">${escapeXml(entry.h1)}</h1>
-      <p style="font-size:16px;color:#554D47;max-width:800px;margin-bottom:24px;">${escapeXml(entry.snippet)}</p>
+    <main style="max-width:1100px;margin:40px auto;padding:0 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#241A16;line-height:1.7;">
+      <h1 style="font-family:Georgia,serif;font-size:30px;color:#9B332C;margin-bottom:16px;line-height:1.3;">${escapeXml(entry.h1)}</h1>
+      <p style="font-size:16px;color:#4A4039;max-width:850px;margin-bottom:24px;">${escapeXml(entry.snippet)}</p>
+
+      <section style="margin:28px 0;padding:24px;background:#FFFFFF;border:1px solid #E8DFD8;border-radius:10px;">
+        <h2 style="font-family:Georgia,serif;font-size:20px;color:#241A16;margin-bottom:10px;font-weight:600;">Authentic Jaipur Artisan Craftsmanship &amp; Heritage Printing</h2>
+        <p style="font-size:15px;color:#554D47;line-height:1.7;margin-bottom:0;">
+          Rooted in Rajasthan's historic textile craft settlements of Sanganer and Bagru, Ramam Textiles upholds four centuries of authentic hand block printing heritage. Master woodcarvers hand-chisel seasoned Teak and Sheesham wood blocks with delicate floral bootis, imperial Mughal jals, and geometric trellises. Utilizing natural botanical mordanting, harda tannin priming, and certified AZO-free pigments or 30-day fermented natural indigo vats, our artisans stamp each meter of combed cotton with rhythmic accuracy and sustainable care. Every fabric piece undergoes sun drying and pure river wash treatments to ensure long-lasting colorfastness and luxurious softness.
+        </p>
+      </section>
+
+      <section style="margin:28px 0;padding:24px;background:#FFFFFF;border:1px solid #E8DFD8;border-radius:10px;">
+        <h2 style="font-family:Georgia,serif;font-size:20px;color:#241A16;margin-bottom:10px;font-weight:600;">Direct Atelier Wholesale Sourcing &amp; Custom Manufacturing</h2>
+        <p style="font-size:15px;color:#554D47;line-height:1.7;margin-bottom:16px;">
+          Ramam Textiles provides full-package OEM manufacturing and wholesale supply to boutique retailers, fashion designers, and department stores across 40+ countries. We offer low minimum order quantities starting at just 25 units per style, custom wooden block carving in 5-7 business days, Pantone TCX color matching, pure cotton batting for channel-quilted luggage, and insured express door-to-door international air freight. Our dedicated export documentation team manages customs clearances, certificates of origin, and seamless logistics from Jaipur directly to your doorstep.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="/shop" style="display:inline-block;background:#9B332C;color:#FFFFFF;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:13px;">Browse Ready Catalog</a>
+          <a href="/wholesale" style="display:inline-block;border:1px solid #9B332C;color:#9B332C;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:13px;">Wholesale Pricing Terms</a>
+          <a href="/bulk-enquiry" style="display:inline-block;border:1px solid #241A16;color:#241A16;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:13px;">Request Bulk Quotation</a>
+          <a href="/contact" style="display:inline-block;border:1px solid #E8DFD8;color:#554D47;background:#FAF6F2;padding:10px 20px;border-radius:6px;text-decoration:none;font-size:13px;">Contact Jaipur Atelier</a>
+        </div>
+      </section>
   `;
 
   if (entry.productData) {
@@ -649,13 +704,33 @@ allRoutes.forEach(entry => {
 
   fallbackContent += `
     </main>
-    <footer style="margin-top:60px;padding:32px 20px;border-top:1px solid #E8DFD8;background:#FAF6F2;text-align:center;font-size:13px;color:#7A6E65;">
-      <p>© ${new Date().getFullYear()} Ramam Textiles, Jaipur, Rajasthan, India. All rights reserved.</p>
-      <p style="margin-top:8px;">Authentic Hand Block Prints | Quilted Bags | Wholesale Apparel</p>
+    </main>
+    <footer style="margin-top:60px;padding:36px 20px;border-top:1px solid #E8DFD8;background:#FAF6F2;text-align:center;font-size:13px;color:#7A6E65;">
+      <div style="max-width:800px;margin:0 auto 16px auto;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;">
+        <a href="/shipping-returns" style="color:#7A6E65;text-decoration:none;">Shipping &amp; Returns</a>
+        <span>&bull;</span>
+        <a href="/privacy-policy" style="color:#7A6E65;text-decoration:none;">Privacy Policy</a>
+        <span>&bull;</span>
+        <a href="/terms-conditions" style="color:#7A6E65;text-decoration:none;">Terms &amp; Conditions</a>
+        <span>&bull;</span>
+        <a href="/faq" style="color:#7A6E65;text-decoration:none;">Buyer FAQ</a>
+        <span>&bull;</span>
+        <a href="/bulk-enquiry" style="color:#7A6E65;text-decoration:none;">Bulk Quotation</a>
+      </div>
+      <p style="margin:0;">&copy; ${new Date().getFullYear()} Ramam Textiles, Jaipur, Rajasthan, India. All rights reserved.</p>
+      <p style="margin-top:6px;font-size:12px;color:#A0968E;">Authentic Hand Block Prints &bull; Quilted Bags &bull; Wholesale Apparel Export</p>
     </footer>
   `;
 
-  html = html.replace(/<div id=["']root["'][^>]*><\/div>/i, `<div id="root" class="overflow-x-hidden w-full relative">${fallbackContent}</div>`);
+  const rootStartIdx = html.indexOf('<div id="root"');
+  const bodyEndIdx = html.indexOf('</body>');
+  if (rootStartIdx !== -1 && bodyEndIdx !== -1) {
+    const beforeRoot = html.substring(0, rootStartIdx);
+    const afterBody = html.substring(bodyEndIdx);
+    html = beforeRoot + '<div id="root" class="overflow-x-hidden w-full relative">\n' + fallbackContent + '\n    </div>\n  ' + afterBody;
+  } else {
+    html = html.replace(/<div id=["']root["'][^>]*>[\s\S]*?<\/div>/i, '<div id="root" class="overflow-x-hidden w-full relative">' + fallbackContent + '</div>');
+  }
 
   // 1. Write to dist/[cleanRoute]/index.html (handles trailing slash: /route/)
   const cleanRoute = entry.route.replace(/^\//, '');

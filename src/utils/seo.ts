@@ -9,8 +9,8 @@ export interface SEOProps {
 
 export const DEFAULT_SEO: Record<string, { title: string; description: string }> = {
   home: {
-    title: 'RAMAM TEXTILES | Luxury Indian Textiles, Apparel & Wholesale Manufacturer | Jaipur',
-    description: 'Ramam Textiles is an authentic Indian luxury textile manufacturer based in Jaipur, Rajasthan. Specializing in hand block prints, artisan apparel, quilted cotton bags, pure fabrics by meter, and custom manufacturing for global brands.'
+    title: 'Ramam Textiles | Luxury Indian Textiles & Apparel Jaipur',
+    description: 'Ramam Textiles in Jaipur crafts luxury hand block prints, artisan apparel, quilted bags, and custom textiles for global fashion brands.'
   },
   shop: {
     title: 'Wholesale Catalog & Ready-To-Order SKUs | Ramam Textiles Jaipur',
