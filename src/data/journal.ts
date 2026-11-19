@@ -2,6 +2,108 @@ import { JournalArticle } from '../types';
 
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
+    id: 'revival-of-kala-cotton-organic-indigenous',
+    slug: 'revival-of-kala-cotton-organic-indigenous',
+    title: "The Revival of Kala Cotton: Organic, Rainfed Indigenous Indian Cotton",
+    category: 'Sustainable Fashion',
+    readTime: '8 min read',
+    publishedDate: 'November 19, 2026',
+    excerpt: "Zero irrigation, zero chemical pesticides, and 100% drought-resilient: explore why indigenous Old World Gossypium herbaceum is the future of sustainable luxury.",
+    coverImage: '/products/yoga-safari.jpg',
+    author: {
+      name: "Organic Cotton & Fiber Ecology Guild",
+      role: "Sustainable Textile Sourcing Lead",
+      bio: "Championing indigenous seed preservation, zero-chemical rainfed farming, and carbon-neutral artisan spinning across Western India."
+    },
+    contentSections: [
+      {
+            heading: "The Native Cotton That Flourishes in Drought",
+            subheading: "Gossypium Herbaceum versus Genetically Modified Hybrids",
+            body: "Over 95% of modern commercial cotton relies on thirsty American upland varieties (Gossypium hirsutum) requiring intensive chemical fertilizers and artificial irrigation.\n\nKala Cotton is India's ancient, genetically uncorrupted indigenous Old World cotton species (Gossypium herbaceum).\n\nCultivated organically in the arid desert soil of Kutch, this resilient crop survives entirely on seasonal monsoon rainfall without chemical pesticides."
+      },
+      {
+            heading: "1. The Environmental Superpowers of Kala Cotton",
+            subheading: "Zero Artificial Irrigation and Natural Pest Immunity",
+            body: "While conventional cotton consumes over 2,700 liters of freshwater per single T-shirt, Kala Cotton requires zero groundwater extraction.\n\nIts deep taproot system penetrates arid soils, drawing mineral nutrition naturally without chemical inputs.\n\nNative pests avoid Kala Cotton due to its natural resin defenses, eliminating toxic synthetic pesticide runoff into local water tables."
+      },
+      {
+            heading: "2. The Tactile Signature of Short-Staple Fibers",
+            subheading: "Textured Handfeel, Superior Breathability, and Heirloom Aging",
+            body: "Kala Cotton features a coarse, short-staple fiber that cannot be processed on ultra-fast industrial high-speed ring spinners.\n\nIt is hand-spun on traditional ambar charkhas and hand-woven on pedal pit-looms, creating a rich, slubbed artisanal texture resembling raw linen.\n\nThe resulting cloth breathes exceptionally well in tropical heat and softens progressively with every wash cycle."
+      },
+      {
+            heading: "3. Sourcing Kala Cotton for Modern Sustainable Lines",
+            subheading: "Traceable Farmer Cooperatives and Fair Value Chains",
+            body: "Sourcing authentic Kala Cotton directly supports smallholder dryland farming families and decentralized artisan weavers.\n\nBecause production volumes are tied to natural monsoon cycles, supply chains operate on fair pre-financing rather than commodity market volatility.\n\nIt provides luxury fashion designers with a genuine, carbon-neutral storytelling anchor with complete farm-to-hanger traceability."
+      },
+      {
+            quote: "Kala Cotton is not simply organic cotton—it is indigenous ecological sovereignty woven into cloth.",
+            body: "At Ramam Textiles, we combine handloom Kala Cotton fabrics with heritage Jaipur botanical block prints for eco-conscious luxury labels worldwide."
+      }
+],
+    tags: ["Kala Cotton","Organic Cotton","Rainfed Farming","Indigenous Textiles","Zero Carbon"],
+    table: {
+      caption: "Environmental Impact: Kala Cotton vs Conventional Bt Cotton",
+      headers: [
+            "Environmental Metric",
+            "Indigenous Kala Cotton",
+            "Commercial Bt Cotton"
+      ],
+      rows: [
+            [
+                  "Irrigation Water Needed",
+                  "0 Liters (100% rainfed monsoon irrigation)",
+                  "7,000 - 15,000 Liters / kg lint"
+            ],
+            [
+                  "Pesticide Application",
+                  "0 Synthetic chemical pesticides applied",
+                  "25% of global agricultural insecticide use"
+            ],
+            [
+                  "Seed Sourcing",
+                  "Open-pollinated native farmer-saved seeds",
+                  "Patented single-season GMO hybrid seeds"
+            ],
+            [
+                  "Carbon Footprint",
+                  "Carbon-negative (hand-spun, hand-woven)",
+                  "High emissions from diesel pumps & synthetic fertilizer"
+            ],
+            [
+                  "Tactile Character",
+                  "Rustic linen-like slub texture with rich drape",
+                  "Smooth, uniform industrial finish"
+            ],
+            [
+                  "Lifecycle Durability",
+                  "High tensile durability; softens over 10+ years",
+                  "Prone to fiber thinning after repeated washing"
+            ]
+      ]
+},
+    faqs: [
+      {
+            question: "Is Kala Cotton certified organic by GOTS?",
+            answer: "Yes. Authentic Kala Cotton is grown by certified farmer cooperatives compliant with USDA NOP and GOTS organic fiber standards."
+      },
+      {
+            question: "Can Kala Cotton be hand block-printed with natural dyes?",
+            answer: "Extremely well. The open porous surface of short-staple Kala Cotton fibers absorbs natural Harda, Alum, and Indigo dyes with exceptional depth."
+      },
+      {
+            question: "What garment silhouettes are ideal for Kala Cotton fabrics?",
+            answer: "Due to its structured linen-like handfeel, Kala Cotton is ideal for tailored resort shirts, overshirts, structured kimonos, trousers, and luxury home furnishings."
+      }
+],
+    leadCta: {
+      title: "Develop Certified Indigenous Kala Cotton Collections",
+      description: "Collaborate with Ramam Textiles to source certified rainfed Kala Cotton handloom yardage and custom-printed botanical apparel.",
+      primaryBtnText: "Contact Atelier / Kala Cotton Desk",
+      primaryBtnLink: "/contact"
+}
+  },
+  {
     id: 'dabu-mud-resist-vs-batik-wax-resist',
     slug: 'dabu-mud-resist-vs-batik-wax-resist',
     title: "Dabu Mud-Resist vs Batik Wax-Resist: Comparing Ancient Resist Arts",
