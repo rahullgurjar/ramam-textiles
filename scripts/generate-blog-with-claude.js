@@ -374,7 +374,7 @@ async function main() {
         `  },\n`;
 
       const updatedJournal = journalContent.replace(
-        /export const JOURNAL_ARTICLES: JournalArticle\[\] = \[\n/,
+        /export const JOURNAL_ARTICLES:\s*JournalArticle\[\]\s*=\s*\[\r?\n/,
         `export const JOURNAL_ARTICLES: JournalArticle[] = [\n${codeBlock}`
       );
 

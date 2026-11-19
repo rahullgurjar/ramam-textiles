@@ -176,7 +176,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
           <div className="flex gap-2">
             <button
               onClick={handleQuickAdd}
-              className={`flex-1 py-2 px-3 text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-sm font-royal-title ${
+              className={`flex-1 py-2.5 px-3 min-h-[42px] text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-sm font-royal-title touch-manipulation ${
                 isAdded 
                   ? 'bg-emerald-700 text-white' 
                   : 'bg-[#B81D5B] hover:bg-[#981247] text-white hover:opacity-95 border border-[#B81D5B] hover:shadow-md'
@@ -200,8 +200,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate })
                 e.stopPropagation();
                 handleCardClick();
               }}
-              className="p-2 border border-[#B81D5B]/35 rounded-xl hover:bg-[#FDF2F8] hover:border-[#B81D5B] text-[#B81D5B] transition-colors"
+              className="min-w-[42px] min-h-[42px] p-2 border border-[#B81D5B]/35 rounded-xl hover:bg-[#FDF2F8] hover:border-[#B81D5B] text-[#B81D5B] transition-colors flex items-center justify-center touch-manipulation"
               title="View full technical specs"
+              aria-label={`View specs for ${product.name}`}
             >
               <ArrowUpRight className="w-4 h-4 text-[#B81D5B]" />
             </button>

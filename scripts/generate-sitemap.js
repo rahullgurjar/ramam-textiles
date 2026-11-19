@@ -110,7 +110,7 @@ function extractDataFromFiles() {
 
   // Extract Journal Articles
   const articles = [];
-  const articleBlocks = journalFile.split(/\{\s*id:\s*['"][^'"]+['"],\s*slug:\s*['"]([^'"]+)['"]/);
+  const articleBlocks = journalFile.split(/\{\s*id:\s*['"][^'"]+['"],[\s\r\n]*slug:\s*['"]([^'"]+)['"]/);
   for (let i = 1; i < articleBlocks.length; i += 2) {
     const slug = articleBlocks[i];
     const rest = articleBlocks[i + 1] || '';

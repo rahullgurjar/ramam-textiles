@@ -354,12 +354,12 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F5EEE6] text-[#241A16] font-sans antialiased selection:bg-[#9B332C]/20 selection:text-[#9B332C]">
+    <div className="min-h-screen flex flex-col bg-[#F5EEE6] text-[#241A16] font-sans antialiased selection:bg-[#9B332C]/20 selection:text-[#9B332C] w-full max-w-full overflow-x-hidden">
       {/* Primary Global Navigation */}
       <Header currentPath={currentPath} navigate={navigate} />
 
-      {/* Main Page Body with Suspense Fallback */}
-      <main className="flex-1 pb-16 md:pb-0">
+      {/* Main Page Body with Suspense Fallback (pb-20 ensures mobile bottom bar never overlaps content) */}
+      <main className="flex-1 pb-20 md:pb-0">
         <Suspense fallback={<PageLoadingFallback />}>
           {renderCurrentPage()}
         </Suspense>

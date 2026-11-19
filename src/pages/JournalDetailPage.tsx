@@ -174,7 +174,10 @@ export const JournalDetailPage: React.FC<JournalDetailPageProps> = ({ slug, onNa
             <span>{tableData.caption}</span>
           </div>
         )}
-        <div className="overflow-x-auto">
+        <div className="text-[11px] text-stone-500 italic block sm:hidden px-4 py-1.5 bg-[#FAF5EE]/90 border-b border-[#E0D6CB]/40">
+          ⇄ Swipe horizontally to inspect full table specs
+        </div>
+        <div className="overflow-x-auto scrollbar-thin">
           <table className="w-full text-left text-xs sm:text-sm">
             <thead>
               <tr className="bg-[#FAF5EE] border-b border-[#E0D6CB] text-[#241A16] font-royal-title font-bold">

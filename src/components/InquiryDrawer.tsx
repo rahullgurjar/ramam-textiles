@@ -126,7 +126,7 @@ export const InquiryDrawer: React.FC<{ onNavigate: (path: string) => void }> = (
       aria-labelledby="inquiry-drawer-title"
       className="fixed inset-0 z-50 overflow-hidden bg-black/60 animate-fade-in font-royal-body"
     >
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
+      <div className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
         <div className="w-screen max-w-xl bg-[#FAF5EE] shadow-2xl flex flex-col justify-between overflow-hidden border-l border-[#D4AF37]/35">
           
           {/* Header */}

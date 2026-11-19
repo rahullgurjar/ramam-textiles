@@ -87,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 lg:mr-8 xl:mr-14">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-[#241A16] hover:text-[#9B332C] transition-colors rounded-lg hover:bg-[#FAF0EB]"
+              className="lg:hidden min-w-[44px] min-h-[44px] p-2 text-[#241A16] hover:text-[#9B332C] transition-colors rounded-lg hover:bg-[#FAF0EB] flex items-center justify-center touch-manipulation"
               aria-label="Toggle navigation menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -100,12 +100,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
               aria-label="Ramam Textiles Jaipur - Return to Homepage"
               className="flex items-center gap-3 cursor-pointer group shrink-0"
             >
-              <div className="relative shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden bg-[#FAF5EE] border border-[#D4AF37]/50 shadow-sm flex items-center justify-center p-1 group-hover:border-[#9B332C] transition-all duration-300 group-hover:scale-105">
+              <div className="relative shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden bg-transparent border border-[#D4AF37]/50 shadow-sm flex items-center justify-center p-1 group-hover:border-[#9B332C] transition-all duration-300 group-hover:scale-105">
                 <picture className="w-full h-full block">
-                  <source srcSet="/logo.avif?v=2" type="image/avif" />
-                  <source srcSet="/logo.webp?v=2" type="image/webp" />
+                  <source srcSet="/logo.avif?v=20261119" type="image/avif" />
+                  <source srcSet="/logo.webp?v=20261119" type="image/webp" />
                   <img 
-                    src="/logo.png?v=2" 
+                    src="/logo.png?v=20261119" 
                     alt="Ramam Textiles Jaipur" 
                     width="48"
                     height="48"
@@ -430,7 +430,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
           aria-label="Mobile Navigation Menu"
           className="fixed inset-0 z-50 lg:hidden bg-black/60"
         >
-          <div className="fixed inset-y-0 left-0 w-5/6 max-w-sm bg-[#F5EEE6] shadow-2xl flex flex-col justify-between overflow-y-auto p-5 border-r border-[#D4AF37]/35 animate-fade-in text-[#241A16]">
+          <div className="fixed inset-y-0 left-0 w-5/6 max-w-sm bg-[#F5EEE6] shadow-2xl flex flex-col justify-between overflow-y-auto p-5 pt-[max(1.25rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] border-r border-[#D4AF37]/35 animate-fade-in text-[#241A16]">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/30">
                 <a 
@@ -439,11 +439,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                   aria-label="Ramam Textiles - Home"
                   className="flex items-center gap-3"
                 >
-                  <div className="w-12 h-12 rounded-full overflow-hidden bg-[#FAF5EE] border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 shrink-0">
+                  <div className="w-12 h-12 rounded-full overflow-hidden bg-transparent border-2 border-[#D4AF37]/60 shadow-md flex items-center justify-center p-1.5 shrink-0">
                     <picture className="w-full h-full block">
-                      <source srcSet="/logo.avif?v=2" type="image/avif" />
-                      <source srcSet="/logo.webp?v=2" type="image/webp" />
-                      <img src="/logo.png?v=2" alt="Ramam Textiles" width="48" height="48" decoding="async" className="w-full h-full object-contain filter drop-shadow-sm" />
+                      <source srcSet="/logo.avif?v=20261119" type="image/avif" />
+                      <source srcSet="/logo.webp?v=20261119" type="image/webp" />
+                      <img src="/logo.png?v=20261119" alt="Ramam Textiles" width="48" height="48" decoding="async" className="w-full h-full object-contain filter drop-shadow-sm" />
                     </picture>
                   </div>
                   <div className="whitespace-nowrap flex items-baseline gap-1.5 leading-none">
@@ -457,7 +457,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigate }) => {
                 </a>
                 <button 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-1.5 rounded-full text-[#241A16] hover:bg-[#FAF0EB] border border-[#D4AF37]/40"
+                  className="min-w-[40px] min-h-[40px] p-2 rounded-full text-[#241A16] hover:bg-[#FAF0EB] border border-[#D4AF37]/40 flex items-center justify-center touch-manipulation"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />

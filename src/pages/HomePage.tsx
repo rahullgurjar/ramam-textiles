@@ -57,11 +57,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 pt-2">
                 <button
                   onMouseEnter={() => import('./ShopPage')}
                   onClick={() => onNavigate('/shop')}
-                  className="pill-btn-rani flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full shadow-md"
+                  className="pill-btn-rani flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full shadow-md w-full sm:w-auto text-center"
                 >
                   <span>Explore Collection ({PRODUCTS.length} Styles)</span>
                   <ArrowRight className="w-4 h-4" />
@@ -70,7 +70,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <button
                   onMouseEnter={() => import('./BulkOrderEnquiryPage')}
                   onClick={() => onNavigate('/bulk-enquiry')}
-                  className="pill-btn-outline flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full border-[#1D4ED8]/40 hover:border-[#1D4ED8] hover:text-[#1D4ED8]"
+                  className="pill-btn-outline flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-full border-[#1D4ED8]/40 hover:border-[#1D4ED8] hover:text-[#1D4ED8] w-full sm:w-auto text-center"
                 >
                   <Scissors className="w-4 h-4 text-[#1D4ED8]" />
                   <span>Custom Batch &amp; Bulk</span>
@@ -588,7 +588,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
 
               {/* Overlapping Royal Medallion */}
-              <div className="absolute -bottom-6 -right-4 sm:bottom-8 sm:-right-8 bg-[#FAF0EB] text-[#241A16] p-6 sm:p-7 rounded-[28px] shadow-xl border border-[#D4AF37]/50 max-w-xs">
+              <div className="mt-4 sm:mt-0 sm:absolute sm:bottom-8 sm:-right-8 bg-[#FAF0EB] text-[#241A16] p-5 sm:p-7 rounded-[24px] sm:rounded-[28px] shadow-xl border border-[#D4AF37]/50 max-w-full sm:max-w-xs">
                 <div className="flex items-center gap-2 text-[#9B332C] text-xs font-bold uppercase tracking-wider mb-1 font-royal-title">
                   <Award className="w-4 h-4 text-[#9B332C]" />
                   <span>Generational Jaipur Artistry</span>

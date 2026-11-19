@@ -12,12 +12,13 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ currentPath, o
   const totalBasketCount = inquiryItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FAF5EE]/95 backdrop-blur-md border-t border-[#D4AF37]/35 px-2 py-1.5 flex items-center justify-around shadow-lg">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FAF5EE]/95 backdrop-blur-md border-t border-[#D4AF37]/35 px-1.5 pt-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))] flex items-center justify-around shadow-lg transition-all">
       <button
         onClick={() => { onNavigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-        className={`flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold transition-colors font-royal-title ${
+        className={`flex flex-col items-center justify-center p-2 min-h-[44px] min-w-[56px] text-[10px] uppercase tracking-wider font-bold transition-colors font-royal-title touch-manipulation ${
           currentPath === '/' ? 'text-[#9B332C]' : 'text-stone-600 hover:text-[#9B332C]'
         }`}
+        aria-label="Navigate to Home"
       >
         <Home className="w-5 h-5 mb-0.5" />
         <span>Home</span>
@@ -25,9 +26,10 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ currentPath, o
 
       <button
         onClick={() => { onNavigate('/shop'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-        className={`flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold transition-colors font-royal-title ${
+        className={`flex flex-col items-center justify-center p-2 min-h-[44px] min-w-[56px] text-[10px] uppercase tracking-wider font-bold transition-colors font-royal-title touch-manipulation ${
           currentPath.startsWith('/shop') || currentPath.startsWith('/category') ? 'text-[#9B332C]' : 'text-stone-600 hover:text-[#9B332C]'
         }`}
+        aria-label="Browse Catalog"
       >
         <Compass className="w-5 h-5 mb-0.5" />
         <span>Catalog</span>
@@ -35,9 +37,10 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ currentPath, o
 
       <button
         onClick={() => { onNavigate('/lookbook'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-        className={`flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold transition-colors font-royal-title ${
+        className={`flex flex-col items-center justify-center p-2 min-h-[44px] min-w-[56px] text-[10px] uppercase tracking-wider font-bold transition-colors font-royal-title touch-manipulation ${
           currentPath === '/lookbook' ? 'text-[#9B332C]' : 'text-stone-600 hover:text-[#9B332C]'
         }`}
+        aria-label="View Lookbook"
       >
         <Sparkles className="w-5 h-5 mb-0.5" />
         <span>Lookbook</span>
@@ -45,7 +48,8 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ currentPath, o
 
       <button
         onClick={() => openQuickQuote()}
-        className="flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold text-stone-600 hover:text-[#9B332C] font-royal-title"
+        className="flex flex-col items-center justify-center p-2 min-h-[44px] min-w-[56px] text-[10px] uppercase tracking-wider font-bold text-stone-600 hover:text-[#9B332C] font-royal-title touch-manipulation"
+        aria-label="Request Quick RFQ"
       >
         <FileText className="w-5 h-5 mb-0.5 text-[#9B332C]" />
         <span>Quick RFQ</span>
@@ -53,7 +57,8 @@ export const MobileBottomBar: React.FC<MobileBottomBarProps> = ({ currentPath, o
 
       <button
         onClick={openInquiryDrawer}
-        className="relative flex flex-col items-center justify-center p-1.5 text-[10px] uppercase tracking-wider font-bold text-stone-600 hover:text-[#9B332C] font-royal-title"
+        className="relative flex flex-col items-center justify-center p-2 min-h-[44px] min-w-[56px] text-[10px] uppercase tracking-wider font-bold text-stone-600 hover:text-[#9B332C] font-royal-title touch-manipulation"
+        aria-label={`View Inquiry Basket (${totalBasketCount} items)`}
       >
         <div className="relative">
           <ClipboardList className="w-5 h-5 mb-0.5 text-[#9B332C]" />

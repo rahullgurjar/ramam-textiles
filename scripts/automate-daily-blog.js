@@ -97,9 +97,13 @@ async function runDailyBlogAutomation() {
 
   // Inject at the beginning of JOURNAL_ARTICLES array
   const updatedJournal = journalContent.replace(
-    /export const JOURNAL_ARTICLES: JournalArticle\[\] = \[\n/,
+    /export const JOURNAL_ARTICLES:\s*JournalArticle\[\]\s*=\s*\[\r?\n/,
     `export const JOURNAL_ARTICLES: JournalArticle[] = [\n${newArticleCode}`
   );
+
+  if (updatedJournal === journalContent) {
+    throw new Error('Failed to inject article: JOURNAL_ARTICLES array declaration not matched in journal.ts');
+  }
 
   fs.writeFileSync(journalTsPath, updatedJournal, 'utf-8');
   console.log(`✅ Successfully injected new article into src/data/journal.ts`);

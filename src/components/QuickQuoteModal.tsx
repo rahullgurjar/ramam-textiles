@@ -70,9 +70,9 @@ export const QuickQuoteModal: React.FC = () => {
       role="dialog"
       aria-modal="true"
       aria-labelledby="quick-quote-modal-title"
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-4 flex items-center justify-center animate-fade-in font-royal-body"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/60 p-3 sm:p-4 flex items-center justify-center animate-fade-in font-royal-body"
     >
-      <div className="w-full max-w-xl bg-[#FAF5EE] rounded-[28px] shadow-2xl border border-[#D4AF37]/45 overflow-hidden">
+      <div className="w-full max-w-xl bg-[#FAF5EE] rounded-[24px] sm:rounded-[28px] shadow-2xl border border-[#D4AF37]/45 overflow-hidden max-h-[92vh] flex flex-col">
         
         {/* Header */}
         <div className="p-5 bg-[#FAF0EB] text-[#241A16] border-b border-[#D4AF37]/35 flex items-center justify-between shadow-sm">
@@ -94,7 +94,7 @@ export const QuickQuoteModal: React.FC = () => {
         </div>
 
         {/* Modal Content */}
-        <div className="p-6">
+        <div className="p-4 sm:p-6 overflow-y-auto flex-1">
           {isSubmitted ? (
             <div className="text-center py-6 space-y-4">
               <div className="w-14 h-14 bg-[#FAF0EB] border border-[#EACAC0] text-[#9B332C] rounded-full mx-auto flex items-center justify-center shadow-lg">
