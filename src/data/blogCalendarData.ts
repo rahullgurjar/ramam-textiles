@@ -38,7 +38,7 @@ export const EDITORIAL_CALENDAR_SCHEDULE: BlogCalendarDay[] = [
     focusKeyword: 'Ajrakh printing process steps',
     category: 'Craft Heritage',
     valueProp: 'Mathematical geometry, camel dung bleaching (Saaj), harda mordanting, and alizarin boiling.',
-    status: 'Queued',
+    status: 'PUBLISHED',
     linkedArticleId: '16-sacred-stages-ajrakh-block-printing'
   },
   {
@@ -48,7 +48,7 @@ export const EDITORIAL_CALENDAR_SCHEDULE: BlogCalendarDay[] = [
     focusKeyword: 'AZO free dyes certification',
     category: 'Sustainable Fashion',
     valueProp: 'EU REACH, OEKO-TEX Standard 100, aromatic amines risks, and eco-friendly dye houses.',
-    status: 'Queued',
+    status: 'PUBLISHED',
     linkedArticleId: 'what-are-azo-free-dyes-certifications'
   },
   {
@@ -58,7 +58,7 @@ export const EDITORIAL_CALENDAR_SCHEDULE: BlogCalendarDay[] = [
     focusKeyword: 'hand carved wooden printing blocks',
     category: 'Craft Heritage',
     valueProp: 'Sheesham vs Teak vs Roheda wood, oil curing, relief carving, and precision registration pins.',
-    status: 'Queued',
+    status: 'PUBLISHED',
     linkedArticleId: 'how-teak-chhaap-woodblocks-are-made'
   },
   {
@@ -68,7 +68,7 @@ export const EDITORIAL_CALENDAR_SCHEDULE: BlogCalendarDay[] = [
     focusKeyword: 'mulmul vs cambric cotton difference',
     category: 'Fabric Sourcing',
     valueProp: 'Yarn counts (60s vs 40s), weave tightness, transparency, drape, and breathability test.',
-    status: 'Queued',
+    status: 'PUBLISHED',
     linkedArticleId: 'mulmul-vs-voile-vs-cambric-cotton-guide'
   },
   {
@@ -78,7 +78,7 @@ export const EDITORIAL_CALENDAR_SCHEDULE: BlogCalendarDay[] = [
     focusKeyword: 'natural mordants for cotton dyeing',
     category: 'Natural Dyeing',
     valueProp: 'Why cellulose fibers require tannins; preparing myrobalan baths and iron fermentation.',
-    status: 'Queued',
+    status: 'PUBLISHED',
     linkedArticleId: 'chemistry-natural-mordants-harda-alum-syahi'
   },
   {
@@ -88,8 +88,8 @@ export const EDITORIAL_CALENDAR_SCHEDULE: BlogCalendarDay[] = [
     focusKeyword: 'cotton fabric shrinkage calculation',
     category: 'Manufacturing',
     valueProp: 'Warp vs weft shrinkage percentages, sanforization, pre-washing protocols, and cutting markers.',
-    status: 'Queued',
-    linkedArticleId: 'fabric-shrinkage-cutting-wastage-calculation'
+    status: 'PUBLISHED',
+    linkedArticleId: 'how-to-calculate-fabric-shrinkage-cutting-wastage'
   },
   {
     day: 10,
@@ -98,7 +98,7 @@ export const EDITORIAL_CALENDAR_SCHEDULE: BlogCalendarDay[] = [
     focusKeyword: 'dabu printing vs batik print',
     category: 'Craft Heritage',
     valueProp: 'Cold clay vs hot beeswax, crackle texture differences, removal methods, and cultural roots.',
-    status: 'Queued',
+    status: 'PUBLISHED',
     linkedArticleId: 'dabu-mud-resist-vs-batik-wax-resist'
   },
   {

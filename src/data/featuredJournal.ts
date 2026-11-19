@@ -42,4 +42,4 @@ export const FEATURED_JOURNAL_PREVIEWS: JournalPreview[] = [
   }
 ];
 
-export const TOTAL_JOURNAL_COUNT = 13;
+export const TOTAL_JOURNAL_COUNT = 15;

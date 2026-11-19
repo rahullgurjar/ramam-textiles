@@ -2,6 +2,108 @@ import { JournalArticle } from '../types';
 
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
+    id: 'dabu-mud-resist-vs-batik-wax-resist',
+    slug: 'dabu-mud-resist-vs-batik-wax-resist',
+    title: "Dabu Mud-Resist vs Batik Wax-Resist: Comparing Ancient Resist Arts",
+    category: 'Craft Heritage',
+    readTime: '8 min read',
+    publishedDate: 'November 19, 2026',
+    excerpt: "Desert mud clay vs hot molten beeswax: uncover the chemical, thermal, and aesthetic distinctions between Rajasthani Dabu and Indonesian Batik resist dyeing.",
+    coverImage: '/products/duffle-indigo.jpg',
+    author: {
+      name: "Artisan Heritage & Resist Guild",
+      role: "Master Dabu Printer at Ramam Textiles",
+      bio: "Preserving third-generation Bagru mud-resist techniques, botanical indigo vats, and riverbed sun-curing traditions."
+    },
+    contentSections: [
+      {
+            heading: "Two Ancient Resist Philosophies of the Textile World",
+            subheading: "Cold Mineral Mud versus Molten Wax Barriers",
+            body: "Resist dyeing is humanity's oldest method for creating negative-space patterns on woven cloth.\n\nWhile the goal is identical—preventing dye from penetrating designated areas—the physical chemistry of Dabu and Batik represents two distinct artisan lineages.\n\nRajasthani Dabu utilizes cold riverbed clay and botanical gums, whereas Batik relies on molten beeswax and paraffin resins."
+      },
+      {
+            heading: "1. The Composition of Bagru Dabu Mud Paste",
+            subheading: "Black River Mud, Chuna, and Wheat Starch Mechanics",
+            body: "Dabu paste is hand-mixed using clay extracted from local dry riverbeds (kaali mitti), slaked lime (chuna), gum arabic (gond), and fermented wheat flour (beedan).\n\nThe paste is stamped cold onto cotton using hand-carved Sheesham blocks and instantly dusted with fine wood sawdust.\n\nThe sawdust prevents wet stamped layers from sticking as lengths of cloth dry beneath the desert sun."
+      },
+      {
+            heading: "2. The Thermal Dynamics of Batik Wax-Resist",
+            subheading: "Tjanting Pens, Copper Stamps, and Controlled Crackle",
+            body: "Batik relies on heated molten wax applied using a hand-held copper reservoir pen (tjanting) or copper stamp (cap).\n\nWhen submerged in cool dye baths, the brittle wax cracks under deliberate manual folding, allowing dye to seep through fine fractures.\n\nThis creates the signature spiderweb crackle effect that distinguishes authentic Batik from smooth-edged Dabu."
+      },
+      {
+            heading: "3. Dye Compatibility and Eco-Profile Comparison",
+            subheading: "Indigo Cold Vats versus Synthetic Boiling Washouts",
+            body: "Because Dabu paste dissolves in hot water, it must be dyed strictly in cold botanical vats—primarily natural fermented indigo.\n\nIn contrast, Batik wax withstands cool dyes but requires boiling water baths with chemical detergents to melt and reclaim the wax.\n\nDabu mud washes out effortlessly in cool river water, leaving zero petroleum wax residue in the local environment."
+      },
+      {
+            quote: "Dabu is an intimate dialogue with the desert earth—mineral mud, wood ash, and microbial indigo working in harmony.",
+            body: "At Ramam Textiles, our Bagru dyehouse continues this four-century tradition, hand-stamping Dabu paste across pure combed cotton for sustainable global brands."
+      }
+],
+    tags: ["Dabu Printing","Batik Resist","Natural Indigo","Bagru Craft","Sustainable Dyeing"],
+    table: {
+      caption: "Technical Comparison: Dabu Mud-Resist vs Batik Wax-Resist",
+      headers: [
+            "Parameter",
+            "Bagru Dabu Mud-Resist",
+            "Batik Wax-Resist"
+      ],
+      rows: [
+            [
+                  "Resist Medium",
+                  "Riverbed clay, gum arabic, lime & wheat flour",
+                  "Beeswax, paraffin & tree resin"
+            ],
+            [
+                  "Application Temperature",
+                  "Cold application (ambient desert temperature)",
+                  "Molten liquid (70°C - 80°C hot wax)"
+            ],
+            [
+                  "Characteristic Texture",
+                  "Soft, organic edge bleeding with zero wax crackle",
+                  "Sharp lines with controlled spiderweb fracture veining"
+            ],
+            [
+                  "Dye Bath Temperature",
+                  "Cold vats only (indigo, pomegranate, iron)",
+                  "Cold to lukewarm chemical reactive dyes"
+            ],
+            [
+                  "Removal Method",
+                  "Simple cold water soaking and flowing rinse",
+                  "Boiling water washout with solvent scouring"
+            ],
+            [
+                  "Ecological Impact",
+                  "100% biodegradable organic mineral effluent",
+                  "Paraffin wastewater requiring thermal filtration"
+            ]
+      ]
+},
+    faqs: [
+      {
+            question: "Can Dabu printing produce vibrant multi-color patterns?",
+            answer: "Yes. Artisans perform multiple mud-resist applications—stamping mud, dyeing in yellow, washing, re-stamping mud, and dipping into indigo to produce deep emerald greens."
+      },
+      {
+            question: "Why does Dabu paste require wood sawdust dusting during printing?",
+            answer: "Sawdust absorbs surface moisture from wet mud paste, enabling artisans to fold and move 10-meter fabric lengths without smudging adjacent stamped motifs."
+      },
+      {
+            question: "How do I care for Dabu indigo fabrics at home?",
+            answer: "Wash in cold water with mild eco-friendly liquid detergent. Line dry in shaded desert breeze away from harsh direct midday UV rays."
+      }
+],
+    leadCta: {
+      title: "Source Authentic Bagru Dabu Indigo Textiles",
+      description: "Commission custom wooden block prints and organic mud-resist cotton textiles crafted by generational artisans in Bagru, Rajasthan.",
+      primaryBtnText: "Contact Atelier / Dabu Desk",
+      primaryBtnLink: "/contact"
+}
+  },
+  {
     id: 'how-to-calculate-fabric-shrinkage-cutting-wastage',
     slug: 'how-to-calculate-fabric-shrinkage-cutting-wastage',
     title: "How to Calculate Fabric Shrinkage & Cutting Wastage in Garment Production",
