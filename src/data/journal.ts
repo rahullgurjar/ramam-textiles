@@ -2,6 +2,108 @@ import { JournalArticle } from '../types';
 
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
+    id: 'how-to-tell-real-handblock-print-from-digital-screen',
+    slug: 'how-to-tell-real-handblock-print-from-digital-screen',
+    title: "How to Tell Real Handblock Print from Digital Screen Imitations",
+    category: 'Craft Heritage',
+    readTime: '8 min read',
+    publishedDate: 'November 20, 2026',
+    excerpt: "Detect industrial machine copies instantly: analyze reverse strike-through, registration overlap, wooden block chhaap joints, and natural ink aroma.",
+    coverImage: '/products/vanity-trio-pink-paisley.jpg',
+    author: {
+      name: "Authentication Guild & Quality Inspection",
+      role: "Master Quality Inspector at Ramam Textiles",
+      bio: "Leading craft verification, geographic indication compliance, and anti-counterfeiting forensics in Jaipur."
+    },
+    contentSections: [
+      {
+            heading: "The Global Influx of Industrial Screen Prints",
+            subheading: "Why Machine Imitations Undermine Heritage Artisan Communities",
+            body: "Hand block printing is a laborious, generational art that takes master printers days to complete a single 10-meter bolt of cloth.\n\nToday, industrial flatbed screen and digital inkjet printers flood global marketplaces with cheap polyester and mill-cotton copies.\n\nUnderstanding key physical inspection markers enables boutique buyers and connoisseurs to verify genuine artisanal origin."
+      },
+      {
+            heading: "1. Inspecting Reverse Side Strike-Through",
+            subheading: "Hydrostatic Pressure versus Surface-Only Ink Film",
+            body: "The single fastest authentication test is examining the reverse underside of the fabric.\n\nIn hand block printing, the artisan strikes wooden blocks firmly with a wooden mallet (fist strike), forcing dye deep into the cotton fibers.\n\nAs a result, authentic block prints display rich color saturation on the reverse side, whereas digital screen prints appear pale and ghostly on the back."
+      },
+      {
+            heading: "2. Spotting Irregularities and Registration Joints",
+            subheading: "The Beauty of Subtle Human Variance (Naqsha)",
+            body: "Machine screen printing uses laser-aligned rotary cylinders that repeat flawlessly across thousands of meters.\n\nAuthentic hand block printing relies on master visual judgment to align brass registration pins (khunti) from one stamp to the next.\n\nExamine where borders meet corner motifs: subtle 1mm to 2mm overlaps, dye intensity gradients, and tiny color blurs prove human hands stamped the cloth."
+      },
+      {
+            heading: "3. Tactile Breathability and Chemical Odor",
+            subheading: "Zero Plastisol Residue and Natural Herbal Scent",
+            body: "Industrial screen prints frequently utilize thick plastisol or synthetic acrylic binders that coat fabric fibers in a stiff plastic layer.\n\nAuthentic Jaipur block printing utilizes water-soluble gums, plant mordants, and AZO-free reactive dyes that bond chemically with cotton.\n\nThe fabric remains exceptionally soft, drapey, breathable, and smells faintly of natural river mud and vegetable oils rather than industrial petroleum solvents."
+      },
+      {
+            quote: "In authentic handcraft, imperfection is not an error—it is the irreplaceable signature of the human artisan.",
+            body: "At Ramam Textiles, every product carries the certified mark of genuine hand block craftsmanship, carved and printed entirely in our Jaipur atelier."
+      }
+],
+    tags: ["Hand Block Print","Screen Print Comparison","Textile Authentication","Jaipur Craft","Craft Inspection"],
+    table: {
+      caption: "Authentication Checklist: Authentic Hand Block vs Industrial Machine Print",
+      headers: [
+            "Inspection Parameter",
+            "Genuine Jaipur Hand Block Print",
+            "Industrial Rotary / Screen Print"
+      ],
+      rows: [
+            [
+                  "Reverse Strike-Through",
+                  "Deep, vivid color penetration visible on the back of the cloth",
+                  "Pale, white, or chalky underside with poor ink penetration"
+            ],
+            [
+                  "Registration & Alignment",
+                  "Subtle 1-2mm overlap joints; slight charming human variance",
+                  "Microscopically exact, repeating perfectly across entire rolls"
+            ],
+            [
+                  "Edge Sharpness",
+                  "Soft, organic edge contours shaped by hand-carved wood grain",
+                  "Hard, sharp, artificial raster lines created by photographic mesh"
+            ],
+            [
+                  "Fabric Handfeel",
+                  "Silky, soft, and breathable with zero plastic surface coating",
+                  "Stiff surface feel from chemical acrylic/plastisol binders"
+            ],
+            [
+                  "Scent Profile",
+                  "Faint earthy aroma of river clay, vegetable gums, or indigo",
+                  "Pungent chemical petroleum smell from synthetic solvents"
+            ],
+            [
+                  "Production Speed",
+                  "6 to 10 meters per printer per day",
+                  "800 to 1,500 meters per machine hour"
+            ]
+      ]
+},
+    faqs: [
+      {
+            question: "Do genuine hand block prints fade after the first wash?",
+            answer: "Properly mordanted and steamed hand block prints achieve Grade 4-5 colorfastness. Minimal surface excess pigment rinses off in the first wash, leaving colors luminous and stable."
+      },
+      {
+            question: "What is a Chhaap mark in hand block printing?",
+            answer: "Chhaap is the Hindi term for the impression made by a hand-carved wooden block (rekha for outline, datta for background fill)."
+      },
+      {
+            question: "Why are authentic hand block prints more valuable than screen prints?",
+            answer: "Hand block printing preserves living UNESCO-recognized generational craft communities, requires zero industrial electricity, and produces heirloom-grade, low-volume textiles."
+      }
+],
+    leadCta: {
+      title: "Source Certified Authentic Jaipur Hand Block Textiles",
+      description: "Protect your brand reputation with 100% verified artisan hand-printed quilted bags, garments, and pure running fabrics from Ramam Textiles.",
+      primaryBtnText: "Contact Atelier / Authentication Desk",
+      primaryBtnLink: "/contact"
+}
+  },
+  {
     id: 'revival-of-kala-cotton-organic-indigenous',
     slug: 'revival-of-kala-cotton-organic-indigenous',
     title: "The Revival of Kala Cotton: Organic, Rainfed Indigenous Indian Cotton",
