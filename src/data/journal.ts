@@ -2,6 +2,108 @@ import { JournalArticle } from '../types';
 
 export const JOURNAL_ARTICLES: JournalArticle[] = [
   {
+    id: 'craft-of-kantha-quilting-history-technique',
+    slug: 'craft-of-kantha-quilting-history-technique',
+    title: "The Craft of Kantha Quilting: From Repurposed Sarees to Luxury Textiles",
+    category: 'Craft Heritage',
+    readTime: '8 min read',
+    publishedDate: 'November 21, 2026',
+    excerpt: "Centuries of running-stitch needlework: how Bengali and Rajasthani women transformed vintage cotton sarees into the world's most tactile luxury quilted bags.",
+    coverImage: '/products/duffle-kantha-patchwork-mobile.webp',
+    author: {
+      name: "Kantha Quilting & Needlework Guild",
+      role: "Master Quilting Curator at Ramam Textiles",
+      bio: "Leading generational women artisan collectives in Barmer and Jaipur, preserving traditional running-stitch needlecraft."
+    },
+    contentSections: [
+      {
+            heading: "The Ancient Art of Repurposing with Needle and Thread",
+            subheading: "From Domestic Family Heirloom to Global Luxury Fashion",
+            body: "The word 'Kantha' originates from the Sanskrit term 'kontha', meaning rags or patches of repurposed cloth.\n\nFor over five centuries in Bengal, Odisha, and Rajasthan, rural women carefully layered discarded cotton sarees and dhotis, securing them with rhythmic running stitches.\n\nWhat began as an intimate domestic practice of maternal care has evolved into one of luxury fashion's most coveted tactile textile art forms."
+      },
+      {
+            heading: "1. Anatomy of an Authentic Kantha Quilted Textile",
+            subheading: "Wadding Layers, Stitch Density, and Ripple Textures",
+            body: "A true Kantha textile is defined by its layered construction and surface topography.\n\nAt Ramam Textiles, two outer shells of hand-block printed cotton sandwich a shock-absorbing sheet of pure combed cotton batting.\n\nArtisans hand-stitch parallel running channels spaced 5mm to 8mm apart, causing the fabric to gently ripple into an irresistibly plush, cloud-soft quilted texture."
+      },
+      {
+            heading: "2. Regional Variations: Bengal Narrative vs Rajasthani Patchwork",
+            subheading: "Nakshi Kantha Embroidery versus Rugged Desert Kantha",
+            body: "In rural Bengal, Nakshi Kantha features pictorial motifs depicting village folklore, lotus ponds, and wedding palanquins.\n\nIn Rajasthan and Gujarat, desert artisan communities developed bold patchwork Kantha.\n\nSquare swatches of Bagru indigo, Sanganeri florals, and geometric Dabu prints are juxtaposed and stitched with thick cotton floss to withstand desert travel."
+      },
+      {
+            heading: "3. Crafting Modern Quilted Travel Luggage & Organizers",
+            subheading: "Engineering Kantha for Modern High-Durability Travel Accessories",
+            body: "While traditional domestic Kantha was delicate, modern commercial manufacturing requires rigorous structural engineering.\n\nWe reinforce hand-quilted panels with heavy-duty interfacings, waterproof ripstop linings, and industrial brass YKK zippers.\n\nFinished with durable candy-stripe webbing handles, our quilted duffle bags and cosmetic cases seamlessly combine heirloom beauty with modern travel durability."
+      },
+      {
+            quote: "Every Kantha stitch is a physical meditation—a continuous rhythm uniting memory, sustainability, and craft.",
+            body: "At Ramam Textiles, our Kantha needlework provides independent livelihood and dignified fair-trade income to hundreds of rural artisan women across Rajasthan."
+      }
+],
+    tags: ["Kantha Quilting","Hand Stitching","Upcycled Textiles","Quilted Bags","Jaipur Craft"],
+    table: {
+      caption: "Technical Anatomy: Ramam Textiles Quilted Bags vs Commercial Machine Quilting",
+      headers: [
+            "Construction Feature",
+            "Ramam Textiles Artisan Kantha Bags",
+            "Mass-Market Machine Quilted Bags"
+      ],
+      rows: [
+            [
+                  "Quilting Technique",
+                  "Hand-steered channel quilting with cotton thread",
+                  "High-speed automated multi-needle ultrasonic quilting"
+            ],
+            [
+                  "Inner Batting / Wadding",
+                  "100% pure natural combed cotton batting (220 GSM)",
+                  "Synthetic polyester/nylon sheet batting (non-breathable)"
+            ],
+            [
+                  "Shell Fabric",
+                  "Hand-stamped Jaipur 100% cotton cambric (60x60 count)",
+                  "Screen-printed synthetic polyester or mill poly-blend"
+            ],
+            [
+                  "Handle Construction",
+                  "Dense candy-striped cotton webbing stitched to base",
+                  "Thin nylon ribbon handles prone to tearing under load"
+            ],
+            [
+                  "Interior Lining",
+                  "Water-resistant coated cotton interior with organizer slots",
+                  "Flimsy non-woven polypropylene lining that shreds over time"
+            ],
+            [
+                  "Durability & Aging",
+                  "Develops luxurious patina; machine washable in cold water",
+                  "Batting clumps and shifts after 2-3 wash cycles"
+            ]
+      ]
+},
+    faqs: [
+      {
+            question: "Are Kantha quilted travel bags durable enough for international flights?",
+            answer: "Yes. Our duffle bags undergo rigorous tensile testing. The combination of dense channel quilting, reinforced box-X handle stitching, and brass hardware withstands 15kg+ carry loads."
+      },
+      {
+            question: "How do you wash and maintain a quilted Kantha bag?",
+            answer: "Spot clean with a damp cloth or hand wash in cold water with mild liquid detergent. Reshape gently and flat dry in the shade to preserve batting loft."
+      },
+      {
+            question: "Can boutique brands customize print combinations for Kantha patchwork duffles?",
+            answer: "Yes. We offer fully custom print curation for boutique wholesale orders starting at 25 pieces per colorway."
+      }
+],
+    leadCta: {
+      title: "Commission Custom Hand-Quilted Kantha Travel Collections",
+      description: "Manufacture bespoke quilted travel duffles, vanity pouches, and tech sleeves crafted with authentic Jaipur block prints and pure cotton batting.",
+      primaryBtnText: "Contact Atelier / Kantha Desk",
+      primaryBtnLink: "/contact"
+}
+  },
+  {
     id: 'how-to-tell-real-handblock-print-from-digital-screen',
     slug: 'how-to-tell-real-handblock-print-from-digital-screen',
     title: "How to Tell Real Handblock Print from Digital Screen Imitations",
