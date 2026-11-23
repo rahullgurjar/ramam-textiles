@@ -131,18 +131,18 @@ Legal / Brand Name: Ramam Textiles Jaipur
 Website URL: https://ramamtextiles.shop/
 Wholesale URL: https://ramamtextiles.shop/wholesale
 Custom Manufacturing: https://ramamtextiles.shop/custom-manufacturing
-Official Email: contact@ramamtextiles.shop
-Contact Phone / WhatsApp: +91-98290-00000
-Physical Address: Artisan Textile Workshop, Sanganer & Bagru Craft Clusters, Jaipur, Rajasthan 302020, India
+Official Email: ramamtextiles@gmail.com
+Contact Phone / WhatsApp: [To be updated: Please provide your official phone/WhatsApp number]
+Physical Address: [To be updated: Please provide your exact street address & PIN code in Jaipur]
 Operating Hours: Monday – Saturday: 09:30 AM – 06:30 PM IST (GMT +5:30)
 Primary Category: Textile Manufacturer & Wholesaler / Hand Block Printing Atelier
 ```
 
 ### 50-Word Short Profile (For Directory Listings)
-> Ramam Textiles is an authentic Jaipur artisan atelier specializing in luxury hand block prints, Bagru Dabu mud-resist, and natural botanical dyes. We craft premium quilted cotton duffle bags, toiletry kits, and export-grade pure mulmul and cambric fabrics by the meter for boutique designers and global wholesale partners worldwide. Explore: https://ramamtextiles.shop/
+> Ramam Textiles is an authentic Jaipur artisan atelier specializing in luxury hand block prints, Bagru Dabu mud-resist, and natural botanical dyes. We craft premium quilted cotton duffle bags, toiletry kits, and export-grade pure mulmul and cambric fabrics by the meter for boutique designers and global wholesale partners worldwide. Contact: ramamtextiles@gmail.com | Explore: https://ramamtextiles.shop/
 
 ### 100-Word Medium Profile (For Citations & Trade Profiles)
-> Rooted in the historic craft clusters of Sanganer and Bagru in Jaipur, Rajasthan, Ramam Textiles bridges centuries-old heritage woodblock carving with modern ethical production. Our master Chippa artisans produce small-batch hand block printed apparel, quilted cotton travel bags, cosmetic vanity pouches, and pure cotton fabrics using certified AZO-free and natural indigo dyes. We support independent fashion labels, sustainable boutiques, and interior designers with low MOQs starting from 25 pieces, custom pattern development, and express worldwide air cargo shipping. Visit https://ramamtextiles.shop/ to explore our collections.
+> Rooted in the historic craft clusters of Jaipur, Rajasthan, Ramam Textiles bridges centuries-old heritage woodblock carving with modern ethical production. Our master Chippa artisans produce small-batch hand block printed apparel, quilted cotton travel bags, cosmetic vanity pouches, and pure cotton fabrics using certified AZO-free and natural indigo dyes. We support independent fashion labels, sustainable boutiques, and interior designers with low MOQs starting from 25 pieces, custom pattern development, and express worldwide air cargo shipping. Email ramamtextiles@gmail.com or visit https://ramamtextiles.shop/ to explore our collections.
 
 ### 250-Word Comprehensive Profile (For B2B Portals & Web 2.0 Accounts)
 > Ramam Textiles is a premier artisanal textile manufacturer and export house based in Jaipur, Rajasthan, India. Honoring over three centuries of Rajasthani textile traditions, our atelier specializes in genuine Sanganeri floral prints, ancient Dabu mud-resist indigo dyeing, and Ajrakh geometric printing.
@@ -152,7 +152,7 @@ Primary Category: Textile Manufacturer & Wholesaler / Hand Block Printing Atelie
 > • Pure Cotton Fabrics by the Meter: 60s super-fine Mulmul, 40s Cambric, and textured Kantha patchwork yardage.  
 > • Custom Private-Label Manufacturing: Low-MOQ ethical garment production, physical strike-off sampling, and bespoke teak woodblock carving for independent designers.  
 >
-> Every meter of fabric is hand-printed using traditional hand-carved Teakwood blocks (chhaap) and washed in open-air drying fields. We prioritize sustainability through non-toxic AZO-free dyes, natural plant mordants (Harda, Alum, Fermented Iron), and circular water conservation. We proudly ship B2B wholesale orders worldwide across the USA, UK, Europe, Australia, and the Middle East with comprehensive export documentation, HS coding, and air cargo logistics. Connect directly with our atelier at https://ramamtextiles.shop/ or email contact@ramamtextiles.shop.
+> Every meter of fabric is hand-printed using traditional hand-carved Teakwood blocks (chhaap) and washed in open-air drying fields. We prioritize sustainability through non-toxic AZO-free dyes, natural plant mordants (Harda, Alum, Fermented Iron), and circular water conservation. We proudly ship B2B wholesale orders worldwide across the USA, UK, Europe, Australia, and the Middle East with comprehensive export documentation, HS coding, and air cargo logistics. Connect directly with our atelier at https://ramamtextiles.shop/ or email ramamtextiles@gmail.com.
 
 ### Core Primary Keyword & Category Tags
 ```text
@@ -182,3 +182,4 @@ Keep track of newly indexed backlinks using:
 1. **Google Search Console**: Check `Links` ➔ `Top linking sites` and `Top linking text`.
 2. **Ahrefs / Semrush Free Backlink Checker**: Monitor Domain Rating (DR) and incoming referring domains weekly.
 3. Update the master spreadsheet [`Ramam_Textiles_OffPage_SEO_Backlink_Sheet.xlsx`](./Ramam_Textiles_OffPage_SEO_Backlink_Sheet.xlsx) as each profile is submitted and goes live.
+
