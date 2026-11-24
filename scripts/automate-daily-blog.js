@@ -127,12 +127,13 @@ async function runDailyBlogAutomation() {
     }
   }
 
-  // Regenerate XML Sitemap
+  // Regenerate XML Sitemap & RSS Feed
   try {
-    console.log(`\n🔄 Regenerating sitemap.xml with new URL...`);
+    console.log(`\n🔄 Regenerating sitemap.xml and rss.xml with new URL...`);
     execSync(`node "${sitemapScriptPath}"`, { stdio: 'inherit' });
+    execSync(`node "${path.join(rootDir, 'scripts/generate-rss.js')}"`, { stdio: 'inherit' });
   } catch (err) {
-    console.error(`⚠️ Sitemap generation warning:`, err.message);
+    console.error(`⚠️ Sitemap/RSS generation warning:`, err.message);
   }
 
   // Regenerate static HTML entrypoints if dist exists
